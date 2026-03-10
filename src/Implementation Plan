@@ -1,0 +1,34 @@
+# Actualización de Contenido - EasyRobots
+
+Este plan detalla las modificaciones solicitadas para actualizar las secciones y la estética en la página principal (`index.html`) para alinearla con los nuevos requisitos y referencias visuales.
+
+## Proposed Changes
+
+### Archivos Principales
+
+#### [MODIFY] [index.html](file:///c:/Users/HP/Desktop/AAA%20MKT%20HACKERS/EasyRobots/Antigravity%20clientes/easyrobots/src/index.html)
+- **Testimonios:** Añadir 5 estrellas a cada testimonio en formato SVG.
+- **Servicios:**
+  - Servicio 2 ("Chatbot Web Inteligente"): Reemplazar el icono con el logo de WhatsApp.
+  - Servicio 3 ("Página Web Profesional Optimizada"): Quitar la etiqueta `¡Nuevo!`.
+  - Servicio 4 ("Agente IA de Whatsapp"): Reemplazar el logo de WhatsApp por el icono de Chatbot.
+  - Servicio 5 ("Flujos Automatizados Personalizables"): Añadir la etiqueta `¡Nuevo!`.
+- **Nueva Sección Garantía:** Insertar debajo de "Planes y Precios" (sección de CTA) una nueva sección "10 Días - 100% Garantía de Devolución" con su correspondiente imagen de garantía o icono (recreando el estilo de la imagen 1).
+- **Nueva Sección FAQ:** Reemplazar el footer `#faq` actual (o crear una sección dedicada `Preguntas Frecuentes` justo antes del footer) implementando un sistema de acordeón tipo lista (basado en imágenes 2 y 3).
+
+#### [MODIFY] [styles.css](file:///c:/Users/HP/Desktop/AAA%20MKT%20HACKERS/EasyRobots/Antigravity%20clientes/easyrobots/src/css/styles.css)
+- **Estrellas Testimonios:** Añadir el color amarillo/oro para las estrellas y alineación.
+- **Nueva Sección Garantía:** Estilos específicos para la disposición del texto e insignia de garantía (badge).
+- **Acordeón FAQ:** Estilos interactivos para abrir/cerrar preguntas, iconos +/- o flechas de apertura, y transiciones suaves (`max-height` o `grid` para la animación).
+
+#### [MODIFY] [main.js](file:///c:/Users/HP/Desktop/AAA%20MKT%20HACKERS/EasyRobots/Antigravity%20clientes/easyrobots/src/js/main.js)
+- **Acordeón FAQ:** Añadir control en JavaScript para alternar la clase activa al hacer clic en las preguntas de la lista de FAQ, permitiendo mostrar u ocultar la respuesta animandola y modificando el icono de despliegue.
+
+## Verification Plan
+
+### Manual Verification
+1. Abrir `index.html` en el navegador.
+2. Comprobar que los testimonios tienen 5 estrellas amarillas.
+3. Verificar que los iconos de los servicios 2 y 4 están intercambiados y que las etiquetas "¡Nuevo!" están correctamente situadas en los servicios indicados.
+4. Desplazarse hasta el final de la página para verificar la nueva sección de Garantía con el estilo correspondiente a la imagen.
+5. Hacer clic en cada pregunta de la sección de FAQ para comprobar que se deslizan correctamente (acordeón fluido) y muestran los textos precisos de las imágenes adjuntas.
