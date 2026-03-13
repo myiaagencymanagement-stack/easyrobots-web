@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Cita Confirmada! | EasyRobots</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X0YM75HY0S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X0YM75HY0S');
+    // Disparar evento de conversión al llegar a esta página
+    gtag('event', 'cita_agendada', {
+      'event_category': 'conversion',
+      'event_label': 'pagina_gracias'
+    });
+  </script>
+
+  <style>
+    :root {
+      --neon-primary:   #00b4d8;
+      --neon-secondary: #00ffc8;
+      --bg:             #0a0a0f;
+      --bg-darker:      #06060a;
+      --text-white:     #ffffff;
+      --text-gray:      #a0aec0;
+      --glass-border:   rgba(0,180,216,0.2);
+      --font-body:      'Inter', sans-serif;
+      --font-display:   'Space Grotesk', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-darker);
+      color: var(--text-white);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      overflow-y: auto;
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    /* Blobs decorativos */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .blob-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,180,216,0.15) 0%, transparent 70%);
+      top: -100px; right: -100px;
+    }
+    .blob-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,255,200,0.1) 0%, transparent 70%);
+      bottom: -100px; left: -100px;
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    /* Icono check animado */
+    .check-wrapper {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+
+    .check-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0,180,216,0.2), rgba(0,255,200,0.1));
+      border: 2px solid var(--neon-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      box-shadow: 0 0 30px rgba(0,255,200,0.3);
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .check-circle svg {
+      animation: drawCheck 0.4s 0.4s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes drawCheck {
+      to { opacity: 1; }
+    }
+
+    /* Ping decorativo */
+    .check-ping {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid var(--neon-secondary);
+      animation: ping 1.5s 0.6s ease-out infinite;
+      opacity: 0;
+    }
+
+    @keyframes ping {
+      0%   { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      backdrop-filter: blur(20px);
+      animation: fadeUp 0.8s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--neon-secondary);
+      background: rgba(0,255,200,0.1);
+      border: 1px solid rgba(0,255,200,0.3);
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 0%, var(--neon-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      color: var(--text-gray);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    p strong {
+      color: var(--text-white);
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-primary), var(--neon-secondary));
+      margin: 1.5rem auto;
+      border-radius: 2px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: rgba(0,180,216,0.05);
+      border: 1px solid rgba(0,180,216,0.15);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #06060a;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+
+    .step-text strong {
+      color: var(--text-white);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      background: linear-gradient(90deg, var(--neon-primary), var(--neon-secondary));
+      color: #06060a;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(0,255,200,0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(0,255,200,0.5);
+    }
+
+    .footer-text {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: rgba(160,174,192,0.5);
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="container">
+    <div class="check-wrapper">
+      <div class="check-circle">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--neon-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <div class="check-ping"></div>
+    </div>
+
+    <div class="card">
+      <div class="tag">✓ Cita Confirmada</div>
+      <h1>¡Tu cita está reservada!</h1>
+      <p>Gracias por confiar en <strong>EasyRobots</strong>. Hemos recibido tu solicitud y en breve recibirás una confirmación.</p>
+
+      <div class="divider"></div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Revisa tu email</strong>
+            Te hemos enviado un recordatorio con los detalles de tu cita.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Prepara tus preguntas</strong>
+            Piensa en los retos de atención al cliente que quieres automatizar.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Nos vemos pronto</strong>
+            Nuestro equipo estará listo para mostrarte cómo la IA puede transformar tu negocio.
+          </div>
+        </div>
+      </div>
+
+      <a href="https://easyrobots-ai.cloud" class="btn">Volver al inicio →</a>
+
+      <p class="footer-text">¿Tienes alguna duda? Escríbenos a <a href="/cdn-cgi/l/email-protection#e38e9a8a82cd8284868d809a8e828d8284868e868d97a3848e828a8fcd808c8e" style="color: var(--neon-secondary); text-decoration: none;"><span class="__cf_emai
