@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Tu clase gratuita | EasyRobots</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { ink:'#0b0b0f', surface:'#15151c', line:'#272730', cream:'#ece8e1', muted:'#9a978f', gold:'#d8a657', golddim:'#b98a3f' },
+    fontFamily: { display:['Fraunces','serif'], body:['Outfit','sans-serif'] },
+  }}};
+</script>
+<style> body{background:#0b0b0f} html{scroll-behavior:smooth} </style>
+</head>
+<body class="font-body text-cream antialiased">
+
+<header class="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
+  <span class="font-display text-lg tracking-tight">EasyRobots</span>
+  <span class="text-xs uppercase tracking-[0.18em] text-gold">Acceso confirmado</span>
+</header>
+
+<main class="mx-auto max-w-3xl px-6 pb-24 pt-6 text-center">
+  <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-2xl text-gold">✓</div>
+
+  <h1 class="mt-6 font-display text-3xl leading-tight sm:text-5xl">Ya tienes acceso a la clase</h1>
+  <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-cream/80">
+    Te hemos enviado el enlace a tu email para que puedas volver cuando quieras. Si no lo ves en unos
+    minutos, revisa spam o la pestaña de promociones. Mientras, puedes empezar a verla aquí mismo:
+  </p>
+
+  <!-- ===== CLASE GRATUITA ===== -->
+  <div class="mx-auto mt-10 max-w-3xl">
+    <div class="relative aspect-video overflow-hidden rounded-2xl border border-line bg-surface shadow-2xl shadow-black/40">
+      <!-- ↓↓↓ SUSTITUYE por el <iframe> de la clase completa ↓↓↓ -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
+        <div class="flex h-16 w-16 items-center justify-center rounded-full bg-gold text-ink">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <p class="text-sm text-muted">[ Contenedor de la clase — inserta aquí tu vídeo ]</p>
+      </div>
+      <!-- ↑↑↑ FIN del placeholder ↑↑↑ -->
+    </div>
+  </div>
+
+  <!-- Cómo aprovecharla -->
+  <div class="mx-auto mt-12 max-w-xl text-left">
+    <div class="h-px w-12 bg-gold"></div>
+    <h2 class="mt-5 font-display text-2xl">Para sacarle el máximo</h2>
+    <ul class="mt-4 space-y-3 text-sm leading-relaxed text-cream/80">
+      <li class="flex gap-3"><span class="text-gold">—</span><span>Tenla delante con tu negocio en mente: piensa en los 3 clientes cuyos resultados nadie está viendo ahora mismo.</span></li>
+      <li class="flex gap-3"><span class="text-gold">—</span><span>Es un sistema que se monta una vez. No hace falta que lo construyas mientras la ves; primero entiéndelo entero.</span></li>
+      <li class="flex gap-3"><span class="text-gold">—</span><span>Al terminar sabrás exactamente qué pieza montar primero para empezar a recoger pruebas usables.</span></li>
+    </ul>
+  </div>
+</main>
+
+<footer class="border-t border-line">
+  <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-6 py-8 text-xs text-muted sm:flex-row">
+    <span>© <span id="year"></span> EasyRobots</span>
+    <div class="flex gap-5">
+      <a href="#" class="hover:text-cream">Política de privacidad</a>
+      <a href="#" class="hover:text-cream">Contacto</a>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
