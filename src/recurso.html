@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>EasyRobots | Tu recurso gratis</title>
+
+<!--
+====================================================================
+  CÓMO CAMBIAR EL RECURSO CADA VEZ QUE HAGAS UN GIVEAWAY EN IG:
+  1. Baja hasta el bloque "CONFIG" más abajo en este mismo archivo
+     (búscalo con Ctrl+F: CONFIG).
+  2. Cambia TITULO, DESCRIPCION y sobre todo FILE_URL por el link
+     directo de descarga del nuevo archivo (Drive, Dropbox, tu propio
+     hosting, etc. — debe ser un link de descarga directa, no una
+     vista previa).
+  3. Guarda y vuelve a subir el archivo donde lo tengas alojado.
+  Eso es todo. No hay que tocar nada más.
+====================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-dark: #070714;
+    --bg-darker: #030308;
+    --neon-primary: #9d4edd;
+    --neon-secondary: #00f0ff;
+    --whatsapp-green: #25D366;
+    --neon-primary-glow: rgba(157, 78, 221, 0.4);
+    --neon-secondary-glow: rgba(0, 240, 255, 0.4);
+    --text-white: #ffffff;
+    --text-gray: #a3a3b5;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(157, 78, 221, 0.15);
+    --border-dark: #1a1a2e;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Ambient glow blobs, same language as the landing page */
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 0;
+    opacity: 0.25;
+  }
+  body::before {
+    top: -150px;
+    left: -150px;
+    background: var(--neon-primary);
+  }
+  body::after {
+    bottom: -150px;
+    right: -150px;
+    background: var(--neon-secondary);
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 10;
+    max-width: 560px;
+    width: 100%;
+  }
+
+  .brand {
+    text-align: center;
+    margin-bottom: 28px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-white);
+    font-size: 1.1rem;
+  }
+
+  .brand span { color: var(--neon-secondary); }
+
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(157, 78, 221, 0.2), rgba(0, 240, 255, 0.1));
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    color: var(--neon-secondary);
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.9rem;
+    line-height: 1.25;
+    margin-bottom: 0.9rem;
+    text-shadow: 0 0 15px var(--neon-primary-glow);
+  }
+
+  p.desc {
+    color: var(--text-gray);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 28px;
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(90deg, var(--neon-primary), var(--neon-secondary));
+    color: var(--bg-darker);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+  }
+
+  .btn-download svg { flex-shrink: 0; }
+
+  .fineprint {
+    margin-top: 1.25rem;
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    opacity: 0.7;
+  }
+
+  .footer-link {
+    text-align: center;
+    margin-top: 1.75rem;
+  }
+
+  .footer-link a {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--border-dark);
+    transition: color 0.2s ease;
+  }
+
+  .footer-link a:hover { color: var(--neon-secondary); }
+
+  @media (max-width: 480px) {
+    .glass-card { padding: 2rem 1.25rem; }
+    h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="brand">Easy<span>Robots</span></div>
+
+  <div class="glass-card">
+    <span class="badge">🎁 Regalo por comentar</span>
+
+    <!-- ============ CONFIG: edita solo lo de aquí abajo ============ -->
+    <h1 id="titulo">Tu checklist de automatización con IA</h1>
+    <p class="desc" id="descripcion">
+      Gracias por comentar en el post. Aquí tienes tu recurso gratis —
+      descárgalo y aplícalo hoy mismo en tu negocio.
+    </p>
+    <a
+      id="descarga"
+      class="btn-download"
+      href="REEMPLAZA_ESTE_LINK_CON_TU_ARCHIVO"
+      download
+      target="_blank"
+      rel="noopener"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Descargar ahora
+    </a>
+    <!-- ============ FIN CONFIG ============ -->
+
+    <p class="fineprint">Archivo gratuito. Sin costo, sin compromiso.</p>
+  </div>
+
+  <div class="footer-link">
+    <a href="https://easyrobots-ai.cloud/" target="_blank" rel="noopener">Conoce más sobre EasyRobots →</a>
+  </div>
+</div>
+
+</body>
+</html>
