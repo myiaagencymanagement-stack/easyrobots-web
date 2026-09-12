@@ -1,0 +1,255 @@
+{
+  "name": "Asistente WhatsApp clínica",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "c37eb554-b2a7-4d2f-846b-e4ecd5107ae4",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -32,
+        32
+      ],
+      "id": "c0ef194b-c296-41bb-8026-1f79fe66bcb2",
+      "name": "Webhook",
+      "webhookId": "c37eb554-b2a7-4d2f-846b-e4ecd5107ae4"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Extraer datos').item.json.telefono }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1232,
+        288
+      ],
+      "id": "c0993269-02cd-480b-8c5c-4ed769b3a6d2",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3-flash-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1024,
+        272
+      ],
+      "id": "01a0e232-f4d5-4fc0-a117-61f4c641953f",
+      "name": "Google Gemini Chat Model"
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\n\nconst telefono = input.body?.whatsappInboundMessage?.from;\nconst mensaje = input.body?.whatsappInboundMessage?.text?.body || '';\nconst messageId = input.body?.whatsappInboundMessage?.id;\n\nif (!telefono) {\n  throw new Error('No se pudo extraer el telefono del remitente.');\n}\n\nreturn [{ json: { telefono, mensaje, messageId } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        32
+      ],
+      "id": "a3a63811-a273-4ad0-8948-6a92673ec084",
+      "name": "Extraer datos"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.ycloud.com/v2/whatsapp/inboundMessages/{{ $json.messageId }}/typingIndicator",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-Key",
+              "value": "PEGA_AQUI_TU_CLAVE_DE_YCLOUD"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        464,
+        32
+      ],
+      "id": "5d5132b2-5235-44bf-a4ae-ffe6dfa94150",
+      "name": "Mostrar escribiendo..."
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\nconst key = input.telefono;\nconst data = $getWorkflowStaticData('global');\ndata.turnos = data.turnos || {};\n\ndata.turnos[key] = (data.turnos[key] || 0) + 1;\nconst turno = data.turnos[key];\nconst espera = turno === 1 ? (3 + Math.random()) : 2;\n\nreturn [{ json: { ...input, espera_segundos: espera } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        704,
+        32
+      ],
+      "id": "30dd8961-eeb7-4013-9675-f4219478475e",
+      "name": "Calcular espera"
+    },
+    {
+      "parameters": {
+        "amount": "={{ $json.espera_segundos }}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        912,
+        32
+      ],
+      "id": "6385d8fb-6579-4561-9e8b-a2861ec01d13",
+      "name": "Esperar",
+      "webhookId": "68a84249-c080-4cc7-ae96-7a3e528d2890"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Extraer datos').first().json.mensaje }}",
+        "options": {
+          "systemMessage": "=Eres Lola, la asistente virtual de [NOMBRE DE LA CLÍNICA].\nTu trabajo es responder dudas sobre horarios, servicios y precios, y si alguien quiere cita, derivarla al centro.\n\nFecha y hora actual: {{ $now.setZone('Europe/Madrid').toFormat('cccc dd/MM/yyyy HH:mm') }}\nÚsala para entender expresiones como \"hoy\", \"mañana\", \"esta semana\" o \"el lunes\", y para saber si el centro está abierto o cerrado en este momento.\n\nESTILO\n- Escribe como por WhatsApp: frases cortas, sin markdown, sin listas ni negritas.\n- Un emoji como mucho en toda la conversación.\n- Escribe con tildes y acentos correctos.\n- Las preguntas siempre con apertura y cierre: ¿...?\n- Sé breve y no repitas lo que ya has dicho.\n- En tu primer mensaje preséntate siempre así: eres Lola, la asistente de [NOMBRE DE LA CLÍNICA]. Preséntate igual esté el centro abierto o cerrado.\n\nINFORMACIÓN DEL CENTRO\nHorario: [HORARIO]\nDirección: [DIRECCIÓN]\nTeléfono: [TELÉFONO]\nServicios y precios:\n- [SERVICIO 1]: [PRECIO]\n- [SERVICIO 2]: [PRECIO]\n- [SERVICIO 3]: [PRECIO]\n\nCÓMO RESPONDER\n- Horarios, dirección o teléfono: responde directamente con el dato.\n- Servicios: explica en qué consiste en un par de frases, sin tecnicismos.\n- Precios: da el precio de la lista tal cual. Si el precio depende de la zona o del caso, dilo y ofrece que el centro lo confirme.\n- Si quiere cita: dile que le escriben desde el centro para darle hora, o que puede llamar al [TELÉFONO].\n\nLÍMITES\n- No inventes precios, horarios ni servicios que no estén en la lista. Si no lo sabes, di que lo consultas con el centro y que te responden en breve.\n- No des consejos médicos ni diagnósticos. Si preguntan por su caso concreto, salud, medicación o resultados, di que eso lo valora la profesional en una primera visita.\n- No confirmes citas tú misma.\n\nCUANDO NECESITES AL EQUIPO\nSolo cuando no puedas resolver algo tú misma y haga falta una persona del centro (una cita, un caso concreto, una reclamación, algo que no está en tu información), avisa de la disponibilidad.\n- Si en este momento el centro está abierto según el horario: dile que le escriben en breve.\n- Si está cerrado: dile que ahora mismo no hay nadie en el centro, que su mensaje queda registrado y le responden en cuanto abran, e indícale cuándo vuelve a abrir según la fecha actual y el horario.\nNo menciones que el centro está cerrado en ningún otro caso: si puedes resolver la duda tú, respóndela y ya está.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1104,
+        32
+      ],
+      "id": "043028a9-2621-4158-b62f-ecfff560cc58",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ycloud.com/v2/whatsapp/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-Key",
+              "value": "PEGA_AQUI_TU_CLAVE_DE_YCLOUD"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"from\": \"{{ $('Webhook').item.json.body.whatsappInboundMessage.to }}\",\n  \"to\": \"{{ $('Webhook').item.json.body.whatsappInboundMessage.from }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": \"{{ $json.output.replace(/\\n/g, '\\\\n') }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1424,
+        32
+      ],
+      "id": "36cf00be-18ba-431c-a8f7-1ddcf39c0cff",
+      "name": "Enviar WhatsApp"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extraer datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer datos": {
+      "main": [
+        [
+          {
+            "node": "Mostrar escribiendo...",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mostrar escribiendo...": {
+      "main": [
+        [
+          {
+            "node": "Calcular espera",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular espera": {
+      "main": [
+        [
+          {
+            "node": "Esperar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Esperar": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Enviar WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  }
+}
