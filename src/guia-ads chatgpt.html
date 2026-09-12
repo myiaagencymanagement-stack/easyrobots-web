@@ -1,0 +1,346 @@
+<title>Aparecer en respuestas de IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+
+<style>
+  /* Mundo visual único: el navy de noche del PDF original.
+     Un solo tema, todo pintado explícito, para que se vea igual
+     en pantalla, en móvil y exportado a PDF. */
+  :root{
+    --ink:#070d1a;
+    --ground:#0b1426;
+    --ground-2:#101c33;
+    --rule:#1e2e4b;
+    --rule-soft:#17243c;
+    --text:#c2cee0;
+    --text-dim:#8798b2;
+    --head:#f4f7fb;
+    --accent:#7ea9e0;
+    --accent-deep:#4a79b4;
+    --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+    color-scheme:dark;
+  }
+
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .sheet{
+    max-width:800px;
+    margin:0 auto;
+    padding-inline:22px;
+    padding-block:0;
+    background:linear-gradient(180deg,#101d36 0%,#0b1426 42%,#070d1a 100%);
+  }
+  @media (min-width:820px){
+    .sheet{padding-inline:76px}
+  }
+
+  /* ---------- portada ---------- */
+  .cover{padding-block:96px 70px;border-bottom:1px solid var(--rule)}
+  .eyebrow{
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+    margin:0 0 26px;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(2rem,6.2vw,3.05rem);
+    line-height:1.1;
+    letter-spacing:-.015em;
+    color:var(--head);
+    text-wrap:balance;
+    margin:0;
+  }
+  .deck{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:600;
+    font-size:1.18rem;
+    color:var(--head);
+    margin:22px 0 0;
+  }
+  .cover .note{margin:26px 0 0;color:var(--text-dim)}
+
+  /* ---------- secciones ---------- */
+  section{padding-block:52px;border-bottom:1px solid var(--rule-soft)}
+
+  h2{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(1.45rem,3.6vw,1.9rem);
+    line-height:1.22;
+    color:var(--head);
+    text-wrap:balance;
+    margin:0 0 24px;
+    display:flex;
+    gap:.55em;
+    align-items:baseline;
+  }
+  h2 .n{
+    color:var(--accent-deep);
+    font-variant-numeric:tabular-nums;
+    flex:none;
+  }
+  h3{
+    font-family:var(--sans);
+    font-size:1.02rem;
+    font-weight:600;
+    color:var(--accent);
+    text-wrap:balance;
+    margin:0;
+  }
+  p{margin:0;max-width:66ch}
+  .flow{display:flex;flex-direction:column;gap:18px}
+  strong{color:var(--head);font-weight:600}
+  em{color:var(--head)}
+
+  /* Los bloques de acción llevan rail de acento, no caja:
+     son una instrucción dentro del texto, no un objeto aparte. */
+  .points{display:flex;flex-direction:column;gap:38px;margin-top:32px}
+  .point{display:flex;flex-direction:column;gap:14px}
+  .action{
+    border-left:2px solid var(--accent-deep);
+    padding:2px 0 2px 18px;
+  }
+  .action b{color:var(--accent);font-weight:600}
+
+  /* Los pasos van numerados porque son una secuencia real de decisión. */
+  ol.steps{
+    list-style:none;
+    margin:26px 0 0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    counter-reset:s;
+  }
+  ol.steps li{
+    counter-increment:s;
+    display:grid;
+    grid-template-columns:2.1rem minmax(0,1fr);
+    align-items:start;
+    column-gap:12px;
+    max-width:68ch;
+  }
+  ol.steps li::before{
+    content:counter(s,decimal-leading-zero);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.08em;
+    color:var(--accent-deep);
+    font-variant-numeric:tabular-nums;
+    padding-top:.5em;
+  }
+  /* El texto va envuelto: si se deja suelto, el grid lo mete en una celda
+     anonima dentro de la columna del numero y rompe una palabra por linea. */
+  ol.steps .t{min-width:0;max-width:none}
+  ol.steps b{display:block;color:var(--head);font-weight:600}
+
+  /* Lo único operable de la página. */
+  .checklist{
+    margin-top:34px;
+    background:var(--ground-2);
+    border:1px solid var(--rule);
+    padding:26px 24px;
+  }
+  .checklist .lbl{
+    font-size:11px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+    font-weight:600;
+    margin:0 0 14px;
+    max-width:none;
+  }
+  .check{
+    display:flex;
+    gap:13px;
+    align-items:flex-start;
+    padding:11px 0;
+    border-top:1px solid var(--rule-soft);
+    cursor:pointer;
+  }
+  .check:first-of-type{border-top:0}
+  .check input{
+    appearance:none;
+    -webkit-appearance:none;
+    flex:none;
+    width:17px;
+    height:17px;
+    margin:.32em 0 0;
+    border:1.5px solid var(--accent-deep);
+    background:transparent;
+    border-radius:2px;
+    cursor:pointer;
+  }
+  .check input:checked{
+    background:var(--accent-deep);
+    box-shadow:inset 0 0 0 3px var(--ground-2);
+  }
+  .check input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .check input:checked + span{
+    color:var(--text-dim);
+    text-decoration:line-through;
+    text-decoration-color:var(--accent-deep);
+  }
+
+  .callout{
+    margin-top:28px;
+    background:var(--ground);
+    border:1px solid var(--rule);
+    border-left:2px solid var(--accent-deep);
+    padding:22px 24px;
+  }
+  .callout p{max-width:64ch}
+
+  footer{padding-block:44px 84px}
+  footer .mark{
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    font-weight:600;
+    margin:0 0 16px;
+  }
+  footer .sign{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--text-dim);
+    max-width:64ch;
+  }
+
+  a{color:var(--accent)}
+
+  @media print{
+    body,.sheet{
+      background:#0b1426 !important;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+    section,.point,.checklist{break-inside:avoid}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;animation:none !important}
+  }
+</style>
+
+<article class="sheet">
+
+  <header class="cover">
+    <p class="eyebrow">EasyRobots &middot; Gu&iacute;a pr&aacute;ctica</p>
+    <h1>C&oacute;mo preparar tu negocio para aparecer cuando alguien le pregunta a la IA</h1>
+    <p class="deck">Del primer paso a la primera campa&ntilde;a.</p>
+    <p class="note">Para nuevos anunciantes, OpenAI est&aacute; ofreciendo 500 &euro; en cr&eacute;dito publicitario, bajo las condiciones de su promoci&oacute;n vigente. Antes de lanzar tu primera campa&ntilde;a, comprueba en el Centro de Anuncios de OpenAI el importe y los requisitos exactos para tu cuenta &mdash; las condiciones de este tipo de programas pueden variar por pa&iacute;s o cambiar con el tiempo.</p>
+  </header>
+
+  <section>
+    <h2><span class="n">1.</span><span>Por qu&eacute; esto importa ahora</span></h2>
+    <div class="flow">
+      <p>Cada vez m&aacute;s gente no busca "cl&iacute;nica de est&eacute;tica Madrid" en Google. Le pregunta directamente a ChatGPT, a Gemini o al asistente de su m&oacute;vil: "&iquest;d&oacute;nde puedo hacerme esto cerca de m&iacute;?", "&iquest;qu&eacute; opci&oacute;n me conviene con este presupuesto?".</p>
+      <p>Eso cambia el punto de entrada. Antes compet&iacute;as por aparecer en una lista de 10 resultados azules. Ahora compites por ser <strong>la respuesta</strong>, o una de las 2-3 que la IA menciona dentro de su respuesta.</p>
+      <p>Esto no es una moda pasajera: es la misma l&oacute;gica que llev&oacute; a hablar de &laquo;GEO&raquo; (Generative Engine Optimization) como sucesor del SEO tradicional. La diferencia con el SEO de siempre es que aqu&iacute; no hay una lista de 10 resultados que rastrear &mdash; hay una sola respuesta, y competir por estar dentro de ella importa m&aacute;s que competir por el primer puesto de una lista.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2.</span><span>Lo que puedes hacer hoy, sin depender de ning&uacute;n programa de anuncios</span></h2>
+    <p>Esto es lo que de verdad controla si tu negocio aparece cuando alguien le pregunta a una IA. No depende de presupuesto:</p>
+
+    <div class="points">
+      <div class="point">
+        <h3>2.1 Que tu informaci&oacute;n est&eacute; clara y sea consistente en todas partes</h3>
+        <p>La IA responde con lo que encuentra indexado: tu web, tu ficha de Google Business, tus rese&ntilde;as, tus redes. Si tu horario dice una cosa en Google y otra en tu web, la IA no sabe a cu&aacute;l hacer caso &mdash; y muchas veces no te menciona por seguridad.</p>
+        <div class="action"><p><b>Acci&oacute;n concreta:</b> revisa que nombre, direcci&oacute;n, horario, tel&eacute;fono y servicios coincidan exactamente en tu web, tu ficha de Google Business y tus redes.</p></div>
+      </div>
+
+      <div class="point">
+        <h3>2.2 Que tu web responda preguntas, no solo que "se vea bien"</h3>
+        <p>Las IAs generativas dan mucho peso a contenido con estructura de pregunta-respuesta (FAQs, p&aacute;ginas de servicio claras, comparativas). Una web toda en im&aacute;genes sin texto extra&iacute;ble es invisible para estos sistemas.</p>
+        <div class="action"><p><b>Acci&oacute;n concreta:</b> a&ntilde;ade una secci&oacute;n de preguntas frecuentes real a tu web, con las preguntas exactas que te hacen tus clientas por WhatsApp o Instagram &mdash; ese es el lenguaje que la IA va a encontrar y repetir.</p></div>
+      </div>
+
+      <div class="point">
+        <h3>2.3 Que tengas rese&ntilde;as recientes y con texto</h3>
+        <p>Las rese&ntilde;as son una de las fuentes que estos sistemas citan m&aacute;s para recomendar un negocio local. No solo la nota: el texto de la rese&ntilde;a es lo que la IA puede citar o resumir.</p>
+        <div class="action"><p><b>Acci&oacute;n concreta:</b> pide rese&ntilde;as con texto (no solo estrellas) &mdash; &laquo;cu&eacute;ntanos qu&eacute; tratamiento te hiciste y qu&eacute; tal fue&raquo; da mucho mejor material que un simple &laquo;5 estrellas, genial&raquo;.</p></div>
+      </div>
+
+      <div class="point">
+        <h3>2.4 Que tu negocio est&eacute; descrito con las palabras que usa tu cliente, no con las tuyas</h3>
+        <p>Si t&uacute; dices &laquo;tratamientos de rejuvenecimiento facial no invasivo&raquo; y tu clienta pregunta &laquo;c&oacute;mo quitar arrugas sin cirug&iacute;a&raquo;, hace falta que tu contenido conecte esas dos formas de decir lo mismo.</p>
+        <div class="action"><p><b>Acci&oacute;n concreta:</b> revisa las preguntas reales que te hacen (DMs, comentarios, llamadas) y aseg&uacute;rate de que esas palabras exactas aparecen en tu web y tus redes, no solo el t&eacute;rmino t&eacute;cnico.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">3.</span><span>C&oacute;mo aprovechar el cr&eacute;dito publicitario si decides entrar</span></h2>
+    <p>Confirma en el Centro de Anuncios de OpenAI el importe y los requisitos exactos para tu cuenta antes de lanzar la campa&ntilde;a &mdash; es el &uacute;nico paso de verificaci&oacute;n que necesitas. A partir de ah&iacute;, as&iacute; es como conviene pensarlo.</p>
+
+    <div class="points">
+      <div class="point">
+        <h3>C&oacute;mo pensar tu primera campa&ntilde;a</h3>
+        <p>No repliques el anuncio que ya usas en Meta o Google. El formato de conversaci&oacute;n es distinto: aqu&iacute; no compites por un clic en un anuncio visual, compites por ser la respuesta a una pregunta con intenci&oacute;n real.</p>
+
+        <ol class="steps">
+          <li><p class="t"><b>Parte de la pregunta, no del producto.</b> En vez de anunciar &laquo;Servicio de microblading&raquo;, piensa en la pregunta que ya te hacen: &laquo;&iquest;cu&aacute;nto dura el efecto del microblading?&raquo;, &laquo;&iquest;duele?&raquo;, &laquo;&iquest;qu&eacute; diferencia hay con el tatuaje de cejas?&raquo;.</p></li>
+          <li><p class="t"><b>Una oferta simple y verificable.</b> El formato conversacional no permite mucha letra peque&ntilde;a. Cuanto m&aacute;s simple la oferta (primera consulta gratis, descuento en primera cita), mejor se traduce a una respuesta de IA.</p></li>
+          <li><p class="t"><b>Un solo destino de conversi&oacute;n.</b> Igual que en cualquier canal nuevo: nada de linktree con cinco opciones. Un WhatsApp, un formulario, o una cita &mdash; uno solo.</p></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <p class="lbl">Qu&eacute; preparar antes de invertir un euro</p>
+      <label class="check"><input type="checkbox" id="chk-1"><span>Tu informaci&oacute;n de negocio es 100% consistente entre web, Google Business y redes (&sect;2.1)</span></label>
+      <label class="check"><input type="checkbox" id="chk-2"><span>Tienes al menos 10 rese&ntilde;as recientes con texto, no solo estrellas</span></label>
+      <label class="check"><input type="checkbox" id="chk-3"><span>Tienes una p&aacute;gina o secci&oacute;n que responde en tu propio idioma las preguntas que de verdad te hacen</span></label>
+      <label class="check"><input type="checkbox" id="chk-4"><span>Tienes un &uacute;nico destino de conversi&oacute;n claro para cualquier campa&ntilde;a nueva</span></label>
+      <label class="check"><input type="checkbox" id="chk-5"><span>Has confirmado en el Centro de Anuncios de OpenAI el importe y los requisitos exactos para tu cuenta</span></label>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4.</span><span>Por qu&eacute; merece la pena entrar pronto, aunque el canal est&eacute; verde</span></h2>
+    <p>En cualquier canal nuevo, quien entra en los primeros meses paga menos por la misma atenci&oacute;n &mdash; sea porque hay menos competencia pujando, sea porque el propio canal est&aacute; incentivando a los primeros anunciantes para crecer su base. Eso no es exclusivo de la IA: pas&oacute; con Google Ads en sus primeros a&ntilde;os, con Facebook Ads, con TikTok Ads.</p>
+    <div class="callout">
+      <p>La parte de la <strong>secci&oacute;n 2 (preparaci&oacute;n)</strong> no caduca nunca y sirve sin importar c&oacute;mo evolucione este o cualquier otro canal de anuncios. La parte de la <strong>secci&oacute;n 3 (la campa&ntilde;a con el cr&eacute;dito)</strong> tiene fecha de caducidad: cuanto antes la actives, m&aacute;s te rinde.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p class="mark">EasyRobots</p>
+    <p class="sign">Gu&iacute;a preparada por EasyRobots. Si prefieres que alguien revise esto por ti &mdash; tu ficha, tus rese&ntilde;as, tu web &mdash; y lo deje listo en vez de hacerlo t&uacute; misma, escr&iacute;benos.</p>
+  </footer>
+
+</article>
+
+<script>
+  // La checklist recuerda lo marcado en este navegador. Si el almacenamiento
+  // está bloqueado, la página funciona exactamente igual.
+  (function () {
+    var KEY = 'easyrobots-guia-ia-checklist';
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+    document.querySelectorAll('.check input').forEach(function (box) {
+      if (saved[box.id]) box.checked = true;
+      box.addEventListener('change', function () {
+        saved[box.id] = box.checked;
+        try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+      });
+    });
+  })();
+</script>
