@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía 04: Reduce cancelaciones | EasyRobots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #14b8a6 0%, #f472b6 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro {
+            padding: 40px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .intro h3 {
+            color: #0d9488;
+            margin-bottom: 15px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .step {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #14b8a6;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #14b8a6 0%, #f472b6 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step h3 {
+            color: #1a1a1a;
+            font-size: 1.4em;
+        }
+
+        .step-subtitle {
+            color: #0d9488;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        .step-content {
+            margin-top: 20px;
+        }
+
+        .shortcut {
+            background: #f8f9fa;
+            border-left: 4px solid #14b8a6;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .shortcut-title {
+            font-weight: 700;
+            color: #0d9488;
+            margin-bottom: 10px;
+        }
+
+        .shortcut-content {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            line-height: 1.8;
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        .example-box {
+            background: #f0f4ff;
+            border: 2px solid #14b8a6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .errors {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+            border-left: 4px solid #f06292;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+
+        .errors h3 {
+            color: #d32f2f;
+            margin-bottom: 15px;
+        }
+
+        .errors li {
+            margin-bottom: 10px;
+            color: #555;
+            margin-left: 20px;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            color: #0d9488;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .content {
+                padding: 20px;
+            }
+            .step {
+                padding: 20px;
+            }
+        }
+
+        h4 {
+            margin-top: 20px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            font-size: 1.1em;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📅 Guía 04</h1>
+            <p>Reduce cancelaciones</p>
+            <p style="font-size: 1em; margin-bottom: 10px;">De última hora y huecos vacíos</p>
+            <span class="badge">⏱️ 20 min + 2 min por cita</span>
+        </div>
+
+        <div class="intro">
+            <h3>📋 Para quién es esta guía</h3>
+            <p>Negocios de servicios que usan WhatsApp Business (clínicas, coaching, e-commerce, salones)</p>
+            <p style="margin-top: 15px; color: #555;">Un hueco vacío de última hora no es solo la cita que se pierde: es una hora de alquiler, luz y tu tiempo que ya no se recuperan, y encima ese hueco casi nunca se llega a ofrecer a nadie más porque nadie se entera a tiempo. Con 3-4 huecos así al mes, en un tratamiento de 60-80€, son 200-300€ que desaparecen sin que hayas hecho nada mal: simplemente nadie avisó y nadie sustituyó.</p>
+        </div>
+
+        <div class="content">
+
+            <p style="background: #f0f4ff; border-radius: 8px; padding: 15px 20px; margin-bottom: 30px; color: #444;">
+                <strong>Cómo encajan los 5 pasos:</strong> los pasos 1 y 2 son los dos avisos que le mandas a cada clienta antes de su cita, para que si va a fallar te lo diga con tiempo de reaccionar. El paso 3 es a quién le ofreces el hueco en el momento en que, aun así, cancela. Los pasos 4 y 5 son solo para las clientas que ya te han fallado antes, para que el problema no se repita con las mismas personas mes tras mes. Todo se apoya en dos herramientas que ya tienes en WhatsApp Business y que no cuestan nada: <strong>Respuestas rápidas</strong> (para no reescribir los mensajes cada vez) y <strong>Etiquetas</strong> (para saber a quién escribir sin buscar en la memoria ni repasar la agenda entera).
+            </p>
+
+            <div class="example-box" style="background: white; border-color: #f472b6;">
+                <div class="example-content">
+                    <strong style="color: #d6336c;">Por qué funciona (y por qué los recordatorios normales no bastan):</strong> un recordatorio típico solo avisa. Este sistema, además, pide una respuesta ("responde SÍ"), quita la culpa de cancelar ("dímelo sin problema") y dice que hay alguien esperando el hueco. Esas tres cosas juntas son las que cambian el comportamiento: la gente no deja de fallar porque se lo recuerdes, deja de fallar en silencio porque le das un motivo fácil para avisar.
+                </div>
+            </div>
+
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div>
+                    <h3>Primer aviso: 48h antes</h3>
+                    <div class="step-subtitle">No lo mandes la misma mañana</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p style="color: #666;">Dos días antes de la cita, manda este mensaje. Si al final no puede venir, todavía te da tiempo a ofrecer el hueco a otra persona:</p>
+                <div class="shortcut">
+                    <div class="shortcut-content">
+                        Hola [nombre], te confirmo tu cita del [día] a las [hora] para [tratamiento].<br><br>
+                        Respóndeme con un SÍ para confirmar. Si te ha surgido algo y necesitas cambiarla, dímelo sin problema y buscamos otro día.
+                    </div>
+                </div>
+                <p style="margin-top: 15px; color: #666;"><strong>Guárdalo como respuesta rápida:</strong> en WhatsApp Business ve a Ajustes → Herramientas para empresas → Respuestas rápidas, crea este mensaje y ponle el atajo <strong>/recordatorio1</strong>. Así lo mandas escribiendo "/" en cualquier chat, sin copiar y pegar. Rellena [nombre], [día], [hora] y [tratamiento] a mano cada vez — solo son 10 segundos y personaliza el mensaje, que es justo lo que lo diferencia de un recordatorio automático genérico.</p>
+                <p style="margin-top: 10px; color: #666;"><strong>Por qué 48h y no 24h:</strong> a 24h del día antes, si cancela, ya casi no te da tiempo a colocar a otra persona con margen. A 48h todavía puedes ofrecer el hueco, esa persona puede organizarse, y si cancela otra vez tienes el segundo aviso (paso 2) como red de seguridad.</p>
+                <p style="margin-top: 10px; color: #666;"><strong>Clave:</strong> pide el SÍ y quita la culpa de cancelar. Un mensaje que solo informa ("te recordamos tu cita...") no exige respuesta, así que mucha gente lo lee y no contesta nada — ni para confirmar ni para cancelar. Al pedir explícitamente un SÍ, conviertes el silencio en una señal clara: si no contesta, sabes que tienes que mandar el paso 2.</p>
+
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div>
+                    <h3>Segundo aviso: la tarde antes</h3>
+                    <div class="step-subtitle">Solo si no ha respondido al primer mensaje</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p style="color: #666;">Si a la tarde del día antes tu clienta no te ha contestado al primer aviso, manda este segundo mensaje:</p>
+                <div class="shortcut">
+                    <div class="shortcut-content">
+                        ¿Sigue en pie tu cita de mañana a las [hora]? Si no puedes venir, avísame y se la doy a otra clienta que está esperando hueco.
+                    </div>
+                </div>
+                <p style="margin-top: 15px; color: #666;">Guárdalo también como respuesta rápida, con el atajo <strong>/recordatorio2</strong>. Cada tarde, dedica 2 minutos a repasar las citas de mañana en tu agenda y marca mentalmente (o en un papel) quién no respondió SÍ al primer mensaje. A esas, y solo a esas, les mandas este segundo aviso.</p>
+                <p style="margin-top: 10px; color: #666;"><strong>Por qué funciona:</strong> mencionar que hay alguien esperando da un motivo real para contestar — ya no es "molestar a la clienta otra vez", es darle la opción de liberar el hueco sin sentirse mal. Mucha gente que iba a fallar en silencio, cuando lee esto, sí que responde, aunque sea para cancelar. Y una cancelación con 12-16h de margen es infinitamente mejor que una que te enteras cuando no aparece.</p>
+                <p style="margin-top: 10px; color: #666;"><strong>Si tampoco responde a este segundo aviso:</strong> considera la cita "en riesgo" y, si tienes lista de espera (paso 3), puedes avisar a la primera persona de la lista de que hay posibilidad de hueco para el día siguiente, sin confirmárselo todavía del todo.</p>
+
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div>
+                    <h3>Ten siempre una lista de espera</h3>
+                    <div class="step-subtitle">Sin esto, los dos avisos no sirven de nada</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p style="color: #666;">Si a pesar de los avisos cancelan, necesitas a quién ofrecerle el hueco en el momento, sin ponerte a buscar en la cabeza. Para eso usa las <strong>etiquetas</strong> de WhatsApp Business (mantén pulsado el chat → Etiquetar). Crea la etiqueta <strong>"Lista de espera"</strong> y ponla a estas personas en cuanto detectes que encajan:</p>
+                <div class="example-box">
+                    <div class="example-content">
+                        • Quien preguntó precio pero no llegó a reservar<br>
+                        • Clientas antiguas a las que ya les toca retoque<br>
+                        • Quien al reservar te dijo "esa hora no me viene bien"
+                    </div>
+                </div>
+                <p style="margin-top: 15px; color: #666;">Cuando se libere un hueco, abre Etiquetas, filtra por "Lista de espera" y escribe a 3-4 a la vez (puedes guardar el aviso como respuesta rápida <strong>/hueco-libre</strong>): la primera que responda se lo queda.</p>
+                <div class="shortcut">
+                    <div class="shortcut-content">
+                        ¡Hola [nombre]! Se me ha quedado libre un hueco el [día] a las [hora] para [tratamiento]. Como sé que te interesaba, te aviso antes que a nadie. Si te viene bien, respóndeme y te lo reservo.
+                    </div>
+                </div>
+                <p style="margin-top: 10px; color: #666;"><strong>Por qué escribir a varias a la vez y no una por una:</strong> si escribes a una, esperas su respuesta y si no contesta pasas a la siguiente, puedes tardar horas en cubrir el hueco — y para entonces ya no sirve. Escribiendo a 3-4 a la vez, cubres el hueco en minutos con quien primero conteste; a las demás simplemente les dices "se acaba de ocupar, gracias por responder tan rápido" para que no se sientan ignoradas.</p>
+                <p style="margin-top: 10px; color: #666;"><strong>Mantén la lista viva:</strong> revisa la etiqueta "Lista de espera" una vez al mes y quita a quien ya haya reservado o lleve meses sin interés — una lista con 8-10 personas activas es más útil que una con 40 desactualizadas.</p>
+
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <div>
+                    <h3>Apunta quién falla</h3>
+                    <div class="step-subtitle">No para castigar, para saber a quién aplicar el paso siguiente</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p style="color: #666;">Cada vez que alguien falte sin avisar, etiqueta su chat: <strong>"Ha faltado 1x"</strong> la primera vez y <strong>"Ha faltado 2x+"</strong> si se repite. Tardas 5 segundos y no depende de que te acuerdes. Con la etiqueta "Ha faltado 2x+" a la vista, te sirve para:</p>
+                <div class="example-box">
+                    <div class="example-content">
+                        ✓ Decidir a quién pides señal (paso 5)<br>
+                        ✓ No reservarle el hueco de máxima demanda
+                    </div>
+                </div>
+                <p style="margin-top: 15px; color: #666;"><strong>Por qué merece la pena el hábito:</strong> sin esto, cada cancelación es un caso aislado que olvidas en una semana, y el mismo patrón se repite con la misma clienta cada dos o tres meses sin que nunca hagas nada distinto. Con la etiqueta puesta, en cuanto esa persona vuelve a escribir para reservar, lo ves de un vistazo en el chat — no hace falta memoria ni ir a buscar en el cuaderno de citas.</p>
+                <p style="margin-top: 10px; color: #666;">Diferencia entre las dos etiquetas: "Ha faltado 1x" es solo información, no cambia cómo la tratas — a todo el mundo se le puede complicar un día. "Ha faltado 2x+" sí es el punto donde aplicas el paso 5, porque ya es un patrón y no una excepción.</p>
+
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">5</div>
+                <div>
+                    <h3>Pide señal a quien ya te ha fallado</h3>
+                    <div class="step-subtitle">No para toda la clientela, solo para el problema real</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p style="color: #666;">Reserva esto para clientas que ya tengan la etiqueta "Ha faltado 2x+" del paso anterior. La próxima vez que reserven, antes de confirmar el hueco, mándales esto (guárdalo como respuesta rápida <strong>/señal</strong>):</p>
+                <div class="shortcut">
+                    <div class="shortcut-content">
+                        Para reservar el hueco pedimos una señal de XX€, que se descuenta del precio final del tratamiento. Si necesitas cambiar la fecha avisando con 24 horas, la señal se mantiene para la nueva cita.
+                    </div>
+                </div>
+                <p style="margin-top: 15px; color: #666;">La segunda frase es la que hace que se perciba como razonable, no como castigo: no le dices "por si fallas otra vez", le dices que su dinero está protegido si avisa con tiempo. Puedes cobrar la señal por Bizum, transferencia o un enlace de pago (Stripe, Square, el que ya uses para cobrar).</p>
+                <p style="margin-top: 10px; color: #666;"><strong>¿Cuánto pedir de señal?</strong> lo habitual es entre el 20% y el 30% del precio del tratamiento, o una cantidad fija tipo 10-20€ si el precio varía mucho. Lo importante no es la cifra exacta, es que exista: una señal de 15€ ya cambia el compromiso de alguien que tiende a fallar.</p>
+                <p style="margin-top: 10px; color: #666;"><strong>Si responde que no quiere pagar señal:</strong> no discutas, simplemente explica que es la política para poder garantizarle el hueco, y que si prefiere puede reservar sin señal pero el hueco podría ofrecerse antes a otra persona si hay lista de espera. En la práctica, casi nadie insiste en no pagarla cuando ve que el hueco es limitado — y si insiste y no paga, mejor saberlo antes de bloquear la agenda que después de un tercer hueco vacío.</p>
+
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">❓</div>
+                <div>
+                    <h3>Preguntas frecuentes</h3>
+                    <div class="step-subtitle">Las dudas que suelen surgir al poner esto en marcha</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p style="color: #666;"><strong>¿No va a molestar a las clientas recibir dos mensajes antes de cada cita?</strong><br>Al contrario: la mayoría agradece el recordatorio porque a ellas también les evita el despiste. Lo que molesta no es la cantidad de mensajes, es el tono — por eso los dos mensajes de esta guía piden respuesta con amabilidad, nunca suenan a aviso ni a reproche.</p>
+                <p style="margin-top: 15px; color: #666;"><strong>¿Y si mi clínica tiene muchas citas al día y no me da tiempo a mandar esto una a una?</strong><br>Empieza solo por las citas de mayor valor (tratamientos caros o que más te cuesta rellenar si se cancelan) y ve ampliando. Con las respuestas rápidas, mandar cada mensaje son 15-20 segundos: para 15 citas al día son 5 minutos repartidos en el día, no de golpe.</p>
+                <p style="margin-top: 15px; color: #666;"><strong>¿Qué hago si no tengo activadas las Respuestas rápidas o las Etiquetas?</strong><br>Están disponibles en la versión gratuita de WhatsApp Business (no hace falta ninguna app de pago). Se activan en Ajustes → Herramientas para empresas. Si no te aparece esa opción, comprueba que tienes la app "WhatsApp Business" (con maletín verde) y no la versión normal de WhatsApp.</p>
+                <p style="margin-top: 15px; color: #666;"><strong>¿Cuándo empiezo a ver resultados?</strong><br>Los avisos (pasos 1 y 2) reducen el problema desde la primera semana. La lista de espera (paso 3) tarda un poco más en llenarse de gente útil, y las etiquetas de reincidencia (pasos 4 y 5) necesitan 4-6 semanas de datos para tener sentido, porque hasta entonces no sabes quién falla de verdad y quién ha tenido mala suerte una vez.</p>
+
+            </div>
+        </div>
+
+
+            <div class="errors">
+                <h3>⚠️ Errores que hacen que esto NO funcione</h3>
+                <ul>
+                    <li><strong>Recordar la misma mañana.</strong> Si el mensaje llega a las 9h para una cita de las 12h, aunque cancele, ya no te da tiempo real a colocar a nadie más — has evitado la sorpresa pero no el hueco vacío. El recordatorio solo protege tu ingreso si llega con margen suficiente para reaccionar.</li>
+<li><strong>No pedir confirmación.</strong> Un mensaje tipo "te recordamos tu cita del..." es fácil de leer y olvidar en dos segundos, porque no exige nada. Sin una pregunta directa (el "responde SÍ"), no sabes si lo ha visto, si sigue en pie o si ya ha decidido no venir — sigues a ciegas hasta el último momento.</li>
+<li><strong>Hacer sentir culpable.</strong> Frases como "recuerda que las cancelaciones tardías perjudican al negocio" consiguen justo lo contrario de lo que buscas: la clienta que sabe que no puede venir, en vez de avisar y sentirse juzgada, prefiere no decir nada y no aparecer. Cuanto más fácil y sin culpa hagas avisar, más gente avisa.</li>
+<li><strong>No tener a quién ofrecer el hueco.</strong> Puedes tener el mejor sistema de avisos del mundo, pero si cuando se cancela una cita no sabes a quién escribir, el hueco se queda vacío igual. El recordatorio evita la sorpresa; la lista de espera (paso 3) es lo único que realmente salva el ingreso.</li>
+<li><strong>Pedir señal a todo el mundo desde el primer día.</strong> Cobrar señal a una clienta nueva o a alguien que nunca ha fallado se percibe como desconfianza y puede espantarla antes de conocerte. La señal es la herramienta para el problema puntual (quien ya ha fallado 2 veces), no la norma general de la clínica.</li>
+
+                </ul>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #14b8a6 0%, #f472b6 100%); color: white; padding: 40px; border-radius: 12px; text-align: center; margin: 40px 0;">
+                <h3>🚀 ¿Quieres llevar esto más lejos?</h3>
+                <p>Si en algún momento quieres que esto funcione solo, contáctanos.</p>
+                <p style="font-size: 0.95em; opacity: 0.9;">Automatización inteligente con IA para tu clínica</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-logo">EasyRobots 🤖</div>
+            <p>Guía gratuita para negocios que usan WhatsApp Business</p>
+            <p style="margin-top: 10px; opacity: 0.7;">@easyrobots.ai</p>
+        </div>
+    </div>
+</body>
+</html>
