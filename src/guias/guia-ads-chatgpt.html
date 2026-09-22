@@ -235,7 +235,19 @@
   @media (prefers-reduced-motion:reduce){
     *{transition:none !important;animation:none !important}
   }
+
+  /* ---- navegacion ---- */
+  .nav-guias{max-width:var(--measure,780px);margin:0 auto;padding:18px 0 0;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:14px}
+  .nav-guias a{color:var(--accent);text-decoration:none;font-weight:600}
+  .nav-guias a:hover,.nav-guias a:focus-visible{text-decoration:underline}
+  .nav-guias .sep{color:var(--text-dim)}
 </style>
+
+<nav class="nav-guias">
+  <a href="index.html">&larr; Todas las gu&iacute;as</a>
+  <span class="sep">|</span>
+  <a href="/index.html">EasyRobots</a>
+</nav>
 
 <article class="sheet">
 

@@ -189,9 +189,21 @@
   .contacto p{margin:0;color:var(--tinta)}
   .contacto .btn-contacto{align-self:flex-start;display:inline-block;background:var(--naranja);color:var(--papel);text-decoration:none;font-weight:600;padding:13px 26px;border-radius:999px}
   .contacto .btn-contacto:hover,.contacto .btn-contacto:focus-visible{filter:brightness(1.08)}
+
+  /* ---- navegacion ---- */
+  .nav-guias{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-bottom:22px;font-size:15px}
+  .nav-guias a{color:var(--naranja);text-decoration:none;font-weight:600}
+  .nav-guias a:hover,.nav-guias a:focus-visible{text-decoration:underline}
+  .nav-guias .sep{color:var(--tinta-2)}
 </style>
 
 <div class="hoja">
+
+  <nav class="nav-guias">
+    <a href="index.html">← Todas las guías</a>
+    <span class="sep">|</span>
+    <a href="/index.html">EasyRobots</a>
+  </nav>
 
   <header class="portada">
     <div class="kicker">Guía de instalación · Asistente de WhatsApp</div>

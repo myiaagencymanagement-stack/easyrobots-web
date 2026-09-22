@@ -429,10 +429,23 @@
                 grid-template-columns: 1fr;
             }
         }
+    
+        /* ---- navegacion ---- */
+        .nav-guias{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;padding:14px 40px;background:#f8f9fa;border-bottom:1px solid #e9ecef;font-size:.92em}
+        .nav-guias a{color:#0072ff;text-decoration:none;font-weight:600}
+        .nav-guias a:hover,.nav-guias a:focus-visible{text-decoration:underline}
+        .nav-guias .sep{color:#adb5bd}
+        @media(max-width:600px){.nav-guias{padding:12px 24px}}
     </style>
 </head>
 <body>
     <div class="container">
+        <nav class="nav-guias">
+            <a href="index.html">← Todas las guías</a>
+            <span class="sep">|</span>
+            <a href="/index.html">EasyRobots</a>
+        </nav>
+
         <!-- Header -->
         <div class="header">
             <h1>📞 Recupera a los clientes que desaparecieron</h1>
