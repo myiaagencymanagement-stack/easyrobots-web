@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Más reseñas buenas en Google | EasyRobots</title>
+<style>
+:root{
+  --bg:#FBF6F2;
+  --surface:#F3E9E4;
+  --surface-2:#EADAD3;
+  --border:#E3D2CB;
+  --ink:#2E2A28;
+  --ink-soft:#6B5D59;
+  --accent:#A8455B;
+  --accent-soft:#F1DCE1;
+  --on-accent:#FFFFFF;
+  --sage:#6B7F6B;
+  --font-display:'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#221D1C; --surface:#2E2725; --surface-2:#372F2C; --border:#4A3F3B;
+    --ink:#F3E9E4; --ink-soft:#C9B8B2; --accent:#E28CA0; --accent-soft:#3B2630; --on-accent:#2E1620; --sage:#9BB294;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#221D1C; --surface:#2E2725; --surface-2:#372F2C; --border:#4A3F3B;
+  --ink:#F3E9E4; --ink-soft:#C9B8B2; --accent:#E28CA0; --accent-soft:#3B2630; --on-accent:#2E1620; --sage:#9BB294;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg); color:var(--ink); font-family:var(--font-body); margin:0; -webkit-font-smoothing:antialiased;}
+.page{max-width:760px;margin:0 auto;padding:0 20px 90px;}
+@media (max-width:480px){.page{padding:0 16px 70px;}}
+h1,h2,h3{font-family:var(--font-display); text-wrap:balance; margin:0;}
+p{margin:0 0 16px; line-height:1.65;}
+p:last-child{margin-bottom:0;}
+.emblem{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--accent); display:flex;align-items:center;justify-content:center; color:var(--accent); margin:36px 0 22px;}
+.eyebrow{font-size:0.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:14px;}
+h1.title{font-size:2.1rem; font-weight:600; line-height:1.18; margin-bottom:14px;}
+@media (min-width:600px){h1.title{font-size:2.55rem;}}
+p.subtitle{font-size:1.08rem; color:var(--ink-soft); font-family:var(--font-display); font-style:italic; margin-bottom:30px; line-height:1.5;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px;}
+.meta-chip{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:10px 14px; font-size:0.82rem; color:var(--ink-soft); line-height:1.5; flex:1 1 190px;}
+.meta-chip b{display:block; color:var(--accent); text-transform:uppercase; font-size:0.66rem; letter-spacing:.08em; margin-bottom:3px; font-weight:700;}
+hr.rule{border:none;border-top:1px solid var(--border); margin:46px 0;}
+h2.section-title{font-size:1.35rem; font-weight:600; margin-bottom:16px;}
+.steps{position:relative; margin:8px 0;}
+.steps::before{content:'';position:absolute; left:19px; top:6px; bottom:6px; width:2px; background:var(--border);}
+.step{display:grid; grid-template-columns:40px 1fr; column-gap:18px; position:relative; margin-bottom:40px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:40px;height:40px;border-radius:50%;background:var(--bg); border:2px solid var(--accent); color:var(--accent); font-family:var(--font-display); font-weight:600; font-size:1.05rem; display:flex;align-items:center;justify-content:center; position:relative; z-index:1;}
+.step-title{font-size:1.15rem; font-weight:600; margin-bottom:10px;}
+.step-body p{font-size:0.97rem;}
+.message-card{background:var(--accent-soft); border-radius:12px; padding:22px 22px 20px; margin:18px 0;}
+.message-label{display:inline-block; background:var(--accent); color:var(--on-accent); font-size:0.65rem; letter-spacing:.09em; text-transform:uppercase; font-weight:700; padding:4px 11px; border-radius:20px; margin-bottom:12px;}
+.message-text{font-family:var(--font-display); font-style:italic; font-size:1.02rem; line-height:1.6; margin:0;}
+.note{font-size:0.88rem; color:var(--ink-soft); border-left:3px solid var(--sage); padding-left:14px; margin:16px 0;}
+ul.errors{list-style:none; padding:0; margin:18px 0; display:flex; flex-direction:column; gap:14px;}
+ul.errors li{display:grid; grid-template-columns:22px 1fr; gap:12px; font-size:0.95rem; color:var(--ink-soft); line-height:1.55;}
+ul.errors li b{color:var(--ink);}
+.x-mark{color:var(--accent); font-family:var(--font-display); font-weight:700; font-size:1.25rem; line-height:1.2;}
+ul.checklist{list-style:none; padding:0; margin:18px 0; display:flex; flex-direction:column; gap:13px;}
+ul.checklist li{display:flex; gap:13px; align-items:flex-start; font-size:0.95rem;}
+.box{width:19px;height:19px;flex:0 0 19px;border:2px solid var(--sage); border-radius:5px; margin-top:2px;}
+.cta-panel{background:var(--accent); color:var(--on-accent); border-radius:18px; padding:36px 32px; margin-top:54px;}
+.cta-panel h3{font-size:1.25rem; margin-bottom:12px;}
+.cta-panel p{color:var(--on-accent); opacity:0.92; font-size:0.95rem; margin-bottom:22px;}
+.brand-row{display:flex; align-items:center; gap:12px; padding-top:20px; border-top:1px solid var(--border);}
+.brand-mark{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--on-accent); display:flex;align-items:center;justify-content:center; font-family:var(--font-display); font-weight:600; font-size:0.8rem; flex:0 0 34px;}
+.brand-text{font-size:0.85rem; font-weight:600; letter-spacing:.02em;}
+.brand-text span{display:block; font-weight:400; opacity:0.85; font-size:0.78rem;}
+/* ---- navegacion ---- */
+.nav-guias{max-width:760px;margin:0 auto;padding:18px 20px 0;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:15px}
+.nav-guias a{color:var(--accent);text-decoration:none;font-weight:600}
+.nav-guias a:hover,.nav-guias a:focus-visible{text-decoration:underline}
+.nav-guias .sep{color:var(--ink-soft)}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav-guias">
+  <a href="index.html">← Todas las guías</a>
+  <span class="sep">|</span>
+  <a href="/index.html">EasyRobots</a>
+</nav>
+
+<div class="page">
+
+  <div class="emblem">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 14.9 8.6 22 9.3 16.5 14 18.2 21 12 17.3 5.8 21 7.5 14 2 9.3 9.1 8.6 12 2"/></svg>
+  </div>
+  <div class="eyebrow">Guía gratuita · Clínicas de estética y microblading</div>
+  <h1 class="title">Más reseñas buenas, menos sustos en Google</h1>
+  <p class="subtitle">El único mensaje que consigue reseñas reales y frena las malas antes de que se publiquen.</p>
+
+  <div class="meta-row">
+    <div class="meta-chip"><b>Para</b>Clínicas que dependen de que las encuentren en Google</div>
+    <div class="meta-chip"><b>Tiempo</b>30 min + un mensaje por clienta</div>
+    <div class="meta-chip"><b>Necesitas</b>Ficha de Google Business Profile y WhatsApp Business</div>
+  </div>
+
+  <h2 class="section-title">Las dos cosas que hay que entender</h2>
+  <p>Casi nadie deja reseña por iniciativa propia si está contenta. Deja reseña quien está enfadada. Si no las pides, tu ficha refleja solo a la minoría descontenta.</p>
+  <p>Además, una clienta insatisfecha casi nunca te lo dice a la cara. Se lo dice a Google, tres días después, cuando ya no puedes hacer nada. Esta guía trabaja las dos cosas con un solo mensaje.</p>
+
+  <hr class="rule">
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Consigue tu enlace directo de reseñas</div>
+        <p>Entra en tu ficha de Google Business Profile → busca la opción de compartir o solicitar reseñas → copia el enlace corto. Guárdalo como respuesta rápida en WhatsApp Business con el atajo /resena.</p>
+        <p class="note">Si en vez del enlace le dices "búscanos en Google", pierdes a la mitad por el camino. Cada paso extra que pides es gente que abandona.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">El mensaje de seguimiento a las 48 horas</div>
+        <p>Este es el mensaje central de la guía. No pide reseña: pregunta cómo va.</p>
+        <div class="message-card">
+          <span class="message-label">Mensaje</span>
+          <p class="message-text">"Hola [nombre], ¿qué tal va quedando el resultado estos días? Cualquier duda con los cuidados, dime y te ayudo."</p>
+        </div>
+        <p>Mándalo a las 48h de la cita. Detectas un problema antes de que se convierta en reseña, refuerzas el trato personal, y te abres la puerta para pedir la reseña si la respuesta es buena.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Si responde bien, pide la reseña ahí mismo</div>
+        <div class="message-card">
+          <span class="message-label">Mensaje</span>
+          <p class="message-text">"Me alegra mucho. Si te apetece y tienes un minuto, me ayudaría un montón que lo contaras en Google: [enlace]"</p>
+        </div>
+        <p class="note">No lo dejes para otro día. El momento de máxima satisfacción es ese.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Si responde con duda o queja, no pidas nada</div>
+        <div class="message-card">
+          <span class="message-label">Mensaje</span>
+          <p class="message-text">"Gracias por decírmelo. Vamos a solucionarlo. ¿Te viene bien pasarte el [día] y lo vemos sin coste?"</p>
+        </div>
+        <p>Una clienta con un problema resuelto se convierte muchas veces en tu reseña más creíble. Una clienta ignorada escribe la peor.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Responde a una reseña negativa ya publicada</div>
+        <p>No la dejes sin respuesta: quien lee tu ficha juzga tu reacción, no solo la queja. Agradece sin defenderte, reconoce su experiencia sin dar detalles clínicos, y lleva la conversación a privado.</p>
+        <div class="message-card">
+          <span class="message-label">Mensaje</span>
+          <p class="message-text">"Gracias por compartir tu experiencia, [nombre]. Sentimos que no fuera como esperabas. Nos gustaría revisarlo contigo con calma: te escribimos por privado."</p>
+        </div>
+        <p class="note">Nunca discutas los hechos en público ni des detalles del tratamiento. Aunque tengas razón, en público siempre pierdes.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <div class="step-title">Conviértelo en rutina</div>
+        <p>Añade dos columnas a tu hoja de clientas: "Seguimiento 48h enviado" y "Reseña pedida". Cada lunes, repasa las citas de la semana anterior. Diez reseñas nuevas al trimestre cambian por completo cómo te ve alguien que te descubre por primera vez.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="rule">
+
+  <h2 class="section-title">Errores que hacen que esto no funcione</h2>
+  <ul class="errors">
+    <li><span class="x-mark">×</span><span><b>Pedir la reseña el mismo día del tratamiento.</b> Aún no sabe cómo va a quedar.</span></li>
+    <li><span class="x-mark">×</span><span><b>Pedirla sin preguntar antes cómo va.</b> La forma más rápida de provocar una reseña regular.</span></li>
+    <li><span class="x-mark">×</span><span><b>Pedírsela a todo el mundo,</b> incluida quien no quedó contenta.</span></li>
+    <li><span class="x-mark">×</span><span><b>Dejar reseñas negativas sin responder.</b> Pesa más el silencio que la queja.</span></li>
+    <li><span class="x-mark">×</span><span><b>Ofrecer descuentos a cambio de reseñas.</b> Va contra las normas de Google.</span></li>
+  </ul>
+
+  <h2 class="section-title">Checklist final</h2>
+  <ul class="checklist">
+    <li><span class="box"></span>Tengo el enlace directo guardado como respuesta rápida</li>
+    <li><span class="box"></span>Mando el seguimiento a las 48 horas</li>
+    <li><span class="box"></span>Solo pido reseña si la respuesta es positiva</li>
+    <li><span class="box"></span>Si hay queja, resuelvo antes y no pido nada</li>
+    <li><span class="box"></span>Respondo a todas las reseñas, buenas y malas</li>
+    <li><span class="box"></span>Nunca doy detalles del tratamiento en público</li>
+  </ul>
+
+  <div class="cta-panel">
+    <h3>El límite de esta versión</h3>
+    <p>El seguimiento de las 48h lo mandas tú, clienta por clienta, y revisar reseñas nuevas es entrar a mirar Google a mano. En la semana con más citas —justo la de mayor potencial— es lo primero que se cae.</p>
+    <p style="margin-bottom:0">Si prefieres que el seguimiento salga solo en el momento óptimo, y que te avisen en cuanto entra una reseña nueva, escríbenos.</p>
+    <div class="brand-row">
+      <div class="brand-mark">ER</div>
+      <div class="brand-text">EasyRobots<span>@easyrobots.ai</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
