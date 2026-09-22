@@ -1,4 +1,9 @@
-<title>Historial de Clientas</title>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deja de perder el historial en el chat | EasyRobots</title>
 <style>
 :root{
   --bg:#FBF6F2;
@@ -68,7 +73,22 @@ ul.checklist li{display:flex; gap:13px; align-items:flex-start; font-size:0.95re
 .brand-mark{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--on-accent); display:flex;align-items:center;justify-content:center; font-family:var(--font-display); font-weight:600; font-size:0.8rem; flex:0 0 34px;}
 .brand-text{font-size:0.85rem; font-weight:600; letter-spacing:.02em;}
 .brand-text span{display:block; font-weight:400; opacity:0.85; font-size:0.78rem;}
+
+  /* ---- navegacion ---- */
+  .nav-guias{max-width:760px;margin:0 auto;padding:18px 20px 0;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:15px}
+  .nav-guias a{color:var(--accent);text-decoration:none;font-weight:600}
+  .nav-guias a:hover,.nav-guias a:focus-visible{text-decoration:underline}
+  .nav-guias .sep{color:var(--ink-soft)}
 </style>
+</head>
+<body>
+
+<nav class="nav-guias">
+  <a href="index.html">← Todas las guías</a>
+  <span class="sep">|</span>
+  <a href="/index.html">EasyRobots</a>
+</nav>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -184,3 +204,6 @@ ul.checklist li{display:flex; gap:13px; align-items:flex-start; font-size:0.95re
   </div>
 
 </div>
+
+</body>
+</html>
