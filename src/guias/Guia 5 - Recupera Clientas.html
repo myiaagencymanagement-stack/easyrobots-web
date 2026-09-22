@@ -1,0 +1,186 @@
+<title>Recupera Clientas</title>
+<style>
+:root{
+  --bg:#FBF6F2;
+  --surface:#F3E9E4;
+  --surface-2:#EADAD3;
+  --border:#E3D2CB;
+  --ink:#2E2A28;
+  --ink-soft:#6B5D59;
+  --accent:#A8455B;
+  --accent-soft:#F1DCE1;
+  --on-accent:#FFFFFF;
+  --sage:#6B7F6B;
+  --font-display:'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#221D1C; --surface:#2E2725; --surface-2:#372F2C; --border:#4A3F3B;
+    --ink:#F3E9E4; --ink-soft:#C9B8B2; --accent:#E28CA0; --accent-soft:#3B2630; --on-accent:#2E1620; --sage:#9BB294;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#221D1C; --surface:#2E2725; --surface-2:#372F2C; --border:#4A3F3B;
+  --ink:#F3E9E4; --ink-soft:#C9B8B2; --accent:#E28CA0; --accent-soft:#3B2630; --on-accent:#2E1620; --sage:#9BB294;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg); color:var(--ink); font-family:var(--font-body); margin:0; -webkit-font-smoothing:antialiased;}
+.page{max-width:740px;margin:0 auto;padding:56px 24px 90px;}
+@media (max-width:480px){.page{padding:40px 16px 70px;}}
+h1,h2,h3{font-family:var(--font-display); text-wrap:balance; margin:0;}
+p{margin:0 0 16px; line-height:1.65;}
+p:last-child{margin-bottom:0;}
+.emblem{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--accent); display:flex;align-items:center;justify-content:center; color:var(--accent); margin-bottom:22px;}
+.eyebrow{font-size:0.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:14px;}
+h1.title{font-size:2.1rem; font-weight:600; line-height:1.18; margin-bottom:14px;}
+@media (min-width:600px){h1.title{font-size:2.55rem;}}
+p.subtitle{font-size:1.08rem; color:var(--ink-soft); font-family:var(--font-display); font-style:italic; margin-bottom:30px; line-height:1.5;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px;}
+.meta-chip{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:10px 14px; font-size:0.82rem; color:var(--ink-soft); line-height:1.5; flex:1 1 190px;}
+.meta-chip b{display:block; color:var(--accent); text-transform:uppercase; font-size:0.66rem; letter-spacing:.08em; margin-bottom:3px; font-weight:700;}
+hr.rule{border:none;border-top:1px solid var(--border); margin:46px 0;}
+h2.section-title{font-size:1.35rem; font-weight:600; margin-bottom:16px;}
+.steps{position:relative; margin:8px 0;}
+.steps::before{content:'';position:absolute; left:19px; top:6px; bottom:6px; width:2px; background:var(--border);}
+.step{display:grid; grid-template-columns:40px 1fr; column-gap:18px; position:relative; margin-bottom:40px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:40px;height:40px;border-radius:50%;background:var(--bg); border:2px solid var(--accent); color:var(--accent); font-family:var(--font-display); font-weight:600; font-size:1.05rem; display:flex;align-items:center;justify-content:center; position:relative; z-index:1;}
+.step-title{font-size:1.15rem; font-weight:600; margin-bottom:10px;}
+.step-body p{font-size:0.97rem;}
+.message-card{background:var(--accent-soft); border-radius:12px; padding:22px 22px 20px; margin:18px 0;}
+.message-label{display:inline-block; background:var(--accent); color:var(--on-accent); font-size:0.65rem; letter-spacing:.09em; text-transform:uppercase; font-weight:700; padding:4px 11px; border-radius:20px; margin-bottom:12px;}
+.message-text{font-family:var(--font-display); font-style:italic; font-size:1.02rem; line-height:1.6; margin:0;}
+.note{font-size:0.88rem; color:var(--ink-soft); border-left:3px solid var(--sage); padding-left:14px; margin:16px 0;}
+ul.errors{list-style:none; padding:0; margin:18px 0; display:flex; flex-direction:column; gap:14px;}
+ul.errors li{display:grid; grid-template-columns:22px 1fr; gap:12px; font-size:0.95rem; color:var(--ink-soft); line-height:1.55;}
+ul.errors li b{color:var(--ink);}
+.x-mark{color:var(--accent); font-family:var(--font-display); font-weight:700; font-size:1.25rem; line-height:1.2;}
+ul.checklist{list-style:none; padding:0; margin:18px 0; display:flex; flex-direction:column; gap:13px;}
+ul.checklist li{display:flex; gap:13px; align-items:flex-start; font-size:0.95rem;}
+.box{width:19px;height:19px;flex:0 0 19px;border:2px solid var(--sage); border-radius:5px; margin-top:2px;}
+.cta-panel{background:var(--accent); color:var(--on-accent); border-radius:18px; padding:36px 32px; margin-top:54px;}
+.cta-panel h3{font-size:1.25rem; margin-bottom:12px;}
+.cta-panel p{color:var(--on-accent); opacity:0.92; font-size:0.95rem; margin-bottom:22px;}
+.brand-row{display:flex; align-items:center; gap:12px; padding-top:20px; border-top:1px solid var(--border);}
+.brand-mark{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--on-accent); display:flex;align-items:center;justify-content:center; font-family:var(--font-display); font-weight:600; font-size:0.8rem; flex:0 0 34px;}
+.brand-text{font-size:0.85rem; font-weight:600; letter-spacing:.02em;}
+.brand-text span{display:block; font-weight:400; opacity:0.85; font-size:0.78rem;}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="page">
+
+  <div class="emblem">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </div>
+  <div class="eyebrow">Guía gratuita · Clínicas de estética y microblading</div>
+  <h1 class="title">Recupera a las clientas que ya te conocen</h1>
+  <p class="subtitle">El mensaje que reactiva citas antiguas sin gastar un euro en publicidad.</p>
+
+  <div class="meta-row">
+    <div class="meta-chip"><b>Para</b>Clínicas con clientas antiguas que no han vuelto</div>
+    <div class="meta-chip"><b>Tiempo</b>45 min la primera vez, 20 min al mes después</div>
+    <div class="meta-chip"><b>Necesitas</b>WhatsApp Business y una hoja de cálculo</div>
+  </div>
+
+  <h2 class="section-title">El dinero que ya tienes y no estás cobrando</h2>
+  <p>Captar una clienta nueva cuesta dinero: anuncios, contenido, tiempo respondiendo a gente que no te conoce. Recuperar a una que ya vino, quedó contenta y tiene tu número guardado, cuesta un mensaje.</p>
+  <p>La mayoría de clínicas no lo hace por una razón simple: no tiene una lista de a quién escribir. Esta guía resuelve primero la lista, y luego el mensaje.</p>
+
+  <hr class="rule">
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Construye la lista (una sola vez)</div>
+        <p>Abre una hoja de cálculo y repasa tus chats de los últimos 12 meses. Anota nombre, teléfono, último tratamiento, fecha y <b>cuándo tocaría volver</b>. Este último dato es la clave: cada tratamiento tiene su ritmo — el retoque de microblading, el mantenimiento del color, la siguiente sesión del pack.</p>
+        <p>Si tienes muchas clientas, hazlo por tandas: empieza por las de los últimos 6 meses, que son las que mejor responden.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Etiqueta en WhatsApp Business</div>
+        <p>Crea etiquetas por tratamiento (Microblading, Facial, Depilación...). Así, cuando quieras avisar de algo concreto, filtras y tienes la lista delante sin abrir la hoja de cálculo.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">El mensaje de "te toca" (el que mejor funciona)</div>
+        <p>No es una promoción, es un aviso. Funciona porque es personal, tiene un motivo real y no pide dinero: pide una respuesta.</p>
+        <div class="message-card">
+          <span class="message-label">Mensaje</span>
+          <p class="message-text">"Hola [nombre], te escribo porque en [mes] te hiciste [tratamiento] y por estas fechas suele tocar el [retoque / mantenimiento]. Si quieres, te reservo hueco antes de que se llene la agenda de [mes]. ¿Te miro disponibilidad?"</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">El mensaje de hueco libre (para llenar la semana)</div>
+        <p>Cuando se cancele una cita, no dejes el hueco vacío.</p>
+        <div class="message-card">
+          <span class="message-label">Mensaje</span>
+          <p class="message-text">"Hola [nombre], me ha quedado libre el [día] a las [hora] para [tratamiento]. Te aviso por si te viene bien."</p>
+        </div>
+        <p class="note">Envíalo a 4-5 clientas de la lista a la vez. La primera que conteste se lo lleva.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Cómo enviarlo sin parecer spam</div>
+        <p>Las listas de difusión de WhatsApp Business solo llegan a quien te tenga guardada en su agenda — si no, ni se enteran. Por eso, para reactivación, es mejor enviar chat por chat, en tandas de 15-20 al día, personalizando nombre y tratamiento. Tarda más, pero llega a todas y responde mucha más gente.</p>
+        <p class="note"><b>Regla de frecuencia:</b> como máximo, un mensaje de este tipo al mes por persona. Más que eso, y te silencia o te bloquea.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <div class="step-title">Qué decir cuando no toca nada</div>
+        <p>No inventes una promoción cada semana. Usa una novedad real (tratamiento nuevo, cambio de horario) o una fecha con sentido — abrir la agenda de diciembre antes de Navidad tiene lógica; mandar una promoción cada martes, no.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="rule">
+
+  <h2 class="section-title">Errores que hacen que esto no funcione</h2>
+  <ul class="errors">
+    <li><span class="x-mark">×</span><span><b>Mandar el mismo mensaje copiado a todas.</b> Se nota, y en un negocio de trato personal, hace daño.</span></li>
+    <li><span class="x-mark">×</span><span><b>Escribir solo para vender.</b> Si tu único mensaje al año es una promoción, quemas la lista.</span></li>
+    <li><span class="x-mark">×</span><span><b>Usar difusión sin conocer su límite.</b> Crees que llegaste a 200 personas y llegaste a 40.</span></li>
+    <li><span class="x-mark">×</span><span><b>No tener la lista.</b> Sin el paso 1, todo lo demás es imposible de mantener.</span></li>
+  </ul>
+
+  <h2 class="section-title">Checklist final</h2>
+  <ul class="checklist">
+    <li><span class="box"></span>Tengo la lista con nombre, tratamiento, fecha y cuándo toca volver</li>
+    <li><span class="box"></span>Tengo etiquetas por tratamiento en WhatsApp Business</li>
+    <li><span class="box"></span>Mando el mensaje de "te toca" personalizado</li>
+    <li><span class="box"></span>Aviso los huecos libres a 4-5 personas a la vez</li>
+    <li><span class="box"></span>Máximo un mensaje de este tipo al mes por persona</li>
+  </ul>
+
+  <div class="cta-panel">
+    <h3>El límite de esta versión</h3>
+    <p>La lista la mantienes tú a mano, y cada mensaje lo escribes y lo envías uno a uno. Con 40 clientas es llevadero. Con 300, es justo el punto en el que se deja de hacer y se pierde esa vía de ingresos.</p>
+    <p style="margin-bottom:0">Si prefieres que la lista se mantenga sola y los mensajes salgan personalizados sin que escribas ninguno, escríbenos.</p>
+    <div class="brand-row">
+      <div class="brand-mark">ER</div>
+      <div class="brand-text">EasyRobots<span>@easyrobots.ai · Guía 5</span></div>
+    </div>
+  </div>
+
+</div>

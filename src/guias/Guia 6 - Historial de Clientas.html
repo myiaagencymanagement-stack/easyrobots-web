@@ -1,0 +1,186 @@
+<title>Historial de Clientas</title>
+<style>
+:root{
+  --bg:#FBF6F2;
+  --surface:#F3E9E4;
+  --surface-2:#EADAD3;
+  --border:#E3D2CB;
+  --ink:#2E2A28;
+  --ink-soft:#6B5D59;
+  --accent:#A8455B;
+  --accent-soft:#F1DCE1;
+  --on-accent:#FFFFFF;
+  --sage:#6B7F6B;
+  --font-display:'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#221D1C; --surface:#2E2725; --surface-2:#372F2C; --border:#4A3F3B;
+    --ink:#F3E9E4; --ink-soft:#C9B8B2; --accent:#E28CA0; --accent-soft:#3B2630; --on-accent:#2E1620; --sage:#9BB294;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#221D1C; --surface:#2E2725; --surface-2:#372F2C; --border:#4A3F3B;
+  --ink:#F3E9E4; --ink-soft:#C9B8B2; --accent:#E28CA0; --accent-soft:#3B2630; --on-accent:#2E1620; --sage:#9BB294;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg); color:var(--ink); font-family:var(--font-body); margin:0; -webkit-font-smoothing:antialiased;}
+.page{max-width:740px;margin:0 auto;padding:56px 24px 90px;}
+@media (max-width:480px){.page{padding:40px 16px 70px;}}
+h1,h2,h3{font-family:var(--font-display); text-wrap:balance; margin:0;}
+p{margin:0 0 16px; line-height:1.65;}
+p:last-child{margin-bottom:0;}
+.emblem{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--accent); display:flex;align-items:center;justify-content:center; color:var(--accent); margin-bottom:22px;}
+.eyebrow{font-size:0.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:14px;}
+h1.title{font-size:2.1rem; font-weight:600; line-height:1.18; margin-bottom:14px;}
+@media (min-width:600px){h1.title{font-size:2.55rem;}}
+p.subtitle{font-size:1.08rem; color:var(--ink-soft); font-family:var(--font-display); font-style:italic; margin-bottom:30px; line-height:1.5;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px;}
+.meta-chip{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:10px 14px; font-size:0.82rem; color:var(--ink-soft); line-height:1.5; flex:1 1 190px;}
+.meta-chip b{display:block; color:var(--accent); text-transform:uppercase; font-size:0.66rem; letter-spacing:.08em; margin-bottom:3px; font-weight:700;}
+hr.rule{border:none;border-top:1px solid var(--border); margin:46px 0;}
+h2.section-title{font-size:1.35rem; font-weight:600; margin-bottom:16px;}
+.steps{position:relative; margin:8px 0;}
+.steps::before{content:'';position:absolute; left:19px; top:6px; bottom:6px; width:2px; background:var(--border);}
+.step{display:grid; grid-template-columns:40px 1fr; column-gap:18px; position:relative; margin-bottom:40px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:40px;height:40px;border-radius:50%;background:var(--bg); border:2px solid var(--accent); color:var(--accent); font-family:var(--font-display); font-weight:600; font-size:1.05rem; display:flex;align-items:center;justify-content:center; position:relative; z-index:1;}
+.step-title{font-size:1.15rem; font-weight:600; margin-bottom:10px;}
+.step-body p{font-size:0.97rem;}
+.note{font-size:0.88rem; color:var(--ink-soft); border-left:3px solid var(--sage); padding-left:14px; margin:16px 0;}
+.table-wrap{overflow-x:auto; margin:18px 0;}
+table.doc-table{width:100%; border-collapse:collapse; min-width:480px;}
+.doc-table th{text-align:left; background:var(--surface-2); color:var(--ink); font-size:0.8rem; font-weight:700; padding:10px 14px; border-bottom:2px solid var(--accent);}
+.doc-table td{padding:10px 14px; font-size:0.87rem; color:var(--ink-soft); border-bottom:1px solid var(--border);}
+.doc-table tr:nth-child(even) td{background:var(--surface);}
+ul.errors{list-style:none; padding:0; margin:18px 0; display:flex; flex-direction:column; gap:14px;}
+ul.errors li{display:grid; grid-template-columns:22px 1fr; gap:12px; font-size:0.95rem; color:var(--ink-soft); line-height:1.55;}
+ul.errors li b{color:var(--ink);}
+.x-mark{color:var(--accent); font-family:var(--font-display); font-weight:700; font-size:1.25rem; line-height:1.2;}
+ul.checklist{list-style:none; padding:0; margin:18px 0; display:flex; flex-direction:column; gap:13px;}
+ul.checklist li{display:flex; gap:13px; align-items:flex-start; font-size:0.95rem;}
+.box{width:19px;height:19px;flex:0 0 19px;border:2px solid var(--sage); border-radius:5px; margin-top:2px;}
+.cta-panel{background:var(--accent); color:var(--on-accent); border-radius:18px; padding:36px 32px; margin-top:54px;}
+.cta-panel h3{font-size:1.25rem; margin-bottom:12px;}
+.cta-panel p{color:var(--on-accent); opacity:0.92; font-size:0.95rem; margin-bottom:22px;}
+.brand-row{display:flex; align-items:center; gap:12px; padding-top:20px; border-top:1px solid var(--border);}
+.brand-mark{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--on-accent); display:flex;align-items:center;justify-content:center; font-family:var(--font-display); font-weight:600; font-size:0.8rem; flex:0 0 34px;}
+.brand-text{font-size:0.85rem; font-weight:600; letter-spacing:.02em;}
+.brand-text span{display:block; font-weight:400; opacity:0.85; font-size:0.78rem;}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="page">
+
+  <div class="emblem">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="10" x2="9" y2="20"/></svg>
+  </div>
+  <div class="eyebrow">Guía gratuita · Clínicas de estética y microblading</div>
+  <h1 class="title">Deja de perder el historial en el chat</h1>
+  <p class="subtitle">La hoja de 7 columnas que sustituye tu memoria y el scroll infinito de WhatsApp.</p>
+
+  <div class="meta-row">
+    <div class="meta-chip"><b>Para</b>Clínicas que llevan la info de sus clientas en la cabeza y en el chat</div>
+    <div class="meta-chip"><b>Tiempo</b>40 min para montarla, 2 min por cita</div>
+    <div class="meta-chip"><b>Necesitas</b>Una cuenta de Google (gratuita)</div>
+  </div>
+
+  <h2 class="section-title">Por qué importa más de lo que parece</h2>
+  <p>Ahora mismo, la información de tus clientas está repartida entre cientos de conversaciones: qué color usaste, si tuvo alguna reacción, cuándo le toca el retoque. Eso te cuesta tiempo buscando, ingresos por no saber a quién avisar, y el trato personal que te diferencia de una cadena.</p>
+  <p>Y si mañana pierdes el móvil o se te llena la memoria, todo eso desaparece con él.</p>
+
+  <hr class="rule">
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Crea la hoja (10 minutos)</div>
+        <p>Abre Google Sheets y crea una hoja con estas columnas. No añadas más al principio: si tiene veinte, no la vas a rellenar.</p>
+        <div class="table-wrap">
+          <table class="doc-table">
+            <tr><th>Columna</th><th>Para qué sirve</th></tr>
+            <tr><td>Nombre</td><td>Identificación</td></tr>
+            <tr><td>Teléfono</td><td>Para escribirle sin buscar en el chat</td></tr>
+            <tr><td>Tratamiento</td><td>Qué le hiciste</td></tr>
+            <tr><td>Fecha</td><td>Cuándo</td></tr>
+            <tr><td>Detalles técnicos</td><td>Color, técnica, producto, tiempo</td></tr>
+            <tr><td>Notas</td><td>Alergias, sensibilidad, preferencias, si vino recomendada</td></tr>
+            <tr><td>Próxima cita recomendada</td><td>La fecha aproximada en la que le toca volver</td></tr>
+            <tr><td>Estado</td><td>Activa / Inactiva</td></tr>
+          </table>
+        </div>
+        <p class="note">El campo que más rentabilidad da es "Próxima cita recomendada". Es el que convierte una lista muerta en tu agenda de la semana que viene.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Rellénala en el momento, no después</div>
+        <p>La regla que hace que esto sobreviva: se rellena justo al terminar la cita, con la clienta saliendo por la puerta. Dos minutos.</p>
+        <p>Si lo dejas para "el domingo que me pongo al día", en tres semanas tendrás la hoja abandonada. Ten la hoja anclada en la pantalla de inicio del móvil para abrirla en un toque.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Rellena el histórico poco a poco</div>
+        <p>No intentes volcar dos años de clientas en una tarde. Añade a cada clienta nueva desde hoy, suma a las antiguas cuando te escriban o vengan, y dedica 15 minutos a la semana a añadir a las de los últimos 6 meses desde tus chats. En dos meses tendrás el grueso de tu cartera.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Úsala cada semana (si no, no sirve de nada)</div>
+        <p>Cada lunes, 10 minutos: ordena la hoja por "Próxima cita recomendada", mira quién entra en las próximas dos semanas, y escríbeles el mensaje de "te toca" (Guía 5). Este paso es el que transforma la hoja de un archivo muerto en la herramienta que te llena la agenda.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Protege los datos (obligación legal, no un extra)</div>
+        <p>Estás guardando datos personales, y a veces datos de salud (alergias, reacciones). Mínimos que debes cumplir: guarda solo lo que necesitas, que el acceso sea solo tuyo, informa a la clienta de que guardas sus datos y de que puede pedirte que los borres, y si te lo pide, bórralos.</p>
+        <p class="note">Si guardas fotos de resultados, consúltalo con un asesor: esto resume el criterio general, no sustituye asesoramiento legal.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="rule">
+
+  <h2 class="section-title">Errores que hacen que esto no funcione</h2>
+  <ul class="errors">
+    <li><span class="x-mark">×</span><span><b>Demasiadas columnas.</b> Cuantas más pongas, menos la rellenas.</span></li>
+    <li><span class="x-mark">×</span><span><b>Rellenarla "luego".</b> Es la causa número uno de abandono.</span></li>
+    <li><span class="x-mark">×</span><span><b>Tenerla y no mirarla.</b> Sin la revisión semanal, es un archivo muerto.</span></li>
+    <li><span class="x-mark">×</span><span><b>Guardar fotos sin permiso escrito.</b> Aparte del problema legal, es un problema de confianza.</span></li>
+  </ul>
+
+  <h2 class="section-title">Checklist final</h2>
+  <ul class="checklist">
+    <li><span class="box"></span>Tengo la hoja creada con las columnas mínimas</li>
+    <li><span class="box"></span>La tengo accesible en un toque desde el móvil</li>
+    <li><span class="box"></span>La relleno justo al terminar cada cita</li>
+    <li><span class="box"></span>Reviso "Próxima cita recomendada" todos los lunes</li>
+    <li><span class="box"></span>Solo yo (o quien deba) tengo acceso</li>
+    <li><span class="box"></span>He informado a mis clientas de que guardo sus datos</li>
+  </ul>
+
+  <div class="cta-panel">
+    <h3>El límite de esta versión</h3>
+    <p>Cada dato lo escribes tú, el cruce de quién debe volver lo haces mirando fechas, y la hoja no está conectada con tus conversaciones: si una clienta te escribe, la hoja no se entera.</p>
+    <p style="margin-bottom:0">Si prefieres que el historial se guarde solo desde las propias conversaciones, y que te avise sin que tengas que mirar ninguna hoja, escríbenos.</p>
+    <div class="brand-row">
+      <div class="brand-mark">ER</div>
+      <div class="brand-text">EasyRobots<span>@easyrobots.ai · Guía 6</span></div>
+    </div>
+  </div>
+
+</div>
