@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía 02: Recupera a los clientes que desaparecieron | EasyRobots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        .navigation {
+            padding: 20px 40px;
+            background: white;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: #f5576c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .nav-link:hover {
+            background: #f5576c;
+            color: white;
+        }
+
+        /* Intro Section */
+        .intro {
+            padding: 40px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .intro h2 {
+            color: #f5576c;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .intro-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #f5576c;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .intro-card strong {
+            display: block;
+            color: #f5576c;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 40px;
+        }
+
+        .what-you-get {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .what-you-get h3 {
+            color: #f5576c;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .benefit-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .benefit-text {
+            flex: 1;
+        }
+
+        .benefit-text strong {
+            display: block;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        /* Steps */
+        .step {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.1);
+            border-color: #f5576c;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step h3 {
+            color: #1a1a1a;
+            font-size: 1.4em;
+        }
+
+        .step-subtitle {
+            color: #f5576c;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        .step-content {
+            margin-top: 20px;
+        }
+
+        .shortcut {
+            background: #f8f9fa;
+            border-left: 4px solid #f5576c;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .shortcut-title {
+            font-weight: 700;
+            color: #f5576c;
+            margin-bottom: 10px;
+        }
+
+        .shortcut-content {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            line-height: 1.8;
+            color: #333;
+            font-size: 0.9em;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        .example-box {
+            background: #f0f4ff;
+            border: 2px solid #f5576c;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .example-title {
+            color: #f5576c;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .example-content {
+            color: #333;
+            line-height: 1.8;
+        }
+
+        h4 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            font-size: 1.1em;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            margin-top: 15px;
+            color: #d32f2f;
+            background: #fff5f5;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        /* Checklist */
+        .checklist {
+            background: linear-gradient(135deg, #f0f4ff 0%, #f8f9fa 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+
+        .checklist h3 {
+            color: #f5576c;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(245, 87, 108, 0.2);
+        }
+
+        .checkbox-item:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: #f5576c;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-item label {
+            cursor: pointer;
+            flex: 1;
+            color: #333;
+        }
+
+        /* Errors / Limitations */
+        .errors, .limitations {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+            border-left: 4px solid #f06292;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+
+        .errors h3, .limitations h3 {
+            color: #d32f2f;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .errors li {
+            margin-bottom: 10px;
+            color: #555;
+            margin-left: 20px;
+        }
+
+        .limitations p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .cta-section p {
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            color: #f5576c;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .content, .intro {
+                padding: 20px;
+            }
+            .step {
+                padding: 20px;
+            }
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📞 Recupera a los clientes que desaparecieron</h1>
+            <p>El sistema para reabrir conversaciones que se quedaron sin respuesta</p>
+            <span class="badge">⏱️ 20 min de configuración + 10 min, 2 veces por semana</span>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <a href="#intro" class="nav-link">Introducción</a>
+            <a href="#paso1" class="nav-link">Paso 1: Etiquetas</a>
+            <a href="#paso2" class="nav-link">Paso 2: Rutina diaria</a>
+            <a href="#paso3" class="nav-link">Paso 3: Primer mensaje</a>
+            <a href="#paso4" class="nav-link">Paso 4: Segundo mensaje</a>
+            <a href="#paso5" class="nav-link">Paso 5: Huecos libres</a>
+            <a href="#checklist" class="nav-link">Checklist</a>
+        </div>
+
+        <!-- Intro Section -->
+        <div class="intro" id="intro">
+            <h2>📋 Información general</h2>
+            <div class="intro-grid">
+                <div class="intro-card">
+                    <strong>👥 Para quién es</strong>
+                    Cualquier negocio de servicios o venta directa que atienda por WhatsApp Business: clínicas, coaches, tiendas online, salones, talleres, gestorías, inmobiliarias...
+                </div>
+                <div class="intro-card">
+                    <strong>⏱️ Tiempo necesario</strong>
+                    20 minutos de configuración inicial + 10 minutos, dos veces por semana
+                </div>
+                <div class="intro-card">
+                    <strong>💰 Requisito</strong>
+                    WhatsApp Business (app gratuita) con la función de etiquetas y respuestas rápidas
+                </div>
+                <div class="intro-card">
+                    <strong>🎯 Qué soluciona</strong>
+                    Personas que preguntaron, mostraron interés real y se quedaron sin contestar — dinero que ya casi tenías y se quedó a medias
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+
+            <!-- What You Get -->
+            <div class="what-you-get">
+                <h3>✨ Lo que vas a conseguir</h3>
+                <div class="benefit-list">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">1</div>
+                        <div class="benefit-text">
+                            <strong>Un sistema de etiquetas simple</strong>
+                            Sabes en cualquier momento quién preguntó y no cerró, sin tener que recordarlo ni buscar en el histórico del chat.
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">2</div>
+                        <div class="benefit-text">
+                            <strong>Una rutina de 5 minutos al día</strong>
+                            Etiquetar al cerrar la jornada convierte conversaciones dispersas en una lista de personas a las que merece la pena volver a escribir.
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">3</div>
+                        <div class="benefit-text">
+                            <strong>Mensajes de reenganche ya escritos</strong>
+                            Tres plantillas guardadas como respuesta rápida, listas para mandar en segundos a quien lleva días sin contestar.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 1 -->
+            <div class="step" id="paso1">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>Sistema de etiquetas</h3>
+                        <div class="step-subtitle">Organiza tus conversaciones • 5 minutos</div>
+                    </div>
+                </div>
+                <div class="step-content">
+
+                    <p><strong>Dónde está:</strong> mantén pulsado un chat → icono de etiqueta. O dentro del chat → menú (tres puntos) → Etiquetar.</p>
+
+                    <h4>Crea estas 4 etiquetas:</h4>
+                    <div class="shortcut">
+                        <div class="shortcut-title">📌 Preguntó - sin cerrar</div>
+                        <div class="shortcut-content">Consultó y la conversación se quedó parada, sin fecha de cita ni compra confirmada</div>
+                    </div>
+                    <div class="shortcut">
+                        <div class="shortcut-title">✅ Confirmado</div>
+                        <div class="shortcut-content">Ya tiene cita, pedido o reserva cerrada</div>
+                    </div>
+                    <div class="shortcut">
+                        <div class="shortcut-title">👤 Cliente</div>
+                        <div class="shortcut-content">Ya compró o ya vino</div>
+                    </div>
+                    <div class="shortcut">
+                        <div class="shortcut-title">❌ No interesado</div>
+                        <div class="shortcut-content">Dijo expresamente que no, o ya se le ha escrito dos veces sin respuesta</div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">💡 Por qué solo 4</div>
+                        <div class="example-content">
+                            Cuatro etiquetas es lo que se puede mantener sin esfuerzo. Si creas quince categorías distintas para cada situación, las etiquetarás la primera semana y las abandonarás la segunda.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- PASO 2 -->
+            <div class="step" id="paso2">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>Etiqueta al cerrar el día</h3>
+                        <div class="step-subtitle">La rutina que hace que el sistema funcione • 5 minutos diarios</div>
+                    </div>
+                </div>
+                <div class="step-content">
+
+                    <p><strong>Regla simple:</strong> si la conversación terminó sin fecha de cita, pedido o reserva confirmada, va a la etiqueta <strong>"Preguntó - sin cerrar"</strong>.</p>
+
+                    <div class="example-box">
+                        <div class="example-title">🎯 Cómo se hace</div>
+                        <div class="example-content">
+                            Al final del día, repasa los chats de las últimas 24-48h y etiqueta cada uno según en qué quedó. No hace falta releer toda la conversación: basta con recordar si se cerró algo o no.
+                        </div>
+                    </div>
+
+                    <p class="warning-box">🎯 Sin esta rutina diaria, el sistema no existe. Es el paso que la gente se salta — y es el que hace que todo lo demás funcione.</p>
+
+                </div>
+            </div>
+
+            <!-- PASO 3 -->
+            <div class="step" id="paso3">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>Primer reenganche (48-72h después)</h3>
+                        <div class="step-subtitle">El mensaje que reabre la conversación</div>
+                    </div>
+                </div>
+                <div class="step-content">
+
+                    <div class="shortcut">
+                        <div class="shortcut-title">Atajo: /reenganche1</div>
+                        <div class="shortcut-content">
+                            Hola [nombre], te escribo porque el otro día preguntaste por [producto/servicio] y no quería dejarte sin respuesta. ¿Te quedó alguna duda o prefieres que te avise cuando tenga disponibilidad?
+                        </div>
+                    </div>
+
+                    <h4>Claves del mensaje:</h4>
+                    <div class="example-box">
+                        <div class="example-content">
+                            ✓ <strong>Nombra el producto o servicio concreto</strong> — demuestra que no es un mensaje automático genérico<br>
+                            ✓ <strong>Da dos salidas fáciles</strong> — resolver una duda o recibir un aviso, sin presión de comprar ahora mismo
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 15px; color: #666;">Guárdalo como respuesta rápida (Ajustes → Herramientas para empresas → Respuestas rápidas). Con el atajo <strong>/reenganche1</strong> lo mandas en segundos a todos los que están en "Preguntó - sin cerrar", solo cambiando el nombre y el producto.</p>
+
+                </div>
+            </div>
+
+            <!-- PASO 4 -->
+            <div class="step" id="paso4">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h3>Segundo contacto (7-10 días después)</h3>
+                        <div class="step-subtitle">Solo si no respondió al primero — aporta algo, no insistas</div>
+                    </div>
+                </div>
+                <div class="step-content">
+
+                    <div class="shortcut">
+                        <div class="shortcut-title">Atajo: /reenganche2</div>
+                        <div class="shortcut-content">
+                            Hola [nombre], te dejo por aquí [un caso similar / una foto del resultado / una reseña de un cliente parecido], por si te ayuda a decidir. Si te apetece que hablemos, dime y vemos cómo encajarlo.
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 15px; color: #666;"><strong>Adjunta algo real:</strong> una foto de un resultado, una captura de una reseña o un caso concreto (con permiso si hace falta). No pides nada, das contexto que ayuda a decidir.</p>
+
+                    <p style="margin-top: 10px; color: #666;">Guárdalo con el atajo <strong>/reenganche2</strong>.</p>
+
+                    <p class="warning-box"><strong>⚠️ Límite:</strong> dos intentos máximo. Si no contesta al segundo, etiqueta como "No interesado" y déjalo ahí.</p>
+
+                </div>
+            </div>
+
+            <!-- PASO 5 -->
+            <div class="step" id="paso5">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <div>
+                        <h3>Aprovecha los huecos que se liberan</h3>
+                        <div class="step-subtitle">Cuando se cancela una cita, un pedido o una plaza</div>
+                    </div>
+                </div>
+                <div class="step-content">
+
+                    <div class="shortcut">
+                        <div class="shortcut-title">Atajo: /huecolibre</div>
+                        <div class="shortcut-content">
+                            Hola [nombre], se me ha liberado [un hueco el día X a las Y / una unidad / una plaza] para [producto/servicio]. Te aviso por si te viene bien aprovecharlo.
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🎯 Por qué funciona</div>
+                        <div class="example-content">
+                            Tiene un motivo real (algo se ha liberado de verdad) y un límite natural de tiempo, sin necesidad de inventarse una urgencia falsa.
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 15px; color: #666;">Guárdalo con el atajo <strong>/huecolibre</strong> y mándalo a quien esté etiquetado como "Preguntó - sin cerrar" en cuanto se te libere algo.</p>
+
+                </div>
+            </div>
+
+            <!-- Errores Comunes -->
+            <div class="errors">
+                <h3>⚠️ Errores que hacen que esto NO funcione</h3>
+                <ul>
+                    <li>Escribir el mismo día — da sensación de agobio. Espera al menos 48h.</li>
+                    <li>Mensaje genérico — si no nombras el producto o servicio concreto, se nota que es una plantilla.</li>
+                    <li>Insistir más de dos veces — a partir del tercer mensaje, molestas y puedes perder al cliente para siempre.</li>
+                    <li>Etiquetar solo a veces — si la rutina no es diaria, el sistema se rompe y vuelves a depender de la memoria.</li>
+                </ul>
+            </div>
+
+            <!-- Checklist -->
+            <div class="checklist" id="checklist">
+                <h3>✅ Checklist final</h3>
+                <p style="color: #666; margin-bottom: 20px;">Marca cada elemento conforme lo completes:</p>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1">Tengo creadas las 4 etiquetas (Preguntó - sin cerrar, Confirmado, Cliente, No interesado)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2">Tengo guardadas las 3 respuestas rápidas (/reenganche1, /reenganche2, /huecolibre)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3">Tengo un hueco fijo en mi día (o dos veces por semana) para etiquetar conversaciones</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4">He revisado hoy mismo los chats de los últimos días y he etiquetado los que quedaron sin cerrar</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="check5">
+                    <label for="check5">Sé qué foto, caso o reseña voy a adjuntar en el segundo mensaje cuando lo necesite</label>
+                </div>
+            </div>
+
+            <!-- Límites -->
+            <div class="limitations">
+                <h3>🔍 El límite de esta versión</h3>
+                <p>Todo esto depende de que tú etiquetes y mandes los mensajes a mano. Si un día no tienes tiempo, ese día no se reengancha a nadie, y en negocios con mucho volumen de conversaciones es fácil que se acumulen sin darte cuenta.</p>
+                <p style="margin-top: 15px;"><strong>Es la versión manual: funciona, pero depende de que tú te acuerdes cada día.</strong></p>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h3>🚀 ¿Quieres llevar esto más lejos?</h3>
+                <p>Si en algún momento quieres que esto funcione solo — que detecte quién se quedó sin responder y le escriba automáticamente en el momento justo — contáctanos.</p>
+                <p style="font-size: 0.95em; opacity: 0.9;">Automatización inteligente con IA para tu negocio</p>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">EasyRobots 🤖</div>
+            <p>Guía gratuita para negocios que usan WhatsApp Business</p>
+            <p style="margin-top: 10px; opacity: 0.7;">@easyrobots.ai</p>
+        </div>
+    </div>
+</body>
+</html>
