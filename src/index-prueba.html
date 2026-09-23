@@ -256,25 +256,35 @@
       <div class="hero-grid">
         <div>
           <span class="eyebrow">Quién está detrás</span>
-          <h2>Una persona, no una centralita</h2>
-          <p class="lead" style="margin-top:1rem">EasyRobots es un proyecto pequeño y especializado: sistemas de
-            WhatsApp e inteligencia artificial para clínicas estéticas. No vendemos software genérico ni llevamos
-            cientos de cuentas. Montamos pocos sistemas y los montamos a medida de cada clínica.</p>
-          <p class="lead" style="margin-top:1rem">Si tu clínica no encaja, o si lo que necesitas se arregla con un
+          <h2>Somos dos hermanos, no una centralita</h2>
+          <p class="lead" style="margin-top:1rem">EasyRobots lo llevamos los dos: sistemas de WhatsApp e inteligencia
+            artificial para clínicas estéticas, y nada más. No vendemos software genérico ni llevamos cientos de
+            cuentas. Montamos pocos sistemas y los montamos a medida de cada clínica.</p>
+          <p class="lead" style="margin-top:1rem">Eso significa que quien te coge el teléfono es quien monta tu
+            sistema. No hay comercial que promete una cosa y técnico que luego monta otra, ni cuenta que pasa de mano
+            en mano.</p>
+          <p class="lead" style="margin-top:1rem">Y si tu clínica no encaja, o si lo que necesitas se arregla con un
             cambio en la recepción y no con tecnología, te lo decimos en la primera llamada.</p>
         </div>
         <div>
           <!--
-            AVISO: aqui estaba assets/anais.png, que NO es una foto real: es un retrato
-            generado con IA (la misma persona sale en nosotros.png). Poner una persona
-            inventada en "quienes somos" es el mismo problema que los testimonios falsos,
-            y encima en una seccion que dice "una persona, no una centralita".
-            Sustituir por una foto real de Anais. Mientras tanto, va este hueco.
+            HUECO PARA LA FOTO REAL de Anais y su hermano.
+            Lo que habia (assets/anais.png y nosotros.png) son retratos generados con IA:
+            representan a los dos, pero las caras no son las suyas. En una seccion titulada
+            "somos dos hermanos" eso se vuelve en contra en cuanto alguien os ve en persona
+            o en Instagram y no cuadra.
+            Cuando tengas la foto:
+              1. Guardala en assets/ (horizontal o cuadrada, los dos juntos).
+              2. python optimizar_imagenes.py assets/equipo.jpg --ancho retrato
+              3. Sustituye este bloque por:
+                 <img src="assets/equipo.webp" alt="Anais y su hermano, EasyRobots"
+                      class="card" style="padding:0;object-fit:cover"
+                      width="800" height="1000" loading="lazy">
           -->
           <div class="card center" style="padding:3rem 2rem">
-            <p class="muted" style="font-size:.9rem">Hueco para una foto real</p>
-            <p style="font-size:.82rem;opacity:.7;margin-top:.5rem">Si no hay foto, esta sección funciona igual sin
-              imagen. Mejor eso que una persona que no existe.</p>
+            <p class="muted" style="font-size:.9rem">Hueco para la foto de los dos</p>
+            <p style="font-size:.82rem;opacity:.7;margin-top:.5rem">Hasta que la tengáis, la sección funciona igual
+              sin imagen.</p>
           </div>
         </div>
       </div>
