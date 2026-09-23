@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>EasyRobots · Tres direcciones visuales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif; background: #0C0E12; color: #F2F4F7;
+      line-height: 1.6; -webkit-font-smoothing: antialiased; padding: 0 0 70px;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+    header { padding: 62px 0 40px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    h1 { font-size: clamp(1.8rem, 4.4vw, 2.7rem); letter-spacing: -.03em; line-height: 1.1; font-weight: 700; }
+    .sub { color: #98A2B3; margin-top: .9rem; max-width: 60ch; }
+    .note { margin-top: 1.4rem; font-size: .85rem; color: #98A2B3; border-left: 2px solid #3B82F6; padding-left: .9rem; max-width: 62ch; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+    .card {
+      border: 1px solid rgba(255,255,255,.12); border-radius: 16px; overflow: hidden;
+      background: rgba(255,255,255,.03); display: flex; flex-direction: column;
+      transition: border-color .25s, transform .25s;
+    }
+    .card:hover { border-color: rgba(255,255,255,.28); transform: translateY(-3px); }
+
+    .swatch { height: 128px; position: relative; display: flex; align-items: flex-end; padding: 14px; }
+    .swatch b { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+
+    /* A */
+    .sw-a { background: #F6F6F4; }
+    .sw-a b { color: #0A0A0A; }
+    .sw-a::after { content: ""; position: absolute; top: 16px; left: 16px; width: 62px; height: 5px; background: #2F5BEA; border-radius: 3px; }
+    /* B */
+    .sw-b { background: linear-gradient(160deg, #F4F7FB 0 58%, #0B2545 58% 100%); }
+    .sw-b b { color: #fff; }
+    .sw-b::after { content: ""; position: absolute; top: 18px; left: 16px; right: 16px; height: 34px; border: 1px solid #D9E2EF; border-radius: 5px; background: #fff; }
+    /* C */
+    .sw-c { background: radial-gradient(120% 90% at 20% 0%, rgba(59,130,246,.42), transparent 60%), radial-gradient(90% 80% at 90% 40%, rgba(139,92,246,.34), transparent 62%), #05080F; }
+    .sw-c b { color: #fff; }
+    .sw-c::after { content: ""; position: absolute; top: 18px; right: 16px; width: 74px; height: 38px; border: 1px solid rgba(255,255,255,.2); border-radius: 7px; background: rgba(255,255,255,.07); }
+
+    .body { padding: 20px 18px 22px; display: flex; flex-direction: column; flex: 1; }
+    .card h2 { font-size: 1.12rem; letter-spacing: -.02em; }
+    .card .tag { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: #667085; margin-bottom: .45rem; }
+    .card p { font-size: .88rem; color: #98A2B3; margin-top: .55rem; }
+    .card ul { list-style: none; margin: .9rem 0 0; }
+    .card li { font-size: .82rem; color: #98A2B3; padding: .22rem 0 .22rem .95rem; position: relative; }
+    .card li::before { content: "·"; position: absolute; left: .18rem; color: #3B82F6; font-weight: 700; }
+    .go {
+      margin-top: auto; padding-top: 1.2rem; display: flex;
+    }
+    .go a {
+      flex: 1; text-align: center; background: #fff; color: #0C0E12; font-weight: 600; font-size: .9rem;
+      padding: .75rem 1rem; border-radius: 9px; transition: opacity .2s;
+    }
+    .go a:hover { opacity: .85; }
+
+    .foot { margin-top: 44px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.1); font-size: .85rem; color: #98A2B3; }
+    .foot b { color: #F2F4F7; }
+    .old { margin-top: 1rem; font-size: .82rem; }
+    .old a { color: #7FB3FF; }
+
+    @media (max-width: 860px) {
+      .cards { grid-template-columns: 1fr; }
+      header { padding: 40px 0 28px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Tres direcciones visuales, no tres fondos de color</h1>
+      <p class="sub">Cada una es una página completa, con su propia composición, tipografía y forma de enseñar el
+        producto. Ábrelas en el móvil y baja hasta el final.</p>
+      <p class="note">El contenido comercial es el mismo en las tres, y los datos del caso real son los mismos: 53
+        pacientes contactadas, 8 volvieron a reservar. El 15 % es esa división, nada más. No hay ninguna cifra
+        inventada en ninguna de las tres.</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="cards">
+
+      <div class="card">
+        <div class="swatch sw-a"><b>A · AI Luxury</b></div>
+        <div class="body">
+          <div class="tag">Editorial de producto</div>
+          <h2>Blanco, aire y tipografía enorme</h2>
+          <p>Lo más premium de los tres. Casi sin color, con titulares de hasta 90 px y serif itálica en los giros de
+            frase. La tecnología se ve solo en el mockup.</p>
+          <ul>
+            <li>Mockup de WhatsApp con etiquetas flotantes</li>
+            <li>Problema en tres bloques con su coste al lado</li>
+            <li>Raíl vertical de 10 pasos que se rellena</li>
+            <li>Calculadora partida: inputs claros, resultado en negro</li>
+          </ul>
+          <div class="go"><a href="estilo-a-luxury.html">Ver el estilo A</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch sw-b"><b>B · Clinical Tech</b></div>
+        <div class="body">
+          <div class="tag">Panel de control</div>
+          <h2>Datos, estados y arquitectura</h2>
+          <p>El más técnico y el más denso. Monoespaciada, rejilla visible y un registro del sistema en vivo bajo la
+            conversación. Parece software sanitario.</p>
+          <ul>
+            <li>Log del motor con marcas de tiempo reales</li>
+            <li>Fugas como tarjetas de diagnóstico con estado</li>
+            <li>Diagrama de 6 nodos: paciente → seguimiento</li>
+            <li>Sección de RGPD sobre azul marino, con peso propio</li>
+          </ul>
+          <div class="go"><a href="estilo-b-clinical.html">Ver el estilo B</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch sw-c"><b>C · Dark AI</b></div>
+        <div class="body">
+          <div class="tag">Interfaces flotando</div>
+          <h2>Oscuro, con producto en primer plano</h2>
+          <p>El más espectacular. Paneles de cristal sobre azul petróleo, halos muy contenidos y elementos que siguen
+            al ratón. Sin robots, circuitos ni partículas.</p>
+          <ul>
+            <li>Panel principal con dos paneles satélite flotando</li>
+            <li>Pipeline con la línea que se ilumina al pasar</li>
+            <li>Números del caso en degradado, animados</li>
+            <li>Calculadora de cristal con el desglose al lado</li>
+          </ul>
+          <div class="go"><a href="estilo-c-dark.html">Ver el estilo C</a></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="foot">
+      <p><b>Qué mirar en cada una:</b> si entiendes en cinco segundos qué hacéis y para quién; si el mockup de WhatsApp
+        te convence de que el producto existe; y si la calculadora te dan ganas de tocarla. Eso es lo que va a decidir
+        si una clínica reserva o cierra la pestaña.</p>
+      <p class="old">La comparación anterior de paletas sigue disponible en <a
+          href="preview-estilos.html">preview-estilos.html</a>, con el estilo Nocturno de los carruseles.</p>
+    </div>
+  </div>
+</body>
+
+</html>
