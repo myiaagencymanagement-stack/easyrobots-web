@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Archivo:wght@400;500;600;700&display=swap">
 
   <style>
     /* ================================================================
@@ -27,6 +27,8 @@
       --accent-soft: #F0E9DF;
       --accent-text: #6B5439;
       --border: #E6E0D6;
+      --on-accent: #FFFFFF;
+      --bg-hero: none;
       --radius: 4px;
       --font-h: 'Fraunces', Georgia, 'Times New Roman', serif;
       --font-b: 'Inter', system-ui, sans-serif;
@@ -47,6 +49,8 @@
       --accent-soft: #EEF2FB;
       --accent-text: #1E3A8A;
       --border: #E3E6EB;
+      --on-accent: #FFFFFF;
+      --bg-hero: none;
       --radius: 8px;
       --font-h: 'Inter', system-ui, sans-serif;
       --font-b: 'Inter', system-ui, sans-serif;
@@ -54,6 +58,31 @@
       --h-spacing: -0.025em;
       --eyebrow-transform: uppercase;
       --eyebrow-spacing: .1em;
+    }
+
+
+    /* C · NOCTURNO — la paleta exacta de los carruseles de clinicas.
+       Copiada de la skill easyrobots-carrusel-clinicas, no aproximada.
+       Regla cero heredada: nada de resplandor, malla ni text-shadow. */
+    html[data-tema="nocturno"] {
+      --bg: #0A1224;
+      --bg-hero: linear-gradient(178deg, #16294D 0%, #0E1B33 46%, #070A11 100%);
+      --surface: rgba(237, 239, 243, .035);
+      --surface-2: #101E39;
+      --text: #EDEFF3;
+      --muted: rgba(237, 239, 243, .62);
+      --accent: #8FA9D8;
+      --accent-soft: rgba(143, 169, 216, .12);
+      --accent-text: #8FA9D8;
+      --on-accent: #0A1224;
+      --border: rgba(237, 239, 243, .16);
+      --radius: 3px;
+      --font-h: 'Newsreader', Georgia, serif;
+      --font-b: 'Archivo', system-ui, sans-serif;
+      --h-weight: 500;
+      --h-spacing: -.025em;
+      --eyebrow-transform: uppercase;
+      --eyebrow-spacing: .26em;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -74,6 +103,7 @@
     .wrap { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
     .sec { padding: 76px 0; }
     .sec-alt { background: var(--surface-2); }
+    html[data-tema="nocturno"] .sec-alt { background: linear-gradient(178deg, #101E39 0%, #0A1224 44%, #06080E 100%); }
     .center { text-align: center; }
     .muted { color: var(--muted); }
 
@@ -83,6 +113,10 @@
     h3 { font-size: 1.06rem; line-height: 1.35; }
 
     .lead { font-size: clamp(1rem, 1.7vw, 1.12rem); color: var(--muted); max-width: 62ch; }
+
+    h1 em, h2 em { font-style: italic; color: var(--accent-text); font-weight: inherit; }
+    .mark { width: 132px; height: 3px; background: var(--accent); border-radius: 2px; margin: 1.15rem 0; }
+    html[data-tema="sobrio"] .mark { display: none; }
 
     .eyebrow {
       display: inline-block; font-family: var(--font-b);
@@ -130,8 +164,8 @@
       transition: background .18s, color .18s, border-color .18s;
       line-height: 1.2; text-align: center;
     }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: color-mix(in srgb, var(--accent) 82%, #000); }
+    .btn-primary { background: var(--accent); color: var(--on-accent); }
+    .btn-primary:hover { background: color-mix(in srgb, var(--accent) 84%, var(--text)); }
     .btn-ghost { background: transparent; color: var(--text); border-color: var(--border); }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent-text); }
     .btn-lg { padding: .95rem 1.9rem; font-size: 1rem; }
@@ -140,7 +174,7 @@
     .btn-note { font-size: .82rem; color: var(--muted); margin-top: .85rem; }
 
     /* ---------- hero ---------- */
-    .hero { padding: 68px 0 60px; }
+    .hero { padding: 68px 0 60px; background: var(--bg-hero); }
     .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 46px; align-items: center; }
     .trust { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 1.6rem; }
     .trust span { font-size: .78rem; color: var(--muted); border: 1px solid var(--border); border-radius: 99px; padding: .28rem .8rem; }
@@ -156,7 +190,7 @@
     .bub { max-width: 84%; padding: .65rem .9rem; border-radius: 12px; font-size: .9rem; margin-bottom: .55rem; opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s; }
     .bub.on { opacity: 1; transform: none; }
     .bub-in { background: var(--surface-2); border: 1px solid var(--border); border-bottom-left-radius: 3px; }
-    .bub-out { background: var(--accent); color: #fff; margin-left: auto; border-bottom-right-radius: 3px; }
+    .bub-out { background: var(--accent); color: var(--on-accent); margin-left: auto; border-bottom-right-radius: 3px; }
     .bub time { display: block; font-size: .68rem; opacity: .6; margin-top: .25rem; }
     .chat-foot { font-size: .8rem; color: var(--muted); margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--border); }
 
@@ -243,6 +277,7 @@
     <b>VISTA PREVIA · ELIGE ESTILO</b>
     <button id="b-premium" aria-pressed="true" onclick="tema('premium')">A · Claro premium</button>
     <button id="b-sobrio" aria-pressed="false" onclick="tema('sobrio')">B · Claro sobrio</button>
+    <button id="b-nocturno" aria-pressed="false" onclick="tema('nocturno')">C · Nocturno</button>
   </div>
 
   <nav>
@@ -258,7 +293,8 @@
       <div class="hero-grid">
         <div class="rev">
           <span class="eyebrow">Clínicas estéticas y de medicina estética</span>
-          <h1>Tu clínica no pierde pacientes por precio. Los pierde por no contestar a tiempo.</h1>
+          <h1>Tu clínica no pierde pacientes por precio. <em>Los pierde por no contestar a tiempo.</em></h1>
+          <div class="mark"></div>
           <p class="lead" style="margin-top:1.1rem">Montamos el sistema que responde los mensajes en segundos,
             confirma las citas del día siguiente y hace el seguimiento que tu equipo no tiene tiempo de hacer.</p>
           <div class="btn-row">
@@ -578,8 +614,9 @@
     /* ---- cambio de tema ---- */
     function tema(t) {
       document.documentElement.setAttribute('data-tema', t);
-      document.getElementById('b-premium').setAttribute('aria-pressed', t === 'premium');
-      document.getElementById('b-sobrio').setAttribute('aria-pressed', t === 'sobrio');
+      ['premium', 'sobrio', 'nocturno'].forEach(function (x) {
+        document.getElementById('b-' + x).setAttribute('aria-pressed', x === t);
+      });
       try { localStorage.setItem('er_tema', t); } catch (e) { }
     }
     try {
