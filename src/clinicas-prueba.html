@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Landing de anuncios: NUNCA se indexa, ni en pruebas ni en produccion -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Deja de perder citas por no contestar a tiempo | EasyRobots</title>
+  <meta name="description"
+    content="El sistema de WhatsApp que responde, confirma y hace seguimiento a las pacientes de tu clínica estética, también fuera de horario.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tu clínica deja de perder citas por no contestar a tiempo">
+  <meta property="og:description"
+    content="Sistema de respuesta, confirmación y seguimiento por WhatsApp para clínicas estéticas.">
+  <meta property="og:image" content="https://easyrobots-ai.cloud/assets/social-preview.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/prueba.css">
+
+  <style>
+    /* Solo lo especifico de esta landing */
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(3, 3, 8, .88);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-bg.show {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      width: 100%;
+      max-width: 820px;
+      max-height: 92vh;
+      overflow: auto;
+      position: relative;
+      padding: 1.6rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: 0;
+      color: var(--muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .calendar-embed {
+      width: 100%;
+      height: 640px;
+      border: 0;
+      border-radius: 12px;
+      margin-top: 1rem;
+      background: #fff;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 80;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      background: rgba(7, 7, 20, .94);
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      display: none;
+    }
+
+    .sticky-cta .btn {
+      width: 100%;
+    }
+
+    @media (max-width:880px) {
+      .sticky-cta {
+        display: block;
+      }
+
+      body {
+        padding-bottom: 76px;
+      }
+
+      .ck {
+        bottom: 84px;
+      }
+    }
+  </style>
+
+  <script src="js/consent.js"></script>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <img src="assets/logo.jpg" alt="EasyRobots" class="logo-img" width="120" height="34">
+      <button class="btn btn-primary" onclick="openModal('nav')">Reservar llamada</button>
+    </div>
+  </nav>
+
+  <!-- ============ 1. HERO + VIDEO ============ -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="center" style="max-width:820px;margin:0 auto 2.4rem">
+        <span class="eyebrow">Para clínicas estéticas y de medicina estética</span>
+        <h1>¿Cuántas citas al mes pierdes<br><span class="grad">por contestar tarde?</span></h1>
+        <p class="lead" style="margin:1.2rem auto 0">La mayoría de las consultas de tu clínica entran cuando estás en
+          cabina, cerrada o en fin de semana. Este es el sistema que contesta por ti en segundos, confirma las citas del
+          día siguiente y recupera a las pacientes que no vuelven.</p>
+      </div>
+
+      <div style="max-width:880px;margin:0 auto">
+        <div class="video-box" id="video-box">
+          <!-- El video de Vimeo NO se carga hasta que haya consentimiento o hasta que se pulse play.
+               dnt=1 desactiva el seguimiento de Vimeo. -->
+          <div class="video-ph" id="video-ph">
+            <button class="btn btn-primary btn-lg" onclick="loadVideo()">▶ Ver el vídeo (2 min)</button>
+            <p style="font-size:.8rem">Al reproducirlo se carga el reproductor de Vimeo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="center">
+        <div class="btn-row">
+          <button class="btn btn-primary btn-lg" onclick="openModal('hero')">Reservar llamada de 15 minutos</button>
+        </div>
+        <p class="btn-note">Sin compromiso. Si tu clínica no encaja, te lo decimos en la propia llamada.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 2. PROBLEMA ============ -->
+  <section class="sec" style="background:var(--bg-2)">
+    <div class="wrap">
+      <div class="center" style="max-width:720px;margin:0 auto 2.2rem">
+        <h2>Lo que hoy te cuesta no tener el sistema</h2>
+        <p class="lead" style="margin:1rem auto 0">No es que falte demanda. Es que se escapa por sitios que no se ven
+          en ninguna cuenta de resultados.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>La consulta de las diez de la noche</h3>
+          <p>Entra el mensaje, nadie lo ve hasta el lunes. Para entonces la paciente ya ha preguntado en otras dos
+            clínicas y ha reservado en la que contestó primero. No la perdiste por precio.</p>
+        </div>
+        <div class="card">
+          <h3>El hueco que se queda vacío</h3>
+          <p>Nadie tuvo tiempo de confirmar las citas de mañana. La paciente no aparece, el aviso llega demasiado
+            tarde para revender la hora, y la cabina se paga igual.</p>
+        </div>
+        <div class="card">
+          <h3>El retoque que nadie recuerda</h3>
+          <p>El retoque a los 40 días, la revisión al año, el tratamiento que tocaba repetir. Es la facturación más
+            fácil que tienes y está en la agenda de nadie.</p>
+        </div>
+        <div class="card">
+          <h3>Recepción interrumpida todo el día</h3>
+          <p>Quien atiende el mostrador contesta el móvil a la vez, y ni una cosa ni la otra salen bien. La paciente
+            que tienes delante nota que no la estás mirando.</p>
+        </div>
+      </div>
+
+      <div class="center">
+        <div class="btn-row">
+          <button class="btn btn-primary btn-lg" onclick="openModal('problema')">Quiero ver mis números</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. SOLUCION ============ -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">La solución</span>
+          <h2>Un sistema que trabaja en el WhatsApp que ya usas</h2>
+          <p class="lead" style="margin-top:1.2rem">No cambias de número, no cambias de agenda y tu equipo no aprende
+            ningún programa nuevo. El sistema se pone detrás del WhatsApp de tu clínica y hace tres cosas.</p>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="openModal('solucion')">Reservar llamada</button>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="margin-bottom:12px">
+            <h3>Contesta</h3>
+            <p>Precios, duración, postoperatorio, dirección y huecos libres. En segundos, a cualquier hora. Cuando la
+              pregunta es clínica, pasa la conversación a tu equipo.</p>
+          </div>
+          <div class="card" style="margin-bottom:12px">
+            <h3>Confirma</h3>
+            <p>Recordatorio el día antes con hora, dirección y preparación. Quien no puede venir lo dice a tiempo y el
+              hueco se libera para otra.</p>
+          </div>
+          <div class="card">
+            <h3>Hace seguimiento</h3>
+            <p>Retoques, revisiones, postoperatorio y pacientes dormidas. Cada mensaje sale en su fecha sin que nadie
+              se tenga que acordar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. COMO FUNCIONA ============ -->
+  <section class="sec" style="background:var(--bg-2)">
+    <div class="wrap">
+      <div class="center" style="max-width:700px;margin:0 auto 2.2rem">
+        <h2>Cómo se pone en marcha</h2>
+        <p class="lead" style="margin:1rem auto 0">De 10 a 14 días desde que tenemos tus precios y el acceso a la
+          agenda.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="step-num">1</div>
+          <h3>Llamada de 15 minutos</h3>
+          <p>Miramos cuántos mensajes entran, cuánto tardáis en contestar y cuántas citas se caen. Sales de la llamada
+            sabiendo si esto te compensa, aunque la respuesta sea que no.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">2</div>
+          <h3>Montaje y pruebas</h3>
+          <p>Conectamos WhatsApp y tu agenda, y escribimos las respuestas contigo hasta que suenan a tu clínica. Lo
+            probamos entre nosotros antes de abrirlo a una sola paciente.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">3</div>
+          <h3>Ajuste y mantenimiento</h3>
+          <p>Revisamos conversaciones reales las primeras semanas y corregimos. Después, cuota mensual: precios
+            nuevos, tratamientos nuevos y vigilancia de que no se cae nada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. CASO ============ -->
+  <!-- Mismo aviso que en la home: hace falta permiso escrito y cifras medidas antes de publicar. -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="case">
+        <span class="acc-tag">Caso real · microblading y micropigmentación</span>
+        <h3 style="margin:1rem 0 .6rem;font-size:1.35rem">Una clínica que trabaja sola y no llegaba a los
+          seguimientos</h3>
+        <p class="muted">Los retoques a los 40 días y las revisiones al año se hacían de memoria, así que muchos no se
+          hacían. Montamos el sistema que lleva esa agenda, escribe a cada clienta en su fecha y contesta las consultas
+          que entran fuera de horario.</p>
+        <div class="case-metrics">
+          <div class="metric"><b>53</b><span>Clientas contactadas</span></div>
+          <div class="metric"><b>8</b><span>Volvieron a reservar</span></div>
+          <div class="metric"><b>15%</b><span>De una base que estaba parada</span></div>
+        </div>
+        <p style="margin-top:1.2rem;font-size:.85rem">Ocho clientas que llevaban un año sin aparecer y que no iban a
+          volver solas. El sistema mandó los 53 mensajes en un rato; a mano, esa tarde de llamadas no se hace nunca.</p>
+        <p style="margin-top:.8rem;font-size:.82rem;opacity:.7">Datos del primer envío de seguimiento anual. Cada
+          clínica parte de una base distinta, así que esto no es una promesa de resultados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. FAQ ============ -->
+  <section class="sec" style="background:var(--bg-2)">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:2rem">
+        <h2>Antes de reservar la llamada</h2>
+      </div>
+
+      <details class="acc">
+        <summary>¿Cuánto cuesta?</summary>
+        <div class="acc-body">
+          <p>Un pago por el montaje y una cuota mensual de mantenimiento. El montaje depende de cuántas piezas
+            necesites. El rango te lo decimos en la primera llamada, con tus números delante, no después de tres
+            reuniones.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>¿Qué pasa con los datos de mis pacientes?</summary>
+        <div class="acc-body">
+          <p>Son datos de salud, categoría especial del RGPD. Firmamos contigo contrato de encargado del tratamiento,
+            los datos se alojan en la Unión Europea y tú sigues siendo la responsable. Te entregamos por escrito qué
+            herramientas intervienen y qué dato toca cada una, y puedes pedir el borrado cuando quieras.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>¿Mis pacientes van a notar que hablan con una máquina?</summary>
+        <div class="acc-body">
+          <p>Notan que alguien contesta rápido y bien. El sistema no finge ser una persona y en cuanto la conversación
+            se pone clínica o delicada pasa a tu equipo. Dónde está esa frontera lo decides tú antes de abrirlo.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>¿Tengo que cambiar de número o de programa de citas?</summary>
+        <div class="acc-body">
+          <p>No. Se monta sobre el WhatsApp de tu clínica y se conecta con la agenda que ya usas. Si tu agenda no se
+            puede conectar, te lo decimos en la llamada en lugar de venderte un cambio de sistema entero.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>¿Y si no me convence?</summary>
+        <div class="acc-body">
+          <p>El primer mes de mantenimiento va sin compromiso: lo cancelas y no se cobra. El montaje sí se cobra,
+            porque es trabajo hecho a medida. Preferimos decirlo claro antes que prometer una devolución total que no
+            pensamos cumplir.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7. CTA FINAL ============ -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="cta-final center">
+        <h2>Vemos cuántas citas se te están cayendo</h2>
+        <p class="lead" style="margin:1rem auto 0">15 minutos. Traes tus números y sales sabiendo si esto le sirve a
+          tu clínica.</p>
+        <div class="btn-row">
+          <button class="btn btn-primary btn-lg" onclick="openModal('final')">Reservar la llamada</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-links">
+        <a href="privacy.html">Política de privacidad</a>
+        <a href="aviso-legal.html">Aviso legal / Impressum</a>
+        <a href="#" onclick="erResetConsent();return false;">Cambiar mis cookies</a>
+      </div>
+      <p>&copy; <span id="year"></span> EasyRobots. Todos los derechos reservados.</p>
+      <p class="legal-line">EasyRobots AH-NICE · Ana Isabel González Hoog · [dirección pendiente], Hamburgo (Alemania)
+        · info@easyrobots-ai.cloud</p>
+    </div>
+  </footer>
+
+  <!-- CTA fijo en movil -->
+  <div class="sticky-cta">
+    <button class="btn btn-primary" onclick="openModal('sticky')">Reservar llamada de 15 minutos</button>
+  </div>
+
+  <!-- MODAL CALENDARIO -->
+  <div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+      <h2 style="font-size:1.4rem">Reserva tu llamada</h2>
+      <p class="muted" style="font-size:.9rem;margin-top:.4rem">15 minutos por videollamada. Elige el hueco que mejor
+        te venga.</p>
+      <div id="cal-holder"></div>
+    </div>
+  </div>
+
+  <!-- COOKIES -->
+  <div class="ck" id="cookie-banner" role="dialog" aria-label="Cookies">
+    <p>Usamos cookies propias y de terceros para analizar el tráfico. No se activa ninguna hasta que pulses Aceptar.
+      Más información en la <a href="privacy.html">política de privacidad</a>.</p>
+    <button class="btn btn-ghost" data-ck="reject">Rechazar</button>
+    <button class="btn btn-primary" data-ck="accept">Aceptar</button>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Video: se carga solo al pulsar (o si ya hay consentimiento) ---
+    function loadVideo() {
+      var box = document.getElementById('video-box');
+      if (box.querySelector('iframe')) return;
+      var f = document.createElement('iframe');
+      f.src = 'https://player.vimeo.com/video/1174750467?dnt=1&autoplay=1&title=0&byline=0&portrait=0';
+      f.allow = 'autoplay; fullscreen; picture-in-picture';
+      f.setAttribute('allowfullscreen', '');
+      f.title = 'Cómo funciona el sistema de WhatsApp para clínicas';
+      box.appendChild(f);
+      var ph = document.getElementById('video-ph');
+      if (ph) ph.remove();
+      if (window.erTrack) erTrack('video_play');
+    }
+
+    // --- Calendario: el iframe no existe hasta que se abre el modal ---
+    function openModal(origen) {
+      var h = document.getElementById('cal-holder');
+      if (!h.querySelector('iframe')) {
+        var f = document.createElement('iframe');
+        f.className = 'calendar-embed';
+        f.src = 'https://api.leadconnectorhq.com/widget/booking/XMQy1fOiMEz88wzKLVPe';
+        f.title = 'Calendario de reservas';
+        h.appendChild(f);
+      }
+      document.getElementById('modal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+      if (window.erTrack) erTrack('abrir_calendario', { origen: origen || 'desconocido' });
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+    // --- Conversion: el calendario de GHL avisa por postMessage ---
+    // OJO: hay que comprobar con una reserva de prueba que el nombre del evento es este.
+    window.addEventListener('message', function (e) {
+      if (!e.data) return;
+      var t = typeof e.data === 'string' ? e.data : (e.data.type || e.data.event || '');
+      if (/booking|appointment/i.test(String(t))) {
+        if (window.erTrack) erTrack('cita_agendada');
+      }
+    });
+  </script>
+</body>
+
+</html>
