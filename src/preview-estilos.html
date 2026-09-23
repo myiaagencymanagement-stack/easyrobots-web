@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="premium">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>EasyRobots · Dos propuestas de estilo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap">
+
+  <style>
+    /* ================================================================
+       DOS TEMAS. Cambian solo estas variables; el resto del CSS es comun.
+       ================================================================ */
+
+    /* A · CLARO CON TOQUE PREMIUM — hueso, serifa, acento bronce */
+    html[data-tema="premium"] {
+      --bg: #FBF9F6;
+      --surface: #FFFFFF;
+      --surface-2: #F4F0EA;
+      --text: #1C1A17;
+      --muted: #6B655C;
+      --accent: #8A6F4E;
+      --accent-soft: #F0E9DF;
+      --accent-text: #6B5439;
+      --border: #E6E0D6;
+      --radius: 4px;
+      --font-h: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-b: 'Inter', system-ui, sans-serif;
+      --h-weight: 600;
+      --h-spacing: -0.015em;
+      --eyebrow-transform: none;
+      --eyebrow-spacing: .02em;
+    }
+
+    /* B · CLARO Y SOBRIO — blanco, sans, acento azul marino */
+    html[data-tema="sobrio"] {
+      --bg: #FFFFFF;
+      --surface: #FFFFFF;
+      --surface-2: #F7F8FA;
+      --text: #111827;
+      --muted: #5B6472;
+      --accent: #1E3A8A;
+      --accent-soft: #EEF2FB;
+      --accent-text: #1E3A8A;
+      --border: #E3E6EB;
+      --radius: 8px;
+      --font-h: 'Inter', system-ui, sans-serif;
+      --font-b: 'Inter', system-ui, sans-serif;
+      --h-weight: 700;
+      --h-spacing: -0.025em;
+      --eyebrow-transform: uppercase;
+      --eyebrow-spacing: .1em;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-b);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-top: 52px;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    .wrap { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+    .sec { padding: 76px 0; }
+    .sec-alt { background: var(--surface-2); }
+    .center { text-align: center; }
+    .muted { color: var(--muted); }
+
+    h1, h2, h3 { font-family: var(--font-h); font-weight: var(--h-weight); letter-spacing: var(--h-spacing); }
+    h1 { font-size: clamp(1.95rem, 5vw, 3.1rem); line-height: 1.14; }
+    h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); line-height: 1.22; }
+    h3 { font-size: 1.06rem; line-height: 1.35; }
+
+    .lead { font-size: clamp(1rem, 1.7vw, 1.12rem); color: var(--muted); max-width: 62ch; }
+
+    .eyebrow {
+      display: inline-block; font-family: var(--font-b);
+      font-size: .74rem; font-weight: 600;
+      letter-spacing: var(--eyebrow-spacing);
+      text-transform: var(--eyebrow-transform);
+      color: var(--accent-text); background: var(--accent-soft);
+      padding: .32rem .85rem; border-radius: 99px; margin-bottom: 1.1rem;
+    }
+
+    /* ---------- selector de tema ---------- */
+    .switch {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 400;
+      background: #14161A; color: #fff;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 9px 14px; font-size: .78rem; flex-wrap: wrap;
+    }
+    .switch b { font-weight: 600; opacity: .75; font-size: .72rem; }
+    .switch button {
+      font: inherit; font-weight: 600; cursor: pointer;
+      background: transparent; color: #fff;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 99px; padding: .3rem .85rem;
+    }
+    .switch button[aria-pressed="true"] { background: #fff; color: #14161A; border-color: #fff; }
+
+    /* ---------- nav ---------- */
+    nav {
+      position: sticky; top: 52px; z-index: 90;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 13px; padding-bottom: 13px; gap: 14px; }
+    .logo-img { height: 30px; width: auto; }
+    html[data-tema="premium"] .logo-img,
+    html[data-tema="sobrio"] .logo-img { border-radius: 3px; }
+
+    /* ---------- botones ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      font-family: var(--font-b); font-weight: 600; font-size: .92rem;
+      padding: .8rem 1.5rem; border-radius: var(--radius);
+      border: 1px solid transparent; cursor: pointer; text-decoration: none;
+      transition: background .18s, color .18s, border-color .18s;
+      line-height: 1.2; text-align: center;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: color-mix(in srgb, var(--accent) 82%, #000); }
+    .btn-ghost { background: transparent; color: var(--text); border-color: var(--border); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-text); }
+    .btn-lg { padding: .95rem 1.9rem; font-size: 1rem; }
+    .btn-row { display: flex; gap: 11px; flex-wrap: wrap; margin-top: 1.7rem; }
+    .center .btn-row { justify-content: center; }
+    .btn-note { font-size: .82rem; color: var(--muted); margin-top: .85rem; }
+
+    /* ---------- hero ---------- */
+    .hero { padding: 68px 0 60px; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 46px; align-items: center; }
+    .trust { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 1.6rem; }
+    .trust span { font-size: .78rem; color: var(--muted); border: 1px solid var(--border); border-radius: 99px; padding: .28rem .8rem; }
+
+    /* ---------- demo de WhatsApp ---------- */
+    .chat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: calc(var(--radius) * 2.5); padding: 1.3rem;
+    }
+    .chat-head { display: flex; align-items: center; gap: .6rem; padding-bottom: .9rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+    .chat-dot { width: 34px; height: 34px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-text); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; }
+    .chat-head p { font-size: .82rem; }
+    .bub { max-width: 84%; padding: .65rem .9rem; border-radius: 12px; font-size: .9rem; margin-bottom: .55rem; opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s; }
+    .bub.on { opacity: 1; transform: none; }
+    .bub-in { background: var(--surface-2); border: 1px solid var(--border); border-bottom-left-radius: 3px; }
+    .bub-out { background: var(--accent); color: #fff; margin-left: auto; border-bottom-right-radius: 3px; }
+    .bub time { display: block; font-size: .68rem; opacity: .6; margin-top: .25rem; }
+    .chat-foot { font-size: .8rem; color: var(--muted); margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--border); }
+
+    /* ---------- tarjetas ---------- */
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: calc(var(--radius) * 2); padding: 1.5rem; }
+    .card h3 { margin-bottom: .45rem; }
+    .card p { color: var(--muted); font-size: .92rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+    .step-num {
+      font-family: var(--font-h); font-size: .88rem; font-weight: 700;
+      color: var(--accent-text); background: var(--accent-soft);
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin-bottom: .85rem;
+    }
+
+    /* ---------- calculadora ---------- */
+    .calc { background: var(--surface); border: 1px solid var(--border); border-radius: calc(var(--radius) * 2.5); padding: 1.8rem; }
+    .calc-row { margin-bottom: 1.35rem; }
+    .calc-row label { display: flex; justify-content: space-between; align-items: baseline; font-size: .88rem; font-weight: 500; margin-bottom: .5rem; gap: 10px; }
+    .calc-row output { font-family: var(--font-h); font-weight: 700; font-size: 1.05rem; color: var(--accent-text); }
+    input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 99px; background: var(--border); outline: none; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 3px solid var(--surface); box-shadow: 0 0 0 1px var(--border); }
+    input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 3px solid var(--surface); }
+    .calc-out { background: var(--accent-soft); border-radius: calc(var(--radius) * 2); padding: 1.4rem; text-align: center; margin-top: 1.6rem; }
+    .calc-out b { display: block; font-family: var(--font-h); font-size: clamp(1.9rem, 6vw, 2.7rem); color: var(--accent-text); line-height: 1.1; }
+    .calc-out span { font-size: .85rem; color: var(--muted); }
+    .calc-note { font-size: .78rem; color: var(--muted); margin-top: 1rem; text-align: center; }
+
+    /* ---------- acordeon ---------- */
+    .acc { border: 1px solid var(--border); border-radius: calc(var(--radius) * 2); overflow: hidden; background: var(--surface); }
+    .acc + .acc { margin-top: 9px; }
+    .acc summary { list-style: none; cursor: pointer; padding: 1.05rem 1.25rem; display: flex; align-items: center; gap: .8rem; font-family: var(--font-h); font-weight: var(--h-weight); font-size: .99rem; }
+    .acc summary::-webkit-details-marker { display: none; }
+    .acc summary::after { content: "+"; margin-left: auto; font-size: 1.25rem; color: var(--accent); transition: transform .25s; line-height: 1; font-family: var(--font-b); }
+    .acc[open] summary::after { transform: rotate(45deg); }
+    .acc-body { padding: 0 1.25rem 1.25rem; color: var(--muted); font-size: .92rem; }
+    .acc-body ul { margin: .55rem 0 0 1.05rem; }
+    .acc-body li { margin-bottom: .35rem; }
+    .tag { font-family: var(--font-b); font-size: .66rem; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; color: var(--accent-text); background: var(--accent-soft); border-radius: 99px; padding: .16rem .6rem; }
+
+    /* ---------- caso ---------- */
+    .case { border: 1px solid var(--border); border-radius: calc(var(--radius) * 2.5); background: var(--surface); padding: 2rem; }
+    .case-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 1.5rem; }
+    .metric b { display: block; font-family: var(--font-h); font-size: clamp(1.6rem, 5vw, 2.2rem); color: var(--accent-text); line-height: 1.05; }
+    .metric span { font-size: .8rem; color: var(--muted); }
+
+    /* ---------- cta ---------- */
+    .cta-final { border: 1px solid var(--border); border-radius: calc(var(--radius) * 2.5); padding: 3rem 2rem; background: var(--surface); }
+
+    /* ---------- footer ---------- */
+    footer { border-top: 1px solid var(--border); padding: 38px 0; font-size: .84rem; color: var(--muted); }
+    footer .wrap { display: flex; flex-direction: column; gap: 9px; }
+    .foot-links { display: flex; gap: 15px; flex-wrap: wrap; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent-text); }
+    .legal-line { font-size: .77rem; opacity: .8; }
+
+    /* ---------- aparicion al hacer scroll ---------- */
+    .rev { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+    .rev.on { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .rev, .bub { opacity: 1 !important; transform: none !important; transition: none; }
+    }
+
+    /* ---------- movil ---------- */
+    @media (max-width: 880px) {
+      .hero-grid, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .sec { padding: 54px 0; }
+      .btn-row .btn { width: 100%; }
+      nav .btn { padding: .55rem 1rem; font-size: .82rem; }
+      .case-metrics { grid-template-columns: 1fr; gap: 14px; text-align: center; }
+      body { padding-top: 74px; }
+      nav { top: 74px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ====== SELECTOR DE ESTILO (solo para esta vista previa) ====== -->
+  <div class="switch">
+    <b>VISTA PREVIA · ELIGE ESTILO</b>
+    <button id="b-premium" aria-pressed="true" onclick="tema('premium')">A · Claro premium</button>
+    <button id="b-sobrio" aria-pressed="false" onclick="tema('sobrio')">B · Claro sobrio</button>
+  </div>
+
+  <nav>
+    <div class="wrap">
+      <img src="data:image/webp;base64,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" alt="EasyRobots" class="logo-img" width="240" height="137">
+      <a href="#reservar" class="btn btn-primary">Reservar llamada</a>
+    </div>
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="rev">
+          <span class="eyebrow">Clínicas estéticas y de medicina estética</span>
+          <h1>Tu clínica no pierde pacientes por precio. Los pierde por no contestar a tiempo.</h1>
+          <p class="lead" style="margin-top:1.1rem">Montamos el sistema que responde los mensajes en segundos,
+            confirma las citas del día siguiente y hace el seguimiento que tu equipo no tiene tiempo de hacer.</p>
+          <div class="btn-row">
+            <a href="#calculadora" class="btn btn-primary btn-lg">Calcular lo que pierdo</a>
+            <a href="#caso" class="btn btn-ghost btn-lg">Ver un caso real</a>
+          </div>
+          <div class="trust">
+            <span>Datos alojados en la UE</span>
+            <span>Contrato de encargado de tratamiento</span>
+            <span>WhatsApp Business API oficial</span>
+          </div>
+        </div>
+
+        <!-- demo interactiva: la conversación se escribe sola -->
+        <div class="rev">
+          <div class="chat" id="chat">
+            <div class="chat-head">
+              <div class="chat-dot">CL</div>
+              <div>
+                <h3 style="font-size:.92rem">Clínica · WhatsApp</h3>
+                <p class="muted">sábado, 21:40</p>
+              </div>
+            </div>
+            <div class="bub bub-in">Hola, ¿cuánto cuesta el microblading?<time>21:40</time></div>
+            <div class="bub bub-out">Hola 😊 Son 250 € e incluye el retoque a los 40 días. ¿Te miro un hueco para esta
+              semana o la siguiente?<time>21:40 · respondido en 8 segundos</time></div>
+            <div class="bub bub-in">Esta semana mejor, por la tarde<time>21:41</time></div>
+            <div class="bub bub-out">Tengo el jueves a las 17:30 y el viernes a las 19:00. ¿Cuál te viene
+              mejor?<time>21:41</time></div>
+            <p class="chat-foot">Sin el sistema, ese mensaje se contesta el lunes. Para entonces ya ha escrito a otras
+              dos clínicas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== PROBLEMA ====== -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="rev" style="margin-bottom:2rem">
+        <h2>Las tres fugas que tiene casi toda clínica</h2>
+        <p class="lead" style="margin-top:.8rem">No son problemas de marketing. Son de operativa, y por eso se
+          arreglan con un sistema y no con más anuncios.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card rev">
+          <div class="step-num">1</div>
+          <h3>Mensajes fuera de horario</h3>
+          <p>La consulta entra a las nueve de la noche o en fin de semana. La paciente no espera: pregunta en tres
+            sitios y reserva en el que le contesta primero.</p>
+        </div>
+        <div class="card rev">
+          <div class="step-num">2</div>
+          <h3>Citas que no se confirman</h3>
+          <p>Nadie tiene tiempo de llamar una por una la tarde anterior. El hueco se queda vacío, ya no se puede
+            revender, y esa hora de cabina se paga igual.</p>
+        </div>
+        <div class="card rev">
+          <div class="step-num">3</div>
+          <h3>Pacientes que no vuelven</h3>
+          <p>El retoque a los 40 días, la revisión al año, el tratamiento que tocaba repetir. Está todo en la agenda
+            de nadie, así que no pasa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CALCULADORA (interactiva) ====== -->
+  <section class="sec" id="calculadora">
+    <div class="wrap">
+      <div class="center rev" style="max-width:640px;margin:0 auto 2rem">
+        <span class="eyebrow">Calculadora</span>
+        <h2>¿Cuánto te cuesta no contestar a tiempo?</h2>
+        <p class="lead" style="margin:.9rem auto 0">Mueve las tres barras con los números de tu clínica.</p>
+      </div>
+
+      <div class="calc rev" style="max-width:640px;margin:0 auto">
+        <div class="calc-row">
+          <label for="r1">Consultas nuevas que entran por semana <output id="o1">40</output></label>
+          <input type="range" id="r1" min="5" max="200" step="5" value="40">
+        </div>
+        <div class="calc-row">
+          <label for="r2">De esas, las que se quedan sin contestar a tiempo <output id="o2">30 %</output></label>
+          <input type="range" id="r2" min="5" max="70" step="5" value="30">
+        </div>
+        <div class="calc-row">
+          <label for="r3">Lo que te deja de media una paciente nueva <output id="o3">250 €</output></label>
+          <input type="range" id="r3" min="50" max="1500" step="50" value="250">
+        </div>
+
+        <div class="calc-out">
+          <b id="res">—</b>
+          <span>al mes que se van a otra clínica, suponiendo que solo <strong id="cierre">1 de cada 4</strong> de esas
+            consultas habría acabado reservando</span>
+        </div>
+        <p class="calc-note">Es una estimación con tus propios números, no una promesa. En la llamada lo miramos con
+          los datos reales de tu WhatsApp.</p>
+        <div class="btn-row center" style="justify-content:center">
+          <a href="#reservar" class="btn btn-primary">Quiero revisarlo con mis datos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== COMO FUNCIONA ====== -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="rev" style="margin-bottom:2rem">
+        <h2>Cómo trabajamos</h2>
+        <p class="lead" style="margin-top:.8rem">Tres pasos. Tú apareces en el primero y en el tercero.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card rev">
+          <div class="step-num">1</div>
+          <h3>Llamada y auditoría</h3>
+          <p>15 minutos para ver tus números reales: cuántos mensajes entran, cuánto tardáis en contestar y cuántas
+            citas se caen al mes. Si el sistema no se paga solo, te lo decimos ahí.</p>
+        </div>
+        <div class="card rev">
+          <div class="step-num">2</div>
+          <h3>Montaje</h3>
+          <p>Conectamos WhatsApp Business API, tu agenda y tu ficha de tratamientos. Escribimos las respuestas contigo
+            hasta que suenan a tu clínica. Lo probamos antes de abrirlo a pacientes.</p>
+        </div>
+        <div class="card rev">
+          <div class="step-num">3</div>
+          <h3>Ajuste y mantenimiento</h3>
+          <p>Las primeras semanas revisamos conversaciones reales y corregimos. Después, cuota mensual: precios
+            nuevos, tratamientos nuevos y vigilancia de que no se cae nada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SERVICIOS ====== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="rev" style="margin-bottom:2rem">
+        <h2>Qué montamos exactamente</h2>
+        <p class="lead" style="margin-top:.8rem">Casi ninguna clínica necesita las cinco piezas. Abre solo lo que te
+          interese.</p>
+      </div>
+      <div class="rev">
+        <details class="acc" open>
+          <summary><span class="tag">Base</span> Respuesta y reserva por WhatsApp</summary>
+          <div class="acc-body">
+            <p>La pieza por la que empieza casi todo el mundo. Contesta las preguntas de siempre y lleva a la paciente
+              hasta la cita.</p>
+            <ul>
+              <li>Responde en segundos, 24 horas, incluido fin de semana.</li>
+              <li>Consulta huecos reales en tu agenda y reserva.</li>
+              <li>Pasa la conversación a tu equipo cuando la pregunta es clínica o delicada.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="acc">
+          <summary><span class="tag">Base</span> Confirmaciones y recordatorios</summary>
+          <div class="acc-body">
+            <p>El día antes, un mensaje pide confirmación. Si la paciente no puede, el hueco se libera con tiempo para
+              ofrecérselo a otra.</p>
+            <ul>
+              <li>Recordatorio con hora, dirección y preparación previa.</li>
+              <li>Reagenda sola a quien cancela, en lugar de perderla.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="acc">
+          <summary><span class="tag">Crecimiento</span> Seguimiento y reactivación</summary>
+          <div class="acc-body">
+            <p>Lo que más dinero deja y lo que nadie hace: hablar con quien ya te conoce.</p>
+            <ul>
+              <li>Retoques y revisiones avisados en su fecha.</li>
+              <li>Mensaje de postoperatorio los días siguientes.</li>
+              <li>Recuperación de pacientes que llevan meses sin venir.</li>
+              <li>Petición de reseña cuando la paciente está contenta.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="acc">
+          <summary><span class="tag">Opcional</span> Web y asistente en tu página</summary>
+          <div class="acc-body">
+            <p>Solo tiene sentido si tu web recibe visitas. Si tu tráfico viene de Instagram al WhatsApp directamente,
+              esto no te hace falta y te lo diremos.</p>
+          </div>
+        </details>
+        <details class="acc">
+          <summary><span class="tag">Opcional</span> Campañas de Meta Ads</summary>
+          <div class="acc-body">
+            <p>Solo cuando el sistema de arriba ya funciona. Traer más mensajes a una clínica que no contesta a tiempo
+              es tirar el dinero.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CASO ====== -->
+  <section class="sec sec-alt" id="caso">
+    <div class="wrap">
+      <div class="rev" style="margin-bottom:2rem">
+        <h2>Un caso, contado sin adornos</h2>
+        <p class="lead" style="margin-top:.8rem">Llevamos poco tiempo. Preferimos enseñarte un proyecto real a
+          inventarnos una pared de reseñas.</p>
+      </div>
+      <div class="case rev">
+        <span class="tag">Microblading y micropigmentación · España</span>
+        <h3 style="margin:1rem 0 .5rem;font-size:1.25rem">Seguimiento automático de retoques y revisiones</h3>
+        <p class="muted">La clínica trabaja sola y no daba abasto para avisar de los retoques a los 40 días ni de las
+          revisiones al año. Montamos el sistema que lleva esa agenda y escribe a cada clienta en su fecha.</p>
+        <div class="case-metrics" id="metrics">
+          <div class="metric"><b data-n="53">0</b><span>Clientas contactadas</span></div>
+          <div class="metric"><b data-n="8">0</b><span>Volvieron a reservar</span></div>
+          <div class="metric"><b data-n="15" data-suf="%">0</b><span>De una base que estaba parada</span></div>
+        </div>
+        <p style="margin-top:1.3rem;font-size:.86rem">Ocho clientas que llevaban un año sin aparecer y que no iban a
+          volver solas. El sistema mandó los 53 mensajes en un rato; a mano, esa tarde de llamadas no se hace nunca.</p>
+        <p style="margin-top:.7rem;font-size:.8rem;opacity:.72">Datos del primer envío de seguimiento anual. Cada
+          clínica parte de una base distinta, así que esto no es una promesa de resultados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== QUIENES SOMOS ====== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="rev">
+          <span class="eyebrow">Quién está detrás</span>
+          <h2>Somos dos hermanos, no una centralita</h2>
+          <p class="lead" style="margin-top:1rem">EasyRobots lo llevamos los dos: sistemas de WhatsApp e inteligencia
+            artificial para clínicas estéticas, y nada más. Montamos pocos sistemas y los montamos a medida.</p>
+          <p class="lead" style="margin-top:1rem">Quien te coge el teléfono es quien monta tu sistema. No hay comercial
+            que promete una cosa y técnico que luego monta otra, ni cuenta que pasa de mano en mano.</p>
+        </div>
+        <div class="rev">
+          <div class="card center" style="padding:3rem 2rem">
+            <p class="muted" style="font-size:.9rem">Hueco para la foto de los dos</p>
+            <p style="font-size:.81rem;opacity:.7;margin-top:.45rem">Hasta que la tengáis, la sección funciona igual
+              sin imagen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FAQ ====== -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="rev" style="margin-bottom:1.8rem">
+        <h2>Preguntas que nos hacen siempre</h2>
+      </div>
+      <div class="rev">
+        <details class="acc">
+          <summary>¿Qué pasa con los datos de mis pacientes?</summary>
+          <div class="acc-body">
+            <p>Los datos de salud son categoría especial según el artículo 9 del RGPD, así que esto no se resuelve
+              diciendo «va todo cifrado». Firmamos contrato de encargado del tratamiento contigo, los datos se alojan
+              en la Unión Europea y tú sigues siendo la responsable.</p>
+          </div>
+        </details>
+        <details class="acc">
+          <summary>¿Cuánto cuesta?</summary>
+          <div class="acc-body">
+            <p>Un pago por el montaje y una cuota mensual de mantenimiento. El rango se te dice en la primera llamada,
+              no después de tres reuniones.</p>
+          </div>
+        </details>
+        <details class="acc">
+          <summary>¿Cuánto se tarda en tenerlo funcionando?</summary>
+          <div class="acc-body">
+            <p>Entre 10 y 14 días desde que tenemos tus precios, tus tratamientos y el acceso a la agenda. Lo que más
+              se alarga no es la técnica, es afinar las respuestas.</p>
+          </div>
+        </details>
+        <details class="acc">
+          <summary>¿Y si no me convence?</summary>
+          <div class="acc-body">
+            <p>El primer mes de mantenimiento va sin compromiso: lo cancelas y no se cobra. El montaje sí se cobra,
+              porque es trabajo hecho a medida.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA ====== -->
+  <section class="sec" id="reservar">
+    <div class="wrap">
+      <div class="cta-final center rev">
+        <h2>¿Vemos cuántas citas se te están cayendo?</h2>
+        <p class="lead" style="margin:1rem auto 0">15 minutos, tus números delante y una respuesta honesta sobre si
+          esto le sirve a tu clínica o no.</p>
+        <div class="btn-row">
+          <a href="#" class="btn btn-primary btn-lg">Reservar la llamada</a>
+        </div>
+        <p class="btn-note">En la web real, este botón abre el calendario.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-links">
+        <a href="#">Política de privacidad</a>
+        <a href="#">Aviso legal / Impressum</a>
+      </div>
+      <p>&copy; <span id="year"></span> EasyRobots. Todos los derechos reservados.</p>
+      <p class="legal-line">EasyRobots AH-NICE · Ana Isabel González Hoog · [dirección pendiente], Hamburgo (Alemania)
+        · info@easyrobots-ai.cloud</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ---- cambio de tema ---- */
+    function tema(t) {
+      document.documentElement.setAttribute('data-tema', t);
+      document.getElementById('b-premium').setAttribute('aria-pressed', t === 'premium');
+      document.getElementById('b-sobrio').setAttribute('aria-pressed', t === 'sobrio');
+      try { localStorage.setItem('er_tema', t); } catch (e) { }
+    }
+    try {
+      var g = localStorage.getItem('er_tema');
+      if (g) tema(g);
+    } catch (e) { }
+
+    /* ---- aparicion al hacer scroll ---- */
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.rev').forEach(function (el) { io.observe(el); });
+
+    /* ---- la conversacion se escribe sola al llegar ---- */
+    var chat = document.getElementById('chat');
+    var chatIO = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        chat.querySelectorAll('.bub').forEach(function (b, i) {
+          setTimeout(function () { b.classList.add('on'); }, 450 + i * 700);
+        });
+        chatIO.unobserve(e.target);
+      });
+    }, { threshold: .3 });
+    chatIO.observe(chat);
+
+    /* ---- contadores del caso ---- */
+    var mIO = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.querySelectorAll('b[data-n]').forEach(function (el) {
+          var fin = +el.dataset.n, suf = el.dataset.suf || '', t0 = null;
+          function paso(t) {
+            if (!t0) t0 = t;
+            var p = Math.min((t - t0) / 1100, 1);
+            el.textContent = Math.round(fin * (1 - Math.pow(1 - p, 3))) + suf;
+            if (p < 1) requestAnimationFrame(paso);
+          }
+          requestAnimationFrame(paso);
+        });
+        mIO.unobserve(e.target);
+      });
+    }, { threshold: .4 });
+    mIO.observe(document.getElementById('metrics'));
+
+    /* ---- calculadora ---- */
+    var r1 = document.getElementById('r1'), r2 = document.getElementById('r2'), r3 = document.getElementById('r3');
+    var euro = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+
+    function calc() {
+      var semana = +r1.value, pct = +r2.value, ticket = +r3.value;
+      document.getElementById('o1').textContent = semana;
+      document.getElementById('o2').textContent = pct + ' %';
+      document.getElementById('o3').textContent = euro.format(ticket);
+      // 4,33 semanas al mes; de las perdidas, asumimos que 1 de cada 4 habria reservado
+      var perdidas = semana * 4.33 * (pct / 100);
+      document.getElementById('res').textContent = euro.format(Math.round(perdidas * 0.25 * ticket));
+    }
+    [r1, r2, r3].forEach(function (r) { r.addEventListener('input', calc); });
+    calc();
+  </script>
+</body>
+
+</html>
