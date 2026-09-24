@@ -484,6 +484,12 @@
     .slot-par { aspect-ratio: 3/4; display: grid; grid-template-rows: 1fr 1fr; gap: 10px; }
     .slot-par .slot { height: 100%; }
 
+    /* tira de fotos de Pilar: ocupa poco, se lee de un vistazo */
+    .pfotos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 420px; }
+    .pfotos figure { position: relative; margin: 0; aspect-ratio: 3/2; overflow: hidden; border-radius: 10px; border: 1px solid var(--line); background: var(--bone-2); }
+    .pfotos img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pfotos figcaption { position: absolute; left: 0; right: 0; bottom: 0; font-size: .58rem; letter-spacing: .04em; text-transform: uppercase; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,.72)); padding: .9rem .4rem .3rem; text-align: center; }
+
     /* huecos de imagen neutros: aqui van las fotos reales */
     .slot { border: 1px dashed var(--line); border-radius: 12px; background: var(--bone-2); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .25rem; padding: 1rem; }
     .slot b { font-size: .74rem; font-weight: 600; color: var(--grey); }
@@ -1583,27 +1589,18 @@
 
       <div class="caso-body">
         <div class="r">
-          <!-- Mismo cuadro de antes, partido en dos: arriba Pilar, abajo un
-               trabajo de cejas. Al meter las fotos, sustituir cada hueco por
-               una <img> con el mismo aspect-ratio. -->
-          <!-- Basta con dejar los dos archivos en src/assets con estos
-               nombres y aparecen solos. Si no existen, el navegador quita
-               la imagen y se vuelve a ver el hueco gris. -->
-          <div class="slot-par">
-            <div class="slot slot-img">
-              <img src="assets/pilar.webp" alt="Pilar Márquez, microblading y hairstroke"
-                onerror="this.remove()" loading="lazy">
-              <b>Foto de Pilar</b>
-              <span>assets/pilar.webp · 3:2</span>
-            </div>
-            <div class="slot slot-img">
-              <img src="assets/cejas.webp" alt="Trabajo de microblading y hairstroke"
-                onerror="this.remove()" loading="lazy">
-              <b>Foto de un trabajo</b>
-              <span>assets/cejas.webp · 3:2</span>
-            </div>
+          <!-- Los dos huecos de siempre, ahora con foto y en pequeño: ella y
+               un trabajo suyo. Descartada la captura de television: es de
+               baja calidad y al lado de estas dos canta. -->
+          <div class="pfotos">
+            <figure>
+              <img src="assets/pilar.webp" alt="Pilar Márquez, microblading y hairstroke" loading="lazy" decoding="async">
+            </figure>
+            <figure>
+              <img src="assets/cejas.webp" alt="Trabajo de microblading y hairstroke de Pilar Márquez" loading="lazy" decoding="async">
+            </figure>
           </div>
-          <div style="margin-top:1rem">
+          <div style="margin-top:.9rem">
             <h3 style="font-size:1.3rem;letter-spacing:-.03em">Pilar Márquez</h3>
             <p class="sb" style="margin:0">Microblading y hairstroke</p>
             <p class="xs" style="margin-top:.1rem">Técnicas de micropigmentación</p>
