@@ -288,6 +288,8 @@
     .calc-res .l { font-size: .64rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.45); }
     .calc-res .v { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -.04em; margin-top: .4rem; font-variant-numeric: tabular-nums; }
     .calc-res .v small { font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,.55); letter-spacing: 0; }
+    .calc-res .v-year { margin-top: .5rem; font-size: 1.15rem; font-weight: 600; letter-spacing: -.025em; color: rgba(255,255,255,.62); font-variant-numeric: tabular-nums; }
+    .calc-res .v-year small { font-size: .82rem; font-weight: 500; color: rgba(255,255,255,.4); letter-spacing: 0; }
     .calc-res .n { font-size: .72rem; color: rgba(255,255,255,.45); margin-top: .7rem; max-width: 46ch; }
     .trust-panel { background: #fff; padding: 3rem 2.4rem; display: flex; flex-direction: column; justify-content: center; }
     .badges { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1.6rem; }
@@ -617,7 +619,7 @@
 
     .ers-system-inner {
       width: min(1540px, calc(100% - 80px));
-      min-height: 410px;
+      min-height: 550px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 390px 1fr;
@@ -713,7 +715,7 @@
     .ers-system-diagram {
       position: relative;
       width: 100%;
-      height: 285px;
+      height: 450px;
       min-width: 0;
     }
 
@@ -806,11 +808,29 @@
 
     .ers-system-wires {
       position: absolute;
-      inset: 0;
+      left: 50%;
+      top: 50%;
       z-index: 1;
-      width: 100%;
-      height: 100%;
+      width: 420px;
+      height: 420px;
+      transform: translate(-50%, -50%);
       overflow: visible;
+      pointer-events: none;
+    }
+
+    /* la linea que sale del nucleo y llega hasta la tarjeta Humano */
+    .ers-system-wire-human {
+      position: absolute;
+      left: 50%;
+      right: 142px;
+      top: 50%;
+      z-index: 1;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(95, 133, 205, 0.5),
+        rgba(95, 133, 205, 0.62)
+      );
       pointer-events: none;
     }
 
@@ -820,28 +840,6 @@
       vector-effect: non-scaling-stroke;
     }
 
-    /* el puntito verde, justo donde la linea toca el chip */
-    .ers-system-dot {
-      position: absolute;
-      z-index: 3;
-      width: 5px;
-      height: 5px;
-      margin: -2.5px 0 0 -2.5px;
-      border-radius: 50%;
-      background: #2dd98d;
-      box-shadow: 0 0 9px rgba(45, 217, 141, 0.65);
-      pointer-events: none;
-    }
-
-    /* Los puntos van SOBRE la linea, un poco antes del chip, para que el
-       chip no los tape. Antes coincidian justo con su borde. */
-    .ers-system-dot-agenda        { left: 50%; top: 24.5%; }
-    .ers-system-dot-whatsapp      { left: 39%; top: 31.5%; }
-    .ers-system-dot-integrations  { left: 38%; top: 50%; }
-    .ers-system-dot-reviews       { left: 39%; top: 68.5%; }
-    .ers-system-dot-confirmations { left: 61%; top: 31.5%; }
-    .ers-system-dot-followup      { left: 62%; top: 50%; }
-    .ers-system-dot-reactivation  { left: 61%; top: 68.5%; }
 
     /* =========================
        CHIPS
@@ -850,6 +848,8 @@
     .ers-system-chip {
       position: absolute;
       z-index: 6;
+      left: 50%;
+      top: 50%;
       width: 135px;
       height: 50px;
       display: flex;
@@ -914,16 +914,17 @@
       white-space: nowrap;
     }
 
-    /* Los de la izquierda se anclan por su borde DERECHO y los de la
-       derecha por su borde IZQUIERDO: asi la linea siempre llega justo
-       al canto del chip, mida lo que mida el diagrama. */
-    .ers-system-chip-whatsapp      { right: 64%; top: 28%; transform: translateY(-50%); }
-    .ers-system-chip-integrations  { right: 66%; top: 50%; transform: translateY(-50%); }
-    .ers-system-chip-reviews       { right: 64%; top: 72%; transform: translateY(-50%); }
-    .ers-system-chip-confirmations { left: 64%; top: 28%; transform: translateY(-50%); }
-    .ers-system-chip-followup      { left: 66%; top: 50%; transform: translateY(-50%); }
-    .ers-system-chip-reactivation  { left: 64%; top: 72%; transform: translateY(-50%); }
-    .ers-system-chip-agenda        { left: 50%; top: 9%; transform: translate(-50%, -50%); }
+    /* CIRCULO REAL: los 7 chips a 190 px del centro, medidos en pixeles.
+       En porcentajes salia una elipse, porque el recuadro es mas ancho
+       que alto. 8 posiciones cada 45 grados; la de la derecha se deja
+       libre para la linea que sale hacia Humano. 190 x cos45 = 134. */
+    .ers-system-chip-agenda        { transform: translate(-50%, -50%) translate(0, -190px); }
+    .ers-system-chip-confirmations { transform: translate(-50%, -50%) translate(134px, -134px); }
+    .ers-system-chip-reactivation  { transform: translate(-50%, -50%) translate(134px, 134px); }
+    .ers-system-chip-followup      { transform: translate(-50%, -50%) translate(0, 190px); }
+    .ers-system-chip-reviews       { transform: translate(-50%, -50%) translate(-134px, 134px); }
+    .ers-system-chip-integrations  { transform: translate(-50%, -50%) translate(-190px, 0); }
+    .ers-system-chip-whatsapp      { transform: translate(-50%, -50%) translate(-134px, -134px); }
 
     /* =========================
        HUMANO
@@ -933,7 +934,8 @@
       position: absolute;
       z-index: 7;
       right: 0;
-      top: 30%;
+      top: 50%;
+      transform: translateY(-50%);
       width: 142px;
       min-height: 125px;
       padding: 17px 16px;
@@ -945,20 +947,6 @@
         rgba(16, 23, 34, 0.98)
       );
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-    }
-
-    .ers-system-human::before {
-      content: "";
-      position: absolute;
-      left: -62px;
-      top: 50%;
-      width: 52px;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        rgba(64, 99, 160, 0),
-        rgba(95, 133, 205, 0.55)
-      );
     }
 
     /* punta de flecha apuntando a la tarjeta Humano */
@@ -1058,8 +1046,7 @@
       .ers-system-core,
       .ers-system-ring,
       .ers-system-wires,
-      .ers-system-dot,
-      .ers-system-human::before,
+      .ers-system-wire-human,
       .ers-system-human::after {
         display: none;
       }
@@ -1083,6 +1070,7 @@
       .ers-system-human {
         position: relative;
         inset: auto;
+        transform: none;
         width: 100%;
         min-height: 105px;
         margin-top: 8px;
@@ -1160,23 +1148,17 @@
       <span class="ers-system-ring ers-system-ring-one"></span>
       <span class="ers-system-ring ers-system-ring-two"></span>
 
-      <svg class="ers-system-wires" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        <line x1="50" y1="50" x2="50" y2="20" />
-        <line x1="50" y1="50" x2="36" y2="28" />
-        <line x1="50" y1="50" x2="34" y2="50" />
-        <line x1="50" y1="50" x2="36" y2="72" />
-        <line x1="50" y1="50" x2="64" y2="28" />
-        <line x1="50" y1="50" x2="66" y2="50" />
-        <line x1="50" y1="50" x2="64" y2="72" />
+      <svg class="ers-system-wires" viewBox="0 0 420 420" aria-hidden="true">
+        <line x1="210" y1="210" x2="210" y2="20" />
+        <line x1="210" y1="210" x2="344" y2="76" />
+        <line x1="210" y1="210" x2="344" y2="344" />
+        <line x1="210" y1="210" x2="210" y2="400" />
+        <line x1="210" y1="210" x2="76" y2="344" />
+        <line x1="210" y1="210" x2="20" y2="210" />
+        <line x1="210" y1="210" x2="76" y2="76" />
       </svg>
+      <span class="ers-system-wire-human"></span>
 
-      <span class="ers-system-dot ers-system-dot-agenda"></span>
-      <span class="ers-system-dot ers-system-dot-whatsapp"></span>
-      <span class="ers-system-dot ers-system-dot-integrations"></span>
-      <span class="ers-system-dot ers-system-dot-reviews"></span>
-      <span class="ers-system-dot ers-system-dot-confirmations"></span>
-      <span class="ers-system-dot ers-system-dot-followup"></span>
-      <span class="ers-system-dot ers-system-dot-reactivation"></span>
 
       <div class="ers-system-chip ers-system-chip-whatsapp">
         <svg class="ers-system-chip-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -1450,6 +1432,7 @@
           <div class="calc-res">
             <div class="l">Oportunidad estimada</div>
             <div class="v"><span id="out">0 €</span> <small>/ mes</small></div>
+            <div class="v-year"><span id="outy">0 €</span> <small>/ año</small></div>
             <p class="n">Basado en los datos que has introducido: consultas × 4,33 semanas × % sin respuesta × tasa de
               conversión × ticket medio. Es una estimación con tus supuestos, no un dato medido ni una promesa.</p>
           </div>
@@ -1664,7 +1647,9 @@
         requestAnimationFrame(function s(t) {
           if (!t0) t0 = t;
           var p = Math.min((t - t0) / 420, 1);
-          document.getElementById('out').textContent = eur.format(Math.round(ini + (total - ini) * (1 - Math.pow(1 - p, 3))));
+          var v = ini + (total - ini) * (1 - Math.pow(1 - p, 3));
+          document.getElementById('out').textContent = eur.format(Math.round(v));
+          document.getElementById('outy').textContent = eur.format(Math.round(v * 12));
           if (p < 1) requestAnimationFrame(s); else cur = total;
         });
       }
