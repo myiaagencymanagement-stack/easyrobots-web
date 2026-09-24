@@ -381,6 +381,25 @@
     .slot b { font-size: .74rem; font-weight: 600; color: var(--grey); }
     .slot span { font-size: .64rem; color: var(--grey-2); }
 
+    /* barra inferior con el CTA, solo en el movil */
+    .cta-movil {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 120;
+      gap: 9px;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(255, 255, 255, .95);
+      backdrop-filter: saturate(180%) blur(14px);
+      border-top: 1px solid var(--line);
+    }
+
+    .cta-movil .btn { padding: .82rem 1rem; font-size: .86rem; justify-content: center; }
+    .cta-movil .btn-dark { flex: 1; }
+    .cta-movil .btn-outline { flex: 0 0 auto; }
+
     /* ---------- reveal ---------- */
     .r { opacity: 0; transform: translateY(18px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
     .r.on { opacity: 1; transform: none; }
@@ -426,7 +445,16 @@
       .sec { padding: 66px 0; }
       .faces { grid-template-columns: 1fr 1fr; }
 
-      nav .wrap { height: auto; padding-top: 12px; padding-bottom: 12px; }
+      /* fija de verdad, no solo pegajosa: la pegajosa se pierde en
+         Safari si algun elemento padre tiene overflow */
+      nav { position: fixed; left: 0; right: 0; top: 0; }
+      body { padding-top: 56px; padding-bottom: 74px; }
+      .hero { padding-top: 24px; }
+
+      /* la barra de abajo, siempre a la vista */
+      .cta-movil { display: flex; }
+
+      nav .wrap { height: auto; padding-top: 10px; padding-bottom: 10px; }
       nav .btn { white-space: nowrap; padding: .6rem 1.05rem; font-size: .78rem; }
       .brand { font-size: .76rem; }
       .wrap { padding: 0 20px; }
@@ -469,7 +497,9 @@
             <a href="#reservar" class="btn btn-dark">Reservar una llamada de 15 min
               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h11M11 6l4 4-4 4"/></svg>
             </a>
-            <a href="#sistema" class="btn btn-outline">Ver cómo funciona</a>
+            <a href="#caso" class="btn btn-outline">Ver caso real
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h11M11 6l4 4-4 4"/></svg>
+            </a>
           </div>
         </div>
 
@@ -1062,9 +1092,15 @@
       .ers-system-diagram {
         position: relative;
         width: 100%;
-        height: 330px;
+        height: auto;
+        padding-top: 330px;   /* hueco reservado para el circulo */
         margin-top: 34px;
       }
+
+      /* centro del circulo fijado en pixeles, no al 50% */
+      .ers-system-core,
+      .ers-system-ring,
+      .ers-system-chip { top: 165px; }
 
       .ers-system-wires {
         display: block;
@@ -1132,7 +1168,7 @@
         transform: none;
         width: 100%;
         min-height: 0;
-        margin-top: 26px;
+        margin-top: 4px;
       }
 
       .ers-system-human-icon {
@@ -1164,7 +1200,10 @@
         font-size: 13px;
       }
 
-      .ers-system-diagram { height: 300px; }
+      .ers-system-diagram { padding-top: 300px; }
+      .ers-system-core,
+      .ers-system-ring,
+      .ers-system-chip { top: 150px; }
       .ers-system-wires { width: 250px; height: 250px; }
       .ers-system-chip { max-width: 80px; }
       .ers-system-chip-title { font-size: 9.5px; }
@@ -1590,6 +1629,12 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
+  <!-- barra fija de abajo, solo en el movil -->
+  <div class="cta-movil">
+    <a href="#reservar" class="btn btn-dark">Reservar llamada</a>
+    <a href="#caso" class="btn btn-outline">Caso real</a>
+  </div>
+
   <footer>
     <div class="wrap">
       <div class="fgrid">
