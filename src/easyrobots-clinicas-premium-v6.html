@@ -43,7 +43,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
     body { font-family: var(--f); background: var(--w); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
@@ -274,6 +274,7 @@
     /* ---------- CALCULADORA ---------- */
     .calc-wrap { display: grid; grid-template-columns: 1.42fr .58fr; gap: 0; }
     .calc { background: #0B0E16; color: #fff; padding: 3rem 2.6rem; }
+    .calc-head { display: grid; grid-template-columns: .9fr 1.1fr; gap: 34px; align-items: start; }
     .calc-in { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.6rem 0 0; }
     .ci { background: #151A26; border: 1px solid var(--line-d); border-radius: 10px; padding: .7rem .85rem; }
     .ci label { font-size: .68rem; color: rgba(255,255,255,.55); }
@@ -390,7 +391,20 @@
     /* ---------- MÓVIL ---------- */
     @media (max-width: 1040px) {
       .nlinks { display: none; }
-      .hero-grid, .prob-grid, .sys-grid, .flow-grid, .re-grid, .re-left, .caso, .calc-wrap, .team-grid { grid-template-columns: 1fr; }
+      .hero-grid, .prob-grid, .sys-grid, .flow-grid, .re-grid, .re-left, .caso, .calc-wrap, .team-grid,
+      .caso-head, .caso-body, .caso-txt , .kpis-xl, .calc-head { grid-template-columns: 1fr; }
+      .stats, .stats-3 { grid-template-columns: 1fr 1fr; }
+      .caso-head { gap: 14px; }
+      .caso-body { gap: 26px; }
+      .caso-txt { gap: 18px; }
+      .kpx { border-right: 0; border-bottom: 1px solid var(--line); padding: 1.4rem 1.2rem; }
+      .kpx:last-child { border-bottom: 0; }
+      .kpx b { font-size: 2.4rem; }
+      .stat { border-right: 0; padding: 1rem .6rem 0; }
+      .stat:nth-child(odd) { border-right: 1px solid var(--line); }
+      .calc-head { gap: 20px; }
+      .sin-ads { align-items: flex-start; }
+      .caso-solo .slot { max-width: 220px; }
       .hero-bg { display: none; }
       .chat-zone { grid-template-columns: 1fr; }
       .side { flex-direction: row; flex-wrap: wrap; }
@@ -411,6 +425,11 @@
       .band .addr { justify-content: center; }
       .sec { padding: 66px 0; }
       .faces { grid-template-columns: 1fr 1fr; }
+
+      nav .wrap { height: auto; padding-top: 12px; padding-bottom: 12px; }
+      nav .btn { white-space: nowrap; padding: .6rem 1.05rem; font-size: .78rem; }
+      .brand { font-size: .76rem; }
+      .wrap { padding: 0 20px; }
     }
   </style>
 </head>
@@ -1038,45 +1057,82 @@
         max-width: 550px;
       }
 
+      /* El circulo se mantiene en el movil, mas pequeño: radio 124 px.
+         Los chips pierden el subtitulo y se estrechan para que quepan. */
       .ers-system-diagram {
-        height: auto;
-        margin-top: 42px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        position: relative;
+        width: 100%;
+        height: 330px;
+        margin-top: 34px;
       }
 
-      .ers-system-core,
-      .ers-system-ring,
-      .ers-system-wires,
+      .ers-system-wires {
+        display: block;
+        width: 274px;
+        height: 274px;
+      }
+
+      .ers-system-core {
+        display: block;
+        width: 88px;
+        height: 88px;
+      }
+
+      .ers-system-core::before { inset: 7px; }
+      .ers-system-core-star { top: 20px; font-size: 12px; }
+      .ers-system-core-name { top: 48px; font-size: 6.5px; letter-spacing: .9px; }
+
+      .ers-system-ring { display: block; }
+      .ers-system-ring-one { width: 128px; height: 128px; }
+      .ers-system-ring-two { width: 168px; height: 168px; }
+
+      .ers-system-chip {
+        position: absolute;
+        width: auto;
+        max-width: 88px;
+        height: auto;
+        min-height: 38px;
+        gap: 6px;
+        padding: 6px 8px;
+        border-radius: 9px;
+      }
+
+      .ers-system-chip-title {
+        font-size: 10px;
+        line-height: 1.2;
+        white-space: normal;
+      }
+
+      .ers-system-chip-subtitle { display: none; }
+
+      .ers-system-chip-icon {
+        width: 13px;
+        height: 13px;
+        flex-basis: 13px;
+      }
+
+      /* el cable a Humano y su flecha no aplican: Humano va debajo */
       .ers-system-wire-human,
       .ers-system-human::after {
         display: none;
       }
 
-      .ers-system-chip {
-        transform: none;
-      }
-
-      .ers-system-chip {
-        position: relative;
-        inset: auto;
-        width: 100%;
-        height: 58px;
-      }
-
-      /* en movil los chips SI se leen a tamano normal */
-      .ers-system-chip-title { font-size: 14px; }
-      .ers-system-chip-subtitle { font-size: 11px; }
-      .ers-system-chip-icon { width: 18px; height: 18px; flex-basis: 18px; }
+      /* mismas 8 posiciones que en el ordenador, a 124 px del centro */
+      .ers-system-chip-agenda        { transform: translate(-50%, -50%) translate(0, -124px); }
+      .ers-system-chip-confirmations { transform: translate(-50%, -50%) translate(88px, -88px); }
+      .ers-system-chip-reactivation  { transform: translate(-50%, -50%) translate(88px, 88px); }
+      .ers-system-chip-followup      { transform: translate(-50%, -50%) translate(0, 124px); }
+      .ers-system-chip-reviews       { transform: translate(-50%, -50%) translate(-88px, 88px); }
+      .ers-system-chip-integrations  { transform: translate(-50%, -50%) translate(-124px, 0); }
+      .ers-system-chip-whatsapp      { transform: translate(-50%, -50%) translate(-88px, -88px); }
 
       .ers-system-human {
         position: relative;
         inset: auto;
         transform: none;
         width: 100%;
-        min-height: 105px;
-        margin-top: 8px;
+        min-height: 0;
+        margin-top: 26px;
       }
 
       .ers-system-human-icon {
@@ -1108,10 +1164,18 @@
         font-size: 13px;
       }
 
-      .ers-system-chip {
-        height: 56px;
-        padding: 9px 14px;
-      }
+      .ers-system-diagram { height: 300px; }
+      .ers-system-wires { width: 250px; height: 250px; }
+      .ers-system-chip { max-width: 80px; }
+      .ers-system-chip-title { font-size: 9.5px; }
+
+      .ers-system-chip-agenda        { transform: translate(-50%, -50%) translate(0, -113px); }
+      .ers-system-chip-confirmations { transform: translate(-50%, -50%) translate(80px, -80px); }
+      .ers-system-chip-reactivation  { transform: translate(-50%, -50%) translate(80px, 80px); }
+      .ers-system-chip-followup      { transform: translate(-50%, -50%) translate(0, 113px); }
+      .ers-system-chip-reviews       { transform: translate(-50%, -50%) translate(-80px, 80px); }
+      .ers-system-chip-integrations  { transform: translate(-50%, -50%) translate(-113px, 0); }
+      .ers-system-chip-whatsapp      { transform: translate(-50%, -50%) translate(-80px, -80px); }
     }
   </style>
 
@@ -1401,7 +1465,7 @@
       <div class="calc-wrap">
         <div class="calc">
           <div class="kick kick-d">Calculadora</div>
-          <div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:start">
+          <div class="calc-head">
             <div>
               <h2 style="font-size:1.45rem">¿Cuánto puede estar costando dejar esas conversaciones sin atender?</h2>
               <p style="font-size:.8rem;color:rgba(255,255,255,.5);margin-top:.8rem">Calcula tu oportunidad mensual en
