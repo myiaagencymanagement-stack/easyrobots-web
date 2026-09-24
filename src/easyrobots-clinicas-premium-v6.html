@@ -134,6 +134,14 @@
     .scard span { display: block; font-size: .7rem; color: var(--grey-2); margin-top: .12rem; }
     .pill-ok { display: inline-block; margin-top: .6rem; background: var(--green-s); color: var(--green-d); font-size: .7rem; font-weight: 600; padding: .3rem .7rem; border-radius: 7px; }
 
+    /* plantilla de WhatsApp Business */
+    .b.tpl { max-width: 94%; font-size: .78rem; padding: .7rem .8rem .45rem; }
+    .b.tpl .tpl-t { font-weight: 700; margin-bottom: .35rem; }
+    .b.tpl p { margin: 0; }
+    .b.tpl .tpl-more { display: block; margin-top: .35rem; color: var(--green-d); font-weight: 500; }
+    .b.tpl .tpl-from { margin-top: .5rem; padding-top: .4rem; border-top: 1px solid rgba(20,24,26,.08); font-size: .62rem; color: var(--grey-2); }
+    .b.tpl .ck2 { color: #34B7F1; letter-spacing: -1px; }
+
     /* ---------- EL PROBLEMA ---------- */
     .prob { background: var(--bone); }
     .prob-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 48px; align-items: start; }
@@ -1323,12 +1331,12 @@
 
       <div class="ers-system-chip ers-system-chip-followup">
         <svg class="ers-system-chip-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="8" r="3"></circle>
-          <path d="M6.5 20c.5-3.4 2.2-5.2 5.5-5.2s5 1.8 5.5 5.2"></path>
+          <path d="M3.5 8.5h3l1.6-2.2h7.8l1.6 2.2h3v10.2h-17z"></path>
+          <circle cx="12" cy="13.2" r="3.3"></circle>
         </svg>
         <div class="ers-system-chip-copy">
           <p class="ers-system-chip-title">Seguimiento</p>
-          <p class="ers-system-chip-subtitle">Postoperatorio</p>
+          <p class="ers-system-chip-subtitle">Foto y valoración</p>
         </div>
       </div>
 
@@ -1400,14 +1408,18 @@
                 original: lleva nombre, telefono y cara de una paciente, y ademas
                 asociados a un tratamiento estetico (dato del art. 9 RGPD).
               -->
-              <div class="b b-in on" style="font-size:.78rem;max-width:92%">
-                <div style="font-weight:700;margin-bottom:.35rem">Seguimiento de tu tratamiento</div>
-                Hola, Marta. Ha pasado ya un tiempo desde que realizamos tu tratamiento de cejas y quería recordarte
-                que el retoque se hace a partir de los 12 meses. ¿Te miro un hueco?
-                <div style="font-size:.62rem;color:var(--grey-2);margin-top:.45rem">Clínica Bella Estética</div>
-                <div class="hh">13:41</div>
+              <!-- Plantilla de WhatsApp Business: titulo en negrita, cuerpo,
+                   "Leer más" y el pie con el nombre del remitente. Es el
+                   formato real con el que sale el mensaje. -->
+              <div class="b b-out on tpl">
+                <div class="tpl-t">Seguimiento de tu tratamiento</div>
+                <p>Hola, Marta. Ha pasado ya un tiempo desde que realizamos tu tratamiento de cejas y quería
+                  recordarte q…</p>
+                <span class="tpl-more">Leer más</span>
+                <div class="tpl-from">Clínica Bella Estética · Microblading</div>
+                <div class="hh">13:41 <span class="ck2">✓✓</span></div>
               </div>
-              <div class="b b-out on" style="font-size:.78rem">Muchas gracias por acordaros 🙏 De momento no me hace
+              <div class="b b-in on" style="font-size:.78rem">Muchas gracias por acordaros 🙏 De momento no me hace
                 falta todavía, pero os aviso.
                 <div class="hh">13:45</div>
               </div>
