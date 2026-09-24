@@ -389,25 +389,6 @@
     .slot b { font-size: .74rem; font-weight: 600; color: var(--grey); }
     .slot span { font-size: .64rem; color: var(--grey-2); }
 
-    /* barra inferior con el CTA, solo en el movil */
-    .cta-movil {
-      display: none;
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 120;
-      gap: 9px;
-      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-      background: rgba(255, 255, 255, .95);
-      backdrop-filter: saturate(180%) blur(14px);
-      border-top: 1px solid var(--line);
-    }
-
-    .cta-movil .btn { padding: .82rem 1rem; font-size: .86rem; justify-content: center; }
-    .cta-movil .btn-dark { flex: 1; }
-    .cta-movil .btn-outline { flex: 0 0 auto; }
-
     /* ---------- reveal ---------- */
     .r { opacity: 0; transform: translateY(18px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
     .r.on { opacity: 1; transform: none; }
@@ -456,11 +437,8 @@
       /* fija de verdad, no solo pegajosa: la pegajosa se pierde en
          Safari si algun elemento padre tiene overflow */
       nav { position: fixed; left: 0; right: 0; top: 0; }
-      body { padding-top: 56px; padding-bottom: 74px; }
+      body { padding-top: 56px; }
       .hero { padding-top: 24px; }
-
-      /* la barra de abajo, siempre a la vista */
-      .cta-movil { display: flex; }
 
       nav .wrap { height: auto; padding-top: 10px; padding-bottom: 10px; }
       nav .btn { white-space: nowrap; padding: .6rem 1.05rem; font-size: .78rem; }
@@ -1095,80 +1073,90 @@
         max-width: 550px;
       }
 
-      /* El circulo se mantiene en el movil, mas pequeño: radio 124 px.
-         Los chips pierden el subtitulo y se estrechan para que quepan. */
+      /* EL CIRCULO EN EL MOVIL.
+         Antes eran cajas de 88 px colocadas cada 45 grados: entre una y
+         otra hay 95 px, asi que las diagonales se tocaban. Aqui el chip
+         deja de ser caja (icono arriba, nombre debajo) y pasan a 7
+         posiciones repartidas cada 51,4 grados, a 116 px del centro.
+         Ocupan la mitad de ancho y no se pisan. */
       .ers-system-diagram {
         position: relative;
         width: 100%;
         height: auto;
         padding-top: 330px;   /* hueco reservado para el circulo */
-        margin-top: 34px;
+        margin-top: 30px;
       }
 
-      /* centro del circulo fijado en pixeles, no al 50% */
+      /* centro fijado en pixeles: al 50% dependeria de lo que mida
+         la tarjeta Humano, que va debajo */
       .ers-system-core,
       .ers-system-ring,
-      .ers-system-chip { top: 165px; }
+      .ers-system-chip { top: 163px; }
 
-      .ers-system-wires {
-        display: block;
-        width: 274px;
-        height: 274px;
-      }
-
-      .ers-system-core {
-        display: block;
-        width: 88px;
-        height: 88px;
-      }
-
-      .ers-system-core::before { inset: 7px; }
-      .ers-system-core-star { top: 20px; font-size: 12px; }
-      .ers-system-core-name { top: 48px; font-size: 6.5px; letter-spacing: .9px; }
-
-      .ers-system-ring { display: block; }
-      .ers-system-ring-one { width: 128px; height: 128px; }
-      .ers-system-ring-two { width: 168px; height: 168px; }
-
-      .ers-system-chip {
-        position: absolute;
-        width: auto;
-        max-width: 88px;
-        height: auto;
-        min-height: 38px;
-        gap: 6px;
-        padding: 6px 8px;
-        border-radius: 9px;
-      }
-
-      .ers-system-chip-title {
-        font-size: 10px;
-        line-height: 1.2;
-        white-space: normal;
-      }
-
-      .ers-system-chip-subtitle { display: none; }
-
-      .ers-system-chip-icon {
-        width: 13px;
-        height: 13px;
-        flex-basis: 13px;
-      }
-
-      /* el cable a Humano y su flecha no aplican: Humano va debajo */
+      /* las rectas no coinciden con estos angulos: mandan los anillos */
+      .ers-system-wires,
       .ers-system-wire-human,
       .ers-system-human::after {
         display: none;
       }
 
-      /* mismas 8 posiciones que en el ordenador, a 124 px del centro */
-      .ers-system-chip-agenda        { transform: translate(-50%, -50%) translate(0, -124px); }
-      .ers-system-chip-confirmations { transform: translate(-50%, -50%) translate(88px, -88px); }
-      .ers-system-chip-reactivation  { transform: translate(-50%, -50%) translate(88px, 88px); }
-      .ers-system-chip-followup      { transform: translate(-50%, -50%) translate(0, 124px); }
-      .ers-system-chip-reviews       { transform: translate(-50%, -50%) translate(-88px, 88px); }
-      .ers-system-chip-integrations  { transform: translate(-50%, -50%) translate(-124px, 0); }
-      .ers-system-chip-whatsapp      { transform: translate(-50%, -50%) translate(-88px, -88px); }
+      .ers-system-core {
+        display: block;
+        width: 96px;
+        height: 96px;
+      }
+
+      .ers-system-core::before { inset: 8px; }
+      .ers-system-core-star { top: 23px; font-size: 13px; }
+      .ers-system-core-name { top: 53px; font-size: 7px; letter-spacing: 1px; }
+
+      .ers-system-ring { display: block; }
+      .ers-system-ring-one { width: 150px; height: 150px; }
+      .ers-system-ring-two { width: 232px; height: 232px; }
+
+      .ers-system-chip {
+        position: absolute;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 70px;
+        max-width: 70px;
+        height: auto;
+        min-height: 0;
+        gap: 6px;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: none;
+        box-shadow: none;
+      }
+
+      .ers-system-chip-icon {
+        width: 34px;
+        height: 34px;
+        flex: 0 0 34px;
+        padding: 8px;
+        border: 1px solid rgba(104, 127, 166, 0.22);
+        border-radius: 11px;
+        background: linear-gradient(145deg, rgba(20, 29, 43, 0.98), rgba(14, 21, 32, 0.98));
+      }
+
+      .ers-system-chip-title {
+        font-size: 10px;
+        line-height: 1.25;
+        white-space: normal;
+      }
+
+      .ers-system-chip-subtitle { display: none; }
+
+      /* 7 posiciones repartidas, a 116 px del centro */
+      .ers-system-chip-agenda        { transform: translate(-50%, -50%) translate(0, -116px); }
+      .ers-system-chip-confirmations { transform: translate(-50%, -50%) translate(91px, -72px); }
+      .ers-system-chip-followup      { transform: translate(-50%, -50%) translate(113px, 26px); }
+      .ers-system-chip-reactivation  { transform: translate(-50%, -50%) translate(50px, 105px); }
+      .ers-system-chip-reviews       { transform: translate(-50%, -50%) translate(-50px, 105px); }
+      .ers-system-chip-integrations  { transform: translate(-50%, -50%) translate(-113px, 26px); }
+      .ers-system-chip-whatsapp      { transform: translate(-50%, -50%) translate(-91px, -72px); }
 
       .ers-system-human {
         position: relative;
@@ -1176,7 +1164,7 @@
         transform: none;
         width: 100%;
         min-height: 0;
-        margin-top: 4px;
+        margin-top: 6px;
       }
 
       .ers-system-human-icon {
@@ -1208,21 +1196,23 @@
         font-size: 13px;
       }
 
-      .ers-system-diagram { padding-top: 300px; }
+      .ers-system-diagram { padding-top: 306px; }
       .ers-system-core,
       .ers-system-ring,
-      .ers-system-chip { top: 150px; }
-      .ers-system-wires { width: 250px; height: 250px; }
-      .ers-system-chip { max-width: 80px; }
-      .ers-system-chip-title { font-size: 9.5px; }
+      .ers-system-chip { top: 151px; }
 
-      .ers-system-chip-agenda        { transform: translate(-50%, -50%) translate(0, -113px); }
-      .ers-system-chip-confirmations { transform: translate(-50%, -50%) translate(80px, -80px); }
-      .ers-system-chip-reactivation  { transform: translate(-50%, -50%) translate(80px, 80px); }
-      .ers-system-chip-followup      { transform: translate(-50%, -50%) translate(0, 113px); }
-      .ers-system-chip-reviews       { transform: translate(-50%, -50%) translate(-80px, 80px); }
-      .ers-system-chip-integrations  { transform: translate(-50%, -50%) translate(-113px, 0); }
-      .ers-system-chip-whatsapp      { transform: translate(-50%, -50%) translate(-80px, -80px); }
+      .ers-system-chip { width: 64px; max-width: 64px; }
+      .ers-system-chip-title { font-size: 9.5px; }
+      .ers-system-chip-icon { width: 32px; height: 32px; flex-basis: 32px; }
+      .ers-system-ring-two { width: 214px; height: 214px; }
+
+      .ers-system-chip-agenda        { transform: translate(-50%, -50%) translate(0, -107px); }
+      .ers-system-chip-confirmations { transform: translate(-50%, -50%) translate(84px, -67px); }
+      .ers-system-chip-followup      { transform: translate(-50%, -50%) translate(104px, 24px); }
+      .ers-system-chip-reactivation  { transform: translate(-50%, -50%) translate(46px, 97px); }
+      .ers-system-chip-reviews       { transform: translate(-50%, -50%) translate(-46px, 97px); }
+      .ers-system-chip-integrations  { transform: translate(-50%, -50%) translate(-104px, 24px); }
+      .ers-system-chip-whatsapp      { transform: translate(-50%, -50%) translate(-84px, -67px); }
     }
   </style>
 
@@ -1641,12 +1631,6 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <!-- barra fija de abajo, solo en el movil -->
-  <div class="cta-movil">
-    <a href="#reservar" class="btn btn-dark">Reservar llamada</a>
-    <a href="#caso" class="btn btn-outline">Caso real</a>
-  </div>
-
   <footer>
     <div class="wrap">
       <div class="fgrid">
