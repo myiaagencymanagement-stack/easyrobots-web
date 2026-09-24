@@ -405,6 +405,7 @@
     .face { }
     .face .img { aspect-ratio: 4/3.4; border-radius: 12px; background: linear-gradient(170deg, #DDE0DA, #BFC6C0); display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
     .face .img svg { width: 62%; height: auto; color: rgba(255,255,255,.55); }
+    .face .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .face b { display: block; font-size: .8rem; margin-top: .6rem; }
     .face span { font-size: .7rem; color: var(--grey-2); }
     .guar { display: flex; gap: .8rem; align-items: flex-start; }
@@ -1734,7 +1735,11 @@
 
         <div class="faces r">
           <div class="face">
-            <div class="img slot" style="aspect-ratio:4/3.4"><b>Foto pendiente</b><span>Horizontal 4:3</span></div>
+            <!-- Foto de estudio sobre fondo negro: el fondo del cuadro va oscuro
+                 para que el recorte no se note. -->
+            <div class="img" style="aspect-ratio:4/3.4;background:#0B0B0D">
+              <img src="assets/guille.webp" alt="Guillermo, co-fundador de EasyRobots" loading="lazy" decoding="async">
+            </div>
             <b>Guillermo</b>
             <span>Co-fundador</span>
           </div>
