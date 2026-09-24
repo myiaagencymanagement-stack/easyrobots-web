@@ -19,12 +19,25 @@ Resumido en la web: *"Piezas, no un paquete cerrado"* y *"EasyRobots se integra
 con las herramientas que ya usas en tu clínica para crear un sistema conectado y
 que trabaja por ti"*.
 
-### Qué se vende de verdad
+### Qué se vende de verdad (y por qué la IA sí se nombra)
 
-No se vende IA. La IA es el mecanismo, no el producto que debe protagonizar cada
-titular. Se vende: **menos trabajo manual, menos oportunidades perdidas, mejor
+**Se vende el resultado, no la tecnología.** El titular habla de lo que la
+clínica gana: menos trabajo manual, menos oportunidades perdidas, mejor
 seguimiento, más control, un sistema conectado, automatización donde tiene
-sentido e intervención humana cuando hace falta.**
+sentido e intervención humana cuando hace falta.
+
+Pero **la palabra IA no se esconde**, y esto es un matiz importante:
+
+- En la **home corporativa** se dice clarísimo que EasyRobots es una agencia de
+  IA. Hace falta para la marca, para el SEO y para que un visitante entienda en
+  dos segundos a qué te dedicas. Ahí sí se nombran **agentes de IA, chatbots,
+  automatización e integraciones**.
+- En las **landings de nicho** la IA es el mecanismo y pasa a segundo plano: el
+  titular habla del problema de esa clínica.
+
+Lo que se evita en los dos casos es el **titular genérico** tipo *"Agencia de
+inteligencia artificial especializada en automatización para empresas"*. Eso no
+dice nada y podría firmarlo cualquiera.
 
 ### La diferencia frente a "una empresa que instala un chatbot"
 
@@ -121,37 +134,125 @@ demasiados efectos.
   analítica. Los números 53, 8 y 2.000 € son protagonistas, pero integrados en la
   composición, no en tres cajones enormes.
 
-## Próximas páginas
+## Arquitectura de la web: tres niveles
 
-### Funnel VSL
+Decisión de arquitectura tomada el 2026-09-24. **La v6 NO es la plantilla de la
+home.** EasyRobots se estructura como **marca horizontal de IA + páginas
+verticales muy especializadas**:
 
-Mismo sistema visual, arquitectura distinta y más orientada a conversión. El
-vídeo es el protagonista. Objetivo: que el visitante vea el VSL y pida una
-auditoría de su clínica.
+| Nivel | URL | Qué es |
+|---|---|---|
+| **1 · Home** | `/` | EasyRobots como **agencia de IA**. Amplia. IA, agentes, chatbots, automatización, sistemas y sectores |
+| **2 · Nicho** | `/estetica`, `/dental`, `/microblading` | Solución específica. Es lo que hoy es la v6 |
+| **3 · Funnel VSL** | — | Conversión pura. Vídeo protagonista |
+
+Las tres **parecen de la misma familia** (mismo color, tipografía, botones,
+tarjetas, bordes, espaciado, fondos, estilo de números y diagramas) pero **cada
+una tiene arquitectura propia**. No queremos cuatro páginas idénticas.
+
+### SEO: cada nivel con su intención, sin canibalizarse
+
+- **Home:** agencia de inteligencia artificial, agencia IA, automatización con
+  IA, agentes de IA, chatbots con IA, automatización de procesos, sistemas de IA
+  para empresas.
+- **Verticales:** IA para clínicas estéticas, automatización para clínicas
+  estéticas, chatbot para clínicas, IA para dentistas, automatización para
+  clínicas dentales.
+
+**La home no debe pelear por "automatización para clínicas de estética".** Si lo
+hace, compite contra sus propias páginas verticales y se estorban entre ellas.
+
+### Las tres capas del producto
+
+Sirven para ordenar cualquier página:
+
+1. **IA conversacional** — lo que el cliente ve.
+2. **Automatización** — lo que ocurre detrás.
+3. **Sistema** — cómo se conecta todo.
+
+Es mejor posicionamiento de agencia que intentar vender solo "chatbots".
+
+### Recorrido previsto de la home (nivel 1)
+
+```
+HERO
+  IA que trabaja dentro de tu negocio.
+  Diseñamos agentes de IA, chatbots y automatizaciones conectadas a las
+  herramientas que ya utilizas.
+  CTA: Ver cómo funciona · CTA 2: Hablar con EasyRobots
+      ↓
+  "No necesitas otra herramienta. Necesitas que las que ya tienes
+   trabajen juntas."
+      ↓
+QUÉ CONSTRUIMOS
+  Agentes de IA · Chatbots · Automatización · Integraciones · Sistemas a medida
+      ↓
+CÓMO TRABAJAMOS
+  Analizamos → Diseñamos → Construimos → Mantenemos
+      ↓
+UN SISTEMA, NO UN CHATBOT
+  El diagrama del núcleo, en versión general (no solo clínicas)
+      ↓
+SOLUCIONES POR SECTOR
+  Estética · Dental · Microblading · …   ("Ver solución para X →")
+      ↓
+CASOS / RESULTADOS
+  Pocos y concretos
+      ↓
+POR QUÉ EASYROBOTS
+  Personalización · Control · Humano · Transparencia
+      ↓
+CTA
+  Cuéntanos qué quieres automatizar.
+```
+
+Textos de apoyo ya aprobados para esa home:
+
+> **IA para conversaciones que no pueden esperar.** Chatbots y agentes de IA que
+> responden a tus clientes, resuelven dudas, califican consultas y pueden llevar
+> una conversación hasta la reserva.
+
+> **Automatizaciones que trabajan detrás.** Conectamos WhatsApp, agenda, CRM,
+> formularios y otras herramientas para que las tareas repetitivas ocurran
+> automáticamente.
+
+> **Sistemas diseñados para tu negocio.** No instalamos un paquete cerrado.
+> Diseñamos las piezas que realmente necesita tu empresa.
+
+### Funnel VSL (nivel 3)
+
+Mismo sistema visual, arquitectura más orientada a conversión. El vídeo es el
+protagonista. Objetivo: que el visitante vea el VSL y pida una auditoría de su
+clínica.
 
 Orden: Hero + VSL → Problema → Oportunidad → Sistema → Prueba → Transparencia →
 Proceso → CTA (analizar la clínica).
 
 **Regla:** tiene que parecer *otra página de EasyRobots*, no *una landing
-genérica de VSL*. Mismo color, tipografía, botones, tarjetas, bordes, espaciado,
-fondos, estilo de números y diagramas. Solo cambian la arquitectura, la cantidad
-de contenido, la prioridad del vídeo, el orden de los argumentos y la intensidad
-del CTA.
+genérica de VSL*. Solo cambian la arquitectura, la cantidad de contenido, la
+prioridad del vídeo, el orden de los argumentos y la intensidad del CTA.
 
-### Landings por nicho
+### Landings por nicho (nivel 2)
 
-EasyRobots para estética, para microblading, para dental y los que vengan. Todas
-comparten el **mismo sistema de diseño**. Cambian copy, casos, imágenes,
+Todas comparten el **mismo sistema de diseño**. Cambian copy, casos, imágenes,
 ejemplos, problemas, servicios, objeciones y CTA. **No se crea una identidad
 nueva por nicho.**
 
-### Tipos de página
+### Antes de empezar una página nueva
 
-Antes de empezar una nueva, identificar cuál es: landing principal de nicho,
-landing VSL, página de lead magnet o página de auditoría/CTA. Cada una puede
-tener arquitectura distinta, pero todas pertenecen al mismo sistema visual.
+Identificar cuál de los cuatro tipos es: home de agencia, landing principal de
+nicho, landing VSL o página de lead magnet / auditoría. Cada una tiene
+arquitectura distinta, pero todas pertenecen al mismo sistema visual.
 
-## Regla para futuras decisiones
+### Decisión de fondo, para revisar cada cierto tiempo
+
+Qué quiere ser EasyRobots dentro de dos o tres años. Si es **agencia de IA
+horizontal que usa verticales para vender**, la home va amplia (que es lo
+asumido hoy). Si acaba siendo una **empresa especializada solo en clínicas**, la
+home tendría que estrecharse mucho. Toda la arquitectura de arriba parte de la
+primera opción.
+
+## Regla para futuras decisiones## Regla para futuras decisiones
 
 Antes de proponer un diseño, un copy o una estructura, la pregunta es:
 
@@ -577,4 +678,9 @@ Míos, cuando lo pida:
   `cita_agendada` llega a GA4.
 - Sustituir los retratos de IA que sigan vivos en `index.html` y en las landings
   de `lanzamientos/`.
-- Decidir si la v6 sustituye a `index.html` y quitarle entonces el `noindex`.
+- Montar la **home de nivel 1** (agencia de IA) con el recorrido de arriba. La
+  v6 **no** se usa como plantilla: es una landing de nicho.
+- Mover la v6 a `/estetica` (o `/microblading`) y quitarle el `noindex` cuando
+  esté lista.
+- Ir creando las verticales de dental y las que vengan, con el mismo sistema
+  visual.
