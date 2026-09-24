@@ -286,6 +286,36 @@
     .r.on { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .r { opacity: 1 !important; transform: none !important; transition: none !important; } }
 
+
+    /* ---------- modal de calendario ----------
+       Mismo calendario de GHL que usa funnel.html. Va en modal y no en
+       pagina aparte: sacar a alguien de la pagina para agendar es perder
+       a los que dudan. El iframe se monta al abrir, no en la carga. */
+    .modal {
+      position: fixed; inset: 0; z-index: 90; display: none;
+      background: rgba(3,5,10,.82); backdrop-filter: blur(6px);
+      padding: 24px 16px; overflow-y: auto;
+    }
+    .modal.open { display: block; }
+    .modal-box {
+      position: relative; max-width: 680px; margin: 3vh auto;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 16px; padding: 2rem 1.6rem 1.4rem;
+    }
+    .modal-box h3 { font-size: 1.25rem; font-weight: 700; }
+    .modal-box .xs { margin-top: .4rem; }
+    .modal-close {
+      position: absolute; top: 12px; right: 12px; width: 34px; height: 34px;
+      border-radius: 9px; border: 1px solid var(--line); background: var(--bg);
+      color: var(--body); font-size: 1rem; cursor: pointer; line-height: 1;
+    }
+    .modal-close:hover { color: var(--ink); border-color: var(--blue-soft); }
+    .cal { width: 100%; min-height: 620px; border: 0; border-radius: 12px; margin-top: 1.2rem; background: var(--bg); }
+    @media (max-width: 900px) {
+      .modal-box { padding: 1.6rem 1rem 1rem; margin: 0 auto; }
+      .cal { min-height: 560px; }
+    }
+
     /* ---------- movil ---------- */
     @media (max-width: 900px) {
       body { font-size: 16px; }
@@ -309,7 +339,7 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.6l1.9 6.3 6.3 1.9-6.3 1.9L12 18l-1.9-6.3L3.8 9.8l6.3-1.9z"/></svg>
         EASYROBOTS
       </a>
-      <a href="#analizar" class="btn">Analizar mi clínica</a>
+      <button class="btn" data-cal>Analizar mi clínica</button>
     </div>
   </nav>
 
@@ -337,7 +367,7 @@
     </div>
 
     <div class="hero-cta">
-      <a href="#analizar" class="btn">Quiero analizar mi clínica</a>
+      <button class="btn" data-cal>Quiero analizar mi clínica</button>
       <span class="xs">Sin compromiso · Revisamos tu caso antes de proponerte nada</span>
     </div>
   </header>
@@ -381,7 +411,7 @@
           Datos del primer envío de seguimiento anual, publicados con su permiso. Cada clínica parte de una base
           distinta, así que esto no es una promesa de resultados.</p>
 
-        <a href="#analizar" class="btn" style="margin-top:1.8rem">Quiero analizar mi clínica</a>
+        <button class="btn" data-cal style="margin-top:1.8rem">Quiero analizar mi clínica</button>
       </div>
     </div>
   </section>
@@ -452,10 +482,22 @@
       <p class="eyebrow">EasyRobots · revisión inicial</p>
       <h2>Descubre dónde se están escapando las oportunidades de tu clínica.</h2>
       <p>Solicita una revisión y analizamos contigo cómo gestionáis hoy las consultas, las citas y los seguimientos.</p>
-      <a href="#" class="btn">Quiero analizar mi clínica</a>
+      <button class="btn" data-cal>Quiero analizar mi clínica</button>
       <p class="xs" style="margin-top:1.1rem">Sin compromiso · Revisamos tu caso antes de proponerte nada</p>
     </div>
   </section>
+
+
+  <!-- ============ CALENDARIO ============ -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-label="Agendar una revisión">
+      <button class="modal-close" id="modal-x" aria-label="Cerrar">&#10005;</button>
+      <h3>Elige un hueco y lo revisamos contigo</h3>
+      <p class="xs">15 minutos. Sin compromiso y sin presentación comercial: miramos cómo gestionáis hoy
+        las consultas y te decimos si hay algo que merezca la pena automatizar.</p>
+      <div id="cal-slot"></div>
+    </div>
+  </div>
 
   <footer class="pie">
     <div class="wrap">
@@ -493,6 +535,46 @@
       });
     }, { threshold: .5 });
     document.querySelectorAll('[data-to]').forEach(function (el) { cio.observe(el); });
+
+
+    // ---- Calendario GHL ----
+    // Mismo widget que funnel.html. Para cada nicho, cambia NICHO: llega como
+    // query al calendario y sirve para saber de que landing viene la cita.
+    var CAL = 'https://api.leadconnectorhq.com/widget/booking/XMQy1fOiMEz88wzKLVPe';
+    var NICHO = 'clinicas';
+    var modal = document.getElementById('modal'), slot = document.getElementById('cal-slot');
+
+    function abrirCal() {
+      if (!slot.firstChild) {
+        var f = document.createElement('iframe');
+        f.className = 'cal';
+        f.src = CAL + '?nicho=' + NICHO;
+        f.title = 'Agenda tu revisión con EasyRobots';
+        slot.appendChild(f);
+      }
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function cerrarCal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('[data-cal]').forEach(function (b) { b.addEventListener('click', abrirCal); });
+    document.getElementById('modal-x').addEventListener('click', cerrarCal);
+    modal.addEventListener('click', function (e) { if (e.target === modal) cerrarCal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrarCal(); });
+
+    // Conversion, igual que en funnel.html pero sin romper si no hay gtag cargado
+    window.addEventListener('message', function (e) {
+      var d = e.data;
+      var esCita = d && (d.type === 'booking_confirmed' || d.type === 'appointmentBooked' ||
+        (typeof d === 'string' && d.indexOf('booking') > -1));
+      if (esCita && typeof gtag === 'function') {
+        gtag('event', 'cita_agendada', { event_category: 'conversion', event_label: 'calendario_ghl', nicho: NICHO });
+      }
+    });
 
     // Video: el iframe se monta al pulsar, no antes
     var p = document.getElementById('player');
