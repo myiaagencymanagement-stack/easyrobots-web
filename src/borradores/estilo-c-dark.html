@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>EasyRobots · Estilo C · Dark AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <style>
+    /* ==========================================================
+       ESTILO C — DARK AI
+       Direccion artistica: interfaces flotando sobre un fondo de
+       azul petroleo. La tecnologia se ve porque hay PANELES DE
+       PRODUCTO, no porque haya particulas ni circuitos.
+       Brillos muy contenidos: solo detras de las interfaces.
+       ========================================================== */
+    :root {
+      --b0: #05080F;
+      --b1: #0A101C;
+      --b2: #0F1826;
+      --surf: rgba(255,255,255,.035);
+      --surf2: rgba(255,255,255,.055);
+      --line: rgba(255,255,255,.09);
+      --line2: rgba(255,255,255,.16);
+      --tx: #EDF1F7;
+      --tx2: #94A3B8;
+      --tx3: #64748B;
+      --blue: #3B82F6;
+      --violet: #8B5CF6;
+      --teal: #2DD4BF;
+      --green: #34D399;
+      --f: 'Manrope', system-ui, sans-serif;
+      --m: 'JetBrains Mono', ui-monospace, monospace;
+      --max: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--f); background: var(--b0); color: var(--tx);
+      line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+    .sec { padding: 100px 0; position: relative; }
+
+    /* halo muy contenido, solo detras de zonas concretas */
+    .halo { position: absolute; border-radius: 50%; filter: blur(110px); pointer-events: none; z-index: 0; opacity: .5; }
+    .halo-b { background: rgba(59,130,246,.3); }
+    .halo-v { background: rgba(139,92,246,.22); }
+    .halo-t { background: rgba(45,212,191,.16); }
+
+    h1 { font-size: clamp(2.3rem, 5.4vw, 4rem); line-height: 1.05; letter-spacing: -.035em; font-weight: 700; }
+    h2 { font-size: clamp(1.8rem, 3.6vw, 2.7rem); line-height: 1.12; letter-spacing: -.03em; font-weight: 700; }
+    h3 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.015em; }
+    .lede { font-size: 1.06rem; color: var(--tx2); max-width: 58ch; }
+    .sm { font-size: .88rem; color: var(--tx2); }
+    .xs { font-size: .77rem; color: var(--tx3); }
+    .grad { background: linear-gradient(100deg, #fff 20%, #9EC3FF 60%, #B9A6FF 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .eyebrow {
+      font-family: var(--m); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--teal); display: inline-flex; align-items: center; gap: .5rem;
+      border: 1px solid rgba(45,212,191,.28); background: rgba(45,212,191,.07);
+      padding: .3rem .7rem; border-radius: 99px; margin-bottom: 1.3rem;
+    }
+    .eyebrow::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-family: inherit; font-size: .95rem; font-weight: 600; padding: .9rem 1.7rem; border-radius: 9px; border: 1px solid transparent; cursor: pointer; transition: transform .22s, box-shadow .22s, border-color .22s, background .22s; }
+    .btn-p { background: linear-gradient(100deg, var(--blue), #6366F1); color: #fff; box-shadow: 0 6px 22px rgba(59,130,246,.3); }
+    .btn-p:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(59,130,246,.42); }
+    .btn-s { background: var(--surf); border-color: var(--line2); color: var(--tx); }
+    .btn-s:hover { border-color: rgba(255,255,255,.34); background: var(--surf2); }
+    .btns { display: flex; gap: 11px; flex-wrap: wrap; margin-top: 2rem; }
+
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(5,8,15,.78); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; letter-spacing: -.02em; }
+    .brand img { height: 25px; border-radius: 3px; }
+    .nlinks { display: flex; gap: 26px; font-size: .88rem; color: var(--tx2); }
+    .nlinks a:hover { color: var(--tx); }
+    nav .btn { padding: .55rem 1.15rem; font-size: .86rem; }
+
+    /* ---------- HERO ---------- */
+    .hero { padding: 84px 0 96px; overflow: hidden; }
+    .hero .halo-b { width: 620px; height: 620px; top: -220px; left: -140px; }
+    .hero .halo-v { width: 520px; height: 520px; top: 40px; right: -180px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+    .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2.2rem; }
+    .badges span { font-family: var(--m); font-size: .7rem; color: var(--tx2); border: 1px solid var(--line); background: var(--surf); border-radius: 7px; padding: .35rem .7rem; }
+
+    /* ---------- PANELES FLOTANTES ---------- */
+    .stack { position: relative; perspective: 1400px; }
+    .panel {
+      background: linear-gradient(160deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+      border: 1px solid var(--line2); border-radius: 15px; backdrop-filter: blur(10px);
+      box-shadow: 0 22px 60px rgba(0,0,0,.55);
+    }
+    .panel-main { position: relative; z-index: 3; }
+    .p-bar { display: flex; align-items: center; gap: .5rem; padding: .62rem .85rem; border-bottom: 1px solid var(--line); font-family: var(--m); font-size: .66rem; color: var(--tx3); letter-spacing: .05em; }
+    .p-bar .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 9px var(--green); animation: pz 2.2s infinite; }
+    @keyframes pz { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+    .p-bar .rt { margin-left: auto; }
+
+    .wa-h { display: flex; align-items: center; gap: .6rem; padding: .8rem .9rem; border-bottom: 1px solid var(--line); }
+    .wa-av { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(140deg, var(--blue), var(--violet)); color: #fff; font-size: .74rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .wa-h b { display: block; font-size: .88rem; }
+    .wa-h em { font-style: normal; font-size: .7rem; color: var(--green); }
+    .wa-h .chip { margin-left: auto; font-family: var(--m); font-size: .6rem; color: var(--teal); border: 1px solid rgba(45,212,191,.3); background: rgba(45,212,191,.08); padding: .16rem .45rem; border-radius: 5px; }
+
+    .thread { padding: .9rem; }
+    .m { max-width: 84%; font-size: .83rem; line-height: 1.45; padding: .55rem .72rem .36rem; border-radius: 11px; margin-bottom: .45rem; opacity: 0; transform: translateY(9px); transition: all .42s cubic-bezier(.2,.8,.2,1); }
+    .m.on { opacity: 1; transform: none; }
+    .m-in { background: rgba(255,255,255,.055); border: 1px solid var(--line); border-bottom-left-radius: 3px; }
+    .m-out { background: linear-gradient(120deg, rgba(59,130,246,.22), rgba(139,92,246,.18)); border: 1px solid rgba(99,130,246,.32); margin-left: auto; border-bottom-right-radius: 3px; }
+    .m .t { font-family: var(--m); font-size: .58rem; color: var(--tx3); text-align: right; margin-top: .2rem; }
+    .m-out .t::after { content: " ✓✓"; color: #7FB3FF; }
+
+    .p-events { border-top: 1px solid var(--line); padding: .7rem .9rem .85rem; }
+    .ev { display: flex; align-items: center; gap: .5rem; font-family: var(--m); font-size: .68rem; color: var(--tx2); padding: .2rem 0; opacity: 0; transform: translateX(-6px); transition: all .38s ease; }
+    .ev.on { opacity: 1; transform: none; }
+    .ev .ok { color: var(--green); }
+
+    /* paneles secundarios flotando */
+    .p-float { position: absolute; padding: .8rem .95rem; z-index: 4; }
+    .p-float .lbl { font-family: var(--m); font-size: .6rem; color: var(--tx3); letter-spacing: .08em; text-transform: uppercase; }
+    .p-float .val { font-size: 1.15rem; font-weight: 700; letter-spacing: -.02em; margin-top: .15rem; }
+    .pf1 { top: -26px; right: -18px; }
+    .pf2 { bottom: -24px; left: -26px; }
+    .p-float, .panel-main { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+    .p-float.on, .panel-main.on { opacity: 1; transform: none; }
+
+    /* ---------- FUGAS ---------- */
+    .leaks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 2.8rem; }
+    .leak { position: relative; border: 1px solid var(--line); border-radius: 15px; padding: 1.7rem 1.5rem; background: linear-gradient(170deg, rgba(255,255,255,.05), rgba(255,255,255,.015)); overflow: hidden; transition: border-color .3s, transform .3s; }
+    .leak:hover { border-color: var(--line2); transform: translateY(-3px); }
+    .leak::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 1px; background: linear-gradient(90deg, transparent, var(--blue), transparent); opacity: .5; }
+    .leak .n { font-family: var(--m); font-size: 2.4rem; font-weight: 500; color: rgba(255,255,255,.1); line-height: 1; letter-spacing: -.04em; }
+    .leak h3 { margin: .6rem 0 .5rem; }
+    .leak p { font-size: .88rem; color: var(--tx2); }
+    .leak .cons { margin-top: 1.1rem; padding-top: .9rem; border-top: 1px solid var(--line); }
+    .leak .cons b { display: block; font-size: .86rem; color: var(--teal); }
+    .leak .cons span { font-size: .79rem; color: var(--tx3); }
+
+    /* ---------- PIPELINE ---------- */
+    .pipe { position: relative; margin-top: 3rem; }
+    .pipe-line { position: absolute; left: 0; right: 0; top: 27px; height: 1px; background: var(--line); }
+    .pipe-fill { position: absolute; left: 0; top: 27px; height: 1px; width: 0; background: linear-gradient(90deg, var(--blue), var(--violet), var(--teal)); transition: width 2.2s ease; box-shadow: 0 0 10px rgba(59,130,246,.6); }
+    .pipe-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; position: relative; z-index: 2; }
+    .pnode { text-align: center; opacity: .3; transition: opacity .5s ease; }
+    .pnode.on { opacity: 1; }
+    .pnode .ring { width: 54px; height: 54px; margin: 0 auto .9rem; border-radius: 50%; border: 1px solid var(--line2); background: var(--b1); display: flex; align-items: center; justify-content: center; transition: border-color .5s, box-shadow .5s; }
+    .pnode.on .ring { border-color: var(--blue); box-shadow: 0 0 0 5px rgba(59,130,246,.09), 0 0 22px rgba(59,130,246,.3); }
+    .pnode .ring svg { width: 21px; height: 21px; color: var(--tx2); }
+    .pnode.on .ring svg { color: #9EC3FF; }
+    .pnode .k { font-family: var(--m); font-size: .6rem; letter-spacing: .1em; color: var(--tx3); }
+    .pnode b { display: block; font-size: .92rem; margin: .18rem 0 .3rem; }
+    .pnode p { font-size: .78rem; color: var(--tx2); line-height: 1.4; }
+
+    /* ---------- MODULOS ---------- */
+    .mods { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 2.8rem; }
+    .mod { grid-column: span 4; border: 1px solid var(--line); border-radius: 15px; padding: 1.6rem; background: linear-gradient(170deg, rgba(255,255,255,.05), rgba(255,255,255,.015)); transition: border-color .3s, transform .3s; }
+    .mod:hover { border-color: var(--line2); transform: translateY(-3px); }
+    .mod.w6 { grid-column: span 6; }
+    .mod .ic { width: 34px; height: 34px; border-radius: 9px; background: linear-gradient(140deg, rgba(59,130,246,.24), rgba(139,92,246,.18)); border: 1px solid rgba(99,130,246,.28); display: flex; align-items: center; justify-content: center; margin-bottom: .95rem; }
+    .mod .ic svg { width: 17px; height: 17px; color: #9EC3FF; }
+    .mod p { font-size: .87rem; color: var(--tx2); margin-top: .4rem; }
+    .mod .tg { display: inline-block; font-family: var(--m); font-size: .6rem; letter-spacing: .08em; text-transform: uppercase; color: var(--tx3); border: 1px solid var(--line); border-radius: 5px; padding: .15rem .45rem; margin-top: 1rem; }
+    .mod ul { list-style: none; margin-top: .8rem; }
+    .mod li { font-size: .83rem; color: var(--tx2); padding: .22rem 0 .22rem 1rem; position: relative; }
+    .mod li::before { content: "▸"; position: absolute; left: 0; color: var(--blue); font-size: .7rem; }
+
+    /* ---------- CALCULADORA ---------- */
+    .calc { position: relative; border: 1px solid var(--line2); border-radius: 20px; overflow: hidden; background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.02)); backdrop-filter: blur(12px); box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .cl { padding: 2.2rem; border-right: 1px solid var(--line); }
+    .cr { padding: 2.2rem; display: flex; flex-direction: column; justify-content: center; background: rgba(0,0,0,.22); }
+    .f { margin-bottom: 1.9rem; }
+    .f:last-child { margin-bottom: 0; }
+    .ftop { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .75rem; gap: 10px; }
+    .ftop label { font-size: .87rem; color: var(--tx2); }
+    .ftop output { font-family: var(--m); font-size: 1.05rem; font-weight: 500; color: var(--teal); }
+    input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 3px; background: rgba(255,255,255,.12); border-radius: 99px; outline: none; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(140deg, var(--blue), var(--violet)); cursor: pointer; box-shadow: 0 0 0 4px rgba(59,130,246,.16), 0 2px 8px rgba(0,0,0,.5); }
+    input[type=range]::-moz-range-thumb { width: 20px; height: 20px; border: 0; border-radius: 50%; background: var(--blue); cursor: pointer; }
+    .scale { display: flex; justify-content: space-between; font-family: var(--m); font-size: .63rem; color: var(--tx3); margin-top: .35rem; }
+    .rlab { font-family: var(--m); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tx3); margin-bottom: .7rem; }
+    .result { font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 800; letter-spacing: -.045em; line-height: 1; background: linear-gradient(100deg, #fff, #9EC3FF 55%, #B9A6FF); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .brk { margin-top: 1.5rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+    .brow { display: flex; justify-content: space-between; font-size: .82rem; color: var(--tx2); padding: .3rem 0; }
+    .brow b { font-family: var(--m); font-weight: 500; color: var(--tx); }
+
+    /* ---------- CASO ---------- */
+    .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 2.6rem 0 1.8rem; }
+    .kpi { border: 1px solid var(--line); border-radius: 16px; padding: 2rem 1.5rem; background: linear-gradient(170deg, rgba(255,255,255,.055), rgba(255,255,255,.015)); position: relative; overflow: hidden; }
+    .kpi::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 1px; background: linear-gradient(90deg, transparent, var(--teal), transparent); opacity: .55; }
+    .kpi .k { font-family: var(--m); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tx3); margin-bottom: .65rem; }
+    .kpi b { display: block; font-size: clamp(2.8rem, 7vw, 4rem); font-weight: 800; letter-spacing: -.05em; line-height: 1; background: linear-gradient(100deg, #fff, #9EC3FF 60%, #7DE8D8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .kpi .d { font-size: .81rem; color: var(--tx2); margin-top: .55rem; }
+
+    /* ---------- HERMANOS ---------- */
+    .bros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 2.6rem; }
+    .bro { border: 1px solid var(--line); border-radius: 15px; padding: 1.6rem; background: var(--surf); }
+    .bro .n { font-family: var(--m); font-size: .66rem; letter-spacing: .12em; color: var(--teal); margin-bottom: .7rem; }
+    .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 2rem; max-width: 620px; }
+    .ph { aspect-ratio: 4/5; border: 1px dashed var(--line2); border-radius: 15px; background: var(--surf); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .35rem; padding: 1.2rem; }
+
+    /* ---------- SEGURIDAD ---------- */
+    .sgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 2.4rem; }
+    .sb { border: 1px solid var(--line); border-radius: 14px; padding: 1.4rem; background: var(--surf); }
+    .sb .ic { width: 30px; height: 30px; border-radius: 8px; background: rgba(45,212,191,.12); border: 1px solid rgba(45,212,191,.26); display: flex; align-items: center; justify-content: center; margin-bottom: .8rem; }
+    .sb .ic svg { width: 16px; height: 16px; color: var(--teal); }
+    .sb p { font-size: .85rem; color: var(--tx2); margin-top: .3rem; }
+
+    /* ---------- FAQ ---------- */
+    details.q { border: 1px solid var(--line); border-radius: 12px; background: var(--surf); margin-bottom: 9px; }
+    details.q summary { list-style: none; cursor: pointer; padding: 1.05rem 1.25rem; font-weight: 600; font-size: .98rem; display: flex; gap: .8rem; align-items: center; }
+    details.q summary::-webkit-details-marker { display: none; }
+    details.q summary::after { content: "+"; margin-left: auto; color: var(--teal); font-family: var(--m); font-size: 1.05rem; }
+    details.q[open] summary::after { content: "–"; }
+    details.q .a { padding: 0 1.25rem 1.2rem; color: var(--tx2); font-size: .9rem; }
+
+    footer { border-top: 1px solid var(--line); padding: 42px 0; font-size: .85rem; color: var(--tx2); }
+    footer .wrap { display: flex; flex-direction: column; gap: 9px; }
+    .flinks { display: flex; gap: 18px; flex-wrap: wrap; }
+    footer a:hover { color: var(--teal); }
+
+    .r { opacity: 0; transform: translateY(20px); transition: opacity .75s cubic-bezier(.2,.8,.2,1), transform .75s cubic-bezier(.2,.8,.2,1); }
+    .r.on { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .r, .m, .ev, .panel-main, .p-float { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+    @media (max-width: 1000px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 64px; }
+      .nlinks { display: none; }
+      .leaks, .kpis, .bros, .sgrid { grid-template-columns: 1fr; }
+      .mods { grid-template-columns: 1fr; }
+      .mod, .mod.w6 { grid-column: span 1; }
+      .pipe-row { grid-template-columns: 1fr 1fr; gap: 26px; }
+      .pipe-line, .pipe-fill { display: none; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .cl { border-right: 0; border-bottom: 1px solid var(--line); }
+      .cl, .cr { padding: 1.8rem 1.4rem; }
+      .sec { padding: 68px 0; }
+      .p-float { display: none; }
+      .hero { padding: 54px 0 72px; }
+      .photos { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a href="#" class="brand"><img src="assets/logo.webp" alt="">EasyRobots</a>
+      <div class="nlinks">
+        <a href="#fugas">El problema</a>
+        <a href="#pipeline">El sistema</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#calc">Calculadora</a>
+      </div>
+      <a href="#reservar" class="btn btn-p">Reservar llamada</a>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <header class="hero">
+    <div class="halo halo-b"></div>
+    <div class="halo halo-v"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">IA para clínicas estéticas</div>
+          <h1>Tu clínica deja de perder citas <span class="grad">a las diez de la noche.</span></h1>
+          <p class="lede" style="margin-top:1.2rem">Un sistema que atiende el WhatsApp de tu clínica, reserva en tu
+            agenda y hace el seguimiento. Funcionando, no en diapositivas.</p>
+          <div class="btns">
+            <a href="#reservar" class="btn btn-p">Reservar una llamada de 15 min</a>
+            <a href="#pipeline" class="btn btn-s">Ver el sistema por dentro</a>
+          </div>
+          <div class="badges">
+            <span>WhatsApp Business API</span><span>Datos en la UE</span><span>RGPD · art. 9</span><span>24/7</span>
+          </div>
+        </div>
+
+        <div class="stack" id="stack">
+          <div class="panel p-float pf1">
+            <div class="lbl">Tiempo de respuesta</div>
+            <div class="val" style="color:var(--teal)">8 s</div>
+          </div>
+          <div class="panel p-float pf2">
+            <div class="lbl">Estado del canal</div>
+            <div class="val">● Activo · 24/7</div>
+          </div>
+
+          <div class="panel panel-main">
+            <div class="p-bar"><span class="pulse"></span> EASYROBOTS · MOTOR DE CONVERSACIÓN <span class="rt">#4821</span></div>
+            <div class="wa-h">
+              <div class="wa-av">CB</div>
+              <div><b>Clínica Bella Estética</b><br><em>● en línea</em></div>
+              <div class="chip">IA ACTIVA</div>
+            </div>
+            <div class="thread">
+              <div class="m m-in">Hola, ¿cuánto cuesta el tratamiento de ácido hialurónico?<div class="t">21:42</div></div>
+              <div class="m m-out">Hola 👋 La sesión son 290 € e incluye la revisión a los 15 días. ¿Miro qué huecos
+                tenemos?<div class="t">21:42</div></div>
+              <div class="m m-in">Sí, por favor<div class="t">21:43</div></div>
+              <div class="m m-out">Tengo mañana a las 17:30 o el jueves a las 11:00.<div class="t">21:43</div></div>
+              <div class="m m-in">Mañana mejor<div class="t">21:44</div></div>
+              <div class="m m-out">Reservado, mañana 17:30. Te mando un recordatorio esta tarde 🙂<div class="t">21:44
+                </div></div>
+            </div>
+            <div class="p-events">
+              <div class="ev"><span class="ok">✓</span> cita creada · mañana 17:30 · ác. hialurónico</div>
+              <div class="ev"><span class="ok">✓</span> ficha de paciente actualizada</div>
+              <div class="ev"><span class="ok">✓</span> recordatorio programado · T-4 h</div>
+              <div class="ev"><span class="ok">✓</span> revisión a 15 días en cola</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== FUGAS ==================== -->
+  <section class="sec" id="fugas">
+    <div class="halo halo-t" style="width:460px;height:460px;top:10%;left:-200px"></div>
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Dónde se va el dinero</div>
+        <h2>Tres fugas que casi ninguna clínica mide</h2>
+        <p class="lede" style="margin-top:.9rem">No son problemas de marketing. Son de operativa, y por eso se
+          arreglan con un sistema y no con más anuncios.</p>
+      </div>
+
+      <div class="leaks r">
+        <div class="leak">
+          <div class="n">01</div>
+          <h3>WhatsApps sin responder</h3>
+          <p>La consulta entra a las diez de la noche o en fin de semana. La paciente pregunta en tres clínicas y
+            reserva en la que contesta primero.</p>
+          <div class="cons"><b>No la pierdes por precio</b><span>La pierdes por orden de llegada.</span></div>
+        </div>
+        <div class="leak">
+          <div class="n">02</div>
+          <h3>Citas sin confirmar</h3>
+          <p>Nadie llama una por una la tarde anterior. La paciente no aparece y el aviso llega tarde para ofrecer esa
+            hora a otra persona.</p>
+          <div class="cons"><b>La cabina se paga igual</b><span>Una hora vacía cuesta lo mismo que una llena.</span>
+          </div>
+        </div>
+        <div class="leak">
+          <div class="n">03</div>
+          <h3>Pacientes que no vuelven</h3>
+          <p>Retoque a los 40 días, revisión al año, tratamiento que tocaba repetir. Está en la cabeza de alguien, no
+            en un sistema.</p>
+          <div class="cons"><b>Es tu facturación más barata</b><span>Ya te conocen y ya confían.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PIPELINE ==================== -->
+  <section class="sec" id="pipeline">
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Arquitectura</div>
+        <h2>De la paciente a la cita, <span class="grad">sin nadie en medio</span></h2>
+        <p class="lede" style="margin-top:.9rem">Seis estados. Todo ocurre dentro del WhatsApp que ya usas y de la
+          agenda que ya tienes.</p>
+      </div>
+
+      <div class="pipe r" id="pipe">
+        <div class="pipe-line"></div>
+        <div class="pipe-fill" id="pipeFill"></div>
+        <div class="pipe-row">
+          <div class="pnode">
+            <div class="ring"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="6.5" r="3.2"/><path d="M3.5 17c0-3.3 2.9-5.4 6.5-5.4S16.5 13.7 16.5 17"/></svg></div>
+            <div class="k">01</div><b>Paciente</b>
+            <p>Escribe al número de siempre.</p>
+          </div>
+          <div class="pnode">
+            <div class="ring"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 9.5c0 3.6-3.1 6.5-7 6.5-.9 0-1.8-.2-2.6-.5L3 17l1.2-3.6C3.4 12.3 3 11 3 9.5 3 5.9 6.1 3 10 3s7 2.9 7 6.5z"/></svg></div>
+            <div class="k">02</div><b>WhatsApp</b>
+            <p>API oficial de Meta.</p>
+          </div>
+          <div class="pnode">
+            <div class="ring"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="5" width="13" height="11" rx="2"/><path d="M7 9h6M7 12h4"/></svg></div>
+            <div class="k">03</div><b>Easy AI</b>
+            <p>Entiende y responde con tus datos.</p>
+          </div>
+          <div class="pnode">
+            <div class="ring"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="4.5" width="13" height="12" rx="2"/><path d="M3.5 8h13M7 3v3M13 3v3"/></svg></div>
+            <div class="k">04</div><b>Agenda</b>
+            <p>Huecos reales y reserva.</p>
+          </div>
+          <div class="pnode">
+            <div class="ring"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7"/><path d="M6.5 10.2l2.4 2.4L14 7.5"/></svg></div>
+            <div class="k">05</div><b>Confirmación</b>
+            <p>El día antes, y libera si cancela.</p>
+          </div>
+          <div class="pnode">
+            <div class="ring"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 10a7 7 0 0111.9-5M17 10a7 7 0 01-11.9 5"/><path d="M15 2.5V5h-2.5M5 17.5V15h2.5"/></svg></div>
+            <div class="k">06</div><b>Seguimiento</b>
+            <p>Retoques, revisiones y reactivación.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mods r" style="margin-top:2.4rem">
+        <div class="mod w6">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 2.5l6.5 3v4.8c0 3.6-2.7 6.4-6.5 7.2-3.8-.8-6.5-3.6-6.5-7.2V5.5z"/><path d="M7 10l2 2 4-4"/></svg></div>
+          <h3>Siempre hay una persona detrás</h3>
+          <p>En cuanto la conversación se pone clínica, delicada o se sale del guion, pasa a tu equipo con todo el
+            historial. Dónde está esa frontera lo decides tú antes de que el sistema hable con una sola paciente.</p>
+        </div>
+        <div class="mod w6">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 15V9M8 15V5M12 15v-4M16 15V7"/></svg></div>
+          <h3>Todo queda registrado</h3>
+          <p>Cada conversación, cada cita creada y cada seguimiento queda en la ficha de la paciente. No hay caja
+            negra: puedes leer qué se le dijo a cada persona y cuándo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MODULOS ==================== -->
+  <section class="sec" id="modulos">
+    <div class="halo halo-v" style="width:500px;height:500px;top:20%;right:-220px"></div>
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Módulos</div>
+        <h2>Qué montamos exactamente</h2>
+        <p class="lede" style="margin-top:.9rem">Casi ninguna clínica necesita todo. Se empieza por los dos primeros y
+          se crece cuando tiene sentido.</p>
+      </div>
+      <div class="mods r">
+        <div class="mod w6">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 9.5c0 3.6-3.1 6.5-7 6.5-.9 0-1.8-.2-2.6-.5L3 17l1.2-3.6C3.4 12.3 3 11 3 9.5 3 5.9 6.1 3 10 3s7 2.9 7 6.5z"/></svg></div>
+          <h3>Atención y reserva por WhatsApp</h3>
+          <p>La pieza por la que empieza casi todo el mundo.</p>
+          <ul>
+            <li>Precios, duración, postoperatorio y dirección</li>
+            <li>Consulta de huecos reales y reserva</li>
+            <li>Escalado a una persona cuando hace falta</li>
+          </ul>
+          <span class="tg">Base</span>
+        </div>
+        <div class="mod w6">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="4.5" width="13" height="12" rx="2"/><path d="M3.5 8h13M7 3v3M13 3v3M7.5 11.8l1.7 1.7 3.3-3.3"/></svg></div>
+          <h3>Confirmación de citas</h3>
+          <p>El día antes, con hora, dirección y preparación previa.</p>
+          <ul>
+            <li>Reagenda sola a quien cancela</li>
+            <li>Aviso a recepción de huecos liberados</li>
+          </ul>
+          <span class="tg">Base</span>
+        </div>
+        <div class="mod">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l2.6 1.6"/></svg></div>
+          <h3>Seguimiento</h3>
+          <p>Postoperatorio, retoques a 40 días y revisiones al año, en su fecha exacta.</p>
+          <span class="tg">Crecimiento</span>
+        </div>
+        <div class="mod">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 10a7 7 0 0111.9-5M17 10a7 7 0 01-11.9 5"/><path d="M15 2.5V5h-2.5M5 17.5V15h2.5"/></svg></div>
+          <h3>Reactivación</h3>
+          <p>Recupera pacientes que llevan meses sin aparecer. Es el módulo que más rinde.</p>
+          <span class="tg">Crecimiento</span>
+        </div>
+        <div class="mod">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 12l-3 3a2.8 2.8 0 004 4l3-3M12 8l3-3a2.8 2.8 0 00-4-4L8 4"/><path d="M7.5 12.5l5-5"/></svg></div>
+          <h3>Integraciones</h3>
+          <p>Tu agenda, tu ficha de paciente y tus herramientas conectadas entre sí.</p>
+          <span class="tg">A medida</span>
+        </div>
+        <div class="mod w6">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 15V9M8 15V5M12 15v-4M16 15V7"/></svg></div>
+          <h3>Campañas de Meta Ads</h3>
+          <p>Solo cuando lo de arriba ya funciona. Traer más mensajes a una clínica que no contesta a tiempo es tirar
+            el dinero, y preferimos decírtelo antes de cobrarlo.</p>
+          <span class="tg">Opcional</span>
+        </div>
+        <div class="mod w6">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="14" height="12" rx="2"/><path d="M3 7.5h14"/></svg></div>
+          <h3>Web y asistente en tu página</h3>
+          <p>Solo tiene sentido si tu web recibe visitas. Si tu tráfico va de Instagram directo al WhatsApp, esto no te
+            hace falta y te lo diremos.</p>
+          <span class="tg">Opcional</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CALCULADORA ==================== -->
+  <section class="sec" id="calc">
+    <div class="halo halo-b" style="width:520px;height:520px;top:5%;left:50%;transform:translateX(-50%);opacity:.3"></div>
+    <div class="wrap">
+      <div class="r" style="margin-bottom:2.2rem">
+        <div class="eyebrow">Calculadora</div>
+        <h2>¿Cuánto dinero puede estar perdiendo <span class="grad">tu clínica?</span></h2>
+        <p class="lede" style="margin-top:.9rem">Mueve las tres barras con tus números. El desglose del cálculo está a
+          la derecha, para que puedas discutirlo línea a línea.</p>
+      </div>
+
+      <div class="calc r">
+        <div class="p-bar"><span class="pulse"></span> CALCULADORA DE FUGA DE INGRESOS <span class="rt">v1.0</span></div>
+        <div class="calc-grid">
+          <div class="cl">
+            <div class="f">
+              <div class="ftop"><label for="c1">Consultas nuevas por semana</label><output id="x1">40</output></div>
+              <input type="range" id="c1" min="5" max="250" step="5" value="40">
+              <div class="scale"><span>5</span><span>250</span></div>
+            </div>
+            <div class="f">
+              <div class="ftop"><label for="c2">Sin respuesta a tiempo</label><output id="x2">30 %</output></div>
+              <input type="range" id="c2" min="5" max="80" step="5" value="30">
+              <div class="scale"><span>5 %</span><span>80 %</span></div>
+            </div>
+            <div class="f">
+              <div class="ftop"><label for="c3">Valor medio de una paciente</label><output id="x3">290 €</output></div>
+              <input type="range" id="c3" min="50" max="2000" step="10" value="290">
+              <div class="scale"><span>50 €</span><span>2.000 €</span></div>
+            </div>
+          </div>
+          <div class="cr">
+            <div class="rlab">Estimación mensual</div>
+            <div class="result" id="cout">0 €</div>
+            <div class="brk">
+              <div class="brow"><span>Consultas al mes (× 4,33)</span><b id="k1">—</b></div>
+              <div class="brow"><span>Sin respuesta a tiempo</span><b id="k2">—</b></div>
+              <div class="brow"><span>Habrían reservado (1 de 4)</span><b id="k3">—</b></div>
+              <div class="brow"><span>× valor de paciente</span><b id="k4">—</b></div>
+            </div>
+            <p class="xs" style="margin-top:1rem">Cálculo con tus supuestos, no un dato medido ni una promesa.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="btns r" style="justify-content:center"><a href="#reservar" class="btn btn-p">Revisarlo con mis datos
+          reales</a></div>
+    </div>
+  </section>
+
+  <!-- ==================== CASO ==================== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Caso real</div>
+        <h2>Un envío de seguimiento, contado entero</h2>
+      </div>
+      <div class="kpis r" id="kpis">
+        <div class="kpi"><div class="k">Contactadas</div><b data-to="53">0</b>
+          <div class="d">Pacientes del envío de seguimiento anual</div></div>
+        <div class="kpi"><div class="k">Reservaron</div><b data-to="8">0</b>
+          <div class="d">Volvieron a la clínica tras el mensaje</div></div>
+        <div class="kpi"><div class="k">Conversión</div><b data-to="15" data-suf="%">0</b>
+          <div class="d">8 sobre 53, de una base que estaba parada</div></div>
+      </div>
+      <div class="mods r" style="margin-top:0">
+        <div class="mod w6">
+          <h3>El contexto</h3>
+          <p>Clínica de microblading y micropigmentación. Trabaja sola y no llegaba a avisar de los retoques a los 40
+            días ni de las revisiones al año. Montamos el sistema que lleva esa agenda y escribe a cada clienta en su
+            fecha.</p>
+        </div>
+        <div class="mod w6">
+          <h3>Lo que significa</h3>
+          <p>Ocho clientas que llevaban un año sin aparecer y que no iban a volver solas. El sistema mandó los 53
+            mensajes en un rato; a mano, esa tarde de llamadas no se hace nunca.</p>
+          <p class="xs" style="margin-top:.8rem">Datos del primer envío, publicados con permiso de la clienta. Cada
+            clínica parte de una base distinta: esto no es una promesa de resultados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SEGURIDAD ==================== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Protección de datos</div>
+        <h2>La pregunta que hace toda clínica seria</h2>
+        <p class="lede" style="margin-top:.9rem">Los datos de tus pacientes son categoría especial del artículo 9 del
+          RGPD. Esto no se resuelve diciendo «va todo cifrado».</p>
+      </div>
+      <div class="sgrid r">
+        <div class="sb"><div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 2.5l6.5 3v4.8c0 3.6-2.7 6.4-6.5 7.2-3.8-.8-6.5-3.6-6.5-7.2V5.5z"/></svg></div>
+          <h3>Contrato de encargado</h3><p>Lo firmamos contigo. Tú sigues siendo la responsable de los datos.</p></div>
+        <div class="sb"><div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.2"/><path d="M2.8 10h14.4M10 2.8c1.9 2 2.9 4.5 2.9 7.2s-1 5.2-2.9 7.2"/></svg></div>
+          <h3>Servidores en la UE</h3><p>Y por escrito qué herramienta interviene y qué dato toca cada una.</p></div>
+        <div class="sb"><div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 9.5c0 3.6-3.1 6.5-7 6.5-.9 0-1.8-.2-2.6-.5L3 17l1.2-3.6C3.4 12.3 3 11 3 9.5 3 5.9 6.1 3 10 3s7 2.9 7 6.5z"/></svg></div>
+          <h3>API oficial de Meta</h3><p>No un móvil con un programa colgado que Meta puede cerrar.</p></div>
+        <div class="sb"><div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="6.5" r="3.2"/><path d="M3.5 17c0-3.3 2.9-5.4 6.5-5.4S16.5 13.7 16.5 17"/></svg></div>
+          <h3>Intervención humana</h3><p>Lo clínico pasa a tu equipo. Esa frontera la decides tú.</p></div>
+        <div class="sb"><div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="8.5" width="12" height="8" rx="2"/><path d="M7 8.5V6a3 3 0 016 0v2.5"/></svg></div>
+          <h3>Control y registro</h3><p>Puedes leer qué se le dijo a cada paciente y cuándo.</p></div>
+        <div class="sb"><div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 4.5H5a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-2"/><path d="M11 3h6v6M17 3l-7.5 7.5"/></svg></div>
+          <h3>Y te puedes ir</h3><p>Borrado total cuando quieras. Los datos son de tu clínica.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HERMANOS ==================== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Quién lo construye</div>
+        <h2>Somos dos hermanos, <span class="grad">no una centralita</span></h2>
+        <p class="lede" style="margin-top:.9rem">La persona con la que hablas es la que monta tu sistema y la que lo
+          mantiene después. Nada subcontratado.</p>
+      </div>
+      <div class="bros r">
+        <div class="bro"><div class="n">01</div>
+          <h3>Hablamos contigo</h3>
+          <p class="sm" style="margin-top:.4rem">15 minutos con tus números delante. Si no te compensa, te lo decimos
+            en esa llamada.</p></div>
+        <div class="bro"><div class="n">02</div>
+          <h3>Construimos nosotros</h3>
+          <p class="sm" style="margin-top:.4rem">Escribimos las respuestas contigo hasta que suenan a tu clínica, y lo
+            probamos antes de abrirlo a una sola paciente.</p></div>
+        <div class="bro"><div class="n">03</div>
+          <h3>Seguimos contigo</h3>
+          <p class="sm" style="margin-top:.4rem">Revisamos conversaciones reales las primeras semanas. Después,
+            mantenimiento y vigilancia.</p></div>
+      </div>
+      <div class="photos r">
+        <div class="ph"><b>Foto profesional pendiente</b><span class="xs">Retrato de Anaís · 4:5</span></div>
+        <div class="ph"><b>Foto profesional pendiente</b><span class="xs">Retrato de su hermano · 4:5</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="sec">
+    <div class="wrap" style="max-width:880px">
+      <div class="r" style="margin-bottom:1.6rem">
+        <div class="eyebrow">Preguntas</div>
+        <h2>Antes de reservar la llamada</h2>
+      </div>
+      <div class="r">
+        <details class="q"><summary>¿Cuánto cuesta?</summary>
+          <div class="a">Un pago por el montaje y una cuota mensual de mantenimiento. El montaje depende de cuántos
+            módulos necesites. El rango se te dice en la primera llamada, no después de tres reuniones.</div></details>
+        <details class="q"><summary>¿Cuánto se tarda en tenerlo funcionando?</summary>
+          <div class="a">Entre 10 y 14 días desde que tenemos tus precios, tus tratamientos y el acceso a la agenda. Lo
+            que más se alarga no es la técnica, es afinar las respuestas para que suenen a tu clínica.</div></details>
+        <details class="q"><summary>¿Tengo que cambiar de número o de programa de citas?</summary>
+          <div class="a">No. Se monta sobre el WhatsApp de tu clínica y se conecta con la agenda que ya usas. Si tu
+            agenda no se puede conectar, te lo decimos en la llamada.</div></details>
+        <details class="q"><summary>¿Mis pacientes van a notar que hablan con una máquina?</summary>
+          <div class="a">Van a notar que alguien contesta rápido y bien. El sistema no finge ser una persona y en
+            cuanto la conversación se pone clínica o delicada pasa a tu equipo.</div></details>
+        <details class="q"><summary>¿Y si no me convence?</summary>
+          <div class="a">El primer mes de mantenimiento va sin compromiso: lo cancelas y no se cobra. El montaje sí se
+            cobra, porque es trabajo hecho a medida para tu clínica.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="sec" id="reservar" style="text-align:center">
+    <div class="halo halo-v" style="width:620px;height:420px;top:0;left:50%;transform:translateX(-50%);opacity:.34"></div>
+    <div class="wrap r">
+      <h2 style="max-width:20ch;margin:0 auto">¿Vemos cuántas citas <span class="grad">se te están cayendo?</span></h2>
+      <p class="lede" style="margin:1.2rem auto 0">15 minutos, tus números delante y una respuesta honesta sobre si
+        esto le sirve a tu clínica o no.</p>
+      <div class="btns" style="justify-content:center"><a href="#" class="btn btn-p">Reservar la llamada</a></div>
+      <p class="xs" style="margin-top:1rem">En la web real, este botón abre el calendario.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="flinks"><a href="privacy.html">Privacidad</a><a href="#">Aviso legal / Impressum</a></div>
+      <p>&copy; <span id="y"></span> EasyRobots. Todos los derechos reservados.</p>
+      <p class="xs">EasyRobots AH-NICE · Ana Isabel González Hoog · [dirección pendiente], Hamburgo (Alemania) ·
+        info@easyrobots-ai.cloud</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+    }, { threshold: .1, rootMargin: '0px 0px -50px' });
+    document.querySelectorAll('.r').forEach(function (el) { io.observe(el); });
+
+    /* paneles + conversacion */
+    (function () {
+      var st = document.getElementById('stack'), done = false;
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting || done) return; done = true;
+          st.querySelector('.panel-main').classList.add('on');
+          var t = 320;
+          st.querySelectorAll('.m').forEach(function (m) { setTimeout(function () { m.classList.add('on'); }, t); t += 560; });
+          st.querySelectorAll('.ev').forEach(function (v) { setTimeout(function () { v.classList.add('on'); }, t); t += 280; });
+          st.querySelectorAll('.p-float').forEach(function (f, i) { setTimeout(function () { f.classList.add('on'); }, 600 + i * 420); });
+        });
+      }, { threshold: .2 }).observe(st);
+    })();
+
+    /* pipeline */
+    (function () {
+      var p = document.getElementById('pipe'), f = document.getElementById('pipeFill');
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          f.style.width = '100%';
+          p.querySelectorAll('.pnode').forEach(function (n, i) { setTimeout(function () { n.classList.add('on'); }, i * 300); });
+        });
+      }, { threshold: .3 }).observe(p);
+    })();
+
+    /* kpis */
+    (function () {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.querySelectorAll('b[data-to]').forEach(function (el) {
+            var fin = +el.dataset.to, suf = el.dataset.suf || '', t0 = null;
+            requestAnimationFrame(function s(t) {
+              if (!t0) t0 = t;
+              var pr = Math.min((t - t0) / 1400, 1);
+              el.textContent = Math.round(fin * (1 - Math.pow(1 - pr, 4))) + suf;
+              if (pr < 1) requestAnimationFrame(s);
+            });
+          });
+        });
+      }, { threshold: .4 }).observe(document.getElementById('kpis'));
+    })();
+
+    /* calculadora */
+    (function () {
+      var c1 = document.getElementById('c1'), c2 = document.getElementById('c2'), c3 = document.getElementById('c3');
+      var eur = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+      var n = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 });
+      var cur = 0;
+      function go() {
+        var sem = +c1.value, pct = +c2.value, tik = +c3.value;
+        document.getElementById('x1').textContent = sem;
+        document.getElementById('x2').textContent = pct + ' %';
+        document.getElementById('x3').textContent = eur.format(tik);
+        var mes = sem * 4.33, sin = mes * pct / 100, res = sin * .25, tot = res * tik;
+        document.getElementById('k1').textContent = n.format(Math.round(mes));
+        document.getElementById('k2').textContent = n.format(Math.round(sin));
+        document.getElementById('k3').textContent = n.format(Math.round(res));
+        document.getElementById('k4').textContent = eur.format(tik);
+        var ini = cur, t0 = null;
+        requestAnimationFrame(function s(t) {
+          if (!t0) t0 = t;
+          var p = Math.min((t - t0) / 400, 1);
+          document.getElementById('cout').textContent = eur.format(Math.round(ini + (tot - ini) * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(s); else cur = tot;
+        });
+      }
+      [c1, c2, c3].forEach(function (r) { r.addEventListener('input', go); });
+      go();
+    })();
+
+    /* los paneles flotantes reaccionan levemente al raton */
+    (function () {
+      var st = document.getElementById('stack');
+      if (window.matchMedia('(pointer: coarse)').matches) return;
+      st.addEventListener('mousemove', function (e) {
+        var r = st.getBoundingClientRect();
+        var dx = (e.clientX - r.left - r.width / 2) / r.width;
+        var dy = (e.clientY - r.top - r.height / 2) / r.height;
+        st.querySelectorAll('.p-float').forEach(function (f, i) {
+          var k = (i + 1) * 7;
+          f.style.transform = 'translate(' + (dx * k) + 'px,' + (dy * k) + 'px)';
+        });
+        st.querySelector('.panel-main').style.transform = 'translate(' + (dx * 3) + 'px,' + (dy * 3) + 'px)';
+      });
+      st.addEventListener('mouseleave', function () {
+        st.querySelectorAll('.p-float, .panel-main').forEach(function (f) { f.style.transform = ''; });
+      });
+    })();
+  </script>
+</body>
+
+</html>

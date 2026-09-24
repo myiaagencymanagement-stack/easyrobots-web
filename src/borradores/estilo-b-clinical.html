@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>EasyRobots · Estilo B · Clinical Tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+  <style>
+    /* ==========================================================
+       ESTILO B — CLINICAL TECH
+       Direccion artistica: panel de control de software sanitario.
+       Densidad de informacion alta, rejilla visible, datos y estados
+       por todas partes, monoespaciada para lo tecnico. Nada de aire
+       decorativo: cada hueco lleva un dato dentro.
+       ========================================================== */
+    :root {
+      --w: #FFFFFF;
+      --w2: #F4F7FB;
+      --w3: #EAF0F8;
+      --navy: #0B2545;
+      --navy2: #13315C;
+      --blue: #1F6FEB;
+      --blue-l: #E8F0FE;
+      --cyan: #06A6C4;
+      --green: #0E9F6E;
+      --amber: #C97A0E;
+      --red: #D23B3B;
+      --ink: #0B2545;
+      --grey: #5A6B84;
+      --grey2: #8A9AB3;
+      --line: #D9E2EF;
+      --f: 'IBM Plex Sans', system-ui, sans-serif;
+      --m: 'IBM Plex Mono', ui-monospace, monospace;
+      --max: 1240px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--f); background: var(--w); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .sec { padding: 92px 0; }
+    .alt { background: var(--w2); }
+    .dark { background: var(--navy); color: #fff; }
+
+    h1 { font-size: clamp(2.2rem, 4.8vw, 3.5rem); line-height: 1.08; letter-spacing: -.032em; font-weight: 600; }
+    h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.15; letter-spacing: -.028em; font-weight: 600; }
+    h3 { font-size: 1.04rem; font-weight: 600; letter-spacing: -.012em; }
+    .lede { font-size: 1.06rem; color: var(--grey); max-width: 60ch; }
+    .sm { font-size: .88rem; color: var(--grey); }
+    .xs { font-size: .78rem; color: var(--grey2); }
+    .dark .lede, .dark .sm { color: rgba(255,255,255,.7); }
+    .dark .xs { color: rgba(255,255,255,.5); }
+
+    .mono { font-family: var(--m); }
+    .eyebrow {
+      font-family: var(--m); font-size: .72rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--blue); display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--blue-l); border: 1px solid #CFE0FB; border-radius: 4px; padding: .3rem .65rem; margin-bottom: 1.2rem;
+    }
+    .dark .eyebrow { background: rgba(31,111,235,.16); border-color: rgba(31,111,235,.4); color: #7FB3FF; }
+
+    /* ---------- botones ---------- */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-family: inherit; font-size: .94rem; font-weight: 600; padding: .85rem 1.55rem; border-radius: 6px; border: 1px solid transparent; cursor: pointer; transition: background .2s, border-color .2s, color .2s; }
+    .btn-p { background: var(--blue); color: #fff; }
+    .btn-p:hover { background: #1558C4; }
+    .btn-s { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-s:hover { border-color: var(--blue); color: var(--blue); }
+    .dark .btn-s { background: transparent; border-color: rgba(255,255,255,.28); color: #fff; }
+    .btns { display: flex; gap: 11px; flex-wrap: wrap; margin-top: 1.9rem; }
+
+    /* ---------- nav ---------- */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; letter-spacing: -.02em; }
+    .brand img { height: 24px; border-radius: 3px; }
+    .nlinks { display: flex; gap: 26px; font-size: .88rem; color: var(--grey); }
+    .nlinks a:hover { color: var(--blue); }
+    nav .btn { padding: .55rem 1.1rem; font-size: .86rem; }
+
+    /* ---------- hero ---------- */
+    .hero { background: linear-gradient(180deg, var(--w2) 0%, var(--w) 100%); border-bottom: 1px solid var(--line); padding: 66px 0 78px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; align-items: center; }
+    .stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 8px; background: #fff; margin-top: 2.4rem; overflow: hidden; }
+    .ss { padding: .95rem 1rem; border-right: 1px solid var(--line); }
+    .ss:last-child { border-right: 0; }
+    .ss b { display: block; font-family: var(--m); font-size: 1.12rem; font-weight: 600; letter-spacing: -.02em; }
+    .ss span { font-size: .7rem; color: var(--grey2); letter-spacing: .04em; }
+
+    /* ---------- mockup whatsapp ---------- */
+    .device { border: 1px solid var(--line); border-radius: 12px; background: #fff; overflow: hidden; box-shadow: 0 20px 44px rgba(11,37,69,.09); }
+    .dev-bar { background: var(--navy); color: #fff; padding: .6rem .9rem; display: flex; align-items: center; gap: .55rem; font-family: var(--m); font-size: .7rem; letter-spacing: .06em; }
+    .dev-bar .ld { width: 8px; height: 8px; border-radius: 50%; background: #3DDC97; box-shadow: 0 0 0 3px rgba(61,220,151,.2); }
+    .dev-bar .rgt { margin-left: auto; opacity: .62; }
+    .wa-h { padding: .8rem .9rem; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: .6rem; background: var(--w2); }
+    .wa-av { width: 36px; height: 36px; border-radius: 50%; background: var(--navy2); color: #fff; font-size: .74rem; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+    .wa-h b { display: block; font-size: .88rem; }
+    .wa-h span { font-size: .7rem; color: var(--green); }
+    .chip { margin-left: auto; font-family: var(--m); font-size: .62rem; font-weight: 600; color: var(--blue); background: var(--blue-l); border: 1px solid #CFE0FB; padding: .18rem .45rem; border-radius: 4px; }
+    .wa-b { padding: .9rem; background: #FBFCFE; }
+    .m { max-width: 84%; font-size: .83rem; line-height: 1.45; padding: .52rem .7rem .34rem; border-radius: 8px; margin-bottom: .45rem; opacity: 0; transform: translateY(8px); transition: all .4s ease; }
+    .m.on { opacity: 1; transform: none; }
+    .m-in { background: #fff; border: 1px solid var(--line); }
+    .m-out { background: var(--blue-l); border: 1px solid #CFE0FB; margin-left: auto; }
+    .m .t { font-family: var(--m); font-size: .6rem; color: var(--grey2); text-align: right; margin-top: .18rem; }
+    .m-out .t::after { content: " ✓✓"; color: var(--blue); }
+
+    .log { border-top: 1px solid var(--line); background: var(--navy); padding: .75rem .9rem; font-family: var(--m); font-size: .68rem; color: rgba(255,255,255,.82); }
+    .log div { padding: .16rem 0; display: flex; gap: .5rem; opacity: 0; transform: translateX(-5px); transition: all .35s ease; }
+    .log div.on { opacity: 1; transform: none; }
+    .log .tm { color: rgba(255,255,255,.4); }
+    .log .ok { color: #3DDC97; }
+
+    /* ---------- FLUJO ---------- */
+    .flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-top: 3rem; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fff; }
+    .fnode { padding: 1.5rem 1.1rem; border-right: 1px solid var(--line); position: relative; opacity: .35; transition: opacity .5s ease, background .5s ease; }
+    .fnode:last-child { border-right: 0; }
+    .fnode.on { opacity: 1; background: #fff; }
+    .fnode.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--blue); }
+    .fnode .ic { width: 30px; height: 30px; border-radius: 6px; background: var(--blue-l); color: var(--blue); display: flex; align-items: center; justify-content: center; margin-bottom: .75rem; }
+    .fnode .ic svg { width: 16px; height: 16px; }
+    .fnode .k { font-family: var(--m); font-size: .62rem; letter-spacing: .1em; color: var(--grey2); text-transform: uppercase; }
+    .fnode b { display: block; font-size: .92rem; margin: .2rem 0 .35rem; }
+    .fnode p { font-size: .8rem; color: var(--grey); line-height: 1.45; }
+
+    /* ---------- dashboard de fugas ---------- */
+    .leak { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 2.6rem; }
+    .lcard { border: 1px solid var(--line); border-radius: 10px; background: #fff; overflow: hidden; }
+    .lhead { padding: .7rem .95rem; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: .5rem; background: var(--w2); }
+    .lhead .n { font-family: var(--m); font-size: .68rem; font-weight: 600; color: var(--grey2); }
+    .lhead .st { margin-left: auto; font-family: var(--m); font-size: .62rem; font-weight: 600; padding: .14rem .45rem; border-radius: 4px; background: #FBE9E9; color: var(--red); border: 1px solid #F3D0D0; }
+    .lbody { padding: 1.3rem .95rem 1.1rem; }
+    .lbody h3 { margin-bottom: .5rem; }
+    .lbody p { font-size: .88rem; color: var(--grey); }
+    .lfoot { border-top: 1px dashed var(--line); margin-top: 1rem; padding-top: .85rem; }
+    .lfoot b { display: block; font-size: .86rem; }
+    .lfoot span { font-size: .78rem; color: var(--grey); }
+    .bar { height: 5px; background: var(--w3); border-radius: 99px; overflow: hidden; margin-top: .7rem; }
+    .bar i { display: block; height: 100%; background: var(--red); width: 0; transition: width 1.2s ease; border-radius: 99px; }
+
+    /* ---------- modulos ---------- */
+    .grid-m { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 2.6rem; }
+    .mcard { border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 1.4rem; grid-column: span 4; transition: border-color .25s, box-shadow .25s; }
+    .mcard:hover { border-color: var(--blue); box-shadow: 0 6px 20px rgba(31,111,235,.08); }
+    .mcard.w6 { grid-column: span 6; }
+    .mcard .top { display: flex; align-items: center; gap: .55rem; margin-bottom: .8rem; }
+    .mcard .ic { width: 28px; height: 28px; border-radius: 6px; background: var(--blue-l); color: var(--blue); display: flex; align-items: center; justify-content: center; }
+    .mcard .ic svg { width: 15px; height: 15px; }
+    .mcard .tagx { margin-left: auto; font-family: var(--m); font-size: .6rem; letter-spacing: .08em; text-transform: uppercase; color: var(--grey2); border: 1px solid var(--line); padding: .12rem .4rem; border-radius: 3px; }
+    .mcard p { font-size: .87rem; color: var(--grey); }
+    .mcard ul { list-style: none; margin-top: .7rem; }
+    .mcard li { font-size: .83rem; color: var(--grey); padding: .22rem 0 .22rem 1rem; position: relative; }
+    .mcard li::before { content: "→"; position: absolute; left: 0; color: var(--blue); font-family: var(--m); font-size: .72rem; }
+
+    /* ---------- calculadora ---------- */
+    .calc { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 18px 40px rgba(11,37,69,.07); }
+    .calc-top { background: var(--navy); color: #fff; padding: .7rem 1.1rem; display: flex; align-items: center; gap: .5rem; font-family: var(--m); font-size: .7rem; letter-spacing: .06em; }
+    .calc-grid { display: grid; grid-template-columns: 1.1fr .9fr; }
+    .cl { padding: 2rem; border-right: 1px solid var(--line); }
+    .cr { padding: 2rem; background: var(--w2); display: flex; flex-direction: column; justify-content: center; }
+    .f { margin-bottom: 1.8rem; }
+    .f:last-child { margin-bottom: 0; }
+    .ftop { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .7rem; }
+    .ftop label { font-size: .86rem; font-weight: 500; }
+    .ftop output { font-family: var(--m); font-size: 1.05rem; font-weight: 600; color: var(--blue); }
+    input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; background: var(--w3); border-radius: 99px; outline: none; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 4px; background: var(--blue); cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 5px rgba(11,37,69,.3); }
+    input[type=range]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 4px; background: var(--blue); cursor: pointer; border: 2px solid #fff; }
+    .scale { display: flex; justify-content: space-between; font-family: var(--m); font-size: .64rem; color: var(--grey2); margin-top: .35rem; }
+    .result { font-family: var(--m); font-size: clamp(2.2rem, 5.5vw, 3.2rem); font-weight: 600; letter-spacing: -.035em; color: var(--navy); line-height: 1; }
+    .rlab { font-family: var(--m); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--grey2); margin-bottom: .6rem; }
+    .steps-calc { margin-top: 1.4rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+    .rowc { display: flex; justify-content: space-between; font-size: .82rem; color: var(--grey); padding: .3rem 0; border-bottom: 1px dashed var(--line); }
+    .rowc:last-child { border-bottom: 0; }
+    .rowc b { font-family: var(--m); color: var(--ink); }
+
+    /* ---------- caso ---------- */
+    .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 2.4rem 0 1.6rem; }
+    .kpi { border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 1.8rem 1.4rem; }
+    .kpi .k { font-family: var(--m); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--grey2); margin-bottom: .6rem; }
+    .kpi b { display: block; font-family: var(--m); font-size: clamp(2.6rem, 6vw, 3.6rem); font-weight: 600; letter-spacing: -.04em; line-height: 1; color: var(--navy); }
+    .kpi .d { font-size: .82rem; color: var(--grey); margin-top: .5rem; }
+    .kpi.hi { background: var(--navy); border-color: var(--navy); }
+    .kpi.hi b, .kpi.hi .k { color: #fff; }
+    .kpi.hi .k { color: rgba(255,255,255,.55); }
+    .kpi.hi .d { color: rgba(255,255,255,.65); }
+
+    /* ---------- seguridad ---------- */
+    .sec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 2.4rem; }
+    .sbox { border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 1.4rem; background: rgba(255,255,255,.04); }
+    .sbox .ic { width: 30px; height: 30px; border-radius: 6px; background: rgba(31,111,235,.2); color: #7FB3FF; display: flex; align-items: center; justify-content: center; margin-bottom: .8rem; }
+    .sbox .ic svg { width: 16px; height: 16px; }
+    .sbox h3 { margin-bottom: .35rem; }
+    .sbox p { font-size: .85rem; color: rgba(255,255,255,.66); }
+
+    /* ---------- hermanos ---------- */
+    .bro { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 2.4rem; }
+    .bcard { border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 1.5rem; }
+    .bcard .n { font-family: var(--m); font-size: .68rem; color: var(--blue); letter-spacing: .1em; margin-bottom: .7rem; }
+    .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 2rem; max-width: 620px; }
+    .ph { aspect-ratio: 4/5; border: 1px dashed var(--line); border-radius: 10px; background: var(--w2); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1.2rem; gap: .35rem; }
+
+    /* ---------- faq ---------- */
+    details.q { border: 1px solid var(--line); border-radius: 8px; background: #fff; margin-bottom: 9px; }
+    details.q summary { list-style: none; cursor: pointer; padding: 1.05rem 1.2rem; font-weight: 600; font-size: .98rem; display: flex; align-items: center; gap: .8rem; }
+    details.q summary::-webkit-details-marker { display: none; }
+    details.q summary::after { content: "+"; margin-left: auto; font-family: var(--m); color: var(--blue); font-size: 1.1rem; }
+    details.q[open] summary::after { content: "–"; }
+    details.q .a { padding: 0 1.2rem 1.2rem; color: var(--grey); font-size: .9rem; }
+
+    footer { border-top: 1px solid var(--line); padding: 40px 0; font-size: .85rem; color: var(--grey); }
+    footer .wrap { display: flex; flex-direction: column; gap: 9px; }
+    .flinks { display: flex; gap: 18px; flex-wrap: wrap; }
+
+    .r { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .r.on { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .r, .m, .log div { opacity: 1 !important; transform: none !important; } }
+
+    @media (max-width: 1000px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 42px; }
+      .nlinks { display: none; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .fnode { border-bottom: 1px solid var(--line); }
+      .leak, .kpis, .sec-grid, .bro { grid-template-columns: 1fr; }
+      .grid-m { grid-template-columns: 1fr; }
+      .mcard, .mcard.w6 { grid-column: span 1; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .cl { border-right: 0; border-bottom: 1px solid var(--line); }
+      .stats-strip { grid-template-columns: 1fr 1fr; }
+      .ss:nth-child(2) { border-right: 0; }
+      .ss:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .sec { padding: 64px 0; }
+      .photos { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a href="#" class="brand"><img src="assets/logo.webp" alt="">EasyRobots</a>
+      <div class="nlinks">
+        <a href="#fugas">Diagnóstico</a>
+        <a href="#flujo">El sistema</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#calc">Calculadora</a>
+        <a href="#seguridad">Seguridad</a>
+      </div>
+      <a href="#reservar" class="btn btn-p">Reservar llamada</a>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">● Sistema operativo para clínicas estéticas</div>
+          <h1>La IA que atiende el WhatsApp de tu clínica, reserva la cita y hace el seguimiento.</h1>
+          <p class="lede" style="margin-top:1.2rem">Integrado con WhatsApp Business API y con tu agenda. Responde en
+            segundos a cualquier hora, y pasa a tu equipo lo que es clínico.</p>
+          <div class="btns">
+            <a href="#reservar" class="btn btn-p">Reservar una llamada de 15 min</a>
+            <a href="#flujo" class="btn btn-s">Ver el sistema</a>
+          </div>
+          <div class="stats-strip">
+            <div class="ss"><b>24/7</b><span>DISPONIBILIDAD</span></div>
+            <div class="ss"><b>&lt; 10 s</b><span>RESPUESTA OBJETIVO</span></div>
+            <div class="ss"><b>UE</b><span>ALOJAMIENTO DATOS</span></div>
+            <div class="ss"><b>10–14 d</b><span>PUESTA EN MARCHA</span></div>
+          </div>
+        </div>
+
+        <div class="device" id="dev">
+          <div class="dev-bar"><span class="ld"></span> EASYROBOTS · CANAL WHATSAPP <span class="rgt">SESIÓN
+              #4821</span></div>
+          <div class="wa-h">
+            <div class="wa-av">CB</div>
+            <div><b>Clínica Bella Estética</b><span>● en línea</span></div>
+            <div class="chip">IA ACTIVA</div>
+          </div>
+          <div class="wa-b">
+            <div class="m m-in">Hola, ¿cuánto cuesta el tratamiento de ácido hialurónico?<div class="t">21:42</div></div>
+            <div class="m m-out">Hola 👋 La sesión son 290 € e incluye la revisión a los 15 días. ¿Miro qué huecos
+              tenemos?<div class="t">21:42</div></div>
+            <div class="m m-in">Sí, por favor<div class="t">21:43</div></div>
+            <div class="m m-out">Tengo mañana a las 17:30 o el jueves a las 11:00.<div class="t">21:43</div></div>
+            <div class="m m-in">Mañana mejor<div class="t">21:44</div></div>
+            <div class="m m-out">Reservado, mañana 17:30. Te mando un recordatorio esta tarde 🙂<div class="t">21:44
+              </div></div>
+          </div>
+          <div class="log" id="log">
+            <div><span class="tm">21:42:07</span> <span class="ok">✓</span> intención detectada: PRECIO + RESERVA</div>
+            <div><span class="tm">21:43:51</span> <span class="ok">✓</span> agenda consultada · 2 huecos libres</div>
+            <div><span class="tm">21:44:12</span> <span class="ok">✓</span> cita creada · 17:30 · ác. hialurónico</div>
+            <div><span class="tm">21:44:12</span> <span class="ok">✓</span> recordatorio programado · T-4 h</div>
+            <div><span class="tm">21:44:13</span> <span class="ok">✓</span> revisión a 15 días en cola</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== FUGAS ==================== -->
+  <section class="sec alt" id="fugas">
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Diagnóstico</div>
+        <h2>Tres fugas activas en casi toda clínica</h2>
+        <p class="lede" style="margin-top:.9rem">No son problemas de marketing. Son de operativa, y por eso se
+          arreglan con un sistema y no con más anuncios.</p>
+      </div>
+
+      <div class="leak r" id="leak">
+        <div class="lcard">
+          <div class="lhead"><span class="n">FUGA 01</span><span class="st">ACTIVA</span></div>
+          <div class="lbody">
+            <h3>WhatsApps sin responder</h3>
+            <p>La consulta entra a las diez de la noche o en fin de semana. La paciente pregunta en tres clínicas y
+              reserva en la que contesta primero.</p>
+            <div class="lfoot">
+              <b>No la pierdes por precio</b>
+              <span>La pierdes por orden de llegada.</span>
+              <div class="bar"><i data-w="78"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lcard">
+          <div class="lhead"><span class="n">FUGA 02</span><span class="st">ACTIVA</span></div>
+          <div class="lbody">
+            <h3>Citas sin confirmar</h3>
+            <p>Nadie llama una por una la tarde anterior. La paciente no aparece y el aviso llega tarde para ofrecer
+              esa hora a otra persona.</p>
+            <div class="lfoot">
+              <b>La cabina se paga igual</b>
+              <span>Una hora vacía cuesta lo mismo que una llena.</span>
+              <div class="bar"><i data-w="62"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lcard">
+          <div class="lhead"><span class="n">FUGA 03</span><span class="st">ACTIVA</span></div>
+          <div class="lbody">
+            <h3>Pacientes que no vuelven</h3>
+            <p>Retoque a los 40 días, revisión al año, tratamiento que tocaba repetir. Está en la cabeza de alguien,
+              no en un sistema.</p>
+            <div class="lfoot">
+              <b>Es tu facturación más barata</b>
+              <span>Ya te conocen. No hay que pagar publicidad otra vez.</span>
+              <div class="bar"><i data-w="71"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="xs r" style="margin-top:1rem">Las barras son ilustrativas del peso relativo de cada fuga, no datos
+        medidos de tu clínica. Los tuyos los vemos en la llamada.</p>
+    </div>
+  </section>
+
+  <!-- ==================== FLUJO ==================== -->
+  <section class="sec" id="flujo">
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Arquitectura</div>
+        <h2>De la paciente a la cita, paso a paso</h2>
+        <p class="lede" style="margin-top:.9rem">Seis estados. Todo ocurre dentro del WhatsApp que ya usas y de la
+          agenda que ya tienes.</p>
+      </div>
+
+      <div class="flow r" id="flow">
+        <div class="fnode">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="6.5" r="3.2"/><path d="M3.5 17c0-3.3 2.9-5.4 6.5-5.4S16.5 13.7 16.5 17"/></svg></div>
+          <div class="k">01 · Entrada</div><b>Paciente</b>
+          <p>Escribe al número de siempre. No nota ningún cambio.</p>
+        </div>
+        <div class="fnode">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 9.5c0 3.6-3.1 6.5-7 6.5-.9 0-1.8-.2-2.6-.5L3 17l1.2-3.6C3.4 12.3 3 11 3 9.5 3 5.9 6.1 3 10 3s7 2.9 7 6.5z"/></svg></div>
+          <div class="k">02 · Canal</div><b>WhatsApp API</b>
+          <p>API oficial de Meta, no un móvil con un programa colgado.</p>
+        </div>
+        <div class="fnode">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5" width="13" height="11" rx="2"/><path d="M7 9h6M7 12h4"/></svg></div>
+          <div class="k">03 · Proceso</div><b>Easy AI</b>
+          <p>Entiende qué pide y responde con tus precios y condiciones.</p>
+        </div>
+        <div class="fnode">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="13" height="12" rx="2"/><path d="M3.5 8h13M7 3v3M13 3v3"/></svg></div>
+          <div class="k">04 · Acción</div><b>Agenda</b>
+          <p>Consulta huecos reales y reserva en tu calendario.</p>
+        </div>
+        <div class="fnode">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="7"/><path d="M6.5 10.2l2.4 2.4L14 7.5"/></svg></div>
+          <div class="k">05 · Control</div><b>Confirmación</b>
+          <p>Recordatorio el día antes. Si cancela, libera el hueco.</p>
+        </div>
+        <div class="fnode">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10a7 7 0 0111.9-5M17 10a7 7 0 01-11.9 5"/><path d="M15 2.5V5h-2.5M5 17.5V15h2.5"/></svg></div>
+          <div class="k">06 · Retorno</div><b>Seguimiento</b>
+          <p>Postoperatorio, retoques, revisiones y reactivación.</p>
+        </div>
+      </div>
+
+      <div class="grid-m r" style="margin-top:18px">
+        <div class="mcard w6">
+          <div class="top">
+            <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2.5l6.5 3v4.8c0 3.6-2.7 6.4-6.5 7.2-3.8-.8-6.5-3.6-6.5-7.2V5.5z"/><path d="M7 10l2 2 4-4"/></svg></div>
+            <h3>Siempre hay una persona detrás</h3>
+          </div>
+          <p>En cuanto la conversación se pone clínica, delicada o se sale del guion, pasa a tu equipo con todo el
+            historial. Dónde está esa frontera lo decides tú antes de que el sistema hable con una sola paciente.</p>
+        </div>
+        <div class="mcard w6">
+          <div class="top">
+            <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15V9M8 15V5M12 15v-4M16 15V7"/></svg></div>
+            <h3>Todo queda registrado</h3>
+          </div>
+          <p>Cada conversación, cada cita creada y cada seguimiento enviado queda en la ficha de la paciente. No hay
+            una caja negra: puedes leer exactamente qué se le dijo a cada persona y cuándo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MODULOS ==================== -->
+  <section class="sec alt" id="modulos">
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Módulos</div>
+        <h2>Qué montamos exactamente</h2>
+        <p class="lede" style="margin-top:.9rem">Casi ninguna clínica necesita todo. Se empieza por los dos primeros y
+          se crece cuando tiene sentido.</p>
+      </div>
+
+      <div class="grid-m r">
+        <div class="mcard w6">
+          <div class="top">
+            <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 9.5c0 3.6-3.1 6.5-7 6.5-.9 0-1.8-.2-2.6-.5L3 17l1.2-3.6C3.4 12.3 3 11 3 9.5 3 5.9 6.1 3 10 3s7 2.9 7 6.5z"/></svg></div>
+            <h3>Atención y reserva por WhatsApp</h3><span class="tagx">Base</span>
+          </div>
+          <p>La pieza por la que empieza casi todo el mundo.</p>
+          <ul>
+            <li>Precios, duración, postoperatorio y dirección</li>
+            <li>Consulta de huecos reales y reserva</li>
+            <li>Escalado a una persona cuando hace falta</li>
+          </ul>
+        </div>
+        <div class="mcard w6">
+          <div class="top">
+            <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="13" height="12" rx="2"/><path d="M3.5 8h13M7 3v3M13 3v3M7.5 11.8l1.7 1.7 3.3-3.3"/></svg></div>
+            <h3>Confirmación de citas</h3><span class="tagx">Base</span>
+          </div>
+          <p>El día antes, con hora, dirección y preparación previa.</p>
+          <ul>
+            <li>Reagenda sola a quien cancela</li>
+            <li>Aviso a recepción de huecos liberados</li>
+          </ul>
+        </div>
+        <div class="mcard">
+          <div class="top">
+            <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l2.6 1.6"/></svg></div>
+            <h3>Seguimiento</h3><span class="tagx">Crece</span>
+          </div>
+          <p>Postoperatorio, retoques a 40 días y revisiones al año, avisados en su fecha exacta.</p>
+        </div>
+        <div class="mcard">
+          <div class="top">
+            <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10a7 7 0 0111.9-5M17 10a7 7 0 01-11.9 5"/><path d="M15 2.5V5h-2.5M5 17.5V15h2.5"/></svg></div>
+            <h3>Reactivación</h3><span class="tagx">Crece</span>
+          </div>
+          <p>Recupera pacientes que llevan meses sin aparecer. Es el módulo que más rinde.</p>
+        </div>
+        <div class="mcard">
+          <div class="top">
+            <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12l-3 3a2.8 2.8 0 004 4l3-3M12 8l3-3a2.8 2.8 0 00-4-4L8 4"/><path d="M7.5 12.5l5-5"/></svg></div>
+            <h3>Integraciones</h3><span class="tagx">A medida</span>
+          </div>
+          <p>Tu agenda, tu ficha de paciente y tus herramientas conectadas entre sí.</p>
+        </div>
+        <div class="mcard w6">
+          <div class="top">
+            <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15V9M8 15V5M12 15v-4M16 15V7"/></svg></div>
+            <h3>Campañas de Meta Ads</h3><span class="tagx">Opcional</span>
+          </div>
+          <p>Solo cuando lo de arriba ya funciona. Traer más mensajes a una clínica que no contesta a tiempo es tirar
+            el dinero, y preferimos decírtelo antes de cobrarlo.</p>
+        </div>
+        <div class="mcard w6">
+          <div class="top">
+            <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="14" height="12" rx="2"/><path d="M3 7.5h14"/></svg></div>
+            <h3>Web y asistente en tu página</h3><span class="tagx">Opcional</span>
+          </div>
+          <p>Solo tiene sentido si tu web recibe visitas. Si tu tráfico va de Instagram directo al WhatsApp, esto no te
+            hace falta y te lo diremos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CALCULADORA ==================== -->
+  <section class="sec" id="calc">
+    <div class="wrap">
+      <div class="r" style="margin-bottom:2rem">
+        <div class="eyebrow">Herramienta</div>
+        <h2>¿Cuánto dinero puede estar perdiendo tu clínica?</h2>
+        <p class="lede" style="margin-top:.9rem">Mueve las tres barras con tus números. El desglose del cálculo está a
+          la derecha, para que puedas discutirlo línea a línea.</p>
+      </div>
+
+      <div class="calc r">
+        <div class="calc-top">● CALCULADORA DE FUGA DE INGRESOS <span style="margin-left:auto;opacity:.6">v1.0</span>
+        </div>
+        <div class="calc-grid">
+          <div class="cl">
+            <div class="f">
+              <div class="ftop"><label for="b1">Consultas nuevas por semana</label><output id="w1">40</output></div>
+              <input type="range" id="b1" min="5" max="250" step="5" value="40">
+              <div class="scale"><span>5</span><span>250</span></div>
+            </div>
+            <div class="f">
+              <div class="ftop"><label for="b2">Sin respuesta a tiempo</label><output id="w2">30 %</output></div>
+              <input type="range" id="b2" min="5" max="80" step="5" value="30">
+              <div class="scale"><span>5 %</span><span>80 %</span></div>
+            </div>
+            <div class="f">
+              <div class="ftop"><label for="b3">Valor medio de una paciente</label><output id="w3">290 €</output></div>
+              <input type="range" id="b3" min="50" max="2000" step="10" value="290">
+              <div class="scale"><span>50 €</span><span>2.000 €</span></div>
+            </div>
+          </div>
+          <div class="cr">
+            <div class="rlab">Estimación mensual</div>
+            <div class="result" id="out">0 €</div>
+            <div class="steps-calc">
+              <div class="rowc"><span>Consultas al mes (× 4,33)</span><b id="s1">—</b></div>
+              <div class="rowc"><span>Sin respuesta a tiempo</span><b id="s2">—</b></div>
+              <div class="rowc"><span>Habrían reservado (1 de 4)</span><b id="s3">—</b></div>
+              <div class="rowc"><span>× valor de paciente</span><b id="s4">—</b></div>
+            </div>
+            <p class="xs" style="margin-top:1rem">Cálculo con tus supuestos, no un dato medido ni una promesa.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="btns r"><a href="#reservar" class="btn btn-p">Revisarlo con mis datos reales</a></div>
+    </div>
+  </section>
+
+  <!-- ==================== CASO ==================== -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Caso real</div>
+        <h2>Un envío de seguimiento, contado entero</h2>
+      </div>
+
+      <div class="kpis r" id="kpis">
+        <div class="kpi"><div class="k">Contactadas</div><b data-to="53">0</b>
+          <div class="d">Pacientes del envío de seguimiento anual</div></div>
+        <div class="kpi"><div class="k">Reservaron</div><b data-to="8">0</b>
+          <div class="d">Volvieron a la clínica tras el mensaje</div></div>
+        <div class="kpi hi"><div class="k">Conversión</div><b data-to="15" data-suf="%">0</b>
+          <div class="d">8 sobre 53, de una base que estaba parada</div></div>
+      </div>
+
+      <div class="grid-m r" style="margin-top:0">
+        <div class="mcard w6">
+          <h3 style="margin-bottom:.5rem">El contexto</h3>
+          <p>Clínica de microblading y micropigmentación. Trabaja sola y no llegaba a avisar de los retoques a los 40
+            días ni de las revisiones al año. Montamos el sistema que lleva esa agenda y escribe a cada clienta en su
+            fecha.</p>
+        </div>
+        <div class="mcard w6">
+          <h3 style="margin-bottom:.5rem">Lo que significa</h3>
+          <p>Ocho clientas que llevaban un año sin aparecer y que no iban a volver solas. El sistema mandó los 53
+            mensajes en un rato; a mano, esa tarde de llamadas no se hace nunca.</p>
+          <p class="xs" style="margin-top:.8rem">Datos del primer envío, publicados con permiso de la clienta. Cada
+            clínica parte de una base distinta: esto no es una promesa de resultados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SEGURIDAD ==================== -->
+  <section class="sec dark" id="seguridad">
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Protección de datos</div>
+        <h2>La pregunta que hace toda clínica seria</h2>
+        <p class="lede" style="margin-top:.9rem">Los datos de tus pacientes son categoría especial del artículo 9 del
+          RGPD. Esto no se resuelve diciendo «va todo cifrado».</p>
+      </div>
+      <div class="sec-grid r">
+        <div class="sbox">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2.5l6.5 3v4.8c0 3.6-2.7 6.4-6.5 7.2-3.8-.8-6.5-3.6-6.5-7.2V5.5z"/></svg></div>
+          <h3>Contrato de encargado</h3>
+          <p>Firmamos el contrato de encargado del tratamiento. Tú sigues siendo la responsable de los datos.</p>
+        </div>
+        <div class="sbox">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="7.2"/><path d="M2.8 10h14.4M10 2.8c1.9 2 2.9 4.5 2.9 7.2s-1 5.2-2.9 7.2c-1.9-2-2.9-4.5-2.9-7.2S8.1 4.8 10 2.8z"/></svg></div>
+          <h3>Servidores en la UE</h3>
+          <p>Los datos se alojan en Europa. Te entregamos por escrito qué herramienta interviene y qué dato toca cada
+            una.</p>
+        </div>
+        <div class="sbox">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 9.5c0 3.6-3.1 6.5-7 6.5-.9 0-1.8-.2-2.6-.5L3 17l1.2-3.6C3.4 12.3 3 11 3 9.5 3 5.9 6.1 3 10 3s7 2.9 7 6.5z"/></svg></div>
+          <h3>API oficial de Meta</h3>
+          <p>WhatsApp Business API, no un móvil con un programa colgado que Meta puede cerrar de un día para otro.</p>
+        </div>
+        <div class="sbox">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="6.5" r="3.2"/><path d="M3.5 17c0-3.3 2.9-5.4 6.5-5.4S16.5 13.7 16.5 17"/></svg></div>
+          <h3>Intervención humana</h3>
+          <p>Lo clínico y lo delicado pasa a tu equipo. Esa frontera la decides tú antes de abrirlo a pacientes.</p>
+        </div>
+        <div class="sbox">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="8.5" width="12" height="8" rx="2"/><path d="M7 8.5V6a3 3 0 016 0v2.5"/></svg></div>
+          <h3>Control y registro</h3>
+          <p>Puedes leer exactamente qué se le dijo a cada paciente y cuándo. No hay caja negra.</p>
+        </div>
+        <div class="sbox">
+          <div class="ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 4.5H5a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-2"/><path d="M11 3h6v6M17 3l-7.5 7.5"/></svg></div>
+          <h3>Y te puedes ir</h3>
+          <p>Puedes pedir el borrado de todo cuando quieras. Los datos son de tu clínica, no nuestros.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HERMANOS ==================== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="r">
+        <div class="eyebrow">Quién lo construye</div>
+        <h2>Somos dos hermanos, no una centralita</h2>
+        <p class="lede" style="margin-top:.9rem">La persona con la que hablas es la que monta tu sistema y la que lo
+          mantiene después. Nada subcontratado.</p>
+      </div>
+      <div class="bro r">
+        <div class="bcard"><div class="n">01</div>
+          <h3>Hablamos contigo</h3>
+          <p class="sm" style="margin-top:.4rem">15 minutos con tus números reales delante. Si no te compensa, te lo
+            decimos en esa llamada.</p></div>
+        <div class="bcard"><div class="n">02</div>
+          <h3>Construimos nosotros</h3>
+          <p class="sm" style="margin-top:.4rem">Escribimos las respuestas contigo hasta que suenan a tu clínica, y lo
+            probamos antes de abrirlo a una sola paciente.</p></div>
+        <div class="bcard"><div class="n">03</div>
+          <h3>Seguimos contigo</h3>
+          <p class="sm" style="margin-top:.4rem">Revisamos conversaciones reales las primeras semanas. Después,
+            mantenimiento y vigilancia de que no se cae nada.</p></div>
+      </div>
+      <div class="photos r">
+        <div class="ph"><b>Foto profesional pendiente</b><span class="xs">Retrato de Anaís · 4:5</span></div>
+        <div class="ph"><b>Foto profesional pendiente</b><span class="xs">Retrato de su hermano · 4:5</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="sec alt">
+    <div class="wrap" style="max-width:880px">
+      <div class="r" style="margin-bottom:1.6rem">
+        <div class="eyebrow">Preguntas</div>
+        <h2>Antes de reservar la llamada</h2>
+      </div>
+      <div class="r">
+        <details class="q"><summary>¿Cuánto cuesta?</summary>
+          <div class="a">Un pago por el montaje y una cuota mensual de mantenimiento. El montaje depende de cuántos
+            módulos necesites. El rango se te dice en la primera llamada, no después de tres reuniones.</div></details>
+        <details class="q"><summary>¿Cuánto se tarda en tenerlo funcionando?</summary>
+          <div class="a">Entre 10 y 14 días desde que tenemos tus precios, tus tratamientos y el acceso a la agenda. Lo
+            que más se alarga no es la técnica, es afinar las respuestas para que suenen a tu clínica.</div></details>
+        <details class="q"><summary>¿Tengo que cambiar de número o de programa de citas?</summary>
+          <div class="a">No. Se monta sobre el WhatsApp de tu clínica y se conecta con la agenda que ya usas. Si tu
+            agenda no se puede conectar, te lo decimos en la llamada en lugar de venderte un cambio de sistema entero.
+          </div></details>
+        <details class="q"><summary>¿Mis pacientes van a notar que hablan con una máquina?</summary>
+          <div class="a">Van a notar que alguien contesta rápido y bien. El sistema no finge ser una persona y en
+            cuanto la conversación se pone clínica o delicada pasa a tu equipo.</div></details>
+        <details class="q"><summary>¿Y si no me convence?</summary>
+          <div class="a">El primer mes de mantenimiento va sin compromiso: lo cancelas y no se cobra. El montaje sí se
+            cobra, porque es trabajo hecho a medida para tu clínica.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="sec dark" id="reservar" style="text-align:center">
+    <div class="wrap r">
+      <h2 style="max-width:20ch;margin:0 auto">¿Vemos cuántas citas se te están cayendo?</h2>
+      <p class="lede" style="margin:1.1rem auto 0">15 minutos, tus números delante y una respuesta honesta sobre si
+        esto le sirve a tu clínica o no.</p>
+      <div class="btns" style="justify-content:center"><a href="#" class="btn btn-p">Reservar la llamada</a></div>
+      <p class="xs" style="margin-top:1rem">En la web real, este botón abre el calendario.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="flinks"><a href="privacy.html">Privacidad</a><a href="#">Aviso legal / Impressum</a></div>
+      <p>&copy; <span id="y"></span> EasyRobots. Todos los derechos reservados.</p>
+      <p class="xs">EasyRobots AH-NICE · Ana Isabel González Hoog · [dirección pendiente], Hamburgo (Alemania) ·
+        info@easyrobots-ai.cloud</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+    }, { threshold: .1, rootMargin: '0px 0px -50px' });
+    document.querySelectorAll('.r').forEach(function (el) { io.observe(el); });
+
+    /* conversacion + log */
+    (function () {
+      var dev = document.getElementById('dev'), done = false;
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting || done) return; done = true;
+          var t = 250;
+          dev.querySelectorAll('.m').forEach(function (m) { setTimeout(function () { m.classList.add('on'); }, t); t += 560; });
+          dev.querySelectorAll('.log div').forEach(function (l) { setTimeout(function () { l.classList.add('on'); }, t); t += 260; });
+        });
+      }, { threshold: .25 }).observe(dev);
+    })();
+
+    /* flujo */
+    (function () {
+      var f = document.getElementById('flow');
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          f.querySelectorAll('.fnode').forEach(function (n, i) { setTimeout(function () { n.classList.add('on'); }, i * 220); });
+        });
+      }, { threshold: .3 }).observe(f);
+    })();
+
+    /* barras */
+    (function () {
+      var l = document.getElementById('leak');
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          l.querySelectorAll('.bar i').forEach(function (b, i) { setTimeout(function () { b.style.width = b.dataset.w + '%'; }, 200 + i * 160); });
+        });
+      }, { threshold: .35 }).observe(l);
+    })();
+
+    /* kpis */
+    (function () {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.querySelectorAll('b[data-to]').forEach(function (el) {
+            var fin = +el.dataset.to, suf = el.dataset.suf || '', t0 = null;
+            requestAnimationFrame(function s(t) {
+              if (!t0) t0 = t;
+              var p = Math.min((t - t0) / 1300, 1);
+              el.textContent = Math.round(fin * (1 - Math.pow(1 - p, 4))) + suf;
+              if (p < 1) requestAnimationFrame(s);
+            });
+          });
+        });
+      }, { threshold: .4 }).observe(document.getElementById('kpis'));
+    })();
+
+    /* calculadora */
+    (function () {
+      var b1 = document.getElementById('b1'), b2 = document.getElementById('b2'), b3 = document.getElementById('b3');
+      var eur = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+      var n = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 });
+      var cur = 0;
+      function go() {
+        var sem = +b1.value, pct = +b2.value, tik = +b3.value;
+        document.getElementById('w1').textContent = sem;
+        document.getElementById('w2').textContent = pct + ' %';
+        document.getElementById('w3').textContent = eur.format(tik);
+        var mes = sem * 4.33, sin = mes * pct / 100, res = sin * .25, tot = res * tik;
+        document.getElementById('s1').textContent = n.format(Math.round(mes));
+        document.getElementById('s2').textContent = n.format(Math.round(sin));
+        document.getElementById('s3').textContent = n.format(Math.round(res));
+        document.getElementById('s4').textContent = eur.format(tik);
+        var ini = cur, t0 = null;
+        requestAnimationFrame(function s(t) {
+          if (!t0) t0 = t;
+          var p = Math.min((t - t0) / 400, 1);
+          document.getElementById('out').textContent = eur.format(Math.round(ini + (tot - ini) * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(s); else cur = tot;
+        });
+      }
+      [b1, b2, b3].forEach(function (r) { r.addEventListener('input', go); });
+      go();
+    })();
+  </script>
+</body>
+
+</html>
