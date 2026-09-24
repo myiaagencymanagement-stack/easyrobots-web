@@ -1714,6 +1714,13 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
+    /* Safari recuerda donde te quedaste y al recargar te devuelve ahi,
+       normalmente al caso real, que es donde mas se mira. Si la direccion
+       no lleva ancla (#caso, #reservar...), la pagina arranca arriba.
+       Si la lleva, se respeta: los enlaces de dentro siguen funcionando. */
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (!location.hash) window.scrollTo(0, 0);
+
     /* ---- reveal ---- */
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
