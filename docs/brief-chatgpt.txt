@@ -1,0 +1,617 @@
+=========================================================
+BRIEF EASYROBOTS · COPY Y ARQUITECTURA COMERCIAL
+Seis landings verticales + home de agencia
+Actualizado: 25 de septiembre de 2026
+=========================================================
+
+QUE QUIERO DE TI
+----------------
+Vas a trabajar conmigo en el COPY y la ARQUITECTURA COMERCIAL de las landings
+de EasyRobots.
+
+NO rediseñes las paginas.
+NO cambies el sistema visual.
+NO inventes secciones por estetica.
+NO escribas HTML ni codigo en esta fase.
+
+Primero quiero criticar y afinar la estrategia que hay mas abajo. Despues
+escribiremos los copys completos, vertical por vertical.
+
+Cuando revises algo, quiero que me digas:
+- que esta flojo y por que
+- que titular es mejor y por que
+- que falta para que un dueño de ese negocio se sienta entendido
+- donde suena a agencia generica
+
+No me des un "esta muy bien". Busca el fallo.
+
+
+=========================================================
+1. QUE ES EASYROBOTS
+=========================================================
+
+Agencia de IA y automatizacion.
+
+La idea central de marca:
+
+  NO vendemos "un chatbot".
+  Diseñamos sistemas que trabajan dentro del negocio y conectan las
+  herramientas y procesos que ya utiliza.
+
+Regla que gobierna todo:
+
+  La IA es el MECANISMO.
+  El problema del negocio es el MOTIVO DE COMPRA.
+
+Por tanto:
+  HOME     = EasyRobots como agencia de IA (aqui SI se dice IA, agentes,
+             chatbots, automatizacion, agentes de voz, integraciones,
+             sistemas a medida). Es marca y es SEO.
+  LANDINGS = EasyRobots aplicada al problema concreto de un sector. La IA
+             aparece como mecanismo, nunca como titular.
+  VSL      = version de conversion de cada solucion, con video protagonista.
+
+Ejemplo de la diferencia:
+  MAL:  "Agente de IA para inmobiliarias."
+  BIEN: "Cada llamada que no puedes atender puede ser una oportunidad que
+         termina en otra inmobiliaria."
+        Y despues: "Nuestro agente de voz atiende, identifica el motivo de la
+        llamada, cualifica y deriva al equipo cuando hace falta."
+
+
+=========================================================
+2. WEB ACTUAL
+=========================================================
+
+Dominio: https://easyrobots-ai.cloud/
+
+HOME
+  /home.html    Home nueva de agencia de IA (todavia NO es la principal)
+  /index.html   Home antigua, la que esta en produccion
+
+LANDINGS
+  /inmobiliarias.html                 Inmobiliarias    · agente de voz
+  /concesionarios.html                Concesionarios   · voz + centralita
+  /easyrobots-clinicas-premium.html   Clinicas esteticas · WhatsApp y seguimiento
+  /dental.html                        Clinicas dentales · voz + presupuestos
+  /coaching.html                      Coaches e infoproductores · multicanal
+  /ecommerce.html                     Tiendas online   · postventa
+
+FUNNELS VSL
+  /funnel-inmobiliarias.html
+  /funnel-concesionarios.html
+  /funnel-clinicas-premium.html
+  /funnel-dental.html
+  /funnel-coaching.html
+  /funnel-ecommerce.html
+
+LEGAL
+  /privacy.html
+
+Las 6 landings y los 6 funnels son nuevos (septiembre 2026).
+Todos los CTA abren el mismo calendario de GoHighLevel en modal, cambiando el
+parametro ?nicho= segun la pagina.
+
+Pendientes: foto real de Anais, numeros de demo por nicho, y decidir si
+home.html sustituye a index.html.
+
+
+=========================================================
+3. REGLAS DE PRUEBA SOCIAL (INNEGOCIABLES)
+=========================================================
+
+Caso real = caso real. Demo = demo. Nunca se mezclan.
+
+UNICO caso real documentado:
+  Pilar Marquez · clinica de micropigmentacion
+  53 clientas contactadas
+  8 volvieron a reservar
+  8 retoques x 250 EUR
+  2.000 EUR de valor recuperado estimado
+  Sin gastar en publicidad
+  Publicado con su permiso, con foto y enlace a su Instagram
+
+Este caso pertenece a estetica/microblading. NO se usa como si fuera un caso
+de inmobiliaria, concesionario, dental, coaching o ecommerce. Puede aparecer
+en la home, etiquetado como lo que es.
+
+En los otros cinco nichos la unica prueba disponible hoy es una DEMO del
+agente. Los numeros de demo todavia NO estan publicados.
+
+Prohibido:
+- inventar casos de exito
+- inventar resultados
+- inventar estadisticas sectoriales
+- presentar una demo como si fuera un caso
+- usar como caso un proyecto que nunca entro en produccion
+
+
+=========================================================
+4. REGLAS DE COPY
+=========================================================
+
+Español de España. Tuteo. Frases naturales y directas.
+
+PROHIBIDO el lenguaje corporativo vacio:
+  "Revoluciona tu negocio con el poder de la IA"
+  "Transforma tu empresa"
+  "Potencia tu productividad"
+  "Soluciones innovadoras"
+  "Lleva tu negocio al siguiente nivel"
+
+QUIERO:
+  problema concreto -> consecuencia concreta -> solucion concreta
+
+El copy debe sonar como alguien que entiende como funciona ese negocio por
+dentro, no como una agencia que ha leido la web del cliente.
+
+Las seis landings comparten sistema visual. La narrativa comercial NO puede
+ser la misma seis veces.
+
+
+=========================================================
+5. LA TESIS: POR QUE LAS SEIS NO PUEDEN SONAR IGUAL
+=========================================================
+
+Los seis negocios pierden dinero de formas distintas. Esa es la clave de todo:
+
+  INMOBILIARIA    CARRERA        el mismo lead esta llamando a tu competencia
+  CONCESIONARIO   ATASCO         todo entra por un canal y lo comercial se entierra
+  ESTETICA        ENFRIAMIENTO   la conversacion se apaga sola
+  DENTAL          ABANDONO       lo caro se presenta y nadie lo persigue
+  COACHING        DISPERSION     los leads llegan por 4 sitios sin contexto
+  ECOMMERCE       COSTE VARIABLE el soporte crece al ritmo de las ventas
+
+Unidad que se pierde en cada una:
+  la visita / la oportunidad enterrada / la cita y la clienta /
+  el tratamiento / la llamada de venta / horas de equipo y resenas
+
+Emocion dominante:
+  rabia (te lo quitan) / agobio / culpa / incomodidad de llamar / caos /
+  hartazgo
+
+PRUEBA DE FUEGO: si al leer dos landings seguidas se pudieran intercambiar
+cambiando solo el nombre del sector, esa pagina esta mal.
+
+
+=========================================================
+6. FICHA POR VERTICAL
+=========================================================
+
+---------------------------------------------------------
+6.1 INMOBILIARIAS  ·  /inmobiliarias.html  ·  AGENTE DE VOZ
+---------------------------------------------------------
+ICP: agencia de 3 a 15 comerciales, con cartera propia y dependencia de
+portales (Idealista, Fotocasa). Decide el dueño o el director de oficina, que
+ademas sigue vendiendo.
+
+DOLOR PRINCIPAL: el lead es compartido con la competencia y se lo queda quien
+descuelga antes. Ojo: "se pierden llamadas" es real pero INVISIBLE, no deja
+rastro en ningun informe, asi que el dueño no lo siente. La llamada perdida es
+el POR QUE, no el titular.
+
+DOLORES SECUNDARIOS:
+- el telefono suena mientras el comercial esta dentro de una visita
+- la mañana se va cualificando curiosos sin financiacion ni presupuesto real
+- plantones en visitas: no es un hueco de agenda, es desplazamiento y media
+  mañana de un comercial
+- el seguimiento depende de que alguien se acuerde
+- la cartera de propietarios esta muerta, y el cuello de botella real del
+  negocio no es el comprador: es tener producto que vender
+- el dueño no sabe cuantos leads entraron ni cuantos se contestaron
+
+CONSECUENCIA: la comision se la lleva otra agencia y nunca sabes que ha pasado.
+
+DESEO REAL: que ninguna oportunidad dependa de quien tenia el movil a mano. Y
+por debajo, uno que no dicen en voz alta: captar mas producto sin puerta fria.
+
+MECANISMO: agente de voz que descuelga a la primera a cualquier hora,
+identifica el inmueble, cualifica (zona, presupuesto, financiacion, plazo),
+ofrece hora de visita contra la agenda real del comercial y avisa al equipo con
+el contexto ya recogido.
+
+TITULAR PROPUESTO (opcion A, duro):
+  "La llamada que no coges se la queda la agencia de al lado."
+TITULAR PROPUESTO (opcion B, primera persona):
+  "Tu comercial esta en una visita. El comprador esta llamando a otros cuatro."
+
+SUBTITULAR: Ese lead de Idealista ha entrado a la vez en varias agencias. No
+gana quien tiene mejor piso: gana quien descuelga antes.
+
+CTA principal: "Escuchar como atiende una llamada" (demo)
+CTA secundario: "Ver cuantas llamadas se te caen al mes"
+CTA final: "Reservar una llamada de 15 min"
+
+OBJECIONES: notaran que es una maquina / y si pregunta algo raro / ya tengo CRM
+/ va a llamar a mis propietarios sin que yo lo sepa.
+
+VOCABULARIO: lead de portal, testigo, captacion, nota de encargo, exclusiva,
+visita, comercial o asesor, cartera de propietarios, hipoteca preaprobada,
+arras, tasacion, zona.
+NO USAR: usuario, ticket, conversion, funnel, "cliente potencial".
+
+ARITMETICA DEL COSTE (el ratio lo pone el visitante, nunca nosotros):
+  leads/mes x % sin contestar el mismo dia x (1 / leads por operacion) x
+  comision media = comision que no llega a la mesa
+
+NO DECIR: "aumenta tus ventas un X%", captacion garantizada, que sustituye al
+comercial, ni usar el caso de la clinica.
+
+ORDEN DE BLOQUES: Hero -> COSTE (la carrera invisible) -> Problema -> Solucion
+-> Como funciona -> Que puede hacer -> Demo -> Control/humano -> Proceso -> CTA
+(el coste va ANTES del problema porque la perdida es invisible y hay que
+hacerla visible primero)
+
+
+---------------------------------------------------------
+6.2 CONCESIONARIOS · /concesionarios.html · VOZ + CENTRALITA
+---------------------------------------------------------
+ICP: concesionario o grupo con taller propio. Decide gerencia o el jefe de
+ventas. Recepcion son una o dos personas que sostienen el edificio entero por
+telefono.
+
+DOLOR PRINCIPAL: no es velocidad, es MEZCLA Y VOLUMEN. Todo entra por el mismo
+sitio y lo que da dinero queda sepultado bajo lo que solo da trabajo.
+La frase que lo ordena: "Recepcion no es el problema. El problema es que todo
+pasa por recepcion."
+
+DOLORES SECUNDARIOS:
+- dar cita de taller por telefono consume la jornada de recepcion y aun asi
+  quedan huecos de taller sin llenar
+- llamadas mal derivadas: el cliente cuenta lo mismo tres veces
+- leads de portales y web sin respuesta el mismo dia
+- las mismas cinco preguntas todo el dia: financiacion, tasacion, plazo de
+  entrega, garantia, horarios
+- revisiones y mantenimientos vencidos que no persigue nadie: ingreso
+  recurrente que se evapora
+- pruebas de conducir que se agendan y nadie sigue
+
+CONSECUENCIA: el asesor que deberia estar vendiendo atiende llamadas de taller,
+y el que llamaba para comprar espera o cuelga. Se pierde por saturacion, no por
+falta de interes.
+
+DESEO REAL: que cada llamada llegue clasificada a quien corresponde y que lo
+repetitivo se resuelva sin ocupar a nadie.
+
+MECANISMO: voz que atiende, identifica el motivo en la primera frase, resuelve
+lo repetitivo, da cita de taller contra la agenda real y deriva lo comercial
+con el contexto ya recogido.
+
+TITULAR PROPUESTO:
+  "Tu asesor de ventas lleva toda la mañana dando citas de taller."
+ALTERNATIVA (a gerencia):
+  "El que llamaba para comprar un coche esta esperando detras de tres llamadas
+   de taller."
+
+CTA principal: "Escuchar como clasifica una llamada"
+CTA secundario: "Ver cuanto ocupa hoy el telefono a tu equipo"
+
+OBJECIONES: ya tenemos centralita (una centralita reparte, esto ENTIENDE,
+resuelve y agenda) / mis clientes son mayores y quieren hablar con una persona
+/ el taller tiene su propio software / va a dar citas mal.
+
+VOCABULARIO: cita de taller, orden de reparacion, recambios, posventa, VO y VN,
+tasacion de mi coche, plazo de entrega, entrega, campaña de revision, el
+mantenimiento de los 30.000, asesor comercial, jefe de ventas, recepcion.
+NO USAR: usuario, chat, "leads calientes", "customer journey".
+OJO: cliente de taller y cliente de ventas son dos personas distintas aunque
+sean la misma; el copy tiene que notar esa diferencia.
+
+ARITMETICA DEL COSTE: aqui lo que abre los ojos NO es el dinero, es el reparto.
+  "De cada 100 llamadas, cuantas son de taller, recambios o informacion?"
+  Cuando el gerente escribe 70 u 80, la pagina ya ha hecho su trabajo.
+  Despues, el dinero separado en dos negocios:
+  llamadas de taller sin atender x ticket medio de taller
+  llamadas comerciales que esperan x ticket de venta x % de cierre
+
+NO DECIR: porcentajes del sector sin fuente, "mas ventas de coches", ni que
+sustituye a recepcion (le quita lo repetitivo).
+
+ORDEN: Hero -> Problema (el atasco, con desglose de tipos de llamada) -> Coste
+-> Solucion -> COMO FUNCIONA con el triaje como pieza visual central -> Que
+puede hacer -> Demo -> Control/humano -> Proceso -> CTA
+
+
+---------------------------------------------------------
+6.3 CLINICAS ESTETICAS · /easyrobots-clinicas-premium.html
+     WHATSAPP + CITAS + SEGUIMIENTO + REACTIVACION
+---------------------------------------------------------
+ICP: clinica pequeña o mediana, a menudo la propia profesional al frente. Vive
+en WhatsApp y atiende entre cabina y cabina.
+
+DOLOR PRINCIPAL: la conversacion se enfria sola. Entra la consulta, nadie puede
+contestar en ese momento y cuando se contesta ya no hay la misma intencion.
+Canal escrito, relacion personal: eso cambia el tono de toda la pagina.
+
+IDEA ESTRATEGICA YA VALIDADA:
+  "Muchas clinicas no necesitan mas consultas. Necesitan perder menos
+   oportunidades de las que ya reciben."
+
+DOLORES SECUNDARIOS: consultas fuera de horario, preguntas repetidas, gente que
+pregunta y no reserva, citas sin confirmar, cancelaciones de ultima hora,
+seguimientos que nadie hace, clientas dormidas de hace un año, resenas que no se
+piden, tareas manuales.
+
+TITULAR (validado, no tocar sin motivo):
+  "Cada WhatsApp sin responder es una cita perdida."
+
+ARQUITECTURA DE MARCA QUE SE CONSERVA — "Piezas, no un paquete cerrado":
+  WhatsApp / Conversacion
+  Agenda / Reservas
+  Confirmaciones / Recordatorios
+  Integraciones / Tu software
+  Seguimiento / Postoperatorio
+  Resenas / Reputacion
+  Reactivacion / Clientas dormidas
+  Nucleo: EASYROBOTS
+  Humano: intervencion cuando hace falta
+
+CTA principal: "Reservar una llamada de 15 min"
+CTA secundario: "Ver el caso real"  <- unica vertical donde el secundario
+puede apuntar a prueba social, porque existe
+
+OBJECIONES: notaran que no soy yo / molestar a mis clientas me da apuro (en el
+caso real paso lo contrario: contestaron dando las gracias) / mis datos son
+sensibles.
+
+VOCABULARIO: clienta, cabina, sesion, retoque, protocolo, valoracion, pre y
+post, señal o anticipo, cancelacion, agenda.
+NO USAR: paciente, usuario, ticket medio en el copy visible.
+
+ARITMETICA: aqui hay DOS cuentas y no se mezclan.
+  lo que entra y se pierde: consultas/semana x % sin respuesta a tiempo x
+    % que reservaria x ticket medio
+  lo que ya esta dentro y duerme: clientas sin volver en 12 meses x % que
+    vuelve al recordarselo x precio del tratamiento recurrente
+La segunda es la del caso real y convierte mejor: no pide trafico nuevo.
+
+PRUEBA: caso real de Pilar Marquez (el unico que existe).
+
+NO DECIR: que otra clinica tendra esos mismos numeros, nada de resultados
+clinicos, ni herramientas tecnicas (n8n, API) como argumento.
+
+ORDEN: Hero -> Problema -> Sistema (diagrama) -> Reactivacion -> CASO REAL ->
+Calculadora -> Control/transparencia -> Equipo/humano -> Garantia -> CTA
+
+
+---------------------------------------------------------
+6.4 DENTAL · /dental.html · VOZ + SEGUIMIENTO DE PRESUPUESTOS
+---------------------------------------------------------
+ICP: clinica dental de 1 a 4 gabinetes. Decide el propietario, casi siempre
+tambien odontologo. Recepcion son 1-2 personas entre mostrador y telefono.
+
+DOLOR PRINCIPAL — decision tomada: se combinan los dos angulos, con jerarquia.
+Abre el DINERO PARADO, porque tiene importe y nombre:
+  "Los presupuestos altos se presentan y nadie los persigue."
+Y la saturacion de recepcion entra JUSTO DESPUES como la explicacion de por que
+pasa: no es dejadez, es que quien deberia llamar esta atendiendo el mostrador.
+Eso le quita la culpa al equipo y hace que el dueño siga leyendo en vez de
+ponerse a la defensiva.
+
+DOLORES SECUNDARIOS: el telefono suena con un paciente delante, ausencias sin
+avisar (el gabinete vacio cuesta igual que el lleno), recall de higiene y
+revision, urgencias fuera de horario que acaban en la clinica de al lado,
+preguntas repetidas de precios y financiacion, resenas mal pedidas.
+
+CONSECUENCIA: tratamientos de cuatro cifras que se quedan en "me lo pienso"
+para siempre, y sillon parado que no se recupera.
+
+DESEO REAL: que lo que ya esta presentado se cierre sin que nadie tenga que
+hacer la llamada incomoda.
+
+TITULAR PROPUESTO:
+  "El presupuesto que presentaste hace un mes sigue ahi. Nadie lo ha llamado."
+
+SUBTITULAR: No es dejadez: quien tendria que llamar esta atendiendo el
+mostrador.
+
+CTA principal: "Ver cuanto tienes parado en presupuestos"
+CTA secundario: "Escuchar como atiende una llamada"
+
+LIMITE CRITICO (va en la pagina, no solo en el FAQ):
+  el agente INFORMA y GESTIONA. No valora, no diagnostica, no recomienda
+  tratamiento y no interpreta sintomas. Puede dar cita, derivar y hacer
+  seguimiento administrativo de un presupuesto ya emitido por un profesional.
+
+VOCABULARIO: paciente, recepcion, gabinete, sillon, primera visita, revision,
+higiene, recall, presupuesto, aceptacion, financiacion, ortodoncia, implante,
+urgencia.
+NO USAR: cliente, usuario, lead, "oferta".
+
+ARITMETICA: aqui la calculadora NO debe medir llamadas, debe medir presupuestos
+  presupuestos presentados/mes x % que nadie vuelve a llamar x importe medio x
+  % que se cerraria con un seguimiento normal = dinero parado
+
+PRUEBA: solo demo. Tentacion a evitar: usar el caso de Pilar porque tambien es
+clinica. NO. Micropigmentacion no es odontologia, ni el ticket ni el ciclo se
+parecen, y el paciente dental lo nota.
+
+NO DECIR: nada clinico, "aumenta la aceptacion de presupuestos un X%", ni dar
+precios de tratamientos por boca del agente si la clinica no lo autoriza.
+
+ORDEN: Hero (presupuesto parado) -> Por que pasa (recepcion saturada, sin
+culpar) -> Coste -> Solucion -> Como funciona -> Que puede hacer -> LIMITES DEL
+AGENTE -> Demo -> Control/humano -> Proceso -> CTA
+(unica vertical donde los limites van por encima de la prueba: en sanidad la
+confianza se gana diciendo primero lo que NO haces)
+
+
+---------------------------------------------------------
+6.5 COACHING E INFOPRODUCTORES · /coaching.html · MULTICANAL
+---------------------------------------------------------
+ICP: coach, mentor o infoproductor con programa de 500 a 5.000 EUR. Vende por
+llamada. Equipo de 0 a 3 personas, a veces un setter.
+
+DOLOR PRINCIPAL: no es velocidad ni volumen, es DISPERSION SIN CONTEXTO.
+  "Tus leads llegan por cuatro sitios distintos y ninguno sabe lo que hizo el
+   anterior."
+Nadie sabe quien vio el webinar, quien dejo la solicitud a medias y quien ya
+compro. El negocio depende de llenar la agenda de llamadas, y esa agenda se
+llena a mano y a ojo.
+
+DOLORES SECUNDARIOS: mensajes a deshora (el que escribe a las 23:40 no espera a
+mañana), el 80% son las mismas tres preguntas (precio, temario, facilidades),
+NO-SHOWS (la metrica que decide el mes), solicitudes a medias que nadie rescata,
+picos de lanzamiento que ahogan al equipo los tres dias que mas valen, alumnos
+que se descuelgan y acaban en reembolso.
+
+CONSECUENCIA: agenda de llamadas irregular, semanas llenas y semanas vacias sin
+saber por que. Ingresos impredecibles.
+
+DESEO REAL: previsibilidad. Saber cada lunes cuantas llamadas hay y que esten
+con gente que puede pagar.
+
+MECANISMO: un agente que vive en todos los canales con UNA SOLA CONVERSACION
+detras. El producto debe sentirse como un recorrido, no como un bot:
+  captacion -> conversacion -> cualificacion -> agenda -> recuperacion -> venta
+
+TITULAR PROPUESTO:
+  "Te escriben por cuatro sitios distintos y ninguno sabe lo que hizo el
+   anterior."
+ALTERNATIVA MAS COMERCIAL:
+  "Tu agenda de llamadas no deberia depender de a quien te de tiempo a
+   contestar."
+
+CTA principal: "Ver como cualifica un lead tuyo"
+CTA secundario: "Calcular cuantas llamadas se te caen al mes"
+
+OBJECIONES: mi marca es personal, la gente me escribe a mi / Instagram me puede
+cerrar la cuenta (API oficial) / ya tengo un setter (le quitamos lo repetitivo)
+/ mis leads son frios.
+
+VOCABULARIO: lead, DM, llamada de diagnostico o sesion estrategica, aplicacion
+o solicitud, programa, plazas, cohorte, lanzamiento, no-show, setter, closer,
+clase gratuita, alumno o mentorado.
+NO USAR: cliente (es alumno), ticket, producto, usuario, jerga de agencia.
+
+ARITMETICA: dos cuentas, y la segunda duele mas
+  lo que no contestas: solicitudes/semana x % sin respuesta el mismo dia x
+    % que compraria x precio del programa
+  lo que no se presenta: llamadas agendadas/mes x % de no-show x % recuperable
+    x precio del programa
+
+NO DECIR: nada de ingresos, "llena tu agenda", leads cualificados garantizados,
+que sustituye al setter, ni estadisticas de no-show sin fuente.
+
+ORDEN: Hero -> Problema (mapa de canales dispersos) -> Coste (agenda irregular)
+-> Solucion -> COMO FUNCIONA COMO RECORRIDO, de DM a llamada -> Que puede hacer
+-> Demo -> Control/humano -> Proceso -> CTA
+
+
+---------------------------------------------------------
+6.6 ECOMMERCE · /ecommerce.html · POSTVENTA
+---------------------------------------------------------
+ICP: tienda online con volumen hecho, de 300 pedidos/mes en adelante. Decide el
+fundador o el responsable de atencion al cliente. Tienen trafico; lo que no
+tienen es manos.
+
+DOLOR PRINCIPAL: es el unico de los seis que YA se siente todos los dias, asi
+que no hay que descubrirselo. Lo que hay que nombrar bien es su forma:
+  "Tu soporte crece al mismo ritmo que tus ventas, y la mitad de lo que
+   contesta no aporta nada."
+Vender mas significa contestar mas. El soporte es un coste variable que no
+escala.
+
+DOLORES SECUNDARIOS: devoluciones y cambios a mano correo a correo, mensajes que
+entran de madrugada y se contestan dos dias despues, dudas de preventa (talla,
+compatibilidad, plazo) que frenan el carrito, la mala resena llega antes que la
+buena porque el enfadado si tiene prisa, cero seguimiento de recompra.
+
+CONSECUENCIA: horas de equipo quemadas en lo repetitivo y reputacion publica
+deteriorada por incidencias que se podian haber resuelto a tiempo.
+
+DESEO REAL: poder vender el doble sin contratar a nadie mas en soporte.
+
+MECANISMO: agente conectado al estado real del pedido y al transportista (no
+improvisa, LEE EL DATO), guia cambios y devoluciones, responde preventa, pide
+la resena en el momento bueno e intercepta al cliente insatisfecho ANTES de que
+escriba la resena publica.
+Recorrido: consulta -> respuesta con dato real -> resolucion -> incidencia ->
+seguimiento -> recompra
+
+TITULAR PROPUESTO:
+  "La mitad de tu soporte es «donde esta mi pedido»."
+ALTERNATIVA ORIENTADA AL DUEÑO:
+  "Vender el doble no deberia significar contestar el doble."
+
+CTA principal: "Preguntarle por un pedido" (demo)
+CTA secundario: "Ver cuanto de tu soporte es repetido"
+
+OBJECIONES: ya tengo un helpdesk (se integra; resuelve el ticket antes de que
+llegue) / mi catalogo es complicado / no quiero que un bot gestione una
+devolucion (tu marcas el limite y el importe a partir del cual entra una
+persona) / mis clientes escriben por tres canales.
+
+VOCABULARIO: pedido, referencia o SKU, transportista, numero de seguimiento,
+incidencia, devolucion, cambio de talla, carrito abandonado, ticket, tiempo de
+primera respuesta, resena, recompra.
+NO USAR: lead, paciente, clienta, "consulta".
+Sus dos metricas de cabecera son COSTE POR TICKET y TIEMPO DE PRIMERA RESPUESTA.
+
+ARITMETICA: aqui el coste es TIEMPO, no euros por venta perdida
+  tickets/semana x % repetitivos x minutos por ticket = horas al mes que se van
+  en contestar lo mismo
+  (400 tickets, 60% repetitivos, 4 min = unas 69 horas al mes: medio empleado)
+
+NO DECIR: "reduce tus tickets un 70%" sin dato propio, mas conversion de la
+tienda, que elimina el soporte humano, ni presentar como caso de exito un
+proyecto que no este en produccion y con permiso del cliente.
+
+ORDEN: Hero -> Problema (desglose de la bandeja) -> QUE PUEDE HACER, ARRIBA ->
+Como funciona (linea de vida del pedido) -> Coste -> Demo -> Control/humano ->
+Proceso -> CTA
+(unica donde las capacidades suben tanto: el dueño ya sabe que le duele, lo que
+quiere saber es que le quitas de encima)
+
+
+=========================================================
+7. ESTRUCTURA BASE DE CUALQUIER LANDING
+=========================================================
+El orden cambia por vertical (ver cada ficha), pero los bloques son:
+
+  1. HERO           antetitulo, titular, subtitular, CTA principal, CTA
+                    secundario si aporta, elemento visual, y que entiende el
+                    visitante en 5 segundos
+  2. PROBLEMA       que pasa, por que pasa, que consecuencia tiene
+  3. COSTE          no siempre dinero: oportunidades, tiempo, saturacion,
+                    llamadas, leads, citas, soporte
+  4. SOLUCION       que construimos para ESE sector
+  5. COMO FUNCIONA  el flujo, visual y sencillo
+  6. QUE PUEDE HACER capacidades atadas al dolor, no lista generica
+  7. PRUEBA         caso real si existe; si no, DEMO, y se dice que es demo
+  8. CONTROL/HUMANO/TRANSPARENCIA
+  9. PROCESO        Analizamos -> Disenamos -> Construimos -> Mantenemos
+ 10. CTA FINAL      especifico del nicho
+
+
+=========================================================
+8. IDENTIDAD VISUAL (NO SE TOCA EN ESTA FASE)
+=========================================================
+Premium dark technology: elegante, tecnologico, sobrio, minimalista, muy
+limpio. Negro y navy, azul electrico como acento controlado, tipografia grande
+y limpia, tarjetas oscuras, bordes sutiles, glows contenidos, diagramas
+minimalistas, mucho espacio.
+NO: cyberpunk, exceso de neon, robots 3D, SaaS generico, morado, rosa, naranja.
+Los VSL son algo mas oscuros y con el video de protagonista.
+Las landings comparten sistema visual. La narrativa NO.
+
+
+=========================================================
+9. DECISIONES ABIERTAS
+=========================================================
+1. INMOBILIARIA: titular duro senalando al rival, o version en primera persona
+   del comercial en la visita?
+2. DENTAL: confirmado abrir por el dinero parado con recepcion como
+   explicacion? O prefiero abrir por la saturacion de recepcion?
+3. COACHING: coaches e infoproductores juntos en la misma pagina? (mi criterio:
+   si; mismo dolor, mismo sistema, solo cambia el vocabulario)
+4. Sin los numeros de demo publicados, CINCO de las seis landings se quedan sin
+   prueba. Es lo que mas convertiria de todo este documento.
+
+
+=========================================================
+10. POR DONDE EMPEZAMOS
+=========================================================
+Quiero que critiques esta estrategia vertical por vertical antes de escribir
+nada. Empieza por inmobiliarias. Dime que falla, que titular eliges y por que,
+y que le falta para que un director de oficina se sienta entendido.
