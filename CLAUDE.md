@@ -684,3 +684,9 @@ Míos, cuando lo pida:
   esté lista.
 - Ir creando las verticales de dental y las que vengan, con el mismo sistema
   visual.
+
+## Documentos del proyecto
+
+- `docs/nichos-dolores.md` — dolores, piezas y planteamiento de cada landing de
+  nicho (inmobiliarias, concesionarios, coaches e infoproductores, ecommerce,
+  dental), y cómo se sostiene la prueba mientras solo haya un caso de éxito.
