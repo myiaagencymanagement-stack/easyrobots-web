@@ -3,6 +3,171 @@
 Web de EasyRobots (sistemas de IA para clínicas estéticas). Repo:
 `myiaagencymanagement-stack/easyrobots-web`, rama única `main`.
 
+## Qué es EasyRobots (y qué no)
+
+EasyRobots **no vende "un chatbot de IA"**. Vende esto:
+
+> Diseñamos, construimos y mantenemos un sistema conectado para la clínica, que
+> automatiza procesos y conversaciones usando las herramientas que ya utiliza.
+
+El sistema puede tocar: WhatsApp y conversaciones, gestión de citas, agenda,
+confirmaciones, recordatorios, seguimiento y postoperatorio, reseñas y
+reputación, reactivación de clientas dormidas, e integraciones con el software
+de la clínica. **Siempre con intervención humana cuando hace falta.**
+
+Resumido en la web: *"Piezas, no un paquete cerrado"* y *"EasyRobots se integra
+con las herramientas que ya usas en tu clínica para crear un sistema conectado y
+que trabaja por ti"*.
+
+### Qué se vende de verdad
+
+No se vende IA. La IA es el mecanismo, no el producto que debe protagonizar cada
+titular. Se vende: **menos trabajo manual, menos oportunidades perdidas, mejor
+seguimiento, más control, un sistema conectado, automatización donde tiene
+sentido e intervención humana cuando hace falta.**
+
+### La diferencia frente a "una empresa que instala un chatbot"
+
+- **No:** te ponemos un chatbot.
+- **Sí:** analizamos cómo trabaja tu clínica y construimos las piezas que
+  realmente necesita.
+
+De ahí salen dos frases que se conservan en cualquier página futura: *"Antes de
+montar nada, estudiamos tu clínica"* y *"Ninguna clínica funciona igual que
+otra, así que ningún sistema sale igual que otro"*.
+
+## Público objetivo
+
+Propietarias y responsables de clínicas pequeñas y medianas de estética,
+medicina estética, microblading y micropigmentación. Más adelante, dental y
+nichos parecidos. **Gente no técnica.**
+
+No quieren entender APIs, webhooks, n8n, agentes ni LLMs. Quieren saber: qué
+problema se resuelve, qué trabajo deja de hacer su equipo, qué oportunidades
+deja de perder, cómo afecta a sus citas, cómo se integra con lo que ya usa,
+quién controla el sistema, qué pasa si algo falla, cuánto cuesta y qué ocurre
+después de contratarlo.
+
+Comunicación: **clara, directa, humana, premium y concreta**. Nunca escrita para
+programadores.
+
+## El problema que comunicamos
+
+No es "no tienes IA". Es:
+
+> La clínica ya recibe oportunidades, pero pierde parte de ellas por el camino.
+
+WhatsApps sin responder a tiempo, consultas que quedan sin contestar, gente que
+pregunta y no reserva, citas sin confirmar, cancelaciones de última hora,
+seguimientos que nadie hace, antiguas clientas que desaparecen y dinero dormido
+en la base de clientes.
+
+**WhatsApp es la puerta de entrada al problema, no todo el producto.** El hero
+dice *"Cada WhatsApp sin responder es una cita perdida"*, pero el posicionamiento
+va más allá.
+
+## Dudas que la web tiene que resolver
+
+Todas las páginas deben dejar respondidas estas ocho:
+
+¿Qué pasa con mis datos? · ¿Voy a perder el control? · ¿Es simplemente un
+chatbot? · ¿Quién mantiene esto? · ¿Qué ocurre cuando la IA no sabe qué
+responder? · ¿Se adapta a mi clínica? · ¿Tengo que cambiar todas mis
+herramientas? · ¿Qué pasa si no funciona?
+
+Por eso existen las secciones de humano, transparencia, sistema conectado,
+personalización, garantía y proceso. No son relleno.
+
+## Estructura narrativa de la v6
+
+Es la base conceptual de la marca, no solo el orden de una página:
+
+Hero (el problema) → Problema (comparan clínicas, la velocidad decide) → Sistema
+(no es un paquete cerrado) → Reactivación (dinero en la base que ya tienes) →
+Caso real (prueba) → Calculadora (lo que cuesta no atender) → Control y
+transparencia (objeciones de datos) → Equipo / humano (no somos una centralita)
+→ Garantía (14 días) → CTA (reservar llamada).
+
+El hero además **demuestra visualmente** el sistema con la conversación, la
+agenda y el seguimiento. EasyRobots enseña el producto, no habla de él.
+
+## Lenguaje visual
+
+**Premium dark technology, no cyberpunk AI.** Elegante, oscuro, tecnológico,
+minimalista, sobrio, moderno y muy limpio.
+
+Paleta: negro y azul marino muy oscuro, blancos, grises suaves, y **azul
+eléctrico controlado como acento**. El azul es acento, no inunda la página.
+
+**Nada de morado, rosa, rojo, naranja ni neones excesivos.** El verde, solo donde
+hay WhatsApp de verdad: ya hubo que corregir una versión en la que todo acabó
+pareciendo WhatsApp.
+
+Sí: fondos oscuros, tarjetas apenas más claras que el fondo, bordes muy sutiles,
+esquinas redondeadas, sombras discretas, brillos azules muy controlados,
+tipografía grande y limpia, mucho espacio negativo, líneas finas, diagramas
+minimalistas, iconos sencillos y números grandes cuando hay datos.
+
+No: tarjetas gigantes, dashboards genéricos, exceso de cristal esmerilado,
+degradados enormes, ilustraciones 3D de robots, estética "generada con IA" y
+demasiados efectos.
+
+### Dos piezas que son identidad de marca
+
+- **El diagrama del sistema** (núcleo + piezas conectadas + humano). No se
+  sustituye por un dashboard SaaS genérico. Debe leerse como *sistema conectado*,
+  nunca como *lista de funcionalidades*.
+- **El caso real** debe sentirse como *case study premium*, no como panel de
+  analítica. Los números 53, 8 y 2.000 € son protagonistas, pero integrados en la
+  composición, no en tres cajones enormes.
+
+## Próximas páginas
+
+### Funnel VSL
+
+Mismo sistema visual, arquitectura distinta y más orientada a conversión. El
+vídeo es el protagonista. Objetivo: que el visitante vea el VSL y pida una
+auditoría de su clínica.
+
+Orden: Hero + VSL → Problema → Oportunidad → Sistema → Prueba → Transparencia →
+Proceso → CTA (analizar la clínica).
+
+**Regla:** tiene que parecer *otra página de EasyRobots*, no *una landing
+genérica de VSL*. Mismo color, tipografía, botones, tarjetas, bordes, espaciado,
+fondos, estilo de números y diagramas. Solo cambian la arquitectura, la cantidad
+de contenido, la prioridad del vídeo, el orden de los argumentos y la intensidad
+del CTA.
+
+### Landings por nicho
+
+EasyRobots para estética, para microblading, para dental y los que vengan. Todas
+comparten el **mismo sistema de diseño**. Cambian copy, casos, imágenes,
+ejemplos, problemas, servicios, objeciones y CTA. **No se crea una identidad
+nueva por nicho.**
+
+### Tipos de página
+
+Antes de empezar una nueva, identificar cuál es: landing principal de nicho,
+landing VSL, página de lead magnet o página de auditoría/CTA. Cada una puede
+tener arquitectura distinta, pero todas pertenecen al mismo sistema visual.
+
+## Regla para futuras decisiones
+
+Antes de proponer un diseño, un copy o una estructura, la pregunta es:
+
+> ¿Esto hace que EasyRobots parezca una empresa especializada y premium que
+> construye sistemas para clínicas?
+
+Si la respuesta es no, no entra. Y sobre todo: **no convertir EasyRobots en una
+startup genérica de IA.**
+
+**La v6 es la fuente de verdad visual.** Las páginas nuevas son una evolución del
+sistema, no una reinvención. No inventar una identidad visual nueva sin que
+Guillermo o Anaís lo pidan. Si una propuesta puede alejarse del lenguaje visual
+de la v6, **decirlo antes de implementarla**. Prioridad: coherencia de marca,
+claridad comercial, credibilidad y conversión, por encima de efectos visuales
+llamativos.
+
 ## Cómo se publica
 
 - Todo lo que hay en `src/` se copia a la raíz de nginx (`Dockerfile`).
