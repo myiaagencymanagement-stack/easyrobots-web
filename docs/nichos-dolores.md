@@ -280,17 +280,55 @@ bloque de prueba.
 
 ---
 
-## Orden de trabajo propuesto
+## Orden de trabajo
 
-`index.html` (la home de agencia) es **otra cosa** y tiene su propia arquitectura
-en CLAUDE.md. No se toca hasta tener al menos una landing de nicho nueva
-funcionando, porque la home se construye sobre lo que las verticales demuestran.
+Decisión del 2026-09-24: **se va a los cinco nichos a la vez**, porque el plan es
+lanzar campañas a todos y medir cuál responde. Lo que se abarata no es el número
+de páginas, es cada página.
 
-1. Elegir **un solo nicho piloto**: aquel donde haya más cerca una venta real.
-2. Construirlo entero (landing + funnel) y convertirlo en la plantilla.
-3. Clonar al resto cambiando dolores, piezas y visuales.
-4. Home de agencia al final.
-5. Dental después de estética, clonando de ella.
+Para el test **no hace falta una landing completa por nicho**. Hace falta:
 
-Hacer los cinco a la vez garantiza cinco páginas mediocres y ningún caso de
-éxito nuevo.
+> hero con el dolor del nicho · las cuatro fugas · la pieza estrella con su demo
+> · garantía · CTA
+
+El resto (sistema de piezas, transparencia, humano, equipo, pie) es común y se
+hereda de la plantilla. Se construye una vez y por nicho solo cambian textos y
+el visual de la pieza estrella.
+
+### Orden de construcción, por cercanía a una venta real
+
+1. **Inmobiliarias** — hay un cliente casi cerrado. Va primera y hace de
+   plantilla para las demás.
+2. **Dental** — hay una clínica identificada que no hace seguimiento ni
+   recordatorios. Además es la más barata: se clona de la de estética, que ya
+   existe.
+3. **Ecommerce** — existe el proyecto de Familia Bombay.
+4. **Concesionario** — frío, pero entra en las campañas igual. Para eso es un
+   test.
+
+La home de agencia (`index.html`) sigue yendo al final: se construye sobre lo que
+las verticales demuestren.
+
+### Familia Bombay: es demo, no es caso
+
+El proyecto se construyó pero el cliente nunca lo puso en producción. **No es un
+caso de éxito, no lleva su nombre y no se usa como testimonio.** Lo que sí es:
+un agente de postventa ya construido. Se recupera sobre una tienda de prueba
+propia y pasa a ser la demo en vivo del nicho ecommerce, sin depender del permiso
+de nadie.
+
+### Dos cosas imprescindibles antes de lanzar las campañas
+
+- **Un número de demo por nicho.** Sin casos de éxito, la demo en vivo es la
+  prueba. En inmobiliaria y concesionario, que son voz, es directamente el
+  producto.
+- **UTM por landing y etiqueta de nicho en el CRM.** Si los leads de las cinco
+  campañas caen en el mismo saco, dentro de un mes hay leads pero no hay
+  respuesta a la pregunta que motivó el test.
+
+### El CRM propio es la razón de que esto sea viable
+
+Tener un CRM que sirve para todos los nichos hace que arrancar uno nuevo cueste
+casi nada. Y es argumento de venta: el dueño no cambia de herramientas y por fin
+ve qué se le está cayendo. En inmobiliaria y concesionario, ese informe al dueño
+es media venta, porque hoy no saben cuántas llamadas pierden.
