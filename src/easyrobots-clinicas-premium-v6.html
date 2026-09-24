@@ -618,7 +618,10 @@
     }
 
     .ers-system-inner {
-      width: min(1540px, calc(100% - 80px));
+      /* 1240 en vez de 1540: alinea esta seccion con el resto de la web y
+         deja el hueco hasta Humano en 54 px fijos en cualquier pantalla.
+         Con 1540 eran 204 px en un monitor grande. */
+      width: min(1240px, calc(100% - 80px));
       min-height: 550px;
       margin: 0 auto;
       display: grid;
