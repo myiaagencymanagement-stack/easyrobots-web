@@ -249,10 +249,19 @@ sigue sin proveedor.
 
 ### Estrategia cerrada
 
-- **Tesis:** la postventa es el único sitio del negocio donde **una venta ya
-  cobrada puede convertirse en pérdida**. No entramos por "la mitad de tu
-  soporte es ¿dónde está mi pedido?": eso es queja de volumen, ya lo sabe, y
-  nos mete a competir con cualquier chatbot barato.
+- **Tesis (redacción final de Anaís):** *una venta ya cobrada todavía puede
+  convertirse en horas, incidencias y una mala reseña.* **No** usar "la
+  postventa es el único sitio...": "el único" es demasiado absoluto y abre una
+  discusión que no interesa.
+  No entramos por "la mitad de tu soporte es ¿dónde está mi pedido?": eso es
+  queja de volumen, ya lo sabe, y nos mete a competir con cualquier chatbot
+  barato.
+- **El diferenciador no es "automatizamos soporte". Es: responde con los datos
+  reales de tu tienda y de cada pedido.** El miedo del ecommerce no es gastar
+  en tickets: es que una IA se invente algo y le cree un problema con un cliente
+  que ya ha pagado. Por eso "si no lo sabe, lo dice; si hace falta, avisa a una
+  persona" vende mucho más que "agente omnicanal", y tiene que estar muy
+  presente en la página.
 - **Dolor central:** el pedido ya cobrado sigue generando trabajo y riesgo, y
   se decide de madrugada, en fin de semana o en plena campaña.
 - **Mecanismo:** identifica el pedido → contesta con **el dato real** → guía
