@@ -690,3 +690,8 @@ Míos, cuando lo pida:
 - `docs/nichos-dolores.md` — dolores, piezas y planteamiento de cada landing de
   nicho (inmobiliarias, concesionarios, coaches e infoproductores, ecommerce,
   dental), y cómo se sostiene la prueba mientras solo haya un caso de éxito.
+
+- `docs/copys/` — el copy aprobado de cada landing de nicho, separado del HTML.
+  Cuando se maqueta una página, el texto sale de ahí.
+- `docs/capacidades-reales.md` — qué puede hacer el sistema hoy, por nicho. Se
+  lee ANTES de escribir copy.
