@@ -87,7 +87,6 @@ versión del producto y es lo único sobre lo que puede apoyarse el copy.
 
 ## Pendientes de rellenar
 
-- [ ] Concesionarios
 - [ ] Clínicas estéticas
 - [ ] Coaching e infoproductores
 - [ ] Ecommerce
@@ -134,3 +133,46 @@ Con el seguimiento de presupuestos disponible, **la tesis original se sostiene**
 el dolor central es el presupuesto presentado que nadie retoma, y la saturación
 del mostrador entra después como explicación. El motivo de rechazo registrado
 convierte ese seguimiento en información de negocio, no en un recordatorio.
+
+---
+
+## Concesionarios · estado a 2026-09-25
+
+**Confirmado por Anaís: con el criterio correcto —¿es posible con nuestro
+sistema?— la respuesta es sí a todo, salvo el bloque de voz.**
+
+### Lo único que no se toca: voz
+| Capacidad | Estado |
+|---|---|
+| Atender llamadas entrantes · agente de voz · centralita | **No confirmada** |
+| Clasificación de llamadas en tiempo real · derivación · transferencia en caliente | **No confirmada** |
+| Llamadas salientes · transcripción · grabación | **No confirmada** |
+
+No hay plataforma elegida todavía, y eso no es una semana de trabajo. Nada de
+esto entra en el copy.
+
+### Verde
+Conversación por WhatsApp · avisos por email y Telegram · agenda de taller ·
+agenda comercial · agenda por profesional · consulta de huecos · crear,
+modificar y cancelar citas · contactos · oportunidades · tareas · avisos al
+equipo · seguimiento de leads · seguimiento de pruebas de conducción ·
+seguimiento de presupuestos y ofertas · recordatorios de mantenimiento ·
+campañas de revisión vencida · confirmaciones y ausencias · información de
+vehículos desde base de conocimiento · financiación y garantías autorizadas ·
+integración con su software (DMS y gestor de taller).
+
+### Con matiz, que se mantiene
+- **Stock y recambios:** se consultan si el cliente da la fuente. Es
+  implantación, se habla en la llamada.
+- **Tasación:** el agente recoge matrícula, kilómetros y estado y lo pasa al
+  tasador. **No da un precio.**
+
+### Consecuencia para la estrategia
+La tesis de la centralita —"todo pasa por recepción"— **es una tesis de voz** y
+se aparca entera hasta que haya proveedor. No se puede reconvertir como en
+inmobiliarias, porque allí el valor era la respuesta y aquí es el triaje.
+
+El eje de la página pasa a ser que **un concesionario pierde en sus dos
+negocios por motivos opuestos**: en ventas por minutos, en posventa por meses.
+Dolor central: la posventa vencida, que nadie persigue y que es margen
+recurrente ya dentro de la casa. Segundo: el lead comercial que espera.
