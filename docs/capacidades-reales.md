@@ -13,6 +13,22 @@ Regla de trabajo, fijada el 2026-09-25:
 Cuando una fila cambia de estado, se anota aquí con su fecha y se revisa qué
 copy dependía de ella.
 
+## El criterio que decide qué entra en el copy
+
+Fijado por Anaís el 2026-09-25, y vale para las seis verticales:
+
+> **Si el límite lo pone el cliente, va en el copy.**
+> **Si el límite lo ponemos nosotros, no va hasta que exista.**
+
+Lo primero es implantación y se habla en la llamada de diagnóstico: que la
+clínica tenga o no software con API cambia **cómo** se monta, no **si** se
+puede. Nadie pone en una web "siempre que tu programa exporte".
+
+Lo segundo es una promesa que no podemos cumplir el día que alguien la ponga a
+prueba. El ejemplo que lo ordena todo: si el hero dice que descolgamos el
+teléfono, alguien llamará al número de la demo y no habrá nadie. Eso no se
+arregla en la llamada de venta, porque no se llega a ella.
+
 ---
 
 ## Inmobiliarias · estado a 2026-09-25
@@ -73,6 +89,48 @@ versión del producto y es lo único sobre lo que puede apoyarse el copy.
 
 - [ ] Concesionarios
 - [ ] Clínicas estéticas
-- [ ] Dental
 - [ ] Coaching e infoproductores
 - [ ] Ecommerce
+
+---
+
+## Dental · estado a 2026-09-25
+
+**Confirmado por Anaís: todo lo repasado va al copy sin condiciones, con una
+única excepción, la voz.**
+
+### La única excepción: voz
+| Capacidad | Estado |
+|---|---|
+| Atender llamadas entrantes | **No confirmada** — no hay proveedor conectado |
+| Agente de voz, transferencia, llamadas salientes | **No confirmada** |
+
+No se promete descolgar el teléfono en ningún sitio de la página. Cuando haya
+número de demo de voz se cambia el hero: es una tarde de trabajo, no una
+landing nueva.
+
+### Lo que sí va al copy, sin peros
+| Capacidad | Estado |
+|---|---|
+| Seguimiento de presupuestos, **con su motivo de rechazo** | **Ya disponible** |
+| Agenda por profesional | **Ya disponible** |
+| Confirmaciones y recordatorios | **Ya disponible** |
+| Recuperación de ausencias | **Ya disponible** |
+| Recall de higiene y revisiones | **Ya disponible** |
+| Reseñas | **Ya disponible** |
+| Avisos al equipo | **Ya disponible** |
+| Intervención humana | **Ya disponible** |
+| Información detallada de tratamientos desde base de conocimiento | **Ya disponible** |
+| Integración con el software de la clínica | **Ya disponible** — que tenga API o no cambia la implantación, no la viabilidad |
+
+### Regla de diseño que no es una capacidad
+El agente **no diagnostica, no interpreta síntomas, no recomienda tratamiento y
+no sustituye el criterio clínico.** Informa de lo que la clínica autoriza,
+gestiona lo administrativo y deriva. Esto va escrito en la página: en dental el
+límite es argumento de venta, no letra pequeña.
+
+### Consecuencia para la estrategia
+Con el seguimiento de presupuestos disponible, **la tesis original se sostiene**:
+el dolor central es el presupuesto presentado que nadie retoma, y la saturación
+del mostrador entra después como explicación. El motivo de rechazo registrado
+convierte ese seguimiento en información de negocio, no en un recordatorio.
