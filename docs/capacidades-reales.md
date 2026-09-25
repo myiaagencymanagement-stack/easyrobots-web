@@ -88,7 +88,6 @@ versión del producto y es lo único sobre lo que puede apoyarse el copy.
 ## Pendientes de rellenar
 
 - [ ] Clínicas estéticas
-- [ ] Coaching e infoproductores
 - [ ] Ecommerce
 
 ---
@@ -176,3 +175,49 @@ El eje de la página pasa a ser que **un concesionario pierde en sus dos
 negocios por motivos opuestos**: en ventas por minutos, en posventa por meses.
 Dolor central: la posventa vencida, que nadie persigue y que es margen
 recurrente ya dentro de la casa. Segundo: el lead comercial que espera.
+
+---
+
+## Coaching e infoproductores · estado a 2026-09-25
+
+**Verde salvo voz.** Mismo motor confirmado en dental y concesionarios.
+
+| Capacidad | Estado |
+|---|---|
+| WhatsApp · Instagram DM · webchat · formularios · email · multicanal | **Ya disponible** (IG requiere cuenta profesional y permisos de Meta: es implantación) |
+| Cualificación con criterios propios · preguntas por embudo · etiquetado · tono propio | **Ya disponible** |
+| Agenda, crear llamada, modificar, cancelar, recordatorios | **Ya disponible** |
+| **Recuperación de no-shows** | **Ya disponible** |
+| Seguimiento automático · contactos · oportunidades · tareas · avisos (Telegram, email) | **Ya disponible** |
+| **Memoria y contexto entre canales** | **Ya disponible con un identificador común** (teléfono o email). Sin dato común, unir dos identidades requiere configuración y no siempre es posible |
+| **Recuperación de solicitudes abandonadas** | **Ya disponible si el formulario entrega lo rellenado antes del abandono.** Con formularios de terceros, requiere configuración |
+| Resumen automático de la conversación | **Requiere configuración** |
+| Agente de voz · llamadas salientes · transcripción | **No confirmada** |
+
+### Estrategia cerrada por Anaís el 2026-09-25
+
+- **Eje:** del "sí, me interesa" a una llamada que realmente ocurre.
+- **Problema:** las oportunidades se enfrían entre conversación, aplicación,
+  agenda y llamada. Es gente que **ya había levantado la mano**.
+- **Mecanismo:** canal → conversación → cualificación → aplicación → agenda →
+  recordatorio → recuperación → seguimiento.
+- **Diferenciador:** no vende por el coach. Le quita el trabajo que ocurre
+  **antes y después** de la llamada.
+- **Prueba:** el recorrido completo, incluidos no-show, solicitud abandonada y
+  aviso al equipo.
+- **Tono:** cercano, directo, de marca personal. Nada de "automatiza tu
+  negocio" ni "escala tus ventas".
+- **Unidad económica: la llamada**, no el euro. En esta página no van cifras de
+  dinero.
+- Una sola página para coaches e infoproductores, con un solo vocabulario.
+
+### Tres correcciones de redacción, obligatorias
+
+1. **No** usar "que la agenda se llene sola". Choca con la regla de no prometer
+   resultados. En su lugar: *una agenda más previsible y saber qué llamadas
+   están realmente preparadas*.
+2. **No** decir "donde se cae casi todo": es una afirmación cuantitativa sin
+   datos. En su lugar: *donde muchas oportunidades se enfrían*.
+3. La frase que mejor define la landing, y que resuelve la objeción principal
+   del nicho: **"Esto no vende por ti. Se ocupa de que todo el que dice que sí
+   llegue a tu llamada."**

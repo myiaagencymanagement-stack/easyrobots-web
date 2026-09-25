@@ -18,7 +18,7 @@ Documentos relacionados:
 | Dental | Cerrada | **Escrito** (`dental.md`) | Pendiente |
 | Concesionarios | Cerrada | **Escrito** (`concesionarios.md`) | Pendiente |
 | Clínicas estéticas | Pendiente | — | Página viva, copy anterior |
-| Coaching e infoproductores | Pendiente | — | Pendiente |
+| Coaching e infoproductores | **Cerrada** | Pendiente | Pendiente |
 | Ecommerce | Pendiente | — | Pendiente |
 
 ## Las reglas que gobiernan todo el copy
@@ -57,3 +57,4 @@ concesionarios es gestión de cartera. No se calca la estructura de una en otra.
 | Inmobiliarias | Gana quien llega primero, y quien llega primero es un WhatsApp en segundos | La ventana de intención se cierra en minutos; devolver la llamada no es retomar la conversación | *El piso se lo lleva quien llama primero.* |
 | Dental | El dinero ya está dentro de la clínica | El presupuesto presentado que nadie retoma y cuyo motivo de rechazo nadie registra | *El paciente dijo que se lo pensaba. De eso hace cinco semanas.* |
 | Concesionarios | Dos relojes, un mismo cliente | La cartera de posventa que se apaga sola, mientras las oportunidades nuevas esperan | *Vender es la mitad del negocio. La otra vuelve al taller.* |
+| Coaching | Del "sí, me interesa" a una llamada que realmente ocurre | Las oportunidades se enfrían entre conversación, aplicación, agenda y llamada | Pendiente de escribir |
