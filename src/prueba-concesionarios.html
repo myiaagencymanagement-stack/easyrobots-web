@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- NO PUBLICADA. Version de trabajo local. -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>IA para concesionarios · ventas y posventa · EasyRobots</title>
+  <meta name="description"
+    content="Agencia de inteligencia artificial especializada en automatización para clínicas estéticas. Respondemos consultas, gestionamos citas y hacemos seguimiento.">
+  <!-- Las tipografias se sirven desde este mismo dominio. Cargarlas desde
+       Google enviaba la IP de cada visitante a sus servidores sin permiso,
+       y en Alemania hay sentencias en contra. -->
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    /* latin-ext */
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-400-latin-ext.woff2) format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-400-latin.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-500-latin-ext.woff2) format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-500-latin.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-600-latin-ext.woff2) format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-600-latin.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-700-latin-ext.woff2) format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-700-latin.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 800;
+      font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-800-latin-ext.woff2) format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 800;
+      font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-800-latin.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+
+    /* ==========================================================
+       v6 — recreación del diseño de referencia
+       Claro y editorial, con dos bandas oscuras (el sistema y la
+       calculadora) y el verde de WhatsApp como único acento vivo.
+       ========================================================== */
+    :root {
+      --w: #FFFFFF;
+      --bone: #F7F6F2;
+      --bone-2: #F1EFEA;
+      --ink: #14181A;
+      --ink-2: #2B3134;
+      --grey: #6E767B;
+      --grey-2: #9AA1A6;
+      --line: #E4E2DC;
+      --line-d: rgba(255, 255, 255, .11);
+      --dark: #0A0D0C;
+      --dark-2: #111514;
+      --green: #25D366;
+      --blue: #6E8FFF;
+      --blue-d: #3F63D6;
+      --blue-s: #EEF2FF;
+      --green-d: #14A54A;
+      --green-s: #E8F8ED;
+      --f: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+      --max: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    body { font-family: var(--f); background: var(--w); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 30px; }
+    .sec { padding: 96px 0; }
+
+    h1 { font-size: clamp(2.3rem, 4.6vw, 3.45rem); line-height: 1.08; letter-spacing: -.035em; font-weight: 700; }
+    h2 { font-size: clamp(1.7rem, 3.1vw, 2.35rem); line-height: 1.16; letter-spacing: -.03em; font-weight: 700; }
+    h3 { font-size: 1rem; font-weight: 700; letter-spacing: -.015em; }
+    .lede { font-size: 1rem; color: var(--grey); max-width: 42ch; line-height: 1.62; }
+    .xs { font-size: .78rem; color: var(--grey-2); line-height: 1.5; }
+
+    .kick { font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--grey-2); margin-bottom: 1.3rem; }
+    .kick-d { color: rgba(255,255,255,.42); }
+
+    /* ---------- botones ---------- */
+    .btn { display: inline-flex; align-items: center; gap: .6rem; font-family: inherit; font-size: .9rem; font-weight: 600; padding: .88rem 1.55rem; border-radius: 100px; border: 1px solid transparent; cursor: pointer; transition: transform .25s cubic-bezier(.2,.8,.2,1), background .25s, opacity .25s; }
+    .btn-dark { background: var(--ink); color: #fff; }
+    .btn-dark:hover { transform: translateY(-1px); background: #000; }
+    .btn-light { background: #fff; color: var(--ink); }
+    .btn-outline { background: transparent; border-color: var(--line); color: var(--ink); }
+    .btn-outline:hover { border-color: var(--ink); transform: translateY(-1px); }
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1.8rem; }
+    .btn-light:hover { transform: translateY(-1px); }
+    .btn svg { width: 15px; height: 15px; }
+
+    /* ---------- NAV ---------- */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.86); backdrop-filter: saturate(180%) blur(16px); }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: .6rem; font-size: .84rem; font-weight: 800; letter-spacing: .1em; }
+    .spark { width: 19px; height: 19px; color: var(--ink); flex: 0 0 auto; }
+    .nlinks { display: flex; gap: 34px; font-size: .87rem; font-weight: 500; color: var(--ink-2); }
+    .nlinks a:hover { color: var(--grey); }
+    nav .btn { padding: .68rem 1.35rem; font-size: .84rem; }
+
+    /* ---------- HERO ---------- */
+    .hero { position: relative; padding: 52px 0 84px; overflow: hidden; }
+    .hero-bg {
+      position: absolute; top: 0; right: 0; width: 52%; height: 100%;
+      background:
+        radial-gradient(60% 50% at 70% 30%, rgba(210, 222, 214, .75), transparent 70%),
+        linear-gradient(200deg, #EFEEE8, #E6E7E1 55%, #DFE3DD);
+      filter: blur(1px); z-index: 0;
+    }
+    .hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,.55) 22%, transparent 55%); }
+    .hero .wrap { position: relative; z-index: 2; }
+    .hero-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 40px; align-items: center; }
+    .hero p + p { margin-top: .9rem; }
+
+    /* ---------- MOCKUP WHATSAPP ---------- */
+    .chat-zone { display: grid; grid-template-columns: 1.25fr .75fr; gap: 20px; align-items: start; }
+    .chat {
+      background: #fff; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 1px 2px rgba(20,24,26,.04), 0 12px 28px rgba(20,24,26,.07), 0 40px 80px rgba(20,24,26,.09);
+    }
+    .chat-top { display: flex; align-items: center; gap: .65rem; padding: .95rem 1.1rem; border-bottom: 1px solid var(--line); }
+    .wa-ico { width: 32px; height: 32px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .wa-ico svg { width: 19px; height: 19px; color: #fff; }
+    .chat-top b { display: block; font-size: .84rem; font-weight: 600; }
+    .chat-top span { font-size: .68rem; color: var(--grey-2); }
+    .chat-top .dots { margin-left: auto; color: var(--grey-2); letter-spacing: .12em; font-size: .85rem; }
+    .chat-body { padding: 1.1rem; display: flex; flex-direction: column; gap: .55rem; }
+    .b { max-width: 78%; font-size: .805rem; line-height: 1.48; padding: .62rem .78rem .42rem; border-radius: 13px; position: relative; opacity: 0; transform: translateY(8px); transition: opacity .45s ease, transform .45s cubic-bezier(.2,.8,.2,1); }
+    .b.on { opacity: 1; transform: none; }
+    .b-in { background: var(--bone); border-bottom-left-radius: 4px; align-self: flex-start; }
+    .b-out { background: var(--green-s); border-bottom-right-radius: 4px; align-self: flex-end; }
+    .b .who { font-size: .66rem; font-weight: 700; color: var(--green-d); margin-bottom: .18rem; display: flex; gap: .4rem; align-items: center; }
+    .b .who em { font-style: normal; font-weight: 500; color: var(--grey-2); }
+    .b .hh { font-size: .6rem; color: var(--grey-2); text-align: right; margin-top: .2rem; }
+    .done { display: flex; align-items: center; gap: .6rem; background: var(--bone); border-radius: 13px; padding: .65rem .8rem; align-self: flex-start; max-width: 78%; opacity: 0; transform: translateY(8px); transition: all .45s ease; }
+    .done.on { opacity: 1; transform: none; }
+    .done .ck { width: 22px; height: 22px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .done .ck svg { width: 12px; height: 12px; color: #fff; }
+    .done b { display: block; font-size: .78rem; }
+    .done span { font-size: .68rem; color: var(--grey-2); }
+    .done .hh { margin-left: auto; font-size: .6rem; color: var(--grey-2); }
+    .chat-foot { display: flex; align-items: center; gap: .6rem; padding: .8rem 1.1rem; border-top: 1px solid var(--line); color: var(--grey-2); font-size: .78rem; }
+    .chat-foot .ic { margin-left: auto; display: flex; gap: .55rem; }
+    .chat-foot svg { width: 15px; height: 15px; }
+
+    .side { display: flex; flex-direction: column; gap: 14px; }
+    .scard { background: #fff; border-radius: 15px; padding: .95rem 1.05rem; box-shadow: 0 1px 2px rgba(20,24,26,.04), 0 10px 24px rgba(20,24,26,.07); opacity: 0; transform: translateY(10px); transition: all .6s cubic-bezier(.2,.8,.2,1); }
+    .scard.on { opacity: 1; transform: none; }
+    .scard .hd { display: flex; align-items: center; gap: .55rem; }
+    .scard .hd svg { width: 15px; height: 15px; color: var(--ink); flex: 0 0 auto; }
+    .scard b { font-size: .8rem; font-weight: 700; }
+    .scard span { display: block; font-size: .7rem; color: var(--grey-2); margin-top: .12rem; }
+    .pill-ok { display: inline-block; margin-top: .6rem; background: var(--green-s); color: var(--green-d); font-size: .7rem; font-weight: 600; padding: .3rem .7rem; border-radius: 7px; }
+
+    /* plantilla de WhatsApp Business */
+    .b.tpl { max-width: 94%; font-size: .78rem; padding: .7rem .8rem .45rem; }
+    .b.tpl .tpl-t { font-weight: 700; margin-bottom: .35rem; }
+    .b.tpl p { margin: 0; }
+    .b.tpl p + p { margin-top: .5rem; }
+    .b.tpl .tpl-more { display: block; margin-top: .35rem; color: var(--green-d); font-weight: 500; }
+    .b.tpl .tpl-from { margin-top: .5rem; padding-top: .4rem; border-top: 1px solid rgba(20,24,26,.08); font-size: .62rem; color: var(--grey-2); }
+    .b.tpl .ck2 { color: #34B7F1; letter-spacing: -1px; }
+
+    /* ---------- EL PROBLEMA ---------- */
+    .prob { background: var(--bone); }
+    .prob-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 48px; align-items: start; }
+    .cards3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .mockcard { border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 6px 20px rgba(20,24,26,.06); }
+    .mock { height: 128px; position: relative; display: flex; align-items: center; justify-content: center; padding: 14px; }
+    .mock-1 { background: linear-gradient(150deg, #D7DCD6, #C3CBC5); }
+    .mock-2 { background: #fff; border-bottom: 1px solid var(--line); }
+    .mock-3 { background: linear-gradient(150deg, #E6E4DE, #D9DBD5); }
+    .mini { background: #fff; border-radius: 9px; padding: .5rem .65rem; display: flex; align-items: center; gap: .5rem; box-shadow: 0 3px 10px rgba(0,0,0,.09); font-size: .68rem; }
+    .mini .dot-r { width: 7px; height: 7px; border-radius: 50%; background: #E5484D; margin-left: auto; flex: 0 0 auto; }
+    .mini .wa-s { width: 20px; height: 20px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .mini .wa-s svg { width: 12px; height: 12px; color: #fff; }
+    .cal { width: 100%; font-size: .55rem; color: var(--grey); }
+    .cal .ch { display: flex; justify-content: space-between; font-size: .62rem; font-weight: 700; color: var(--ink); margin-bottom: .35rem; }
+    .cal .g { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; }
+    .cal .g i { font-style: normal; padding: 1.5px 0; border-radius: 4px; }
+    .cal .g i.sel { background: var(--ink); color: #fff; font-weight: 700; }
+    .cal .times { display: flex; flex-direction: column; gap: 2px; font-size: .58rem; text-align: right; }
+    .bub2 { background: #fff; border-radius: 9px 9px 9px 3px; padding: .42rem .6rem; font-size: .63rem; box-shadow: 0 3px 10px rgba(0,0,0,.08); max-width: 82%; }
+    .bub2.r { border-radius: 9px 9px 3px 9px; align-self: flex-end; background: var(--green-s); }
+    .mocklabel { padding: .9rem 1rem 1.1rem; }
+    .mocklabel .t { display: flex; align-items: center; gap: .45rem; font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--grey-2); margin-bottom: .5rem; }
+    .mocklabel .t svg { width: 12px; height: 12px; }
+    .mocklabel p { font-size: .84rem; color: var(--ink-2); line-height: 1.45; }
+
+    /* ---------- EL SISTEMA (oscuro) ---------- */
+    .dark { background: #0B0E16; color: #fff; }
+    .dark .lede { color: rgba(255,255,255,.62); }
+    .sys-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 48px; align-items: center; }
+    .orbit-wrap { display: grid; grid-template-columns: 1fr 178px; gap: 30px; align-items: center; }
+    .orbit { position: relative; aspect-ratio: 1.62/1; min-height: 300px; }
+    .orbit .wires { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .wires line { stroke: rgba(150,170,220,.28); stroke-width: .35; stroke-dasharray: 1.4 2.2; vector-effect: non-scaling-stroke; }
+    .spark-dot { fill: #3FD98A; opacity: 0; transition: opacity .8s ease; }
+    .orbit.lit .spark-dot { opacity: .85; }
+
+    /* anillo fino alrededor del nucleo */
+    .ring {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      width: 210px; height: 210px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.055); z-index: 1; pointer-events: none;
+    }
+
+    .core {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      width: 146px; height: 146px; border-radius: 50%;
+      background: radial-gradient(circle at 50% 38%, #1B2540, #0C1120 72%);
+      border: 1px solid rgba(110,143,255,.26);
+      box-shadow: 0 0 0 12px rgba(110,143,255,.035), 0 0 54px rgba(110,143,255,.16);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; z-index: 3;
+    }
+    .core svg { width: 21px; height: 21px; color: #A9BDFF; }
+    .core b { font-size: .6rem; font-weight: 800; letter-spacing: .14em; }
+
+    .node {
+      position: absolute; display: flex; align-items: center; gap: .55rem;
+      background: linear-gradient(165deg, #1A2132, #12172270);
+      border: 1px solid var(--line-d); border-radius: 13px;
+      padding: .55rem .85rem; white-space: nowrap; z-index: 2;
+      backdrop-filter: blur(6px);
+      opacity: 0; transition: opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1), border-color .3s;
+    }
+    .node.on { opacity: 1; }
+    .node:hover { border-color: rgba(255,255,255,.26); }
+    .node svg { width: 15px; height: 15px; flex: 0 0 auto; color: #93A6D8; }
+    .node b { display: block; font-size: .78rem; font-weight: 600; letter-spacing: -.01em; }
+    .node i { display: block; font-style: normal; font-size: .62rem; color: rgba(255,255,255,.4); margin-top: .05rem; }
+
+    /* cada pieza con su color, apagado: no puede parecer todo WhatsApp */
+    .n-wa svg { color: var(--green); }
+    .n-conf svg { color: #7FA5F5; }
+    .n-seg svg { color: #8FB0E8; }
+    .n-res svg { color: #B49BE8; }
+    .n-rea svg { color: #6FC9C0; }
+
+    /* posiciones: calcadas de la referencia y sin solapes */
+    .n-agenda { top: 0; left: 50%; transform: translateX(-50%) translateY(6px); }
+    .n-agenda.on { transform: translateX(-50%); }
+    .n-wa { top: 17%; left: 0; transform: translateY(6px); }
+    .n-conf { top: 17%; right: 0; transform: translateY(6px); }
+    .n-int { top: 50%; left: -2%; transform: translateY(-50%) translateY(6px); }
+    .n-int.on { transform: translateY(-50%); }
+    .n-seg { top: 50%; right: -2%; transform: translateY(-50%) translateY(6px); }
+    .n-seg.on { transform: translateY(-50%); }
+    .n-res { bottom: 2%; left: 4%; transform: translateY(6px); }
+    .n-rea { bottom: 2%; right: 2%; transform: translateY(6px); }
+    .n-wa.on, .n-conf.on, .n-res.on, .n-rea.on { transform: none; }
+
+    .human { background: #151A26; border: 1px solid var(--line-d); border-radius: 14px; padding: 1.3rem 1.2rem; }
+    .human svg { width: 20px; height: 20px; color: rgba(255,255,255,.72); margin-bottom: .7rem; }
+    .human b { display: block; font-size: .95rem; letter-spacing: -.015em; }
+    .human span { display: block; font-size: .74rem; color: rgba(255,255,255,.5); margin-top: .25rem; line-height: 1.45; }
+
+    /* ---------- ASÍ TRABAJA ---------- */
+    .flow-grid { display: grid; grid-template-columns: .62fr 1.55fr .55fr; gap: 40px; align-items: center; }
+    .flow-panel { display: grid; grid-template-columns: repeat(3, 1fr); background: #fff; border-radius: 16px; box-shadow: 0 1px 2px rgba(20,24,26,.04), 0 12px 32px rgba(20,24,26,.07); overflow: hidden; }
+    .fcol { padding: 1.1rem; border-right: 1px solid var(--line); }
+    .fcol:last-child { border-right: 0; }
+    .fhead { display: flex; align-items: center; gap: .45rem; font-size: .78rem; font-weight: 700; margin-bottom: .9rem; }
+    .fhead svg { width: 15px; height: 15px; }
+    .fchk { display: flex; align-items: center; gap: .5rem; font-size: .74rem; color: var(--ink-2); padding: .3rem 0; opacity: .25; transition: opacity .5s ease; }
+    .fchk.on { opacity: 1; }
+    .fchk i { width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid var(--green); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .fchk i svg { width: 8px; height: 8px; color: var(--green); }
+    .fslot { background: var(--bone); border-radius: 9px; padding: .55rem .65rem; font-size: .74rem; }
+    .fslot .sel { display: flex; align-items: center; justify-content: space-between; background: var(--green-s); color: var(--green-d); font-weight: 600; border-radius: 6px; padding: .3rem .5rem; margin-top: .4rem; font-size: .7rem; }
+    .fnote { margin-top: .9rem; padding-top: .8rem; border-top: 1px solid var(--line); font-size: .72rem; color: var(--grey); }
+    .fnote b { display: block; color: var(--ink); font-size: .74rem; margin-bottom: .1rem; }
+    .flow-side p { font-size: .82rem; color: var(--grey); line-height: 1.55; }
+    .flow-side p + p { margin-top: 1.1rem; }
+
+    /* ---------- REACTIVACIÓN ---------- */
+    .re-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 54px; align-items: center; }
+    .re-left { display: grid; grid-template-columns: 1fr .78fr; gap: 24px; align-items: center; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); margin-top: 2rem; }
+    .stat { padding: 1.1rem .5rem 0; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: 0; }
+    .stat b { display: block; font-size: 1.35rem; font-weight: 700; letter-spacing: -.03em; }
+    .stat span { font-size: .64rem; color: var(--grey-2); line-height: 1.35; display: block; margin-top: .15rem; }
+    .ej { display: inline-block; font-size: .58rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--grey-2); border: 1px solid var(--line); border-radius: 5px; padding: .1rem .35rem; margin-bottom: .5rem; }
+
+    .caso { display: grid; grid-template-columns: .82fr 1.18fr; gap: 26px; align-items: center; }
+    .caso-photo { aspect-ratio: 3/4; border-radius: 14px; background: linear-gradient(165deg, #DFE2DC, #C9CEC8); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .3rem; padding: 1rem; }
+    .caso-photo span { font-size: .66rem; color: #6C7570; font-weight: 600; }
+    .caso h3 { font-size: 1.5rem; letter-spacing: -.03em; }
+    .caso .sb { font-size: .78rem; color: var(--grey); margin-bottom: 1.2rem; }
+    .kpis { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .kp { padding: 1rem .4rem; border-right: 1px solid var(--line); }
+    .kp:last-child { border-right: 0; }
+    .kp b { display: block; font-size: 1.65rem; font-weight: 700; letter-spacing: -.035em; }
+    .kp span { font-size: .66rem; color: var(--grey-2); }
+    .quote { font-size: .84rem; margin-top: 1.1rem; font-weight: 600; }
+    .caso p.d { font-size: .78rem; color: var(--grey); margin-top: .5rem; }
+    .iglink { display: inline-flex; align-items: center; gap: .45rem; font-size: .76rem; color: var(--grey); margin-top: 1rem; }
+    .iglink svg { width: 20px; height: 20px; flex: 0 0 20px; }
+
+    /* ---------- CALCULADORA ---------- */
+    .calc-wrap { display: grid; grid-template-columns: 1.42fr .58fr; gap: 0; }
+    .calc { background: #0B0E16; color: #fff; padding: 3rem 2.6rem; }
+    .calc-head { display: grid; grid-template-columns: .9fr 1.1fr; gap: 34px; align-items: start; }
+    .calc-in { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.6rem 0 0; }
+    .ci { background: #151A26; border: 1px solid var(--line-d); border-radius: 10px; padding: .7rem .85rem; }
+    .ci label { font-size: .68rem; color: rgba(255,255,255,.55); }
+    .ci-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: .7rem; }
+    .ci-top output { font-size: 1.02rem; font-weight: 700; letter-spacing: -.02em; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .ci-sc { display: flex; justify-content: space-between; font-size: .6rem; color: rgba(255,255,255,.32); margin-top: .4rem; }
+    .ci input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 3px; background: rgba(255,255,255,.16); border-radius: 99px; outline: none; }
+    .ci input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #fff; cursor: pointer; box-shadow: 0 0 0 4px rgba(110,143,255,.18), 0 2px 8px rgba(0,0,0,.55); transition: transform .15s; }
+    .ci input[type=range]::-webkit-slider-thumb:active { transform: scale(1.14); }
+    .ci input[type=range]::-moz-range-thumb { width: 20px; height: 20px; border: 0; border-radius: 50%; background: #fff; cursor: pointer; }
+    .calc-res { margin-top: 1.8rem; padding-top: 1.5rem; border-top: 1px solid var(--line-d); }
+    .calc-res .l { font-size: .64rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+    .calc-res .v { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -.04em; margin-top: .4rem; font-variant-numeric: tabular-nums; }
+    .calc-res .v small { font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,.55); letter-spacing: 0; }
+    .calc-res .v-year { margin-top: .5rem; font-size: 1.15rem; font-weight: 600; letter-spacing: -.025em; color: rgba(255,255,255,.62); font-variant-numeric: tabular-nums; }
+    .calc-res .v-year small { font-size: .82rem; font-weight: 500; color: rgba(255,255,255,.4); letter-spacing: 0; }
+    .calc-res .n { font-size: .72rem; color: rgba(255,255,255,.45); margin-top: .7rem; max-width: 46ch; }
+    .trust-panel { background: #fff; padding: 3rem 2.4rem; display: flex; flex-direction: column; justify-content: center; }
+    .badges { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1.6rem; }
+    .bdg { display: flex; align-items: center; gap: .45rem; font-size: .74rem; font-weight: 600; color: var(--ink-2); }
+    .bdg svg { width: 15px; height: 15px; color: var(--grey); flex: 0 0 auto; }
+
+    /* ---------- EQUIPO ---------- */
+    .team-grid { display: grid; grid-template-columns: .7fr 1fr .9fr; gap: 40px; align-items: center; }
+    .faces { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .face { }
+    .face .img { aspect-ratio: 4/3.4; border-radius: 12px; background: linear-gradient(170deg, #DDE0DA, #BFC6C0); display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+    .face .img svg { width: 62%; height: auto; color: rgba(255,255,255,.55); }
+    .face .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .face b { display: block; font-size: .8rem; margin-top: .6rem; }
+    .face span { font-size: .7rem; color: var(--grey-2); }
+    .guar { display: flex; gap: .8rem; align-items: flex-start; }
+    .guar > svg { width: 21px; height: 21px; color: var(--ink); flex: 0 0 auto; margin-top: .1rem; }
+    .guar b { display: block; font-size: .95rem; letter-spacing: -.02em; line-height: 1.3; }
+    .guar p { font-size: .78rem; color: var(--grey); margin-top: .45rem; }
+
+    /* ---------- BANDA FINAL ---------- */
+    .band { background: #0B0E16; color: #fff; padding: 46px 0; }
+    .band .wrap { display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; }
+    .band .mid { text-align: center; }
+    .band .mid b { display: block; font-size: 1.05rem; letter-spacing: -.02em; margin-bottom: 1rem; }
+    .band .addr { display: flex; align-items: flex-start; gap: .5rem; justify-content: flex-end; font-size: .74rem; color: rgba(255,255,255,.55); text-align: left; }
+    .band .addr svg { width: 14px; height: 14px; flex: 0 0 auto; margin-top: .15rem; }
+    .band .bl { display: flex; align-items: center; gap: .6rem; }
+    .band .bl b { font-size: .78rem; font-weight: 800; letter-spacing: .1em; display: block; }
+    .band .bl span { font-size: .7rem; color: rgba(255,255,255,.5); }
+
+    /* ---------- FOOTER ---------- */
+    footer { padding: 52px 0 38px; }
+    .fgrid { display: grid; grid-template-columns: 1.3fr repeat(4, 1fr); gap: 30px; }
+    .fcolm h4 { font-size: .74rem; font-weight: 700; margin-bottom: .9rem; }
+    .fcolm a { display: block; font-size: .78rem; color: var(--grey); padding: .22rem 0; }
+    .fcolm a:hover { color: var(--ink); }
+    .socials { display: flex; gap: .6rem; }
+    .socials a { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+    .socials svg { width: 14px; height: 14px; color: var(--grey); }
+    .fbottom { margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    /* razon social en la banda final */
+    .rz { display: block; font-size: .9rem; font-weight: 700; letter-spacing: -.01em; color: #fff; }
+    .rz-sub { display: block; font-size: .74rem; color: rgba(255,255,255,.5); margin-top: .15rem; }
+
+    /* aviso de que no hacen falta todas las piezas */
+    .nota-piezas { display: flex; align-items: flex-start; gap: .6rem; margin-top: 1.6rem; padding-top: 1.3rem; border-top: 1px solid var(--line-d); }
+    .nota-piezas svg { width: 16px; height: 16px; color: #93A6D8; flex: 0 0 auto; margin-top: .15rem; }
+    .nota-piezas p { font-size: .82rem; color: rgba(255,255,255,.62); line-height: 1.55; }
+    .nota-piezas b { color: #fff; font-weight: 600; }
+
+    /* reactivacion: el escenario */
+    .esc-intro { font-size: .88rem; font-weight: 600; color: var(--ink-2); margin-top: 1.9rem; }
+    .esc-nota { font-size: .72rem; color: var(--grey-2); margin-top: .5rem; line-height: 1.5; max-width: 52ch; }
+    .esc-todas { font-size: .82rem; color: var(--ink-2); margin-top: 1rem; font-weight: 500; }
+    .stats-3 { grid-template-columns: repeat(3, 1fr); }
+
+    /* (sin uso ahora, se deja por si vuelve la version en pasos) */
+    .seq { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); margin-top: 2rem; }
+    .sq { padding: 1.1rem .7rem 0; border-right: 1px solid var(--line); }
+    .sq:last-child { border-right: 0; }
+    .sq i { display: flex; width: 26px; height: 26px; border-radius: 8px; background: var(--bone-2); align-items: center; justify-content: center; margin-bottom: .55rem; }
+    .sq i svg { width: 13px; height: 13px; color: var(--ink-2); }
+    .sq b { display: block; font-size: .8rem; letter-spacing: -.015em; }
+    .sq span { display: block; font-size: .68rem; color: var(--grey-2); margin-top: .15rem; line-height: 1.4; }
+
+    /* caso real como seccion propia */
+    .caso-solo { background: var(--bone); }
+    .caso-head { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: end; margin-bottom: 2.4rem; }
+    .caso-body { display: grid; grid-template-columns: .62fr 1.38fr; gap: 42px; align-items: center; }
+    .kpis-xl { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; border-radius: 2px; }
+    .kpx { padding: 1.9rem 1.2rem; border-right: 1px solid var(--line); }
+    .kpx:last-child { border-right: 0; }
+    .kpx b { display: block; font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -.045em; line-height: 1; font-variant-numeric: tabular-nums; }
+    .kpx span { display: block; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--grey-2); margin-top: .7rem; }
+    .kpx .kpx-op { text-transform: none; letter-spacing: 0; font-size: .68rem; color: var(--grey-2); margin-top: .25rem; opacity: .8; }
+    .sin-ads { display: flex; align-items: center; gap: .5rem; font-size: .8rem; color: var(--grey); margin-top: .9rem; }
+    .sin-ads svg { width: 13px; height: 13px; flex: 0 0 auto; color: var(--grey-2); }
+    .caso-txt { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 1.9rem; }
+
+    .miedo { display: flex; gap: .75rem; align-items: flex-start; margin-top: 1.9rem; padding: 1.2rem 1.3rem; background: #fff; border-radius: 12px; border: 1px solid var(--line); }
+    .miedo svg { width: 18px; height: 18px; color: var(--blue-d); flex: 0 0 auto; margin-top: .15rem; }
+    .miedo p { font-size: .86rem; color: var(--ink-2); line-height: 1.55; }
+    .miedo b { font-weight: 700; }
+
+    .slot-img { position: relative; overflow: hidden; }
+    .slot-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
+
+    .slot-par { aspect-ratio: 3/4; display: grid; grid-template-rows: 1fr 1fr; gap: 10px; }
+    .slot-par .slot { height: 100%; }
+
+    /* tira de fotos de Pilar: ocupa poco, se lee de un vistazo */
+    .pfotos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 420px; }
+    .pfotos figure { position: relative; margin: 0; aspect-ratio: 3/2; overflow: hidden; border-radius: 10px; border: 1px solid var(--line); background: var(--bone-2); }
+    .pfotos img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pfotos figcaption { position: absolute; left: 0; right: 0; bottom: 0; font-size: .58rem; letter-spacing: .04em; text-transform: uppercase; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,.72)); padding: .9rem .4rem .3rem; text-align: center; }
+
+    /* huecos de imagen neutros: aqui van las fotos reales */
+    .slot { border: 1px dashed var(--line); border-radius: 12px; background: var(--bone-2); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .25rem; padding: 1rem; }
+    .slot b { font-size: .74rem; font-weight: 600; color: var(--grey); }
+    .slot span { font-size: .64rem; color: var(--grey-2); }
+
+    /* ---------- reveal ---------- */
+    .r { opacity: 0; transform: translateY(18px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+    .r.on { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .r, .b, .done, .scard, .node, .fchk { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    /* ---------- MÓVIL ---------- */
+    @media (max-width: 1040px) {
+      .nlinks { display: none; }
+      .hero-grid, .prob-grid, .sys-grid, .flow-grid, .re-grid, .re-left, .caso, .calc-wrap, .team-grid,
+      .caso-head, .caso-body, .caso-txt , .kpis-xl, .calc-head { grid-template-columns: 1fr; }
+      .stats, .stats-3 { grid-template-columns: 1fr 1fr; }
+      .caso-head { gap: 14px; }
+      .caso-body { gap: 26px; }
+      .caso-txt { gap: 18px; }
+      .kpx { border-right: 0; border-bottom: 1px solid var(--line); padding: 1.4rem 1.2rem; }
+      .kpx:last-child { border-bottom: 0; }
+      .kpx b { font-size: 2.4rem; }
+      .stat { border-right: 0; padding: 1rem .6rem 0; }
+      .stat:nth-child(odd) { border-right: 1px solid var(--line); }
+      .calc-head { gap: 20px; }
+      .sin-ads { align-items: flex-start; }
+      .caso-solo .slot { max-width: 220px; }
+      .hero-bg { display: none; }
+      .chat-zone { grid-template-columns: 1fr; }
+      .side { flex-direction: row; flex-wrap: wrap; }
+      .side .scard { flex: 1 1 180px; }
+      .cards3 { grid-template-columns: 1fr; }
+      .flow-panel { grid-template-columns: 1fr; }
+      .fcol { border-right: 0; border-bottom: 1px solid var(--line); }
+      .orbit-wrap { grid-template-columns: 1fr; }
+      .orbit { aspect-ratio: auto; min-height: 0; display: flex; flex-direction: column; gap: 9px; }
+      .orbit .wires, .core { display: none; }
+      .node { position: static; transform: none !important; width: auto; }
+      .calc, .trust-panel { padding: 2.2rem 1.6rem; }
+      .calc-in { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(2) { border-right: 0; }
+      .fgrid { grid-template-columns: 1fr 1fr; }
+      .band .wrap { grid-template-columns: 1fr; text-align: center; }
+      .band .addr { justify-content: center; }
+      .sec { padding: 66px 0; }
+      .faces { grid-template-columns: 1fr 1fr; }
+
+      /* fija de verdad, no solo pegajosa: la pegajosa se pierde en
+         Safari si algun elemento padre tiene overflow */
+      nav { position: fixed; left: 0; right: 0; top: 0; }
+      body { padding-top: 56px; }
+      .hero { padding-top: 24px; }
+
+      nav .wrap { height: auto; padding-top: 10px; padding-bottom: 10px; }
+      nav .btn { white-space: nowrap; padding: .6rem 1.05rem; font-size: .78rem; }
+      .brand { font-size: .76rem; }
+      .wrap { padding: 0 20px; }
+    }
+  
+    /* ---------- modal de calendario ---------- */
+    .modal { position: fixed; inset: 0; z-index: 90; display: none; background: rgba(10,13,12,.55); backdrop-filter: blur(6px); padding: 24px 16px; overflow-y: auto; }
+    .modal.open { display: block; }
+    .modal-box { position: relative; max-width: 680px; margin: 3vh auto; background: var(--w); border: 1px solid var(--line); border-radius: 18px; padding: 2rem 1.6rem 1.4rem; }
+    .modal-close { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 9px; border: 1px solid var(--line); background: var(--bone); color: var(--ink-2); font-size: 1rem; cursor: pointer; line-height: 1; }
+    .cal-frame { width: 100%; min-height: 620px; border: 0; border-radius: 12px; margin-top: 1.2rem; background: var(--bone); }
+    @media (max-width: 900px) { .modal-box { padding: 1.6rem 1rem 1rem; margin: 0 auto; } .cal-frame { min-height: 560px; } }
+
+    /* ---------- concesionarios: los dos relojes ----------
+       Pieza propia. Ventas se mide en minutos, posventa en meses, y es el
+       mismo cliente. Todo lo demas de la pagina cuelga de esta idea. */
+    .relojes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 2.4rem; }
+    .reloj { border: 1px solid var(--line); border-radius: 16px; padding: 1.9rem 1.7rem; background: var(--w); position: relative; overflow: hidden; }
+    .reloj.lento { background: var(--bone-2); }
+    .reloj .esfera { display: flex; align-items: baseline; gap: .5rem; }
+    .reloj .esfera b { font-size: 2.4rem; font-weight: 800; letter-spacing: -.04em; color: var(--ink); line-height: 1; }
+    .reloj .esfera span { font-size: .8rem; color: var(--grey-2); }
+    .reloj h3 { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-d); margin-bottom: 1rem; }
+    .reloj.lento h3 { color: var(--grey); }
+    .reloj ul { list-style: none; padding: 0; margin: 1.3rem 0 0; }
+    .reloj li { font-size: .88rem; color: var(--ink-2); padding: .5rem 0; border-top: 1px solid var(--line); }
+    .reloj li:first-child { border-top: 0; }
+
+    .mismo { border: 1px solid var(--line); border-radius: 16px; padding: 1.8rem 1.7rem; margin-top: 20px; background: var(--w); display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: center; }
+    .mismo .ico { width: 42px; height: 42px; border-radius: 11px; background: var(--blue-s); display: grid; place-items: center; }
+    .mismo .ico svg { width: 20px; height: 20px; color: var(--blue-d); }
+    .mismo p { font-size: .95rem; color: var(--ink-2); margin: 0; }
+    .mismo b { color: var(--ink); }
+
+    /* ---------- cartera: lo que hace con la base dormida ---------- */
+    .cartera { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 2.2rem; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+    .cart { padding: 1.7rem 1.6rem; border-right: 1px solid var(--line); }
+    .cart:last-child { border-right: 0; }
+    .cart span { font-size: .7rem; font-weight: 700; letter-spacing: .1em; color: var(--blue-d); }
+    .cart b { display: block; font-size: .95rem; margin: .7rem 0 .45rem; letter-spacing: -.02em; color: var(--ink); }
+    .cart p { font-size: .84rem; color: var(--grey); }
+
+    /* ---------- demostracion a dos columnas ---------- */
+    .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 2.2rem; align-items: start; }
+    .panel { border: 1px solid var(--line); border-radius: 16px; background: var(--w); overflow: hidden; }
+    .panel-top { display: flex; align-items: center; justify-content: space-between; gap: .6rem; padding: .9rem 1.2rem; border-bottom: 1px solid var(--line); background: var(--bone-2); }
+    .panel-top b { font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); }
+    .panel-top .et { font-size: .68rem; color: var(--grey-2); }
+    .panel-in { padding: 1.3rem 1.2rem; }
+    .msg { margin-bottom: .9rem; }
+    .msg:last-child { margin-bottom: 0; }
+    .msg time { display: block; font-size: .66rem; color: var(--grey-2); margin-bottom: .25rem; }
+    .msg p { font-size: .88rem; color: var(--ink-2); margin: 0; padding: .7rem .9rem; border-radius: 12px; background: var(--bone-2); max-width: 94%; }
+    .msg.er p { background: var(--blue-s); color: var(--ink); margin-left: auto; }
+    .ficha { list-style: none; padding: 0; margin: 0; }
+    .ficha li { display: grid; grid-template-columns: 120px 1fr; gap: 10px; padding: .55rem 0; border-bottom: 1px dashed var(--line); font-size: .84rem; }
+    .ficha li:last-child { border-bottom: 0; }
+    .ficha span { color: var(--grey-2); font-size: .78rem; }
+    .ficha b { color: var(--ink); font-weight: 600; }
+    .etiqueta-demo { display: inline-flex; align-items: center; gap: .45rem; font-size: .72rem; color: var(--grey); border: 1px dashed var(--line); border-radius: 999px; padding: .35rem .8rem; }
+
+    /* ---------- limites ---------- */
+    .noes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin-top: 2.2rem; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+    .noe { padding: 1.7rem 1.6rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .noe:nth-child(2n) { border-right: 0; }
+    .noe:nth-last-child(-n+2) { border-bottom: 0; }
+    .noe b { display: block; font-size: .95rem; letter-spacing: -.02em; color: var(--ink); }
+    .noe p { font-size: .85rem; color: var(--grey); margin-top: .45rem; }
+
+    @media (max-width: 1040px) {
+      .relojes, .demo-grid, .noes { grid-template-columns: 1fr; }
+      .cartera { grid-template-columns: 1fr; }
+      .cart { border-right: 0; border-bottom: 1px solid var(--line); }
+      .cart:last-child { border-bottom: 0; }
+      .noe { border-right: 0; }
+      .mismo { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ============ NAV ============ -->
+  <nav>
+    <div class="wrap">
+      <a href="#" class="brand">
+        <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.6l1.9 6.3 6.3 1.9-6.3 1.9L12 18l-1.9-6.3L3.8 9.8l6.3-1.9z"/><path d="M19.2 15.2l.8 2.6 2.6.8-2.6.8-.8 2.6-.8-2.6-2.6-.8 2.6-.8z"/></svg>
+        EASYROBOTS
+      </a>
+      <div class="nlinks">
+        <a href="#relojes">Los dos relojes</a>
+        <a href="#cartera">La cartera dormida</a>
+        <a href="#nuevas">Oportunidades nuevas</a>
+        <a href="#demo">La demostraci&oacute;n</a>
+      </div>
+      <button class="btn btn-dark" data-cal>Hablar 15 minutos</button>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="kick">Para concesionarios</div>
+          <h1>Vender es la mitad del negocio. La otra vuelve al taller.</h1>
+          <p class="lede" style="margin-top:1.4rem;font-weight:500;color:var(--ink-2)">Y esa mitad son clientes que ya
+            son tuyos, a los que no est&aacute; yendo a buscar nadie.</p>
+          <p class="lede">EasyRobots trabaja los dos momentos del mismo cliente: el que pregunta hoy por un coche y el
+            que lleva meses sin pasar por tu taller. Conversaci&oacute;n, cita sobre agenda real y aviso a tu
+            equipo.</p>
+          <div class="hero-btns">
+            <a href="#demo" class="btn btn-dark">Ver la demostraci&oacute;n
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h11M11 6l4 4-4 4"/></svg>
+            </a>
+            <button class="btn btn-outline" data-cal>Hablar 15 minutos
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h11M11 6l4 4-4 4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="chat-zone">
+          <div class="reloj">
+            <h3>Ventas</h3>
+            <div class="esfera"><b>Minutos</b><span>lo que dura la decisi&oacute;n</span></div>
+            <ul>
+              <li>Deja sus datos un s&aacute;bado por la ma&ntilde;ana.</li>
+              <li>Est&aacute; mirando tres concesionarios a la vez.</li>
+              <li>Si nadie le escribe pronto, no se enfada: se va.</li>
+            </ul>
+          </div>
+          <div class="reloj lento">
+            <h3>Posventa</h3>
+            <div class="esfera"><b>Meses</b><span>lo que tarda en desaparecer</span></div>
+            <ul>
+              <li>Pas&oacute; dos revisiones y dej&oacute; de venir.</li>
+              <li>No ha avisado, no se ha quejado, no ha causado baja.</li>
+              <li>Simplemente lleva ocho meses sin aparecer.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ LOS DOS RELOJES ============ -->
+  <section class="sec prob" id="relojes">
+    <div class="wrap">
+      <div class="prob-grid">
+        <div class="r">
+          <div class="kick">La tesis</div>
+          <h2>Dos relojes. El mismo cliente.</h2>
+        </div>
+        <div class="r">
+          <p class="lede" style="margin-top:0">Tu concesionario pierde oportunidades por los dos lados, pero a
+            velocidades distintas. Arriba se pierde en minutos. Abajo, en meses. Y nadie mide la segunda.</p>
+          <div class="mismo">
+            <span class="ico">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 10a7 7 0 0111.9-5M17 10a7 7 0 01-11.9 5"/><path d="M15 3v3h-3M5 17v-3h3"/></svg>
+            </span>
+            <p>No son dos negocios distintos. <b>Es el mismo cliente en dos momentos.</b> El que pregunta hoy es tu
+              cliente de taller de los pr&oacute;ximos a&ntilde;os. Y el que no ha vuelto al taller es quien
+              cambiar&aacute; de coche dentro de dos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LA CARTERA DORMIDA ============ -->
+  <section class="sec" id="cartera" style="background:var(--bone-2)">
+    <div class="wrap r">
+      <div class="kick">La mitad que nadie trabaja</div>
+      <h2>Los que no han vuelto no te lo van a decir.</h2>
+      <p class="lede" style="margin-top:1.4rem">Tu taller se llena con los que llaman. A los que no llaman no les
+        busca nadie.</p>
+      <p class="lede">Nadie causa baja en un taller. La primera vez retrasan la revisi&oacute;n un par de meses. La
+        segunda la hacen en el taller de al lado porque les pillaba cerca. A la tercera, ya tienen otro taller.</p>
+      <p style="font-size:1.05rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-top:1.4rem;max-width:44ch">
+        Y en ning&uacute;n momento de ese proceso se genera un solo documento en tu concesionario. Por eso esta fuga no
+        aparece en ning&uacute;n informe.</p>
+
+      <div class="cartera">
+        <div class="cart">
+          <span>01</span>
+          <b>Mira tu base</b>
+          <p>Detecta a qui&eacute;n le toca revisi&oacute;n o mantenimiento y lleva tiempo sin pasar.</p>
+        </div>
+        <div class="cart">
+          <span>02</span>
+          <b>Le escribe</b>
+          <p>Una conversaci&oacute;n, no un env&iacute;o masivo. Y le ofrece huecos reales de tu taller.</p>
+        </div>
+        <div class="cart">
+          <span>03</span>
+          <b>Cierra el c&iacute;rculo</b>
+          <p>Crea la cita, la confirma, la recuerda y, si no aparece, vuelve a por &eacute;l.</p>
+        </div>
+      </div>
+
+      <p class="lede" style="margin-top:1.8rem">Lo que hasta ahora era una campa&ntilde;a que alguien ten&iacute;a que
+        sacar tiempo para montar, pasa a ocurrir sin que nadie lo empuje.</p>
+    </div>
+  </section>
+
+  <!-- ============ OPORTUNIDADES NUEVAS ============ -->
+  <section class="sec" id="nuevas">
+    <div class="wrap">
+      <div class="prob-grid r">
+        <div>
+          <div class="kick">El otro reloj</div>
+          <h2>El que pregunta un s&aacute;bado no espera al lunes.</h2>
+          <p class="lede" style="margin-top:1.3rem">Entra un lead por la web, por un portal o por un formulario. O
+            suena el tel&eacute;fono y no hay nadie que pueda cogerlo. En los dos casos ocurre lo mismo: se abre una
+            conversaci&oacute;n en segundos.</p>
+        </div>
+        <div>
+          <div class="cards3" style="grid-template-columns:1fr;gap:12px;margin-top:0">
+            <div class="sos" style="border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.3rem;background:var(--w)">
+              <b style="display:block;font-size:.9rem;color:var(--ink)">Lo que se recoge</b>
+              <p style="font-size:.84rem;color:var(--grey);margin-top:.4rem">Qu&eacute; coche le interesa y para
+                cu&aacute;ndo, si entrega el suyo, c&oacute;mo piensa pagarlo y cu&aacute;ndo puede venir.</p>
+            </div>
+            <div class="sos" style="border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.3rem;background:var(--w)">
+              <b style="display:block;font-size:.9rem;color:var(--ink)">Lo que pasa despu&eacute;s</b>
+              <p style="font-size:.84rem;color:var(--grey);margin-top:.4rem">Cita con el asesor sobre su agenda real,
+                aviso con todo lo hablado, y seguimiento de la prueba de conducci&oacute;n y de la oferta que
+                qued&oacute; pendiente.</p>
+            </div>
+            <div class="sos" style="border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.3rem;background:var(--bone-2)">
+              <b style="display:block;font-size:.9rem;color:var(--ink)">Tu asesor</b>
+              <p style="font-size:.84rem;color:var(--grey);margin-top:.4rem">Deja de perseguir y entra cuando ya hay
+                algo que atender.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ UN SISTEMA, LA MISMA CARTERA ============ -->
+  <section class="sec" style="background:var(--bone-2)">
+    <div class="wrap r">
+      <div class="kick">C&oacute;mo encaja</div>
+      <h2>No son dos herramientas. Es la misma conversaci&oacute;n.</h2>
+      <p class="lede" style="margin-top:1.3rem">El cliente no distingue departamentos. Escribe al mismo n&uacute;mero,
+        haya comprado o vaya a comprar.</p>
+
+      <div class="cartera" style="grid-template-columns:repeat(4,1fr)">
+        <div class="cart"><b>Una conversaci&oacute;n</b><p>Con vuestro tono y vuestro n&uacute;mero.</p></div>
+        <div class="cart"><b>Una agenda</b><p>Por asesor, por box y por tipo de servicio.</p></div>
+        <div class="cart"><b>Un registro</b><p>Contacto, oportunidad y tarea, en vuestro sistema.</p></div>
+        <div class="cart"><b>Un criterio</b><p>Ninguna oportunidad depende de que alguien se acuerde.</p></div>
+      </div>
+
+      <p style="font-size:1.05rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-top:2rem;max-width:46ch">
+        Trabajar mejor las oportunidades que ya tienes, mientras atiendes las nuevas. Y en ese orden, porque las que ya
+        tienes hoy no las trabaja nadie.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMOSTRACION ============ -->
+  <section class="sec" id="demo">
+    <div class="wrap r">
+      <div class="kick">As&iacute; funciona</div>
+      <h2>Los dos relojes, en dos conversaciones.</h2>
+      <p class="etiqueta-demo" style="margin-top:1rem">Ejemplo del sistema. No es un cliente.</p>
+
+      <div class="demo-grid">
+        <div class="panel">
+          <div class="panel-top"><b>Posventa</b><span class="et">Lleva ocho meses sin aparecer</span></div>
+          <div class="panel-in">
+            <div class="msg er"><time>EasyRobots</time><p>Buenos d&iacute;as Javier, le escribo del servicio de taller.
+              Seg&uacute;n nuestros datos, a su Seat Le&oacute;n le tocaba el mantenimiento hace unos meses.
+              &iquest;Quiere que le busque hueco?</p></div>
+            <div class="msg"><time>Javier</time><p>Pues s&iacute;, lo ten&iacute;a pendiente. &iquest;Qu&eacute;
+              ten&eacute;is por la ma&ntilde;ana?</p></div>
+            <div class="msg er"><time>EasyRobots</time><p>El martes a las 8:30 o el jueves a las 9:00. Si lo deja a
+              primera hora, se lo pueden entregar el mismo d&iacute;a.</p></div>
+            <div class="msg"><time>Javier</time><p>El martes.</p></div>
+            <div class="msg er"><time>EasyRobots</time><p>Hecho, martes 8:30. Le recuerdo el d&iacute;a antes.</p></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-top"><b>Ventas</b><span class="et">El interesado del s&aacute;bado</span></div>
+          <div class="panel-in">
+            <div class="msg"><time>Interesado</time><p>Hola, he visto el Le&oacute;n 1.5 TSI de segunda mano de
+              vuestra web.</p></div>
+            <div class="msg er"><time>EasyRobots</time><p>Perfecto. &iquest;Lo buscas para ya o est&aacute;s mirando
+              todav&iacute;a? &iquest;Y entregar&iacute;as tu coche actual?</p></div>
+            <div class="msg"><time>Interesado</time><p>Para este mes. Y s&iacute;, tengo un Golf del 2016.</p></div>
+            <div class="msg er"><time>EasyRobots</time><p>Genial. Para valorarte el Golf necesito matr&iacute;cula y
+              kil&oacute;metros, y lo ve el tasador. &iquest;Te va bien pasarte el jueves a las 17:00 con
+              Sergio?</p></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-top"><b>Lo que queda registrado</b></div>
+          <div class="panel-in">
+            <ul class="ficha">
+              <li><span>Contacto</span><b>Creado, con veh&iacute;culo de inter&eacute;s y el que entrega</b></li>
+              <li><span>Oportunidad</span><b>Abierta y asignada al asesor</b></li>
+              <li><span>Cita</span><b>Jueves 17:00, sobre hueco comprobado</b></li>
+              <li><span>Tarea</span><b>Tasaci&oacute;n con matr&iacute;cula y kil&oacute;metros</b></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-top"><b>Y cuando le preguntan algo que no le consta</b></div>
+          <div class="panel-in">
+            <div class="msg"><time>Interesado</time><p>&iquest;Cu&aacute;l es el precio final con la entrega de mi
+              coche?</p></div>
+            <div class="msg er"><time>EasyRobots</time><p>Eso lo cierra el asesor con la tasaci&oacute;n delante, no te
+              lo puedo decir yo. Se lo paso y te lo concreta &eacute;l.</p></div>
+            <p class="xs" style="margin-top:.8rem">No improvisa un precio, no promete una tasaci&oacute;n y no da por
+              disponible un coche o un recambio que no le consta.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem">
+        <button class="btn btn-dark" data-cal>Que lo monten en mi concesionario
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h11M11 6l4 4-4 4"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIMITES Y CONTROL ============ -->
+  <section class="sec" style="background:var(--bone-2)">
+    <div class="wrap r">
+      <div class="kick">L&iacute;mites</div>
+      <h2>Lo que no hace, y por qu&eacute; eso os interesa.</h2>
+
+      <div class="noes">
+        <div class="noe">
+          <b>No cierra condiciones.</b>
+          <p>No da precio final, ni descuento, ni lo que vale tu coche a cambio. Eso es del asesor.</p>
+        </div>
+        <div class="noe">
+          <b>No tasa.</b>
+          <p>Recoge matr&iacute;cula, kil&oacute;metros y estado, y lo pasa al tasador. Nada m&aacute;s.</p>
+        </div>
+        <div class="noe">
+          <b>No inventa stock ni recambios.</b>
+          <p>Si tiene vuestros datos, los consulta. Si no le consta, lo dice y abre una tarea.</p>
+        </div>
+        <div class="noe">
+          <b>No sustituye a nadie.</b>
+          <p>Ni al asesor, ni a recepci&oacute;n de taller. Les quita de encima lo que no necesita a una persona.</p>
+        </div>
+      </div>
+
+      <div class="prob-grid" style="margin-top:2.4rem">
+        <div>
+          <p style="font-size:1.05rem;font-weight:700;letter-spacing:-.02em;color:var(--ink)">Un sistema que improvisa
+            una respuesta en un concesionario no ahorra trabajo: lo genera.</p>
+        </div>
+        <div>
+          <p class="lede" style="margin-top:0">Vosotros decid&iacute;s qu&eacute; contesta y hasta d&oacute;nde llega.
+            Cualquiera del equipo puede entrar en una conversaci&oacute;n en cualquier momento: sigue siendo vuestro
+            n&uacute;mero.</p>
+          <p class="lede">Se conecta con vuestro DMS, vuestro gestor de taller y vuestra agenda. Las citas se crean,
+            se modifican y se cancelan donde las mir&aacute;is hoy. La cartera y las conversaciones son vuestras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESO Y GARANTIA ============ -->
+  <section class="sec" id="equipo">
+    <div class="wrap">
+      <div class="team-grid">
+        <div class="r">
+          <div class="kick">C&oacute;mo trabajamos</div>
+          <h2 style="font-size:1.5rem">Analizamos, dise&ntilde;amos, construimos y mantenemos.</h2>
+          <p class="lede" style="margin-top:1rem;font-size:.88rem">Miramos cu&aacute;ntos clientes ten&eacute;is en
+            cartera, cu&aacute;ntos han dejado de venir y c&oacute;mo entran hoy las oportunidades nuevas. Decidimos
+            qu&eacute; se dice y a qui&eacute;n se escribe, lo probamos antes de que hable con un cliente vuestro, y
+            despu&eacute;s seguimos ajust&aacute;ndolo.</p>
+        </div>
+
+        <div class="faces r">
+          <div class="face">
+            <div class="img" style="aspect-ratio:4/3.4;background:#0B0B0D">
+              <img src="assets/guille.webp" alt="Guillermo, co-fundador de EasyRobots" loading="lazy" decoding="async">
+            </div>
+            <b>Guillermo</b>
+            <span>Co-fundador</span>
+          </div>
+          <div class="face">
+            <div class="img slot" style="aspect-ratio:4/3.4"><b>Foto pendiente</b></div>
+            <b>Ana&iacute;s</b>
+            <span>Co-fundadora</span>
+          </div>
+        </div>
+
+        <div class="r">
+          <div class="guar">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 2.5l6.5 3v4.8c0 3.6-2.7 6.4-6.5 7.2-3.8-.8-6.5-3.6-6.5-7.2V5.5z"/><path d="M7 10l2 2 4-4"/></svg>
+            <div>
+              <b>14 d&iacute;as para comprobar que encaja con vuestra forma de trabajar.</b>
+              <p>Si no hace lo que os dijimos, o no encaja con vuestra manera de trabajar, os devolvemos el dinero.</p>
+              <p style="margin-top:.6rem"><b style="font-size:.78rem">Y el primer mes de mantenimiento no se
+                cobra.</b> La garant&iacute;a cubre el montaje; ese primer mes es nuestro mientras lo afinamos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BANDA FINAL ============ -->
+  <section class="band" id="reservar">
+    <div class="wrap">
+      <div class="bl">
+        <svg class="spark" viewBox="0 0 24 24" fill="currentColor" style="color:#fff"><path d="M12 1.6l1.9 6.3 6.3 1.9-6.3 1.9L12 18l-1.9-6.3L3.8 9.8l6.3-1.9z"/></svg>
+        <div>
+          <b>EASYROBOTS</b>
+          <span>Sistemas de IA para concesionarios.</span>
+        </div>
+      </div>
+      <div class="mid">
+        <b>Empecemos por la cartera que ya ten&eacute;is.</b>
+        <button class="btn btn-light" data-cal>Hablar 15 minutos
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h11M11 6l4 4-4 4"/></svg>
+        </button>
+      </div>
+      <div class="addr" style="display:block;text-align:right">
+        <span class="rz">EasyRobots AH-NICE</span>
+        <span class="rz-sub">Ana Isabel Gonz&aacute;lez Hoog</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="fbottom" style="border-top:1px solid var(--line);padding:2.4rem 0">
+    <div class="wrap" style="display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center">
+      <span class="xs">EasyRobots AH-NICE &middot; Ana Isabel Gonz&aacute;lez Hoog</span>
+      <span class="xs">
+        <a href="privacy.html" style="color:inherit">Privacidad</a> &nbsp;&middot;&nbsp;
+        <a href="privacy.html#cookies" style="color:inherit">Cookies</a> &nbsp;&middot;&nbsp;
+        <a href="https://www.instagram.com/easyrobots.ai/" target="_blank" rel="noopener" style="color:inherit">Instagram</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- ============ CALENDARIO ============ -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-label="Agendar una llamada">
+      <button class="modal-close" id="modal-x" aria-label="Cerrar">&#10005;</button>
+      <h3 style="font-size:1.2rem">Elige un hueco y lo vemos contigo</h3>
+      <p class="xs" style="margin-top:.5rem">15 minutos. Sin presentaci&oacute;n comercial.</p>
+      <div id="cal-slot"></div>
+    </div>
+  </div>
+
+  <script>
+    // Reveal
+    var io_ = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io_.unobserve(e.target); } });
+    }, { threshold: .1 });
+    document.querySelectorAll('.r').forEach(function (el) { io_.observe(el); });
+
+    // Calendario de GHL en modal. El iframe se monta al abrir, no en la carga.
+    var CAL = 'https://api.leadconnectorhq.com/widget/booking/XMQy1fOiMEz88wzKLVPe';
+    var NICHO = 'concesionarios';
+    var modal = document.getElementById('modal'), slot = document.getElementById('cal-slot');
+    function abrirCal() {
+      if (!slot.firstChild) {
+        var f = document.createElement('iframe');
+        f.className = 'cal-frame'; f.src = CAL + '?nicho=' + NICHO;
+        f.title = 'Agenda tu llamada con EasyRobots';
+        slot.appendChild(f);
+      }
+      modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function cerrarCal() {
+      modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('[data-cal]').forEach(function (b) { b.addEventListener('click', abrirCal); });
+    document.getElementById('modal-x').addEventListener('click', cerrarCal);
+    modal.addEventListener('click', function (e) { if (e.target === modal) cerrarCal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrarCal(); });
+
+    window.addEventListener('message', function (e) {
+      var d = e.data;
+      var esCita = d && (d.type === 'booking_confirmed' || d.type === 'appointmentBooked' ||
+        (typeof d === 'string' && d.indexOf('booking') > -1));
+      if (esCita && typeof gtag === 'function') {
+        gtag('event', 'cita_agendada', { event_category: 'conversion', event_label: 'calendario_ghl', nicho: NICHO });
+      }
+    });
+  </script>
+</body>
+</html>
