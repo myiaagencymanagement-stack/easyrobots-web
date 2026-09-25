@@ -19,7 +19,7 @@ Documentos relacionados:
 | Concesionarios | Cerrada | **Escrito** (`concesionarios.md`) | Pendiente |
 | Clínicas estéticas | Pendiente | — | Página viva, copy anterior |
 | Coaching e infoproductores | **Cerrada** | Pendiente | Pendiente |
-| Ecommerce | Pendiente | — | Pendiente |
+| Ecommerce | **Cerrada** | Pendiente | Pendiente |
 
 ## Las reglas que gobiernan todo el copy
 
@@ -58,3 +58,4 @@ concesionarios es gestión de cartera. No se calca la estructura de una en otra.
 | Dental | El dinero ya está dentro de la clínica | El presupuesto presentado que nadie retoma y cuyo motivo de rechazo nadie registra | *El paciente dijo que se lo pensaba. De eso hace cinco semanas.* |
 | Concesionarios | Dos relojes, un mismo cliente | La cartera de posventa que se apaga sola, mientras las oportunidades nuevas esperan | *Vender es la mitad del negocio. La otra vuelve al taller.* |
 | Coaching | Del "sí, me interesa" a una llamada que realmente ocurre | Las oportunidades se enfrían entre conversación, aplicación, agenda y llamada | Pendiente de escribir |
+| Ecommerce | Lo ya vendido puede volverse pérdida | El pedido ya cobrado sigue costando horas y reputación | Pendiente de escribir |

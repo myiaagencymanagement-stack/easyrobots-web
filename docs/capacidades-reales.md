@@ -88,7 +88,6 @@ versión del producto y es lo único sobre lo que puede apoyarse el copy.
 ## Pendientes de rellenar
 
 - [ ] Clínicas estéticas
-- [ ] Ecommerce
 
 ---
 
@@ -221,3 +220,48 @@ recurrente ya dentro de la casa. Segundo: el lead comercial que espera.
 3. La frase que mejor define la landing, y que resuelve la objeción principal
    del nicho: **"Esto no vende por ti. Se ocupa de que todo el que dice que sí
    llegue a tu llamada."**
+
+---
+
+## Ecommerce · estado a 2026-09-26
+
+**Confirmado por Anaís: nada de la tabla es imposible.** Verde salvo voz, que
+sigue sin proveedor.
+
+| Capacidad | Estado |
+|---|---|
+| WhatsApp · Instagram DM · webchat · email · formularios · multicanal | **Ya disponible** |
+| Contexto entre canales | **Ya disponible con identificador común** (email o teléfono del pedido) |
+| Consultar estado del pedido | **Ya disponible** con los datos de la tienda |
+| Integración con la tienda (Shopify, WooCommerce, PrestaShop…) | **Ya disponible** — API o no cambia la implantación |
+| Seguimiento de envío / transportista | **Ya disponible** si el transportista expone el dato |
+| Guiar cambios y devoluciones | **Ya disponible**, con las reglas de la tienda |
+| **Ejecutar devolución: reembolso o etiqueta** | **Requiere configuración y autorización explícita.** Mueve dinero: el límite lo pone el cliente y se define en el montaje |
+| Consultar stock y tallas | **Ya disponible** con la fuente del cliente |
+| Detectar incidencia y avisar antes de que escale | **Ya disponible** |
+| Pedir reseña en el momento adecuado | **Ya disponible** |
+| Carrito abandonado | **Ya disponible** si la tienda envía el evento |
+| Recompra por ciclo | **Ya disponible** |
+| Mensaje proactivo por WhatsApp | **Ya disponible** con plantillas aprobadas y consentimiento |
+| Contactos · oportunidades · tareas · etiquetado · avisos | **Ya disponible** |
+| Resumen automático de la conversación | **Requiere configuración** |
+| Agente de voz · llamadas salientes · transcripción | **No confirmada** |
+
+### Estrategia cerrada
+
+- **Tesis:** la postventa es el único sitio del negocio donde **una venta ya
+  cobrada puede convertirse en pérdida**. No entramos por "la mitad de tu
+  soporte es ¿dónde está mi pedido?": eso es queja de volumen, ya lo sabe, y
+  nos mete a competir con cualquier chatbot barato.
+- **Dolor central:** el pedido ya cobrado sigue generando trabajo y riesgo, y
+  se decide de madrugada, en fin de semana o en plena campaña.
+- **Mecanismo:** identifica el pedido → contesta con **el dato real** → guía
+  cambio o devolución con las reglas de la tienda → avisa a una persona antes
+  de que la incidencia escale → pide la reseña cuando toca → propone reposición.
+- **Dos límites escritos, y son el argumento principal:** no inventa fechas de
+  entrega y no mueve dinero sin autorización.
+- **Unidad económica: el ticket y la hora**, no el euro.
+- **Diferencia clave del nicho:** es el único donde el visitante **ya ha
+  probado un chatbot y le ha salido mal**, y el único donde quien escribe ya es
+  cliente y ya ha pagado.
+- **Tono:** operativo y sobrio.
