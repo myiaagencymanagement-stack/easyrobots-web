@@ -212,7 +212,9 @@ Se integra con lo que ya usáis. Y lo comprobamos antes de prometerlo.
 **Cuerpo**
 No os pedimos cambiar de herramientas ni aprender ninguna nueva. Trabajamos sobre vuestro WhatsApp, vuestra agenda y vuestro CRM.
 
-Cada oficina tiene un montaje distinto, así que no vamos a poner aquí una lista de logos: **en el diagnóstico miramos qué usáis exactamente y os decimos qué se conecta, qué requiere trabajo y qué no se puede hacer hoy.** Antes de firmar nada.
+Cada oficina tiene un montaje distinto, así que no vamos a poner aquí una lista de logos: **en el diagnóstico miramos qué usáis exactamente y os decimos cómo quedaría conectado.**
+
+> **No ampliar esta frase.** La versión anterior decía "qué se conecta, qué requiere trabajo y qué no se puede hacer hoy". Suena a freno justo donde la página pide la llamada: el objetivo de esta sección es que agenden, y los límites concretos se ven en el diagnóstico. Decisión de Anaís el 2026-09-26. La transparencia de la página ya la sostienen el bloque "cuando no sabe algo" y el CTA final ("si no encaja, también te lo decimos").
 
 **Tres cosas que quedan claras desde el principio**
 - Las conversaciones y los contactos son de vuestra oficina.
@@ -295,5 +297,6 @@ Sin compromiso. Revisamos tu caso antes de proponerte nada.
   calendario. El calendario está en el secundario y en el cierre.
 - **Sagasta / Centro** son calle y zona de ejemplo. Si la primera inmobiliaria
   que va a verlo es de una ciudad concreta, cambiarlas por una calle suya.
-- Pendiente de confirmar: si el primer mes de mantenimiento sin cobrar aplica
-  también a inmobiliarias.
+- **Confirmado por Anaís el 2026-09-26:** el primer mes de mantenimiento sin
+  cobrar aplica a **todos los nichos**, inmobiliarias incluida. Ya no es una nota
+  pendiente: se puede escribir en la página como argumento cerrado.

@@ -418,6 +418,9 @@ escribes a 15 porque te cansas.
 
 Antes parecían contradictorias porque no se decía qué cubría cada una.
 
+**Las dos aplican a todos los nichos**, no solo a clínicas: confirmado por Anaís
+el 2026-09-26. Se puede escribir en cualquier landing sin condicionarlo.
+
 ## La calculadora
 
 Fórmula, visible en la propia página:
