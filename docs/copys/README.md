@@ -14,12 +14,16 @@ Documentos relacionados:
 
 | Nicho | Estrategia | Copy | Maquetado |
 |---|---|---|---|
-| Inmobiliarias | Cerrada | **Escrito** (`inmobiliarias.md`) | Pendiente |
-| Dental | Cerrada | **Escrito** (`dental.md`) | Pendiente |
-| Concesionarios | Cerrada | **Escrito** (`concesionarios.md`) | Pendiente |
-| Clínicas estéticas | Pendiente | — | Página viva, copy anterior |
-| Coaching e infoproductores | **Cerrada** | Pendiente | Pendiente |
-| Ecommerce | **Cerrada** | Pendiente | Pendiente |
+| Inmobiliarias | Cerrada | **Escrito** (`inmobiliarias.md`) | **`src/prueba-inmobiliarias.html`** |
+| Dental | Cerrada | **Escrito** (`dental.md`) | **`src/prueba-dental.html`** |
+| Concesionarios | Cerrada | **Escrito** (`concesionarios.md`) | **`src/prueba-concesionarios.html`** |
+| Coaching e infoproductores | Cerrada | **Escrito** (`coaching.md`) | **`src/prueba-coaching.html`** |
+| Ecommerce | Cerrada | **Escrito** (`ecommerce.md`) | **`src/prueba-ecommerce.html`** |
+| Home de agencia | — | Ver `body-home` en el commit 8e0e9d4 | **`src/prueba-home.html`** |
+| Clínicas estéticas | Pendiente de repasar con este método | — | Página viva, copy anterior, sin tocar |
+
+Las seis páginas `prueba-*.html` están publicadas en `easyrobots-ai.cloud`, con
+`noindex`, para revisarlas antes de sustituir las páginas en producción.
 
 ## Las reglas que gobiernan todo el copy
 
@@ -57,5 +61,5 @@ concesionarios es gestión de cartera. No se calca la estructura de una en otra.
 | Inmobiliarias | Gana quien llega primero, y quien llega primero es un WhatsApp en segundos | La ventana de intención se cierra en minutos; devolver la llamada no es retomar la conversación | *El piso se lo lleva quien llama primero.* |
 | Dental | El dinero ya está dentro de la clínica | El presupuesto presentado que nadie retoma y cuyo motivo de rechazo nadie registra | *El paciente dijo que se lo pensaba. De eso hace cinco semanas.* |
 | Concesionarios | Dos relojes, un mismo cliente | La cartera de posventa que se apaga sola, mientras las oportunidades nuevas esperan | *Vender es la mitad del negocio. La otra vuelve al taller.* |
-| Coaching | Del "sí, me interesa" a una llamada que realmente ocurre | Las oportunidades se enfrían entre conversación, aplicación, agenda y llamada | Pendiente de escribir |
-| Ecommerce | Lo ya vendido puede volverse pérdida | El pedido ya cobrado sigue costando horas y reputación | Pendiente de escribir |
+| Coaching | Del "sí, me interesa" a una llamada que realmente ocurre | Las oportunidades se enfrían entre conversación, aplicación, agenda y llamada | *Esto no vende por ti. Se ocupa de que el que dice que sí llegue a tu llamada.* |
+| Ecommerce | Una venta ya cobrada todavía puede volverse un problema | El pedido ya cobrado sigue costando horas, incidencias y reputación | *Una venta ya cobrada todavía puede convertirse en un problema.* |
