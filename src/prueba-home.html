@@ -8,7 +8,7 @@
   <meta name="robots" content="noindex, nofollow">
   <title>EasyRobots · Agencia de IA: agentes, chatbots y automatización</title>
   <meta name="description"
-    content="Agencia de inteligencia artificial especializada en automatización para clínicas estéticas. Respondemos consultas, gestionamos citas y hacemos seguimiento.">
+    content="Diseñamos, construimos y mantenemos sistemas de IA conectados a las herramientas que ya usas: agentes, chatbots y automatizaciones para tu negocio.">
   <!-- Las tipografias se sirven desde este mismo dominio. Cargarlas desde
        Google enviaba la IP de cada visitante a sus servidores sin permiso,
        y en Alemania hay sentencias en contra. -->
@@ -1066,6 +1066,32 @@
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io_.unobserve(e.target); } });
     }, { threshold: .1 });
     document.querySelectorAll('.r').forEach(function (el) { io_.observe(el); });
+    /* ---- conversacion del hero ----
+       Las burbujas, el aviso de visita agendada y las tarjetas laterales nacen
+       con opacity:0 en el CSS y solo las enciende este bloque. Al derivar las
+       paginas de prueba de la v6 de clinicas se copio el CSS y no el JS, asi
+       que el hero se publico con un hueco en blanco. Si se vuelve a clonar
+       esta pagina, este bloque viaja con el CSS. */
+    (function () {
+      var z = document.getElementById('zone');
+      if (!z) return;
+      var hecho = false;
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting || hecho) return;
+          hecho = true;
+          var t = 250;
+          z.querySelectorAll('.chat .b, .chat .done').forEach(function (m) {
+            setTimeout(function () { m.classList.add('on'); }, t);
+            t += 620;
+          });
+          z.querySelectorAll('.scard').forEach(function (c, i) {
+            setTimeout(function () { c.classList.add('on'); }, 420 + i * 320);
+          });
+        });
+      }, { threshold: .2 }).observe(z);
+    })();
+
 
     // Calendario de GHL en modal. El iframe se monta al abrir, no en la carga.
     var CAL = 'https://api.leadconnectorhq.com/widget/booking/XMQy1fOiMEz88wzKLVPe';
