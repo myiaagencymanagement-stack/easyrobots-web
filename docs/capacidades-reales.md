@@ -29,6 +29,36 @@ prueba. El ejemplo que lo ordena todo: si el hero dice que descolgamos el
 teléfono, alguien llamará al número de la demo y no habrá nadie. Eso no se
 arregla en la llamada de venta, porque no se llega a ella.
 
+
+---
+
+## Actualizacion del 2026-09-27 (manda sobre lo de abajo)
+
+Decidido por Anais. Estas dos filas dejan de bloquear el copy:
+
+**1. La voz si se puede hacer.** Deja de tratarse como "No confirmada" y puede
+nombrarse en el copy de cualquier nicho: llamadas atendidas, agente de voz,
+cualificacion por telefono. La regla 4 de `copys/README.md` (*"la voz esta
+fuera de todos los copys"*) queda derogada.
+
+Lo unico que sigue pendiente es operativo, y solo afecta a una cosa:
+**no se publica un numero de telefono al que se pueda llamar** hasta que haya
+proveedor conectado y probado. Un numero de demo que suena y no contesta es el
+unico fallo que no se arregla en la llamada de venta, porque no se llega a
+ella. Un telefono dentro de una maqueta o un ejemplo no cuenta como numero
+publicado.
+
+**2. Consultar pisos, precio y disponibilidad deja de estar prohibido.** El
+agente puede dar informacion de un inmueble concreto y hablar de
+disponibilidad. Con la condicion de siempre, que no es nuestra sino del
+sentido comun: sale de la fuente que da el cliente (su feed, su CRM, su
+listado), no de lo que el agente se imagine. Eso es implantacion y se habla en
+la llamada de diagnostico.
+
+El criterio de fondo no cambia: **si el limite lo pone el cliente va en el
+copy; si lo ponemos nosotros, no va hasta que exista.** Lo que cambia es que
+estas dos ya no son limites nuestros.
+
 ---
 
 ## Inmobiliarias · estado a 2026-09-25

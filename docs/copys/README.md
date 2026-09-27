@@ -40,8 +40,9 @@ Que la clínica tenga software con API o no cambia *cómo* se implanta, no *si* 
 puede: eso es conversación de la llamada. Pero si el hero promete que
 descolgamos el teléfono, alguien llamará al número de demo y no habrá nadie.
 
-**4. La voz está fuera de todos los copys.** No hay proveedor conectado. Cuando
-lo haya, se cambian los heroes afectados: es una tarde, no una landing nueva.
+**4. La voz sí entra en el copy.** Derogada el 2026-09-27: se puede nombrar en
+cualquier nicho. Lo único que no se publica es un número de teléfono al que se
+pueda llamar, hasta que haya proveedor conectado y probado.
 
 **5. Caso real = caso real. Demo = demo.** El único caso documentado es el de
 Pilar Márquez (micropigmentación) y **no se traslada a ningún otro sector**. En
