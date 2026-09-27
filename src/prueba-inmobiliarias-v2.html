@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PRUEBA. Version de revision interna. -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Agentes e IA para inmobiliarias &middot; EasyRobots</title>
+  <meta name="description"
+    content="La llamada que tu oficina no puede coger sigue en WhatsApp en segundos: el interesado cuenta qué piso busca y se lleva una hora de visita.">
+
+  <style>
+    /* ==========================================================
+       BOCETO APROBADO — capa funcional
+       Los nueve PNG del paquete aprobado son la capa visual y no se
+       tocan: ni recorte, ni color, ni composicion. Todo lo que hay
+       aqui es la capa de interaccion que va encima.
+
+       Los puntos de pulsacion van en porcentaje sobre cada recorte,
+       medidos sobre el pixel de los PNG (866 px de ancho de diseno),
+       para que sigan cuadrando a cualquier tamano.
+       ========================================================== */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; background: #071018; color: #fff;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    .page { width: 100%; max-width: 1536px; margin: 0 auto; }
+    .section { position: relative; line-height: 0; }
+    .section img { display: block; width: 100%; height: auto; }
+
+    /* Enlace para saltar al contenido: no se ve hasta que se tabula. */
+    .saltar {
+      position: absolute; left: 12px; top: -60px; z-index: 50;
+      background: #fff; color: #071018; padding: .7rem 1.1rem;
+      border-radius: 8px; font-size: .85rem; font-weight: 600;
+      line-height: 1.2; transition: top .2s;
+    }
+    .saltar:focus { top: 12px; }
+
+    /* ---------- puntos de pulsacion ---------- */
+    .hs {
+      position: absolute; display: block; z-index: 10;
+      border: 0; background: transparent; cursor: pointer;
+      padding: 0; font: inherit;
+      border-radius: 8px;
+    }
+    /* El nombre del boton existe para el lector de pantalla, pero no se
+       pinta: el rotulo ya esta dibujado dentro del PNG aprobado. */
+    .hs span {
+      position: absolute; width: 1px; height: 1px;
+      overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+    }
+    .hs:focus-visible { outline: 3px solid #1687ff; outline-offset: 3px; }
+    /* Sin fondo al pasar: el boton ya esta pintado en el PNG y cualquier
+       relleno cambiaria el aspecto aprobado. Solo un realce muy leve. */
+    .hs:hover { background: rgba(255, 255, 255, .07); }
+
+    /* --- 01 hero --- */
+    .h-nav { top: 2.25%; height: 6.75%; }
+    .h-n1 { left: 20.3%; width: 6.4%; }
+    .h-n2 { left: 28.2%; width: 7.7%; }
+    .h-n3 { left: 37.5%; width: 8.1%; }
+    .h-n4 { left: 47.3%; width: 7.1%; }
+    .h-n5 { left: 56.1%; width: 4.3%; }
+    .h-n6 { left: 62.1%; width: 4.4%; }
+    .h-cta-top { left: 80.4%; width: 14.6%; }
+    .h-btns { top: 62.4%; height: 10.1%; }
+    .h-b1 { left: 5.4%; width: 17.7%; }
+    .h-b2 { left: 23.9%; width: 15.7%; }
+
+    /* --- 04 demo --- */
+    .d-play { left: 5.3%; top: 59.8%; width: 21.8%; height: 21.5%; }
+
+    /* --- 08 cta --- */
+    .c-btn { left: 55.6%; top: 29.5%; width: 17.4%; height: 38%; }
+
+    /* --- 09 pie --- */
+    .f-prod { left: 31.6%; width: 8.3%; }
+    .f-emp { left: 45%; width: 13.4%; }
+    .f-legal { left: 60.6%; width: 14.5%; }
+    .f-r1 { top: 36.1%; height: 7.4%; }
+    .f-r2 { top: 45%; height: 7.4%; }
+    .f-r3 { top: 53.5%; height: 7.9%; }
+    .f-ig { left: 79%; top: 31.2%; width: 3.2%; height: 14.4%; }
+    .f-fb { left: 82.6%; top: 31.2%; width: 3.2%; height: 14.4%; }
+
+    /* En pantallas pequenas los recortes se encogen y los puntos de
+       pulsacion se quedan por debajo del minimo comodo. No se mueven ni
+       se redibujan: solo se les da altura suficiente para el dedo. */
+    @media (max-width: 760px) {
+      .hs { min-height: 34px; }
+      .hs:hover { background: transparent; }
+    }
+
+    /* ---------- capas emergentes (reserva y demo) ---------- */
+    .capa {
+      position: fixed; inset: 0; z-index: 1000; display: none;
+      background: rgba(3, 8, 13, .74); backdrop-filter: blur(8px);
+      padding: 24px 16px; overflow-y: auto;
+    }
+    .capa.abierta { display: block; }
+    .caja {
+      position: relative; width: min(640px, 100%); margin: 4vh auto;
+      background: #0B1620; border: 1px solid #29415B; border-radius: 22px;
+      padding: 28px 26px 24px; box-shadow: 0 30px 90px rgba(0, 0, 0, .55);
+      line-height: 1.5;
+    }
+    .caja h2 { margin: 0 0 .5rem; font-size: 1.4rem; letter-spacing: -.02em; }
+    .caja p { margin: 0 0 1.2rem; color: #A9B7C6; font-size: .92rem; }
+    .cerrar {
+      position: absolute; top: 14px; right: 14px;
+      width: 36px; height: 36px; border-radius: 9px;
+      border: 1px solid #29415B; background: #102030; color: #fff;
+      font-size: 1.1rem; line-height: 1; cursor: pointer;
+    }
+    .cerrar:hover { background: #16293C; }
+    .cerrar:focus-visible, .acciones button:focus-visible { outline: 3px solid #1687ff; outline-offset: 3px; }
+    .acciones { display: flex; gap: 10px; flex-wrap: wrap; }
+    .acciones button {
+      border: 1px solid #35516D; background: #102030; color: #fff;
+      border-radius: 12px; padding: .78rem 1.1rem; font-size: .9rem;
+      font-weight: 600; cursor: pointer; font-family: inherit;
+    }
+    .acciones .primario { background: #087CF0; border-color: #087CF0; }
+    .acciones .primario:hover { background: #0A6AD6; }
+    .estado { margin-top: 1.1rem; color: #8DD5FF; font-size: .85rem; min-height: 1.2em; }
+    audio { width: 100%; margin-top: 1rem; }
+    .marco {
+      width: 100%; min-height: 620px; border: 0; border-radius: 12px;
+      margin-top: 1.1rem; background: #0E1B27;
+    }
+    @media (max-width: 900px) { .marco { min-height: 560px; } }
+  </style>
+</head>
+
+<body>
+  <a class="saltar" href="#momento">Saltar al contenido</a>
+
+  <main class="page">
+
+    <!-- ============ 01 · HERO ============
+         El recorte aprobado no se toca. Solo se colocan encima los puntos
+         de pulsacion de la barra y de los dos botones, medidos sobre el
+         pixel del PNG. -->
+    <section class="section" id="hero">
+      <img src="assets/boceto/01-hero.png" width="866" height="445" fetchpriority="high" decoding="async"
+        alt="El piso se lo lleva quien llama primero. EasyRobots convierte cada llamada en una conversacion, recoge la informacion y agenda la visita. 15 minutos, sin compromiso, para tu inmobiliaria.">
+
+      <a class="hs h-nav h-n1" href="#momento"><span>Inmobiliarias</span></a>
+      <a class="hs h-nav h-n2" href="#como-funciona"><span>C&oacute;mo funciona</span></a>
+      <a class="hs h-nav h-n3" href="#demo"><span>La conversaci&oacute;n</span></a>
+      <a class="hs h-nav h-n4" href="#sistema"><span>Integraciones</span></a>
+      <a class="hs h-nav h-n5" href="#equipo-garantia"><span>Equipo</span></a>
+      <a class="hs h-nav h-n6" href="#cta"><span>Precios</span></a>
+      <button class="hs h-nav h-cta-top" type="button" data-reserva><span>Reservar una llamada</span></button>
+
+      <button class="hs h-btns h-b1" type="button" data-reserva><span>Reservar una llamada</span></button>
+      <a class="hs h-btns h-b2" href="#demo"><span>Ver c&oacute;mo funciona</span></a>
+    </section>
+
+    <!-- ============ 02 · EL MOMENTO ============ -->
+    <section class="section" id="momento">
+      <img src="assets/boceto/02-momento.png" width="866" height="202" loading="lazy" decoding="async"
+        alt="Devolver la llamada no es retomar la conversacion. Cuando devuelves la llamada dos horas despues, ya no estas contestando: estas llamando tu. No pierdes la llamada, pierdes el momento.">
+    </section>
+
+    <!-- ============ 03 · COMO FUNCIONA ============ -->
+    <section class="section" id="como-funciona">
+      <img src="assets/boceto/03-como-funciona.png" width="866" height="228" loading="lazy" decoding="async"
+        alt="Como funciona: la llamada entra, la conversacion sigue por WhatsApp, se recoge que piso busca, se propone una visita sobre huecos reales y el equipo recibe el aviso con todo.">
+    </section>
+
+    <!-- ============ 04 · DEMOSTRACION ============
+         El recorte solo dibuja un boton, "Escuchar la llamada", asi que
+         solo se coloca ese. No se anade el de "Hablar con el agente":
+         pintar un boton nuevo seria cambiar el diseno aprobado. Su punto
+         de conexion queda abajo, en el JS, listo para cuando exista. -->
+    <section class="section" id="demo">
+      <img src="assets/boceto/04-demo.png" width="866" height="241" loading="lazy" decoding="async"
+        alt="Una demostracion real: escucha a EasyRobots responder a un comprador. Una llamada real, sin guiones, con la informacion recogida al lado: interes, presupuesto, disponibilidad y comercial asignado.">
+      <button class="hs d-play" type="button" data-demo><span>Escuchar la llamada</span></button>
+    </section>
+
+    <!-- ============ 05 · EL SISTEMA ============ -->
+    <section class="section" id="sistema">
+      <img src="assets/boceto/05-sistema.png" width="866" height="154" loading="lazy" decoding="async"
+        alt="Piezas, no un paquete cerrado. Se empieza por una pieza, se deja funcionando y luego se decide si hace falta la siguiente.">
+    </section>
+
+    <!-- ============ 06 · TECNOLOGIA ============ -->
+    <section class="section" id="tecnologia">
+      <img src="assets/boceto/06-tecnologia.png" width="866" height="120" loading="lazy" decoding="async"
+        alt="Tecnologia que potencia tu equipo, no lo sustituye. Hay personas detras: un equipo pequeno, cercano y con experiencia en tecnologia y negocio.">
+    </section>
+
+    <!-- ============ 07 · EQUIPO Y GARANTIA ============ -->
+    <section class="section" id="equipo-garantia">
+      <img src="assets/boceto/07-equipo-garantia.png" width="866" height="120" loading="lazy" decoding="async"
+        alt="Reparto entre EasyRobots y tu equipo, el equipo fundador, y la garantia: 14 dias para comprobar que encaja con tu forma de trabajar, y el primer mes de mantenimiento incluido.">
+    </section>
+
+    <!-- ============ 08 · CTA ============ -->
+    <section class="section" id="cta">
+      <img src="assets/boceto/08-cta.png" width="866" height="105" loading="lazy" decoding="async"
+        alt="Vemos que pasa hoy con las llamadas que no podeis coger. Sin compromiso, 15 minutos.">
+      <button class="hs c-btn" type="button" data-reserva><span>Reservar una llamada</span></button>
+    </section>
+
+    <!-- ============ 09 · PIE ============ -->
+    <footer class="section" id="pie">
+      <img src="assets/boceto/09-footer.png" width="866" height="202" loading="lazy" decoding="async"
+        alt="EasyRobots AH-NICE, Ana Isabel Gonzalez Hoog, Tonndorfer Hauptstrasse 61, Hamburgo, Alemania. info@easyrobots-ai.cloud">
+
+      <a class="hs f-prod f-r1" href="#como-funciona"><span>C&oacute;mo funciona</span></a>
+      <a class="hs f-prod f-r2" href="#demo"><span>Casos reales</span></a>
+      <a class="hs f-prod f-r3" href="#cta"><span>Calculadora</span></a>
+
+      <a class="hs f-emp f-r1" href="#equipo-garantia"><span>Sobre nosotros</span></a>
+      <button class="hs f-emp f-r2" type="button" data-reserva><span>Reservar llamada</span></button>
+      <a class="hs f-emp f-r3" href="mailto:info@easyrobots-ai.cloud"><span>info@easyrobots-ai.cloud</span></a>
+
+      <a class="hs f-legal f-r1" href="privacy.html"><span>Pol&iacute;tica de privacidad y cookies</span></a>
+
+      <a class="hs f-ig" href="https://www.instagram.com/easyrobots.ai/" target="_blank" rel="noopener"><span>Instagram</span></a>
+      <a class="hs f-fb" href="https://www.facebook.com/people/EasyRobotsAI/61587151053673/" target="_blank" rel="noopener"><span>Facebook</span></a>
+    </footer>
+
+  </main>
+
+  <!-- ============ CAPA: RESERVAR LLAMADA ============
+       Usa el mismo calendario de GHL que el resto de la web. -->
+  <div class="capa" id="capa-reserva" aria-hidden="true">
+    <div class="caja" role="dialog" aria-modal="true" aria-labelledby="t-reserva">
+      <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">&#10005;</button>
+      <h2 id="t-reserva">Elige un hueco y lo vemos contigo</h2>
+      <p>15 minutos. Sin presentaci&oacute;n comercial.</p>
+      <div id="hueco-cal"></div>
+    </div>
+  </div>
+
+  <!-- ============ CAPA: DEMOSTRACION ============ -->
+  <div class="capa" id="capa-demo" aria-hidden="true">
+    <div class="caja" role="dialog" aria-modal="true" aria-labelledby="t-demo">
+      <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">&#10005;</button>
+      <h2 id="t-demo">Escucha la llamada</h2>
+      <p>La grabaci&oacute;n se reproduce aqu&iacute;, sin salir de la p&aacute;gina.</p>
+      <div class="acciones">
+        <button class="primario" type="button" id="btn-audio">Reproducir la llamada</button>
+      </div>
+      <p class="estado" id="estado-demo" role="status"></p>
+      <div id="hueco-audio"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* =========================================================
+         PUNTOS DE CONEXION
+         Lo unico que hay que tocar para enchufar lo que falta.
+         ========================================================= */
+
+      // 1. CALENDARIO — ya conectado. Es el mismo de toda la web.
+      var CALENDARIO = 'https://api.leadconnectorhq.com/widget/booking/XMQy1fOiMEz88wzKLVPe';
+      var NICHO = 'inmobiliarias';
+
+      // 2. AUDIO DE LA LLAMADA — pendiente. Al dejar el archivo en
+      //    assets/ y escribir aqui su ruta, el boton lo reproduce solo.
+      //    Ejemplo: 'assets/demo-llamada-inmobiliarias.mp3'
+      var AUDIO_DEMO = '';
+
+      // 3. AGENTE DE VOZ — pendiente, y a proposito no hay boton.
+      //    El recorte aprobado no dibuja ninguno, y anadirlo seria
+      //    cambiar el diseno. Cuando exista proveedor se decide donde
+      //    va y se conecta desde aqui.
+      //    var AGENTE_VOZ = '';
+
+      // 4. REDES Y LEGAL — ya conectados en el pie:
+      //    Instagram, Facebook, privacy.html y mailto de info@.
+      //    LinkedIn no se pone: no hay perfil.
+
+      /* ========================= capas ========================= */
+      var ultimoFoco = null;
+
+      function abrir(capa) {
+        ultimoFoco = document.activeElement;
+        capa.classList.add('abierta');
+        capa.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var f = capa.querySelector('.cerrar');
+        if (f) f.focus();
+      }
+
+      function cerrar(capa) {
+        capa.classList.remove('abierta');
+        capa.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus();
+      }
+
+      function cerrarTodas() {
+        document.querySelectorAll('.capa.abierta').forEach(cerrar);
+      }
+
+      var capaReserva = document.getElementById('capa-reserva');
+      var capaDemo = document.getElementById('capa-demo');
+      var huecoCal = document.getElementById('hueco-cal');
+
+      document.querySelectorAll('[data-reserva]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          // El iframe se monta al abrir, no en la carga de la pagina.
+          if (!huecoCal.firstChild) {
+            var f = document.createElement('iframe');
+            f.className = 'marco';
+            f.src = CALENDARIO + '?nicho=' + NICHO;
+            f.title = 'Agenda tu llamada con EasyRobots';
+            huecoCal.appendChild(f);
+          }
+          abrir(capaReserva);
+        });
+      });
+
+      document.querySelectorAll('[data-demo]').forEach(function (b) {
+        b.addEventListener('click', function () { abrir(capaDemo); });
+      });
+
+      document.querySelectorAll('[data-cerrar]').forEach(function (b) {
+        b.addEventListener('click', function () { cerrar(b.closest('.capa')); });
+      });
+
+      document.querySelectorAll('.capa').forEach(function (c) {
+        c.addEventListener('click', function (e) { if (e.target === c) cerrar(c); });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') cerrarTodas();
+      });
+
+      /* ======================= audio demo ======================= */
+      var btnAudio = document.getElementById('btn-audio');
+      var estado = document.getElementById('estado-demo');
+      var huecoAudio = document.getElementById('hueco-audio');
+
+      btnAudio.addEventListener('click', function () {
+        if (!AUDIO_DEMO) {
+          estado.textContent = 'La grabacion todavia no esta subida. En cuanto este el archivo, se reproduce aqui.';
+          return;
+        }
+        if (!huecoAudio.firstChild) {
+          var a = document.createElement('audio');
+          a.controls = true;
+          a.preload = 'none';
+          a.src = AUDIO_DEMO;
+          huecoAudio.appendChild(a);
+        }
+        var audio = huecoAudio.firstChild;
+        estado.textContent = '';
+        audio.play().catch(function () {
+          estado.textContent = 'Pulsa el boton de reproducir del reproductor.';
+        });
+      });
+
+      /* ============== aviso de cita al calendario ============== */
+      window.addEventListener('message', function (e) {
+        var d = e.data;
+        var esCita = d && (d.type === 'booking_confirmed' || d.type === 'appointmentBooked' ||
+          (typeof d === 'string' && d.indexOf('booking') > -1));
+        if (esCita && typeof gtag === 'function') {
+          gtag('event', 'cita_agendada', {
+            event_category: 'conversion', event_label: 'calendario_ghl', nicho: NICHO
+          });
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
