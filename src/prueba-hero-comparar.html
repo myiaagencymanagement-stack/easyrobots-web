@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Comparar hero &middot; boceto y reconstrucci&oacute;n</title>
+
+  <style>
+    @font-face {
+      font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 400; font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-400-latin.woff2) format('woff2');
+    }
+    @font-face {
+      font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 500; font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-500-latin.woff2) format('woff2');
+    }
+    @font-face {
+      font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-600-latin.woff2) format('woff2');
+    }
+    @font-face {
+      font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 700; font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-700-latin.woff2) format('woff2');
+    }
+    @font-face {
+      font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap;
+      src: url(assets/fonts/plus-jakarta-sans-800-latin.woff2) format('woff2');
+    }
+
+    /* ==========================================================
+       RECONSTRUCCION MEDIDA DEL HERO
+       Todas las medidas salen de medir 01-hero.png, que tiene 866 px
+       de ancho. Para no perder esos numeros por el camino, la unidad
+       --u vale exactamente 1 px del boceto: 100/866 del ancho del
+       contenedor. Asi 32 px del boceto se escriben calc(32*var(--u))
+       y siguen cuadrando a cualquier tamano de pantalla.
+
+       Colores muestreados del pixel, no elegidos a ojo:
+         azul del boton   #007FFE
+         verde WhatsApp   #18CF75
+         fondo de tarjeta #262324
+       ========================================================== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0D1117; color: #E6EAF0;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      padding: 22px 16px 60px;
+    }
+
+    .cab { max-width: 1100px; margin: 0 auto 18px; }
+    .cab h1 { font-size: 1.15rem; letter-spacing: -.02em; font-weight: 700; }
+    .cab p { font-size: .84rem; color: #97A3B6; margin-top: .35rem; line-height: 1.5; }
+
+    .comparador { max-width: 1100px; margin: 0 auto; }
+
+    .escenario {
+      position: relative; width: 100%; aspect-ratio: 866 / 445;
+      container-type: inline-size;
+      overflow: hidden; border-radius: 10px;
+      background: #0B0A0C;
+      --u: 0.11547cqw;      /* 1 px del boceto */
+      --azul: #007FFE;
+      --verde: #18CF75;
+      --tarjeta: rgba(38, 35, 36, .82);
+      --borde: rgba(255, 255, 255, .13);
+    }
+
+    /* capa A: la reconstruccion */
+    .recons { position: absolute; inset: 0; }
+    .recons .foto {
+      position: absolute; inset: 0;
+      background: url(assets/hero-inmobiliarias.webp) center right / cover no-repeat;
+    }
+    .recons .velo {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(6,6,8,.90) 0%, rgba(6,6,8,.60) 28%, rgba(6,6,8,.10) 48%, rgba(6,6,8,0) 62%);
+    }
+
+    /* capa B: el boceto, recortado por el deslizador */
+    .boceto {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: fill; display: block; z-index: 40;
+      clip-path: inset(0 0 0 var(--x, 50%));
+    }
+    .divisor {
+      position: absolute; top: 0; bottom: 0; left: var(--x, 50%);
+      width: 2px; background: #FF3B6B; z-index: 50; pointer-events: none;
+    }
+    .divisor::before, .divisor::after {
+      content: attr(data-a); position: absolute; top: 8px;
+      font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      background: #FF3B6B; color: #fff; padding: 3px 7px; border-radius: 4px; white-space: nowrap;
+    }
+    .divisor::before { content: "Reconstrucci\00F3n"; right: 8px; }
+    .divisor::after { content: "Boceto"; left: 8px; }
+
+    /* ---------- barra ---------- */
+    .r-nav {
+      position: absolute; left: calc(51*var(--u)); right: calc(44*var(--u));
+      top: calc(12*var(--u)); height: calc(26*var(--u));
+      display: flex; align-items: center; z-index: 10;
+    }
+    .r-marca { font-size: calc(15*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; }
+    .r-links { display: flex; gap: calc(26*var(--u)); margin-left: calc(55*var(--u)); }
+    .r-links span { font-size: calc(9.5*var(--u)); font-weight: 500; color: rgba(255,255,255,.80); white-space: nowrap; }
+    .r-links span.act { color: #fff; font-weight: 600; position: relative; }
+    .r-links span.act::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: calc(-6*var(--u));
+      height: calc(2*var(--u)); background: var(--azul); border-radius: 2px;
+    }
+    .r-navbtn {
+      margin-left: auto; background: var(--azul); color: #fff; border-radius: 999px;
+      font-size: calc(9.5*var(--u)); font-weight: 600; white-space: nowrap;
+      padding: calc(8*var(--u)) calc(15*var(--u));
+      display: flex; align-items: center; gap: calc(6*var(--u));
+    }
+
+    /* ---------- columna de texto ---------- */
+    .r-col { position: absolute; left: calc(51*var(--u)); top: calc(99*var(--u)); width: calc(310*var(--u)); z-index: 10; }
+    .r-kick {
+      font-size: calc(8*var(--u)); font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: #6FB4FF;
+    }
+    .r-h1 {
+      margin-top: calc(13*var(--u));
+      font-size: calc(33*var(--u)); line-height: calc(36*var(--u));
+      font-weight: 800; letter-spacing: -.035em; color: #fff;
+    }
+    .r-h1 em { font-style: normal; color: var(--azul); }
+    .r-sub {
+      margin-top: calc(11*var(--u));
+      font-size: calc(11.5*var(--u)); line-height: calc(15*var(--u));
+      color: rgba(255,255,255,.80); max-width: calc(250*var(--u));
+    }
+    .r-btns { display: flex; gap: calc(22*var(--u)); margin-top: calc(20*var(--u)); align-items: center; }
+    .r-b1 {
+      background: var(--azul); color: #fff; border-radius: 999px;
+      font-size: calc(11*var(--u)); font-weight: 600; white-space: nowrap;
+      padding: calc(11*var(--u)) calc(20*var(--u));
+      display: flex; align-items: center; gap: calc(8*var(--u));
+    }
+    .r-b2 {
+      border: calc(1.2*var(--u)) solid rgba(255,255,255,.45); color: #fff; border-radius: 999px;
+      font-size: calc(11*var(--u)); font-weight: 600; white-space: nowrap;
+      padding: calc(9*var(--u)) calc(18*var(--u)) calc(9*var(--u)) calc(9*var(--u));
+      display: flex; align-items: center; gap: calc(9*var(--u));
+    }
+    .r-play {
+      width: calc(20*var(--u)); height: calc(20*var(--u)); border-radius: 50%;
+      background: #fff; color: #0B0A0C; flex: 0 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      font-size: calc(8*var(--u));
+    }
+    .r-meta { display: flex; gap: calc(23*var(--u)); margin-top: calc(22*var(--u)); }
+    .r-meta div {
+      display: flex; align-items: center; gap: calc(5*var(--u));
+      font-size: calc(9*var(--u)); color: rgba(255,255,255,.72); white-space: nowrap;
+    }
+    .r-meta svg { width: calc(11*var(--u)); height: calc(11*var(--u)); flex: 0 0 auto; }
+
+    /* ---------- tarjetas flotantes ---------- */
+    .tarj {
+      position: absolute; z-index: 20;
+      background: var(--tarjeta); border: calc(1*var(--u)) solid var(--borde);
+      border-radius: calc(13*var(--u));
+      padding: calc(10*var(--u)) calc(12*var(--u));
+      display: flex; align-items: center; gap: calc(9*var(--u));
+      backdrop-filter: blur(calc(6*var(--u)));
+      box-shadow: 0 calc(8*var(--u)) calc(22*var(--u)) rgba(0,0,0,.45);
+    }
+    .tarj .ico {
+      width: calc(26*var(--u)); height: calc(26*var(--u)); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex: 0 0 auto;
+    }
+    .tarj .ico svg { width: calc(15*var(--u)); height: calc(15*var(--u)); color: #fff; }
+    .tarj b { display: block; font-size: calc(11*var(--u)); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -.01em; }
+    .tarj i { display: block; font-style: normal; font-size: calc(9.5*var(--u)); line-height: 1.35; margin-top: calc(3*var(--u)); }
+    .tarj .hora { color: var(--verde); font-weight: 600; }
+    .tarj .gris { color: rgba(255,255,255,.62); }
+
+    /* posiciones medidas sobre el boceto */
+    .t-llamada { left: 43.30%; top: 23.60%; width: 15.6%; }
+    .t-agente  { left: 42.03%; top: 44.27%; width: 16.4%; }
+    .t-wa      { left: 81.18%; top: 26.97%; width: 14.9%; }
+    .t-visita  { left: 81.06%; top: 49.89%; width: 14.9%; }
+    .t-comer   { left: 80.83%; top: 67.42%; width: 15.8%; }
+
+    .ic-verde { background: var(--verde); }
+    .ic-azul  { background: var(--azul); }
+    .ic-blanco { background: #fff; }
+    .ic-blanco svg { color: #D93A3A !important; }
+
+    /* ---------- el movil ---------- */
+    .r-movil {
+      position: absolute; left: 57.6%; top: 12.4%; width: 22.4%;
+      z-index: 30;
+      background: #0B0B0D; border-radius: calc(26*var(--u));
+      padding: calc(4*var(--u));
+      box-shadow: 0 calc(16*var(--u)) calc(40*var(--u)) rgba(0,0,0,.6),
+                  0 0 0 calc(1*var(--u)) rgba(255,255,255,.10);
+    }
+    .r-pant {
+      background: #fff; border-radius: calc(23*var(--u)); overflow: hidden;
+      position: relative; aspect-ratio: 169 / 420;
+    }
+    .r-isla {
+      position: absolute; top: calc(7*var(--u)); left: 50%; transform: translateX(-50%);
+      width: calc(48*var(--u)); height: calc(13*var(--u));
+      background: #0B0B0D; border-radius: 999px; z-index: 3;
+    }
+    .r-hora {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: calc(7*var(--u)) calc(11*var(--u)) 0;
+      font-size: calc(7.5*var(--u)); font-weight: 600; color: #0B0B0D;
+    }
+    .r-wtop {
+      display: flex; align-items: center; gap: calc(5*var(--u));
+      padding: calc(6*var(--u)) calc(8*var(--u)) calc(6*var(--u));
+      border-bottom: calc(1*var(--u)) solid #E8E6E2; background: #F6F5F3;
+    }
+    .r-wtop .atras { color: var(--azul); font-size: calc(11*var(--u)); line-height: 1; }
+    .r-wtop .av {
+      width: calc(17*var(--u)); height: calc(17*var(--u)); border-radius: 50%;
+      background: #D8E4F5; color: #3A5D8F; flex: 0 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      font-size: calc(7.5*var(--u)); font-weight: 700;
+    }
+    .r-wtop b { display: block; font-size: calc(8*var(--u)); color: #0B0B0D; font-weight: 600; }
+    .r-wtop span { display: block; font-size: calc(6*var(--u)); color: #7B8794; }
+
+    .r-chat {
+      background: #EFE9E1; padding: calc(7*var(--u)) calc(7*var(--u));
+      display: flex; flex-direction: column; gap: calc(5*var(--u));
+    }
+    .r-msg {
+      max-width: 88%; font-size: calc(7.6*var(--u)); line-height: 1.38;
+      padding: calc(5*var(--u)) calc(6*var(--u)) calc(3*var(--u));
+      border-radius: calc(8*var(--u)); color: #101418;
+      box-shadow: 0 calc(1*var(--u)) calc(1*var(--u)) rgba(0,0,0,.08);
+    }
+    .r-msg .h { display: block; text-align: right; font-size: calc(5.6*var(--u)); color: #97A0A8; margin-top: calc(1*var(--u)); }
+    .r-in { background: #fff; align-self: flex-start; border-top-left-radius: calc(2*var(--u)); }
+    .r-out { background: #DCF8C6; align-self: flex-end; border-top-right-radius: calc(2*var(--u)); }
+    .r-out .h { color: #6E8C61; }
+    .r-ficha {
+      background: #fff; border-radius: calc(8*var(--u)); overflow: hidden; align-self: flex-start;
+      max-width: 88%; box-shadow: 0 calc(1*var(--u)) calc(1*var(--u)) rgba(0,0,0,.08);
+    }
+    .r-ficha img { display: block; width: 100%; height: auto; }
+    .r-ficha .txt { padding: calc(5*var(--u)) calc(6*var(--u)) calc(4*var(--u)); }
+    .r-ficha b { display: block; font-size: calc(7.6*var(--u)); color: #101418; }
+    .r-ficha span { display: block; font-size: calc(6.6*var(--u)); color: #6B7480; margin-top: calc(1*var(--u)); }
+    .r-ficha strong { display: block; font-size: calc(8.4*var(--u)); color: #101418; margin-top: calc(2*var(--u)); }
+    .r-horas { display: flex; gap: calc(4*var(--u)); margin-top: calc(2*var(--u)); flex-wrap: nowrap; }
+    .r-horas span {
+      background: #fff; color: var(--azul); border-radius: calc(6*var(--u));
+      font-size: calc(6.6*var(--u)); font-weight: 600; white-space: nowrap;
+      padding: calc(4*var(--u)) calc(6*var(--u));
+      box-shadow: 0 calc(1*var(--u)) calc(1*var(--u)) rgba(0,0,0,.08);
+    }
+    .r-wfoot {
+      display: flex; align-items: center; gap: calc(5*var(--u));
+      padding: calc(6*var(--u)) calc(8*var(--u)) calc(8*var(--u)); background: #fff;
+    }
+    .r-wfoot .circ {
+      width: calc(14*var(--u)); height: calc(14*var(--u)); border-radius: 50%;
+      border: calc(1.2*var(--u)) solid var(--azul); flex: 0 0 auto;
+    }
+    .r-wfoot .caja {
+      flex: 1; background: #F1EFEC; border-radius: 999px;
+      padding: calc(4*var(--u)) calc(8*var(--u));
+      font-size: calc(7*var(--u)); color: #9AA3AD;
+    }
+
+    /* ---------- controles ---------- */
+    .mando { max-width: 1100px; margin: 16px auto 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .mando input[type=range] { flex: 1; min-width: 220px; accent-color: #FF3B6B; height: 26px; }
+    .mando button {
+      font-family: inherit; font-size: .82rem; font-weight: 600; cursor: pointer;
+      background: #1C2532; color: #E6EAF0; border: 1px solid #2E3B4E;
+      border-radius: 9px; padding: .55rem 1rem;
+    }
+    .mando button:hover { background: #26334A; }
+    .mando button[aria-pressed="true"] { background: #FF3B6B; border-color: #FF3B6B; color: #fff; }
+    .mando button:focus-visible, .mando input:focus-visible { outline: 2px solid #FF3B6B; outline-offset: 3px; }
+    .pista { max-width: 1100px; margin: 12px auto 0; font-size: .78rem; color: #7C899C; line-height: 1.6; }
+
+    /* En pantallas estrechas el comparador deja de tener sentido a tamano
+       real: se permite mirarlo con scroll lateral dentro de su caja. */
+    @media (max-width: 720px) {
+      .tira { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .tira .comparador { min-width: 720px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cab">
+    <h1>Hero de inmobiliarias &middot; boceto contra reconstrucci&oacute;n</h1>
+    <p>A la izquierda del deslizador, el hero reconstruido en HTML. A la derecha, el PNG del boceto.
+      Mueve el deslizador para ver qu&eacute; est&aacute; desplazado y cu&aacute;nto.</p>
+  </div>
+
+  <div class="tira">
+    <div class="comparador">
+      <div class="escenario" id="escenario">
+
+        <!-- ============ A · RECONSTRUCCION ============ -->
+        <div class="recons">
+          <div class="foto"></div>
+          <div class="velo"></div>
+
+          <div class="r-nav">
+            <div class="r-marca">EasyRobots</div>
+            <div class="r-links">
+              <span class="act">Inmobiliarias</span>
+              <span>C&oacute;mo funciona</span>
+              <span>La conversaci&oacute;n</span>
+              <span>Integraciones</span>
+              <span>Equipo</span>
+              <span>Precios</span>
+            </div>
+            <div class="r-navbtn">Reservar una llamada &rarr;</div>
+          </div>
+
+          <div class="r-col">
+            <div class="r-kick">Llamadas &middot; Voz &middot; WhatsApp &middot; Visitas</div>
+            <div class="r-h1">El piso se lo lleva<br>quien llama<br><em>primero.</em></div>
+            <div class="r-sub">Convierte cada llamada en una conversaci&oacute;n,
+              recoge la informaci&oacute;n y agenda la visita.</div>
+            <div class="r-btns">
+              <div class="r-b1">Reservar una llamada &rarr;</div>
+              <div class="r-b2"><span class="r-play">&#9654;</span>Ver c&oacute;mo funciona</div>
+            </div>
+            <div class="r-meta">
+              <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M10 5.8v4.4l3 1.8"/></svg>15 minutos</div>
+              <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M6.4 6.4l7.2 7.2M13.6 6.4l-7.2 7.2"/></svg>Sin compromiso</div>
+              <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3.5 17h13M5 17V8l5-3.5L15 8v9"/><path d="M8.5 17v-4h3v4"/></svg>Para tu inmobiliaria.</div>
+            </div>
+          </div>
+
+          <!-- tarjetas -->
+          <div class="tarj t-llamada">
+            <div class="ico ic-verde"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M7.4 3.2c.5-.2 1.1 0 1.4.5l1.4 2.4c.3.5.2 1.1-.2 1.5l-1 .9c-.2.2-.3.5-.1.8.9 1.7 2.3 3.1 4 4 .3.2.6.1.8-.1l.9-1c.4-.4 1-.5 1.5-.2l2.4 1.4c.5.3.7.9.5 1.4l-.7 1.7c-.2.5-.7.9-1.3.9C10.3 19.4 2.6 11.7 2.6 4.4c0-.6.4-1.1.9-1.3z"/></svg></div>
+            <div><b>Llamada atendida</b><i class="hora">12:41</i><i class="hora">+34 612 345 678</i></div>
+          </div>
+
+          <div class="tarj t-agente">
+            <div class="ico ic-azul"><svg viewBox="0 0 22 22" fill="currentColor"><rect x="3" y="8.5" width="1.8" height="5" rx=".9"/><rect x="6.6" y="6" width="1.8" height="10" rx=".9"/><rect x="10.1" y="3.5" width="1.8" height="15" rx=".9"/><rect x="13.6" y="6" width="1.8" height="10" rx=".9"/><rect x="17.2" y="8.5" width="1.8" height="5" rx=".9"/></svg></div>
+            <div><b>Agente EasyRobots<br>en llamada</b><i class="gris">Cualificando al cliente&hellip;</i></div>
+          </div>
+
+          <div class="tarj t-wa">
+            <div class="ico ic-verde"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg></div>
+            <div><b>WhatsApp<br>enviado</b><i class="hora">12:42</i><i class="gris">Informaci&oacute;n del piso<br>y disponibilidad</i></div>
+          </div>
+
+          <div class="tarj t-visita">
+            <div class="ico ic-blanco"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.2" y="5" width="15.6" height="14" rx="2.4"/><path d="M3.2 9.4h15.6M7.6 2.8v3.4M14.4 2.8v3.4"/></svg></div>
+            <div><b>Visita propuesta</b><i style="color:#fff">Jueves 11:00</i></div>
+          </div>
+
+          <div class="tarj t-comer">
+            <div class="ico ic-azul"><svg viewBox="0 0 22 22" fill="currentColor"><circle cx="8" cy="7.5" r="3.1"/><circle cx="15.2" cy="8.4" r="2.4"/><path d="M2.4 18c.5-3 2.9-4.6 5.6-4.6S13.1 15 13.6 18z"/><path d="M14.4 12.6c2.2 0 3.9 1.2 4.4 3.3l-4 .1z"/></svg></div>
+            <div><b>Comercial informado</b><i class="gris">Cliente &middot; Piso &middot; Visita<br>Todo el contexto</i></div>
+          </div>
+
+          <!-- movil -->
+          <div class="r-movil">
+            <div class="r-pant">
+              <div class="r-isla"></div>
+              <div class="r-hora"><span>12:41</span><span>&#9679;&#9679;&#9679;</span></div>
+              <div class="r-wtop">
+                <span class="atras">&#8249;</span>
+                <span class="av">I</span>
+                <div><b>Inmobiliaria</b><span>en l&iacute;nea</span></div>
+              </div>
+              <div class="r-chat">
+                <div class="r-in r-msg">Hola, soy el asistente virtual de la inmobiliaria.
+                  &iquest;En qu&eacute; puedo ayudarte?<span class="h">12:41</span></div>
+                <div class="r-out r-msg">Hola, me interesa el piso de la Calle Serrano.
+                  &iquest;Sigue disponible?<span class="h">12:42</span></div>
+                <div class="r-in r-msg">S&iacute;, sigue disponible. Te env&iacute;o la informaci&oacute;n:<span class="h">12:42</span></div>
+                <div class="r-ficha">
+                  <img src="assets/boceto-piso-chat.webp" alt="" loading="lazy" decoding="async">
+                  <div class="txt">
+                    <b>Piso en Calle Serrano</b>
+                    <span>3 hab &middot; 120 m&sup2; &middot; Terraza</span>
+                    <strong>940.000 &euro;</strong>
+                  </div>
+                </div>
+                <div class="r-in r-msg">&iquest;Te viene bien alguna de estas horas para verlo?<span class="h">12:43</span></div>
+                <div class="r-horas"><span>Hoy 17:00</span><span>Ma&ntilde;ana 10:00</span><span>Jueves 11:00</span></div>
+              </div>
+              <div class="r-wfoot">
+                <span class="circ"></span>
+                <div class="caja">Escribe un mensaje&hellip;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ B · BOCETO ============ -->
+        <img class="boceto" id="boceto" src="assets/boceto/01-hero.png" alt="Boceto aprobado del hero">
+        <div class="divisor" id="divisor"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="mando">
+    <input type="range" id="sl" min="0" max="100" value="50" step="0.5"
+      aria-label="Posici&oacute;n del deslizador de comparaci&oacute;n">
+    <button type="button" id="b-solo-r">Solo reconstrucci&oacute;n</button>
+    <button type="button" id="b-solo-b">Solo boceto</button>
+    <button type="button" id="b-fundido" aria-pressed="false">Superponer al 50 %</button>
+  </div>
+
+  <p class="pista">Con <strong>Superponer</strong> los dos quedan uno encima del otro a media opacidad:
+    lo que est&eacute; desplazado se ve doble. Es la forma m&aacute;s r&aacute;pida de cazar milimetradas.
+    Flechas izquierda y derecha para mover el deslizador fino.</p>
+
+  <script>
+    (function () {
+      'use strict';
+      var esc = document.getElementById('escenario');
+      var sl = document.getElementById('sl');
+      var boceto = document.getElementById('boceto');
+      var divisor = document.getElementById('divisor');
+      var bFundido = document.getElementById('b-fundido');
+      var fundido = false;
+
+      function pintar() {
+        var x = sl.value + '%';
+        esc.style.setProperty('--x', x);
+      }
+
+      function modoFundido(activo) {
+        fundido = activo;
+        bFundido.setAttribute('aria-pressed', activo ? 'true' : 'false');
+        if (activo) {
+          boceto.style.clipPath = 'none';
+          boceto.style.opacity = '.5';
+          divisor.style.display = 'none';
+          sl.disabled = true;
+        } else {
+          boceto.style.clipPath = '';
+          boceto.style.opacity = '';
+          divisor.style.display = '';
+          sl.disabled = false;
+          pintar();
+        }
+      }
+
+      sl.addEventListener('input', pintar);
+      document.getElementById('b-solo-r').addEventListener('click', function () {
+        modoFundido(false); sl.value = 100; pintar();
+      });
+      document.getElementById('b-solo-b').addEventListener('click', function () {
+        modoFundido(false); sl.value = 0; pintar();
+      });
+      bFundido.addEventListener('click', function () { modoFundido(!fundido); });
+
+      pintar();
+    })();
+  </script>
+</body>
+
+</html>
