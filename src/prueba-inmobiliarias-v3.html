@@ -42,7 +42,7 @@
       --claro: #FCFBF9;
       --claro-2: #F5F5F5;
       --linea: #E6E4E0;
-      --oscuro: #060C14;
+      --oscuro: #0A1220;
       --oscuro-2: #0C1622;
       --linea-o: rgba(255,255,255,.11);
       --f: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
@@ -55,7 +55,7 @@
     a { color: inherit; text-decoration: none; }
     svg { flex: 0 0 auto; }
 
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+    .wrap, .escena { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 5.89%; }
     .sec { padding: 78px 0; }
     .osc { background: var(--oscuro); color: #fff; }
     .kick { font-size: .68rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--azul); margin-bottom: 1.1rem; }
@@ -76,15 +76,18 @@
     .saltar:focus { top: 14px; }
 
     /* ======================= 01 · HERO ======================= */
-    .hero {
-      position: relative; overflow: hidden; color: #fff;
-      background: #0C0706;
-      aspect-ratio: 866 / 445; min-height: 560px;
+    .hero { position: relative; overflow: hidden; color: #fff; background: #0C0706; }
+    /* La escena mide como el resto de la pagina, no como la ventana: por eso
+       antes el hero crecia sin freno en pantallas anchas y se desalineaba.
+       Dentro de ella, --u vale un pixel del boceto (866 px de ancho). */
+    .escena {
+      position: relative; padding: 0;
+      aspect-ratio: 866 / 445;
       container-type: inline-size;
       --u: 0.11547cqw;
     }
     .hero .foto { position: absolute; inset: 0; background: url(assets/hero-inmobiliarias.webp) center right / cover no-repeat; }
-    .hero .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(6,6,8,.90) 0%, rgba(6,6,8,.60) 28%, rgba(6,6,8,.10) 48%, rgba(6,6,8,0) 62%); }
+    .hero .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(6,6,8,.92) 0%, rgba(6,6,8,.78) 22%, rgba(6,6,8,.30) 44%, rgba(6,6,8,.05) 60%, rgba(6,6,8,0) 72%); }
 
     .h-nav { position: absolute; left: calc(51*var(--u)); right: calc(44*var(--u)); top: calc(12*var(--u)); height: calc(26*var(--u)); display: flex; align-items: center; z-index: 60; }
     .h-marca { font-size: calc(15*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; }
@@ -256,12 +259,11 @@
     .tranquilidad svg { width: 17px; height: 17px; color: var(--azul); }
 
     /* ======================= 08 · CTA ======================= */
-    .cta {
-      position: relative; overflow: hidden; color: #fff;
-      background: #081017;
-    }
-    .cta .foto { position: absolute; inset: 0; background: url(assets/hero-inmobiliarias.webp) center 38% / cover no-repeat; opacity: .55; }
-    .cta .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4,8,12,.95) 0%, rgba(4,8,12,.72) 42%, rgba(4,8,12,.80) 100%); }
+    .cta { position: relative; overflow: hidden; color: #fff; background: var(--oscuro); }
+    .cta .foto { position: absolute; inset: 0; background: url(assets/hero-inmobiliarias.webp) center 38% / cover no-repeat; opacity: .42; }
+    .cta .velo { position: absolute; inset: 0; background:
+        linear-gradient(180deg, rgba(6,12,20,.55) 0%, rgba(6,12,20,.35) 45%, var(--oscuro) 100%),
+        linear-gradient(90deg, rgba(6,12,20,.92) 0%, rgba(6,12,20,.62) 45%, rgba(6,12,20,.72) 100%); }
     .cta .wrap { position: relative; z-index: 2; }
     .cta-grid { display: grid; grid-template-columns: 1.3fr auto; gap: 40px; align-items: center; padding: 62px 0; }
     .cta h2 { font-size: clamp(1.5rem, 2.7vw, 2rem); }
@@ -272,6 +274,7 @@
 
     /* ====================== 09 · PIE ====================== */
     .pie { background: var(--oscuro); color: #fff; padding: 52px 0 26px; }
+    .pie .wrap { position: relative; }
     .pie-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr auto; gap: 34px; }
     .pie-marca { display: flex; align-items: center; gap: .55rem; font-size: .84rem; font-weight: 800; letter-spacing: .08em; }
     .pie-marca svg { width: 17px; height: 17px; }
@@ -307,42 +310,57 @@
       .sec { padding: 58px 0; }
       .wrap { padding: 0 22px; }
     }
+    /* ---------- movil ----------
+       Por debajo de 900 px el hero deja de ser una composicion sobre la foto:
+       las tarjetas se solaparian con el titular. Todo pasa a apilarse y las
+       medidas dejan de depender de --u, que aqui daba tamanos impredecibles;
+       van en rem, que es lo unico fiable a estos anchos. */
     @media (max-width: 900px) {
-      /* El hero deja de ser una composicion sobre la foto y pasa a apilarse:
-         a este ancho las tarjetas flotantes se solaparian con el texto. */
-      .hero { aspect-ratio: auto; min-height: 0; padding: 74px 0 40px; --u: 0.34cqw; }
-      .hero .velo { background: linear-gradient(180deg, rgba(6,6,8,.90) 0%, rgba(6,6,8,.66) 40%, rgba(6,6,8,.88) 100%); }
-      .h-nav { position: static; margin: 0 auto 26px; max-width: 1180px; padding: 0 22px; height: auto; }
+      .hero { padding: 0 0 44px; }
+      .escena { aspect-ratio: auto; padding: 22px 0 0; }
+      .hero .velo { background: linear-gradient(180deg, rgba(6,6,8,.92) 0%, rgba(6,6,8,.70) 38%, rgba(6,6,8,.92) 100%); }
+
+      .h-nav { position: static; height: auto; padding: 0 5.89%; margin-bottom: 30px; }
       .h-links { display: none; }
-      .h-marca { font-size: 1.15rem; }
-      .h-navbtn { font-size: .82rem; padding: .6rem 1.1rem; }
-      .h-col { position: static; width: auto; max-width: 1180px; margin: 0 auto; padding: 0 22px; }
-      .h-kick { font-size: .7rem; letter-spacing: .2em; }
-      .h-t { font-size: clamp(2rem, 8vw, 2.9rem); line-height: 1.06; margin-top: 1rem; }
-      .h-sub { font-size: 1rem; line-height: 1.5; max-width: 42ch; margin-top: 1rem; }
-      .h-btns { gap: 12px; margin-top: 1.6rem; }
-      .h-b1, .h-b2 { font-size: .9rem; padding: .85rem 1.5rem; }
-      .h-b2 { padding-left: .5rem; }
-      .h-play { width: 30px; height: 30px; font-size: .7rem; }
-      .h-meta { gap: 16px; margin-top: 1.6rem; }
-      .h-meta div { font-size: .82rem; }
+      .h-marca { font-size: 1.1rem; }
+      .h-navbtn { font-size: .8rem; padding: .6rem 1.05rem; gap: .4rem; }
+
+      .h-col { position: static; width: auto; padding: 0 5.89%; }
+      .h-kick { font-size: .68rem; letter-spacing: .2em; }
+      .h-t { font-size: clamp(2.1rem, 8.5vw, 3rem); line-height: 1.05; margin-top: 1.1rem; }
+      .h-sub { font-size: 1rem; line-height: 1.55; max-width: 40ch; margin-top: 1.1rem; }
+      .h-btns { gap: 12px; margin-top: 1.8rem; }
+      .h-b1, .h-b2 { font-size: .92rem; border-radius: 999px; }
+      .h-b1 { padding: .9rem 1.5rem; gap: .5rem; }
+      .h-b2 { padding: .55rem 1.4rem .55rem .55rem; gap: .65rem; border-width: 1px; }
+      .h-play { width: 32px; height: 32px; font-size: .68rem; }
+      .h-meta { gap: 12px 20px; margin-top: 1.8rem; }
+      .h-meta div { font-size: .82rem; gap: .45rem; }
       .h-meta svg { width: 15px; height: 15px; }
-      .h-movil { position: static; width: min(270px, 74%); margin: 34px auto 0; padding: 9px; border-radius: 34px; }
+
+      .h-movil { position: static; width: min(272px, 76%); margin: 34px auto 0;
+                 padding: 8px; border-radius: 34px; --u: 1.55px; }
       .h-pant { border-radius: 27px; }
-      .h-movil, .h-pant { --u: 0.62cqw; }
-      .tarj { position: static; width: auto !important; min-height: 0 !important; margin: 0; }
-      .tarjetas-movil { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 1180px; margin: 26px auto 0; padding: 0 22px; --u: 0.42cqw; }
-      .tarjetas-movil .tarj { border-radius: 13px; padding: .7rem .8rem; }
-      .tarjetas-movil .tarj b { font-size: .8rem; }
-      .tarjetas-movil .tarj i { font-size: .72rem; }
-      .tarjetas-movil .tarj .ico { width: 30px; height: 30px; }
-      .tarjetas-movil .tarj .ico svg { width: 16px; height: 16px; }
+
+      .tarjetas-movil { display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+                        margin: 26px 0 0; padding: 0 5.89%; }
+      .tarj { position: static; width: auto !important; min-height: 0 !important;
+              border-radius: 14px; padding: .75rem .8rem; gap: .6rem;
+              border-width: 1px; backdrop-filter: blur(6px); }
+      .tarj .ico { width: 32px; height: 32px; }
+      .tarj .ico svg { width: 17px; height: 17px; }
+      .tarj b { font-size: .82rem; }
+      .tarj i { font-size: .74rem; margin-top: .15rem; }
+      .tarj br { display: none; }
     }
     @media (min-width: 901px) { .tarjetas-movil { display: contents; } }
+
+    @media (max-width: 430px) {
+      .tarjetas-movil { grid-template-columns: 1fr; }
+    }
     @media (max-width: 620px) {
       .pasos, .paneles, .pie-grid { grid-template-columns: 1fr; }
       .paso::after { display: none !important; }
-      .tarjetas-movil { grid-template-columns: 1fr; }
       .caras { max-width: 320px; }
     }
   </style>
@@ -355,6 +373,8 @@
   <header class="hero" id="inicio">
     <div class="foto" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
+
+    <div class="escena">
 
     <nav class="h-nav" aria-label="Principal">
       <a href="#inicio" class="h-marca">EasyRobots</a>
@@ -440,6 +460,8 @@
         </div>
       </div>
     </div>
+
+    </div>
   </header>
 
   <main>
@@ -521,7 +543,7 @@
     </section>
 
     <!-- ==================== 04 · DEMOSTRACION ==================== -->
-    <section class="sec osc" id="demo" style="background:#010912">
+    <section class="sec osc" id="demo" style="padding-top:0">
       <div class="wrap">
         <div class="demo-grid">
           <div>
@@ -611,7 +633,7 @@
     </section>
 
     <!-- ========= 06+07 · TECNOLOGIA, EQUIPO Y GARANTIA ========= -->
-    <section class="sec" id="equipo" style="background:#fff">
+    <section class="sec" id="equipo" style="padding-top:0">
       <div class="wrap">
         <p class="kick">Lo mejor de cada uno</p>
         <h2>Tecnolog&iacute;a que potencia<br>tu equipo, no lo sustituye.</h2>
