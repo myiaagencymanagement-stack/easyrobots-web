@@ -165,27 +165,29 @@
       position: absolute; z-index: 20;
       background: var(--tarjeta); border: calc(1*var(--u)) solid var(--borde);
       border-radius: calc(13*var(--u));
-      padding: calc(10*var(--u)) calc(12*var(--u));
-      display: flex; align-items: center; gap: calc(9*var(--u));
+      padding: calc(8*var(--u)) calc(10*var(--u));
+      display: flex; align-items: center; gap: calc(8*var(--u));
       backdrop-filter: blur(calc(6*var(--u)));
       box-shadow: 0 calc(8*var(--u)) calc(22*var(--u)) rgba(0,0,0,.45);
     }
     .tarj .ico {
-      width: calc(26*var(--u)); height: calc(26*var(--u)); border-radius: 50%;
+      width: calc(24*var(--u)); height: calc(24*var(--u)); border-radius: 50%;
       display: flex; align-items: center; justify-content: center; flex: 0 0 auto;
     }
-    .tarj .ico svg { width: calc(15*var(--u)); height: calc(15*var(--u)); color: #fff; }
-    .tarj b { display: block; font-size: calc(11*var(--u)); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -.01em; }
-    .tarj i { display: block; font-style: normal; font-size: calc(9.5*var(--u)); line-height: 1.35; margin-top: calc(3*var(--u)); }
+    .tarj .ico svg { width: calc(14*var(--u)); height: calc(14*var(--u)); color: #fff; }
+    .tarj b { display: block; font-size: calc(10*var(--u)); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -.01em; }
+    .tarj i { display: block; font-style: normal; font-size: calc(8.2*var(--u)); line-height: 1.3; margin-top: calc(2*var(--u)); }
     .tarj .hora { color: var(--verde); font-weight: 600; }
     .tarj .gris { color: rgba(255,255,255,.62); }
 
-    /* posiciones medidas sobre el boceto */
-    .t-llamada { left: 43.30%; top: 23.60%; width: 15.6%; }
-    .t-agente  { left: 42.03%; top: 44.27%; width: 16.4%; }
-    .t-wa      { left: 81.18%; top: 26.97%; width: 14.9%; }
-    .t-visita  { left: 81.06%; top: 49.89%; width: 14.9%; }
-    .t-comer   { left: 80.83%; top: 67.42%; width: 15.8%; }
+    /* Posiciones Y ALTURAS medidas sobre el boceto. La altura importa: sin
+       ella el texto estiraba la tarjeta de WhatsApp y se comia la de abajo.
+       El tamano del texto esta ajustado para caber dentro de estas alturas. */
+    .t-llamada { left: 43.30%; top: 23.60%; width: 15.6%; min-height: 12.81%; }
+    .t-agente  { left: 42.03%; top: 44.27%; width: 16.4%; min-height: 12.36%; }
+    .t-wa      { left: 81.18%; top: 26.97%; width: 16.2%; min-height: 17.30%; }
+    .t-visita  { left: 81.06%; top: 49.89%; width: 16.2%; min-height: 11.91%; }
+    .t-comer   { left: 80.83%; top: 67.42%; width: 16.2%; min-height: 11.91%; }
 
     .ic-verde { background: var(--verde); }
     .ic-azul  { background: var(--azul); }
@@ -193,8 +195,12 @@
     .ic-blanco svg { color: #D93A3A !important; }
 
     /* ---------- el movil ---------- */
+    /* Medido sobre el boceto: la pantalla ocupa x 511-680 e y 64-440, o sea
+       169x376 px. Antes estaba puesta a 169/420 y por eso el telefono se
+       salia por abajo y quedaba cortado. Con el marco de 4 px alrededor, el
+       cuerpo empieza en 507,60 y termina justo en el borde del hero. */
     .r-movil {
-      position: absolute; left: 57.6%; top: 12.4%; width: 22.4%;
+      position: absolute; left: 58.55%; top: 13.48%; width: 20.44%;
       z-index: 30;
       background: #0B0B0D; border-radius: calc(26*var(--u));
       padding: calc(4*var(--u));
@@ -203,7 +209,8 @@
     }
     .r-pant {
       background: #fff; border-radius: calc(23*var(--u)); overflow: hidden;
-      position: relative; aspect-ratio: 169 / 420;
+      position: relative; aspect-ratio: 169 / 376;
+      display: flex; flex-direction: column;
     }
     .r-isla {
       position: absolute; top: calc(7*var(--u)); left: 50%; transform: translateX(-50%);
@@ -230,10 +237,16 @@
     .r-wtop b { display: block; font-size: calc(8*var(--u)); color: #0B0B0D; font-weight: 600; }
     .r-wtop span { display: block; font-size: calc(6*var(--u)); color: #7B8794; }
 
+    /* La conversacion ocupa el hueco que queda y se pega abajo, como en un
+       movil de verdad: lo ultimo hablado es lo que se ve, y si sobra
+       conversacion se corta por arriba en vez de empujar la barra de
+       escribir fuera de la pantalla. */
     .r-chat {
       background: #EFE9E1; padding: calc(7*var(--u)) calc(7*var(--u));
-      display: flex; flex-direction: column; gap: calc(5*var(--u));
+      display: flex; flex-direction: column; justify-content: flex-end;
+      gap: calc(5*var(--u)); flex: 1; min-height: 0; overflow: hidden;
     }
+    .r-chat > * { flex: 0 0 auto; }
     .r-msg {
       max-width: 88%; font-size: calc(7.6*var(--u)); line-height: 1.38;
       padding: calc(5*var(--u)) calc(6*var(--u)) calc(3*var(--u));
