@@ -160,20 +160,6 @@
     .h-wfoot .circ { width: calc(14*var(--u)); height: calc(14*var(--u)); border-radius: 50%; border: calc(1.2*var(--u)) solid var(--azul); }
     .h-wfoot .caja { flex: 1; background: #F1EFEC; border-radius: 999px; padding: calc(4*var(--u)) calc(8*var(--u)); font-size: calc(7*var(--u)); color: #9AA3AD; }
 
-    /* ==================== 02 · EL MOMENTO ==================== */
-    .momento-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 48px; align-items: center; }
-    .paneles { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .panel { background: var(--claro-2); border-radius: 16px; padding: 22px 20px; }
-    .panel.er { background: #F1F7FF; border: 1px solid #DCEAFB; }
-    .panel .ph { font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--azul); }
-    .panel .hora { font-size: .78rem; color: var(--gris); margin-top: .25rem; }
-    .panel ul { list-style: none; margin-top: 1.1rem; display: flex; flex-direction: column; gap: .8rem; }
-    .panel li { display: flex; align-items: flex-start; gap: .6rem; font-size: .82rem; color: var(--tinta-2); line-height: 1.4; }
-    .panel li .b { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-    .panel li .b svg { width: 11px; height: 11px; }
-    .b-gris { background: #E7E7E7; color: #71797F; }
-    .b-rojo { background: #FDECEC; color: var(--rojo); }
-    .b-verde { background: #DFF7EA; color: #0E9E57; }
 
     /* ================== 03 · COMO FUNCIONA ================== */
     .cf-top { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; align-items: start; }
@@ -300,9 +286,93 @@
     .marco { width: 100%; min-height: 620px; border: 0; border-radius: 12px; margin-top: 1.1rem; background: #0E1B27; }
     .estado { margin-top: 1rem; font-size: .84rem; color: #8DD5FF; min-height: 1.2em; }
 
+    /* ==========================================================
+       02 · EL MOMENTO — reproduccion de la referencia
+       Medido sobre la referencia (1536 px de ancho):
+         tres columnas de 425 / 412 / 421 px con 24 px de hueco
+         titular a 47 px, interlineado 48
+         tarjeta HOY  #EFF0F3     ·  tarjeta EasyRobots #F2F8FE
+         azul #0780FE             ·  rojo #FD5B54
+       Las dos fotografias son provisionales, recortadas de la propia
+       referencia. Para cambiarlas basta sustituir el archivo:
+         assets/momento-comprador.webp   (vertical, ~2:3)
+         assets/momento-piso.webp        (casi cuadrada)
+       ========================================================== */
+    .m2 { background: #FEFEFD; }
+    .m2-grid { display: grid; grid-template-columns: 1.03fr 1fr 1.02fr; gap: 24px; align-items: stretch; }
+    .m2-txt { align-self: center; padding-right: 10px; }
+    .m2-kick { font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--azul); margin-bottom: 1.5rem; }
+    .m2-t { font-size: clamp(1.9rem, 3.3vw, 2.95rem); line-height: 1.04; letter-spacing: -.04em; font-weight: 800; color: #0B1119; text-wrap: balance; }
+    .m2-lede { font-size: 1.02rem; line-height: 1.55; color: #6F7885; margin-top: 1.5rem; max-width: 30ch; }
+
+    .m2-card { border-radius: 22px; overflow: hidden; position: relative; }
+
+    /* ---- HOY ---- */
+    .m2-hoy { background: #EFF0F3; display: grid; grid-template-columns: 1fr .82fr; }
+    .m2-hoy-txt { padding: 26px 22px 26px 26px; position: relative; z-index: 2; }
+    .m2-eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #0B1119; }
+    .m2-eyebrow.az { color: var(--azul); }
+
+    .m2-perdida { display: flex; align-items: center; gap: .75rem; background: #fff; border-radius: 16px; padding: .75rem .9rem; margin-top: 1.5rem; box-shadow: 0 6px 18px rgba(16,24,40,.09); }
+    .m2-perdida .ic { width: 38px; height: 38px; border-radius: 50%; background: #FD5B54; display: flex; align-items: center; justify-content: center; }
+    .m2-perdida .ic svg { width: 19px; height: 19px; color: #fff; }
+    .m2-perdida b { display: block; font-size: .95rem; font-weight: 700; letter-spacing: -.02em; color: #0B1119; }
+    .m2-perdida span { display: block; font-size: .82rem; color: #8A929D; margin-top: .05rem; }
+
+    .m2-pasos { list-style: none; margin-top: 1.6rem; position: relative; }
+    .m2-pasos li { display: flex; align-items: center; gap: .8rem; font-size: .92rem; color: #7A828E; padding: .55rem 0; position: relative; }
+    .m2-pasos li .p { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #C7CCD3; background: #EFF0F3; display: flex; align-items: center; justify-content: center; position: relative; z-index: 2; }
+    .m2-pasos li .p svg { width: 12px; height: 12px; color: #9AA1AB; }
+    /* hilo fino que une los pasos, como en la referencia */
+    .m2-pasos li:not(:last-child)::before { content: ""; position: absolute; left: 11.5px; top: 50%; height: 100%; width: 1px; background: #D5D9DE; z-index: 1; }
+    .m2-pasos li.fin { color: #0B1119; font-weight: 700; }
+    .m2-pasos li.fin .p { background: #FD5B54; border-color: #FD5B54; }
+    .m2-pasos li.fin .p svg { color: #fff; width: 11px; height: 11px; }
+
+    .m2-foto { position: relative; }
+    .m2-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 55% center; }
+    /* el borde izquierdo se funde con la tarjeta, como en la referencia */
+    .m2-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #EFF0F3 0%, rgba(239,240,243,.72) 26%, rgba(239,240,243,0) 62%); }
+
+    /* ---- CON EASYROBOTS ---- */
+    .m2-er { background: #F2F8FE; border: 1px solid #DDEBFB; padding: 26px 24px; display: flex; flex-direction: column; }
+    .m2-er-cols { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start; margin-top: 1.5rem; flex: 1; }
+    .m2-checks { list-style: none; display: flex; flex-direction: column; gap: .1rem; position: relative; }
+    .m2-checks li { display: flex; align-items: flex-start; gap: .8rem; font-size: .92rem; line-height: 1.4; color: #3F4855; padding: .5rem 0; position: relative; }
+    .m2-checks li .tk { width: 25px; height: 25px; border-radius: 50%; background: var(--azul); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; position: relative; z-index: 2; }
+    .m2-checks li .tk svg { width: 13px; height: 13px; color: #fff; }
+    .m2-checks li:not(:last-child)::before { content: ""; position: absolute; left: 12px; top: 50%; height: 100%; width: 1px; background: #CFE3FA; z-index: 1; }
+
+    .m2-visita { width: 152px; background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 26px rgba(16,24,40,.12); align-self: start; }
+    .m2-visita img { width: 100%; aspect-ratio: 137/150; object-fit: cover; }
+    .m2-visita .txt { padding: .7rem .75rem .8rem; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .4rem; }
+    .m2-visita b { grid-column: 1 / -1; font-size: .86rem; font-weight: 700; letter-spacing: -.02em; color: #0B1119; }
+    .m2-visita span.h { font-size: .84rem; color: #6F7885; }
+    .m2-visita .tk { width: 25px; height: 25px; border-radius: 50%; background: var(--azul); display: flex; align-items: center; justify-content: center; }
+    .m2-visita .tk svg { width: 13px; height: 13px; color: #fff; }
+
+    /* ---- responsive ---- */
+    @media (max-width: 1180px) {
+      .m2-grid { grid-template-columns: 1fr 1fr; gap: 22px; }
+      .m2-txt { grid-column: 1 / -1; align-self: start; padding-right: 0; }
+      .m2-lede { max-width: 52ch; }
+    }
+    @media (max-width: 760px) {
+      .m2-grid { grid-template-columns: 1fr; gap: 18px; }
+      .m2-hoy { grid-template-columns: 1fr; }
+      /* La foto pasa debajo: a este ancho, partida en dos columnas, no se
+         leia ni el texto ni la cara. */
+      .m2-foto { height: 215px; }
+      .m2-foto img { object-position: center 28%; }
+      .m2-foto::after { background: linear-gradient(180deg, #EFF0F3 0%, rgba(239,240,243,.55) 22%, rgba(239,240,243,0) 55%); }
+      .m2-er-cols { grid-template-columns: 1fr; }
+      .m2-visita { width: 100%; max-width: 230px; justify-self: start; }
+      .m2-visita img { aspect-ratio: 16/10; }
+    }
+
     /* ===================== responsive ===================== */
     @media (max-width: 1080px) {
-      .momento-grid, .cf-top, .demo-grid, .sis-grid, .tec-grid, .cta-grid { grid-template-columns: 1fr; gap: 30px; }
+      .cf-top, .demo-grid, .sis-grid, .tec-grid, .cta-grid { grid-template-columns: 1fr; gap: 30px; }
       .pasos { grid-template-columns: 1fr 1fr; gap: 30px 26px; }
       .paso:nth-child(2)::after { display: none; }
       .pers-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -359,7 +429,7 @@
       .tarjetas-movil { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
-      .pasos, .paneles, .pie-grid { grid-template-columns: 1fr; }
+      .pasos, .pie-grid { grid-template-columns: 1fr; }
       .paso::after { display: none !important; }
       .caras { max-width: 320px; }
     }
@@ -465,40 +535,89 @@
   </header>
 
   <main>
-    <!-- ==================== 02 · EL MOMENTO ==================== -->
-    <section class="sec" id="momento">
+    <!-- ==================== 02 · EL MOMENTO ====================
+         Reproduccion de la referencia. Las dos fotografias son
+         provisionales, recortadas de la propia referencia: para poner las
+         definitivas basta sustituir el archivo, sin tocar nada mas.
+           assets/momento-comprador.webp  ·  vertical, proporcion 2:3
+           assets/momento-piso.webp       ·  casi cuadrada -->
+    <section class="sec m2" id="momento">
       <div class="wrap">
-        <div class="momento-grid">
-          <div>
-            <p class="kick">El momento</p>
-            <h2>Devolver la llamada<br>no es retomar la conversaci&oacute;n.</h2>
-            <p class="lede">Cuando llamas despu&eacute;s, muchos ya han contactado con otra
-              inmobiliaria. La primera respuesta marca la diferencia.</p>
+        <div class="m2-grid">
+
+          <div class="m2-txt">
+            <p class="m2-kick">El momento</p>
+            <h2 class="m2-t">Devolver la llamada no es retomar la conversaci&oacute;n.</h2>
+            <p class="m2-lede">Cuando nadie responde, el comprador llama a otra inmobiliaria.
+              La oportunidad se pierde.</p>
           </div>
-          <div class="paneles">
-            <div class="panel">
-              <p class="ph">Hoy</p>
-              <p class="hora">12:41</p>
-              <ul>
-                <li><span class="b b-rojo"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M7.4 3.2c.5-.2 1.1 0 1.4.5l1.4 2.4c.3.5.2 1.1-.2 1.5l-1 .9c-.2.2-.3.5-.1.8.9 1.7 2.3 3.1 4 4 .3.2.6.1.8-.1l.9-1c.4-.4 1-.5 1.5-.2l2.4 1.4c.5.3.7.9.5 1.4l-.7 1.7c-.2.5-.7.9-1.3.9C10.3 19.4 2.6 11.7 2.6 4.4c0-.6.4-1.1.9-1.3z"/></svg></span>Llamada sin respuesta</li>
-                <li><span class="b b-gris"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3.5 5.5a2 2 0 012-2h9a2 2 0 012 2v6a2 2 0 01-2 2H8l-4.5 3z"/></svg></span>Dejas un mensaje</li>
-                <li><span class="b b-gris"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="7.3" r="3"/><path d="M4.2 16.4c.6-2.8 3-4.3 5.8-4.3s5.2 1.5 5.8 4.3"/></svg></span>El cliente ya ha contactado con otra inmobiliaria</li>
+
+          <div class="m2-card m2-hoy">
+            <div class="m2-hoy-txt">
+              <p class="m2-eyebrow">Hoy</p>
+
+              <div class="m2-perdida">
+                <span class="ic"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M7.4 3.2c.5-.2 1.1 0 1.4.5l1.4 2.4c.3.5.2 1.1-.2 1.5l-1 .9c-.2.2-.3.5-.1.8.9 1.7 2.3 3.1 4 4 .3.2.6.1.8-.1l.9-1c.4-.4 1-.5 1.5-.2l2.4 1.4c.5.3.7.9.5 1.4l-.7 1.7c-.2.5-.7.9-1.3.9C10.3 19.4 2.6 11.7 2.6 4.4c0-.6.4-1.1.9-1.3z"/><path d="M14.6 2.4l5.2 5.2M19.8 2.4l-5.2 5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/></svg></span>
+                <div>
+                  <b>Llamada perdida</b>
+                  <span>12:41</span>
+                </div>
+              </div>
+
+              <ul class="m2-pasos">
+                <li>
+                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6.2" y="2.6" width="7.6" height="14.8" rx="1.8"/><path d="M8.8 15h2.4"/></svg></span>
+                  El comprador llama
+                </li>
+                <li>
+                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2.8l6 2.6v4.2c0 3.1-2.4 5.6-6 6.4-3.6-.8-6-3.3-6-6.4V5.4z"/></svg></span>
+                  Nadie responde
+                </li>
+                <li>
+                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="10" cy="10" rx="4.4" ry="7"/></svg></span>
+                  Llama a otra inmobiliaria
+                </li>
+                <li class="fin">
+                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6.2 6.2l7.6 7.6M13.8 6.2l-7.6 7.6"/></svg></span>
+                  La oportunidad se pierde.
+                </li>
               </ul>
             </div>
-            <div class="panel er">
-              <p class="ph">Con EasyRobots</p>
-              <ul>
-                <li><span class="b b-verde"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg></span>La llamada es atendida por un agente de voz</li>
-                <li><span class="b b-verde"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg></span>Se recoge la informaci&oacute;n</li>
-                <li><span class="b b-verde"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg></span>Se env&iacute;a el piso por WhatsApp</li>
-                <li><span class="b b-verde"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg></span>Se propone una visita</li>
-                <li><span class="b b-verde"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg></span>Tu equipo recibe todo el contexto</li>
-              </ul>
+
+            <div class="m2-foto">
+              <img src="assets/momento-comprador.webp" loading="lazy" decoding="async"
+                alt="Un comprador al tel&eacute;fono, con gesto de contrariedad, esperando respuesta">
             </div>
           </div>
+
+          <div class="m2-card m2-er">
+            <p class="m2-eyebrow az">Con EasyRobots</p>
+
+            <div class="m2-er-cols">
+              <ul class="m2-checks">
+                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>La llamada es atendida por un agente de voz</li>
+                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se contin&uacute;a en WhatsApp</li>
+                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se recoge la informaci&oacute;n</li>
+                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se propone una visita</li>
+                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Tu equipo recibe el contexto</li>
+              </ul>
+
+              <div class="m2-visita">
+                <img src="assets/momento-piso.webp" loading="lazy" decoding="async"
+                  alt="Sal&oacute;n luminoso del piso de la visita">
+                <div class="txt">
+                  <b>Visita agendada</b>
+                  <span class="h">Jueves 11:00</span>
+                  <span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
+
 
     <!-- ================== 03 · COMO FUNCIONA ================== -->
     <section class="sec osc" id="como-funciona">
