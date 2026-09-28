@@ -421,6 +421,65 @@ Antes parecían contradictorias porque no se decía qué cubría cada una.
 **Las dos aplican a todos los nichos**, no solo a clínicas: confirmado por Anaís
 el 2026-09-26. Se puede escribir en cualquier landing sin condicionarlo.
 
+
+## Landing de inmobiliarias: donde se quedo (2026-09-28)
+
+Se esta reconstruyendo el boceto aprobado como web real. **La pagina viva del
+trabajo es `src/prueba-inmobiliarias-v3.html`.**
+
+| Archivo | Que es |
+|---|---|
+| `prueba-inmobiliarias.html` | La version anterior, en HTML propio. **No tocar**, se deja de referencia |
+| `prueba-inmobiliarias-v1.html` | Primer hero sobre foto. Superada |
+| `prueba-inmobiliarias-v2.html` | Los nueve PNG del boceto con capa funcional encima. Superada, pero sirve para ver el boceto tal cual |
+| **`prueba-inmobiliarias-v3.html`** | **La buena.** Todo HTML, sin imagenes de texto |
+| `prueba-hero-comparar.html` | Deslizador que superpone boceto y reconstruccion. Se usa para validar cada seccion |
+
+Cada iteracion sale con su sufijo y **no se reescribe la anterior**.
+
+### Estado por seccion de la v3
+
+Hero y "El momento" estan reconstruidos contra la referencia nueva, medidos
+pixel a pixel. Las demas (como funciona, demo, sistema, tecnologia y equipo,
+CTA y pie) vienen de la reconstruccion anterior y **estan pendientes de pasar
+por la referencia nueva**, una a una y con su comparacion.
+
+### Reglas de esta reconstruccion
+
+- El contenedor son **1440 px** con margen lateral del **5,89 %**. El hero usa
+  la misma escena, asi que su titular y el de las secciones empiezan en el mismo
+  pixel. Comprobado a 1440, 1100 y 900. No subir de 1440: a 1600 el hero pasa de
+  820 px de alto y obliga a deslizar para verlo entero.
+- Dentro del hero, `--u` vale un pixel del boceto. Las medidas van escritas tal
+  cual se midieron.
+- Paleta muestreada del pixel: azul `#007FFE`, verde `#18CF75`, tarjetas del
+  hero `#262324`, claro `#FCFBF9`, oscuro `#0A1220`. En "El momento": tarjeta
+  Hoy `#EFF0F3`, tarjeta EasyRobots `#F2F8FE` sobre borde `#DDEBFB`.
+- **El metodo entero esta en `docs/boceto-a-html.md`. Leerlo antes de tocar una
+  seccion nueva.**
+
+### Imagenes de esta landing
+
+| Archivo | Que es | Estado |
+|---|---|---|
+| `hero-inmobiliarias.webp` | Fondo del hero, 1800x678 | Definitiva. Encuadrada al 55 % para conservar la pared oscura del titular |
+| `momento-comprador.webp` | Comprador al telefono, 2:3 | **Provisional**, recortada del boceto |
+| `momento-piso.webp` | Salon de la visita | **Provisional** |
+| `hero-wa-piso.webp` | Miniatura, 56:76 | **Provisional** |
+| `hero-visitante.webp` | Retrato, cuadrado | **Provisional** |
+| `hero-comercial.webp` | Retrato, cuadrado | **Provisional** |
+
+Las provisionales vienen a la resolucion de la captura. Se cambian sustituyendo
+el archivo, sin tocar codigo.
+
+### Pendiente
+
+- Pasar las secciones 03 a 09 por la referencia nueva.
+- El audio de la demo: dejar el archivo en `assets/` y escribir su ruta en
+  `AUDIO_DEMO`, dentro del script de la pagina.
+- Decidir si la v3 sustituye a `prueba-inmobiliarias.html` y si se le quita el
+  `noindex`.
+
 ## La calculadora
 
 Fórmula, visible en la propia página:
@@ -698,3 +757,7 @@ Míos, cuando lo pida:
   Cuando se maqueta una página, el texto sale de ahí.
 - `docs/capacidades-reales.md` — qué puede hacer el sistema hoy, por nicho. Se
   lee ANTES de escribir copy.
+
+- `docs/boceto-a-html.md` — cómo se convierte un boceto de IA en HTML real:
+  por qué no existe código detrás, cómo se mide en vez de mirarlo a ojo, y las
+  trampas en las que ya se cayó. **Se lee antes de reconstruir una sección.**
