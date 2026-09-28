@@ -770,11 +770,18 @@ Frases que se quedan porque generan confianza, no a pesar de restar:
 - "Si tu tráfico va de Instagram directo al WhatsApp, esto no te hace falta."
 - ~~"El montaje sí se cobra, porque es trabajo hecho a medida. Preferimos decirlo
   claro ahora que prometerte una devolución total que no pensamos cumplir."~~
-  **Ojo, esto está en revisión desde el 2026-09-29.** Anaís pidió que la garantía
-  de la landing de inmobiliarias diga que **se devuelve el dinero si no cuadra**,
-  y ahí está escrito. Falta que confirme si la devolución incluye el montaje o
-  solo el mantenimiento: si es solo el mantenimiento, la frase de la landing hay
-  que matizarla, porque hoy no distingue.
+  **Derogado el 2026-09-29 por Anaís.** Ya no se avisa de que el montaje no se
+  devuelve: la garantía dice **"Si no hace lo que hemos definido o no encaja, lo
+  paramos y te devolvemos el dinero."**, sin distinguir montaje de mantenimiento.
+  Se le planteó expresamente que así redactado se entiende devolución total,
+  montaje incluido, y lo confirmó. Va en
+  `src/prueba-inmobiliarias-v3.html`, bloque de garantía.
+
+  **Consecuencia, y conviene tenerla presente:** es la única promesa de la web
+  que compromete dinero. Si algún día se decide que el montaje no entra, hay que
+  cambiar esa frase antes de que la landing salga de `noindex`, no después.
+  Ninguna otra página tiene hoy una promesa de devolución (comprobado: lo que
+  sale en las de ecommerce son devoluciones de producto del cliente final).
 
 ### Pero nunca empezar por la rebaja
 
