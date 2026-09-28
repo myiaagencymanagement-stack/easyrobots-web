@@ -439,10 +439,10 @@ Cada iteracion sale con su sufijo y **no se reescribe la anterior**.
 
 ### Estado por seccion de la v3
 
-Hero, "El momento", "Como funciona" y "Demostracion" estan reconstruidos contra
-la referencia nueva, medidos pixel a pixel. Las demas (sistema, tecnologia y
-equipo, CTA y pie) vienen de la reconstruccion anterior y **estan pendientes de
-pasar por la referencia nueva**, una a una y con su comparacion.
+Hero, "El momento", "Como funciona", "Demostracion" y "El sistema" estan
+reconstruidos contra la referencia nueva, medidos pixel a pixel. Las demas
+(tecnologia y equipo, CTA y pie) vienen de la reconstruccion anterior y **estan
+pendientes de pasar por la referencia nueva**, una a una y con su comparacion.
 
 En "Como funciona" la referencia manda una disposicion distinta: el texto a la
 izquierda y las cuatro tarjetas **a su derecha en la misma fila**, no debajo.
@@ -467,8 +467,36 @@ parece de dibujo animado, que era la queja. El panel pasa a tabla clara
 La conversacion **no esta en la referencia**: se monta debajo, a todo lo ancho
 del contenedor, con el mismo lenguaje del panel, y se alargo de 3 a 7 lineas
 hasta cerrar la visita. Las tres primeras son las aprobadas, sin tocar.
-Ojo: mientras "El sistema" siga en claro se ve la juntura entre el #F5F9FC de
-la demo y el claro del resto; en la referencia esa seccion es oscura.
+La juntura con "El sistema" ya no se ve: esa seccion pasa a oscura.
+
+La 05 "El sistema" **pasa de clara a oscura**, sobre la misma foto del hero al
+30 % con un velo mas cerrado a la izquierda (#030A13) que a la derecha, que es
+como esta en la referencia. Cambia el diagrama entero: ya no son seis fichas en
+dos columnas con un cuadro en medio, sino un nucleo con cables tipo circuito
+hacia seis piezas, y **la lista de lo que se conecta se va a la derecha**, que
+es donde la pone la referencia. El copy no se toca: el titular y la entradilla
+son los aprobados y los seis nombres de las fichas pasan tal cual a la lista.
+
+Medidas: texto 290 u, diagrama 240x205 u, lista a partir de 647 u; pieza 40 u,
+nucleo 58 u, check 11 u con 24,7 u de paso. Colores del pixel: fondo #030A13,
+pieza #131823, nucleo #0272FB, cable de #0260AC a #03B4FF.
+
+Tres decisiones que conviene no reabrir:
+
+- **Las seis piezas van en circulo de verdad**, a 100 u del centro y cada 60
+  grados. En la referencia estan a radios de 87 a 136 u y en angulos sueltos:
+  es una ilustracion generada, ahi no hay geometria que copiar. Misma leccion
+  que el diagrama de clinicas.
+- **El logotipo de HubSpot que sale en la referencia no se pone.** La pagina
+  dice "se integra con lo que ya usas" y no nombra ningun CRM: es la regla de
+  `capacidades-reales.md`. Va un icono generico.
+- **Cuidado con los nombres de clase cortos.** Las piezas se llamaron `.m1` a
+  `.m6` y `.m2` ya existia: es la clase de la seccion "El momento", que pinta
+  `background:#FEFEFD`. La pieza de WhatsApp salia en blanco y el CSS de la
+  pieza parecia correcto. Ahora van con prefijo `pz`.
+
+Efecto colateral necesario: `#equipo` tenia `padding-top:0` porque venia pegada
+a otra seccion clara. Con la 05 en oscuro se le devuelve su padding.
 
 ### Reglas de esta reconstruccion
 
