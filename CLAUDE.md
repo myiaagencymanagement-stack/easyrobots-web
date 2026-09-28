@@ -768,8 +768,13 @@ Frases que se quedan porque generan confianza, no a pesar de restar:
 - "Traer más mensajes a una clínica que no contesta a tiempo es tirar el dinero,
   y preferimos decírtelo antes de cobrarlo."
 - "Si tu tráfico va de Instagram directo al WhatsApp, esto no te hace falta."
-- "El montaje sí se cobra, porque es trabajo hecho a medida. Preferimos decirlo
-  claro ahora que prometerte una devolución total que no pensamos cumplir."
+- ~~"El montaje sí se cobra, porque es trabajo hecho a medida. Preferimos decirlo
+  claro ahora que prometerte una devolución total que no pensamos cumplir."~~
+  **Ojo, esto está en revisión desde el 2026-09-29.** Anaís pidió que la garantía
+  de la landing de inmobiliarias diga que **se devuelve el dinero si no cuadra**,
+  y ahí está escrito. Falta que confirme si la devolución incluye el montaje o
+  solo el mantenimiento: si es solo el mantenimiento, la frase de la landing hay
+  que matizarla, porque hoy no distingue.
 
 ### Pero nunca empezar por la rebaja
 
