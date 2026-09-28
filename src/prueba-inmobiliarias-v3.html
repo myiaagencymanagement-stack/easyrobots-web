@@ -200,7 +200,7 @@
        tarjeta #050B13 con borde #15273B, onda #19BDFD, check #12B85A.
        La conversacion no esta en la referencia; se monta debajo, a lo ancho
        del reproductor y el panel, con el mismo lenguaje del panel. */
-    #demo { background: #F5F9FC; color: var(--tinta); }
+    #demo { background: #F5F9FC; color: var(--tinta); padding: 46px 0; }
     .demo-grid { container-type: inline-size; }
     .demo-cols { --u: 0.12285cqw; display: grid;
                  grid-template-columns: calc(295*var(--u)) calc(204*var(--u)) 1fr;
@@ -248,16 +248,16 @@
 
     /* --- la conversacion, debajo del reproductor y el panel --- */
     .trans { grid-column: 1 / 4; background: #EEF6FE; border-radius: calc(10*var(--u));
-             padding: calc(4*var(--u)) calc(16*var(--u)); margin-top: calc(12*var(--u)); }
+             padding: calc(2*var(--u)) calc(16*var(--u)); margin-top: calc(12*var(--u)); }
     .trans .l { display: grid; grid-template-columns: calc(118*var(--u)) 1fr;
                 gap: calc(10*var(--u)); align-items: baseline;
-                padding: calc(7*var(--u)) 0; border-bottom: 1px solid #E1EBF6; }
+                padding: calc(3.4*var(--u)) 0; border-bottom: 1px solid #E1EBF6; }
     .trans .l:last-child { border-bottom: 0; }
     .trans .l b { font-size: calc(9*var(--u)); font-weight: 700; }
     .trans .l b.er { color: var(--azul); }
     .trans .l b.cl { color: #0F9E52; }
     .trans .l .t { font-size: calc(8*var(--u)); color: #8A93A3; margin-left: calc(5*var(--u)); font-variant-numeric: tabular-nums; }
-    .trans .l p { font-size: calc(9.4*var(--u)); line-height: calc(13*var(--u)); color: #2E323C; }
+    .trans .l p { font-size: calc(9.2*var(--u)); line-height: calc(12*var(--u)); color: #2E323C; }
 
     /* ===================== 05 · SISTEMA =====================
        La referencia pone esta seccion **en oscuro**, sobre la misma foto
@@ -275,11 +275,14 @@
        El logotipo de HubSpot que sale en la referencia **no se pone**: la
        pagina dice "se integra con lo que ya usas" y no nombra ningun CRM,
        que es la regla de capacidades-reales.md. Va un icono generico. */
-    #sistema { position: relative; overflow: hidden; background: #030A13; }
-    #sistema .foto { position: absolute; inset: 0; background: url(assets/hero-inmobiliarias.webp) center 44% / cover no-repeat; opacity: .16; }
+    #sistema { position: relative; overflow: hidden; background: #030A13; padding: 38px 0; }
+        /* La foto la paso Anais entera (2043x770) y se usa sin recortar, solo
+       convertida a WebP. Va muy apagada a proposito: en la referencia el
+       diagrama se apoya en negro y la escena solo se intuye por el borde. */
+#sistema .foto { position: absolute; inset: 0; background: url(assets/escena-inmobiliaria.webp) center 52% / cover no-repeat; opacity: .62; }
     #sistema .velo { position: absolute; inset: 0; background:
-        radial-gradient(58% 130% at 46% 50%, #030A13 0%, rgba(3,10,19,.94) 48%, rgba(3,10,19,.70) 100%),
-        linear-gradient(90deg, rgba(3,10,19,.99) 0%, rgba(3,10,19,.97) 46%, rgba(3,10,19,.86) 78%, rgba(3,10,19,.78) 100%); }
+        radial-gradient(42% 100% at 46% 50%, rgba(3,10,19,.88) 0%, rgba(3,10,19,.66) 55%, rgba(3,10,19,.34) 100%),
+        linear-gradient(90deg, rgba(3,10,19,.50) 0%, rgba(3,10,19,.58) 45%, rgba(3,10,19,.72) 80%, rgba(3,10,19,.78) 100%); }
     #sistema .wrap { position: relative; z-index: 2; }
 
     .sis-grid { container-type: inline-size; }
@@ -355,14 +358,37 @@
        En el boceto estas dos laminas estan mal recortadas: la lista de
        "Responder llamadas 24/7" sale en las dos y las caras quedan
        cortadas. Aqui van como una sola seccion, que es como se leia. */
-    .tec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
-    .tec { background: var(--claro-2); border-radius: 16px; padding: 24px 22px; }
-    .tec h3 { font-size: .88rem; font-weight: 700; margin-bottom: 1.1rem; }
-    .tec ul { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
-    .tec li { display: flex; gap: .6rem; align-items: flex-start; font-size: .84rem; color: var(--tinta-2); line-height: 1.4; }
-    .tec li svg { width: 14px; height: 14px; color: #0E9E57; margin-top: 3px; }
+    /* En la referencia esta seccion tiene la misma forma que las demas:
+       el texto a la izquierda y los dos cuadros a su derecha, no el
+       titular arriba a lo ancho. Medido sobre el contenedor de 814 u:
+         texto 290 u · cuadro 257 u · hueco 10 u · el segundo 240 u
+         icono del titulo 24 u · texto a 48 u del borde · filas a 14,3 u
+       Colores del pixel: fondo de seccion #F5F9FC, cuadro #ECF4FC,
+       icono azul #006FFE, check verde como el panel de la demo. */
+    #equipo { background: #F5F9FC; padding: 54px 0; }
+    .tec-grid { container-type: inline-size; }
+    .tec-cols { --u: 0.12285cqw; display: grid;
+                grid-template-columns: calc(290*var(--u)) calc(257*var(--u)) 1fr;
+                gap: 0; align-items: start; }
+    .tec-txt .kick { font-size: calc(8*var(--u)); letter-spacing: .18em; margin-bottom: calc(15*var(--u)); }
+    .tec-txt h2 { font-size: calc(20*var(--u)); line-height: calc(24*var(--u)); }
+    .tec { background: #ECF4FC; border-radius: calc(10*var(--u)); padding: calc(13*var(--u)); margin-left: calc(17*var(--u)); }
+    .tec + .tec { margin-left: calc(10*var(--u)); }
+    .tec h3 { display: flex; align-items: center; gap: calc(11*var(--u));
+              font-size: calc(9.5*var(--u)); font-weight: 700; color: var(--tinta);
+              margin-bottom: calc(11*var(--u)); }
+    .tec h3 .ic { width: calc(24*var(--u)); height: calc(24*var(--u)); border-radius: 50%;
+                  display: flex; align-items: center; justify-content: center; }
+    .tec h3 .ic svg { width: 56%; height: 56%; color: #fff; }
+    .tec h3 .ic.az { background: #006FFE; }
+    .tec h3 .ic.os { background: var(--tinta); }
+    .tec ul { list-style: none; padding-left: calc(35*var(--u)); }
+    .tec li { display: flex; gap: calc(9*var(--u)); align-items: flex-start;
+              font-size: calc(8.5*var(--u)); line-height: calc(11.5*var(--u));
+              color: var(--tinta-2); padding: calc(1.4*var(--u)) 0; }
+    .tec li svg { width: calc(8*var(--u)); height: calc(8*var(--u)); color: #12B85A; margin-top: calc(1.8*var(--u)); }
 
-    .pers-grid { display: grid; grid-template-columns: 1fr 1fr 1.05fr; gap: 40px; align-items: center; margin-top: 62px; }
+    .pers-grid { display: grid; grid-template-columns: 1fr 1fr 1.05fr; gap: 40px; align-items: center; margin-top: 68px; }
     .caras { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .cara .img { aspect-ratio: 4/3.4; border-radius: 13px; overflow: hidden; background: #0B0B0D; display: flex; align-items: center; justify-content: center; }
     .cara .img img { width: 100%; height: 100%; object-fit: cover; }
@@ -554,7 +580,19 @@
 
     /* ===================== responsive ===================== */
     @media (max-width: 1080px) {
-      .tec-grid, .cta-grid { grid-template-columns: 1fr; gap: 30px; }
+      .cta-grid { grid-template-columns: 1fr; gap: 30px; }
+      /* La 06 vuelve a rem por debajo de 1080, como las demas. */
+      .tec-cols { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .tec-txt { grid-column: 1 / -1; margin-bottom: 10px; }
+      .tec-txt .kick { font-size: .68rem; letter-spacing: .2em; margin-bottom: 1.1rem; }
+      .tec-txt h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.16; }
+      .tec { border-radius: 16px; padding: 22px 20px; margin-left: 0; }
+      .tec + .tec { margin-left: 0; }
+      .tec h3 { font-size: .92rem; gap: 12px; margin-bottom: 14px; }
+      .tec h3 .ic { width: 32px; height: 32px; }
+      .tec ul { padding-left: 44px; }
+      .tec li { font-size: .84rem; line-height: 1.45; gap: 10px; padding: 3px 0; }
+      .tec li svg { width: 13px; height: 13px; margin-top: 3px; }
       /* La 05, como la 03 y la 04, deja de medirse en --u por debajo de
          1080 px. El diagrama sigue siendo cuadrado y se centra. */
       .sis-cols { grid-template-columns: 1fr; gap: 34px; justify-items: center; }
@@ -659,6 +697,16 @@
     }
     @media (max-width: 620px) {
       .pasos, .pie-grid { grid-template-columns: 1fr; }
+      .tec-cols { grid-template-columns: 1fr; }
+      .tec ul { padding-left: 0; }
+      /* La conversacion deja de ir a dos columnas: a 390 px la de texto se
+         quedaba en cuatro palabras por linea. Quien habla, encima. */
+      .trans .l { grid-template-columns: 1fr; gap: 2px; padding: 9px 0; }
+      .trans .l p { font-size: .88rem; }
+      /* El rotulo EasyRobots se sale del circulo de piezas cuando el
+         diagrama se estrecha: aqui baja justo debajo de la caja. */
+      .diagrama { margin-bottom: 30px; }
+      .nucleo-nombre { top: auto; bottom: -28px; font-size: 1rem; }
       .paso::after { display: none !important; }
       .caras { max-width: 320px; }
     }
@@ -989,10 +1037,6 @@
                 <span><b class="cl">Cliente</b><span class="t">00:44</span></span>
                 <p>El jueves a las once me va bien.</p>
               </div>
-              <div class="l">
-                <span><b class="er">Agente EasyRobots</b><span class="t">00:52</span></span>
-                <p>Hecho. Dejo la visita propuesta y aviso a Laura, que es quien te acompa&ntilde;a.</p>
-              </div>
             </div>
           </div>
         </div>
@@ -1044,39 +1088,43 @@
          secciones han dejado de ser el mismo bloque claro. -->
     <section class="sec" id="equipo">
       <div class="wrap">
-        <p class="kick">Lo mejor de cada uno</p>
-        <h2>Tecnolog&iacute;a que potencia<br>tu equipo, no lo sustituye.</h2>
-
         <div class="tec-grid">
-          <div class="tec">
-            <h3>EasyRobots se encarga de</h3>
-            <ul>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Responder llamadas 24/7</li>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Hacer las preguntas clave</li>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Recoger toda la informaci&oacute;n</li>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Agendar visitas en tu calendario</li>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Seguimiento y avisos</li>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Integrarse con tus herramientas</li>
-            </ul>
-          </div>
-          <div class="tec">
-            <h3>Tu equipo se centra en</h3>
-            <ul>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Ense&ntilde;ar los inmuebles</li>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Valorar y negociar</li>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Captar nuevos propietarios</li>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Gestionar casos complejos</li>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Acompa&ntilde;ar en la venta</li>
-              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.3l3.6 3.6L16 5.5"/></svg>Lo que realmente necesita un toque humano</li>
-            </ul>
+          <div class="tec-cols">
+            <div class="tec-txt">
+              <p class="kick">Lo mejor de cada uno</p>
+              <h2>Tecnolog&iacute;a que potencia<br>tu equipo, no lo sustituye.</h2>
+            </div>
+
+            <div class="tec">
+              <h3><span class="ic az"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.1 2.3a1.5 1.5 0 1 1 1.8 0v1.5h-1.8z"/><path d="M2.6 10.1h1.1v5.6H2.6a1.6 1.6 0 0 1-1.6-1.6v-2.4a1.6 1.6 0 0 1 1.6-1.6zM21.4 10.1h-1.1v5.6h1.1a1.6 1.6 0 0 0 1.6-1.6v-2.4a1.6 1.6 0 0 0-1.6-1.6zM11.1 19.6h1.8v2.1h-1.8z"/><path fill-rule="evenodd" d="M7.6 4.9h8.8a4 4 0 0 1 4 4v6.2a4 4 0 0 1-4 4H7.6a4 4 0 0 1-4-4V8.9a4 4 0 0 1 4-4zM9.5 9.8a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 1 0 0-3.2zM14.5 9.8a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 1 0 0-3.2zM8.9 15.1h6.2a.85.85 0 0 1 0 1.7H8.9a.85.85 0 0 1 0-1.7z"/></svg></span>EasyRobots se encarga de</h3>
+              <ul>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Responder llamadas 24/7</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Hacer las preguntas clave</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Recoger toda la informaci&oacute;n</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Agendar visitas en tu calendario</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Seguimiento y avisos</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Integrarse con tus herramientas</span></li>
+              </ul>
+            </div>
+            <div class="tec">
+              <h3><span class="ic os"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="7.4" r="2.8"/><circle cx="14.4" cy="8.4" r="2.1"/><path d="M2.6 16.8c.6-2.7 2.8-4.1 5.4-4.1s4.8 1.4 5.4 4.1"/></svg></span>Tu equipo se centra en</h3>
+              <ul>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Ense&ntilde;ar los inmuebles</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Valorar y negociar</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Captar nuevos propietarios</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Gestionar casos complejos</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Acompa&ntilde;ar en la venta</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Lo que realmente necesita un toque humano</span></li>
+              </ul>
+            </div>
           </div>
         </div>
 
         <div class="pers-grid">
           <div>
-            <h2 style="font-size:1.5rem">Hay personas detr&aacute;s.</h2>
-            <p class="lede">Un equipo peque&ntilde;o, cercano y con experiencia en tecnolog&iacute;a
-              y negocio.</p>
+            <h2 style="font-size:1.5rem">No somos una centralita.</h2>
+            <p class="lede">Somos las personas que dise&ntilde;an, construyen y mantienen
+              tu sistema.</p>
           </div>
 
           <div class="caras">

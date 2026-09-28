@@ -439,10 +439,28 @@ Cada iteracion sale con su sufijo y **no se reescribe la anterior**.
 
 ### Estado por seccion de la v3
 
-Hero, "El momento", "Como funciona", "Demostracion" y "El sistema" estan
-reconstruidos contra la referencia nueva, medidos pixel a pixel. Las demas
-(tecnologia y equipo, CTA y pie) vienen de la reconstruccion anterior y **estan
-pendientes de pasar por la referencia nueva**, una a una y con su comparacion.
+Hero, "El momento", "Como funciona", "Demostracion", "El sistema" y "Lo mejor
+de cada uno" estan reconstruidos contra la referencia nueva, medidos pixel a
+pixel. **Quedan la CTA y el pie.**
+
+La 06 "Lo mejor de cada uno" adopta la forma de las demas: texto a la izquierda
+y los dos cuadros a su derecha, no el titular arriba a lo ancho. Medido:
+texto 290 u, cuadro 257 u, hueco 10 u, el segundo 240 u; icono del titulo 24 u,
+texto a 48 u del borde, filas a 14,3 u. Fondo de seccion #F5F9FC y cuadro
+#ECF4FC. El copy de las dos listas es el aprobado, que tiene seis lineas por
+cuadro en vez de las cinco del boceto.
+
+El bloque de garantia cambia de titular por peticion de Anais: pasa de "Hay
+personas detras" a **"No somos una centralita. / Somos las personas que
+disenan, construyen y mantienen tu sistema."**
+
+La foto de fondo de "El sistema" ya es la buena: Anais la paso entera
+(2043x770) y esta en `assets/escena-inmobiliaria.webp`, sin recortar, solo
+convertida a WebP (114 KB, calidad 68). El velo se ajusto **midiendo**: se
+comparan franjas sin texto de arriba y de abajo de la seccion contra las
+mismas franjas de la referencia, hasta que el brillo medio coincide. Ojo, la
+izquierda de la foto es oscura de por si; el velo tiene que frenar la derecha
+(lampara y sofa), no la izquierda.
 
 En "Como funciona" la referencia manda una disposicion distinta: el texto a la
 izquierda y las cuatro tarjetas **a su derecha en la misma fila**, no debajo.
@@ -609,6 +627,13 @@ Después se rehízo la geometría:
 6. **Un archivo HTML suelto enviado por WhatsApp se ve roto**, porque viaja sin
    `assets/` ni el CSS. Para enseñar algo en el móvil, o se sube al dominio o se
    hace autocontenido.
+7. **Chrome headless en Windows no baja de 489 px de ancho de ventana.** Pedir
+   `--window-size=430` da una imagen de 430 px pero la página se maqueta a 489
+   y la captura sale recortada por la derecha: parece un desbordamiento que no
+   existe. Para ver el móvil de verdad hay que meter la página en un `<iframe>`
+   de 390 px dentro de una página de prueba y capturar esa. Para comprobar si
+   hay desbordamiento real, un script que compare `scrollWidth` con
+   `clientWidth` y liste los elementos cuyo `right` se pasa.
 
 ## Estado legal y de privacidad
 
