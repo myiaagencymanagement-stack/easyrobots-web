@@ -262,7 +262,8 @@
        que el dialogo se siga leyendo en orden: 1-2-3 a la izquierda,
        4-5-6 a la derecha. Y quien habla pasa encima del texto, que asi
        cada turno se lee en dos lineas en vez de en cuatro. */
-    .trans { grid-column: 1 / 4; background: #EEF6FE; border-radius: calc(10*var(--u));
+    .demo-txt { grid-row: 1 / 3; }
+    .trans { grid-column: 2 / 4; grid-row: 2; background: #EEF6FE; border-radius: calc(10*var(--u));
              padding: calc(4*var(--u)) calc(16*var(--u)); margin-top: calc(12*var(--u));
              display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto);
              grid-auto-flow: column; column-gap: calc(30*var(--u)); }
@@ -634,6 +635,7 @@
       /* La 04, como la 03, deja de medirse en --u por debajo de 1080 px.
          El reproductor conserva su proporcion (204/120 del boceto). */
       .demo-cols { grid-template-columns: 1fr; gap: 26px; }
+      .demo-txt { grid-row: auto; }
       .trans { grid-column: auto; margin-top: 0; padding: 6px 18px; border-radius: 16px; column-gap: 34px; }
       .trans .l { padding: 9px 0; }
       .trans .l b { font-size: .78rem; }
