@@ -439,10 +439,21 @@ Cada iteracion sale con su sufijo y **no se reescribe la anterior**.
 
 ### Estado por seccion de la v3
 
-Hero y "El momento" estan reconstruidos contra la referencia nueva, medidos
-pixel a pixel. Las demas (como funciona, demo, sistema, tecnologia y equipo,
+Hero, "El momento" y "Como funciona" estan reconstruidos contra la referencia
+nueva, medidos pixel a pixel. Las demas (demo, sistema, tecnologia y equipo,
 CTA y pie) vienen de la reconstruccion anterior y **estan pendientes de pasar
 por la referencia nueva**, una a una y con su comparacion.
+
+En "Como funciona" la referencia manda una disposicion distinta: el texto a la
+izquierda y las cuatro tarjetas **a su derecha en la misma fila**, no debajo.
+Medido sobre una referencia de 1024 px cuyo contenedor son 814 px: texto 302 u,
+tarjetas de 110 u con 24 u de hueco, 114 u de alto, icono de 32 u en cuadrado
+relleno (azul #0075FE, verde #06CC65) y no en caja hueca, relleno de tarjeta en
+degradado de #1A202A a #0B121D. El copy es el aprobado, que es mas largo que el
+del boceto, asi que las tarjetas salen unos 60 u mas altas. Dos cosas medidas
+que **no** se aplicaron: el fondo de la referencia es #030910 y no el token
+--oscuro (#0A1220), y su cintillo es cian (#00A8F5) y no --azul-claro; las
+dos son globales y tocarlas afectaba a otras secciones.
 
 ### Reglas de esta reconstruccion
 

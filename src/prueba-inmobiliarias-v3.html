@@ -151,16 +151,40 @@
     .h-wfoot .caja { flex: 1; background: #F1EFEC; border-radius: 999px; padding: calc(4*var(--u)) calc(8*var(--u)); font-size: calc(7*var(--u)); color: #9AA3AD; }
 
 
-    /* ================== 03 · COMO FUNCIONA ================== */
-    .cf-top { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; align-items: start; }
-    .pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; margin-top: 54px; }
-    .paso { position: relative; }
-    .paso .n { font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.38); font-variant-numeric: tabular-nums; }
-    .paso .ic { width: 42px; height: 42px; border-radius: 12px; background: rgba(255,255,255,.07); border: 1px solid var(--linea-o); display: flex; align-items: center; justify-content: center; margin: .7rem 0 1.1rem; }
-    .paso .ic svg { width: 20px; height: 20px; }
-    .paso h3 { font-size: .95rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.25; }
-    .paso p { font-size: .82rem; color: rgba(255,255,255,.6); line-height: 1.5; margin-top: .5rem; }
-    .paso:not(:last-child)::after { content: "\2192"; position: absolute; top: 26px; right: -20px; color: rgba(255,255,255,.3); font-size: .95rem; }
+    /* ================== 03 · COMO FUNCIONA ==================
+       Medido sobre la referencia nueva. Su contenedor mide 814 px (el texto
+       arranca en 108 y la ultima tarjeta acaba en 922 dentro de una imagen de
+       1024 de ancho), asi que --u vale un pixel de esa referencia y las
+       medidas van escritas tal cual se midieron:
+         columna de texto 302 u · cuatro tarjetas de 110 u con 24 u de hueco
+         tarjeta 114 u de alto · icono 32 u · radio 10 u · flecha a 45 u
+       Colores del pixel: relleno de tarjeta de #1A202A (arriba izquierda) a
+       #0B121D, borde de arriba #353E49, icono azul #0075FE, verde #06CC65.
+       El container-type va en .cf-top y --u en .cf-grid: las unidades cq
+       dentro de una propiedad del propio contenedor se resolverian contra su
+       padre, no contra el. */
+    .cf-top { container-type: inline-size; }
+    .cf-grid { --u: 0.12285cqw; display: grid; grid-template-columns: calc(302*var(--u)) 1fr; align-items: start; }
+    .cf-txt .kick { font-size: calc(8*var(--u)); letter-spacing: .18em; margin-bottom: calc(15*var(--u)); }
+    .cf-txt h2 { font-size: calc(20*var(--u)); line-height: calc(24*var(--u)); }
+    .cf-txt .lede { font-size: calc(10*var(--u)); line-height: calc(15*var(--u)); margin-top: calc(13*var(--u)); max-width: calc(278*var(--u)); }
+
+    .pasos { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(24*var(--u)); }
+    .paso { position: relative; text-align: center;
+            background: linear-gradient(150deg, #1B212B 0%, #0E151F 45%, #0A111C 100%);
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: calc(10*var(--u));
+            padding: calc(9*var(--u)) calc(12*var(--u)) calc(14*var(--u)); }
+    .paso .ic { width: calc(32*var(--u)); height: calc(32*var(--u)); border-radius: calc(9*var(--u));
+                display: flex; align-items: center; justify-content: center; margin: 0 auto calc(11*var(--u)); }
+    .paso .ic svg { width: calc(17*var(--u)); height: calc(17*var(--u)); }
+    .paso .ic.az { background: var(--azul); }
+    .paso .ic.vd { background: #06CC65; }
+    .paso h3 { font-size: calc(10*var(--u)); line-height: calc(12*var(--u)); font-weight: 700; letter-spacing: -.015em; color: #fff; }
+    .paso p { font-size: calc(8.4*var(--u)); line-height: calc(11*var(--u)); color: rgba(255,255,255,.52); margin-top: calc(13*var(--u)); }
+    .paso:not(:last-child)::after { content: "→"; position: absolute; top: calc(45*var(--u)); right: calc(-18*var(--u));
+                                    width: calc(12*var(--u)); text-align: center; line-height: 1;
+                                    font-size: calc(13*var(--u)); color: rgba(255,255,255,.42); }
 
     /* ==================== 04 · DEMOSTRACION ==================== */
     .demo-grid { display: grid; grid-template-columns: .92fr 1.25fr .78fr; gap: 34px; align-items: start; }
@@ -411,9 +435,20 @@
 
     /* ===================== responsive ===================== */
     @media (max-width: 1080px) {
-      .cf-top, .demo-grid, .sis-grid, .tec-grid, .cta-grid { grid-template-columns: 1fr; gap: 30px; }
-      .pasos { grid-template-columns: 1fr 1fr; gap: 30px 26px; }
-      .paso:nth-child(2)::after { display: none; }
+      .demo-grid, .sis-grid, .tec-grid, .cta-grid { grid-template-columns: 1fr; gap: 30px; }
+      /* Por debajo de 1080 las medidas en --u dan tamanos impredecibles:
+         a partir de aqui la seccion 03 vuelve a rem. */
+      .cf-grid { grid-template-columns: 1fr; gap: 34px; }
+      .cf-txt .kick { font-size: .68rem; letter-spacing: .2em; margin-bottom: 1.1rem; }
+      .cf-txt h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.16; }
+      .cf-txt .lede { font-size: .93rem; line-height: 1.62; margin-top: .9rem; max-width: 46ch; }
+      .pasos { grid-template-columns: 1fr 1fr; gap: 26px; }
+      .paso { border-radius: 16px; padding: 18px 16px 20px; }
+      .paso .ic { width: 44px; height: 44px; border-radius: 13px; margin: 0 auto 14px; }
+      .paso .ic svg { width: 23px; height: 23px; }
+      .paso h3 { font-size: .95rem; line-height: 1.25; }
+      .paso p { font-size: .82rem; line-height: 1.5; margin-top: .6rem; }
+      .paso::after { display: none !important; }
       .pers-grid { grid-template-columns: 1fr; gap: 30px; }
       .pie-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
       .sec { padding: 58px 0; }
@@ -697,41 +732,38 @@
     <section class="sec osc" id="como-funciona">
       <div class="wrap">
         <div class="cf-top">
-          <div>
-            <p class="kick">C&oacute;mo funciona</p>
-            <h2>De la llamada a la visita,<br>en 4 pasos.</h2>
-          </div>
-          <p class="lede" style="margin-top:2.2rem">EasyRobots atiende tus llamadas, entiende qu&eacute;
-            busca el cliente, contin&uacute;a la conversaci&oacute;n por WhatsApp y agenda la visita
-            con tu equipo.</p>
-        </div>
+          <div class="cf-grid">
+            <div class="cf-txt">
+              <p class="kick">C&oacute;mo funciona</p>
+              <h2>De la llamada a la visita,<br>en 4 pasos.</h2>
+              <p class="lede">EasyRobots atiende tus llamadas, entiende qu&eacute;
+                busca el cliente, contin&uacute;a la conversaci&oacute;n por WhatsApp y agenda la visita
+                con tu equipo.</p>
+            </div>
 
-        <ol class="pasos">
-          <li class="paso">
-            <span class="n">01</span>
-            <span class="ic"><svg viewBox="0 0 22 22" fill="none" stroke="#6FB4FF" stroke-width="1.8"><path d="M7.4 3.2c.5-.2 1.1 0 1.4.5l1.4 2.4c.3.5.2 1.1-.2 1.5l-1 .9c-.2.2-.3.5-.1.8.9 1.7 2.3 3.1 4 4 .3.2.6.1.8-.1l.9-1c.4-.4 1-.5 1.5-.2l2.4 1.4c.5.3.7.9.5 1.4l-.7 1.7c-.2.5-.7.9-1.3.9C10.3 19.4 2.6 11.7 2.6 4.4c0-.6.4-1.1.9-1.3z"/></svg></span>
-            <h3>Atiende la llamada</h3>
-            <p>Un agente de voz responde en segundos, con el tono de tu inmobiliaria.</p>
-          </li>
-          <li class="paso">
-            <span class="n">02</span>
-            <span class="ic"><svg viewBox="0 0 22 22" fill="none" stroke="#6FB4FF" stroke-width="1.7"><rect x="4.5" y="2.8" width="13" height="16.4" rx="2.4"/><path d="M7.8 7.4h6.4M7.8 11h6.4M7.8 14.6h4"/></svg></span>
-            <h3>Entiende qu&eacute; busca</h3>
-            <p>Hace las preguntas clave y recoge la informaci&oacute;n m&aacute;s importante.</p>
-          </li>
-          <li class="paso">
-            <span class="n">03</span>
-            <span class="ic"><svg viewBox="0 0 24 24" fill="#18CF75"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg></span>
-            <h3>Contin&uacute;a por WhatsApp<br>y propone visita</h3>
-            <p>Env&iacute;a el piso, resuelve dudas y propone horarios disponibles.</p>
-          </li>
-          <li class="paso">
-            <span class="n">04</span>
-            <span class="ic"><svg viewBox="0 0 22 22" fill="none" stroke="#6FB4FF" stroke-width="1.7"><circle cx="8.6" cy="7.6" r="3"/><circle cx="15.4" cy="8.6" r="2.3"/><path d="M2.8 17.6c.6-2.9 3-4.4 5.8-4.4s5.2 1.5 5.8 4.4"/></svg></span>
-            <h3>El comercial recibe<br>el contexto</h3>
-            <p>Tu equipo recibe un resumen completo para cerrar la visita.</p>
-          </li>
-        </ol>
+            <ol class="pasos">
+              <li class="paso">
+                <span class="ic az"><svg viewBox="0 0 22 22" fill="none" stroke="#fff" stroke-width="1.8"><path d="M7.4 3.2c.5-.2 1.1 0 1.4.5l1.4 2.4c.3.5.2 1.1-.2 1.5l-1 .9c-.2.2-.3.5-.1.8.9 1.7 2.3 3.1 4 4 .3.2.6.1.8-.1l.9-1c.4-.4 1-.5 1.5-.2l2.4 1.4c.5.3.7.9.5 1.4l-.7 1.7c-.2.5-.7.9-1.3.9C10.3 19.4 2.6 11.7 2.6 4.4c0-.6.4-1.1.9-1.3z"/></svg></span>
+                <h3>1. Atiende la llamada</h3>
+                <p>Un agente de voz responde en segundos, con el tono de tu inmobiliaria.</p>
+              </li>
+              <li class="paso">
+                <span class="ic az"><svg viewBox="0 0 22 22" fill="none" stroke="#fff" stroke-width="1.7"><rect x="4.5" y="2.8" width="13" height="16.4" rx="2.4"/><path d="M7.8 7.4h6.4M7.8 11h6.4M7.8 14.6h4"/></svg></span>
+                <h3>2. Entiende qu&eacute; busca</h3>
+                <p>Hace las preguntas clave y recoge la informaci&oacute;n m&aacute;s importante.</p>
+              </li>
+              <li class="paso">
+                <span class="ic vd"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg></span>
+                <h3>3. Contin&uacute;a por WhatsApp y propone visita</h3>
+                <p>Env&iacute;a el piso, resuelve dudas y propone horarios disponibles.</p>
+              </li>
+              <li class="paso">
+                <span class="ic az"><svg viewBox="0 0 22 22" fill="none" stroke="#fff" stroke-width="1.7"><circle cx="8.6" cy="7.6" r="3"/><circle cx="15.4" cy="8.6" r="2.3"/><path d="M2.8 17.6c.6-2.9 3-4.4 5.8-4.4s5.2 1.5 5.8 4.4"/></svg></span>
+                <h3>4. El comercial recibe el contexto</h3>
+                <p>Tu equipo recibe un resumen completo para cerrar la visita.</p>
+              </li>
+            </ol>
+          </div>
       </div>
     </section>
 
