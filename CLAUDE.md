@@ -437,6 +437,25 @@ trabajo es `src/prueba-inmobiliarias-v3.html`.**
 
 Cada iteracion sale con su sufijo y **no se reescribe la anterior**.
 
+### Cual es la pagina buena de cada nicho
+
+Ojo, que hay dos juegos de landings y es facil trabajar sobre la equivocada:
+
+| Nicho | La buena | La vieja, no tocar |
+|---|---|---|
+| Inmobiliarias | `prueba-inmobiliarias-v3.html` | `inmobiliarias.html`, `prueba-inmobiliarias.html`, `-v1`, `-v2` |
+| Concesionarios | `prueba-concesionarios.html` | `concesionarios.html` |
+| Dental | `prueba-dental.html` | `dental.html` |
+| Coaching | `prueba-coaching.html` | `coaching.html` |
+| Ecommerce | `prueba-ecommerce.html` | `ecommerce.html` |
+
+Las `prueba-*` del 2026-09-26 son las reescrituras con el copy aprobado tras
+rellenar `docs/capacidades-reales.md`. Las de nombre limpio son de antes y
+varias se apoyan en la voz, que estaba aparcada. En concesionarios se nota a la
+primera: la vieja abre con *"Cada llamada que no se coge es una revision o un
+coche"* (tesis de centralita, aparcada) y la buena con *"Vender es la mitad del
+negocio. La otra vuelve al taller"* (los dos relojes, que es el eje aprobado).
+
 ### Estado por seccion de la v3
 
 Hero, "El momento", "Como funciona", "Demostracion", "El sistema" y "Lo mejor
@@ -634,6 +653,21 @@ Después se rehízo la geometría:
    de 390 px dentro de una página de prueba y capturar esa. Para comprobar si
    hay desbordamiento real, un script que compare `scrollWidth` con
    `clientWidth` y liste los elementos cuyo `right` se pasa.
+8. **Validar solo a 1.440 px no basta.** Dos fallos que vio Anaís salían a
+   1.920 y no a 1.440: el velo del pie dejaba la lámpara de la foto justo
+   detrás del texto pequeño, y las tarjetas del hero se montaban 4 px porque el
+   `min-height` del boceto se queda corto para el texto real. **Comprobar
+   siempre 1.440, 1.920 y móvil.**
+9. **Medir también la posición de las cajas, no solo los colores.** Preguntas
+   como "¿por qué ocupa tanto?" o "¿esto está pegado?" se contestan en un minuto
+   con un `<iframe>` y un script que imprima el `getBoundingClientRect()` de
+   cada bloque. Así salió que debajo del reproductor de la demo había 281 px
+   muertos, y que dos tarjetas se solapaban 4 px. A ojo no se ve.
+10. **Cuidado al reutilizar iconos que ya estaban en la página.** En la
+    reconstrucción de inmobiliarias se dieron por buenos los iconos viejos en
+    vez de medirlos contra la referencia, y quedó un icono de teléfono bajo un
+    título de WhatsApp. Los iconos son parte del diseño: se comparan uno a uno
+    como cualquier otra medida.
 
 ## Estado legal y de privacidad
 
