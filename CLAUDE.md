@@ -439,10 +439,10 @@ Cada iteracion sale con su sufijo y **no se reescribe la anterior**.
 
 ### Estado por seccion de la v3
 
-Hero, "El momento" y "Como funciona" estan reconstruidos contra la referencia
-nueva, medidos pixel a pixel. Las demas (demo, sistema, tecnologia y equipo,
-CTA y pie) vienen de la reconstruccion anterior y **estan pendientes de pasar
-por la referencia nueva**, una a una y con su comparacion.
+Hero, "El momento", "Como funciona" y "Demostracion" estan reconstruidos contra
+la referencia nueva, medidos pixel a pixel. Las demas (sistema, tecnologia y
+equipo, CTA y pie) vienen de la reconstruccion anterior y **estan pendientes de
+pasar por la referencia nueva**, una a una y con su comparacion.
 
 En "Como funciona" la referencia manda una disposicion distinta: el texto a la
 izquierda y las cuatro tarjetas **a su derecha en la misma fila**, no debajo.
@@ -454,6 +454,21 @@ del boceto, asi que las tarjetas salen unos 60 u mas altas. Dos cosas medidas
 que **no** se aplicaron: el fondo de la referencia es #030910 y no el token
 --oscuro (#0A1220), y su cintillo es cian (#00A8F5) y no --azul-claro; las
 dos son globales y tocarlas afectaba a otras secciones.
+
+La 04 "Demostracion" **pasa de oscura a clara** (#F5F9FC, muestreado): en la
+referencia esa seccion va sobre fondo claro y el reproductor es una tarjeta
+oscura dentro. Medidas del mismo contenedor de 814 u: texto 295, reproductor
+204x120, panel 291, hueco 12. El detalle del reproductor se midio sobre el
+recorte de 926 px (factor 0,6846): circulo de 27 u, onda de 145 u centrada a
+68 u, pista de 109 u a 101 u. **Las 43 alturas de la onda estan leidas barra a
+barra de la referencia**, no inventadas; por eso hay silencios en medio y no
+parece de dibujo animado, que era la queja. El panel pasa a tabla clara
+(#EEF6FE, linea #E1EBF6, check verde #12B85A, etiqueta #5C6980, valor #2E323C).
+La conversacion **no esta en la referencia**: se monta debajo, a todo lo ancho
+del contenedor, con el mismo lenguaje del panel, y se alargo de 3 a 7 lineas
+hasta cerrar la visita. Las tres primeras son las aprobadas, sin tocar.
+Ojo: mientras "El sistema" siga en claro se ve la juntura entre el #F5F9FC de
+la demo y el claro del resto; en la referencia esa seccion es oscura.
 
 ### Reglas de esta reconstruccion
 
