@@ -61,6 +61,34 @@ estas dos ya no son limites nuestros.
 
 ---
 
+## Actualizacion del 2026-09-28 (manda sobre lo de abajo)
+
+Decidido por Anais mientras se reconstruia la seccion "El sistema" de la
+landing de inmobiliarias.
+
+**Se pueden nombrar y ensenar los CRM y las herramientas por su nombre.** Queda
+sin efecto la consecuencia 2 de inmobiliarias (*"Ningun CRM inmobiliario por su
+nombre"*). La pagina puede llevar el logotipo de HubSpot, o el de cualquier otra
+herramienta con la que se integre, en el diagrama de integraciones y en el copy.
+
+El motivo del veto anterior era no prometer una integracion concreta antes de
+haberla montado. Sigue valiendo el criterio de fondo, pero aplicado donde toca:
+
+- **Se puede ensenar una herramienta con la que ya sabemos integrarnos.** Que la
+  inmobiliaria use esa u otra cambia el montaje, no la viabilidad: eso es
+  implantacion y se habla en la llamada de diagnostico.
+- **No se dice que somos partner, ni que estamos certificados, ni se usa una
+  marca de forma que parezca un respaldo suyo.** Un logotipo dentro de un
+  diagrama de "se conecta con" no lo es; un sello de "partner oficial" si.
+- El texto que acompana al diagrama sigue siendo el generico ("se integra con
+  las herramientas que ya usas"), para que ensenar una marca no se lea como
+  "solo trabajamos con esta".
+
+Los logotipos van redibujados en SVG dentro de la pagina. Si alguna marca pide
+su version oficial, se cambia el archivo y ya.
+
+---
+
 ## Inmobiliarias · estado a 2026-09-25
 
 ### Voz
@@ -104,9 +132,11 @@ versión del producto y es lo único sobre lo que puede apoyarse el copy.
 1. **El hero no puede decir que atendemos el teléfono.** El ángulo se mantiene
    —gana quien llega primero— pero quien llega primero es **un WhatsApp en
    segundos**, no una llamada descolgada.
-2. **Ningún CRM inmobiliario por su nombre.** La landing dice "se integra con lo
-   que ya usas" y el detalle se confirma en la llamada de diagnóstico, porque
-   cada CRM del sector es un mundo.
+2. ~~**Ningún CRM inmobiliario por su nombre.**~~ **Derogado el 2026-09-28**:
+   ver la actualización de arriba. Los logotipos sí pueden aparecer en el
+   diagrama de integraciones. El texto que los acompaña sigue siendo "se integra
+   con lo que ya usas", porque cada CRM del sector es un mundo y el detalle se
+   confirma en la llamada de diagnóstico.
 3. **Nada de "consulta la disponibilidad del piso"**: hoy es justo lo que tiene
    prohibido afirmar. Y eso, bien contado, es una ventaja: un agente que no
    inventa.

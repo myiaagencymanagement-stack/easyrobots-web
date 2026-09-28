@@ -276,54 +276,74 @@
        pagina dice "se integra con lo que ya usas" y no nombra ningun CRM,
        que es la regla de capacidades-reales.md. Va un icono generico. */
     #sistema { position: relative; overflow: hidden; background: #030A13; }
-    #sistema .foto { position: absolute; inset: 0; background: url(assets/hero-inmobiliarias.webp) center 44% / cover no-repeat; opacity: .30; }
+    #sistema .foto { position: absolute; inset: 0; background: url(assets/hero-inmobiliarias.webp) center 44% / cover no-repeat; opacity: .16; }
     #sistema .velo { position: absolute; inset: 0; background:
-        linear-gradient(90deg, rgba(3,10,19,.975) 0%, rgba(3,10,19,.955) 42%, rgba(3,10,19,.80) 76%, rgba(3,10,19,.68) 100%); }
+        radial-gradient(58% 130% at 46% 50%, #030A13 0%, rgba(3,10,19,.94) 48%, rgba(3,10,19,.70) 100%),
+        linear-gradient(90deg, rgba(3,10,19,.99) 0%, rgba(3,10,19,.97) 46%, rgba(3,10,19,.86) 78%, rgba(3,10,19,.78) 100%); }
     #sistema .wrap { position: relative; z-index: 2; }
 
     .sis-grid { container-type: inline-size; }
     .sis-cols { --u: 0.12285cqw; display: grid;
-                grid-template-columns: calc(290*var(--u)) calc(240*var(--u)) 1fr;
-                gap: calc(14*var(--u)); align-items: center; }
+                grid-template-columns: calc(290*var(--u)) calc(264*var(--u)) 1fr;
+                gap: 0; align-items: center; }
     .sis-txt .kick { font-size: calc(8*var(--u)); letter-spacing: .18em; margin-bottom: calc(15*var(--u)); }
     .sis-txt h2 { font-size: calc(20*var(--u)); line-height: calc(24*var(--u)); }
     .sis-txt .lede { font-size: calc(10*var(--u)); line-height: calc(15*var(--u)); margin-top: calc(13*var(--u)); max-width: calc(278*var(--u)); }
 
-    /* --- el diagrama: caja cuadrada de 240 u --- */
-    .diagrama { position: relative; width: 100%; aspect-ratio: 240/205; }
+    /* --- el diagrama ---
+       Segunda pasada, esta vez midiendo el recorte grande de la referencia
+       (482 px de ancho), donde las tarjetas miden 63 px de lado. El factor
+       para pasarlo al contenedor de 814 u es 0,635, asi que la tarjeta son
+       40 u y el nucleo 56 u.
+       Las piezas **no estan en circulo**: lo estaban en la primera version
+       y por eso no se parecia. Medidas desde el centro del nucleo:
+         arriba   (+-83,8 / -26,0)
+         en medio (+-111,8 / +22,9)
+         abajo    (+-61,9 / +43,2)
+       Eso da una caja de 264 x 110 u, ancha y baja (2,4:1), que es la
+       silueta de la referencia. El rotulo EasyRobots cae a +34 u del
+       centro, justo debajo del nucleo, como alli. */
+    .diagrama { position: relative; width: 100%; aspect-ratio: 264/110; margin-left: calc(19*var(--u)); }
+    .resplandor { position: absolute; left: 50%; top: 42%; width: 74%; aspect-ratio: 1;
+                  transform: translate(-50%,-50%); border-radius: 50%; pointer-events: none;
+                  background: radial-gradient(circle, rgba(0,118,255,.38) 0%, rgba(0,118,255,.14) 38%, rgba(0,118,255,0) 68%); }
     .cables { position: absolute; inset: 0; width: 100%; height: 100%;
-              filter: drop-shadow(0 0 calc(3*var(--u)) rgba(10,155,255,.55)); }
-    .modulo { position: absolute; width: 16.67%; aspect-ratio: 1;
-              border-radius: 24%; background: #131823;
-              border: 1px solid rgba(255,255,255,.09);
-              box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 calc(4*var(--u)) calc(12*var(--u)) rgba(0,0,0,.45);
+              filter: drop-shadow(0 0 calc(2.5*var(--u)) rgba(0,150,255,.60)); }
+    .cables .principal { stroke: #0096FF; stroke-width: 2; }
+    .cables .rama { stroke: #0A6ECB; stroke-width: 1.4; opacity: .75; }
+    .modulo { position: absolute; width: 15.15%; aspect-ratio: 1;
+              border-radius: 26%;
+              background: linear-gradient(145deg, #1D2331 0%, #151A26 45%, #10151F 100%);
+              border: 1px solid rgba(255,255,255,.10);
+              box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 calc(4*var(--u)) calc(12*var(--u)) rgba(0,0,0,.5);
               display: flex; align-items: center; justify-content: center; }
-    .modulo svg { width: 46%; height: 46%; color: #fff; }
-    .modulo.blanca { background: #FBFBFA; border-color: rgba(255,255,255,.22); }
+    .modulo svg { width: 48%; height: 48%; color: #fff; }
     .modulo.vd svg { color: #25D366; }
     .modulo.rj svg { color: #E5484D; }
+    /* La unica tarjeta de color solido de la referencia es la del CRM. */
+    .modulo.crm { background: linear-gradient(145deg, #FF6A3D 0%, #FB5328 55%, #E8431A 100%);
+                  border-color: rgba(255,255,255,.18); }
     /* Ojo con los nombres: .m1-.m6 chocaban con el .m2 de la seccion "El
        momento", que pinta el fondo blanco, y la tarjeta de WhatsApp salia
-       en blanco. Prefijo pz (pieza) para que no vuelva a pasar.
-       Los top van en % de una caja de 205 u de alto, no de 240: los 35 u
-       que sobraban por debajo de la fila de abajo eran hueco muerto. */
-    .pz1 { left: 5.58%;  top: 24.39%; }
-    .pz2 { left: 77.75%; top: 24.39%; }
-    .pz3 { left: 0;      top: 48.78%; }
-    .pz4 { left: 83.33%; top: 48.78%; }
-    .pz5 { left: 5.58%;  top: 73.17%; }
-    .pz6 { left: 77.75%; top: 73.17%; }
-    .nucleo { position: absolute; left: 37.92%; top: 44.39%; width: 24.17%; aspect-ratio: 1;
-              border-radius: 26%; background: linear-gradient(160deg, #2C96FF 0%, #0272FB 52%, #0059D6 100%);
+       en blanco. Prefijo pz (pieza) para que no vuelva a pasar. */
+    .pz1 { left: 10.68%; top: 0; }
+    .pz2 { left: 74.17%; top: 0; }
+    .pz3 { left: 0;      top: 44.45%; }
+    .pz4 { left: 84.77%; top: 44.45%; }
+    .pz5 { left: 18.98%; top: 62.91%; }
+    .pz6 { left: 65.87%; top: 62.91%; }
+    .nucleo { position: absolute; left: 39.39%; top: 16.36%; width: 21.21%; aspect-ratio: 1;
+              border-radius: 27%; background: linear-gradient(155deg, #3B9BFF 0%, #0A70F5 48%, #0053CF 100%);
+              border: 1px solid rgba(150,205,255,.55);
               display: flex; align-items: center; justify-content: center;
-              box-shadow: 0 0 calc(10*var(--u)) rgba(2,114,251,.75), 0 0 calc(26*var(--u)) rgba(2,114,251,.40); }
-    .nucleo svg { width: 58%; height: 58%; color: #fff; }
-    .nucleo-nombre { position: absolute; left: 0; right: 0; top: 76.6%; text-align: center;
+              box-shadow: 0 0 calc(9*var(--u)) rgba(10,112,245,.85), 0 0 calc(24*var(--u)) rgba(10,112,245,.45); }
+    .nucleo svg { width: 62%; height: 62%; color: #fff; }
+    .nucleo-nombre { position: absolute; left: 0; right: 0; top: 70.5%; text-align: center;
                      font-size: calc(11*var(--u)); font-weight: 700; letter-spacing: -.02em; color: #fff;
-                     text-shadow: 0 calc(2*var(--u)) calc(8*var(--u)) rgba(0,0,0,.8); }
+                     text-shadow: 0 calc(2*var(--u)) calc(8*var(--u)) rgba(0,0,0,.85); }
 
     /* --- la lista de lo que se conecta --- */
-    .sis-lista { list-style: none; display: flex; flex-direction: column; gap: calc(14.7*var(--u)); }
+    .sis-lista { margin-left: calc(74*var(--u)); list-style: none; display: flex; flex-direction: column; gap: calc(14.7*var(--u)); }
     .sis-lista li { display: flex; align-items: center; gap: calc(12*var(--u)); }
     .sis-lista .tic { flex: 0 0 auto; width: calc(11*var(--u)); height: calc(11*var(--u)); border-radius: 50%;
                       background: #16283C; border: 1px solid rgba(120,175,255,.45);
@@ -542,12 +562,12 @@
       .sis-txt .kick { font-size: .68rem; letter-spacing: .2em; margin-bottom: 1.1rem; }
       .sis-txt h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.16; }
       .sis-txt .lede { font-size: .93rem; line-height: 1.62; margin-top: .9rem; max-width: 46ch; }
-      .diagrama { width: min(380px, 88%); }
+      .diagrama { width: min(430px, 92%); margin-left: 0; }
       .cables { filter: drop-shadow(0 0 5px rgba(10,155,255,.55)); }
       .modulo { box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 6px 18px rgba(0,0,0,.45); }
       .nucleo { box-shadow: 0 0 16px rgba(2,114,251,.75), 0 0 42px rgba(2,114,251,.40); }
       .nucleo-nombre { font-size: 1.05rem; text-shadow: 0 3px 12px rgba(0,0,0,.8); }
-      .sis-lista { justify-self: stretch; gap: 16px; }
+      .sis-lista { justify-self: stretch; gap: 16px; margin-left: 0; }
       .sis-lista li { gap: 14px; }
       .sis-lista .tic { width: 20px; height: 20px; }
       .sis-lista span { font-size: .93rem; line-height: 1.45; }
@@ -994,14 +1014,15 @@
             </div>
 
             <div class="diagrama">
-              <svg class="cables" viewBox="0 0 240 205" fill="none" stroke="#0A9BFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M91 108 H70 V70 H53.4"/><path d="M149 108 H170 V70 H186.6"/><path d="M91 120 H40"/><path d="M149 120 H200"/><path d="M91 132 H70 V170 H53.4"/><path d="M149 132 H170 V170 H186.6"/></svg>
+              <span class="resplandor" aria-hidden="true"></span>
+              <svg class="cables" viewBox="0 0 264 110" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="rama"><path d="M132 18 V6 H98"/><path d="M132 6 H166"/><path d="M86 20 V9"/><path d="M178 20 V9"/><path d="M60 58 V40 H46"/><path d="M204 58 V40 H218"/><path d="M104 46 H90 V33"/><path d="M160 46 H174 V33"/><path d="M132 74 V102 H106"/><path d="M132 102 H158"/></g><g class="principal"><path d="M104 34 H86 V20 H68.2"/><path d="M160 34 H178 V20 H195.8"/><path d="M104 58 H60 V68.9 H40.2"/><path d="M160 58 H204 V68.9 H223.8"/><path d="M118 74 V89.2 H90.1"/><path d="M146 74 V89.2 H173.9"/></g></svg>
               <div class="modulo pz1"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6.8 3.2c.4-.2 1 0 1.2.4l1.3 2.2c.3.4.2 1-.2 1.3l-.9.8c-.2.2-.2.4-.1.7.8 1.5 2 2.7 3.5 3.5.3.1.5.1.7-.1l.8-.9c.3-.4.9-.5 1.3-.2l2.2 1.3c.4.2.6.8.4 1.2l-.6 1.5c-.2.4-.6.8-1.1.8C9.4 17.6 2.4 10.6 2.4 4c0-.5.3-1 .8-1.1z"/></svg></div>
-              <div class="modulo pz2 vd blanca"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg></div>
-              <div class="modulo pz3 rj blanca"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4.6" width="14" height="12.8" rx="2.2"/><path d="M3 8.4h14M6.8 2.6v3.2M13.2 2.6v3.2"/></svg></div>
-              <div class="modulo pz4"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="10" cy="5.4" rx="6.2" ry="2.6"/><path d="M3.8 5.4v9.2c0 1.4 2.8 2.6 6.2 2.6s6.2-1.2 6.2-2.6V5.4"/><path d="M3.8 10c0 1.4 2.8 2.6 6.2 2.6s6.2-1.2 6.2-2.6"/></svg></div>
+              <div class="modulo pz2 vd"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg></div>
+              <div class="modulo pz3 rj"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4.6" width="14" height="12.8" rx="2.2"/><path d="M3 8.4h14M6.8 2.6v3.2M13.2 2.6v3.2"/></svg></div>
+              <div class="modulo pz4 crm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="15.2" cy="14.6" r="4.4"/><path d="M15.2 10.2V5.6"/><circle cx="15.2" cy="3.6" r="2" fill="currentColor" stroke="none"/><path d="M10.8 14.6H7.2"/><circle cx="5.2" cy="14.6" r="2" fill="currentColor" stroke="none"/></svg></div>
               <div class="modulo pz5"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 2.8a5 5 0 00-5 5v3.4L3.4 14h13.2L15 11.2V7.8a5 5 0 00-5-5z"/><path d="M8.2 16.4a1.9 1.9 0 003.6 0"/></svg></div>
               <div class="modulo pz6"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="7.4" r="2.8"/><circle cx="14.4" cy="8.4" r="2.1"/><path d="M2.6 16.8c.6-2.7 2.8-4.1 5.4-4.1s4.8 1.4 5.4 4.1"/></svg></div>
-              <div class="nucleo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.6l1.9 6.3 6.3 1.9-6.3 1.9L12 18l-1.9-6.3L3.8 9.8l6.3-1.9z"/></svg></div>
+              <div class="nucleo"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.1 2.3a1.5 1.5 0 1 1 1.8 0v1.5h-1.8z"/><path d="M2.6 10.1h1.1v5.6H2.6a1.6 1.6 0 0 1-1.6-1.6v-2.4a1.6 1.6 0 0 1 1.6-1.6zM21.4 10.1h-1.1v5.6h1.1a1.6 1.6 0 0 0 1.6-1.6v-2.4a1.6 1.6 0 0 0-1.6-1.6zM11.1 19.6h1.8v2.1h-1.8z"/><path fill-rule="evenodd" d="M7.6 4.9h8.8a4 4 0 0 1 4 4v6.2a4 4 0 0 1-4 4H7.6a4 4 0 0 1-4-4V8.9a4 4 0 0 1 4-4zM9.5 9.8a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 1 0 0-3.2zM14.5 9.8a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 1 0 0-3.2zM8.9 15.1h6.2a.85.85 0 0 1 0 1.7H8.9a.85.85 0 0 1 0-1.7z"/></svg></div>
               <p class="nucleo-nombre">EasyRobots</p>
             </div>
 

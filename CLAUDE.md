@@ -469,9 +469,11 @@ del contenedor, con el mismo lenguaje del panel, y se alargo de 3 a 7 lineas
 hasta cerrar la visita. Las tres primeras son las aprobadas, sin tocar.
 La juntura con "El sistema" ya no se ve: esa seccion pasa a oscura.
 
-La 05 "El sistema" **pasa de clara a oscura**, sobre la misma foto del hero al
-30 % con un velo mas cerrado a la izquierda (#030A13) que a la derecha, que es
-como esta en la referencia. Cambia el diagrama entero: ya no son seis fichas en
+La 05 "El sistema" **pasa de clara a oscura**. La foto del hero se usa de
+relleno provisional al 16 % con el velo muy cerrado, porque **no es la foto de
+la referencia**: alli el diagrama se apoya en negro (#030A13) y la foto solo se
+intuye por el borde derecho, y es un salon oscuro, no la terraza del hero.
+Esta pedida a Anais; se cambia sustituyendo el archivo. Cambia el diagrama entero: ya no son seis fichas en
 dos columnas con un cuadro en medio, sino un nucleo con cables tipo circuito
 hacia seis piezas, y **la lista de lo que se conecta se va a la derecha**, que
 es donde la pone la referencia. El copy no se toca: el titular y la entradilla
@@ -483,13 +485,19 @@ pieza #131823, nucleo #0272FB, cable de #0260AC a #03B4FF.
 
 Tres decisiones que conviene no reabrir:
 
-- **Las seis piezas van en circulo de verdad**, a 100 u del centro y cada 60
-  grados. En la referencia estan a radios de 87 a 136 u y en angulos sueltos:
-  es una ilustracion generada, ahi no hay geometria que copiar. Misma leccion
-  que el diagrama de clinicas.
-- **El logotipo de HubSpot que sale en la referencia no se pone.** La pagina
-  dice "se integra con lo que ya usas" y no nombra ningun CRM: es la regla de
-  `capacidades-reales.md`. Va un icono generico.
+- **Las piezas NO van en circulo.** Se probo con un circulo de 100 u cada 60
+  grados, aplicando la leccion del diagrama de clinicas, y Anais lo rechazo:
+  "no esta igual". La silueta de la referencia es ancha y baja (2,4:1) y las
+  posiciones no son regulares. Medidas sobre el recorte de 482 px, donde la
+  tarjeta mide 63 px (factor 0,635 hacia el contenedor de 814 u), desde el
+  centro del nucleo: arriba (+-83,8 / -26,0), en medio (+-111,8 / +22,9),
+  abajo (+-61,9 / +43,2). Caja de 264 x 110 u. La diferencia con clinicas es
+  que alli el circulo era la idea; aqui la referencia manda.
+- **El nucleo lleva un robot**, no una estrella de cuatro puntas. Era lo que
+  mas cantaba en la primera version.
+- **El logotipo de HubSpot si va**, en tarjeta naranja #FB5328, que es la unica
+  de color solido del diagrama. La regla que lo prohibia queda derogada el
+  2026-09-28 en `capacidades-reales.md`. El logotipo esta redibujado en SVG.
 - **Cuidado con los nombres de clase cortos.** Las piezas se llamaron `.m1` a
   `.m6` y `.m2` ya existia: es la clase de la seccion "El momento", que pinta
   `background:#FEFEFD`. La pieza de WhatsApp salia en blanco y el CSS de la
