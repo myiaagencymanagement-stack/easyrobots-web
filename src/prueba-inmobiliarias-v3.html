@@ -702,13 +702,22 @@
        medidas dejan de depender de --u, que aqui daba tamanos impredecibles;
        van en rem, que es lo unico fiable a estos anchos. */
     @media (max-width: 900px) {
-      .hero { padding: 0 0 44px; }
       .escena { aspect-ratio: auto; padding: 22px 0 0; }
       /* El velo del hero en movil estaba al 92 % y tapaba la foto del
          todo. Se abre por el centro, que es donde no hay texto grande. */
       .hero .velo { background: linear-gradient(180deg, rgba(6,6,8,.90) 0%, rgba(6,6,8,.80) 26%, rgba(6,6,8,.46) 52%, rgba(6,6,8,.62) 78%, rgba(6,6,8,.88) 100%); }
 
-      .h-nav { position: static; height: auto; padding: 0 5.89%; margin-bottom: 30px; }
+      /* La barra se queda fija: al bajar, el boton de reservar baja con la
+         pagina. En el movil solo lleva la marca a la izquierda y el boton a
+         la derecha, que los enlaces ya estan ocultos. */
+      .h-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 120;
+               height: auto; margin: 0; padding: 9px 5.89%;
+               background: rgba(8,8,11,.88); -webkit-backdrop-filter: blur(12px);
+               backdrop-filter: blur(12px);
+               border-bottom: 1px solid rgba(255,255,255,.08); }
+      .hero { padding: 54px 0 44px; }
+      /* Para que los enlaces del menu no dejen el titular debajo de la barra. */
+      section[id], .cierre { scroll-margin-top: 58px; }
       .h-links { display: none; }
       .h-navbtn { font-size: .8rem; padding: .6rem 1.05rem; gap: .4rem; }
 
@@ -904,9 +913,8 @@
       .h-meta div { font-size: .76rem; }
       .h-movil { width: 132px; margin: 12px auto 0; --u: .757px; padding: 5px; border-radius: 22px; }
       .h-pant { border-radius: 18px; }
-      .hero { padding: 0 0 26px; }
+      .hero { padding: 54px 0 26px; }
       .escena { padding: 14px 0 0; }
-      .h-nav { margin-bottom: 20px; }
 
       /* EL MOMENTO: los dos paneles eran 1.096 px entre los dos. */
       .m2-hoy-txt { padding: 13px 12px; }
@@ -992,20 +1000,21 @@
          Apilados eran 720 px de deslizar hacia abajo y se perdia la idea
          de secuencia, que es justo lo que cuenta esta seccion. La fila se
          sale hasta el borde de la pantalla para que se vea que hay mas. */
-      .pasos { display: flex; overflow-x: auto; scroll-snap-type: x proximity;
-               gap: 26px; margin: 0 -22px; padding: 4px 22px 6px;
-               -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-      .pasos::-webkit-scrollbar { display: none; }
-      .paso { flex: 0 0 60%; max-width: 230px; scroll-snap-align: start;
-              padding: 15px 12px 16px; }
+      /* Los cuatro tienen que verse de golpe, asi que 2x2 y no una fila que
+         se desliza. Las flechas se quedan entre las dos parejas, que es lo
+         que mantiene la idea de secuencia. */
+      .pasos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px;
+               overflow: visible; margin: 0; padding: 0; }
+      .paso { padding: 14px 10px 15px; max-width: none; }
       .paso .ic { width: 36px; height: 36px; margin: 0 auto 9px; }
       .paso h3 { font-size: .86rem; }
       .paso p { font-size: .78rem; line-height: 1.38; margin-top: .4rem; }
       /* Las flechas vuelven: son las que dicen que es una secuencia. */
-      .paso:not(:last-child)::after { display: block !important; content: "→";
-              position: absolute; top: 50%; right: -19px; transform: translateY(-50%);
+      .paso::after { display: none !important; }
+      .paso:nth-child(odd)::after { display: block !important; content: "→";
+              position: absolute; top: 50%; right: -18px; transform: translateY(-50%);
               width: 12px; text-align: center; line-height: 1;
-              font-size: 15px; color: rgba(255,255,255,.42); }
+              font-size: 14px; color: rgba(255,255,255,.42); }
       .pie-grid { grid-template-columns: 1fr; }
       .tec-cols { grid-template-columns: 1fr; }
       .tec ul { padding-left: 0; }

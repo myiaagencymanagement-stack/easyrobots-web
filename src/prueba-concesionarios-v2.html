@@ -458,6 +458,9 @@
     /* ===================== MOVIL =====================
        Por debajo del corte, --u deja de valer: todo en rem. */
     @media (max-width: 760px) {
+      /* Anais: en el movil "parece todo muy cerca". Se baja la raiz al 90 %,
+         que arrastra todo lo que va en rem, y los pocos px fijos van a la par. */
+      html { font-size: 90%; }
 
       /* Los bloques de cada seccion dejan de estar posicionados en movil y
          se pintarian por debajo de .foto y .velo. Se les devuelve la pila. */
@@ -471,15 +474,23 @@
       .h-t em { font-size: 1.68rem; line-height: 1.07; }
       .h-navbtn, .h-logo, .h-marca b, .h-links a { }
 
-      /* Una foto de 2,3:1 con cover en una seccion alta y estrecha solo deja
-         ver un parche liso: en movil van recortes casi cuadrados. */
+      /* LOS FONDOS EN MOVIL
+         Una foto de 2,3:1 no cabe en una pantalla vertical: con cover solo se
+         ve una cuarta parte de la escena y parece un parche. Se hacen dos
+         cosas. Primero, recortes casi cuadrados de cada escena. Segundo, la
+         foto ocupa solo la franja de arriba de la seccion (no toda) y se funde
+         hacia el fondo plano: asi la proporcion de la caja se acerca a la del
+         recorte, se ve la escena entera y el texto de abajo cae sobre color
+         limpio. Es lo mismo que hace el velo lateral en escritorio, girado. */
+      .hero .foto, .s02 .foto, .s04 .foto, .s09 .foto {
+        height: 62%; bottom: auto; background-position: center 42%; }
       .hero .foto { background-image: url(assets/conce-hero-movil.webp); }
       .s02 .foto { background-image: url(assets/conce-momentos-movil.webp); }
       .s04 .foto { background-image: url(assets/conce-sabado-movil.webp); }
       .s09 .foto { background-image: url(assets/conce-hablemos-movil.webp); }
       .s05 .foto, .s07 .foto { display: none; }
       .hero .escena { aspect-ratio: auto; padding: 0 18px 26px; }
-      .hero .velo { background: linear-gradient(180deg, rgba(1,8,15,.88) 0%, rgba(1,8,15,.84) 45%, rgba(1,8,15,.96) 100%); }
+      .hero .velo { background: linear-gradient(180deg, rgba(1,8,15,.80) 0%, rgba(1,8,15,.58) 30%, rgba(1,8,15,.74) 52%, rgba(1,8,15,.99) 62%, #01080F 66%); }
       .h-nav { position: static; height: auto; padding: 12px 0 14px; }
       .h-logo { width: 34px; height: 34px; border-radius: 10px; }
       .h-logo svg { width: 20px; height: 20px; }
@@ -511,8 +522,8 @@
 
       /* --- 02 en movil: columna unica --- */
       .s02 .escena { aspect-ratio: auto; padding: 26px 18px 28px; }
-      .s02 .velo { background: linear-gradient(180deg, rgba(0,8,14,.975), rgba(0,8,14,.955)); }
-      .s02 .foto { opacity: .8; }
+      .s02 .velo { background: linear-gradient(180deg, rgba(0,8,14,.86) 0%, rgba(0,8,14,.66) 30%, rgba(0,8,14,.80) 52%, rgba(0,8,14,.99) 62%, #000C15 66%); }
+      .s02 .foto { opacity: 1; }
       .m-col { position: static; width: auto; }
       .m-t { font-size: 1.45rem; line-height: 1.14; }
       .m-p { font-size: .88rem; line-height: 1.5; margin-top: .7rem; }
@@ -560,7 +571,7 @@
 
       /* --- 04 en movil --- */
       .s04 .escena { aspect-ratio: auto; padding: 26px 18px 28px; }
-      .s04 .velo { background: linear-gradient(180deg, rgba(0,7,13,.975), rgba(0,7,13,.955)); }
+      .s04 .velo { background: linear-gradient(180deg, rgba(0,7,13,.88) 0%, rgba(0,7,13,.66) 30%, rgba(0,7,13,.82) 52%, rgba(0,7,13,.99) 62%, #00080F 66%); }
       .w-col { position: static; width: auto; }
       .w-t { font-size: 1.5rem; line-height: 1.14; }
       .w-p { font-size: .88rem; line-height: 1.5; margin-top: .8rem; }
@@ -662,7 +673,7 @@
 
       /* --- 09 y 10 en movil --- */
       .s09 .escena { aspect-ratio: auto; padding: 26px 18px 28px; }
-      .s09 .velo { background: linear-gradient(180deg, rgba(0,7,13,.90), rgba(0,7,13,.95)); }
+      .s09 .velo { background: linear-gradient(180deg, rgba(0,7,13,.72) 0%, rgba(0,7,13,.60) 30%, rgba(0,7,13,.80) 52%, rgba(0,7,13,.99) 62%, #00070E 66%); }
       .c-col, .c-btn, .c-meta { position: static; }
       .c-kick { font-size: .64rem; }
       .c-t { font-size: 1.5rem; line-height: 1.14; margin-top: .5rem; }
