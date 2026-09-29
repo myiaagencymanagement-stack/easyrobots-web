@@ -82,7 +82,7 @@
          pedido  x745..890 y47..87      envio   x745..905 y98..205
          cliente x700..890 y212..258    sello de WhatsApp en (866,190) */
     .hero { position: relative; overflow: hidden; background: #01070E; }
-    .hero .escena { aspect-ratio: 1024 / 288; }
+    .hero .escena { aspect-ratio: 1024 / 322; }
     .hero .foto { position: absolute; inset: 0; background: url(assets/ecom-hero.webp) center / cover no-repeat; }
     .hero .velo { position: absolute; inset: 0; background:
         linear-gradient(90deg, rgba(1,7,14,.95) 0%, rgba(1,7,14,.93) 30%, rgba(1,7,14,.62) 44%, rgba(1,7,14,.16) 60%, rgba(1,7,14,0) 76%); }
@@ -117,7 +117,7 @@
     .h-meta div { display: flex; align-items: center; gap: calc(7*var(--u)); font-size: calc(9.4*var(--u)); font-weight: 500; color: rgba(255,255,255,.82); white-space: nowrap; }
     .h-meta svg { width: calc(11*var(--u)); height: calc(11*var(--u)); color: rgba(255,255,255,.72); }
 
-    .h-ped { position: absolute; left: calc(745*var(--u)); top: calc(47*var(--u)); width: calc(145*var(--u)); height: calc(40*var(--u)); z-index: 46;
+    .h-ped { position: absolute; left: calc(748*var(--u)); top: calc(44*var(--u)); width: calc(138*var(--u)); height: calc(38*var(--u)); z-index: 46;
              background: #fff; border-radius: calc(9*var(--u)); display: flex; align-items: center; gap: calc(9*var(--u)); padding: 0 calc(10*var(--u));
              box-shadow: 0 calc(5*var(--u)) calc(16*var(--u)) rgba(0,0,0,.35); }
     .h-ped img { width: calc(34*var(--u)); height: calc(24*var(--u)); object-fit: contain; }
@@ -125,7 +125,7 @@
     .h-ped span { display: flex; align-items: center; gap: calc(5*var(--u)); font-size: calc(9.4*var(--u)); font-weight: 600; color: #15803D; line-height: calc(13*var(--u)); }
     .pt { width: calc(6*var(--u)); height: calc(6*var(--u)); border-radius: 50%; background: var(--verde); flex: 0 0 auto; }
 
-    .h-env { position: absolute; left: calc(745*var(--u)); top: calc(98*var(--u)); width: calc(160*var(--u)); height: calc(107*var(--u)); z-index: 45;
+    .h-env { position: absolute; left: calc(748*var(--u)); top: calc(94*var(--u)); width: calc(152*var(--u)); height: calc(100*var(--u)); z-index: 45;
              background: rgba(4,12,21,.86); border: calc(1*var(--u)) solid rgba(255,255,255,.10); border-radius: calc(10*var(--u));
              padding: calc(9*var(--u)) calc(12*var(--u)); backdrop-filter: blur(calc(7*var(--u))); box-shadow: 0 calc(6*var(--u)) calc(20*var(--u)) rgba(0,0,0,.45); }
     .h-env > b { display: block; font-size: calc(10.4*var(--u)); font-weight: 700; color: #fff; letter-spacing: -.01em; }
@@ -135,48 +135,48 @@
     /* el hilo que une los cuatro estados */
     .h-paso + .h-paso::before { content: ""; position: absolute; left: calc(4*var(--u)); top: calc(-8*var(--u)); width: calc(1.4*var(--u)); height: calc(8*var(--u)); background: rgba(22,200,115,.45); }
 
-    .h-cli { position: absolute; left: calc(700*var(--u)); top: calc(212*var(--u)); width: calc(190*var(--u)); z-index: 46;
+    .h-cli { position: absolute; left: calc(706*var(--u)); top: calc(206*var(--u)); width: calc(180*var(--u)); z-index: 46;
              background: #fff; border-radius: calc(9*var(--u)); display: flex; align-items: flex-start; gap: calc(9*var(--u));
              padding: calc(8*var(--u)) calc(11*var(--u)); box-shadow: 0 calc(5*var(--u)) calc(16*var(--u)) rgba(0,0,0,.35); }
     .h-cli img { width: calc(24*var(--u)); height: calc(24*var(--u)); border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
     .h-cli b { display: block; font-size: calc(9.4*var(--u)); font-weight: 700; color: #3F4A5A; letter-spacing: -.01em; line-height: calc(12*var(--u)); }
     .h-cli span { display: block; font-size: calc(9.4*var(--u)); font-weight: 500; color: var(--tinta); line-height: calc(12.4*var(--u)); }
-    .h-wa { position: absolute; left: calc(866*var(--u)); top: calc(190*var(--u)); width: calc(32*var(--u)); height: calc(32*var(--u)); border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; z-index: 48; box-shadow: 0 calc(4*var(--u)) calc(14*var(--u)) rgba(0,0,0,.4); }
+    .h-wa { position: absolute; left: calc(862*var(--u)); top: calc(184*var(--u)); width: calc(30*var(--u)); height: calc(30*var(--u)); border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; z-index: 48; box-shadow: 0 calc(4*var(--u)) calc(14*var(--u)) rgba(0,0,0,.4); }
     .h-wa svg { width: calc(20*var(--u)); height: calc(20*var(--u)); color: #fff; }
 
     /* ============ 02 - TODO EMPUJA HACIA LA VENTA ============
        Alto 198 u. Texto en x136 (titular a y24 del borde de la seccion).
        La bandeja de postventa: x510 w392, y9 h187. Seis filas a paso 24. */
     .s02 { position: relative; background: var(--oscuro); overflow: hidden; }
-    .s02 .escena { aspect-ratio: 1024 / 198; }
+    .s02 .escena { aspect-ratio: 1024 / 224; }
     .s02 .foto { position: absolute; inset: 0; background: url(assets/ecom-postventa.webp) center / cover no-repeat; opacity: .62; }
     .s02 .velo { position: absolute; inset: 0; background:
         linear-gradient(90deg, rgba(2,10,20,.93) 0%, rgba(2,10,20,.95) 22%, rgba(2,10,20,.86) 46%, rgba(2,10,20,.70) 100%); }
 
-    .v-col { position: absolute; left: calc(136*var(--u)); top: calc(20*var(--u)); width: calc(350*var(--u)); z-index: 20; }
-    .v-t { font-size: calc(20*var(--u)); line-height: calc(23*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; }
+    .v-col { position: absolute; left: calc(136*var(--u)); top: calc(22*var(--u)); width: calc(350*var(--u)); z-index: 20; }
+    .v-t { margin-top: calc(6*var(--u)); font-size: calc(20*var(--u)); line-height: calc(23*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; }
     .v-p { margin-top: calc(18*var(--u)); font-size: calc(11.4*var(--u)); line-height: calc(16.5*var(--u)); color: rgba(255,255,255,.82); }
     .v-p + .v-p { margin-top: calc(14*var(--u)); }
 
-    .bandeja { position: absolute; left: calc(510*var(--u)); top: calc(8*var(--u)); width: calc(392*var(--u)); height: calc(190*var(--u)); z-index: 20;
+    .bandeja { position: absolute; left: calc(510*var(--u)); top: calc(14*var(--u)); width: calc(392*var(--u)); height: calc(206*var(--u)); z-index: 20;
                background: #fff; border-radius: calc(12*var(--u)); color: var(--tinta); overflow: hidden;
                box-shadow: 0 calc(8*var(--u)) calc(26*var(--u)) rgba(0,0,0,.42); }
     .bd-cab { display: flex; align-items: baseline; gap: calc(8*var(--u)); padding: calc(8*var(--u)) calc(14*var(--u)) 0; }
     .bd-cab b { font-size: calc(11.6*var(--u)); font-weight: 700; letter-spacing: -.02em; }
     .bd-cab span { font-size: calc(9.4*var(--u)); color: var(--gris); }
-    .bd-tabs { display: flex; gap: calc(17*var(--u)); padding: calc(6*var(--u)) calc(14*var(--u)) calc(4*var(--u)); border-bottom: calc(1*var(--u)) solid #EAEFF6; }
+    .bd-tabs { display: flex; gap: calc(17*var(--u)); padding: calc(7*var(--u)) calc(14*var(--u)) calc(6*var(--u)); border-bottom: calc(1*var(--u)) solid #EAEFF6; margin-bottom: calc(5*var(--u)); }
     .bd-tabs div { display: flex; align-items: center; gap: calc(5*var(--u)); font-size: calc(9.2*var(--u)); font-weight: 600; color: var(--gris); white-space: nowrap; }
     .bd-tabs div i { font-style: normal; font-weight: 500; font-size: calc(8.4*var(--u)); color: #A6B0BF; }
     .bd-tabs div.on { color: var(--tinta); position: relative; }
     .bd-tabs div.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: calc(-7*var(--u)); height: calc(2*var(--u)); background: var(--tinta); border-radius: 2px; }
-    .bd-fila { display: flex; align-items: center; gap: calc(11*var(--u)); padding: calc(3*var(--u)) calc(14*var(--u)); height: calc(22.5*var(--u)); }
+    .bd-fila { display: flex; align-items: center; gap: calc(11*var(--u)); padding: calc(3*var(--u)) calc(14*var(--u)); height: calc(24*var(--u)); }
     .bd-fila:nth-child(even) { background: #F7FAFD; }
     .bd-ic { width: calc(17*var(--u)); height: calc(17*var(--u)); border-radius: calc(5*var(--u)); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
     .bd-ic svg { width: calc(10*var(--u)); height: calc(10*var(--u)); color: #fff; }
     .ic-r { background: #F2463F; } .ic-a { background: #F59E0B; } .ic-v { background: #22C55E; }
     .bd-tx { flex: 1 1 auto; min-width: 0; }
-    .bd-tx b { display: block; font-size: calc(9.2*var(--u)); font-weight: 700; letter-spacing: -.01em; line-height: calc(10.6*var(--u)); }
-    .bd-tx span { display: block; font-size: calc(8.2*var(--u)); color: #8A94A4; line-height: calc(10.6*var(--u)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .bd-tx b { display: block; font-size: calc(9.6*var(--u)); font-weight: 700; letter-spacing: -.01em; line-height: calc(11.4*var(--u)); }
+    .bd-tx span { display: block; font-size: calc(8.6*var(--u)); color: #8A94A4; line-height: calc(11.4*var(--u)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .bd-h { font-size: calc(9.2*var(--u)); color: #8A94A4; flex: 0 0 auto; }
     .bd-et { flex: 0 0 auto; width: calc(58*var(--u)); text-align: center; border-radius: calc(5*var(--u)); font-size: calc(8.6*var(--u)); font-weight: 600; padding: calc(2.5*var(--u)) 0; }
     .et-r { background: #FDE8E8; color: #D93A3A; }
@@ -186,19 +186,19 @@
        Alto 146 u. Texto x136. Tarjeta del chatbot x517 w185, la de
        EasyRobots x735 w180, las dos a y14 con 125 u de alto. */
     .s03 { position: relative; background: var(--oscuro); overflow: hidden; }
-    .s03 .escena { aspect-ratio: 1024 / 160; }
+    .s03 .escena { aspect-ratio: 1024 / 182; }
     .s03 .foto { position: absolute; inset: 0; background: url(assets/ecom-dato.webp) center / cover no-repeat; opacity: .6; }
     .s03 .velo { position: absolute; inset: 0; background:
         linear-gradient(90deg, rgba(2,10,20,.92) 0%, rgba(2,10,20,.95) 24%, rgba(2,10,20,.88) 48%, rgba(2,10,20,.74) 100%); }
 
-    .d-col { position: absolute; left: calc(136*var(--u)); top: calc(30*var(--u)); width: calc(350*var(--u)); z-index: 20; }
-    .d-t { font-size: calc(19*var(--u)); line-height: calc(22*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; }
+    .d-col { position: absolute; left: calc(136*var(--u)); top: calc(26*var(--u)); width: calc(350*var(--u)); z-index: 20; }
+    .d-t { margin-top: calc(6*var(--u)); font-size: calc(19*var(--u)); line-height: calc(22*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; }
     .d-p { margin-top: calc(18*var(--u)); font-size: calc(11*var(--u)); line-height: calc(17.5*var(--u)); color: rgba(255,255,255,.80); }
 
-    .d-card { position: absolute; top: calc(11*var(--u)); height: calc(142*var(--u)); border-radius: calc(11*var(--u)); z-index: 20;
+    .d-card { position: absolute; top: calc(16*var(--u)); height: calc(150*var(--u)); border-radius: calc(11*var(--u)); z-index: 20;
               padding: calc(10*var(--u)) calc(12*var(--u)); }
-    .d-mal { left: calc(517*var(--u)); width: calc(185*var(--u)); background: rgba(20,6,8,.80); border: calc(1*var(--u)) solid rgba(229,72,77,.32); }
-    .d-bien { left: calc(735*var(--u)); width: calc(180*var(--u)); background: rgba(4,20,14,.80); border: calc(1*var(--u)) solid rgba(22,200,115,.32); }
+    .d-mal { left: calc(510*var(--u)); width: calc(196*var(--u)); background: rgba(20,6,8,.80); border: calc(1*var(--u)) solid rgba(229,72,77,.32); }
+    .d-bien { left: calc(718*var(--u)); width: calc(206*var(--u)); background: rgba(4,20,14,.80); border: calc(1*var(--u)) solid rgba(22,200,115,.32); }
     .d-cab { display: flex; align-items: center; gap: calc(8*var(--u)); }
     .d-cab .rd { width: calc(18*var(--u)); height: calc(18*var(--u)); border-radius: calc(6*var(--u)); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
     .d-cab .rd svg { width: calc(11*var(--u)); height: calc(11*var(--u)); color: #fff; }
@@ -208,32 +208,32 @@
     .d-linea { display: flex; align-items: flex-start; gap: calc(8*var(--u)); margin-top: calc(9*var(--u)); }
     .d-linea img { width: calc(22*var(--u)); height: calc(22*var(--u)); border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
     .d-bub { background: #fff; color: var(--tinta); border-radius: calc(8*var(--u)); padding: calc(6*var(--u)) calc(8*var(--u)) calc(4*var(--u));
-             font-size: calc(8.8*var(--u)); line-height: calc(11.6*var(--u)); flex: 1 1 auto; }
+             font-size: calc(9.2*var(--u)); line-height: calc(12.4*var(--u)); flex: 1 1 auto; }
     .d-bub .hh { display: block; text-align: right; font-size: calc(7.8*var(--u)); color: #9AA4B2; margin-top: calc(1*var(--u)); }
-    .d-nota { margin-top: calc(7*var(--u)); font-size: calc(8.2*var(--u)); line-height: calc(11.2*var(--u)); color: rgba(255,255,255,.62); }
+    .d-nota { margin-top: calc(8*var(--u)); font-size: calc(8.8*var(--u)); line-height: calc(12.2*var(--u)); color: rgba(255,255,255,.62); }
     .d-prod { margin-top: calc(7*var(--u)); display: flex; align-items: center; gap: calc(9*var(--u)); }
-    .d-prod img { width: calc(32*var(--u)); height: calc(27*var(--u)); object-fit: contain; background: #fff; border-radius: calc(7*var(--u)); padding: calc(2*var(--u)); flex: 0 0 auto; }
+    .d-prod img { width: calc(36*var(--u)); height: calc(30*var(--u)); object-fit: contain; background: #fff; border-radius: calc(7*var(--u)); padding: calc(2*var(--u)); flex: 0 0 auto; }
     .d-prod b { display: block; font-size: calc(9.6*var(--u)); font-weight: 700; color: #fff; letter-spacing: -.01em; line-height: calc(11.8*var(--u)); }
     .d-prod i { display: flex; align-items: center; gap: calc(5*var(--u)); font-style: normal; font-size: calc(8.4*var(--u)); font-weight: 600; color: #3DDC97; line-height: calc(11.4*var(--u)); }
-    .d-prod span { display: block; font-size: calc(8.4*var(--u)); color: rgba(255,255,255,.82); line-height: calc(11.4*var(--u)); }
+    .d-prod span { display: block; font-size: calc(8.6*var(--u)); color: rgba(255,255,255,.82); line-height: calc(11.8*var(--u)); white-space: nowrap; }
 
     /* ============ 04 - UN PEDIDO, DE LA DUDA A LA RESENA ============
        Alto 123 u. Barra blanca x134 w819 a y45, 73 u de alto. Los cinco
        circulos medidos uno a uno en x142 / 287 / 446 / 608 / 767, d=20. */
     .s04 { position: relative; background: var(--claro); color: var(--tinta); overflow: hidden; }
-    .s04 .escena { aspect-ratio: 1024 / 123; }
+    .s04 .escena { aspect-ratio: 1024 / 150; }
     .s04 .foto { position: absolute; inset: 0; background: url(assets/ecom-seda.webp) center / cover no-repeat; }
-    .s04 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,248,253,.86) 0%, rgba(245,248,253,.92) 40%, rgba(245,248,253,.70) 100%); }
-    .s04 .zapa { position: absolute; right: 0; top: 0; width: calc(120*var(--u)); z-index: 2; opacity: .95; }
+    .s04 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,248,253,.72) 0%, rgba(245,248,253,.80) 40%, rgba(245,248,253,.42) 100%); }
 
-    .r-t { position: absolute; left: calc(136*var(--u)); top: calc(10*var(--u)); font-size: calc(20*var(--u)); line-height: calc(24*var(--u)); font-weight: 800; letter-spacing: -.03em; z-index: 6; }
-    .r-sub { position: absolute; left: calc(136*var(--u)); top: calc(32*var(--u)); font-size: calc(10*var(--u)); color: var(--gris); z-index: 6; }
-    .r-barra { position: absolute; left: calc(134*var(--u)); top: calc(47*var(--u)); width: calc(819*var(--u)); height: calc(71*var(--u)); z-index: 6;
+    .r-t { position: absolute; left: calc(136*var(--u)); top: calc(24*var(--u)); font-size: calc(20*var(--u)); line-height: calc(24*var(--u)); font-weight: 800; letter-spacing: -.03em; z-index: 6; }
+    .r-sub { position: absolute; left: calc(136*var(--u)); top: calc(48*var(--u)); font-size: calc(10*var(--u)); color: var(--gris); z-index: 6; }
+    .r-barra { position: absolute; left: calc(134*var(--u)); top: calc(64*var(--u)); width: calc(819*var(--u)); height: calc(76*var(--u)); z-index: 6;
                background: rgba(255,255,255,.94); border-radius: calc(11*var(--u)); box-shadow: 0 calc(3*var(--u)) calc(14*var(--u)) rgba(15,40,80,.07); }
     /* Las x de los cinco pasos van en clases, NO en style="" del HTML: un
        left en linea gana a cualquier selector y en movil no habria forma de
        anularlo (ya paso una vez con la rejilla de la calculadora). */
-    .r-paso { position: absolute; top: calc(53*var(--u)); z-index: 7; }
+    .r-paso { position: absolute; top: calc(72*var(--u)); z-index: 7; }
+    .r-kick { position: absolute; left: calc(136*var(--u)); top: calc(12*var(--u)); z-index: 6; }
     .rp1 { left: calc(142*var(--u)); } .rp2 { left: calc(287*var(--u)); }
     .rp3 { left: calc(446*var(--u)); } .rp4 { left: calc(608*var(--u)); }
     .rp5 { left: calc(767*var(--u)); }
@@ -242,7 +242,7 @@
     .r-ic { position: absolute; left: calc(37*var(--u)); top: calc(-4*var(--u)); width: calc(24*var(--u)); height: calc(24*var(--u)); color: var(--tinta); }
     .r-tx { position: absolute; left: calc(37*var(--u)); top: calc(26*var(--u)); width: calc(118*var(--u)); }
     .r-tx b { display: block; font-size: calc(10.4*var(--u)); font-weight: 700; letter-spacing: -.01em; line-height: calc(13*var(--u)); }
-    .r-tx span { display: block; margin-top: calc(1*var(--u)); font-size: calc(8.8*var(--u)); line-height: calc(11.4*var(--u)); color: #5A6675; }
+    .r-tx span { display: block; margin-top: calc(2*var(--u)); font-size: calc(9.2*var(--u)); line-height: calc(12.2*var(--u)); color: #5A6675; }
     .r-fl { position: absolute; left: calc(96*var(--u)); top: calc(7*var(--u)); width: calc(34*var(--u)); height: calc(8*var(--u)); color: #9DB4D4; }
 
     /* ============ 05 - UNA DEMOSTRACION REAL ============
@@ -252,14 +252,13 @@
        La 3 va levantada y SIN rotulo: asi sale en el boceto.
        Panel de registro x768 w219 y11 h135. Boton x771 w215 y219 h39. */
     .s05 { position: relative; background: var(--claro); color: var(--tinta); overflow: hidden; }
-    .s05 .escena { aspect-ratio: 1024 / 416; }
-    .s05 .foto { position: absolute; inset: 0; background: url(assets/ecom-seda.webp) center / cover no-repeat; }
+    .s05 .escena { aspect-ratio: 1024 / 462; }
+    .s05 .foto { position: absolute; inset: 0; background: url(assets/ecom-demo.webp) center / cover no-repeat; }
     .s05 .velo { position: absolute; inset: 0; background: linear-gradient(120deg, rgba(245,248,253,.55) 0%, rgba(240,246,253,.35) 45%, rgba(236,243,252,.60) 100%); }
-    .s05 .planta { position: absolute; left: 0; top: calc(7*var(--u)); width: calc(100*var(--u)); z-index: 2; }
-    .dm-panel { position: absolute; left: calc(68*var(--u)); top: 0; width: calc(938*var(--u)); height: 100%; z-index: 3;
+    .dm-panel { position: absolute; left: calc(116*var(--u)); top: calc(6*var(--u)); width: calc(894*var(--u)); height: calc(450*var(--u)); z-index: 3;
                 background: rgba(255,255,255,.42); border: calc(1*var(--u)) solid rgba(255,255,255,.65); border-radius: calc(16*var(--u)); backdrop-filter: blur(calc(2*var(--u))); }
 
-    .dm-col { position: absolute; left: calc(98*var(--u)); top: calc(10*var(--u)); width: calc(400*var(--u)); z-index: 8; }
+    .dm-col { position: absolute; left: calc(136*var(--u)); top: calc(20*var(--u)); width: calc(420*var(--u)); z-index: 8; }
     .dm-t { margin-top: calc(6*var(--u)); font-size: calc(21*var(--u)); line-height: calc(26*var(--u)); font-weight: 800; letter-spacing: -.035em; }
     .dm-t em { font-style: normal; color: var(--azul-t); }
     .dm-p { margin-top: calc(6*var(--u)); font-size: calc(10.4*var(--u)); line-height: calc(13.6*var(--u)); color: #47535F; width: calc(370*var(--u)); }
@@ -267,13 +266,13 @@
     /* --- las tres tarjetas de conversacion --- */
     .dm-card { position: absolute; z-index: 9; background: #fff; border-radius: calc(12*var(--u)); box-shadow: 0 calc(6*var(--u)) calc(22*var(--u)) rgba(15,40,80,.10);
                display: flex; flex-direction: column; overflow: hidden; }
-    .dm-c1 { left: calc(91*var(--u)); top: calc(120*var(--u)); width: calc(218*var(--u)); height: calc(282*var(--u)); }
-    .dm-c2 { left: calc(324*var(--u)); top: calc(120*var(--u)); width: calc(214*var(--u)); height: calc(282*var(--u)); }
-    .dm-c3 { left: calc(552*var(--u)); top: calc(15*var(--u)); width: calc(200*var(--u)); height: calc(387*var(--u)); }
+    .dm-c1 { left: calc(136*var(--u)); top: calc(142*var(--u)); width: calc(197*var(--u)); height: calc(300*var(--u)); }
+    .dm-c2 { left: calc(345*var(--u)); top: calc(142*var(--u)); width: calc(197*var(--u)); height: calc(300*var(--u)); }
+    .dm-c3 { left: calc(554*var(--u)); top: calc(142*var(--u)); width: calc(197*var(--u)); height: calc(300*var(--u)); }
     .dm-rot { display: flex; align-items: center; gap: calc(10*var(--u)); padding: calc(6*var(--u)) calc(11*var(--u)) calc(5*var(--u)); }
     .dm-rot .rd { width: calc(28*var(--u)); height: calc(28*var(--u)); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
     .dm-rot .rd svg { width: calc(16*var(--u)); height: calc(16*var(--u)); color: #fff; }
-    .rd-azul { background: var(--azul); } .rd-ambar { background: #D97706; }
+    .rd-azul { background: var(--azul); } .rd-ambar { background: #D97706; } .rd-estrella { background: #F2B441; }
     .dm-rot b { display: block; font-size: calc(12.6*var(--u)); font-weight: 700; letter-spacing: -.02em; line-height: calc(15*var(--u)); }
     .dm-rot span { display: block; font-size: calc(10.4*var(--u)); color: #5A6675; line-height: calc(13*var(--u)); }
     .dm-cab { margin: 0 calc(6*var(--u)); background: #1D4ED8; border-radius: calc(7*var(--u)); height: calc(21*var(--u)); display: flex; align-items: center; gap: calc(7*var(--u)); padding: 0 calc(8*var(--u)); }
@@ -303,9 +302,7 @@
     /* el aviso de "cambio de talla" de la tercera tarjeta */
     .dm-aviso b { display: block; font-size: calc(10*var(--u)); line-height: calc(13*var(--u)); letter-spacing: -.01em; }
     .dm-aviso span { display: block; margin-top: calc(2*var(--u)); font-size: calc(8.8*var(--u)); line-height: calc(11.8*var(--u)); color: #6B7686; }
-    .dm-c3 .dm-cab { margin-top: calc(6*var(--u)); }
-    .dm-c3 .dm-in { align-self: flex-start; }
-    .dm-c3 .hh-abajo { margin-top: auto; }
+    .hh-abajo { margin-top: auto; }
     .dm-ped { border-top: calc(1*var(--u)) solid #EAEFF6; padding-top: calc(5*var(--u)); }
     .dm-ped .ti { display: flex; align-items: center; gap: calc(7*var(--u)); font-size: calc(10.4*var(--u)); font-weight: 700; letter-spacing: -.02em; }
     .dm-ped .ti svg { width: calc(14*var(--u)); height: calc(14*var(--u)); color: #12A150; }
@@ -327,20 +324,20 @@
     .dm-pie .env svg { width: calc(12*var(--u)); height: calc(12*var(--u)); color: #fff; }
 
     /* --- el panel de lo que queda registrado y el boton --- */
-    .dm-reg { position: absolute; left: calc(768*var(--u)); top: calc(11*var(--u)); width: calc(219*var(--u)); height: calc(135*var(--u)); z-index: 9;
+    .dm-reg { position: absolute; left: calc(768*var(--u)); top: calc(20*var(--u)); width: calc(222*var(--u)); height: calc(152*var(--u)); z-index: 9;
               background: #fff; border-radius: calc(12*var(--u)); padding: calc(10*var(--u)) calc(12*var(--u)); box-shadow: 0 calc(6*var(--u)) calc(22*var(--u)) rgba(15,40,80,.10);
               display: flex; flex-direction: column; }
     .dm-reg > b { display: block; font-size: calc(9.4*var(--u)); font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #3C4757; }
-    .dm-reg .fila { display: flex; align-items: center; gap: calc(9*var(--u)); margin-top: calc(9*var(--u)); }
+    .dm-reg .fila { display: flex; align-items: center; gap: calc(8*var(--u)); margin-top: calc(10*var(--u)); }
     .dm-reg .fila svg { width: calc(14*var(--u)); height: calc(14*var(--u)); color: var(--azul); flex: 0 0 auto; }
-    .dm-reg .fila i { font-style: normal; font-size: calc(9.4*var(--u)); color: #6B7686; width: calc(66*var(--u)); flex: 0 0 auto; }
-    .dm-reg .fila span { font-size: calc(9.4*var(--u)); font-weight: 600; color: var(--tinta); }
-    .dm-btn { position: absolute; left: calc(771*var(--u)); top: calc(219*var(--u)); width: calc(215*var(--u)); height: calc(39*var(--u)); z-index: 9;
+    .dm-reg .fila i { font-style: normal; font-size: calc(9*var(--u)); color: #6B7686; width: calc(56*var(--u)); flex: 0 0 auto; white-space: nowrap; }
+    .dm-reg .fila span { font-size: calc(9*var(--u)); font-weight: 600; color: var(--tinta); white-space: nowrap; }
+    .dm-btn { position: absolute; left: calc(768*var(--u)); top: calc(202*var(--u)); width: calc(222*var(--u)); height: calc(42*var(--u)); z-index: 9;
               background: var(--azul); border: 0; border-radius: calc(11*var(--u)); font-family: inherit; font-size: calc(13*var(--u)); font-weight: 700; color: #fff;
               letter-spacing: -.02em; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: calc(9*var(--u)); }
     .dm-btn:hover { background: #0A57D8; }
     .dm-btn svg { width: calc(14*var(--u)); height: calc(14*var(--u)); }
-    .dm-meta { position: absolute; left: calc(771*var(--u)); top: calc(273*var(--u)); display: flex; gap: calc(20*var(--u)); z-index: 9; }
+    .dm-meta { position: absolute; left: calc(768*var(--u)); top: calc(258*var(--u)); display: flex; gap: calc(20*var(--u)); z-index: 9; }
     .dm-meta div { display: flex; align-items: center; gap: calc(7*var(--u)); font-size: calc(9.4*var(--u)); font-weight: 500; color: #3C4757; white-space: nowrap; }
     .dm-meta svg { width: calc(13*var(--u)); height: calc(13*var(--u)); color: #1E293B; }
 
@@ -349,12 +346,12 @@
        coloca sueltas y la primera fila va corrida a la derecha. Cada una
        lleva su x y su ancho medidos. Los seis visados en x741, paso 14,2. */
     .s06 { position: relative; background: var(--claro); color: var(--tinta); overflow: hidden; }
-    .s06 .escena { aspect-ratio: 1024 / 110; }
-    .s06 .foto { position: absolute; inset: 0; background: url(assets/ecom-seda.webp) center / cover no-repeat; }
-    .s06 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,248,253,.80), rgba(245,248,253,.62) 60%, rgba(245,248,253,.80)); }
+    .s06 .escena { aspect-ratio: 1024 / 134; }
+    .s06 .foto { position: absolute; inset: 0; background: url(assets/ecom-piezas.webp) center / cover no-repeat; }
+    .s06 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,248,253,.70), rgba(245,248,253,.48) 60%, rgba(245,248,253,.68)); }
 
-    .pz-col { position: absolute; left: calc(136*var(--u)); top: calc(8*var(--u)); width: calc(345*var(--u)); z-index: 6; }
-    .pz-t { font-size: calc(18*var(--u)); line-height: calc(22*var(--u)); font-weight: 800; letter-spacing: -.03em; }
+    .pz-col { position: absolute; left: calc(136*var(--u)); top: calc(14*var(--u)); width: calc(345*var(--u)); z-index: 6; }
+    .pz-t { margin-top: calc(6*var(--u)); font-size: calc(18*var(--u)); line-height: calc(22*var(--u)); font-weight: 800; letter-spacing: -.03em; }
     .pz-p { margin-top: calc(10*var(--u)); font-size: calc(10.4*var(--u)); line-height: calc(14.4*var(--u)); color: #47535F; }
 
     .pz-ch { position: absolute; z-index: 6; background: #fff; border-radius: calc(9*var(--u)); display: flex; align-items: center; justify-content: center;
@@ -362,15 +359,15 @@
     .pz-ch svg, .pz-ch .lg { width: calc(15*var(--u)); height: calc(15*var(--u)); flex: 0 0 auto; }
     .pz-ch.col { flex-direction: column; gap: calc(2*var(--u)); font-size: calc(8*var(--u)); font-weight: 600; }
     .pz-er { background: var(--azul); color: #fff; }
-    .pz1 { left: calc(424*var(--u)); top: calc(8*var(--u)); width: calc(75*var(--u)); height: calc(32*var(--u)); }
-    .pz2 { left: calc(517*var(--u)); top: calc(8*var(--u)); width: calc(83*var(--u)); height: calc(32*var(--u)); }
-    .pz3 { left: calc(608*var(--u)); top: calc(8*var(--u)); width: calc(73*var(--u)); height: calc(32*var(--u)); }
-    .pz4 { left: calc(412*var(--u)); top: calc(42*var(--u)); width: calc(72*var(--u)); height: calc(34*var(--u)); }
-    .pz5 { left: calc(519*var(--u)); top: calc(42*var(--u)); width: calc(67*var(--u)); height: calc(34*var(--u)); }
-    .pz6 { left: calc(611*var(--u)); top: calc(42*var(--u)); width: calc(86*var(--u)); height: calc(34*var(--u)); }
-    .pz7 { left: calc(404*var(--u)); top: calc(79*var(--u)); width: calc(83*var(--u)); height: calc(32*var(--u)); }
-    .pz8 { left: calc(504*var(--u)); top: calc(79*var(--u)); width: calc(96*var(--u)); height: calc(32*var(--u)); }
-    .pz9 { left: calc(613*var(--u)); top: calc(79*var(--u)); width: calc(95*var(--u)); height: calc(32*var(--u)); }
+    .pz1 { left: calc(424*var(--u)); top: calc(16*var(--u)); width: calc(75*var(--u)); height: calc(32*var(--u)); }
+    .pz2 { left: calc(517*var(--u)); top: calc(16*var(--u)); width: calc(83*var(--u)); height: calc(32*var(--u)); }
+    .pz3 { left: calc(608*var(--u)); top: calc(16*var(--u)); width: calc(73*var(--u)); height: calc(32*var(--u)); }
+    .pz4 { left: calc(412*var(--u)); top: calc(54*var(--u)); width: calc(72*var(--u)); height: calc(34*var(--u)); }
+    .pz5 { left: calc(519*var(--u)); top: calc(54*var(--u)); width: calc(67*var(--u)); height: calc(34*var(--u)); }
+    .pz6 { left: calc(611*var(--u)); top: calc(54*var(--u)); width: calc(86*var(--u)); height: calc(34*var(--u)); }
+    .pz7 { left: calc(404*var(--u)); top: calc(94*var(--u)); width: calc(83*var(--u)); height: calc(32*var(--u)); }
+    .pz8 { left: calc(504*var(--u)); top: calc(94*var(--u)); width: calc(96*var(--u)); height: calc(32*var(--u)); }
+    .pz9 { left: calc(613*var(--u)); top: calc(94*var(--u)); width: calc(95*var(--u)); height: calc(32*var(--u)); }
     /* el cuerpo de cada ficha, en clase y no en style="" para poder anularlo
        en movil (ver la nota de los cinco pasos de la 04) */
     .pz1 span { font-size: calc(10.4*var(--u)); }
@@ -381,22 +378,22 @@
     .pz-ch .lg-woo { background: #7F54B3; border-radius: calc(4*var(--u)); display: flex; align-items: center; justify-content: center; width: calc(20*var(--u)); }
     .pz-ch .lg-woo svg { width: 70%; height: 70%; }
 
-    .pz-lista { position: absolute; left: calc(741*var(--u)); top: calc(12*var(--u)); z-index: 6; display: flex; flex-direction: column; gap: calc(4.2*var(--u)); }
+    .pz-lista { position: absolute; left: calc(741*var(--u)); top: calc(20*var(--u)); z-index: 6; display: flex; flex-direction: column; gap: calc(6.5*var(--u)); }
     .pz-lista div { display: flex; align-items: center; gap: calc(10*var(--u)); font-size: calc(10*var(--u)); color: #3C4757; white-space: nowrap; line-height: calc(10*var(--u)); }
 
     /* ============ 07 - TECNOLOGIA QUE POTENCIA TU EQUIPO ============
        Alto 91 u. Dos cuadros: x428 w252 y x686 w304, los dos a y8 con
        78 u de alto. Filas de la lista a paso 11. */
     .s07 { position: relative; background: var(--claro); color: var(--tinta); overflow: hidden; }
-    .s07 .escena { aspect-ratio: 1024 / 100; }
-    .s07 .foto { position: absolute; inset: 0; background: url(assets/ecom-seda.webp) center / cover no-repeat; }
-    .s07 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,248,253,.82), rgba(245,248,253,.66) 60%, rgba(245,248,253,.82)); }
+    .s07 .escena { aspect-ratio: 1024 / 124; }
+    .s07 .foto { position: absolute; inset: 0; background: url(assets/ecom-tecno.webp) center / cover no-repeat; }
+    .s07 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,248,253,.72), rgba(245,248,253,.52) 60%, rgba(245,248,253,.70)); }
 
-    .tc-col { position: absolute; left: calc(136*var(--u)); top: calc(9*var(--u)); width: calc(280*var(--u)); z-index: 6; }
-    .tc-t { font-size: calc(17*var(--u)); line-height: calc(20*var(--u)); font-weight: 800; letter-spacing: -.03em; }
+    .tc-col { position: absolute; left: calc(136*var(--u)); top: calc(16*var(--u)); width: calc(285*var(--u)); z-index: 6; }
+    .tc-t { margin-top: calc(6*var(--u)); font-size: calc(17*var(--u)); line-height: calc(20*var(--u)); font-weight: 800; letter-spacing: -.03em; }
     .tc-p { margin-top: calc(12*var(--u)); font-size: calc(10*var(--u)); line-height: calc(13.4*var(--u)); color: #47535F; }
 
-    .tc-box { position: absolute; top: calc(5*var(--u)); height: calc(91*var(--u)); z-index: 6; background: rgba(255,255,255,.55);
+    .tc-box { position: absolute; top: calc(12*var(--u)); height: calc(100*var(--u)); z-index: 6; background: rgba(255,255,255,.55);
               border: calc(1*var(--u)) solid rgba(255,255,255,.75); border-radius: calc(11*var(--u)); }
     .tc-b1 { left: calc(428*var(--u)); width: calc(252*var(--u)); }
     .tc-b2 { left: calc(686*var(--u)); width: calc(304*var(--u)); }
@@ -405,7 +402,7 @@
     .tc-ic.az { background: var(--azul); } .tc-ic.ng { background: #0B1220; }
     .tc-in { position: absolute; left: calc(50*var(--u)); top: calc(8*var(--u)); right: calc(7*var(--u)); }
     .tc-in > b { display: block; font-size: calc(10*var(--u)); font-weight: 700; letter-spacing: -.02em; line-height: calc(12*var(--u)); }
-    .tc-in .fila { display: flex; align-items: center; gap: calc(8*var(--u)); margin-top: calc(0.8*var(--u)); font-size: calc(8.8*var(--u)); color: #3C4757; line-height: calc(11*var(--u)); white-space: nowrap; }
+    .tc-in .fila { display: flex; align-items: center; gap: calc(9*var(--u)); margin-top: calc(2.4*var(--u)); font-size: calc(9.4*var(--u)); color: #3C4757; line-height: calc(11.6*var(--u)); white-space: nowrap; }
 
     /* ============ 08 - LIMITES (llego aparte) ============
        No esta en la referencia grande: viene de limites.png, y Anais pidio
@@ -413,13 +410,13 @@
        194 u con 12 de hueco, del margen 136 al 948, o sea el mismo ancho
        util que el resto de la pagina. */
     .s08 { position: relative; background: var(--claro); color: var(--tinta); overflow: hidden; }
-    .s08 .escena { aspect-ratio: 1024 / 150; }
-    .s08 .foto { position: absolute; inset: 0; background: url(assets/ecom-seda.webp) center / cover no-repeat; }
-    .s08 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,248,253,.84), rgba(245,248,253,.66) 55%, rgba(245,248,253,.84)); }
+    .s08 .escena { aspect-ratio: 1024 / 172; }
+    .s08 .foto { position: absolute; inset: 0; background: url(assets/ecom-equipo.webp) center top / cover no-repeat; }
+    .s08 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,248,253,.74), rgba(245,248,253,.52) 55%, rgba(245,248,253,.72)); }
 
-    .lm-col { position: absolute; left: calc(136*var(--u)); top: calc(8*var(--u)); z-index: 6; }
+    .lm-col { position: absolute; left: calc(136*var(--u)); top: calc(14*var(--u)); z-index: 6; }
     .lm-t { margin-top: calc(2*var(--u)); font-size: calc(18*var(--u)); line-height: calc(24*var(--u)); font-weight: 800; letter-spacing: -.035em; }
-    .lm-ficha { position: absolute; top: calc(50*var(--u)); width: calc(194*var(--u)); height: calc(78*var(--u)); z-index: 6;
+    .lm-ficha { position: absolute; top: calc(60*var(--u)); width: calc(194*var(--u)); height: calc(86*var(--u)); z-index: 6;
                 background: #fff; border-radius: calc(11*var(--u)); box-shadow: 0 calc(2*var(--u)) calc(10*var(--u)) rgba(15,40,80,.07);
                 display: flex; align-items: flex-start; gap: calc(10*var(--u)); padding: calc(10*var(--u)) calc(11*var(--u)); }
     .lm1 { left: calc(136*var(--u)); } .lm2 { left: calc(342*var(--u)); }
@@ -431,22 +428,22 @@
     .rd-az { background: #E6F0FE; color: var(--azul); }
     .rd-gris { background: #EDF1F6; color: #0B1220; }
     .lm-ficha b { display: block; font-size: calc(10*var(--u)); font-weight: 700; letter-spacing: -.01em; line-height: calc(12.6*var(--u)); }
-    .lm-ficha span { display: block; margin-top: calc(3*var(--u)); font-size: calc(8.4*var(--u)); line-height: calc(11*var(--u)); color: #5A6675; }
-    .lm-pie { position: absolute; left: calc(136*var(--u)); right: calc(76*var(--u)); top: calc(134*var(--u)); text-align: center; font-size: calc(9.6*var(--u)); color: #47535F; z-index: 6; }
+    .lm-ficha span { display: block; margin-top: calc(4*var(--u)); font-size: calc(8.8*var(--u)); line-height: calc(12*var(--u)); color: #5A6675; }
+    .lm-pie { position: absolute; left: calc(136*var(--u)); right: calc(76*var(--u)); top: calc(154*var(--u)); text-align: center; font-size: calc(9.6*var(--u)); color: #47535F; z-index: 6; }
 
     /* ============ 09 - NO SOMOS UNA CENTRALITA + GARANTIA ============
        Alto 97 u. Retratos x445 y x561, los dos de 108 u de ancho a y8.
        Panel de garantia x701 w289: tres filas y, separada, la de cierre. */
     .s09 { position: relative; background: var(--claro); color: var(--tinta); overflow: hidden; }
-    .s09 .escena { aspect-ratio: 1024 / 106; }
-    .s09 .foto { position: absolute; inset: 0; background: url(assets/ecom-seda.webp) center / cover no-repeat; }
-    .s09 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,248,253,.86), rgba(245,248,253,.70) 55%, rgba(245,248,253,.86)); }
+    .s09 .escena { aspect-ratio: 1024 / 152; }
+    .s09 .foto { position: absolute; inset: 0; background: url(assets/ecom-equipo.webp) center bottom / cover no-repeat; }
+    .s09 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,248,253,.76), rgba(245,248,253,.56) 55%, rgba(245,248,253,.74)); }
 
-    .eq-col { position: absolute; left: calc(136*var(--u)); top: calc(20*var(--u)); width: calc(300*var(--u)); z-index: 6; }
-    .eq-t { font-size: calc(18*var(--u)); line-height: calc(22*var(--u)); font-weight: 800; letter-spacing: -.035em; }
+    .eq-col { position: absolute; left: calc(136*var(--u)); top: calc(22*var(--u)); width: calc(300*var(--u)); z-index: 6; }
+    .eq-t { margin-top: calc(6*var(--u)); font-size: calc(18*var(--u)); line-height: calc(22*var(--u)); font-weight: 800; letter-spacing: -.035em; }
     .eq-p { margin-top: calc(8*var(--u)); font-size: calc(10.6*var(--u)); line-height: calc(15*var(--u)); color: #47535F; }
 
-    .eq-per { position: absolute; top: calc(8*var(--u)); width: calc(108*var(--u)); z-index: 6; }
+    .eq-per { position: absolute; top: calc(14*var(--u)); width: calc(108*var(--u)); z-index: 6; }
     .eq-p1 { left: calc(445*var(--u)); } .eq-p2 { left: calc(561*var(--u)); }
     .eq-per img { width: 100%; height: calc(62*var(--u)); object-fit: cover; border-radius: calc(8*var(--u)); background: #0B0B0D; }
     .eq-hueco { width: 100%; height: calc(62*var(--u)); border-radius: calc(8*var(--u)); background: #EDEFF1; display: flex; align-items: center; justify-content: center;
@@ -454,32 +451,32 @@
     .eq-per b { display: block; margin-top: calc(5*var(--u)); font-size: calc(10*var(--u)); font-weight: 700; letter-spacing: -.01em; line-height: calc(12*var(--u)); }
     .eq-per i { display: block; font-style: normal; font-size: calc(9.4*var(--u)); color: #5A6675; line-height: calc(12*var(--u)); }
 
-    .ga-panel { position: absolute; left: calc(701*var(--u)); top: calc(9*var(--u)); width: calc(289*var(--u)); z-index: 6;
-                background: rgba(255,255,255,.62); border-radius: calc(10*var(--u)); padding: calc(8*var(--u)) calc(11*var(--u)); }
+    .ga-panel { position: absolute; left: calc(701*var(--u)); top: calc(14*var(--u)); width: calc(289*var(--u)); z-index: 6;
+                background: rgba(255,255,255,.68); border-radius: calc(10*var(--u)); padding: calc(10*var(--u)) calc(12*var(--u)); }
     .ga-fila { display: flex; align-items: flex-start; gap: calc(10*var(--u)); font-size: calc(9.4*var(--u)); line-height: calc(12.4*var(--u)); color: #2B3646; }
     .ga-fila + .ga-fila { margin-top: calc(6*var(--u)); }
     .ga-fila svg { width: calc(13*var(--u)); height: calc(13*var(--u)); color: var(--azul); flex: 0 0 auto; margin-top: calc(1*var(--u)); }
-    .ga-cierre { position: absolute; left: calc(701*var(--u)); top: calc(76*var(--u)); width: calc(289*var(--u)); z-index: 6;
-                 background: rgba(255,255,255,.62); border-radius: calc(10*var(--u)); padding: calc(6*var(--u)) calc(11*var(--u)); }
+    .ga-cierre { position: absolute; left: calc(701*var(--u)); top: calc(114*var(--u)); width: calc(289*var(--u)); z-index: 6;
+                 background: rgba(255,255,255,.68); border-radius: calc(10*var(--u)); padding: calc(8*var(--u)) calc(12*var(--u)); }
     .ga-cierre .ga-fila { font-weight: 700; color: var(--tinta); }
 
     /* ============ 10 - VEMOS QUE PARTE PUEDE CONTESTARSE SOLA ============
        Alto 68 u. Boton x420 w161 a y6, 30 u de alto. */
     .s10 { position: relative; background: #00060D; overflow: hidden; }
-    .s10 .escena { aspect-ratio: 1024 / 68; }
+    .s10 .escena { aspect-ratio: 1024 / 88; }
     .s10 .foto { position: absolute; inset: 0; background: url(assets/ecom-cierre.webp) center / cover no-repeat; }
     .s10 .velo { position: absolute; inset: 0; background:
         linear-gradient(90deg, rgba(0,6,13,.94) 0%, rgba(0,6,13,.88) 32%, rgba(0,6,13,.60) 56%, rgba(0,6,13,.24) 78%, rgba(0,6,13,.14) 100%); }
 
-    .cta-col { position: absolute; left: calc(136*var(--u)); top: calc(8*var(--u)); z-index: 6; }
-    .cta-t { font-size: calc(14*var(--u)); line-height: calc(17*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; }
+    .cta-col { position: absolute; left: calc(136*var(--u)); top: calc(12*var(--u)); z-index: 6; }
+    .cta-t { margin-top: calc(6*var(--u)); font-size: calc(14*var(--u)); line-height: calc(17*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; }
     .cta-sub { margin-top: calc(6*var(--u)); font-size: calc(9.6*var(--u)); color: rgba(255,255,255,.78); }
-    .cta-btn { position: absolute; left: calc(420*var(--u)); top: calc(6*var(--u)); width: calc(161*var(--u)); height: calc(30*var(--u)); z-index: 6;
+    .cta-btn { position: absolute; left: calc(420*var(--u)); top: calc(20*var(--u)); width: calc(170*var(--u)); height: calc(34*var(--u)); z-index: 6;
                background: var(--azul); border: 0; border-radius: 999px; display: flex; align-items: center; justify-content: center; gap: calc(9*var(--u));
                font-family: inherit; font-size: calc(11.4*var(--u)); font-weight: 700; color: #fff; letter-spacing: -.01em; cursor: pointer; }
     .cta-btn:hover { background: #0A57D8; }
     .cta-btn svg { width: calc(12*var(--u)); height: calc(12*var(--u)); }
-    .cta-meta { position: absolute; left: calc(415*var(--u)); top: calc(45*var(--u)); display: flex; gap: calc(26*var(--u)); z-index: 6; }
+    .cta-meta { position: absolute; left: calc(415*var(--u)); top: calc(64*var(--u)); display: flex; gap: calc(26*var(--u)); z-index: 6; }
     .cta-meta div { display: flex; align-items: center; gap: calc(7*var(--u)); font-size: calc(9.4*var(--u)); font-weight: 500; color: rgba(255,255,255,.84); white-space: nowrap; }
     .cta-meta svg { width: calc(12*var(--u)); height: calc(12*var(--u)); color: rgba(255,255,255,.72); }
 
@@ -601,7 +598,6 @@
       .d-prod i, .d-prod span { font-size: .84rem; line-height: 1.25rem; }
 
       /* --- 04 --- */
-      .s04 .zapa { display: none; }
       .r-t { font-size: 1.45rem; line-height: 1.2; }
       .r-sub { font-size: .86rem; margin-top: .3rem; }
       .r-barra { margin-top: 1.1rem; border-radius: 16px; padding: 1rem; display: flex; flex-direction: column; gap: .95rem; box-shadow: 0 4px 18px rgba(15,40,80,.08); }
@@ -613,7 +609,6 @@
       .r-fl { display: none; }
 
       /* --- 05 --- */
-      .s05 .planta { display: none; }
       .dm-panel { display: none; }
       .dm-col { width: auto; }
       .dm-t { font-size: 1.6rem; line-height: 1.15; margin-top: .4rem; }
@@ -806,6 +801,7 @@
       <div class="velo" aria-hidden="true"></div>
 
       <div class="v-col">
+        <div class="kick">Despu&eacute;s de cobrar</div>
         <h2 class="v-t">Todo en tu tienda empuja <br>hacia la venta. Y despu&eacute;s, nada.</h2>
         <p class="v-p">Cuando el cliente ya ha pagado, el pedido solo puede hacer tres cosas: costarte horas, costarte una rese&ntilde;a o traerte otra compra.</p>
         <p class="v-p">Y las tres se deciden en la misma conversaci&oacute;n, casi siempre en el peor momento: de madrugada, en fin de semana o en plena campa&ntilde;a.</p>
@@ -861,6 +857,7 @@
       <div class="velo" aria-hidden="true"></div>
 
       <div class="d-col">
+        <div class="kick">La diferencia</div>
         <h2 class="d-t">Responde con los datos de tu tienda. <br>No con lo que suena bien.</h2>
         <p class="d-p">Tu miedo no es gastar de m&aacute;s en soporte. Tu miedo es que algo se invente una respuesta y te cree un problema con un cliente que ya te ha pagado.</p>
       </div>
@@ -902,8 +899,8 @@
     <div class="escena">
       <div class="foto" aria-hidden="true"></div>
       <div class="velo" aria-hidden="true"></div>
-      <img class="zapa" src="assets/ecom-zapatilla.webp" alt="" loading="lazy" decoding="async">
 
+      <div class="kick r-kick">As&iacute; funciona</div>
       <h2 class="r-t">Un pedido, de la duda a la rese&ntilde;a.</h2>
       <p class="r-sub">Ejemplo del sistema. No es un cliente.</p>
       <div class="r-barra"></div>
@@ -945,7 +942,6 @@
     <div class="escena">
       <div class="foto" aria-hidden="true"></div>
       <div class="velo" aria-hidden="true"></div>
-      <img class="planta" src="assets/ecom-planta.webp" alt="" loading="lazy" decoding="async">
       <div class="dm-panel" aria-hidden="true"></div>
 
       <div class="dm-col">
@@ -1028,6 +1024,10 @@
       <!-- 3 - el cambio de talla. En el boceto esta tarjeta va levantada y
            sin rotulo, y asi se deja: hace de tarjeta en primer plano. -->
       <div class="dm-card dm-c3">
+        <div class="dm-rot">
+          <span class="rd rd-estrella"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.5L12 17.5l-5.8 3.05 1.1-6.5-4.7-4.6 6.5-.95L12 2.6z"/></svg></span>
+          <div><b>Despu&eacute;s de entregar</b><span>Cambios y devoluciones</span></div>
+        </div>
         <div class="dm-cab">
           <span class="av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.2 4.2 0 100-8.4 4.2 4.2 0 000 8.4zm0 2c-4 0-7.2 2.2-7.2 4.8V21h14.4v-2.2c0-2.6-3.2-4.8-7.2-4.8z"/></svg></span>
           <b>Asistente de la tienda</b>
@@ -1086,6 +1086,7 @@
       <div class="velo" aria-hidden="true"></div>
 
       <div class="pz-col">
+        <div class="kick">Integraciones</div>
         <h2 class="pz-t">Piezas, no un paquete cerrado.</h2>
         <p class="pz-p">Nos adaptamos a las herramientas que ya utilizas. Y si hace falta una pieza que no existe en tu software, la construimos.</p>
       </div>
@@ -1149,6 +1150,7 @@
       <div class="velo" aria-hidden="true"></div>
 
       <div class="tc-col">
+        <div class="kick">Tu equipo</div>
         <h2 class="tc-t">Tecnolog&iacute;a que potencia <br>tu equipo, no lo sustituye.</h2>
         <p class="tc-p">Lo repetitivo se resuelve solo y a una hora a la que no hay nadie. Lo que necesita criterio sigue siendo vuestro.</p>
       </div>
@@ -1232,6 +1234,7 @@
       <div class="velo" aria-hidden="true"></div>
 
       <div class="eq-col">
+        <div class="kick">Qui&eacute;nes somos</div>
         <h2 class="eq-t">No somos una centralita.</h2>
         <p class="eq-p">Somos las personas que dise&ntilde;an, construyen y mantienen tu sistema.</p>
       </div>
@@ -1267,6 +1270,7 @@
       <div class="velo" aria-hidden="true"></div>
 
       <div class="cta-col">
+        <div class="kick">Hablemos</div>
         <h2 class="cta-t">Vemos qu&eacute; parte de vuestra bandeja <br>puede contestarse sola.</h2>
         <p class="cta-sub">Sin compromiso. 15 minutos.</p>
       </div>

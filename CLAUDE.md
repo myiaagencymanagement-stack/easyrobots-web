@@ -745,37 +745,77 @@ Dos cosas del boceto que **si** se respetan aunque parezcan un fallo:
 2. **El margen derecho no es simetrico.** El texto entra en 136 y las tarjetas
    llegan hasta 902-990 segun la seccion. Es lo que manda la referencia.
 
-### Los fondos, que son PROVISIONALES
+### Los fondos, que ya son los buenos
 
-Sin hoja de fondos no se puede sacar la fotografia limpia: encima van el texto
-y las interfaces. Se reconstruyeron con `scratchpad/fondos.py` (el metodo esta
-escrito en la cabecera del propio script): se cogen **las columnas donde solo
-hay fotografia**, se estiran para que el patron no se repita mas de tres veces,
-se espejan y se desenfocan. Con el velo al 90 % cuela, pero no es la foto.
+La hoja de fondos llego el **2026-09-30**: `src/assets/boceto/ecommerce-v2/
+fondos.png`, 1024x1536, la misma composicion de la referencia pero SIN texto ni
+interfaces. Hasta entonces los fondos estaban reconstruidos espejando columnas;
+ya no hace falta.
 
-| Archivo | Que es | Estado |
-|---|---|---|
-| `ecom-hero.webp` | Almacen de estanterias, hero | **Provisional** |
-| `ecom-postventa.webp` | Almacen, seccion 02 | **Provisional** |
-| `ecom-dato.webp` | Almacen, seccion 03 | **Provisional** |
-| `ecom-seda.webp` | Seda azul clara, secciones 04-09 | **Provisional** |
-| `ecom-cierre.webp` | Cajas y planta, CTA final | **Provisional** |
-| `ecom-pie.webp` | Franja oscura del pie | **Provisional** |
-| `ecom-zapatilla.webp` | Zapatilla blanca, esquina de la 04 | Recortada del boceto |
-| `ecom-planta.webp` | Planta y zapatilla, izquierda de la 05 | Recortada del boceto |
-| `ecom-prod.webp` | Zapatilla negra del producto | Recortada del boceto |
-| `ecom-cliente.webp` | Avatar del cliente del hero | Recortada del boceto |
-| `ecom-chatbot.webp` | Avatar de "un chatbot cualquiera" | Recortada del boceto |
+`docs/fondos-ecommerce-v2.py` corta la hoja en sus nueve franjas. **Las costuras
+se detectaron midiendo el salto de color entre filas consecutivas**, no a ojo:
+caen en y = 209, 385, 563, 718, 905, 1055, 1204 y 1359.
 
-Las once juntas pesan **76 KB**. Se cambian sustituyendo el archivo, sin tocar
-codigo: las rutas y los encuadres ya estan puestos.
+| Archivo | Franja | Que es | Seccion |
+|---|---|---|---|
+| `ecom-hero.webp` | 0-208 | Tienda de noche, portatil y zapatilla | hero |
+| `ecom-postventa.webp` | 209-384 | Estanterias con cajas | 02 |
+| `ecom-dato.webp` | 385-562 | Pantallas y paneles | 03 |
+| `ecom-seda.webp` | 563-717 | Onda blanca con zapatilla | 04 |
+| `ecom-demo.webp` | 718-904 | Suelo blanco, carrito y portatil | 05 |
+| `ecom-piezas.webp` | 905-1054 | Abstracto blanco con tarjetas | 06 |
+| `ecom-tecno.webp` | 1055-1203 | Ondas blancas y paneles | 07 |
+| `ecom-equipo.webp` | 1204-1358 | Estudio blanco con columnas | 08 y 09 |
+| `ecom-cierre.webp` | 1359-1536 | Mesa oscura con portatil | CTA |
+| `ecom-pie.webp` | 1430-1536 | La misma mesa, recortada | pie |
 
-### Pendiente en esta landing
+Al entrar la foto de verdad **se bajaron todos los velos** entre 10 y 20 puntos:
+estaban apretados para tapar un fondo reconstruido y ahora ahogaban la escena.
 
-- **La hoja de fondos.** Es lo primero. Se pide con el prompt que hay en
-  `docs/boceto-a-html.md`, una foto por escena: almacen oscuro (hero y 02-03),
-  seda azul clara (04-09) y cajas con planta (CTA). **Maximo 2000 px por lado**,
-  o no se pueden abrir desde aqui.
+La zapatilla de la 04 y la planta de la 05 **ya vienen dentro de la foto**, asi
+que se quitaron los `<img>` que las ponian encima (salian duplicadas).
+
+Siguen recortadas de la referencia, y son provisionales, tres piezas pequenas
+que la hoja de fondos no trae: `ecom-prod.webp` (la zapatilla del producto),
+`ecom-cliente.webp` y `ecom-chatbot.webp` (los dos avatares).
+
+### Segunda pasada de Anais (2026-09-30)
+
+Lo que pidio y como quedo:
+
+- **Las tres tarjetas de la demo, cuadradas y a la misma altura.** Antes la
+  tercera iba levantada y sin rotulo (asi salia en el boceto, y se habia dejado
+  a proposito). Ahora las tres miden 197x300 u, arrancan en y142 y estan en
+  x136 / 345 / 554. La tercera lleva rotulo propio: **"Despues de entregar ·
+  Cambios y devoluciones"**, con estrella ambar `#F2B441`.
+- **La seccion de la demo arrancaba mas a la izquierda que las demas.** Era
+  cierto: su texto estaba en x98 y su panel en x68, porque asi lo pintaba el
+  boceto. Se alinea con el resto en **x136** y el panel pasa a x116 (20 u de
+  margen por dentro, simetrico con el borde derecho en 1010).
+- **Cintillo en todas las secciones, no solo en la demo.** Los de la 02 a la 05
+  son los antetitulos aprobados en `docs/copys/ecommerce.md` (Despues de
+  cobrar · La diferencia · Asi funciona · Una demostracion real). Los de la 06,
+  07, 09 y 10 no existian y se escribieron siguiendo el mismo tono:
+  Integraciones · Tu equipo · Quienes somos · Hablemos.
+- **Mas aire en general.** Casi todas las secciones crecen: hero 288 → 322,
+  02 198 → 224, 03 146 → 182, 04 123 → 150, 05 371 → 462, 06 110 → 134,
+  07 91 → 124, 08 limites → 172, 09 97 → 152, 10 68 → 88. Y suben los cuerpos
+  de texto que en la primera pasada se habian encogido para que cupieran.
+- **El panel "Lo que queda registrado" partia los valores en dos lineas.** Se
+  ensancha a 222 u, la columna de etiqueta baja de 66 a 56 y las dos columnas
+  van con `white-space: nowrap`. Ahora cada fila es una linea.
+- **La primera fila de la bandeja estaba pegada a las pestanas.** Se le mete
+  `margin-bottom` a las pestanas y las filas suben de 22,5 a 24 u.
+- **Las tarjetas del hero estaban pegadas al borde de abajo.** Se encogen entre
+  un 5 y un 8 % y el hero crece, asi que la de "Cliente 23:40" respira.
+
+### Lo siguiente en esta landing
+
+- **Anais va a pasar codigo para que cada una de las tres tarjetas de la demo
+  sea conversable.** Las tres son ya identicas en estructura (`.dm-card` con
+  `.dm-rot`, `.dm-cab`, `.dm-chat` y `.dm-pie`), asi que el gancho se pone una
+  vez y sirve para las tres. Los campos `.dm-pie .campo` son de momento un
+  `<span>` de maqueta: pasan a `<input>` cuando llegue el codigo.
 - La foto real de Anais para el hueco de Equipo.
 - Los botones no estan enganchados al calendario de GHL.
 - Decidir si sustituye a `prueba-ecommerce.html` y si se le quita el `noindex`.
