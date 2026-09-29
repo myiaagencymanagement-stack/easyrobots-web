@@ -63,6 +63,12 @@
       position: relative; container-type: inline-size;
       --u: 0.118343cqw;
     }
+    /* Las capas de foto y velo viven dentro de la escena, que esta limitada a
+       1440 px. Por encima de ese ancho quedaban franjas negras a los lados, asi
+       que sangran a todo el ancho de la ventana. */
+    .foto, .velo, .velo2 { left: 50%; right: auto; width: 100vw; transform: translateX(-50%); }
+    .s03, .s06 { overflow: hidden; }
+
     .saltar { position: absolute; left: 14px; top: -60px; z-index: 300; background: #fff; color: var(--tinta); padding: .7rem 1.1rem; border-radius: 8px; font-size: .84rem; font-weight: 600; transition: top .2s; }
     .saltar:focus { top: 14px; }
 
@@ -449,7 +455,11 @@
 
       /* Los bloques de cada seccion dejan de estar posicionados en movil y
          se pintarian por debajo de .foto y .velo. Se les devuelve la pila. */
-      .escena > *:not(.foto):not(.velo):not(.velo2) { position: relative; z-index: 4; }
+      .escena > *:not(.foto):not(.velo):not(.velo2) { position: relative; z-index: 4;
+        left: auto; right: auto; top: auto; bottom: auto; }
+      /* la unidad --u no vale por debajo del corte: se anulan los tamanos que la usan */
+      .h-t em { font-size: 1.68rem; line-height: 1.07; }
+      .h-navbtn, .h-logo, .h-marca b, .h-links a { }
 
       /* Una foto de 2,3:1 con cover en una seccion alta y estrecha solo deja
          ver un parche liso: en movil van recortes casi cuadrados. */
@@ -460,7 +470,7 @@
       .s05 .foto, .s07 .foto { display: none; }
       .hero .escena { aspect-ratio: auto; padding: 0 18px 26px; }
       .hero .velo { background: linear-gradient(180deg, rgba(1,8,15,.90) 0%, rgba(1,8,15,.86) 55%, rgba(1,8,15,.94) 100%); }
-      .h-nav { position: static; height: auto; padding: 14px 0 18px; }
+      .h-nav { position: static; height: auto; padding: 12px 0 14px; }
       .h-logo { width: 34px; height: 34px; border-radius: 10px; }
       .h-logo svg { width: 20px; height: 20px; }
       .h-marca b { font-size: 1rem; }
@@ -469,10 +479,10 @@
       .h-navbtn svg { width: 13px; height: 13px; }
       .h-col { position: static; width: auto; }
       .h-kick { font-size: .64rem; }
-      .h-t { font-size: 1.85rem; line-height: 1.06; margin-top: .5rem; }
-      .h-sub { font-size: .88rem; line-height: 1.5; width: auto; margin-top: .7rem; }
+      .h-t { font-size: 1.68rem; line-height: 1.07; margin-top: .45rem; }
+      .h-sub { font-size: .85rem; line-height: 1.42; width: auto; margin-top: .6rem; }
       .h-btns { flex-direction: column; align-items: stretch; gap: 8px; margin-top: 1rem; margin-left: 0; }
-      .h-b { width: 100%; height: 50px; padding: 0 18px; gap: 12px; }
+      .h-b { width: 100%; height: 46px; padding: 0 16px; gap: 11px; }
       .h-b .t1 { font-size: .95rem; }
       .h-b .t2 { font-size: .74rem; }
       .h-b1 .ico { width: 24px; height: 24px; }
@@ -481,8 +491,8 @@
       .h-meta { flex-direction: row; flex-wrap: wrap; gap: 8px 16px; margin-top: .9rem; }
       .h-meta div { font-size: .75rem; gap: 6px; }
       .h-meta svg { width: 12px; height: 12px; }
-      .h-tarj { position: static; width: auto !important; height: auto; padding: 9px 13px; gap: 11px; margin-top: 8px; border-radius: 13px; }
-      .h-tarjs { margin-top: 1rem; }
+      .h-tarj { position: static; width: auto !important; height: auto; padding: 8px 12px; gap: 10px; margin-top: 6px; border-radius: 12px; }
+      .h-tarjs { margin-top: .8rem; }
       .h-tarj b { font-size: .82rem; line-height: 1.28; }
       .h-tarj i { font-size: .78rem; line-height: 1.28; }
       .h-tarj .rd { width: 32px; height: 32px; }
@@ -497,18 +507,18 @@
       .m-p { font-size: .88rem; line-height: 1.5; margin-top: .7rem; }
       .m-card { position: static; width: auto !important; height: auto !important; margin-top: 12px; border-radius: 14px; }
       .m-a { padding-bottom: 12px; }
-      .m-cab { position: static !important; width: auto !important; height: 50px !important; padding-left: 14px !important; border-radius: 14px 14px 0 0 !important; }
-      .m-b .m-cab { border-radius: 12px !important; margin: 8px; height: 48px !important; width: 62% !important; }
+      .m-cab { position: static !important; width: auto !important; height: 44px !important; padding-left: 13px !important; border-radius: 14px 14px 0 0 !important; }
+      .m-b .m-cab { border-radius: 12px !important; margin: 7px; height: 44px !important; width: 64% !important; }
       .m-cab svg { width: 28px; height: 28px; }
       .m-cab .et { font-size: .78rem; }
       .m-cab .gr { font-size: 1.12rem; }
-      .m-a .m-foto { position: static; width: auto; height: 104px; margin: 8px 8px 0; }
-      .m-pil { position: static !important; width: auto !important; height: 36px !important; margin: 8px; font-size: .78rem; }
-      .m-b { min-height: 190px; display: flex; flex-direction: column; justify-content: space-between; background-size: cover; }
+      .m-a .m-foto { position: static; width: auto; height: 86px; margin: 7px 7px 0; }
+      .m-pil { position: static !important; width: auto !important; height: 32px !important; margin: 7px; font-size: .76rem; }
+      .m-b { min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; background-size: cover; }
       .m-b .m-cab, .m-b .m-pil { position: relative; z-index: 3; }
-      .m-centro { position: static; width: auto; margin: 12px auto 0; display: flex; flex-direction: column; align-items: center; }
-      .m-rd { width: 50px; height: 50px; }
-      .m-rd svg { width: 26px; height: 26px; }
+      .m-centro { position: static; width: auto; margin: 10px auto 0; display: flex; flex-direction: column; align-items: center; }
+      .m-rd { width: 44px; height: 44px; }
+      .m-rd svg { width: 23px; height: 23px; }
       .m-centro b { font-size: .92rem; line-height: 1.25; margin-top: 7px; }
       .m-fle { display: none; }
 
@@ -547,7 +557,10 @@
       .w-cab .tx b { font-size: .92rem; line-height: 1.3; }
       .w-cab .tx i { font-size: .86rem; line-height: 1.3; }
       .w-acc svg { width: 18px; height: 18px; }
-      .w-bub { position: static; width: auto !important; height: auto !important; font-size: .82rem; line-height: 1.4; padding: 8px 11px; }
+      .w-bub { position: relative; width: auto !important; height: auto !important; font-size: .82rem; line-height: 1.4; padding: 8px 26px 8px 11px; }
+      .w-bub .hh { right: 8px; bottom: 6px; font-size: .68rem; }
+      .w-cab { flex-wrap: nowrap; }
+      .w-acc { gap: 12px; }
       .w-in { margin: 10px 22px 0 0; }
       .w-out { margin: 8px 0 0 22px; }
       .w-bub .hh { font-size: .7rem; }
@@ -574,7 +587,11 @@
       .d-col, .d-btn, .d-pie, .d-card, .d-panel { position: static; width: auto; }
       .d-kick { font-size: .64rem; }
       .d-t { font-size: 1.5rem; line-height: 1.14; margin-top: .5rem; }
-      .d-sub { font-size: .86rem; margin-top: .7rem; line-height: 1.45; }
+      .d-sub { font-size: .86rem; margin-top: .7rem; line-height: 1.45; white-space: normal; }
+      /* los saltos de linea del boceto son para 845 px: en movil estorban */
+      .h-sub br, .m-p br, .b-p br, .w-p br, .h2-p br, .n-p br, .e-p br, .d-sub br { display: none; }
+      .d-fila .et { width: 46%; }
+      .h2-it b span { display: inline; }
       .d-btn { width: 100%; height: 50px; margin-top: 1rem; padding: 0 9px 0 10px; }
       .d-play { width: 38px; height: 38px; }
       .d-play svg { width: 15px; height: 15px; }
@@ -590,7 +607,7 @@
       .d-prog i { font-size: .8rem; }
       .d-panel { height: auto; margin-top: 12px; padding: 14px 14px 6px; }
       .d-panel > b { font-size: .95rem; }
-      .d-fila { height: 33px; }
+      .d-fila { height: 31px; }
       .d-fila svg { width: 13px; height: 13px; }
       .d-fila .et { width: 40%; margin-left: 12px; font-size: .84rem; }
       .d-fila .va { font-size: .84rem; }
@@ -618,7 +635,8 @@
       .e-per { flex: 1; }
       .e-per img { height: 118px; border-radius: 11px; }
       .e-per b { font-size: .95rem; margin-top: 10px; }
-      .e-per i { font-size: .88rem; }
+      .e-per i { font-size: .88rem; line-height: 1.4; }
+      .e-per b { line-height: 1.3; }
       .e-panel { margin-top: 12px; padding: 14px; border-radius: 13px; gap: 11px; }
       .e-fila .ic { width: 26px; height: 26px; }
       .e-fila b { font-size: .92rem; line-height: 1.4; }
@@ -640,7 +658,9 @@
       .s10 .escena { aspect-ratio: auto; padding: 26px 18px 22px; }
       .p-cols { position: static; flex-wrap: wrap; gap: 18px 0; }
       .p-c { flex: 1 1 46%; width: auto !important; }
-      .p-c b { font-size: .95rem; }
+      .p-c b { font-size: .95rem; line-height: 1.35; }
+      .p-c a, .p-c span { margin-top: 4px; }
+      .p-rs { margin-top: 10px; }
       .p-c a, .p-c span { font-size: .88rem; line-height: 1.55; }
       .p-rs a { width: 40px; height: 40px; border-radius: 11px; }
       .p-rs svg { width: 20px; height: 20px; }
@@ -687,7 +707,7 @@
       <div class="h-col">
         <p class="h-kick">Llamadas · Ventas · Taller · Posventa</p>
         <h1 class="h-t">Vender es la mitad<br>del negocio.<br><em>La otra vuelve<br>al taller.</em></h1>
-        <p class="h-sub">Más ventas. Más posventa. Un mismo cliente.<br>Automatiza la comunicación y convierte cada<br>contacto en una oportunidad real, dentro<br>y fuera del concesionario.</p>
+        <p class="h-sub">Más ventas. Más posventa. Un mismo cliente. <br>Automatiza la comunicación y convierte cada <br>contacto en una oportunidad real, dentro <br>y fuera del concesionario.</p>
 
         <div class="h-btns">
           <button class="h-b h-b1" type="button">
@@ -745,7 +765,7 @@
 
       <div class="m-col">
         <h2 class="m-t">Dos momentos.<br>El mismo cliente.</h2>
-        <p class="m-p">Un cliente entra, pregunta,<br>compra y decide rápido.<br>El mismo cliente vuelve meses<br>después para revisar, cambiar,<br>reparar… y puede volver a comprar.</p>
+        <p class="m-p">Un cliente entra, pregunta, <br>compra y decide rápido. <br>El mismo cliente vuelve meses <br>después para revisar, cambiar, <br>reparar… y puede volver a comprar.</p>
       </div>
 
       <!-- Ventas -->
@@ -790,7 +810,7 @@
     <div class="escena">
       <div class="b-col">
         <h2 class="b-t">Los que no han vuelto<br>no te lo van a decir.</h2>
-        <p class="b-p">Tienes cientos de clientes que ya compraron,<br>pasaron por el taller o pidieron información…<br>y que no han vuelto. No es que no quieran,<br>es que nadie se lo recuerda.</p>
+        <p class="b-p">Tienes cientos de clientes que ya compraron, <br>pasaron por el taller o pidieron información… <br>y que no han vuelto. No es que no quieran, <br>es que nadie se lo recuerda.</p>
       </div>
 
       <div class="b-card">
@@ -840,7 +860,7 @@
 
       <div class="w-col">
         <h2 class="w-t">El que pregunta<br>un sábado no espera<br>al lunes.</h2>
-        <p class="w-p">Cuando entra una consulta, el tiempo importa.<br>Nuestro sistema responde, cualifica y agenda,<br>aunque tu equipo no esté.</p>
+        <p class="w-p">Cuando entra una consulta, el tiempo importa. <br>Nuestro sistema responde, cualifica y agenda, <br>aunque tu equipo no esté.</p>
       </div>
 
       <div class="w-card">
@@ -877,7 +897,7 @@
 
       <div class="h2-col">
         <h2 class="h2-t">No son dos herramientas.<br>Es la misma conversación.</h2>
-        <p class="h2-p">Ventas y posventa conectadas. Toda la información<br>del cliente en un solo sistema para que cada interacción<br>sume, en cualquier momento del ciclo.</p>
+        <p class="h2-p">Ventas y posventa conectadas. Toda la información <br>del cliente en un solo sistema para que cada interacción <br>sume, en cualquier momento del ciclo.</p>
       </div>
 
       <div class="h2-card">
@@ -922,7 +942,7 @@
 
       <div class="d-card">
         <button class="d-rd" type="button" aria-label="Reproducir"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button>
-        <svg class="d-onda" viewBox="0 0 134 40" fill="currentColor" aria-hidden="true"><rect x="0" y="15.0" width="2" height="10" rx="1"/><rect x="3" y="14.5" width="2" height="11" rx="1"/><rect x="6" y="12.5" width="2" height="15" rx="1"/><rect x="9" y="9.5" width="2" height="21" rx="1"/><rect x="12" y="9.5" width="2" height="21" rx="1"/><rect x="15" y="12.5" width="2" height="15" rx="1"/><rect x="18" y="13.5" width="2" height="13" rx="1"/><rect x="21" y="15.0" width="2" height="10" rx="1"/><rect x="24" y="14.5" width="2" height="11" rx="1"/><rect x="27" y="13.0" width="2" height="14" rx="1"/><rect x="30" y="9.5" width="2" height="21" rx="1"/><rect x="33" y="5.0" width="2" height="30" rx="1"/><rect x="36" y="2.0" width="2" height="36" rx="1"/><rect x="39" y="8.0" width="2" height="24" rx="1"/><rect x="42" y="12.0" width="2" height="16" rx="1"/><rect x="45" y="13.0" width="2" height="14" rx="1"/><rect x="48" y="7.0" width="2" height="26" rx="1"/><rect x="51" y="15.0" width="2" height="10" rx="1"/><rect x="54" y="15.0" width="2" height="10" rx="1"/><rect x="57" y="14.5" width="2" height="11" rx="1"/><rect x="60" y="13.5" width="2" height="13" rx="1"/><rect x="63" y="12.5" width="2" height="15" rx="1"/><rect x="66" y="10.5" width="2" height="19" rx="1"/><rect x="69" y="14.5" width="2" height="11" rx="1"/><rect x="72" y="16.0" width="2" height="8" rx="1"/><rect x="75" y="16.5" width="2" height="7" rx="1"/><rect x="78" y="17.0" width="2" height="6" rx="1"/><rect x="81" y="17.0" width="2" height="6" rx="1"/><rect x="84" y="16.5" width="2" height="7" rx="1"/><rect x="87" y="14.5" width="2" height="11" rx="1"/><rect x="90" y="11.5" width="2" height="17" rx="1"/><rect x="93" y="8.0" width="2" height="24" rx="1"/><rect x="96" y="3.0" width="2" height="34" rx="1"/><rect x="99" y="3.0" width="2" height="34" rx="1"/><rect x="102" y="12.5" width="2" height="15" rx="1"/><rect x="105" y="13.0" width="2" height="14" rx="1"/><rect x="108" y="15.0" width="2" height="10" rx="1"/><rect x="111" y="15.0" width="2" height="10" rx="1"/><rect x="114" y="0.5" width="2" height="39" rx="1"/><rect x="117" y="13.0" width="2" height="14" rx="1"/><rect x="120" y="16.0" width="2" height="8" rx="1"/><rect x="123" y="17.5" width="2" height="5" rx="1"/><rect x="126" y="19.0" width="2" height="2" rx="1"/><rect x="129" y="19.0" width="2" height="2" rx="1"/></svg>
+        <svg class="d-onda" viewBox="0 0 134 40" preserveAspectRatio="none" fill="currentColor" aria-hidden="true"><rect x="0" y="15.0" width="2" height="10" rx="1"/><rect x="3" y="14.5" width="2" height="11" rx="1"/><rect x="6" y="12.5" width="2" height="15" rx="1"/><rect x="9" y="9.5" width="2" height="21" rx="1"/><rect x="12" y="9.5" width="2" height="21" rx="1"/><rect x="15" y="12.5" width="2" height="15" rx="1"/><rect x="18" y="13.5" width="2" height="13" rx="1"/><rect x="21" y="15.0" width="2" height="10" rx="1"/><rect x="24" y="14.5" width="2" height="11" rx="1"/><rect x="27" y="13.0" width="2" height="14" rx="1"/><rect x="30" y="9.5" width="2" height="21" rx="1"/><rect x="33" y="5.0" width="2" height="30" rx="1"/><rect x="36" y="2.0" width="2" height="36" rx="1"/><rect x="39" y="8.0" width="2" height="24" rx="1"/><rect x="42" y="12.0" width="2" height="16" rx="1"/><rect x="45" y="13.0" width="2" height="14" rx="1"/><rect x="48" y="7.0" width="2" height="26" rx="1"/><rect x="51" y="15.0" width="2" height="10" rx="1"/><rect x="54" y="15.0" width="2" height="10" rx="1"/><rect x="57" y="14.5" width="2" height="11" rx="1"/><rect x="60" y="13.5" width="2" height="13" rx="1"/><rect x="63" y="12.5" width="2" height="15" rx="1"/><rect x="66" y="10.5" width="2" height="19" rx="1"/><rect x="69" y="14.5" width="2" height="11" rx="1"/><rect x="72" y="16.0" width="2" height="8" rx="1"/><rect x="75" y="16.5" width="2" height="7" rx="1"/><rect x="78" y="17.0" width="2" height="6" rx="1"/><rect x="81" y="17.0" width="2" height="6" rx="1"/><rect x="84" y="16.5" width="2" height="7" rx="1"/><rect x="87" y="14.5" width="2" height="11" rx="1"/><rect x="90" y="11.5" width="2" height="17" rx="1"/><rect x="93" y="8.0" width="2" height="24" rx="1"/><rect x="96" y="3.0" width="2" height="34" rx="1"/><rect x="99" y="3.0" width="2" height="34" rx="1"/><rect x="102" y="12.5" width="2" height="15" rx="1"/><rect x="105" y="13.0" width="2" height="14" rx="1"/><rect x="108" y="15.0" width="2" height="10" rx="1"/><rect x="111" y="15.0" width="2" height="10" rx="1"/><rect x="114" y="0.5" width="2" height="39" rx="1"/><rect x="117" y="13.0" width="2" height="14" rx="1"/><rect x="120" y="16.0" width="2" height="8" rx="1"/><rect x="123" y="17.5" width="2" height="5" rx="1"/><rect x="126" y="19.0" width="2" height="2" rx="1"/><rect x="129" y="19.0" width="2" height="2" rx="1"/></svg>
         <div class="d-prog">
           <svg class="tri" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4v16l13-8z"/></svg>
           <span class="pista"></span>
@@ -950,7 +970,7 @@
 
       <div class="n-col">
         <h2 class="n-t">Lo que hace.<br>Y lo que no hace.</h2>
-        <p class="n-p">Esto es lo que hacemos. Y esto es lo que no.<br>Sin promesas irreales. Sin complicaciones.</p>
+        <p class="n-p">Esto es lo que hacemos. Y esto es lo que no. <br>Sin promesas irreales. Sin complicaciones.</p>
       </div>
 
       <div class="n-box n-si">
@@ -980,7 +1000,7 @@
 
       <div class="e-col">
         <h2 class="e-t">No somos<br>una centralita.</h2>
-        <p class="e-p">Somos las personas que<br>diseñan, construyen y<br>mantienen tu sistema.</p>
+        <p class="e-p">Somos las personas que <br>diseñan, construyen y <br>mantienen tu sistema.</p>
       </div>
 
       <div class="e-pers">

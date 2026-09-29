@@ -449,7 +449,11 @@
 
       /* Los bloques de cada seccion dejan de estar posicionados en movil y
          se pintarian por debajo de .foto y .velo. Se les devuelve la pila. */
-      .escena > *:not(.foto):not(.velo):not(.velo2) { position: relative; z-index: 4; }
+      .escena > *:not(.foto):not(.velo):not(.velo2) { position: relative; z-index: 4;
+        left: auto; right: auto; top: auto; bottom: auto; }
+      /* la unidad --u no vale por debajo del corte: se anulan los tamanos que la usan */
+      .h-t em { font-size: 1.68rem; line-height: 1.07; }
+      .h-navbtn, .h-logo, .h-marca b, .h-links a { }
 
       /* Una foto de 2,3:1 con cover en una seccion alta y estrecha solo deja
          ver un parche liso: en movil van recortes casi cuadrados. */
@@ -460,7 +464,7 @@
       .s05 .foto, .s07 .foto { display: none; }
       .hero .escena { aspect-ratio: auto; padding: 0 18px 26px; }
       .hero .velo { background: linear-gradient(180deg, rgba(1,8,15,.90) 0%, rgba(1,8,15,.86) 55%, rgba(1,8,15,.94) 100%); }
-      .h-nav { position: static; height: auto; padding: 14px 0 18px; }
+      .h-nav { position: static; height: auto; padding: 12px 0 14px; }
       .h-logo { width: 34px; height: 34px; border-radius: 10px; }
       .h-logo svg { width: 20px; height: 20px; }
       .h-marca b { font-size: 1rem; }
@@ -469,10 +473,10 @@
       .h-navbtn svg { width: 13px; height: 13px; }
       .h-col { position: static; width: auto; }
       .h-kick { font-size: .64rem; }
-      .h-t { font-size: 1.85rem; line-height: 1.06; margin-top: .5rem; }
-      .h-sub { font-size: .88rem; line-height: 1.5; width: auto; margin-top: .7rem; }
+      .h-t { font-size: 1.68rem; line-height: 1.07; margin-top: .45rem; }
+      .h-sub { font-size: .85rem; line-height: 1.42; width: auto; margin-top: .6rem; }
       .h-btns { flex-direction: column; align-items: stretch; gap: 8px; margin-top: 1rem; margin-left: 0; }
-      .h-b { width: 100%; height: 50px; padding: 0 18px; gap: 12px; }
+      .h-b { width: 100%; height: 46px; padding: 0 16px; gap: 11px; }
       .h-b .t1 { font-size: .95rem; }
       .h-b .t2 { font-size: .74rem; }
       .h-b1 .ico { width: 24px; height: 24px; }
@@ -481,8 +485,8 @@
       .h-meta { flex-direction: row; flex-wrap: wrap; gap: 8px 16px; margin-top: .9rem; }
       .h-meta div { font-size: .75rem; gap: 6px; }
       .h-meta svg { width: 12px; height: 12px; }
-      .h-tarj { position: static; width: auto !important; height: auto; padding: 9px 13px; gap: 11px; margin-top: 8px; border-radius: 13px; }
-      .h-tarjs { margin-top: 1rem; }
+      .h-tarj { position: static; width: auto !important; height: auto; padding: 8px 12px; gap: 10px; margin-top: 6px; border-radius: 12px; }
+      .h-tarjs { margin-top: .8rem; }
       .h-tarj b { font-size: .82rem; line-height: 1.28; }
       .h-tarj i { font-size: .78rem; line-height: 1.28; }
       .h-tarj .rd { width: 32px; height: 32px; }
@@ -497,18 +501,18 @@
       .m-p { font-size: .88rem; line-height: 1.5; margin-top: .7rem; }
       .m-card { position: static; width: auto !important; height: auto !important; margin-top: 12px; border-radius: 14px; }
       .m-a { padding-bottom: 12px; }
-      .m-cab { position: static !important; width: auto !important; height: 50px !important; padding-left: 14px !important; border-radius: 14px 14px 0 0 !important; }
-      .m-b .m-cab { border-radius: 12px !important; margin: 8px; height: 48px !important; width: 62% !important; }
+      .m-cab { position: static !important; width: auto !important; height: 44px !important; padding-left: 13px !important; border-radius: 14px 14px 0 0 !important; }
+      .m-b .m-cab { border-radius: 12px !important; margin: 7px; height: 44px !important; width: 64% !important; }
       .m-cab svg { width: 28px; height: 28px; }
       .m-cab .et { font-size: .78rem; }
       .m-cab .gr { font-size: 1.12rem; }
-      .m-a .m-foto { position: static; width: auto; height: 104px; margin: 8px 8px 0; }
-      .m-pil { position: static !important; width: auto !important; height: 36px !important; margin: 8px; font-size: .78rem; }
-      .m-b { min-height: 190px; display: flex; flex-direction: column; justify-content: space-between; background-size: cover; }
+      .m-a .m-foto { position: static; width: auto; height: 86px; margin: 7px 7px 0; }
+      .m-pil { position: static !important; width: auto !important; height: 32px !important; margin: 7px; font-size: .76rem; }
+      .m-b { min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; background-size: cover; }
       .m-b .m-cab, .m-b .m-pil { position: relative; z-index: 3; }
-      .m-centro { position: static; width: auto; margin: 12px auto 0; display: flex; flex-direction: column; align-items: center; }
-      .m-rd { width: 50px; height: 50px; }
-      .m-rd svg { width: 26px; height: 26px; }
+      .m-centro { position: static; width: auto; margin: 10px auto 0; display: flex; flex-direction: column; align-items: center; }
+      .m-rd { width: 44px; height: 44px; }
+      .m-rd svg { width: 23px; height: 23px; }
       .m-centro b { font-size: .92rem; line-height: 1.25; margin-top: 7px; }
       .m-fle { display: none; }
 
@@ -590,7 +594,7 @@
       .d-prog i { font-size: .8rem; }
       .d-panel { height: auto; margin-top: 12px; padding: 14px 14px 6px; }
       .d-panel > b { font-size: .95rem; }
-      .d-fila { height: 33px; }
+      .d-fila { height: 31px; }
       .d-fila svg { width: 13px; height: 13px; }
       .d-fila .et { width: 40%; margin-left: 12px; font-size: .84rem; }
       .d-fila .va { font-size: .84rem; }
@@ -647,8 +651,7 @@
       .p-legal { position: static; margin-top: 20px; font-size: .74rem; line-height: 1.55; }
     }
 
-    .hero::before,.s02::before,.s03::before,.s04::before,.s05::before,.s06::before,.s07::before,.s08::before,.s09::before,.s10::before{
-      content:"";position:absolute;left:0;right:0;top:0;height:3px;background:#FF00FF;z-index:999}
+    .hero::before,.s02::before,.s03::before,.s04::before,.s05::before,.s06::before,.s07::before,.s08::before,.s09::before,.s10::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:#FF00FF;z-index:999}
   </style>
 </head>
 

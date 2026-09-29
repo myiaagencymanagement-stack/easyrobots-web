@@ -236,9 +236,9 @@
     .onda i { flex: 1; min-height: calc(1.5*var(--u)); border-radius: calc(1*var(--u)); background: #19BDFD; }
     .repro-pie { position: absolute; left: calc(13*var(--u)); right: calc(14*var(--u));
                  top: calc(96*var(--u)); display: flex; align-items: center; }
-    .repro-pie .mini { width: calc(7.5*var(--u)); height: calc(10*var(--u)); color: #fff; display: flex; align-items: center; }
+    .repro-pie .mini { display: none; }
     .repro-pie .mini svg { width: 100%; height: 100%; }
-    .repro-pie .pista { flex: 1; height: calc(2*var(--u)); border-radius: 999px; margin: 0 calc(10*var(--u));
+    .repro-pie .pista { flex: 1; height: calc(2*var(--u)); border-radius: 999px; margin: 0 calc(10*var(--u)) 0 0;
                         background: linear-gradient(90deg, #A6ACB8 0%, #5C6470 38%, #3E4550 100%); }
     .repro-pie .hora { font-size: calc(8*var(--u)); color: rgba(255,255,255,.88); font-variant-numeric: tabular-nums; white-space: nowrap; }
 
@@ -665,8 +665,7 @@
       .repro-play svg { width: 42%; height: auto; margin-left: 5%; }
       .onda { left: 21.8%; width: 71.1%; top: 42%; height: 30%; gap: 1.5px; }
       .repro-pie { left: 6.4%; right: 6.9%; top: 80%; }
-      .repro-pie .mini { width: 11px; height: 13px; }
-      .repro-pie .pista { height: 3px; margin: 0 12px; }
+      .repro-pie .pista { height: 3px; margin: 0 12px 0 0; }
       .repro-pie .hora { font-size: .72rem; }
       .recogida { border-radius: 16px; padding: 16px 18px; }
       .recogida h3 { font-size: .85rem; padding-bottom: 10px; }
@@ -733,7 +732,6 @@
       .escena { display: flex; flex-direction: column; }
       .h-movil { order: 1; }
       .tarjetas-movil { order: 2; }
-      .t-agente, .t-wa, .t-comer { display: none; }
       .tarjetas-movil { display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
                         margin: 26px 0 0; padding: 0 5.89%; }
       .tarj { position: static; width: auto !important; min-height: 0 !important;
@@ -856,12 +854,21 @@
                 align-items: center; column-gap: 6px; }
       .h-nav, .h-col { grid-column: 1 / -1; }
       .tarjetas-movil { display: contents; }
-      .t-agente, .t-wa, .t-comer { display: none; }
-      /* .escena pierde el padding lateral en movil, asi que las viñetas se
-         irian al borde: se les pone el mismo margen que lleva el texto. */
-      .t-llamada { grid-column: 1; grid-row: 3; justify-self: start; margin-left: 5.89%; }
-      .t-visita  { grid-column: 3; grid-row: 3; justify-self: end; margin-right: 5.89%; }
-      .h-movil   { grid-column: 2; grid-row: 3; }
+      /* Las cinco viñetas se reparten a los lados del telefono, dos a la
+         izquierda y tres a la derecha, como en el escritorio. No cuestan
+         alto: caben dentro de lo que ya mide el telefono. .escena pierde el
+         padding lateral en movil, asi que llevan el margen del texto. */
+      .escena { row-gap: 8px; }
+      .t-llamada { grid-column: 1; grid-row: 3; margin-left: 5.89%; }
+      .t-agente  { grid-column: 1; grid-row: 4; margin-left: 5.89%; }
+      .t-wa      { grid-column: 3; grid-row: 3; margin-right: 5.89%; }
+      .t-visita  { grid-column: 3; grid-row: 4; margin-right: 5.89%; }
+      .t-comer   { grid-column: 3; grid-row: 5; margin-right: 5.89%; }
+      .h-movil   { grid-column: 2; grid-row: 3 / 6; }
+      /* A este ancho el detalle no se lee: se queda el icono y el titulo, y
+         la hora cuando la hay. */
+      .tarj i { display: none; }
+      .tarj i.hora, .tarj .hora { display: block; }
       .tarj { position: static; width: auto !important; min-height: 0 !important;
               flex-direction: column; align-items: flex-start; gap: .4rem;
               padding: .55rem .6rem; border-radius: 12px; }
@@ -879,7 +886,7 @@
       .h-b2 { padding: .45rem 1.1rem .45rem .45rem; }
       .h-meta { margin-top: 1rem; gap: 8px 16px; }
       .h-meta div { font-size: .76rem; }
-      .h-movil { width: 150px; margin: 16px auto 0; --u: .86px; padding: 5px; border-radius: 22px; }
+      .h-movil { width: 132px; margin: 12px auto 0; --u: .757px; padding: 5px; border-radius: 22px; }
       .h-pant { border-radius: 18px; }
       .hero { padding: 0 0 26px; }
       .escena { padding: 14px 0 0; }
@@ -906,6 +913,7 @@
          cuentan la historia, y era lo que mas pesaba. */
       .trans { display: none; }
       .demo-cols { gap: 16px; }
+      .repro { max-width: 250px; margin: 0 auto; border-radius: 14px; }
       .recogida { padding: 12px 14px; }
       .recogida h3 { padding-bottom: 8px; }
       .recogida li { padding: 5px 0; }
@@ -939,7 +947,12 @@
 
       /* La foto del comprador al telefono son 215 px y no dice nada que no
          diga ya el texto de al lado. En el movil se cae. */
-      .m2-foto { display: none; }
+      /* La foto vuelve, pero **al lado** del texto como en el escritorio,
+         no debajo: apilada eran 215 px y asi no cuesta alto ninguno. */
+      .m2-hoy { grid-template-columns: 1.1fr .9fr; }
+      .m2-foto { display: block; height: auto; }
+      .m2-foto img { object-position: 58% center; }
+      .m2-foto::after { background: linear-gradient(90deg, #EFF0F3 0%, rgba(239,240,243,.5) 22%, rgba(239,240,243,0) 52%); }
       .m2-txt { padding-right: 0; }
 
       /* El pie tenia sus cinco grupos en columna. */
