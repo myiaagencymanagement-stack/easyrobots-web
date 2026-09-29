@@ -639,7 +639,21 @@
       .sis-lista span { font-size: .93rem; line-height: 1.45; }
       /* La 04, como la 03, deja de medirse en --u por debajo de 1080 px.
          El reproductor conserva su proporcion (204/120 del boceto). */
-      .demo-cols { grid-template-columns: 1fr; gap: 26px; }
+      /* En el movil el orden salia desordenado porque .trans conservaba
+         su grid-row: 2 y se colaba antes del reproductor. Aqui la
+         columna es una pila y el orden se dice explicito: titular y
+         boton, el audio, lo que ha recogido, la conversacion y al final
+         la llamada a la accion. */
+      /* Ojo: en flex el reproductor se colapsaba, porque su alto sale de
+         un aspect-ratio y todos sus hijos van en absoluto. Se queda en
+         rejilla de una columna y el orden se fija con `order`. */
+      .demo-cols { display: grid; grid-template-columns: 1fr;
+                   grid-template-rows: none; grid-auto-flow: row; gap: 22px; }
+      .demo-txt { order: 1; }
+      .repro    { order: 2; }
+      .recogida { order: 3; }
+      .trans    { order: 4; grid-row: auto; }
+      .demo-cta { order: 5; }
       .demo-cta { grid-column: auto; grid-row: auto; padding-top: 0; margin-top: 4px; }
       .trans { grid-column: auto; margin-top: 0; padding: 6px 18px; border-radius: 16px; column-gap: 34px; }
       .trans .l { padding: 9px 0; }
@@ -710,6 +724,16 @@
                  padding: 8px; border-radius: 34px; --u: 1.55px; }
       .h-pant { border-radius: 27px; }
 
+      /* En el movil el hero salia: titular, botones y **cinco tarjetas**
+         antes del telefono con la conversacion, que es lo unico que
+         ensena el producto. Se le da la vuelta: primero el telefono y
+         despues solo dos tarjetas, la que abre la historia (entra la
+         llamada) y la que la cierra (sale la visita). Las otras tres
+         repiten lo que ya se ve dentro del telefono. */
+      .escena { display: flex; flex-direction: column; }
+      .h-movil { order: 1; }
+      .tarjetas-movil { order: 2; }
+      .t-agente, .t-wa, .t-comer { display: none; }
       .tarjetas-movil { display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
                         margin: 26px 0 0; padding: 0 5.89%; }
       .tarj { position: static; width: auto !important; min-height: 0 !important;
@@ -735,16 +759,101 @@
        cielo naranja. Por eso en el movil no se veia la escena, se veia una
        mancha. Aqui entran recortes verticales de las mismas fotos. */
     @media (max-width: 900px) {
-      .hero .foto { background-image: url(assets/hero-inmobiliarias-movil.webp); background-position: center 44%; }
+      .hero .foto { background-image: url(assets/hero-inmobiliarias-movil.webp); background-position: 58% 62%; background-size: 150% auto; }
       #sistema .foto { background-image: url(assets/escena-piezas-movil.webp); background-position: center 50%; }
       .cierre .foto { background-image: url(assets/escena-inmobiliaria-movil.webp); background-position: center 44%; }
+    }
+
+    /* ---------- compactar el movil ----------
+       Medido a 390 px: la pagina entera salia a 8.729 px, unas once
+       pantallas, y habia que deslizar demasiado. Lo que la estiraba eran
+       los rellenos y los huecos, no el contenido: aqui se recortan todos
+       de golpe. No se toca ni un texto. */
+    @media (max-width: 620px) {
+      .sec { padding: 38px 0; }
+      #demo, #equipo, #sistema { padding: 38px 0; }
+      h2 { line-height: 1.12; }
+      .lede { margin-top: .7rem; }
+      .kick { margin-bottom: .8rem; }
+
+      .cf-grid { gap: 22px; }
+      .pasos { gap: 12px; }
+      .paso { padding: 14px 14px 16px; }
+      .paso .ic { width: 38px; height: 38px; margin: 0 auto 10px; }
+      .paso p { margin-top: .45rem; }
+
+      .demo-cols { gap: 18px; }
+      .escuchar { margin-top: 1.1rem; }
+      .pie-audio { margin-top: .6rem; }
+      .demo-cta { margin-top: 0; }
+      .demo-cta .btn { margin-top: .8rem; }
+      .demo-cta span { margin-top: .55rem; }
+      .recogida { padding: 14px 16px; }
+      .recogida li { padding: 7px 0; }
+      .trans .l { padding: 7px 0; }
+
+      .sis-cols { gap: 22px; }
+      .diagrama { margin-bottom: 26px; }
+      .sis-lista { gap: 12px; }
+
+      .tec-cols { gap: 14px; }
+      .tec { padding: 16px 16px 18px; }
+      .tec h3 { margin-bottom: 10px; }
+      .tec li { padding: 2px 0; }
+      .pers-grid { gap: 22px; margin-top: 34px; }
+      .garantia { padding: 16px 16px; }
+      .garantia ul { gap: .7rem; }
+      .tranquilidad { margin-top: .7rem; padding: .7rem .85rem; }
+
+      .cta-grid { padding: 30px 0; gap: 18px; }
+      .pie { padding: 30px 0 18px; }
+      .pie-grid { gap: 16px; }
+
+      /* --- lo que de verdad estiraba la pagina --- */
+
+      /* El telefono del hero medía 513 px el solo. */
+      .h-movil { width: min(228px, 64%); margin-top: 22px; --u: 1.3px; }
+
+      /* "El momento": los dos paneles sumaban 1.096 px de relleno mas que
+         de contenido. */
+      .m2-hoy-txt { padding: 16px 14px 16px 16px; }
+      .m2-er { padding: 16px 16px 18px; }
+      .m2-er-cols { margin-top: .9rem; gap: 12px; }
+      .m2-pasos { margin-top: 1rem; }
+      .m2-pasos li { padding: .3rem 0; font-size: .8rem; }
+      .m2-visita { max-width: 190px; }
+      .m2-visita img { aspect-ratio: 16/9; }
+
+      /* La demo se hacia pesadisima con la conversacion entera. En el movil
+         se queda en los tres primeros turnos, con quien habla en la misma
+         linea que el texto: se entiende igual y baja de 497 a ~150 px. El
+         audio y el panel siguen contando la historia completa. */
+      .trans .l:nth-child(n+4) { display: none; }
+      .trans .l:nth-child(3) { border-bottom: 0; }
+      .trans .l { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: baseline; padding: 6px 0; }
+      .trans .l p { margin-top: 0; font-size: .84rem; line-height: 1.4; }
+      .trans .l b { font-size: .74rem; white-space: nowrap; }
+      .trans .l .t { display: none; }
+      .trans { padding: 4px 14px; }
+
+      /* Equipo */
+      .tec li { font-size: .82rem; line-height: 1.38; }
+      .caras { max-width: 280px; }
+      .cara b { margin-top: .4rem; }
     }
 
     @media (max-width: 430px) {
       .tarjetas-movil { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
-      .pasos, .pie-grid { grid-template-columns: 1fr; }
+      /* Los cuatro pasos en 2x2 en vez de en columna: cuatro tarjetas
+         apiladas eran 720 px de deslizar para cuatro frases cortas. */
+      .pasos { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .paso { padding: 14px 10px 15px; }
+      .paso .ic { width: 34px; height: 34px; margin: 0 auto 8px; }
+      .paso h3 { font-size: .85rem; }
+      .paso p { font-size: .76rem; line-height: 1.35; margin-top: .35rem; }
+      .pie-grid { grid-template-columns: 1fr; }
       .tec-cols { grid-template-columns: 1fr; }
       .tec ul { padding-left: 0; }
       /* La conversacion deja de ir a dos columnas: a 390 px la de texto se
