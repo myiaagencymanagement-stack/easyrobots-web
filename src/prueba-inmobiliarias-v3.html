@@ -987,13 +987,25 @@
       .tarjetas-movil { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
-      /* Los cuatro pasos en 2x2 en vez de en columna: cuatro tarjetas
-         apiladas eran 720 px de deslizar para cuatro frases cortas. */
-      .pasos { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .paso { padding: 14px 10px 15px; }
-      .paso .ic { width: 34px; height: 34px; margin: 0 auto 8px; }
-      .paso h3 { font-size: .85rem; }
-      .paso p { font-size: .76rem; line-height: 1.35; margin-top: .35rem; }
+      /* Los cuatro pasos se quedan **en fila**, como en el escritorio, con
+         sus flechas entre medias; en el movil la fila se desliza de lado.
+         Apilados eran 720 px de deslizar hacia abajo y se perdia la idea
+         de secuencia, que es justo lo que cuenta esta seccion. La fila se
+         sale hasta el borde de la pantalla para que se vea que hay mas. */
+      .pasos { display: flex; overflow-x: auto; scroll-snap-type: x proximity;
+               gap: 26px; margin: 0 -22px; padding: 4px 22px 6px;
+               -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .pasos::-webkit-scrollbar { display: none; }
+      .paso { flex: 0 0 60%; max-width: 230px; scroll-snap-align: start;
+              padding: 15px 12px 16px; }
+      .paso .ic { width: 36px; height: 36px; margin: 0 auto 9px; }
+      .paso h3 { font-size: .86rem; }
+      .paso p { font-size: .78rem; line-height: 1.38; margin-top: .4rem; }
+      /* Las flechas vuelven: son las que dicen que es una secuencia. */
+      .paso:not(:last-child)::after { display: block !important; content: "→";
+              position: absolute; top: 50%; right: -19px; transform: translateY(-50%);
+              width: 12px; text-align: center; line-height: 1;
+              font-size: 15px; color: rgba(255,255,255,.42); }
       .pie-grid { grid-template-columns: 1fr; }
       .tec-cols { grid-template-columns: 1fr; }
       .tec ul { padding-left: 0; }
