@@ -1,0 +1,3 @@
+# Archivos de prueba que alguna sesion deja en src/.
+# Ojo: todo lo que hay en src/ se publica en el dominio.
+src/_*.html
