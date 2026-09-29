@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sistemas de IA para concesionarios &middot; EasyRobots</title>
+  <meta name="description"
+    content="EasyRobots trabaja los dos momentos del mismo cliente en tu concesionario: el que pregunta hoy por un coche y el que lleva meses sin pasar por tu taller.">
+
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    /* Las tipografias se sirven desde este dominio: cargarlas desde Google
+       enviaba la IP de cada visitante a sus servidores sin permiso. */
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:400; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-400-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:500; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-500-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:600; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-600-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:700; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-700-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:800; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-800-latin.woff2) format('woff2'); }
+
+    /* ==========================================================
+       RECONSTRUCCION DEL BOCETO DE CONCESIONARIOS (v2)
+       Referencia: assets/boceto/concesionarios-v2/referencia.png (845 px
+       de ancho). Fondos limpios: .../fondos.png, de donde salen las fotos.
+
+       Colores muestreados del pixel, no elegidos a ojo:
+         azul boton   #0070FE     azul titular  #008CFF
+         cian cintillo#00C8FF     verde icono   #00975E
+         fondo oscuro #000C15     fondo claro   #F1F7FD
+         tarjeta hero #010E18
+
+       La unidad --u vale UN PIXEL DEL BOCETO. Asi las medidas van escritas
+       en el codigo tal cual se midieron y escalan solas con el contenedor.
+       ========================================================== */
+    :root {
+      --azul: #0070FE;
+      --azul-t: #008CFF;
+      --cian: #00C8FF;
+      --verde: #00975E;
+      --rojo: #E5484D;
+      --oscuro: #000C15;
+      --claro: #F1F7FD;
+      --tinta: #0A1018;
+      --gris: #7C8796;
+      --f: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { font-family: var(--f); background: var(--oscuro); color: #fff; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    svg { flex: 0 0 auto; }
+
+    /* Cada seccion es una "escena" que mide lo mismo que las demas: mismo
+       max-width y mismo margen lateral en porcentaje (55 de 845 = 6,51 %).
+       Dentro, --u = 1 px del boceto. */
+    .escena {
+      width: 100%; max-width: 1440px; margin: 0 auto;
+      position: relative; container-type: inline-size;
+      --u: 0.118343cqw;
+    }
+    .saltar { position: absolute; left: 14px; top: -60px; z-index: 300; background: #fff; color: var(--tinta); padding: .7rem 1.1rem; border-radius: 8px; font-size: .84rem; font-weight: 600; transition: top .2s; }
+    .saltar:focus { top: 14px; }
+
+    /* ===================== 01 · HERO =====================
+       Medido: alto 368 u. Margen lateral 55 u. Nav de y7 a y37.
+       Titular 4 lineas, paso 30 u, altura de mayuscula 23 u. */
+    .hero { position: relative; overflow: hidden; background: #01080F; }
+    .hero .escena { aspect-ratio: 845 / 368; }
+    .hero .foto { position: absolute; inset: 0; background: url(assets/conce-hero.webp) center / cover no-repeat; }
+    /* El velo frena la derecha lo justo y deja la izquierda para el titular */
+    .hero .velo { position: absolute; inset: 0; background:
+        linear-gradient(90deg, rgba(1,8,15,.94) 0%, rgba(1,8,15,.90) 26%, rgba(1,8,15,.55) 44%, rgba(1,8,15,.12) 60%, rgba(1,8,15,0) 74%); }
+    .hero .velo2 { position: absolute; inset: 0; background:
+        linear-gradient(180deg, rgba(1,8,15,.55) 0%, rgba(1,8,15,0) 18%, rgba(1,8,15,0) 82%, rgba(1,8,15,.65) 100%); }
+
+    /* --- barra superior --- */
+    .h-nav { position: absolute; left: calc(55*var(--u)); right: calc(47*var(--u)); top: calc(7*var(--u)); height: calc(31*var(--u)); display: flex; align-items: center; z-index: 60; }
+    .h-marca { display: flex; align-items: center; gap: calc(7*var(--u)); }
+    .h-logo { width: calc(29*var(--u)); height: calc(29*var(--u)); border-radius: calc(9*var(--u)); background: var(--azul); display: flex; align-items: center; justify-content: center; }
+    .h-logo svg { width: calc(17*var(--u)); height: calc(17*var(--u)); color: #fff; }
+    .h-marca b { font-size: calc(12.6*var(--u)); font-weight: 700; letter-spacing: -.02em; color: #fff; }
+    .h-links { display: flex; gap: calc(25*var(--u)); margin-left: calc(50*var(--u)); }
+    .h-links a { font-size: calc(8.7*var(--u)); font-weight: 500; color: rgba(255,255,255,.86); white-space: nowrap; }
+    .h-links a:hover { color: #fff; }
+    .h-navbtn { margin-left: auto; background: var(--azul); color: #fff; border: 0; font-family: inherit; border-radius: 999px; font-size: calc(9.6*var(--u)); font-weight: 600; white-space: nowrap; height: calc(31*var(--u)); padding: 0 calc(14*var(--u)); display: flex; align-items: center; gap: calc(7*var(--u)); cursor: pointer; }
+    .h-navbtn:hover { background: #0A63E0; }
+    .h-navbtn svg { width: calc(11*var(--u)); height: calc(11*var(--u)); }
+
+    /* --- columna de texto --- */
+    .h-col { position: absolute; left: calc(55*var(--u)); top: calc(63*var(--u)); width: calc(330*var(--u)); z-index: 50; }
+    .h-kick { font-size: calc(9*var(--u)); font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--cian); }
+    .h-t { margin-top: calc(1*var(--u)); font-size: calc(31.2*var(--u)); line-height: calc(30*var(--u)); font-weight: 800; letter-spacing: -.035em; color: #fff; }
+    /* en la referencia las dos lineas azules son un 13 % mayores que las blancas */
+    .h-t em { font-style: normal; color: var(--azul-t); font-size: calc(35.2*var(--u)); line-height: calc(31*var(--u)); }
+    .h-sub { margin-top: calc(3*var(--u)); font-size: calc(12.5*var(--u)); line-height: calc(16*var(--u)); color: rgba(255,255,255,.84); width: calc(300*var(--u)); }
+    /* en el boceto el boton sobresale 4 u a la izquierda del texto: es alineacion optica del borde redondeado */
+    .h-btns { display: flex; gap: calc(7*var(--u)); margin-top: calc(7*var(--u)); margin-left: calc(-4*var(--u)); align-items: center; }
+
+    .h-b { height: calc(49*var(--u)); border-radius: 999px; display: flex; align-items: center; font-family: inherit; cursor: pointer; white-space: nowrap; }
+    .h-b .tx { display: flex; flex-direction: column; gap: calc(3*var(--u)); text-align: left; }
+    .h-b .t1 { font-size: calc(10.5*var(--u)); font-weight: 700; line-height: 1; }
+    .h-b .t2 { font-size: calc(8.4*var(--u)); font-weight: 400; line-height: 1; color: rgba(255,255,255,.72); }
+    .h-b1 { background: var(--azul); color: #fff; border: 0; width: calc(191*var(--u)); padding: 0 calc(15*var(--u)); gap: calc(18*var(--u)); }
+    .h-b1:hover { background: #0A63E0; }
+    .h-b1 .ico { width: calc(22*var(--u)); height: calc(22*var(--u)); }
+    .h-b2 { border: calc(1.1*var(--u)) solid rgba(255,255,255,.34); color: #fff; background: rgba(8,14,22,.30); width: calc(185*var(--u)); padding: 0 calc(17*var(--u)); gap: calc(16*var(--u)); backdrop-filter: blur(calc(4*var(--u))); }
+    .h-b2:hover { border-color: rgba(255,255,255,.7); }
+    .h-play { width: calc(24*var(--u)); height: calc(24*var(--u)); border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
+    .h-play svg { width: calc(10*var(--u)); height: calc(10*var(--u)); color: var(--azul); }
+
+    .h-meta { display: flex; gap: calc(20*var(--u)); margin-top: calc(16*var(--u)); }
+    .h-meta div { display: flex; align-items: center; gap: calc(6*var(--u)); font-size: calc(9*var(--u)); font-weight: 500; color: rgba(255,255,255,.82); white-space: nowrap; }
+    .h-meta svg { width: calc(11*var(--u)); height: calc(11*var(--u)); color: rgba(255,255,255,.7); }
+
+    /* --- las tres tarjetas de la derecha ---
+       Medidas del boceto: 1 -> x639..789 y83..139 · 2 -> x643..789 y158..213
+                           3 -> x645..823 y230..286 */
+    .h-tarj { position: absolute; z-index: 45; background: rgba(2,12,21,.80); border: calc(1*var(--u)) solid rgba(255,255,255,.09); border-radius: calc(12*var(--u)); display: flex; align-items: center; gap: calc(10*var(--u)); padding: 0 calc(11*var(--u)) 0 calc(9*var(--u)); backdrop-filter: blur(calc(7*var(--u))); box-shadow: 0 calc(6*var(--u)) calc(20*var(--u)) rgba(0,0,0,.45); }
+    .h-tarj b { display: block; font-size: calc(9.3*var(--u)); font-weight: 700; color: #fff; line-height: calc(13*var(--u)); letter-spacing: -.01em; }
+    .h-tarj i { display: block; font-style: normal; white-space: nowrap; font-size: calc(9.1*var(--u)); font-weight: 500; line-height: calc(13*var(--u)); color: rgba(255,255,255,.72); }
+    .h-tarj > span:last-child { position: relative; top: calc(1.5*var(--u)); }
+    .h-tarj .rd { width: calc(34*var(--u)); height: calc(34*var(--u)); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .h-tarj .rd svg { width: calc(19*var(--u)); height: calc(19*var(--u)); color: #fff; }
+    .h-tarj .cuad svg { width: calc(27*var(--u)); height: calc(27*var(--u)); color: #fff; }
+    .t1p { left: calc(639*var(--u)); top: calc(83*var(--u)); width: calc(150*var(--u)); height: calc(57*var(--u)); }
+    .t2p { left: calc(643*var(--u)); top: calc(158*var(--u)); width: calc(146*var(--u)); height: calc(56*var(--u)); }
+    .t3p { left: calc(645*var(--u)); top: calc(230*var(--u)); width: calc(180*var(--u)); height: calc(57*var(--u)); }
+    .rd-verde { background: var(--verde); }
+    .rd-azul { background: var(--azul); }
+
+
+    /* ============ 02 - DOS MOMENTOS - EL MISMO CLIENTE ============
+       Medido sobre la referencia de 845 u: seccion de 202 u de alto.
+       Tarjeta Ventas x270 w178 h164 - tarjeta Posventa x603 w220 h165.
+       El circulo del centro en (528,455) con radio 27.
+       El boceto pone este texto a 36 u del borde y el resto de secciones
+       entre 46 y 61: se unifica en 55 u, que es el margen del hero, para
+       que los titulares de toda la pagina empiecen en el mismo pixel. */
+    .s02 { position: relative; background: #000C15; overflow: hidden; }
+    .s02 .escena { aspect-ratio: 845 / 202; }
+    .s02 .foto { position: absolute; inset: 0; background: url(assets/conce-momentos.webp) center / cover no-repeat; opacity: .5; }
+    .s02 .velo { position: absolute; inset: 0; background:
+        linear-gradient(90deg, rgba(0,8,14,.97) 0%, rgba(0,8,14,.95) 28%, rgba(0,8,14,.78) 40%, rgba(0,8,14,.72) 100%); }
+
+    .m-col { position: absolute; left: calc(55*var(--u)); top: calc(37*var(--u)); width: calc(215*var(--u)); z-index: 20; }
+    .m-t { font-size: calc(22*var(--u)); line-height: calc(24*var(--u)); font-weight: 800; letter-spacing: -.01em; color: #fff; }
+    .m-p { margin-top: calc(10*var(--u)); font-size: calc(12*var(--u)); line-height: calc(16.3*var(--u)); color: rgba(255,255,255,.80); }
+
+    .m-card { position: absolute; z-index: 20; border-radius: calc(14*var(--u)); overflow: hidden; border: calc(1*var(--u)) solid rgba(255,255,255,.07); }
+    .m-a { left: calc(270*var(--u)); top: calc(20*var(--u)); width: calc(178*var(--u)); height: calc(164*var(--u)); background: rgba(4,12,20,.72); backdrop-filter: blur(calc(3*var(--u))); }
+    .m-b { left: calc(603*var(--u)); top: calc(20*var(--u)); width: calc(220*var(--u)); height: calc(165*var(--u)); background: url(assets/conce-posventa.webp) 72% 46% / cover no-repeat; }
+    .m-b::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,8,14,.30), rgba(0,8,14,.10) 45%, rgba(0,8,14,.55)); }
+
+    .m-cab { position: absolute; display: flex; align-items: center; gap: calc(14*var(--u)); z-index: 3; background: rgba(3,11,19,.86); backdrop-filter: blur(calc(5*var(--u))); border-radius: calc(13*var(--u)); }
+    .m-a .m-cab { left: 0; top: calc(-3*var(--u)); width: 100%; height: calc(48*var(--u)); padding-left: calc(18*var(--u)); border-radius: calc(13*var(--u)) calc(13*var(--u)) calc(18*var(--u)) calc(18*var(--u)); }
+    .m-b .m-cab { left: calc(25*var(--u)); top: calc(-1*var(--u)); width: calc(134*var(--u)); height: calc(43*var(--u)); padding-left: calc(7*var(--u)); }
+    .m-cab svg { width: calc(31*var(--u)); height: calc(31*var(--u)); color: #fff; }
+    .m-cab .et { display: block; font-size: calc(9*var(--u)); font-weight: 500; color: rgba(255,255,255,.72); line-height: 1; }
+    .m-cab .gr { display: block; font-size: calc(18*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; line-height: 1; margin-top: calc(6*var(--u)); }
+
+    .m-a .m-foto { position: absolute; left: calc(1*var(--u)); top: calc(48*var(--u)); width: calc(176*var(--u)); height: calc(86*var(--u)); background: url(assets/conce-ventas.webp) center / cover no-repeat; border-radius: calc(10*var(--u)); }
+
+    .m-pil { position: absolute; z-index: 3; display: flex; align-items: center; justify-content: center; gap: calc(9*var(--u)); background: rgba(3,11,19,.86); backdrop-filter: blur(calc(5*var(--u))); border: calc(1*var(--u)) solid rgba(255,255,255,.06); border-radius: calc(13*var(--u)); font-size: calc(8.7*var(--u)); font-weight: 500; color: rgba(255,255,255,.88); white-space: nowrap; }
+    .m-pil i { font-style: normal; color: rgba(255,255,255,.55); }
+    .m-a .m-pil { left: calc(5*var(--u)); top: calc(133*var(--u)); width: calc(170*var(--u)); height: calc(27*var(--u)); }
+    .m-b .m-pil { left: calc(2*var(--u)); top: calc(132*var(--u)); width: calc(212*var(--u)); height: calc(33*var(--u)); }
+
+    .m-centro { position: absolute; left: calc(500*var(--u)); top: calc(57*var(--u)); width: calc(56*var(--u)); z-index: 20; text-align: center; }
+    .m-rd { width: calc(55*var(--u)); height: calc(55*var(--u)); border-radius: 50%; background: radial-gradient(circle at 50% 35%, #0B4E9E 0%, #05264C 62%, #031C38 100%); border: calc(1.4*var(--u)) solid #1E7BE8; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 calc(16*var(--u)) rgba(10,110,230,.45); }
+    .m-rd svg { width: calc(28*var(--u)); height: calc(28*var(--u)); color: #fff; }
+    .m-centro b { display: block; margin-top: calc(-2*var(--u)); font-size: calc(12.5*var(--u)); line-height: calc(16*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; white-space: nowrap; }
+    .m-fle { position: absolute; top: calc(95*var(--u)); width: calc(22*var(--u)); height: calc(17*var(--u)); z-index: 20; color: #0A84FF; }
+    .m-f1 { left: calc(463*var(--u)); }
+    .m-f2 { left: calc(566*var(--u)); }
+
+
+    /* ============ 03 - LOS QUE NO HAN VUELTO ============
+       Seccion de 202 u. Fondo plano, sin foto (muestreado #00080F).
+       Tarjeta "Clientes en tu base": en el boceto va de 355 a 815 u, o sea
+       460 de ancho; aqui acaba en 790 como el resto del contenido, asi que
+       sus piezas van escaladas por 0,9457 y las medidas escritas ya lo son.
+       Fila de pasos: grupo + flecha + grupo + flecha + grupo. */
+    .s03 { position: relative; background: #00080F; }
+    .s03 .escena { aspect-ratio: 845 / 202; }
+
+    .b-col { position: absolute; left: calc(55*var(--u)); top: calc(13*var(--u)); width: calc(300*var(--u)); }
+    .b-t { font-size: calc(23.5*var(--u)); line-height: calc(25*var(--u)); font-weight: 800; letter-spacing: -.025em; color: #fff; }
+    .b-p { margin-top: calc(9*var(--u)); font-size: calc(12.4*var(--u)); line-height: calc(16.6*var(--u)); color: rgba(255,255,255,.80); }
+
+    .b-card { position: absolute; left: calc(355*var(--u)); top: calc(19*var(--u)); width: calc(435*var(--u)); height: calc(76*var(--u));
+              background: linear-gradient(180deg, rgba(10,22,34,.90), rgba(5,14,24,.90)); border: calc(1*var(--u)) solid rgba(255,255,255,.07);
+              border-radius: calc(14*var(--u)); display: flex; align-items: center; padding: 0 calc(9*var(--u)) 0 calc(13*var(--u)); }
+    .b-g1 { width: calc(166*var(--u)); }
+    .b-g1 b { display: block; font-size: calc(11.5*var(--u)); font-weight: 700; color: #fff; letter-spacing: -.01em; }
+    .b-avs { display: flex; margin-top: calc(9*var(--u)); }
+    .b-avs img { width: calc(31*var(--u)); height: calc(31*var(--u)); border-radius: 50%; margin-right: calc(-4.2*var(--u)); border: calc(1.2*var(--u)) solid rgba(255,255,255,.14); object-fit: cover; }
+    .b-g2 { margin-left: calc(26*var(--u)); width: calc(50*var(--u)); }
+    .b-g2 b { display: block; font-size: calc(22*var(--u)); font-weight: 800; letter-spacing: -.045em; color: #fff; line-height: 1; }
+    .b-g2 i { display: block; font-style: normal; font-size: calc(12.5*var(--u)); color: rgba(255,255,255,.80); margin-top: calc(6*var(--u)); }
+    .b-box { margin-left: calc(14*var(--u)); height: calc(40*var(--u)); border-radius: calc(9*var(--u)); background: rgba(255,255,255,.045); border: calc(1*var(--u)) solid rgba(255,255,255,.05); display: flex; flex-direction: column; justify-content: center; padding: 0 calc(9*var(--u)); }
+    .b-box + .b-box { margin-left: calc(9*var(--u)); }
+    .b-box span { font-size: calc(8.4*var(--u)); color: rgba(255,255,255,.58); line-height: 1.35; }
+    .b-box b { font-size: calc(9.4*var(--u)); font-weight: 700; color: #fff; line-height: 1.35; white-space: nowrap; }
+    .b-b1 { width: calc(72*var(--u)); }
+    .b-b2 { width: calc(76*var(--u)); }
+    /* en el boceto este valor va mas pequeno que el de al lado para que quepa */
+    .b-b2 b { font-size: calc(7.8*var(--u)); }
+
+    .b-pasos { position: absolute; left: calc(55*var(--u)); right: calc(55*var(--u)); top: calc(148*var(--u)); display: flex; align-items: center; justify-content: space-between; }
+    .b-paso { display: flex; align-items: center; gap: calc(3*var(--u)); }
+    .b-num { width: calc(43*var(--u)); height: calc(43*var(--u)); border-radius: 50%; background: #0B2947; display: flex; align-items: center; justify-content: center; font-size: calc(17*var(--u)); font-weight: 800; letter-spacing: -.02em; color: #fff; }
+    .b-ico { width: calc(43*var(--u)); height: calc(43*var(--u)); border-radius: 50%; border: calc(1*var(--u)) solid rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; }
+    .b-ico svg { width: calc(21*var(--u)); height: calc(21*var(--u)); color: #fff; }
+    .b-paso .tx { margin-left: calc(9*var(--u)); }
+    .b-paso .tx b { display: block; font-size: calc(11.5*var(--u)); font-weight: 700; color: #fff; letter-spacing: -.01em; line-height: calc(14*var(--u)); }
+    .b-paso .tx i { display: block; font-style: normal; font-size: calc(10.6*var(--u)); color: rgba(255,255,255,.74); line-height: calc(14*var(--u)); white-space: nowrap; }
+    .b-fle { width: calc(16*var(--u)); height: calc(14*var(--u)); color: #1183FF; }
+
+
+    /* ============ 04 - EL QUE PREGUNTA UN SABADO ============
+       Seccion de 216 u. Tarjeta de WhatsApp x346 w287 y12 h191, medida
+       sobre el recorte a 3x del boceto. Las burbujas llevan el ancho
+       medido, no un max-width a ojo, para que rompan por donde rompen alli. */
+    .s04 { position: relative; background: #00080F; overflow: hidden; }
+    .s04 .escena { aspect-ratio: 845 / 216; }
+    .s04 .foto { position: absolute; inset: 0; background: url(assets/conce-sabado.webp) center / cover no-repeat; }
+    .s04 .velo { position: absolute; inset: 0; background:
+        linear-gradient(90deg, rgba(0,7,13,.97) 0%, rgba(0,7,13,.95) 30%, rgba(0,7,13,.80) 44%, rgba(0,7,13,.30) 72%, rgba(0,7,13,.12) 100%); }
+
+    .w-col { position: absolute; left: calc(55*var(--u)); top: calc(24*var(--u)); width: calc(290*var(--u)); z-index: 10; }
+    .w-t { font-size: calc(24.5*var(--u)); line-height: calc(26.5*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; }
+    .w-p { margin-top: calc(13*var(--u)); font-size: calc(12.4*var(--u)); line-height: calc(16.5*var(--u)); color: rgba(255,255,255,.82); }
+
+    .w-card { position: absolute; left: calc(346*var(--u)); top: calc(12*var(--u)); width: calc(287*var(--u)); height: calc(191*var(--u));
+              background: rgba(6,16,26,.80); border: calc(1*var(--u)) solid rgba(255,255,255,.08); border-radius: calc(15*var(--u));
+              backdrop-filter: blur(calc(7*var(--u))); z-index: 10; }
+    .w-cab { position: absolute; left: calc(12*var(--u)); top: calc(7*var(--u)); right: calc(10*var(--u)); height: calc(25*var(--u)); display: flex; align-items: center; }
+    .w-wa { width: calc(25*var(--u)); height: calc(25*var(--u)); border-radius: calc(7*var(--u)); background: #1FA855; display: flex; align-items: center; justify-content: center; }
+    .w-wa svg { width: calc(17*var(--u)); height: calc(17*var(--u)); color: #fff; }
+    .w-cab .tx { margin-left: calc(11*var(--u)); }
+    .w-cab .tx b { display: block; font-size: calc(10.4*var(--u)); font-weight: 700; color: #fff; line-height: calc(12*var(--u)); letter-spacing: -.01em; }
+    .w-cab .tx i { display: block; font-style: normal; font-size: calc(9.8*var(--u)); color: rgba(255,255,255,.72); line-height: calc(12*var(--u)); }
+    .w-acc { margin-left: auto; display: flex; align-items: center; gap: calc(14*var(--u)); color: rgba(255,255,255,.72); }
+    .w-acc svg { width: calc(13*var(--u)); height: calc(13*var(--u)); }
+    .w-acc .pts { display: flex; flex-direction: column; gap: calc(2.4*var(--u)); margin-right: calc(3*var(--u)); }
+    .w-acc .pts span { width: calc(2.6*var(--u)); height: calc(2.6*var(--u)); border-radius: 50%; background: currentColor; }
+
+    .w-bub { position: absolute; padding: calc(7*var(--u)) calc(10*var(--u)); font-size: calc(9.8*var(--u)); line-height: calc(14.6*var(--u)); }
+    .w-in { left: calc(43*var(--u)); top: calc(39*var(--u)); width: calc(184*var(--u)); height: calc(43*var(--u)); background: #F3F5F6; color: #101418; border-radius: calc(11*var(--u)); border-top-left-radius: calc(3*var(--u)); }
+    .w-out { left: calc(73*var(--u)); top: calc(87*var(--u)); width: calc(201*var(--u)); height: calc(53*var(--u)); background: #17805A; color: #EAF6F0; border-radius: calc(11*var(--u)); }
+    .w-bub .hh { position: absolute; right: calc(10*var(--u)); bottom: calc(7*var(--u)); font-size: calc(8*var(--u)); font-style: normal; color: rgba(16,20,24,.45); }
+    .w-out .hh { color: rgba(255,255,255,.62); }
+
+    .w-box { position: absolute; top: calc(148*var(--u)); width: calc(122*var(--u)); height: calc(40*var(--u)); background: rgba(255,255,255,.05); border: calc(1*var(--u)) solid rgba(255,255,255,.06); border-radius: calc(11*var(--u)); display: flex; align-items: center; padding-left: calc(8*var(--u)); }
+    .w-b1 { left: calc(22*var(--u)); }
+    .w-b2 { left: calc(155*var(--u)); }
+    .w-box .ic { width: calc(25*var(--u)); height: calc(25*var(--u)); border-radius: calc(6*var(--u)); background: var(--azul); display: flex; align-items: center; justify-content: center; }
+    .w-box .ic svg { width: calc(15*var(--u)); height: calc(15*var(--u)); color: #fff; }
+    .w-box .tx { margin-left: calc(11*var(--u)); }
+    .w-box b { display: block; font-size: calc(10.4*var(--u)); font-weight: 700; color: #fff; line-height: calc(12.6*var(--u)); letter-spacing: -.01em; }
+    .w-box i { display: block; font-style: normal; font-size: calc(9.8*var(--u)); color: rgba(255,255,255,.78); line-height: calc(12.6*var(--u)); }
+
+
+    /* ============ 05 - NO SON DOS HERRAMIENTAS ============
+       Seccion de 136 u, fondo casi plano. Caja de la derecha de 394 a 808 u
+       en el boceto; aqui acaba en 790 como el resto. Los cuatro iconos van
+       repartidos por igual: medido, sus centros caian a 49,5 / 151 / 256 /
+       364 dentro de la caja, que es un reparto regular. */
+    .s05 { position: relative; background: #000B14; overflow: hidden; }
+    .s05 .escena { aspect-ratio: 845 / 136; }
+    .s05 .foto { position: absolute; inset: 0; background: url(assets/conce-herramientas.webp) left center / 46% 100% no-repeat; opacity: .6; }
+    .s05 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,10,18,.96) 0%, rgba(0,10,18,.92) 40%, rgba(0,10,18,.86) 100%); }
+
+    .h2-col { position: absolute; left: calc(55*var(--u)); top: calc(14*var(--u)); width: calc(330*var(--u)); z-index: 10; }
+    .h2-t { font-size: calc(23.5*var(--u)); line-height: calc(25*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; }
+    .h2-p { margin-top: calc(13*var(--u)); font-size: calc(12.4*var(--u)); line-height: calc(16.5*var(--u)); color: rgba(255,255,255,.80); }
+
+    .h2-card { position: absolute; left: calc(394*var(--u)); top: calc(12*var(--u)); width: calc(396*var(--u)); height: calc(112*var(--u));
+               background: rgba(7,18,29,.55); border: calc(1*var(--u)) solid rgba(255,255,255,.07); border-radius: calc(14*var(--u));
+               display: flex; align-items: center; justify-content: space-around; z-index: 10; }
+    .h2-it { text-align: center; }
+    .h2-rd { width: calc(41*var(--u)); height: calc(41*var(--u)); margin: 0 auto; border-radius: 50%; border: calc(1*var(--u)) solid rgba(255,255,255,.16); display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.03); }
+    .h2-rd svg { width: calc(22*var(--u)); height: calc(22*var(--u)); color: #fff; }
+    .h2-it b { display: block; margin-top: calc(11*var(--u)); font-size: calc(10.4*var(--u)); font-weight: 700; color: #fff; line-height: calc(15*var(--u)); letter-spacing: -.01em; white-space: nowrap; }
+    .h2-it b span { font-weight: 500; color: rgba(255,255,255,.88); }
+    .h2-fle { width: calc(17*var(--u)); height: calc(12*var(--u)); color: #4E7FB5; margin-bottom: calc(26*var(--u)); }
+
+    /* ===================== MOVIL =====================
+       Por debajo del corte, --u deja de valer: todo en rem. */
+    @media (max-width: 760px) {
+      .hero .escena { aspect-ratio: auto; padding: 0 20px 34px; }
+      .hero .velo { background: linear-gradient(180deg, rgba(1,8,15,.90) 0%, rgba(1,8,15,.86) 55%, rgba(1,8,15,.94) 100%); }
+      .h-nav { position: static; height: auto; padding: 16px 0 26px; }
+      .h-logo { width: 34px; height: 34px; border-radius: 10px; }
+      .h-logo svg { width: 20px; height: 20px; }
+      .h-marca b { font-size: 1rem; }
+      .h-links { display: none; }
+      .h-navbtn { height: 36px; font-size: .78rem; padding: 0 16px; gap: 7px; }
+      .h-navbtn svg { width: 13px; height: 13px; }
+      .h-col { position: static; width: auto; }
+      .h-kick { font-size: .64rem; }
+      .h-t { font-size: 2.05rem; line-height: 1.06; margin-top: .6rem; }
+      .h-sub { font-size: .92rem; line-height: 1.55; width: auto; margin-top: .9rem; }
+      .h-btns { flex-direction: column; align-items: stretch; gap: 10px; margin-top: 1.4rem; }
+      .h-b { width: 100%; height: 56px; padding: 0 20px; gap: 12px; }
+      .h-b .t1 { font-size: .95rem; }
+      .h-b .t2 { font-size: .74rem; }
+      .h-b1 .ico { width: 24px; height: 24px; }
+      .h-play { width: 30px; height: 30px; }
+      .h-play svg { width: 12px; height: 12px; }
+      .h-meta { flex-direction: column; gap: 10px; margin-top: 1.3rem; }
+      .h-meta div { font-size: .8rem; gap: 8px; }
+      .h-meta svg { width: 14px; height: 14px; }
+      .h-tarj { position: static; width: auto !important; height: auto; padding: 13px 15px; gap: 13px; margin-top: 12px; border-radius: 14px; }
+      .h-tarjs { margin-top: 1.6rem; }
+      .h-tarj b { font-size: .88rem; line-height: 1.3; }
+      .h-tarj i { font-size: .82rem; line-height: 1.3; }
+      .h-tarj .rd { width: 38px; height: 38px; }
+      .h-tarj .rd svg { width: 21px; height: 21px; }
+      .h-tarj .cuad svg { width: 30px; height: 30px; }
+
+      /* --- 02 en movil: columna unica --- */
+      .s02 .escena { aspect-ratio: auto; padding: 34px 20px 36px; }
+      .s02 .velo { background: linear-gradient(180deg, rgba(0,8,14,.93), rgba(0,8,14,.88)); }
+      .m-col { position: static; width: auto; }
+      .m-t { font-size: 1.62rem; line-height: 1.14; }
+      .m-p { font-size: .95rem; line-height: 1.6; margin-top: 1rem; }
+      .m-card { position: static; width: auto !important; height: auto !important; margin-top: 18px; border-radius: 16px; }
+      .m-a { padding-bottom: 12px; }
+      .m-cab { position: static !important; width: auto !important; height: 60px !important; padding-left: 16px !important; border-radius: 16px 16px 0 0 !important; }
+      .m-b .m-cab { border-radius: 14px !important; margin: 10px; height: 56px !important; width: 62% !important; }
+      .m-cab svg { width: 34px; height: 34px; }
+      .m-cab .et { font-size: .78rem; }
+      .m-cab .gr { font-size: 1.3rem; }
+      .m-a .m-foto { position: static; width: auto; height: 150px; margin: 10px 10px 0; }
+      .m-pil { position: static !important; width: auto !important; height: 42px !important; margin: 10px; font-size: .82rem; }
+      .m-b { min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; background-size: cover; }
+      .m-b .m-cab, .m-b .m-pil { position: relative; z-index: 3; }
+      .m-centro { position: static; width: auto; margin: 20px auto 0; display: flex; flex-direction: column; align-items: center; }
+      .m-rd { width: 62px; height: 62px; }
+      .m-rd svg { width: 32px; height: 32px; }
+      .m-centro b { font-size: 1rem; line-height: 1.25; margin-top: 10px; }
+      .m-fle { display: none; }
+
+      /* --- 03 en movil --- */
+      .s03 .escena { aspect-ratio: auto; padding: 34px 20px 36px; }
+      .b-col { position: static; width: auto; }
+      .b-t { font-size: 1.62rem; line-height: 1.16; }
+      .b-p { font-size: .95rem; line-height: 1.6; margin-top: 1rem; }
+      .b-card { position: static; width: auto; height: auto; flex-wrap: wrap; gap: 16px; padding: 16px; margin-top: 20px; border-radius: 16px; }
+      .b-g1 { width: 100%; }
+      .b-g1 b { font-size: .95rem; }
+      .b-avs img { width: 40px; height: 40px; margin-right: -6px; }
+      .b-g2 { margin-left: 0; width: auto; }
+      .b-g2 b { font-size: 1.9rem; }
+      .b-g2 i { font-size: .95rem; }
+      .b-box { margin-left: 0 !important; width: auto !important; flex: 1 1 42%; height: 52px; padding: 0 12px; }
+      .b-box span { font-size: .76rem; }
+      .b-box b { font-size: .84rem; }
+      .b-pasos { position: static; flex-direction: column; align-items: flex-start; gap: 14px; margin-top: 24px; }
+      .b-num, .b-ico { width: 46px; height: 46px; font-size: 1.05rem; }
+      .b-ico svg { width: 22px; height: 22px; }
+      .b-paso .tx b { font-size: .95rem; line-height: 1.35; }
+      .b-paso .tx i { font-size: .88rem; line-height: 1.35; white-space: normal; }
+      .b-fle { transform: rotate(90deg); margin-left: 22px; }
+
+      /* --- 04 en movil --- */
+      .s04 .escena { aspect-ratio: auto; padding: 34px 20px 36px; }
+      .s04 .velo { background: linear-gradient(180deg, rgba(0,7,13,.94), rgba(0,7,13,.90)); }
+      .w-col { position: static; width: auto; }
+      .w-t { font-size: 1.7rem; line-height: 1.14; }
+      .w-p { font-size: .95rem; line-height: 1.6; margin-top: 1.1rem; }
+      .w-card { position: static; width: auto; height: auto; margin-top: 22px; padding: 14px; border-radius: 18px; }
+      .w-cab { position: static; height: auto; right: auto; left: auto; }
+      .w-wa { width: 34px; height: 34px; border-radius: 10px; }
+      .w-wa svg { width: 22px; height: 22px; }
+      .w-cab .tx b { font-size: .92rem; line-height: 1.3; }
+      .w-cab .tx i { font-size: .86rem; line-height: 1.3; }
+      .w-acc svg { width: 18px; height: 18px; }
+      .w-bub { position: static; width: auto !important; height: auto !important; font-size: .88rem; line-height: 1.45; padding: 10px 12px; }
+      .w-in { margin: 14px 24px 0 0; }
+      .w-out { margin: 10px 0 0 24px; }
+      .w-bub .hh { font-size: .7rem; }
+      .w-box { position: static; width: auto; height: 54px; margin-top: 12px; padding-left: 12px; }
+      .w-box .ic { width: 32px; height: 32px; }
+      .w-box .ic svg { width: 18px; height: 18px; }
+      .w-box b { font-size: .92rem; line-height: 1.3; }
+      .w-box i { font-size: .86rem; line-height: 1.3; }
+
+      /* --- 05 en movil --- */
+      .s05 .escena { aspect-ratio: auto; padding: 34px 20px 36px; }
+      .h2-col { position: static; width: auto; }
+      .h2-t { font-size: 1.62rem; line-height: 1.16; }
+      .h2-p { font-size: .95rem; line-height: 1.6; margin-top: 1rem; }
+      .h2-card { position: static; width: auto; height: auto; flex-wrap: wrap; gap: 18px 0; padding: 20px 10px; margin-top: 20px; border-radius: 16px; }
+      .h2-it { flex: 1 1 42%; }
+      .h2-rd { width: 48px; height: 48px; }
+      .h2-rd svg { width: 26px; height: 26px; }
+      .h2-it b { font-size: .86rem; line-height: 1.3; margin-top: 10px; white-space: normal; }
+      .h2-fle { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- =================== 01 · HERO =================== -->
+  <header class="hero" id="inicio">
+    <div class="escena">
+      <div class="foto"></div>
+      <div class="velo"></div>
+      <div class="velo2"></div>
+
+      <nav class="h-nav">
+        <a class="h-marca" href="#inicio">
+          <span class="h-logo">
+            <!-- el robot de la marca, redibujado -->
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="12" cy="2.2" r="1.3" fill="currentColor"/>
+              <rect x="4" y="6" width="16" height="13" rx="4.5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="9" cy="12" r="1.7" fill="currentColor"/>
+              <circle cx="15" cy="12" r="1.7" fill="currentColor"/>
+              <path d="M2.2 11v3M21.8 11v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <b>EasyRobots</b>
+        </a>
+        <span class="h-links">
+          <a href="#momentos">Cómo funciona</a>
+          <a href="#base">Resultados</a>
+          <a href="#equipo">Proceso</a>
+        </span>
+        <button class="h-navbtn" type="button">Reservar una llamada
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </nav>
+
+      <div class="h-col">
+        <p class="h-kick">Llamadas · Ventas · Taller · Posventa</p>
+        <h1 class="h-t">Vender es la mitad<br>del negocio.<br><em>La otra vuelve<br>al taller.</em></h1>
+        <p class="h-sub">Más ventas. Más posventa. Un mismo cliente.<br>Automatiza la comunicación y convierte cada<br>contacto en una oportunidad real, dentro<br>y fuera del concesionario.</p>
+
+        <div class="h-btns">
+          <button class="h-b h-b1" type="button">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.9"/>
+              <path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+              <circle cx="8.5" cy="14" r="1.1" fill="currentColor"/><circle cx="12" cy="14" r="1.1" fill="currentColor"/>
+              <circle cx="15.5" cy="14" r="1.1" fill="currentColor"/><circle cx="8.5" cy="17.5" r="1.1" fill="currentColor"/>
+              <circle cx="12" cy="17.5" r="1.1" fill="currentColor"/>
+            </svg>
+            <span class="tx"><span class="t1">Reservar una llamada &nbsp;→</span><span class="t2">Ver disponibilidad</span></span>
+          </button>
+          <a class="h-b h-b2" href="#demo">
+            <span class="h-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="tx"><span class="t1">Escuchar una llamada</span><span class="t2">Ver cómo funciona</span></span>
+          </a>
+        </div>
+
+        <div class="h-meta">
+          <div><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.9"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>Sin compromiso</div>
+          <div><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l2-5h14l2 5" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><rect x="3" y="11" width="18" height="7" rx="2" stroke="currentColor" stroke-width="1.9"/><circle cx="7.5" cy="14.5" r="1.1" fill="currentColor"/><circle cx="16.5" cy="14.5" r="1.1" fill="currentColor"/></svg>Para tu concesionario</div>
+          <div><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.9"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>15 minutos de consultoría</div>
+        </div>
+      </div>
+
+      <div class="h-tarjs">
+        <div class="h-tarj t1p">
+          <span class="rd rd-verde"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 3.5 9 8l-2 2c.8 2 2.5 3.7 4.5 4.5l2-2 4.5 2.5v3c0 1-.8 1.7-1.8 1.6C8.6 19 4.4 14 3.6 5.8 3.5 4.8 4.2 4 5.2 4z" fill="currentColor"/><path d="M15 3.5a6 6 0 0 1 5.5 5.5M15 7a3 3 0 0 1 2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          <span><b>Nueva consulta</b><i>Venta</i><i>Ahora</i></span>
+        </div>
+        <div class="h-tarj t2p">
+          <span class="cuad"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2.5" y="4.5" width="19" height="17" rx="2.5" stroke="currentColor" stroke-width="1.9"/>
+            <path d="M2.5 9.5h19M7.5 2.5v4M16.5 2.5v4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+            <circle cx="7.5" cy="13" r="1.2" fill="currentColor"/><circle cx="12" cy="13" r="1.2" fill="currentColor"/><circle cx="16.5" cy="13" r="1.2" fill="currentColor"/>
+            <circle cx="7.5" cy="17.5" r="1.2" fill="currentColor"/><circle cx="12" cy="17.5" r="1.2" fill="currentColor"/>
+          </svg></span>
+          <span><b>Cita de taller</b><i>Confirmada</i><i>Mañana 10.00</i></span>
+        </div>
+        <div class="h-tarj t3p">
+          <span class="rd rd-azul"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></span>
+          <span><b>Cliente recurrente</b><b>Posventa</b><i>Última visita: hace 8 meses</i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+  <!-- =================== 02 - DOS MOMENTOS =================== -->
+  <section class="s02" id="momentos">
+    <div class="escena">
+      <div class="foto"></div>
+      <div class="velo"></div>
+
+      <div class="m-col">
+        <h2 class="m-t">Dos momentos.<br>El mismo cliente.</h2>
+        <p class="m-p">Un cliente entra, pregunta,<br>compra y decide rápido.<br>El mismo cliente vuelve meses<br>después para revisar, cambiar,<br>reparar… y puede volver a comprar.</p>
+      </div>
+
+      <!-- Ventas -->
+      <div class="m-card m-a">
+        <div class="m-cab">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="13.5" r="8" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M12 9.5v4l2.6 2.2M9.5 2.5h5M12 2.5v3M18.6 6.2l1.6-1.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <span><span class="et">Ventas</span><span class="gr">Minutos</span></span>
+        </div>
+        <div class="m-foto"></div>
+        <div class="m-pil">Consulta <i>→</i> Prueba <i>→</i> Cita</div>
+      </div>
+
+      <!-- el mismo cliente -->
+      <svg class="m-fle m-f1" viewBox="0 0 22 17" fill="none" aria-hidden="true"><path d="M1 8.5h17m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="m-centro">
+        <span class="m-rd"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></span>
+        <b>El mismo<br>cliente.</b>
+      </div>
+      <svg class="m-fle m-f2" viewBox="0 0 22 17" fill="none" aria-hidden="true"><path d="M1 8.5h17m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+      <!-- Posventa -->
+      <div class="m-card m-b">
+        <div class="m-cab">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2.5" y="4.5" width="19" height="17" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M2.5 9.5h19M7.5 2.5v4M16.5 2.5v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="7.5" cy="13" r="1.2" fill="currentColor"/><circle cx="12" cy="13" r="1.2" fill="currentColor"/><circle cx="16.5" cy="13" r="1.2" fill="currentColor"/>
+            <circle cx="7.5" cy="17.5" r="1.2" fill="currentColor"/><circle cx="12" cy="17.5" r="1.2" fill="currentColor"/>
+          </svg>
+          <span><span class="et">Posventa</span><span class="gr">Meses</span></span>
+        </div>
+        <div class="m-pil">Revisión <i>→</i> Taller <i>→</i> Nueva oportunidad</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 03 - LOS QUE NO HAN VUELTO =================== -->
+  <section class="s03" id="base">
+    <div class="escena">
+      <div class="b-col">
+        <h2 class="b-t">Los que no han vuelto<br>no te lo van a decir.</h2>
+        <p class="b-p">Tienes cientos de clientes que ya compraron,<br>pasaron por el taller o pidieron información…<br>y que no han vuelto. No es que no quieran,<br>es que nadie se lo recuerda.</p>
+      </div>
+
+      <div class="b-card">
+        <div class="b-g1">
+          <b>Clientes en tu base</b>
+          <div class="b-avs">
+            <img src="assets/conce-av1.webp" alt="" loading="lazy" decoding="async">
+            <img src="assets/conce-av2.webp" alt="" loading="lazy" decoding="async">
+            <img src="assets/conce-av3.webp" alt="" loading="lazy" decoding="async">
+            <img src="assets/conce-av4.webp" alt="" loading="lazy" decoding="async">
+            <img src="assets/conce-av5.webp" alt="" loading="lazy" decoding="async">
+            <img src="assets/conce-av6.webp" alt="" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="b-g2"><b>1.284</b><i>clientes</i></div>
+        <div class="b-box b-b1"><span>Última visita</span><b>8 meses</b></div>
+        <div class="b-box b-b2"><span>Oportunidad</span><b>Revisión pendiente</b></div>
+      </div>
+
+      <div class="b-pasos">
+        <div class="b-paso">
+          <span class="b-num">01</span>
+          <span class="b-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span class="tx"><b>Mira tu base</b><i>en el momento adecuado</i></span>
+        </div>
+        <svg class="b-fle" viewBox="0 0 20 14" fill="none" aria-hidden="true"><path d="M1 7h16m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="b-paso">
+          <span class="b-num">02</span>
+          <span class="b-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 2.5 2.8 9.9c-.8.3-.8 1.4 0 1.7l7.3 2.6 2.6 7.3c.3.8 1.4.8 1.7 0z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.5 2.5 10.1 14.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="tx"><b>Le escribe</b><i>de forma automatizada</i></span>
+        </div>
+        <svg class="b-fle" viewBox="0 0 20 14" fill="none" aria-hidden="true"><path d="M1 7h16m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="b-paso">
+          <span class="b-num">03</span>
+          <span class="b-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="13" width="4.4" height="8" rx="1"/><rect x="9.8" y="8" width="4.4" height="13" rx="1"/><rect x="16.6" y="3" width="4.4" height="18" rx="1"/></svg></span>
+          <span class="tx"><b>Cierra el círculo</b><i>y genera la oportunidad</i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 04 - EL QUE PREGUNTA UN SABADO =================== -->
+  <section class="s04" id="sabado">
+    <div class="escena">
+      <div class="foto"></div>
+      <div class="velo"></div>
+
+      <div class="w-col">
+        <h2 class="w-t">El que pregunta<br>un sábado no espera<br>al lunes.</h2>
+        <p class="w-p">Cuando entra una consulta, el tiempo importa.<br>Nuestro sistema responde, cualifica y agenda,<br>aunque tu equipo no esté.</p>
+      </div>
+
+      <div class="w-card">
+        <div class="w-cab">
+          <span class="w-wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2m0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.3-.4A8 8 0 0 1 12 4m-3.3 4.2c-.2 0-.5.1-.7.4s-.9.9-.9 2.2.9 2.5 1 2.7c.2.2 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.7s1.5-.6 1.7-1.2.2-1.1.2-1.2-.2-.2-.4-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4z"/></svg></span>
+          <span class="tx"><b>Interesado</b><i>en stock</i></span>
+          <span class="w-acc">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.4-5.7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M20 3v4h-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M4 3v4h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="pts"><span></span><span></span><span></span></span>
+          </span>
+        </div>
+
+        <div class="w-bub w-in">Hola, he visto el León que tenéis<br>en la web. ¿Sigue disponible?<i class="hh">10.42</i></div>
+        <div class="w-bub w-out">¡Hola! Sí, lo tenemos disponible.<br>¿Te gustaría que te enviemos más<br>información o prefieres venir a verlo?<i class="hh">10.43</i></div>
+
+        <div class="w-box w-b1">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="8.5" cy="14.5" r="1.1" fill="currentColor"/><circle cx="12" cy="14.5" r="1.1" fill="currentColor"/><circle cx="15.5" cy="14.5" r="1.1" fill="currentColor"/></svg></span>
+          <span class="tx"><b>Cita agendada</b><i>Jueves 17:00</i></span>
+        </div>
+        <div class="w-box w-b2">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2" stroke="currentColor" stroke-width="1.9"/><circle cx="9" cy="9.5" r="1.4" fill="currentColor"/><circle cx="14.5" cy="13.5" r="1.4" fill="currentColor"/><path d="M6 16.5l3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="tx"><b>Vehículo</b><i>SEAT León</i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 05 - NO SON DOS HERRAMIENTAS =================== -->
+  <section class="s05" id="sistema">
+    <div class="escena">
+      <div class="foto"></div>
+      <div class="velo"></div>
+
+      <div class="h2-col">
+        <h2 class="h2-t">No son dos herramientas.<br>Es la misma conversación.</h2>
+        <p class="h2-p">Ventas y posventa conectadas. Toda la información<br>del cliente en un solo sistema para que cada interacción<br>sume, en cualquier momento del ciclo.</p>
+      </div>
+
+      <div class="h2-card">
+        <div class="h2-it">
+          <span class="h2-rd"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><circle cx="8" cy="10.5" r="1.4" fill="#0A1520"/><circle cx="12" cy="10.5" r="1.4" fill="#0A1520"/><circle cx="16" cy="10.5" r="1.4" fill="#0A1520"/></svg></span>
+          <b>Conversación<br><span>con el cliente</span></b>
+        </div>
+        <svg class="h2-fle" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="h2-it">
+          <span class="h2-rd"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="17" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 9.5h19M7.5 2.5v4M16.5 2.5v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="7.5" cy="13" r="1.2" fill="currentColor"/><circle cx="12" cy="13" r="1.2" fill="currentColor"/><circle cx="16.5" cy="13" r="1.2" fill="currentColor"/><circle cx="7.5" cy="17.5" r="1.2" fill="currentColor"/><circle cx="12" cy="17.5" r="1.2" fill="currentColor"/></svg></span>
+          <b>Agenda<br><span>de citas</span></b>
+        </div>
+        <svg class="h2-fle" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="h2-it">
+          <span class="h2-rd"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 2.5h8l5 5v14h-13z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.5 2.5v5h5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12.5h7M8.5 16h4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <b>Registro<br><span>en tu sistema</span></b>
+        </div>
+        <svg class="h2-fle" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="h2-it">
+          <span class="h2-rd"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="13" width="4.4" height="8" rx="1"/><rect x="9.8" y="8" width="4.4" height="13" rx="1"/><rect x="16.6" y="3" width="4.4" height="18" rx="1"/></svg></span>
+          <b>Criterio<br><span>para tu equipo</span></b>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+</body>
+</html>

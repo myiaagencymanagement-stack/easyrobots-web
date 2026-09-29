@@ -663,7 +663,14 @@ Después se rehízo la geometría:
    con un `<iframe>` y un script que imprima el `getBoundingClientRect()` de
    cada bloque. Así salió que debajo del reproductor de la demo había 281 px
    muertos, y que dos tarjetas se solapaban 4 px. A ojo no se ve.
-10. **Cuidado al reutilizar iconos que ya estaban en la página.** En la
+10. **Una foto panorámica no vale de fondo en el móvil.** Las fotos son casi
+    3:1 y en el móvil las secciones son altas y estrechas: con `cover` la
+    imagen se amplía tantísimo que solo se ve un parche liso. Medido a 390 px,
+    de la foto de "Piezas" se veía el **18 % del ancho** y de la del cierre el
+    **13 %**, que caía justo en el cielo naranja. En el móvil no se veía la
+    escena, se veía una mancha de color. Solución: un recorte vertical de cada
+    foto (`*-movil.webp`) servido por media query a partir de 900 px.
+11. **Cuidado al reutilizar iconos que ya estaban en la página.** En la
     reconstrucción de inmobiliarias se dieron por buenos los iconos viejos en
     vez de medirlos contra la referencia, y quedó un icono de teléfono bajo un
     título de WhatsApp. Los iconos son parte del diseño: se comparan uno a uno

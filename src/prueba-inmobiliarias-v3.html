@@ -685,7 +685,9 @@
     @media (max-width: 900px) {
       .hero { padding: 0 0 44px; }
       .escena { aspect-ratio: auto; padding: 22px 0 0; }
-      .hero .velo { background: linear-gradient(180deg, rgba(6,6,8,.92) 0%, rgba(6,6,8,.70) 38%, rgba(6,6,8,.92) 100%); }
+      /* El velo del hero en movil estaba al 92 % y tapaba la foto del
+         todo. Se abre por el centro, que es donde no hay texto grande. */
+      .hero .velo { background: linear-gradient(180deg, rgba(6,6,8,.90) 0%, rgba(6,6,8,.80) 26%, rgba(6,6,8,.46) 52%, rgba(6,6,8,.62) 78%, rgba(6,6,8,.88) 100%); }
 
       .h-nav { position: static; height: auto; padding: 0 5.89%; margin-bottom: 30px; }
       .h-links { display: none; }
@@ -717,9 +719,26 @@
       .tarj .ico svg { width: 17px; height: 17px; }
       .tarj b { font-size: .82rem; }
       .tarj i { font-size: .74rem; margin-top: .15rem; }
-      .tarj br { display: none; }
+      /* Los <br> de las tarjetas se ocultan en movil, pero sin espacio
+         delante las palabras se pegaban ("EasyRobotsen llamada"). Con
+         font-size:0 el salto desaparece y el espacio se conserva. */
+      .tarj br { display: inline; font-size: 0; }
+      .tarj br::after { content: " "; font-size: 1rem; }
     }
     @media (min-width: 901px) { .tarjetas-movil { display: contents; } }
+
+    /* ---------- fondos en movil ----------
+       Las fotos son panoramicas (casi 3:1) y en el movil las secciones son
+       altas y estrechas: con `cover` la imagen se amplia tanto que solo se
+       ve un parche liso. Medido a 390 px: de la foto de "Piezas" se veia el
+       18 % del ancho, y de la del cierre el 13 %, que caia justo en el
+       cielo naranja. Por eso en el movil no se veia la escena, se veia una
+       mancha. Aqui entran recortes verticales de las mismas fotos. */
+    @media (max-width: 900px) {
+      .hero .foto { background-image: url(assets/hero-inmobiliarias-movil.webp); background-position: center 44%; }
+      #sistema .foto { background-image: url(assets/escena-piezas-movil.webp); background-position: center 50%; }
+      .cierre .foto { background-image: url(assets/escena-inmobiliaria-movil.webp); background-position: center 44%; }
+    }
 
     @media (max-width: 430px) {
       .tarjetas-movil { grid-template-columns: 1fr; }
