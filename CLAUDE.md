@@ -745,39 +745,60 @@ Dos cosas del boceto que **si** se respetan aunque parezcan un fallo:
 2. **El margen derecho no es simetrico.** El texto entra en 136 y las tarjetas
    llegan hasta 902-990 segun la seccion. Es lo que manda la referencia.
 
-### Los fondos, que ya son los buenos
+### Los fondos
 
-La hoja de fondos llego el **2026-09-30**: `src/assets/boceto/ecommerce-v2/
-fondos.png`, 1024x1536, la misma composicion de la referencia pero SIN texto ni
-interfaces. Hasta entonces los fondos estaban reconstruidos espejando columnas;
-ya no hace falta.
+Llegaron en **dos vueltas el mismo dia**. La buena es la segunda:
+`src/assets/boceto/ecommerce-v2/fondos-v2.png` (1024x1536). La primera,
+`fondos.png`, se queda de historico: era abstracta y a Anais no le convencio.
 
-`docs/fondos-ecommerce-v2.py` corta la hoja en sus nueve franjas. **Las costuras
-se detectaron midiendo el salto de color entre filas consecutivas**, no a ojo:
-caen en y = 209, 385, 563, 718, 905, 1055, 1204 y 1359.
+La v2 trae **cuatro escenas**, no nueve. Costuras detectadas midiendo el salto
+de color entre filas: y = 390, 800 y 1219.
 
-| Archivo | Franja | Que es | Seccion |
-|---|---|---|---|
-| `ecom-hero.webp` | 0-208 | Tienda de noche, portatil y zapatilla | hero |
-| `ecom-postventa.webp` | 209-384 | Estanterias con cajas | 02 |
-| `ecom-dato.webp` | 385-562 | Pantallas y paneles | 03 |
-| `ecom-seda.webp` | 563-717 | Onda blanca con zapatilla | 04 |
-| `ecom-demo.webp` | 718-904 | Suelo blanco, carrito y portatil | 05 |
-| `ecom-piezas.webp` | 905-1054 | Abstracto blanco con tarjetas | 06 |
-| `ecom-tecno.webp` | 1055-1203 | Ondas blancas y paneles | 07 |
-| `ecom-equipo.webp` | 1204-1358 | Estudio blanco con columnas | 08 y 09 |
-| `ecom-cierre.webp` | 1359-1536 | Mesa oscura con portatil | CTA |
-| `ecom-pie.webp` | 1430-1536 | La misma mesa, recortada | pie |
+    1 ·    0-389   escritorio de noche, monitores y ciudad     (oscura)
+    2 ·  391-799   loft al atardecer, zapatilla y portatil      (clara)
+    3 ·  800-1218  oficina de dia, portatil, movil y zapatilla  (clara)
+    4 · 1219-1536  escritorio al anochecer, portatil y ciudad   (oscura)
 
-Al entrar la foto de verdad **se bajaron todos los velos** entre 10 y 20 puntos:
-estaban apretados para tapar un fondo reconstruido y ahora ahogaban la escena.
+Como son cuatro escenas para once secciones, `docs/fondos-ecommerce-v2.py`
+recorta a cada seccion **su propia banda** dentro de la escena que le toca, al
+alto exacto que pide su `aspect-ratio`. Asi ninguna repite encuadre y `cover`
+no tiene que inventarse nada. El archivo lleva la tabla completa.
 
-La zapatilla de la 04 y la planta de la 05 **ya vienen dentro de la foto**, asi
-que se quitaron los `<img>` que las ponian encima (salian duplicadas).
+**Al entrar estas fotos hubo que SUBIR los velos de las secciones claras**, no
+bajarlos: son escenas de oficina, mucho mas movidas que las abstractas de la
+primera hoja, y el texto gris sobre foto dejaba de leerse. Quedan en .90 / .76
+/ .88. Los paneles blancos tambien suben (`.tc-box` a .84, `.dm-panel` a .62,
+la barra de la 04 a .97).
 
-Siguen recortadas de la referencia, y son provisionales, tres piezas pequenas
-que la hoja de fondos no trae: `ecom-prod.webp` (la zapatilla del producto),
-`ecom-cliente.webp` y `ecom-chatbot.webp` (los dos avatares).
+### El movil, que es donde estaba el problema de verdad
+
+Anais: *"los fondos tambien, que se vean, porque es que no se ven nunca"*. Dos
+causas, y hay que atacar las dos:
+
+1. **Los velos del escritorio son gradientes HORIZONTALES**, pensados para
+   apagar la izquierda y dejar la foto a la derecha. En 390 px ese mismo
+   gradiente cubre la seccion entera y el fondo queda liso. En movil pasan a un
+   velo **vertical** y mas abierto.
+2. **Una panoramica con `cover` en un hueco alto y estrecho** se amplia tanto
+   que solo se ve un parche de color (fallo 10 de la lista de abajo). Cada
+   seccion tiene ahora su **recorte vertical** `*-movil.webp`: una ventana de
+   400 px de ancho sobre la escena entera, no la banda apaisada.
+
+**El hero entra en una pantalla.** `min-height: 100svh` (svh, no vh: en iOS
+descuenta la barra del navegador) y el contenido apretado para caber **sin
+quitar nada**, porque la regla de Anais es que en el movil se vea lo mismo que
+en el escritorio. Por debajo de 700 px de alto se suelta el `min-height`, que
+apretarlo mas lo volveria ilegible.
+
+Ojo al comprobarlo: **`100svh` dentro de un `<iframe>` vale el alto del iframe**,
+asi que la captura de pagina completa sale con el hero de 7.000 px y parece que
+todo lo demas ha desaparecido. Para la captura larga se saca una copia con ese
+valor fijado a 812 px.
+
+Otro fallo que salio aqui: **los cinco pasos de la 04 eran hermanos de la barra
+blanca, no hijos**. En escritorio daba igual (van en absoluto), pero en movil la
+barra se quedaba vacia y los pasos se pintaban fuera, sueltos sobre la foto.
+Ahora viven dentro y sus x se miden desde la barra (134), no desde la seccion.
 
 ### Segunda pasada de Anais (2026-09-30)
 

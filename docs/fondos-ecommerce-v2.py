@@ -1,56 +1,80 @@
 # -*- coding: utf-8 -*-
-"""Fondos DEFINITIVOS de la landing de ecommerce v2.
+"""Fondos de la landing de ecommerce v2.
 
-Salen de la hoja de fondos que paso Anais el 2026-09-30:
-`src/assets/boceto/ecommerce-v2/fondos.png` (1024x1536), la misma composicion
-de la referencia pero SIN texto ni interfaces. Es lo que permite usar la
-fotografia de verdad en vez de reconstruirla espejando columnas.
+Hoja buena: `src/assets/boceto/ecommerce-v2/fondos-v2.png` (1024x1536), la que
+paso Anais el 2026-09-30 en segunda vuelta y es la que le gusta. Sustituye a
+`fondos.png`, que se queda de historico.
 
-Las nueve franjas se detectaron midiendo el salto de color entre filas
-consecutivas; las costuras caen en y = 209, 385, 563, 718, 905, 1055, 1204
-y 1359. No se recortan a ojo.
+Trae CUATRO escenas, no nueve. Las costuras se detectaron midiendo el salto de
+color entre filas consecutivas: caen en y = 390, 800 y 1219.
 
-Cada franja se sirve al ancho que pide su seccion y se convierte a WebP
-buscando el peso minimo que aguanta el velo encima.
+    1 ·    0-389   escritorio de noche, monitores y ciudad     (oscura)
+    2 ·  391-799   loft al atardecer, zapatilla y portatil      (clara)
+    3 ·  800-1218  oficina de dia, portatil, movil y zapatilla  (clara)
+    4 · 1219-1536  escritorio al anochecer, portatil y ciudad   (oscura)
+
+Como son cuatro para once secciones, a cada seccion se le recorta SU banda
+dentro de la escena que le toca, al alto exacto que pide su aspect-ratio. Asi
+ninguna repite encuadre y `cover` no tiene que inventarse nada.
+
+Ademas se genera un recorte VERTICAL por seccion (`*-movil.webp`). Sin el, en
+el movil la foto panoramica se amplia tanto que solo se ve un parche liso: a
+390 px de ancho de una foto 3:1 se ve el 18 %. Es el fallo 10 de CLAUDE.md.
 """
 from PIL import Image
 
-HOJA = Image.open('src/assets/boceto/ecommerce-v2/fondos.png').convert('RGB')
+HOJA = Image.open('src/assets/boceto/ecommerce-v2/fondos-v2.png').convert('RGB')
 OUT = 'src/assets/'
 
-# (archivo, y0, y1, ancho de salida, calidad)
-FRANJAS = [
-    ('ecom-hero.webp',        0,  208, 1600, 72),  # tienda de noche, portatil y zapatilla
-    ('ecom-postventa.webp', 209,  384, 1600, 70),  # estanterias con cajas
-    ('ecom-dato.webp',      385,  562, 1600, 70),  # pantallas y paneles
-    ('ecom-seda.webp',      563,  717, 1500, 74),  # onda blanca con zapatilla
-    ('ecom-demo.webp',      718,  904, 1600, 74),  # suelo blanco, carrito y portatil
-    ('ecom-piezas.webp',    905, 1054, 1400, 74),  # abstracto blanco con tarjetas
-    ('ecom-tecno.webp',    1055, 1203, 1400, 74),  # ondas blancas y paneles
-    ('ecom-equipo.webp',   1204, 1358, 1400, 74),  # estudio blanco con columnas
-    ('ecom-cierre.webp',   1359, 1536, 1600, 72),  # mesa oscura con portatil
+# (archivo, y0, alto, ancho de salida, calidad, centro en x para el movil)
+SECCIONES = [
+    ('ecom-hero.webp',        34, 322, 1400, 60, 0.52),  # 1 · monitores y ciudad
+    ('ecom-postventa.webp', 1219, 224, 1400, 58, 0.34),  # 4 · portatil al anochecer
+    ('ecom-dato.webp',       208, 182, 1400, 58, 0.72),  # 1 · la mesa y la zapatilla
+    ('ecom-seda.webp',       600, 150, 1300, 62, 0.34),  # 2 · zapatilla sobre marmol
+    ('ecom-demo.webp',       800, 419, 1400, 60, 0.62),  # 3 · oficina de dia
+    ('ecom-piezas.webp',    1000, 134, 1300, 62, 0.60),  # 3 · portatil y movil
+    ('ecom-tecno.webp',      640, 124, 1300, 62, 0.55),  # 2 · el portatil del loft
+    ('ecom-equipo.webp',     850, 172, 1300, 62, 0.28),  # 3 · sofa y persianas
+    ('ecom-limites.webp',    430, 152, 1300, 62, 0.70),  # 2 · ventanal al atardecer
+    ('ecom-cierre.webp',    1400,  88, 1400, 58, 0.50),  # 4 · la mesa al anochecer
+    ('ecom-pie.webp',       1462,  74, 1400, 58, 0.50),  # 4 · la mesa, abajo
 ]
 
-for nombre, y0, y1, ancho, cal in FRANJAS:
-    tira = HOJA.crop((0, y0, 1024, y1))
-    alto = round(ancho * tira.height / tira.width)
-    tira.resize((ancho, alto), Image.LANCZOS).save(OUT + nombre, 'WEBP', quality=cal, method=6)
-    kb = len(open(OUT + nombre, 'rb').read()) / 1024
-    print('%-24s %sx%s  %.1f KB  (boceto y%s-%s)' % (nombre, ancho, alto, kb, y0, y1))
+# El movil pide un recorte casi cuadrado: una ventana de 400 px de ancho sobre
+# la escena entera, no la banda apaisada de la seccion.
+ESCENAS = [(0, 390), (391, 799), (800, 1218), (1219, 1536)]
 
-# El pie comparte la franja de cierre, recortada por abajo.
-tira = HOJA.crop((0, 1430, 1024, 1536))
-tira.resize((1400, round(1400 * tira.height / tira.width)), Image.LANCZOS).save(
-    OUT + 'ecom-pie.webp', 'WEBP', quality=70, method=6)
-print('%-24s %.1f KB' % ('ecom-pie.webp', len(open(OUT + 'ecom-pie.webp', 'rb').read()) / 1024))
+def escena_de(y0):
+    for a, b in ESCENAS:
+        if a <= y0 < b:
+            return a, b
+    return ESCENAS[-1]
+
+for nombre, y0, alto, ancho, cal, cx in SECCIONES:
+    HOJA.crop((0, y0, 1024, y0 + alto)).resize(
+        (ancho, round(ancho * alto / 1024)), Image.LANCZOS
+    ).save(OUT + nombre, 'WEBP', quality=cal, method=6)
+    kb = len(open(OUT + nombre, 'rb').read()) / 1024
+
+    ea, eb = escena_de(y0)
+    vw = 400
+    vx = min(max(int(cx * 1024) - vw // 2, 0), 1024 - vw)
+    ventana = HOJA.crop((vx, ea, vx + vw, eb))
+    mov = nombre.replace('.webp', '-movil.webp')
+    ventana.resize((760, round(760 * ventana.height / ventana.width)), Image.LANCZOS) \
+           .save(OUT + mov, 'WEBP', quality=cal, method=6)
+    kbm = len(open(OUT + mov, 'rb').read()) / 1024
+    print('%-24s %sx%-5s %5.1f KB   movil %5.1f KB' %
+          (nombre, ancho, round(ancho * alto / 1024), kb, kbm))
 
 
 def pieza(nombre, caja, sal, calidad=78):
-    """Piezas pequenas que NO estan en la hoja de fondos y se recortan de la
-    referencia: van al tamano de la captura y son provisionales."""
+    """Piezas pequenas que la hoja de fondos no trae y se recortan de la
+    referencia: van a la resolucion de la captura y son provisionales."""
     REF = Image.open('src/assets/boceto/ecommerce-v2/referencia.jpg').convert('RGB')
     REF.crop(caja).resize(sal, Image.LANCZOS).save(OUT + nombre, 'WEBP', quality=calidad, method=6)
-    print('%-24s %.1f KB (recortada de la referencia)' % (nombre, len(open(OUT + nombre, 'rb').read()) / 1024))
+    print('%-24s %5.1f KB (recortada de la referencia)' % (nombre, len(open(OUT + nombre, 'rb').read()) / 1024))
 
 
 pieza('ecom-prod.webp',    (96, 1000, 176, 1056), (320, 224), 80)
