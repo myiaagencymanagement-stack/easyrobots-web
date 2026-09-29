@@ -447,7 +447,7 @@ Ojo, que hay dos juegos de landings y es facil trabajar sobre la equivocada:
 | Concesionarios | **`prueba-concesionarios-v2.html`** | `concesionarios.html`, `prueba-concesionarios.html` |
 | Dental | `prueba-dental.html` | `dental.html` |
 | Coaching | `prueba-coaching.html` | `coaching.html` |
-| Ecommerce | `prueba-ecommerce.html` | `ecommerce.html` |
+| Ecommerce | **`prueba-ecommerce-v2.html`** | `ecommerce.html`, `prueba-ecommerce.html` |
 
 Las `prueba-*` del 2026-09-26 son las reescrituras con el copy aprobado tras
 rellenar `docs/capacidades-reales.md`. Las de nombre limpio son de antes y
@@ -676,6 +676,109 @@ de las fotos panoramicas para el movil: `conce-hero-movil`, `conce-momentos-movi
 - Los botones no estan enganchados al calendario de GHL.
 - Decidir si sustituye a `prueba-concesionarios.html` y si se le quita el
   `noindex`.
+
+## Landing de ecommerce v2 (2026-09-29)
+
+Reconstruccion completa contra un boceto nuevo, con el metodo de
+`docs/boceto-a-html.md`. **La pagina viva es `src/prueba-ecommerce-v2.html`.**
+`prueba-ecommerce.html` se queda de referencia del copy y no se toca.
+
+### Lo que llego y donde esta
+
+Anais paso **dos imagenes**, las dos en `src/assets/boceto/ecommerce-v2/`:
+
+- `referencia.jpg` (1024x1536): la pagina entera pintada.
+- `limites.png` (420x55): **solo la seccion de limites**, que no venia en la
+  grande y que ella pidio colocar **justo encima del bloque de garantia**.
+
+**NO llego la hoja de fondos** (la composicion sin texto ni interfaces), que es
+lo que mas tiempo ahorra segun se aprendio en concesionarios. Ver "Pendiente".
+
+### El contenedor, que aqui salio gratis
+
+A diferencia de concesionarios, este boceto **si tiene un margen coherente**:
+los titulares de las diez secciones arrancan todos en **x136** de 1024 u
+(13,28 %). No hubo que unificar nada. La unica excepcion es la 05, que es un
+panel que sangra (x68, ancho 938) y mete su texto en x98.
+
+`--u` vale un pixel del boceto: `0.0976563cqw` (100/1024).
+
+### Medidas que conviene no volver a sacar
+
+- Alturas del boceto, en u: hero 288 · 02 198 · 03 146 · 04 123 · 05 371 ·
+  06 110 · 07 91 · 09 97 · 10 68 · pie 44.
+- **Varias secciones hubo que agrandarlas**, porque el copy aprobado es mas
+  largo que el pintado y el texto se partia (fallo tipico del metodo). Lo que
+  quedo: 03 160 · 05 416 · 07 100 · 08 limites 150 · 09 106 · pie 74. Las
+  demas se quedan en la medida del boceto.
+- Los cinco circulos de la 04 estan medidos uno a uno: x142 / 287 / 446 /
+  608 / 767, de 20 u. **No son equidistantes**; no "arreglarlos".
+- Las nueve fichas de "Piezas" **no estan en rejilla**: el boceto las pone
+  sueltas y la primera fila va corrida a la derecha. Cada una lleva su x y su
+  ancho medidos, en las clases `.pz1` a `.pz9`.
+- Los seis visados de esa seccion van en x741, con paso 14,2 u.
+- Paleta muestreada del pixel: azul boton `#0064FF`, azul del titular
+  `#1E70FF`, cintillo `#3B82F6` (azul, **no cian** como en concesionarios),
+  verde `#16C873`, fondo oscuro `#020A14`, fondo claro `#F5F8FD`.
+
+### Lo del boceto que NO se reprodujo, y por que
+
+Son erratas de la generacion, no decisiones de diseno:
+
+- La CTA final del boceto dice *"Vemos que pasa hoy con las llamadas que no
+  podeis coger"*. Eso es copy de **concesionarios** colado en la generacion:
+  una tienda online no tiene centralita. Va el titular aprobado en
+  `docs/copys/ecommerce.md`: *"Vemos que parte de vuestra bandeja puede
+  contestarse sola."*
+- La seccion 07 repetia el cuerpo de "Piezas" palabra por palabra. Se
+  reescribio: *"Lo repetitivo se resuelve solo y a una hora a la que no hay
+  nadie. Lo que necesita criterio sigue siendo vuestro."*
+- Erratas sueltas: `consultoria` sin tilde, `Tu equipo se centra an`,
+  `ⒸUNA DEMOSTRACION REAL` con un glifo delante, `BIG COMMERCE` a medio pintar.
+
+Dos cosas del boceto que **si** se respetan aunque parezcan un fallo:
+
+1. **La tercera tarjeta de la demo va levantada y sin rotulo.** Las dos
+   primeras llevan "Antes de comprar" y "Despues de comprar"; la tercera no
+   lleva ninguno y arranca mas arriba. Se deja asi: hace de tarjeta en primer
+   plano y la composicion funciona.
+2. **El margen derecho no es simetrico.** El texto entra en 136 y las tarjetas
+   llegan hasta 902-990 segun la seccion. Es lo que manda la referencia.
+
+### Los fondos, que son PROVISIONALES
+
+Sin hoja de fondos no se puede sacar la fotografia limpia: encima van el texto
+y las interfaces. Se reconstruyeron con `scratchpad/fondos.py` (el metodo esta
+escrito en la cabecera del propio script): se cogen **las columnas donde solo
+hay fotografia**, se estiran para que el patron no se repita mas de tres veces,
+se espejan y se desenfocan. Con el velo al 90 % cuela, pero no es la foto.
+
+| Archivo | Que es | Estado |
+|---|---|---|
+| `ecom-hero.webp` | Almacen de estanterias, hero | **Provisional** |
+| `ecom-postventa.webp` | Almacen, seccion 02 | **Provisional** |
+| `ecom-dato.webp` | Almacen, seccion 03 | **Provisional** |
+| `ecom-seda.webp` | Seda azul clara, secciones 04-09 | **Provisional** |
+| `ecom-cierre.webp` | Cajas y planta, CTA final | **Provisional** |
+| `ecom-pie.webp` | Franja oscura del pie | **Provisional** |
+| `ecom-zapatilla.webp` | Zapatilla blanca, esquina de la 04 | Recortada del boceto |
+| `ecom-planta.webp` | Planta y zapatilla, izquierda de la 05 | Recortada del boceto |
+| `ecom-prod.webp` | Zapatilla negra del producto | Recortada del boceto |
+| `ecom-cliente.webp` | Avatar del cliente del hero | Recortada del boceto |
+| `ecom-chatbot.webp` | Avatar de "un chatbot cualquiera" | Recortada del boceto |
+
+Las once juntas pesan **76 KB**. Se cambian sustituyendo el archivo, sin tocar
+codigo: las rutas y los encuadres ya estan puestos.
+
+### Pendiente en esta landing
+
+- **La hoja de fondos.** Es lo primero. Se pide con el prompt que hay en
+  `docs/boceto-a-html.md`, una foto por escena: almacen oscuro (hero y 02-03),
+  seda azul clara (04-09) y cajas con planta (CTA). **Maximo 2000 px por lado**,
+  o no se pueden abrir desde aqui.
+- La foto real de Anais para el hueco de Equipo.
+- Los botones no estan enganchados al calendario de GHL.
+- Decidir si sustituye a `prueba-ecommerce.html` y si se le quita el `noindex`.
 
 ## La calculadora
 
