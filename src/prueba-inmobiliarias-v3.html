@@ -836,10 +836,121 @@
       .trans .l .t { display: none; }
       .trans { padding: 4px 14px; }
 
-      /* Equipo */
-      .tec li { font-size: .82rem; line-height: 1.38; }
-      .caras { max-width: 280px; }
-      .cara b { margin-top: .4rem; }
+      /* --- que cada seccion quepa en una pantalla ---
+         Objetivo de Anais: como en la web de Apple, una seccion por
+         pantalla y un poco de la siguiente. Una pantalla util de movil son
+         ~720 px. Todo lo de aqui abajo es para llegar a esa cifra, y esta
+         medido: la pagina pasa de 8.729 px a algo menos de 6.000. */
+
+      .sec { padding: 30px 0; }
+      #demo, #equipo, #sistema { padding: 30px 0; }
+      h2 { font-size: clamp(1.45rem, 6.4vw, 1.9rem); }
+      .lede { font-size: .88rem; line-height: 1.5; }
+
+      /* HERO: el telefono pequeño en el centro y dos viñetas a los lados,
+         como en el escritorio pero en miniatura. Antes iban apiladas
+         debajo y eran 157 px mas de deslizar; asi no cuestan alto ninguno,
+         porque caben al lado del telefono. Se quedan las dos que cuentan
+         la historia: entra la llamada y sale la visita. */
+      .escena { display: grid; grid-template-columns: 1fr auto 1fr;
+                align-items: center; column-gap: 6px; }
+      .h-nav, .h-col { grid-column: 1 / -1; }
+      .tarjetas-movil { display: contents; }
+      .t-agente, .t-wa, .t-comer { display: none; }
+      /* .escena pierde el padding lateral en movil, asi que las viñetas se
+         irian al borde: se les pone el mismo margen que lleva el texto. */
+      .t-llamada { grid-column: 1; grid-row: 3; justify-self: start; margin-left: 5.89%; }
+      .t-visita  { grid-column: 3; grid-row: 3; justify-self: end; margin-right: 5.89%; }
+      .h-movil   { grid-column: 2; grid-row: 3; }
+      .tarj { position: static; width: auto !important; min-height: 0 !important;
+              flex-direction: column; align-items: flex-start; gap: .4rem;
+              padding: .55rem .6rem; border-radius: 12px; }
+      .tarj .ico { width: 26px; height: 26px; }
+      .tarj .ico svg { width: 14px; height: 14px; }
+      .tarj b { font-size: .72rem; line-height: 1.2; }
+      .tarj i { font-size: .66rem; line-height: 1.25; }
+      .tarj .retrato { display: none; }
+      .tarj .onda-mini { display: none; }
+      .h-t { font-size: clamp(1.9rem, 7.6vw, 2.5rem); margin-top: .8rem; }
+      .h-sub { font-size: .92rem; line-height: 1.45; margin-top: .8rem; }
+      .h-btns { margin-top: 1.1rem; gap: 10px; }
+      .h-b1, .h-b2 { font-size: .86rem; }
+      .h-b1 { padding: .72rem 1.2rem; }
+      .h-b2 { padding: .45rem 1.1rem .45rem .45rem; }
+      .h-meta { margin-top: 1rem; gap: 8px 16px; }
+      .h-meta div { font-size: .76rem; }
+      .h-movil { width: 150px; margin: 16px auto 0; --u: .86px; padding: 5px; border-radius: 22px; }
+      .h-pant { border-radius: 18px; }
+      .hero { padding: 0 0 26px; }
+      .escena { padding: 14px 0 0; }
+      .h-nav { margin-bottom: 20px; }
+
+      /* EL MOMENTO: los dos paneles eran 1.096 px entre los dos. */
+      .m2-hoy-txt { padding: 13px 12px; }
+      .m2-er { padding: 13px 13px 15px; }
+      .m2-kick { margin-bottom: .7rem; font-size: .66rem; }
+      .m2-t { font-size: 1.25rem; }
+      .m2-p { font-size: .84rem; line-height: 1.45; }
+      .m2-er-cols { margin-top: .7rem; gap: 10px; }
+      .m2-pasos { margin-top: .7rem; }
+      .m2-pasos li { padding: .22rem 0; font-size: .78rem; gap: .5rem; }
+      .m2-pasos li .p { width: 20px; height: 20px; }
+      .m2-pasos li:not(:last-child)::before { left: 9.5px; }
+      .m2-visita { max-width: 150px; }
+      .m2-visita img { aspect-ratio: 16/9; }
+      .m2-visita .txt { padding: .5rem .55rem .55rem; }
+      .m2-visita b { font-size: .78rem; }
+      .m2-foto img { object-position: center 30%; }
+
+      /* DEMO: la conversacion entera fuera. El audio y lo recogido ya
+         cuentan la historia, y era lo que mas pesaba. */
+      .trans { display: none; }
+      .demo-cols { gap: 16px; }
+      .recogida { padding: 12px 14px; }
+      .recogida h3 { padding-bottom: 8px; }
+      .recogida li { padding: 5px 0; }
+      .recogida .k, .recogida .v { font-size: .8rem; }
+      .demo-cta p { font-size: .86rem; line-height: 1.45; }
+
+      /* EL SISTEMA */
+      .diagrama { width: min(330px, 84%); margin-bottom: 22px; }
+      .sis-lista { gap: 9px; }
+      .sis-lista span { font-size: .86rem; }
+
+      /* EQUIPO: los dos cuadros, uno al lado del otro. */
+      .tec-cols { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .tec { padding: 13px 11px 14px; }
+      .tec h3 { font-size: .8rem; gap: 8px; margin-bottom: 8px; }
+      .tec h3 .ic { width: 26px; height: 26px; }
+      .tec ul { padding-left: 0; }
+      .tec li { font-size: .74rem; line-height: 1.3; gap: 7px; padding: 2px 0; }
+      .tec li svg { width: 11px; height: 11px; margin-top: 3px; }
+      .pers-grid { gap: 16px; margin-top: 26px; }
+      .caras { max-width: 250px; gap: 10px; }
+      .cara b { margin-top: .35rem; font-size: .78rem; }
+      .cara span.rol { font-size: .7rem; }
+      .garantia { padding: 13px 14px; }
+      .garantia li { font-size: .79rem; line-height: 1.38; }
+      .garantia ul { gap: .55rem; }
+      .tranquilidad { font-size: .79rem; padding: .6rem .75rem; margin-top: .6rem; }
+
+      /* Segunda vuelta, con lo medido en la mano: lo que quedaba grande
+         eran fotos decorativas y listas apiladas. */
+
+      /* La foto del comprador al telefono son 215 px y no dice nada que no
+         diga ya el texto de al lado. En el movil se cae. */
+      .m2-foto { display: none; }
+      .m2-txt { padding-right: 0; }
+
+      /* El pie tenia sus cinco grupos en columna. */
+      .pie-grid { grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+      .pie h4 { margin-bottom: .45rem; }
+      .pie .enl { font-size: .82rem; padding: .22rem 0; }
+      .pie-abajo { margin-top: 18px; padding-top: 14px; font-size: .72rem; }
+
+      /* Los retratos del equipo, mas bajos. */
+      .cara .img { aspect-ratio: 4/3; }
+      .caras { max-width: 230px; }
     }
 
     @media (max-width: 430px) {
