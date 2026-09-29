@@ -282,7 +282,7 @@
        364 dentro de la caja, que es un reparto regular. */
     .s05 { position: relative; background: #000B14; overflow: hidden; }
     .s05 .escena { aspect-ratio: 845 / 136; }
-    .s05 .foto { position: absolute; inset: 0; background: url(assets/conce-herramientas.webp) left center / 46% 100% no-repeat; opacity: .6; }
+    .s05 .foto { position: absolute; inset: 0; background: url(assets/conce-herramientas.webp) left center / 39% 100% no-repeat; opacity: .6; }
     .s05 .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,10,18,.96) 0%, rgba(0,10,18,.92) 40%, rgba(0,10,18,.86) 100%); }
 
     .h2-col { position: absolute; left: calc(55*var(--u)); top: calc(19*var(--u)); width: calc(330*var(--u)); z-index: 10; }
@@ -525,8 +525,10 @@
       .m-cab .gr { font-size: 1.12rem; }
       .m-a .m-foto { position: static; width: auto; height: 86px; margin: 7px 7px 0; }
       .m-pil { position: static !important; width: auto !important; height: 32px !important; margin: 7px; font-size: .76rem; }
-      .m-b { min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; background-size: cover; }
+      .m-b { min-height: 150px; background-position: 60% 45%; display: flex; flex-direction: column; justify-content: space-between; background-size: cover; }
       .m-b .m-cab, .m-b .m-pil { position: relative; z-index: 3; }
+      /* la foto del taller es muy movida: en movil se vela mas para que se lean las cajas */
+      .m-b::after { background: linear-gradient(180deg, rgba(0,8,14,.58), rgba(0,8,14,.42) 45%, rgba(0,8,14,.72)); }
       .m-centro { position: static; width: auto; margin: 10px auto 0; display: flex; flex-direction: column; align-items: center; }
       .m-rd { width: 44px; height: 44px; }
       .m-rd svg { width: 23px; height: 23px; }
@@ -572,7 +574,8 @@
       .w-bub { position: relative; width: auto !important; height: auto !important; font-size: .82rem; line-height: 1.4; padding: 8px 26px 8px 11px; }
       .w-bub .hh { right: 8px; bottom: 6px; font-size: .68rem; }
       .w-cab { flex-wrap: nowrap; }
-      .w-acc { gap: 12px; }
+      .w-acc { gap: 13px; padding-right: 2px; }
+      .w-acc .pts { margin-right: 0; }
       .w-in { margin: 10px 22px 0 0; }
       .w-out { margin: 8px 0 0 22px; }
       .w-bub .hh { font-size: .7rem; }
@@ -604,7 +607,8 @@
       .d-sub { font-size: .86rem; margin-top: .7rem; line-height: 1.45; white-space: normal; }
       /* los saltos de linea del boceto son para 845 px: en movil estorban */
       .h-sub br, .m-p br, .b-p br, .w-p br, .h2-p br, .n-p br, .e-p br, .d-sub br { display: none; }
-      .d-fila .et { width: 46%; }
+      .d-fila .et { width: 52%; font-size: .82rem; }
+      .d-fila .va { font-size: .82rem; }
       .h2-it b span { display: inline; }
       .d-btn { width: 100%; height: 50px; margin-top: 1rem; padding: 0 9px 0 10px; }
       .d-play { width: 38px; height: 38px; }
