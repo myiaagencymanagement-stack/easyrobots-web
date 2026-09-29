@@ -606,6 +606,12 @@
       .m2-visita img { aspect-ratio: 16/10; }
     }
 
+    /* En el escritorio la pagina se veia demasiado grande. Anais la puso
+       al 90 % en el navegador y dijo que asi queda perfecta, asi que se
+       deja puesto. Solo de 1081 px para arriba, que es donde empieza la
+       maqueta de escritorio: por debajo el movil ya esta ajustado. */
+    @media (min-width: 1081px) { body { zoom: .9; } }
+
     /* ===================== responsive ===================== */
     @media (max-width: 1080px) {
       .cta-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -757,7 +763,7 @@
        cielo naranja. Por eso en el movil no se veia la escena, se veia una
        mancha. Aqui entran recortes verticales de las mismas fotos. */
     @media (max-width: 900px) {
-      .hero .foto { background-image: url(assets/hero-inmobiliarias-movil.webp); background-position: 58% 62%; background-size: 150% auto; }
+      .hero .foto { background-image: url(assets/hero-inmobiliarias-movil.webp); background-position: center 38%; background-size: cover; }
       #sistema .foto { background-image: url(assets/escena-piezas-movil.webp); background-position: center 50%; }
       .cierre .foto { background-image: url(assets/escena-inmobiliaria-movil.webp); background-position: center 44%; }
     }
@@ -865,8 +871,19 @@
       .t-visita  { grid-column: 3; grid-row: 4; margin-right: 5.89%; }
       .t-comer   { grid-column: 3; grid-row: 5; margin-right: 5.89%; }
       .h-movil   { grid-column: 2; grid-row: 3 / 6; }
-      /* A este ancho el detalle no se lee: se queda el icono y el titulo, y
-         la hora cuando la hay. */
+      /* A este ancho el detalle largo no se lee: se queda el icono, el
+         titulo, la hora y la cara con su tick, que es lo que da la
+         sensacion de que el sistema ha hecho algo. */
+      .tarj { display: grid; grid-template-columns: auto 1fr;
+              grid-template-areas: "ico media" "txt txt"; gap: 5px 6px; }
+      .tarj .ico { grid-area: ico; }
+      .tarj .cuerpo { grid-area: txt; }
+      .tarj .retrato, .tarj .mini { grid-area: media; justify-self: end; display: block; width: 26px; }
+      .tarj .retrato img { width: 26px; height: 26px; }
+      .tarj .mini img { width: 26px; height: 30px; border-radius: 5px; object-fit: cover; }
+      .tarj .sello { width: 13px; height: 13px; right: -4px; bottom: -3px;
+                     box-shadow: 0 0 0 2px rgba(32,29,30,.96); }
+      .tarj .sello svg { width: 8px; height: 8px; }
       .tarj i { display: none; }
       .tarj i.hora, .tarj .hora { display: block; }
       .tarj { position: static; width: auto !important; min-height: 0 !important;
@@ -876,7 +893,6 @@
       .tarj .ico svg { width: 14px; height: 14px; }
       .tarj b { font-size: .72rem; line-height: 1.2; }
       .tarj i { font-size: .66rem; line-height: 1.25; }
-      .tarj .retrato { display: none; }
       .tarj .onda-mini { display: none; }
       .h-t { font-size: clamp(1.9rem, 7.6vw, 2.5rem); margin-top: .8rem; }
       .h-sub { font-size: .92rem; line-height: 1.45; margin-top: .8rem; }
@@ -903,7 +919,8 @@
       .m2-pasos li { padding: .22rem 0; font-size: .78rem; gap: .5rem; }
       .m2-pasos li .p { width: 20px; height: 20px; }
       .m2-pasos li:not(:last-child)::before { left: 9.5px; }
-      .m2-visita { max-width: 150px; }
+      .m2-er-cols { grid-template-columns: 1fr auto; align-items: start; }
+      .m2-visita { max-width: 118px; }
       .m2-visita img { aspect-ratio: 16/9; }
       .m2-visita .txt { padding: .5rem .55rem .55rem; }
       .m2-visita b { font-size: .78rem; }
