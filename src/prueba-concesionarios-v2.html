@@ -66,7 +66,7 @@
     /* Las capas de foto y velo viven dentro de la escena, que esta limitada a
        1440 px. Por encima de ese ancho quedaban franjas negras a los lados, asi
        que sangran a todo el ancho de la ventana. */
-    .foto, .velo, .velo2 { left: 50%; right: auto; width: 100vw; transform: translateX(-50%); }
+    body .escena > .foto, body .escena > .velo, body .escena > .velo2 { left: 50%; right: auto; width: 100vw; transform: translateX(-50%); }
     .s03, .s06 { overflow: hidden; }
 
     .saltar { position: absolute; left: 14px; top: -60px; z-index: 300; background: #fff; color: var(--tinta); padding: .7rem 1.1rem; border-radius: 8px; font-size: .84rem; font-weight: 600; transition: top .2s; }

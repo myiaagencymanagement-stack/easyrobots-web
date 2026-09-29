@@ -444,7 +444,7 @@ Ojo, que hay dos juegos de landings y es facil trabajar sobre la equivocada:
 | Nicho | La buena | La vieja, no tocar |
 |---|---|---|
 | Inmobiliarias | `prueba-inmobiliarias-v3.html` | `inmobiliarias.html`, `prueba-inmobiliarias.html`, `-v1`, `-v2` |
-| Concesionarios | `prueba-concesionarios.html` | `concesionarios.html` |
+| Concesionarios | **`prueba-concesionarios-v2.html`** | `concesionarios.html`, `prueba-concesionarios.html` |
 | Dental | `prueba-dental.html` | `dental.html` |
 | Coaching | `prueba-coaching.html` | `coaching.html` |
 | Ecommerce | `prueba-ecommerce.html` | `ecommerce.html` |
@@ -577,6 +577,104 @@ el archivo, sin tocar codigo.
 - El audio de la demo: dejar el archivo en `assets/` y escribir su ruta en
   `AUDIO_DEMO`, dentro del script de la pagina.
 - Decidir si la v3 sustituye a `prueba-inmobiliarias.html` y si se le quita el
+  `noindex`.
+
+## Landing de concesionarios v2 (2026-09-29)
+
+Reconstruccion completa contra un boceto nuevo, con el metodo de
+`docs/boceto-a-html.md`. **La pagina viva es `src/prueba-concesionarios-v2.html`.**
+`prueba-concesionarios.html` se queda de referencia del copy y no se toca.
+
+### Lo que llego y donde esta
+
+Anais paso **dos imagenes de 845x1862**: la referencia con todo pintado y la
+**hoja de fondos**, la misma composicion sin texto ni interfaces. Las dos estan
+en `src/assets/boceto/concesionarios-v2/` (`referencia.png` y `fondos.png`).
+
+Pedir la hoja de fondos **desde el principio** es lo que mas tiempo ahorro. Las
+fotos de la web salen de ahi recortadas por tiras; solo tres piezas se recortan
+de la propia referencia porque en la hoja de fondos no existen: la foto de la
+tarjeta Ventas, los dos retratos y los seis avatares.
+
+Ojo con dos tiras de la hoja de fondos: la de "No son dos herramientas" y la de
+"Lo que hace" **traen los iconos y los cuadros ya pintados**. Si se usan enteras
+salen iconos fantasma detras. Se recorta solo su parte izquierda.
+
+### El contenedor, que es la decision de fondo
+
+El boceto **no tiene un margen lateral coherente**: el texto empieza en 36, 46,
+47, 52, 54, 55, 56 o 61 u segun la seccion, y el borde derecho cae entre 790 y
+823. Son 845 px generados, no una rejilla.
+
+Se unifica en **55 u a cada lado** (6,51 %), que es el margen del hero y el de la
+barra de navegacion. Donde el boceto usaba mas ancho, las piezas van escaladas y
+el factor queda escrito en el comentario de esa seccion:
+
+| Seccion | Factor | Por que |
+|---|---|---|
+| 03 tarjeta "Clientes en tu base" | 0,9457 | iba de 355 a 815 u |
+| 07 los dos cuadros | 0,948 | iban de 313 a 816 u |
+| 08 panel de garantia | 0,945 | iba de 52 a 830 u |
+
+### Medidas que conviene no volver a sacar
+
+- Alturas de seccion, en u: hero 368 · 02 202 · 03 202 · 04 216 · 05 136 ·
+  06 203 · 07 138 · 08 126 · 09 143 · 10 127.
+- **En el hero, las dos lineas azules del titular son un 13 % mas grandes que
+  las blancas**: 35,2 u contra 31,2. Se ve al medir el ancho (218 contra 257 para
+  lineas de longitud parecida) y es lo que mas cantaba cuando estaban iguales.
+- El boton azul del hero **sobresale 4 u a la izquierda** del texto: es
+  alineacion optica del borde redondeado, no un descuadre. Va con
+  `margin-left: -4u` en `.h-btns`.
+- Paleta muestreada del pixel: azul boton `#0070FE`, azul del titular `#008CFF`,
+  **cintillos en cian `#00C8FF`** (no azul), verde del icono `#00975E`, fondo
+  oscuro `#000C15`, fondo claro `#F1F7FD`, panel claro `#E7F3FD`.
+- Las **44 alturas de la onda** del reproductor estan leidas barra a barra de la
+  referencia, columna a columna. No se inventan.
+
+### Tres cosas que costaron una vuelta
+
+1. **Las capas de foto y velo viven dentro de `.escena`, que esta limitada a
+   1440 px.** Por encima de ese ancho quedaban franjas negras a los lados. Se
+   arregla con `left:50%; width:100vw; transform:translateX(-50%)`, pero hay que
+   escribirlo con **mas especificidad que `.hero .foto`** (ahi va el
+   `body .escena > .foto`), porque si no gana el `inset:0` de la seccion y la
+   foto se desplaza media pantalla.
+2. **En movil los bloques dejan de estar en `position:absolute`** y, al quedar
+   estaticos, se pintan **por debajo** de `.foto` y `.velo`, que si estan
+   posicionadas: la seccion sale en negro con el texto invisible. Se les devuelve
+   la pila con `.escena > *:not(.foto):not(.velo):not(.velo2){position:relative;
+   z-index:4}` **y hay que anular `left/top/right/bottom`**, o el `left:55u` de
+   cada bloque se convierte en un desplazamiento y todo desborda por la derecha.
+3. **Al ocultar los `<br>` en movil las palabras se pegan** ("no.Sin",
+   "quedisenan"). Los saltos del boceto estan calculados para 845 px y en movil
+   estorban, asi que se ocultan; pero hay que dejar **un espacio antes de cada
+   `<br>`** en el HTML, que en escritorio se colapsa al final de linea y en movil
+   hace de separador.
+
+### Compacidad en movil
+
+Peticion de Anais: **una seccion y algo de la siguiente por pantalla**, estilo
+Apple. En una pantalla de 844 px eso son unos 620-720 px por seccion. Se midio
+poniendo un `::before` rosa de 3 px en cada seccion, capturando dentro de un
+`<iframe>` de 390 px y leyendo las posiciones de las marcas.
+
+De 7.000 px se bajo a **5.360**: hero 713 · 02 692 · 03 613 · 04 541 · 05 441 ·
+06 621 · 07 592 · 08 524 · 09 296 · pie 330.
+
+Ademas, y siguiendo el fallo 10 de la lista de abajo, hay **recortes verticales**
+de las fotos panoramicas para el movil: `conce-hero-movil`, `conce-momentos-movil`,
+`conce-sabado-movil` y `conce-hablemos-movil`.
+
+### Pendiente en esta landing
+
+- El audio de la demo: no hay archivo. El boton y el reproductor son de momento
+  maqueta.
+- **El icono de LinkedIn del pie viene en el boceto, pero EasyRobots no tiene
+  LinkedIn** y el enlace no lleva a ningun sitio. Se ha dejado tal cual sale en
+  el boceto por peticion expresa de Anais; decidir si se quita o se crea el perfil.
+- Los botones no estan enganchados al calendario de GHL.
+- Decidir si sustituye a `prueba-concesionarios.html` y si se le quita el
   `noindex`.
 
 ## La calculadora
