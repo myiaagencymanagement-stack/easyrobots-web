@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sistemas de IA para coaches e infoproductores &middot; EasyRobots</title>
+  <meta name="description"
+    content="Entre el &laquo;s&iacute;, me interesa&raquo; y la llamada hay un tramo entero donde muchas oportunidades se enfr&iacute;an. EasyRobots responde, cualifica, agenda y hace el seguimiento hasta que la llamada ocurre.">
+
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/coach-hero.webp" as="image">
+
+  <style>
+    /* Las tipografias se sirven desde este dominio: cargarlas desde Google
+       enviaba la IP de cada visitante a sus servidores sin permiso. */
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:400; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-400-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:500; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-500-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:600; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-600-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:700; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-700-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:800; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-800-latin.woff2) format('woff2'); }
+
+    /* ==========================================================
+       LANDING DE COACHING (v2) · 2026-10-02
+
+       Referencia: assets/boceto/coaching-v2/referencia.png (779x2019) y su
+       hoja de fondos, fondos.png, del mismo tamano pero NO alineada seccion
+       a seccion: son once escenas sueltas apiladas. Las costuras y los
+       recortes estan en docs/fondos-coaching-v2.py.
+
+       Dos imagenes mas, a 1993x789:
+         cta-aspiracional.png    el fondo del cierre, que es el que se usa
+         sistema-referencia.png  la seccion 6 pintada CON el diagrama; no
+                                 sirve de fondo, se usa para medir donde va
+                                 cada pieza del diagrama, que es HTML.
+
+       El copy sale del boceto (peticion de Anais), y donde el boceto esta
+       borroso o trae una errata manda la ficha tecnica que llego con el.
+
+       Alto de las secciones: la regla de Anais que ya se aplico en dental
+       v2. El hero ocupa la pantalla entera al entrar (100svh), ni mas ni
+       menos; las demas unos dos tercios, para que se vea una seccion y
+       media por pantalla.
+
+       El boceto marca un recorrido emocional y las fotos van en ese orden,
+       no al azar: oscuro en el dolor (hero, donde se cae, el mismo
+       interes), transicion clara (asi funciona), oscuro tecnologico (demo
+       y sistema), claro en la parte de confianza (el limite, como
+       trabajamos, quienes somos y garantia) y aspiracional en el cierre.
+
+       Paleta de la ficha, sin inventar colores:
+         negro #050505   oscuro #07111F   tinta #111827   gris #4B5563
+         claro #F5F2EA   claro alt #F4F5F2  borde #E5E7EB  gris 2 #9CA3AF
+         azul #2563EB    azul glow #3B82F6  azul brillante #00A8FF
+         verde #22C55E   verde suave #ECFDF3
+         rojo  #EF4444   rojo suave  #FEF2F2
+       ========================================================== */
+    :root {
+      --negro: #050505;
+      --oscuro: #07111F;
+      --tinta: #111827;
+      --gris: #4B5563;
+      --gris2: #9CA3AF;
+      --claro: #F5F2EA;
+      --claro2: #F4F5F2;
+      --borde: #E5E7EB;
+      --azul: #2563EB;
+      --azul-g: #3B82F6;
+      --azul-b: #00A8FF;
+      --verde: #22C55E;
+      --verde-s: #ECFDF3;
+      --rojo: #EF4444;
+      --rojo-s: #FEF2F2;
+      --f: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+
+      --h1: clamp(42px, 4.45vw, 64px);
+      --h2: clamp(31px, 3.1vw, 47px);
+      --h3: clamp(21px, 1.75vw, 26px);
+      --txt: clamp(15.5px, 1.25vw, 18.5px);
+      --pad: clamp(68px, 8.5vh, 110px);
+      --alto: clamp(540px, 66vh, 720px);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { font-family: var(--f); background: var(--oscuro); color: #fff; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    u { text-decoration: none; }
+    button { font-family: inherit; }
+    svg { flex: 0 0 auto; }
+
+    /* Cada seccion: foto y velo a todo lo ancho, contenido en un contenedor
+       de 1440 con el margen del boceto (52 de 779 = 6,7 %). */
+    .sec { position: relative; overflow: hidden; display: flex; align-items: center; min-height: var(--alto); }
+    .foto { position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; }
+    /* Las bandas de la hoja de fondos miden 779 px de ancho y aqui se ven a
+       1440 y mas: un desenfoque minimo hace que se lean como profundidad de
+       campo y no como pixelado. Misma receta que en dental v2. */
+    .foto.suave { filter: blur(1.5px); transform: scale(1.02); }
+    .velo { position: absolute; inset: 0; }
+    .caja { position: relative; z-index: 5; width: 100%; max-width: 1440px; margin: 0 auto; padding: var(--pad) max(22px, 6.7vw); }
+    @media (min-width: 1440px) { .caja { padding-left: 96px; padding-right: 96px; } }
+
+    .saltar { position: absolute; left: 14px; top: -60px; z-index: 300; background: #fff; color: var(--tinta); padding: .7rem 1.1rem; border-radius: 8px; font-size: .84rem; font-weight: 600; transition: top .2s; }
+    .saltar:focus { top: 14px; }
+
+    .kick { font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gris2); }
+    .kick.cl { color: rgba(255,255,255,.72); }
+    .h2 { font-size: var(--h2); line-height: 1.05; font-weight: 700; letter-spacing: -.035em; }
+    .h3 { font-size: var(--h3); line-height: 1.2; font-weight: 700; letter-spacing: -.03em; }
+    .kick + .h2 { margin-top: 16px; }
+    .p { font-size: var(--txt); line-height: 1.5; }
+    .h2 + .p { margin-top: 22px; }
+    .p + .p { margin-top: 13px; }
+    .flecha { width: 17px; height: 17px; }
+    .oscura { color: #fff; } .oscura .p { color: #D1D5DB; }
+    .clara { color: var(--tinta); } .clara .p { color: var(--gris); }
+
+    .btn { display: inline-flex; align-items: center; gap: 11px; height: 52px; padding: 0 26px; border-radius: 999px; font-size: 16px; font-weight: 600; white-space: nowrap; cursor: pointer; border: 0; transition: background .2s, transform .2s; }
+    .btn svg { width: 18px; height: 18px; }
+    .btn-bl { background: #fff; color: var(--tinta); }
+    .btn-bl:hover { background: #F3F4F6; }
+    .btn-az { background: var(--azul); color: #fff; }
+    .btn-az:hover { background: #1D4FD8; }
+
+    /* ===================== 01 · HERO =====================
+       Una pantalla justa al entrar. El titular se apoya en el tercio
+       izquierdo de la foto, que es la zona en penumbra; el velo cierra por
+       la izquierda para que no haya que oscurecer la escena entera. */
+    .hero { position: relative; overflow: hidden; background: #060A10; height: 100vh; height: 100svh; min-height: 640px; display: flex; flex-direction: column; }
+    .hero .foto { background-image: url(assets/coach-hero.webp); background-position: 62% center; }
+    .hero .velo { background:
+        linear-gradient(90deg, rgba(5,9,14,.93) 0%, rgba(5,9,14,.86) 26%, rgba(5,9,14,.52) 46%, rgba(5,9,14,.14) 66%, rgba(5,9,14,0) 82%),
+        linear-gradient(180deg, rgba(5,9,14,.58) 0%, rgba(5,9,14,0) 18%, rgba(5,9,14,0) 74%, rgba(5,9,14,.62) 100%); }
+
+    .h-nav { position: relative; z-index: 60; width: 100%; max-width: 1440px; margin: 0 auto; padding: 24px max(22px, 6.7vw) 0; display: flex; align-items: center; }
+    @media (min-width: 1440px) { .h-nav { padding-left: 96px; padding-right: 96px; } }
+    .h-marca { display: flex; align-items: center; gap: 9px; font-size: 20px; font-weight: 700; letter-spacing: -.03em; }
+    .h-marca svg { width: 25px; height: 25px; color: var(--azul-g); }
+    .h-links { display: flex; gap: 36px; margin: 0 auto; }
+    .h-links a { font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,.76); white-space: nowrap; }
+    .h-links a:hover { color: #fff; }
+    .h-navbtn { height: 42px; padding: 0 20px; font-size: 15px; }
+
+    .h-cuerpo { position: relative; z-index: 50; flex: 1 1 auto; display: grid; grid-template-columns: 1.06fr .94fr; align-items: center; gap: clamp(28px, 4vw, 70px); width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 max(22px, 6.7vw) 4vh; }
+    @media (min-width: 1440px) { .h-cuerpo { padding-left: 96px; padding-right: 96px; } }
+    .h-col { max-width: 680px; }
+    .h-t { margin-top: 18px; font-size: var(--h1); line-height: 1.02; font-weight: 700; letter-spacing: -.04em; }
+    .h-sub { margin-top: 24px; max-width: 520px; font-size: clamp(16.5px, 1.3vw, 19px); line-height: 1.42; color: rgba(255,255,255,.88); }
+    .h-btn { margin-top: 30px; }
+    .h-meta { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 14px 26px; }
+    .h-meta div { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: rgba(255,255,255,.78); }
+    .h-meta svg { width: 17px; height: 17px; opacity: .8; }
+
+    /* --- el portatil del hero y de la demo ---------------------------
+       En el boceto es una fotografia de un portatil con una conversacion
+       pintada encima. Aqui la pantalla es HTML entera: asi el texto se lee
+       de verdad, se puede corregir y escala sin romperse. */
+    .port { position: relative; }
+    .port-pant { background: #F4F6F8; border: 10px solid #0D1116; border-radius: 16px; box-shadow: 0 40px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.07); display: grid; grid-template-columns: 1.55fr 1fr; overflow: hidden; }
+    .pt-chat { padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 9px; background: #FBFCFD; }
+    .pt-cab { display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
+    .pt-cab b { font-size: 12.5px; font-weight: 700; color: #1F2937; letter-spacing: -.01em; }
+    .chip { font-style: normal; font-size: 9.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #6B7280; background: #E8ECF1; border-radius: 999px; padding: 3px 8px; }
+    .bu { display: flex; gap: 8px; align-items: flex-end; }
+    .bu u { width: 24px; height: 24px; border-radius: 50%; flex: 0 0 auto; background: #D7DFE9; color: #46556A; font-size: 9.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .bu p { font-size: 11.5px; line-height: 1.38; color: #1F2937; background: #ECEFF3; border-radius: 12px; padding: 8px 11px; max-width: 86%; }
+    .bu.yo { justify-content: flex-end; }
+    .bu.yo p { background: #D7F5DF; }
+    .pt-res { background: #fff; border-left: 1px solid #E6EAEF; padding: 16px 14px; }
+    .pt-res b { display: block; font-size: 12px; font-weight: 700; color: #1F2937; }
+    .pt-dia { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; font-size: 11.5px; font-weight: 600; color: #374151; }
+    .pt-dia svg { width: 12px; height: 12px; color: #9CA3AF; }
+    .pt-h { margin-top: 10px; display: flex; flex-direction: column; gap: 7px; }
+    .pt-h span { height: 28px; border-radius: 7px; background: #F1F3F6; display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 600; color: #4B5563; }
+    .pt-h span.on { background: var(--azul); color: #fff; }
+    .pt-conf { margin-top: 12px; height: 30px; border-radius: 7px; background: var(--azul); color: #fff; font-size: 11.5px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+    .port-base { height: 11px; margin: 0 -4%; border-radius: 0 0 12px 12px; background: linear-gradient(180deg, #171B21, #0B0E12); box-shadow: 0 16px 30px rgba(0,0,0,.5); }
+
+    /* ===================== 02 · DONDE SE CAE =====================
+       Foto a la izquierda (la coach agobiada de noche), texto y las cuatro
+       caidas a la derecha, como en el boceto. */
+    .s02 { background: #080C12; }
+    .s02 .foto { background-image: url(assets/coach-cae.webp); background-position: 28% center; }
+    .s02 .velo { background: linear-gradient(90deg, rgba(6,10,15,.42) 0%, rgba(6,10,15,.30) 22%, rgba(6,10,15,.72) 42%, rgba(6,10,15,.90) 62%, rgba(6,10,15,.94) 100%); }
+    .s02 .caja { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(24px, 4vw, 64px); align-items: center; }
+    .s02 .col { grid-column: 2; }
+    .s02 .h2 { max-width: 15ch; }
+    .caidas { margin-top: 26px; display: flex; flex-direction: column; gap: 10px; }
+    .cai { display: grid; grid-template-columns: 34px 112px 1fr 14px auto; align-items: center; gap: 14px; padding: 13px 18px; border-radius: 14px; background: rgba(10,18,28,.78); border: 1px solid rgba(255,255,255,.10); }
+    .cai i { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+    .cai i svg { width: 18px; height: 18px; color: #fff; }
+    .cai i.r { background: var(--rojo); }
+    .cai i.a { background: var(--azul-g); }
+    .cai i.g { background: #374151; }
+    .cai b { font-size: 13.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+    .cai span { font-size: 13.5px; line-height: 1.35; color: #D1D5DB; }
+    .cai > svg { width: 14px; height: 14px; color: #6B7280; }
+    .cai em { font-style: normal; font-size: 13px; color: var(--gris2); text-align: right; white-space: nowrap; }
+
+    /* ===================== 03 · EL MISMO INTERES =====================
+       Texto y las dos columnas a la izquierda, la foto del coach grabando
+       a la derecha, con la nota a mano del boceto encima. */
+    .s03 { background: #060B11; }
+    .s03 .foto { background-image: url(assets/coach-interes.webp); background-position: 26% center; }
+    .s03 .velo { background: linear-gradient(90deg, rgba(5,9,14,.95) 0%, rgba(5,9,14,.92) 34%, rgba(5,9,14,.62) 50%, rgba(5,9,14,.12) 66%, rgba(5,9,14,0) 80%); }
+    .s03 .caja { display: grid; grid-template-columns: 1.22fr .78fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+    .dos { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .lista { border-radius: 16px; padding: 18px 18px 20px; border: 1px solid; }
+    .lista.neg { background: rgba(14,10,12,.74); border-color: rgba(239,68,68,.30); }
+    .lista.pos { background: rgba(8,18,14,.74); border-color: rgba(34,197,94,.32); }
+    .lista h3 { display: flex; align-items: center; gap: 9px; font-size: 14.5px; font-weight: 700; }
+    .lista ul { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 11px; }
+    .lista li { display: flex; align-items: flex-start; gap: 9px; font-size: 14px; line-height: 1.32; color: #D1D5DB; }
+    .pin { width: 19px; height: 19px; border-radius: 50%; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .pin svg { width: 11px; height: 11px; color: #fff; }
+    .pin.r { background: var(--rojo); } .pin.v { background: var(--verde); }
+    .nota { position: relative; justify-self: end; align-self: start; margin-top: clamp(10px, 4vh, 48px); margin-right: clamp(0px, 3vw, 40px); text-align: center; }
+    .nota b { display: block; font-size: clamp(14px, 1.3vw, 18px); font-weight: 700; line-height: 1.25; letter-spacing: .04em; text-transform: uppercase; transform: rotate(-4deg); text-shadow: 0 2px 14px rgba(0,0,0,.85), 0 0 4px rgba(0,0,0,.6); }
+    .nota svg { width: 54px; height: 32px; margin: 4px auto 0; color: #fff; opacity: .95; filter: drop-shadow(0 2px 10px rgba(0,0,0,.8)); }
+
+    /* ===================== 04 · ASI FUNCIONA =====================
+       Aqui cambia el lenguaje visual: fondo claro. La arquitectura es
+       canales -> EasyRobots -> recorrido, no una lista de funcionalidades,
+       que es lo que pide la ficha. */
+    .s04 { background: var(--claro2); }
+    .s04 .foto { background-image: url(assets/coach-funciona.webp); background-position: center 38%; }
+    .s04 .velo { background: linear-gradient(180deg, rgba(244,245,242,.90) 0%, rgba(244,245,242,.78) 42%, rgba(244,245,242,.88) 100%); }
+    .flujo { margin-top: clamp(28px, 4vh, 46px); display: grid; grid-template-columns: minmax(170px, 210px) 30px minmax(130px, 165px) 30px minmax(0, 5fr); align-items: center; gap: 0; }
+    .canales { display: flex; flex-direction: column; gap: 7px; background: #fff; border: 1px solid var(--borde); border-radius: 16px; padding: 10px; box-shadow: 0 10px 30px rgba(17,24,39,.07); }
+    .canal { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 10px; font-size: 13.5px; font-weight: 500; color: var(--tinta); }
+    .canal:nth-child(odd) { background: #F7F8FA; }
+    .mk { width: 22px; height: 22px; border-radius: 6px; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; }
+    .mk svg { width: 13px; height: 13px; color: #fff; }
+    .mk.ig { background: linear-gradient(45deg, #F9A03C, #E1306C 55%, #8134AF); }
+    .mk.wa { background: #25D366; }
+    .mk.we { background: var(--azul); }
+    .mk.gm { background: #fff; border: 1px solid var(--borde); } .mk.gm svg { color: #EA4335; }
+    .mk.ot { background: #6B7280; }
+    .enl { position: relative; height: 2px; background: linear-gradient(90deg, rgba(59,130,246,0), var(--azul-g)); }
+    .enl::after { content: ""; position: absolute; right: -1px; top: -4px; border: 5px solid transparent; border-left-color: var(--azul-g); }
+    .nucleo { background: #0B1220; color: #fff; border-radius: 18px; height: 112px; display: flex; align-items: center; justify-content: center; font-size: clamp(16px, 1.4vw, 20px); font-weight: 700; letter-spacing: -.02em; box-shadow: 0 0 0 1.5px rgba(37,99,235,.55), 0 18px 48px rgba(37,99,235,.28); }
+    .pasos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-left: 12px; }
+    .paso { background: #fff; border: 1px solid var(--borde); border-radius: 16px; padding: 16px 12px 18px; text-align: center; box-shadow: 0 10px 28px rgba(17,24,39,.06); }
+    .paso i { width: 34px; height: 34px; margin: 0 auto 11px; border-radius: 10px; background: #EAF1FE; display: flex; align-items: center; justify-content: center; }
+    .paso i svg { width: 18px; height: 18px; color: var(--azul); }
+    .paso b { display: block; font-size: 14.5px; font-weight: 700; letter-spacing: -.02em; color: var(--tinta); }
+    .paso span { display: block; margin-top: 5px; font-size: 12.5px; line-height: 1.3; color: var(--gris); }
+
+    /* ===================== 05 · DEMO ===================== */
+    .s05 { background: #070C13; }
+    .s05 .foto { background-image: url(assets/coach-demo.webp); background-position: 58% center; }
+    .s05 .velo { background: linear-gradient(90deg, rgba(5,9,14,.94) 0%, rgba(5,9,14,.88) 32%, rgba(5,9,14,.52) 50%, rgba(5,9,14,.22) 70%, rgba(5,9,14,.30) 100%); }
+    .s05 .caja { display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(28px, 4.5vw, 72px); align-items: center; }
+    .s05 .h2 { font-size: clamp(29px, 2.8vw, 42px); }
+    .s05 .btns { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 14px; }
+
+    /* ===================== 06 · SISTEMA COMPLETO =====================
+       El diagrama es el protagonista, asi que no hay una seccion aparte de
+       "piezas". Las posiciones salen de medir sistema-referencia.png (la
+       seccion pintada a 1993x789) y van en una caja de 790x370 con su
+       propia unidad --d, para que escalen juntas.
+
+       Del boceto NO entra el portatil con el panel de resumen: traia
+       124 conversaciones, 48 citas, 32 clientes nuevos y +27 % de
+       conversion, que son cifras inventadas (reglas de honestidad de
+       CLAUDE.md, lo mismo que tumbo el "Automatizaciones hoy: 24" de la v4). */
+    .s06 { background: var(--oscuro); }
+    .s06 .foto { background-image: url(assets/coach-sistema.webp); background-position: center; }
+    .s06 .velo { background:
+        radial-gradient(70% 90% at 72% 50%, rgba(0,107,255,.22) 0%, rgba(7,17,31,0) 70%),
+        linear-gradient(90deg, rgba(5,11,20,.95) 0%, rgba(5,11,20,.88) 30%, rgba(5,11,20,.58) 50%, rgba(5,11,20,.42) 100%); }
+    .s06 .caja { display: grid; grid-template-columns: .86fr 1.14fr; gap: clamp(24px, 3.5vw, 56px); align-items: center; }
+    .diag { position: relative; container-type: inline-size; --d: 0.1265823cqw; aspect-ratio: 790 / 370; }
+    .diag > * { position: absolute; }
+    .diag svg.cables { inset: 0; width: 100%; height: 100%; }
+    .pz { background: rgba(10,20,35,.85); border: 1px solid rgba(59,130,246,.35); border-radius: calc(14*var(--d)); padding: calc(13*var(--d)) calc(15*var(--d)); backdrop-filter: blur(2px); }
+    .pz b { display: block; font-size: calc(15.5*var(--d)); line-height: 1.22; font-weight: 600; letter-spacing: -.01em; }
+    .pz .ic { width: calc(27*var(--d)); height: calc(27*var(--d)); border-radius: calc(8*var(--d)); display: flex; align-items: center; justify-content: center; margin-bottom: calc(9*var(--d)); }
+    .pz .ic svg { width: calc(15*var(--d)); height: calc(15*var(--d)); color: #fff; }
+    .pz .logos { display: flex; gap: calc(7*var(--d)); margin-top: calc(10*var(--d)); }
+    .pz .logos i { width: calc(25*var(--d)); height: calc(25*var(--d)); border-radius: calc(7*var(--d)); display: flex; align-items: center; justify-content: center; }
+    .pz .logos i svg { width: calc(14*var(--d)); height: calc(14*var(--d)); color: #fff; }
+    .pz .cab { display: flex; align-items: center; gap: calc(10*var(--d)); }
+    .pz .cab .ic { margin-bottom: 0; }
+    .nuc { display: flex; align-items: center; justify-content: center; background: #071226; border: calc(1.6*var(--d)) solid var(--azul-b); border-radius: calc(16*var(--d)); box-shadow: 0 0 calc(30*var(--d)) rgba(37,99,235,.55), inset 0 0 calc(30*var(--d)) rgba(0,107,255,.35); font-size: calc(21*var(--d)); font-weight: 700; letter-spacing: -.02em; }
+    .p1 { left: 0;                 top: 0;                 width: calc(286*var(--d)); }
+    .p2 { left: calc(325*var(--d)); top: 0;                width: calc(180*var(--d)); }
+    .p3 { left: calc(553*var(--d)); top: 0;                width: calc(222*var(--d)); }
+    .p4 { left: calc(2*var(--d));   top: calc(150*var(--d)); width: calc(214*var(--d)); }
+    .nuc { left: calc(322*var(--d)); top: calc(136*var(--d)); width: calc(174*var(--d)); height: calc(98*var(--d)); }
+    .p5 { left: calc(568*var(--d)); top: calc(150*var(--d)); width: calc(214*var(--d)); }
+    .p6 { left: calc(174*var(--d)); top: calc(258*var(--d)); width: calc(190*var(--d)); }
+    .p7 { left: calc(412*var(--d)); top: calc(258*var(--d)); width: calc(222*var(--d)); }
+
+    /* ===================== 07 · EL LIMITE ===================== */
+    .s07 { background: var(--claro); }
+    .s07 .foto { background-image: url(assets/coach-limite.webp); background-position: center 45%; }
+    .s07 .velo { background: linear-gradient(180deg, rgba(245,242,234,.93) 0%, rgba(245,242,234,.86) 45%, rgba(245,242,234,.94) 100%); }
+    .lim { margin-top: clamp(26px, 4vh, 44px); display: grid; grid-template-columns: 1fr 1fr .78fr; gap: clamp(18px, 2.4vw, 34px); align-items: start; }
+    .cuad { border-radius: 18px; padding: 22px 24px 26px; }
+    .cuad.v { background: var(--verde-s); }
+    .cuad.r { background: var(--rojo-s); }
+    .cuad h3 { font-size: 16.5px; font-weight: 700; letter-spacing: -.02em; }
+    .cuad.v h3 { color: #15803D; }
+    .cuad.r h3 { color: #DC2626; }
+    .cuad ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .cuad li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; line-height: 1.35; color: var(--tinta); }
+    .cierre-nota { font-size: 15.5px; line-height: 1.5; color: var(--gris); padding-top: 4px; }
+
+    /* ===================== 08 · COMO TRABAJAMOS ===================== */
+    .s08 { background: var(--claro2); }
+    .s08 .foto { background-image: url(assets/coach-proceso.webp); background-position: center 40%; }
+    .s08 .velo { background: linear-gradient(180deg, rgba(244,245,242,.94) 0%, rgba(244,245,242,.88) 50%, rgba(244,245,242,.94) 100%); }
+    .s08 .caja { display: grid; grid-template-columns: .96fr 1.04fr; gap: clamp(26px, 4vw, 64px); align-items: center; }
+    .s08 .h2 { font-size: clamp(28px, 2.7vw, 41px); }
+    .proc { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .pr { position: relative; }
+    /* La linea de union entre pasos, en azul claro como en la ficha. */
+    .pr:not(:last-child)::after { content: ""; position: absolute; top: 16px; right: -11px; width: 8px; height: 2px; background: #BFDBFE; }
+    .pr b { display: block; font-size: 23px; font-weight: 700; color: var(--azul); letter-spacing: -.03em; }
+    .pr strong { display: block; margin-top: 10px; font-size: 15.5px; font-weight: 700; color: var(--tinta); letter-spacing: -.02em; }
+    .pr span { display: block; margin-top: 5px; font-size: 13.5px; line-height: 1.35; color: var(--gris); }
+
+    /* ============ 09 + 10 · QUIENES SOMOS Y GARANTIA ============
+       En la ficha son dos secciones; en el boceto van una al lado de la
+       otra en la misma franja y Anais prefiere esa version, asi que va asi.
+
+       Los dos retratos del boceto son caras generadas con IA. Va la foto
+       real de Guillermo y el hueco de Anais sigue vacio: antes un hueco que
+       una cara inventada al lado de una real (decision del 2026-09-24). */
+    .s09 { background: var(--claro2); }
+    .s09 .foto { background-image: url(assets/coach-equipo.webp); background-position: center 42%; }
+    .s09 .velo { background: linear-gradient(180deg, rgba(246,246,243,.95) 0%, rgba(246,246,243,.90) 50%, rgba(246,246,243,.95) 100%); }
+    .s09 .caja { display: grid; grid-template-columns: .92fr auto 1fr; gap: clamp(26px, 3.6vw, 60px); align-items: center; }
+    .s09 .h2 { font-size: clamp(27px, 2.5vw, 38px); }
+    .caras { display: flex; gap: clamp(16px, 2vw, 30px); }
+    .cara { text-align: center; width: clamp(104px, 9vw, 132px); }
+    .cara .foto-r, .cara .hueco { width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: #E7E8E4; }
+    .cara img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+    .cara .hueco { display: flex; align-items: center; justify-content: center; border: 1.5px dashed #C9CBC5; background: #F0F0EC; }
+    .cara .hueco svg { width: 34px; height: 34px; color: #B6B9B2; }
+    .cara b { display: block; margin-top: 12px; font-size: 17px; font-weight: 700; color: var(--tinta); letter-spacing: -.02em; }
+    .cara span { display: block; margin-top: 2px; font-size: 13px; color: var(--gris); }
+    .gar ul { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 11px; }
+    .gar li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; line-height: 1.38; color: var(--tinta); }
+    .gar li svg { width: 19px; height: 19px; flex: 0 0 auto; margin-top: 1px; color: var(--azul); }
+
+    /* ===================== 11 · CIERRE =====================
+       El fondo aspiracional del boceto, que llego aparte a 1993x789: es la
+       unica foto de esta landing que no viene de la hoja de fondos. */
+    .s11 { background: #0A0E14; text-align: left; }
+    .s11 .foto { background-image: url(assets/coach-cierre.webp); background-position: 58% center; }
+    .s11 .velo { background:
+        linear-gradient(90deg, rgba(4,8,13,.90) 0%, rgba(4,8,13,.78) 32%, rgba(4,8,13,.38) 54%, rgba(4,8,13,.10) 74%, rgba(4,8,13,0) 90%),
+        linear-gradient(180deg, rgba(4,8,13,.40) 0%, rgba(4,8,13,0) 30%, rgba(4,8,13,.45) 100%); }
+    .s11 .h2 { max-width: 16ch; font-size: clamp(33px, 3.4vw, 52px); }
+    .s11 .p { margin-top: 20px; max-width: 46ch; }
+    .s11 .btn { margin-top: 30px; }
+
+    /* ===================== 12 · PIE ===================== */
+    .pie { position: relative; overflow: hidden; background: var(--negro); }
+    .pie .foto { background-image: url(assets/coach-pie.webp); background-position: center 60%; }
+    .pie .velo { background: linear-gradient(180deg, rgba(5,5,5,.93) 0%, rgba(5,5,5,.96) 100%); }
+    .pie .caja { padding-top: 34px; padding-bottom: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 34px; }
+    .pie-marca { display: flex; align-items: center; gap: 9px; font-size: 17px; font-weight: 700; letter-spacing: -.03em; }
+    .pie-marca svg { width: 21px; height: 21px; color: var(--azul-g); }
+    .pie-desc { font-size: 13.5px; color: var(--gris2); }
+    .pie-enl { display: flex; gap: 26px; margin-left: auto; }
+    .pie-enl a { font-size: 13.5px; color: var(--gris2); }
+    .pie-enl a:hover { color: #fff; }
+    .pie-cr { font-size: 12.5px; color: #6B7280; }
+
+    /* ===================== PANTALLAS MEDIANAS ===================== */
+    @media (max-width: 1180px) {
+      .flujo { grid-template-columns: minmax(160px, 200px) 24px minmax(120px, 150px); row-gap: 26px; }
+      .pasos { grid-column: 1 / -1; margin-left: 0; }
+      .s08 .caja { grid-template-columns: 1fr; }
+      .proc { grid-template-columns: repeat(5, 1fr); }
+      .s09 .caja { grid-template-columns: 1fr 1fr; }
+      .caras { grid-column: 1 / -1; justify-content: flex-start; }
+      .lim { grid-template-columns: 1fr 1fr; }
+      .cierre-nota { grid-column: 1 / -1; }
+    }
+
+    /* ===================== MOVIL =====================
+       Fallo 10 de CLAUDE.md: una banda de 779x150 puesta con `cover` en un
+       hueco alto y estrecho se amplia tanto que solo se ve un parche de
+       color. Cada seccion cambia a su recorte vertical y los velos pasan de
+       horizontales a verticales, que si no tapan la foto entera. */
+    @media (max-width: 860px) {
+      :root { --pad: 58px; --alto: 0px; }
+      .sec { display: block; }
+      .caja { display: block !important; }
+      .foto.suave { filter: none; transform: none; }
+      .h2 { font-size: 30px; }
+      .h2 br { display: none; }
+      .p { font-size: 16px; }
+      .btn { height: 50px; padding: 0 22px; font-size: 15.5px; }
+
+      .hero { min-height: 600px; }
+      .hero .foto { background-image: url(assets/coach-hero-movil.webp); background-position: center top; }
+      .hero .velo { background: linear-gradient(180deg, rgba(5,9,14,.72) 0%, rgba(5,9,14,.42) 24%, rgba(5,9,14,.82) 58%, rgba(5,9,14,.96) 100%); }
+      .h-nav { padding-top: 16px; }
+      .h-links { display: none; }
+      .h-marca { font-size: 18px; } .h-marca svg { width: 21px; height: 21px; }
+      .h-navbtn { margin-left: auto; height: 38px; padding: 0 15px; font-size: 13px; gap: 7px; }
+      .h-navbtn svg { display: none; }
+      .h-cuerpo { display: flex; align-items: flex-end; padding-bottom: 34px; }
+      .h-t { font-size: 36px; margin-top: 12px; }
+      .h-t br { display: none; }
+      .h-sub { font-size: 16px; margin-top: 16px; }
+      .h-btn { margin-top: 22px; }
+      .h-meta { margin-top: 20px; gap: 10px 20px; }
+      .h-meta div { font-size: 12.5px; }
+      /* El portatil no cabe en el hero del movil sin comerse el titular:
+         se ve en la seccion de demo, que es donde manda. */
+      .hero .port { display: none; }
+
+      .s02 .foto { background-image: url(assets/coach-cae-movil.webp); }
+      .s03 .foto { background-image: url(assets/coach-interes-movil.webp); }
+      .s04 .foto { background-image: url(assets/coach-funciona-movil.webp); }
+      .s05 .foto { background-image: url(assets/coach-demo-movil.webp); }
+      .s06 .foto { background-image: url(assets/coach-sistema-movil.webp); }
+      .s07 .foto { background-image: url(assets/coach-limite-movil.webp); }
+      .s08 .foto { background-image: url(assets/coach-proceso-movil.webp); }
+      .s09 .foto { background-image: url(assets/coach-equipo-movil.webp); }
+      .s11 .foto { background-image: url(assets/coach-cierre-movil.webp); }
+      .pie .foto { background-image: url(assets/coach-pie-movil.webp); }
+      .s02 .velo, .s03 .velo, .s05 .velo { background: linear-gradient(180deg, rgba(5,9,14,.62) 0%, rgba(5,9,14,.86) 34%, rgba(5,9,14,.93) 100%); }
+      .s06 .velo { background: linear-gradient(180deg, rgba(5,11,20,.70) 0%, rgba(5,11,20,.88) 40%, rgba(5,11,20,.93) 100%); }
+      .s11 .velo { background: linear-gradient(180deg, rgba(4,8,13,.52) 0%, rgba(4,8,13,.30) 26%, rgba(4,8,13,.80) 62%, rgba(4,8,13,.94) 100%); }
+
+      .cai { grid-template-columns: 30px 1fr; row-gap: 6px; padding: 13px 15px; }
+      .cai span { grid-column: 2; } .cai > svg { display: none; }
+      .cai em { grid-column: 2; text-align: left; font-size: 12.5px; }
+      .dos { grid-template-columns: 1fr; }
+      .nota { display: none; }
+
+      .flujo { display: block; }
+      .enl, .enl + .enl { display: none; }
+      .nucleo { height: 72px; margin: 16px 0; }
+      .pasos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .paso { padding: 14px 10px 16px; }
+
+      /* El diagrama en una columna estrecha no se lee: pasa a lista. */
+      .diag { aspect-ratio: auto; container-type: normal; --d: 1px; display: flex; flex-direction: column; gap: 10px; margin-top: 26px; }
+      .diag > * { position: static; }
+      .diag svg.cables { display: none; }
+      .pz, .nuc { left: auto !important; top: auto !important; width: auto !important; height: auto !important; }
+      .nuc { order: -1; padding: 16px; font-size: 20px; }
+      .pz .logos i { width: 26px; height: 26px; }
+
+      .lim { grid-template-columns: 1fr; }
+      .proc { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
+      .pr::after { display: none; }
+      .caras { margin-top: 26px; }
+      .gar { margin-top: 30px; }
+      .s09 .h2 { font-size: 28px; }
+
+      .pie .caja { display: block; }
+      .pie-desc { margin-top: 8px; }
+      .pie-enl { margin: 16px 0 0; gap: 20px; flex-wrap: wrap; }
+      .pie-cr { margin-top: 14px; }
+    }
+
+    /* Pantallas de movil bajas: soltar el alto del hero antes que apretar
+       el texto hasta hacerlo ilegible. */
+    @media (max-width: 860px) and (max-height: 640px) {
+      .hero { height: auto; min-height: 0; padding-bottom: 46px; }
+      .h-cuerpo { padding-top: 40px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- =================== 01 · HERO =================== -->
+  <header class="hero">
+    <div class="foto suave" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+
+    <nav class="h-nav" aria-label="Principal">
+      <div class="h-marca">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 2.6a1 1 0 011.8-.3L11.4 4h1.2l1.1-1.7a1 1 0 111.7 1.1L14.9 4H16a4 4 0 014 4v7a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h1.1L8.4 3.4a1 1 0 01.1-.8zM9 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM9 15h6v1.4H9V15z"/></svg>
+        EasyRobots
+      </div>
+      <!-- La ficha pone "Resultados" en el menu, pero esta landing no tiene
+           seccion de resultados: no hay ningun coach como cliente y el unico
+           caso publicable es el de una clinica. Un enlace que no lleva a
+           ningun sitio resta mas que su ausencia, asi que va "Demo". -->
+      <div class="h-links">
+        <a href="#donde">Para qui&eacute;n es</a>
+        <a href="#como">C&oacute;mo funciona</a>
+        <a href="#demo">Demo</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#garantia">Garant&iacute;a</a>
+      </div>
+      <a class="btn btn-bl h-navbtn" href="#hablemos">Reservar llamada</a>
+    </nav>
+
+    <div class="h-cuerpo">
+      <div class="h-col" id="contenido">
+        <div class="kick cl">Para coaches e infoproductores</div>
+        <h1 class="h-t">Esto no vende por ti.<br>Se ocupa de que el<br>que dice que s&iacute; llegue<br>a tu llamada.</h1>
+        <p class="h-sub">Entre el &laquo;s&iacute;, me interesa&raquo; y la llamada hay un tramo entero donde muchas oportunidades se enfr&iacute;an.</p>
+        <a class="btn btn-bl h-btn" href="#hablemos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+          Reservar llamada
+        </a>
+        <div class="h-meta">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v9M7.5 12h9"/></svg>Multi-canal</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8.6 12.3l2.3 2.3 4.5-4.8"/></svg>Se integra con tu stack</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 9.2h6M9 12h6M9 14.8h3.6"/></svg>Sin cambiar tu forma de trabajar</div>
+        </div>
+      </div>
+
+      <!-- La conversacion y las horas son un ejemplo: no son un pantallazo
+           de ningun cliente. Por eso lleva la etiqueta. -->
+      <div class="port" aria-label="Ejemplo de conversaci&oacute;n que termina en una llamada reservada">
+        <div class="port-pant">
+          <div class="pt-chat">
+            <div class="pt-cab"><b>Instagram</b><i class="chip">Ejemplo</i></div>
+            <div class="bu"><u>MC</u><p>&iexcl;Hola! Me interesa tu programa. &iquest;Me puedes dar m&aacute;s informaci&oacute;n?</p></div>
+            <div class="bu yo"><p>&iexcl;Claro! Te cuento: es un programa de 12 semanas y trabajamos juntos cada semana.</p></div>
+            <div class="bu"><u>MC</u><p>Perfecto, me interesa. &iquest;Hablamos por llamada?</p></div>
+            <div class="bu yo"><p>Genial. Te dejo un par de opciones para esta semana:</p></div>
+          </div>
+          <div class="pt-res">
+            <b>Reservar llamada</b>
+            <div class="pt-dia">Mar, 14 Ene
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+            </div>
+            <div class="pt-h"><span>10:00</span><span>11:00</span><span class="on">12:00</span><span>16:00</span></div>
+            <div class="pt-conf">Confirmar cita</div>
+          </div>
+        </div>
+        <div class="port-base" aria-hidden="true"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =================== 02 · DONDE SE CAE =================== -->
+  <section class="sec s02" id="donde">
+    <div class="foto suave" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja oscura">
+      <div class="col">
+        <div class="kick cl">D&oacute;nde se cae</div>
+        <h2 class="h2">No se caen los fr&iacute;os.<br>Se cae el que ya hab&iacute;a<br>levantado la mano.</h2>
+        <p class="p">Cuatro ca&iacute;das seguidas, y en las cuatro hay alguien que ya te hab&iacute;a dicho que s&iacute;: empieza la aplicaci&oacute;n y no la termina, la termina y no reserva hora, reserva y no se presenta, o se presenta, no compra ese d&iacute;a y nadie vuelve a escribirle.</p>
+        <p class="p">Y se cae por algo muy poco &eacute;pico: porque el seguimiento depende de que alguien se acuerde, mientras est&aacute;s grabando, en sesi&oacute;n o de lanzamiento.</p>
+
+        <div class="caidas">
+          <div class="cai">
+            <i class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
+            <b>Escribe</b>
+            <span>Pregunta precio, temario o facilidades de pago</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
+            <em>Contestas cuando puedes</em>
+          </div>
+          <div class="cai">
+            <i class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 3.5h12v17H6z"/><path d="M9 8h6M9 11.5h6M9 15h3.5"/></svg></i>
+            <b>Aplicaci&oacute;n</b>
+            <span>Empieza el formulario y lo deja a medias</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
+            <em>Nadie lo retoma</em>
+          </div>
+          <div class="cai">
+            <i class="a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></i>
+            <b>Agenda</b>
+            <span>Quiere hablar, pero no llega a reservar hora</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
+            <em>Se queda en el chat</em>
+          </div>
+          <div class="cai">
+            <i class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></i>
+            <b>No-show</b>
+            <span>Reserva y no aparece</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
+            <em>Hueco perdido</em>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 03 · EL MISMO INTERES =================== -->
+  <section class="sec s03">
+    <div class="foto suave" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja oscura">
+      <div>
+        <h2 class="h2">El mismo inter&eacute;s.<br>Dos finales muy distintos.</h2>
+        <p class="p">La diferencia no es tener m&aacute;s leads.<br>Es lo que pasa despu&eacute;s.</p>
+
+        <div class="dos">
+          <div class="lista neg">
+            <h3><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Sin EasyRobots</h3>
+            <ul>
+              <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Mensajes que se quedan sin responder</li>
+              <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Personas que no completan la aplicaci&oacute;n</li>
+              <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>No-shows en las llamadas</li>
+              <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Seguimiento manual y poco consistente</li>
+              <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Oportunidades que se enfr&iacute;an</li>
+            </ul>
+          </div>
+          <div class="lista pos">
+            <h3><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Con EasyRobots</h3>
+            <ul>
+              <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Responde en todos tus canales</li>
+              <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Acompa&ntilde;a hasta la llamada</li>
+              <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Reduce los no-shows</li>
+              <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Hace el seguimiento por ti</li>
+              <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>M&aacute;s personas en tu programa</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- La nota a mano del boceto, sobre la foto del coach grabando. -->
+      <div class="nota" aria-hidden="true">
+        <b>T&uacute; a lo<br>importante.</b>
+        <svg viewBox="0 0 54 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M48 2C46 14 38 24 24 28M24 28l8 1M24 28l5-6"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 04 · ASI FUNCIONA =================== -->
+  <section class="sec s04" id="como">
+    <div class="foto suave" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja clara">
+      <h2 class="h2">As&iacute; funciona.</h2>
+      <p class="p">Todas las conversaciones entran en un mismo sistema,<br>y cada persona avanza hasta la llamada.</p>
+
+      <div class="flujo">
+        <div class="canales">
+          <div class="canal"><i class="mk ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></i>Instagram</div>
+          <div class="canal"><i class="mk wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>WhatsApp</div>
+          <div class="canal"><i class="mk we"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M3.5 9h17M7.5 12.5h9M7.5 16h5"/></svg></i>Formulario web</div>
+          <div class="canal"><i class="mk gm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M3 7.5l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></i>Gmail</div>
+          <div class="canal"><i class="mk ot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 12h.01M12 12h.01M18 12h.01"/></svg></i>Otras fuentes</div>
+        </div>
+        <div class="enl" aria-hidden="true"></div>
+        <div class="nucleo">EasyRobots</div>
+        <div class="enl" aria-hidden="true"></div>
+        <div class="pasos">
+          <div class="paso">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20.5 11.6a7.6 7.6 0 01-11.1 6.8L4 19.8l1.5-4.9A7.6 7.6 0 1120.5 11.6z"/></svg></i>
+            <b>Mensaje</b><span>Responde y conversa</span>
+          </div>
+          <div class="paso">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 5h16l-6.2 7.3V19l-3.6 1.6v-8.3z"/></svg></i>
+            <b>Cualificaci&oacute;n</b><span>Filtra y prioriza</span>
+          </div>
+          <div class="paso">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9.4 14.2l2 2 3.4-3.6"/></svg></i>
+            <b>Agenda</b><span>Reserva la llamada</span>
+          </div>
+          <div class="paso">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 10a6 6 0 1112 0c0 4 1.6 5.6 1.6 5.6H4.4S6 14 6 10z"/><path d="M10 18.5a2.2 2.2 0 004 0"/></svg></i>
+            <b>Recordatorios</b><span>Evita no-shows</span>
+          </div>
+          <div class="paso">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 12a8 8 0 11-2.4-5.7"/><path d="M20 4v4h-4"/></svg></i>
+            <b>Seguimiento</b><span>Recupera al que no se cae</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 05 · DEMO =================== -->
+  <section class="sec s05" id="demo">
+    <div class="foto suave" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja oscura">
+      <div>
+        <h2 class="h2">De un mensaje a medianoche<br>a una llamada que ocurre.</h2>
+        <p class="p">Tu agente conversa, responde, resuelve dudas, cualifica y agenda la llamada en tu calendario.</p>
+        <div class="btns">
+          <!-- Aun no hay video de demostracion grabado: el boton lleva a la
+               llamada, que es donde hoy se ensena el sistema. Cuando este
+               el video, se cambia el href por el del reproductor. -->
+          <a class="btn btn-bl" href="#hablemos">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+            Ver una demostraci&oacute;n real
+          </a>
+          <a class="btn btn-az" href="#hablemos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+            Reservar llamada
+          </a>
+        </div>
+      </div>
+
+      <div class="port" aria-label="Ejemplo de conversaci&oacute;n que termina en una llamada reservada">
+        <div class="port-pant">
+          <div class="pt-chat">
+            <div class="pt-cab"><b>WhatsApp &middot; 00:14</b><i class="chip">Ejemplo</i></div>
+            <div class="bu"><u>DR</u><p>Vi tu formaci&oacute;n. &iquest;Sigue abierta la pr&oacute;xima edici&oacute;n?</p></div>
+            <div class="bu yo"><p>S&iacute;, quedan plazas. &iquest;Qu&eacute; es lo que m&aacute;s te interesa resolver ahora mismo?</p></div>
+            <div class="bu"><u>DR</u><p>Conseguir clientes de forma m&aacute;s constante.</p></div>
+            <div class="bu yo"><p>Entonces encaja. Lo vemos en una llamada de 15 minutos:</p></div>
+          </div>
+          <div class="pt-res">
+            <b>Reservar llamada</b>
+            <div class="pt-dia">Mi&eacute;, 15 Ene
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+            </div>
+            <div class="pt-h"><span>09:30</span><span class="on">11:00</span><span>13:00</span><span>17:30</span></div>
+            <div class="pt-conf">Confirmar cita</div>
+          </div>
+        </div>
+        <div class="port-base" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 06 · SISTEMA COMPLETO =================== -->
+  <section class="sec s06" id="sistema">
+    <div class="foto suave" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja oscura">
+      <div>
+        <h2 class="h2">Un sistema completo,<br>que se adapta a ti.</h2>
+        <p class="p">Puedes usar todo el sistema o solo las piezas que necesites.<br>Se integra con tus herramientas actuales.</p>
+        <a class="btn btn-bl" href="#hablemos" style="margin-top:30px">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+          Ver c&oacute;mo se integra
+        </a>
+      </div>
+
+      <div class="diag">
+        <svg class="cables" viewBox="0 0 790 370" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="cb" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#0260AC"/><stop offset="1" stop-color="#00A8FF"/>
+            </linearGradient>
+          </defs>
+          <g stroke="url(#cb)" stroke-width="1.6" opacity=".85">
+            <path d="M376 170C300 150 240 110 190 86"/>
+            <path d="M409 136C409 110 412 96 414 74"/>
+            <path d="M442 160C520 128 580 100 640 76"/>
+            <path d="M322 185C280 185 250 186 216 186"/>
+            <path d="M496 185C540 185 570 186 604 186"/>
+            <path d="M380 234C340 258 310 272 280 282"/>
+            <path d="M440 234C470 254 490 268 510 278"/>
+          </g>
+          <g fill="#00A8FF">
+            <circle cx="190" cy="86" r="3"/><circle cx="414" cy="74" r="3"/><circle cx="640" cy="76" r="3"/>
+            <circle cx="216" cy="186" r="3"/><circle cx="604" cy="186" r="3"/>
+            <circle cx="280" cy="282" r="3"/><circle cx="510" cy="278" r="3"/>
+          </g>
+        </svg>
+
+        <div class="pz p1">
+          <div class="cab">
+            <span class="ic" style="background:#2A3342"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 3a4 4 0 014 4v4a4 4 0 01-8 0V7a4 4 0 014-4z"/><path d="M5.5 11.5a6.5 6.5 0 0013 0M12 18v3"/></svg></span>
+            <b>Conversaci&oacute;n<br>multicanal</b>
+          </div>
+          <div class="logos">
+            <i style="background:linear-gradient(45deg,#F9A03C,#E1306C 55%,#8134AF)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/></svg></i>
+            <i style="background:#25D366"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
+            <i style="background:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="#EA4335" stroke-width="2.1" stroke-linecap="round"><path d="M3 7.5l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></i>
+            <i style="background:#1E70F0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M3 7.5l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></i>
+          </div>
+        </div>
+
+        <div class="pz p2">
+          <span class="ic" style="background:#1E3A8A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 5h16l-6.2 7.3V19l-3.6 1.6v-8.3z"/></svg></span>
+          <b>Cualificaci&oacute;n<br>de leads</b>
+        </div>
+
+        <div class="pz p3">
+          <span class="ic" style="background:#1D4ED8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9.4 14.2l2 2 3.4-3.6"/></svg></span>
+          <b>Agendamiento<br>de llamadas</b>
+        </div>
+
+        <div class="pz p4">
+          <span class="ic" style="background:#13713F"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 12a8 8 0 11-2.4-5.7"/><path d="M20 4v4h-4"/></svg></span>
+          <b>Seguimiento<br>autom&aacute;tico</b>
+        </div>
+
+        <div class="nuc">EasyRobots</div>
+
+        <div class="pz p5">
+          <span class="ic" style="background:#9A1C3A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 10a6 6 0 1112 0c0 4 1.6 5.6 1.6 5.6H4.4S6 14 6 10z"/><path d="M10 18.5a2.2 2.2 0 004 0"/></svg></span>
+          <b>Recordatorios<br>y no-shows</b>
+        </div>
+
+        <div class="pz p6">
+          <div class="cab">
+            <span class="ic" style="background:#2A3342"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10 7H7a5 5 0 000 10h3M14 7h3a5 5 0 010 10h-3M8.5 12h7"/></svg></span>
+            <b>Integraci&oacute;n<br>con tu stack</b>
+          </div>
+          <div class="logos">
+            <i style="background:#FB5328"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 6.5v4.2M15 13.3v4.2"/><circle cx="15" cy="12" r="3.6"/><circle cx="15" cy="5" r="1.6"/><circle cx="15" cy="19" r="1.6"/><path d="M11.4 12H7"/><circle cx="6" cy="12" r="1.6"/></svg></i>
+            <i style="background:#111317"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5.5 5.5h13v13h-13z"/><path d="M8.6 15V9l6.8 6V9"/></svg></i>
+            <i style="background:#2EB67D"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M9 4.5v9M15 10.5v9M4.5 9h9M10.5 15h9"/></svg></i>
+            <i style="background:#2563EB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M12 4.5v15M4.5 12h15"/></svg></i>
+          </div>
+        </div>
+
+        <div class="pz p7">
+          <span class="ic" style="background:#0E5FAF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 19V11M12 19V5M19 19v-6"/></svg></span>
+          <b>Reportes<br>y control</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 07 · EL LIMITE =================== -->
+  <section class="sec s07">
+    <div class="foto suave" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja clara">
+      <div class="kick">El l&iacute;mite</div>
+      <h2 class="h2">Tu programa lo vendes t&uacute;.<br>Eso no se toca.</h2>
+      <p class="p">Un programa de cuatro cifras se vende hablando. Por eso el<br>objetivo de todo esto es la llamada, no la venta.</p>
+
+      <div class="lim">
+        <div class="cuad v">
+          <h3>De esto se ocupa el sistema</h3>
+          <ul>
+            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Contestar a la hora que sea, por el canal que sea.</li>
+            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Resolver las tres preguntas de siempre.</li>
+            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Cualificar con los criterios que t&uacute; pongas.</li>
+            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Agendar, recordar y recuperar al que no aparece.</li>
+            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Retomar la aplicaci&oacute;n que qued&oacute; a medias.</li>
+            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Dejar cada lead etiquetado y avisarte.</li>
+          </ul>
+        </div>
+        <div class="cuad r">
+          <h3>Esto sigue siendo tuyo</h3>
+          <ul>
+            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>La llamada de venta.</li>
+            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>El criterio sobre qui&eacute;n encaja y qui&eacute;n no.</li>
+            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>La relaci&oacute;n con tus alumnos.</li>
+            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Tu forma de contar lo que haces.</li>
+            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Cualquier conversaci&oacute;n delicada.</li>
+            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Y el tono: se configura contigo y se ajusta hasta que suene a ti.</li>
+          </ul>
+        </div>
+        <p class="cierre-nota">Cuando el sistema no sabe algo, no improvisa: lo dice y te lo pasa. En una marca personal, inventarse una respuesta cuesta m&aacute;s caro que no contestar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 08 · COMO TRABAJAMOS =================== -->
+  <section class="sec s08">
+    <div class="foto suave" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja clara">
+      <div>
+        <div class="kick">C&oacute;mo trabajamos</div>
+        <h2 class="h2">Analizamos, dise&ntilde;amos,<br>construimos y mantenemos.</h2>
+        <p class="p">Un proceso claro, sin complicaciones y<br>adaptado a tu negocio.</p>
+      </div>
+      <div class="proc">
+        <div class="pr"><b>01</b><strong>Analizamos</strong><span>por d&oacute;nde llegan tus leads.</span></div>
+        <div class="pr"><b>02</b><strong>Dise&ntilde;amos</strong><span>las respuestas y criterios.</span></div>
+        <div class="pr"><b>03</b><strong>Construimos</strong><span>sobre tus herramientas.</span></div>
+        <div class="pr"><b>04</b><strong>Probamos</strong><span>y ajustamos contigo.</span></div>
+        <div class="pr"><b>05</b><strong>Mantenemos</strong><span>y optimizamos cada mes.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 09 + 10 · QUIENES SOMOS Y GARANTIA ============ -->
+  <section class="sec s09" id="equipo">
+    <div class="foto suave" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja clara">
+      <div>
+        <div class="kick">Qui&eacute;nes somos</div>
+        <h2 class="h2">No somos una centralita.</h2>
+        <p class="p">Somos las personas que dise&ntilde;an, construyen y mantienen tu sistema.</p>
+        <p class="p">Especializados en automatizaci&oacute;n para negocios de coaching e infoproductos.</p>
+      </div>
+
+      <!-- El boceto pone dos retratos generados con IA. Va la foto real de
+           Guillermo; el hueco de Anais sigue vacio hasta que pase la suya. -->
+      <div class="caras">
+        <div class="cara">
+          <div class="foto-r"><img src="assets/guille.webp" alt="Guillermo, cofundador de EasyRobots" loading="lazy" decoding="async" width="300" height="300"></div>
+          <b>Guillermo</b><span>Co-fundador</span>
+        </div>
+        <div class="cara">
+          <div class="hueco" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="3.6"/><path d="M4.8 20a7.4 7.4 0 0114.4 0"/></svg>
+          </div>
+          <b>Ana&iacute;s</b><span>Co-fundadora</span>
+        </div>
+      </div>
+
+      <div class="gar" id="garantia">
+        <h2 class="h2">Nuestra garant&iacute;a.</h2>
+        <p class="p">Si despu&eacute;s de la implementaci&oacute;n no ves una mejora clara en la gesti&oacute;n y seguimiento de tus leads, seguimos trabajando contigo sin coste adicional hasta conseguirlo.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.4 2"/></svg>14 d&iacute;as para comprobar que encaja con tu forma de trabajar.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M8.6 12.3l2.3 2.3 4.5-4.8"/></svg>Si no hace lo que hemos definido o no encaja, lo paramos y te devolvemos el dinero.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M8.6 12.3l2.3 2.3 4.5-4.8"/></svg>Primer mes de mantenimiento incluido.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 8.2v4.4M12 15.6h.01"/></svg>Tu <strong>tranquilidad</strong> tambi&eacute;n es parte del servicio.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 11 · CIERRE =================== -->
+  <section class="sec s11" id="hablemos">
+    <div class="foto" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja oscura">
+      <h2 class="h2">Menos oportunidades perdidas. M&aacute;s personas en tu programa.</h2>
+      <p class="p">Hablemos 15 minutos y vemos c&oacute;mo puede funcionar en tu caso.</p>
+      <!-- Pendiente: enganchar el calendario de GHL a este boton. -->
+      <a class="btn btn-bl" href="#hablemos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+        Reservar llamada
+      </a>
+    </div>
+  </section>
+
+  <!-- =================== 12 · PIE =================== -->
+  <footer class="pie">
+    <div class="foto" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja">
+      <div class="pie-marca">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 2.6a1 1 0 011.8-.3L11.4 4h1.2l1.1-1.7a1 1 0 111.7 1.1L14.9 4H16a4 4 0 014 4v7a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h1.1L8.4 3.4a1 1 0 01.1-.8zM9 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM9 15h6v1.4H9V15z"/></svg>
+        EasyRobots
+      </div>
+      <div class="pie-desc">Sistemas de IA para coaches e infoproductores.</div>
+      <!-- El boceto separa Privacidad, Cookies y Aviso legal. En esta web va
+           un solo enlace: privacy.html ya recoge dentro el aviso legal y las
+           cookies, y tres enlaces al mismo sitio confunden. -->
+      <div class="pie-enl">
+        <a href="privacy.html">Privacidad</a>
+        <a href="https://www.instagram.com/easyrobots.ai" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="pie-cr">&copy; 2026 EasyRobots. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+</body>
+
+</html>

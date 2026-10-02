@@ -286,15 +286,123 @@ llamativos.
   hace falta ningún token. **Nunca meter un token dentro de la URL de `git pull`
   o `git push`**: queda escrito en `.git/logs/HEAD`. Ya pasó una vez.
 
-## Páginas
+## Páginas y URLs (reorganizado el 2026-10-02)
 
-- `src/easyrobots-clinicas-premium-v6.html` — **la buena, la que se trabaja hoy**.
-  Landing de clínicas, un solo archivo con su CSS y su JS dentro.
-- `src/index.html` — la web vieja (1,1 MB). `v4`, `estilo-a/b/c`, `hybrid`,
-  `preview-estilos*`, `*-prueba` son propuestas visuales ya descartadas o
-  superadas; no tocar salvo que se pidan expresamente.
-- `src/guias/` — lead magnets. `src/lanzamientos/` — landings de coaching y
-  ecommerce.
+Hasta esta fecha convivían la página buena de cada nicho y tres o cuatro
+versiones anteriores suyas, todas en la raíz y todas con nombre `prueba-*`.
+Ahora **cada nicho tiene una sola página viva, en su propia carpeta**, y todo lo
+demás está en `src/borradores/` con el sufijo `-version-antigua`.
+
+| URL | Archivo | Qué es |
+|---|---|---|
+| `/` | `src/index.html` | Home de agencia (nivel 1). Era `prueba-index-v2.html` |
+| `/estetica/` | `src/estetica/index.html` | Era `prueba-clinicas-premium-v2.html` |
+| `/dental/` | `src/dental/index.html` | Era `prueba-dental-v2.html` |
+| `/inmobiliarias/` | `src/inmobiliarias/index.html` | Era `prueba-inmobiliarias-v3.html` |
+| `/concesionarios/` | `src/concesionarios/index.html` | Era `prueba-concesionarios-v2.html` |
+| `/ecommerce/` | `src/ecommerce/index.html` | Era `prueba-ecommerce-v2.html` |
+| `/coaching/` | `src/coaching/index.html` | Era `prueba-coaching.html`. **Sigue con `noindex`**: la v2 está a medias |
+
+**Por qué carpetas y no `estetica.html`:** nginx sirve `carpeta/index.html` con
+solo pedir `/carpeta/`, sin tocar ninguna configuración. La URL queda corta, sin
+`.html`, y se puede poner en un anuncio o decir por teléfono. El precio es que
+**las rutas internas pasan a absolutas** (`/assets/…`, no `assets/…`): una
+página dentro de una carpeta ya no tiene el `assets/` al lado. Si se crea una
+página nueva en carpeta, escribir las rutas con barra inicial desde el principio.
+
+Lo que sigue en la raíz y se queda ahí:
+
+- `funnel-*.html` — los seis funnels VSL. **Publicados y con `noindex`**, que es
+  lo correcto: van con tráfico de pago y así no compiten en Google contra la
+  landing del mismo nicho.
+- `privacy.html`, `gracias.html` (ahora `noindex`), `recurso.html`, `robots.txt`,
+  `sitemap.xml`.
+- `src/guias/` — lead magnets. Las guías entregadas pasan a `noindex`: si Google
+  las indexa, se descargan sin dejar el email y el funnel deja de captar. El
+  índice `guias/index.html` sí se deja indexable.
+- `src/lanzamientos/` — landings de coaching y ecommerce.
+- `prueba-coaching-v2.html` — la reconstrucción de coaching, **en curso**. Cuando
+  esté lista sustituye a `src/coaching/index.html` y se le quita el `noindex`.
+
+### Los borradores
+
+`src/borradores/` guarda **todas** las versiones anteriores, ninguna se borró.
+Todas llevan `noindex` y la carpeta está en `Disallow` del `robots.txt`, para que
+no compitan contra la página buena de su nicho. Sus rutas también se pasaron a
+absolutas, así que siguen abriéndose con sus imágenes y sus tipografías.
+
+## Los CTA van todos al calendario (2026-10-02)
+
+Decision de Anais: **ningun boton de la web lleva al funnel**, porque los videos
+de los VSL todavia no estan grabados. Todos abren el calendario de GHL:
+
+    https://api.leadconnectorhq.com/widget/booking/XMQy1fOiMEz88wzKLVPe?nicho=<nicho>
+
+Los funnels **siguen publicados** y accesibles por su URL; lo que se corto es el
+camino desde la web hacia ellos. Cuando esten los videos, se decide si vuelven.
+
+Como esta montado, que conviene no cambiarlo sin motivo:
+
+- El patron es el que ya tenian inmobiliarias y coaching: un **modal** con un
+  `<iframe>` que **se monta al abrir, no en la carga de la pagina**. Asi la web
+  no hace ninguna llamada a GHL hasta que alguien pulsa, que es lo que permite
+  seguir sin banner de cookies.
+- El gancho es el atributo `data-cal` (en inmobiliarias, `data-reserva`). Para
+  añadir un CTA nuevo basta con ponerle el atributo.
+- Los botones **siguen siendo `<button>` y los enlaces siguen siendo `<a>`**. No
+  se convirtieron unos en otros: estas paginas estan medidas al pixel contra su
+  boceto y cambiar la etiqueta cambia los valores por defecto del navegador. Los
+  `<a>` conservan su `href="#hablemos"` y el JS hace `preventDefault()`, asi que
+  sin JavaScript el boton sigue llevando a la seccion de contacto.
+- El `?nicho=` identifica de que landing viene la reserva.
+
+Pendiente: el calendario sigue sin probarse de punta a punta con una reserva real
+que confirme que el evento llega a GHL.
+
+## Fotos de equipo reales (2026-10-02)
+
+Anais paso **las dos fotos, de la misma sesion** (misma pared azul, misma planta,
+mismo panel de listones), asi que el bloque de equipo deja de tener un hueco:
+
+| Archivo | Quien | Origen |
+|---|---|---|
+| `assets/guille.webp` | Guillermo | 900x765, recorte 4:3,4 de la foto nueva |
+| `assets/anais.webp` | Anais | 900x765, mismo recorte |
+| `assets/conce-guillermo.webp` / `conce-anais.webp` | los dos | 552x426, para el hueco apaisado de concesionarios |
+
+Estan puestas en las siete paginas vivas y tambien en las dos landings de
+`lanzamientos/`, que apuntaban a un `anais.png` **que ni existia ni era ella**.
+
+Dos cosas que no cambian:
+
+- **Los retratos de IA siguen prohibidos.** Los antiguos (`nosotros.png`,
+  `nosotros.webp` y el `anais.webp` viejo) estan respaldados en
+  `src/borradores/retratos-ia/`. No volver a ponerlos con nombre y cargo.
+- Se subieron a 900 px de ancho porque los huecos de equipo son **verticales**
+  (288x392, 4:4,8) y con los 560 px de antes la foto se ampliaba y se veia blanda.
+
+## SEO: lo que se dejo montado (2026-10-02)
+
+- **Una sola URL por nicho**, en carpeta, sin `.html` (ver "Paginas y URLs").
+- Las seis paginas buenas pasan a `index, follow, max-image-preview:large`.
+  **Coaching se queda en `noindex`** hasta que su v2 este terminada.
+- Cada pagina lleva `title` propio con la palabra clave de su nivel,
+  `description` de 130-150 caracteres, `canonical` absoluto, Open Graph,
+  Twitter Card y **JSON-LD**: `Organization` + `WebSite` en la home, y
+  `Service` + `BreadcrumbList` en cada nicho.
+- **`og:image` ya existe.** Antes apuntaba a un `assets/social-preview.jpg` que
+  nunca se creo, asi que el enlace salia sin imagen al compartirlo. Ahora hay un
+  `assets/og-<nicho>.jpg` de 1200x630 recortado del propio hero de cada pagina.
+- `sitemap.xml` nuevo, con las seis paginas, `/guias/` y `privacy.html`. **Fuera
+  del sitemap**: borradores, funnels, guias entregadas y coaching.
+- `robots.txt` con `Disallow: /borradores/` y la linea `Sitemap:`.
+- Se respeta la regla de no canibalizar: la home titula por *agencia de IA* y
+  cada vertical por *IA para \<sector\>*. La home no pelea por ninguna de las dos.
+- Un solo `<h1>` por pagina, comprobado.
+
+Lo que **no** se ha tocado y sigue pendiente de verdad: `privacy.html` carga
+Google Analytics sin consentimiento y dice cosas que no son ciertas, y no hay
+Impressum. Eso es lo unico realmente expuesto de la web.
 
 ## Convenciones que ya sigue el código
 
@@ -425,7 +533,7 @@ el 2026-09-26. Se puede escribir en cualquier landing sin condicionarlo.
 ## Landing de inmobiliarias: donde se quedo (2026-09-28)
 
 Se esta reconstruyendo el boceto aprobado como web real. **La pagina viva del
-trabajo es `src/prueba-inmobiliarias-v3.html`.**
+trabajo es `src/inmobiliarias/index.html`.**
 
 | Archivo | Que es |
 |---|---|
@@ -441,14 +549,10 @@ Cada iteracion sale con su sufijo y **no se reescribe la anterior**.
 
 Ojo, que hay dos juegos de landings y es facil trabajar sobre la equivocada:
 
-| Nicho | La buena | La vieja, no tocar |
-|---|---|---|
-| Inmobiliarias | `prueba-inmobiliarias-v3.html` | `inmobiliarias.html`, `prueba-inmobiliarias.html`, `-v1`, `-v2` |
-| Concesionarios | **`prueba-concesionarios-v2.html`** | `concesionarios.html`, `prueba-concesionarios.html` |
-| Dental | **`prueba-dental-v2.html`** | `dental.html`, `prueba-dental.html` |
-| Clinicas esteticas | **`prueba-clinicas-premium-v2.html`** (en prueba) | `easyrobots-clinicas-premium.html` (la v6) sigue siendo la publicada |
-| Coaching | `prueba-coaching.html` | `coaching.html` |
-| Ecommerce | **`prueba-ecommerce-v2.html`** | `ecommerce.html`, `prueba-ecommerce.html` |
+**Desde el 2026-10-02 esto ya no es un problema**: hay una sola página viva por
+nicho, en su carpeta, y todo lo anterior esta en `src/borradores/`. La tabla de
+equivalencias esta en "Paginas y URLs". Lo que sigue abajo describe como se
+construyo cada una y se conserva por las medidas y las decisiones.
 
 Las `prueba-*` del 2026-09-26 son las reescrituras con el copy aprobado tras
 rellenar `docs/capacidades-reales.md`. Las de nombre limpio son de antes y
@@ -583,7 +687,7 @@ el archivo, sin tocar codigo.
 ## Landing de concesionarios v2 (2026-09-29)
 
 Reconstruccion completa contra un boceto nuevo, con el metodo de
-`docs/boceto-a-html.md`. **La pagina viva es `src/prueba-concesionarios-v2.html`.**
+`docs/boceto-a-html.md`. **La pagina viva es `src/concesionarios/index.html`.**
 `prueba-concesionarios.html` se queda de referencia del copy y no se toca.
 
 ### Lo que llego y donde esta
@@ -681,7 +785,7 @@ de las fotos panoramicas para el movil: `conce-hero-movil`, `conce-momentos-movi
 ## Landing de ecommerce v2 (2026-09-29)
 
 Reconstruccion completa contra un boceto nuevo, con el metodo de
-`docs/boceto-a-html.md`. **La pagina viva es `src/prueba-ecommerce-v2.html`.**
+`docs/boceto-a-html.md`. **La pagina viva es `src/ecommerce/index.html`.**
 `prueba-ecommerce.html` se queda de referencia del copy y no se toca.
 
 ### Lo que llego y donde esta
@@ -845,7 +949,7 @@ Lo que pidio y como quedo:
 ## Landing dental v2 (2026-10-02)
 
 Reconstruccion contra un boceto nuevo, con el metodo de `docs/boceto-a-html.md`.
-**La pagina viva es `src/prueba-dental-v2.html`.** `prueba-dental.html` se queda
+**La pagina viva es `src/prueba-dental-v2.html` (hoy `src/dental/index.html`).** `prueba-dental.html` se queda
 de referencia y no se toca.
 
 ### Lo que llego
@@ -918,7 +1022,7 @@ de referencia y no se toca.
 
 ## Home de agencia v2 (2026-10-02)
 
-**La pagina viva es `src/prueba-index-v2.html`.** Es la home de nivel 1
+**La pagina viva es `src/index.html`.** Es la home de nivel 1
 (agencia de IA horizontal). `index.html`, `home.html` y `prueba-home.html` no
 se tocan.
 
@@ -944,7 +1048,7 @@ se tocan.
 ## Landing de clinicas premium v2 (2026-10-02)
 
 Reconstruccion contra un boceto nuevo. **La pagina viva es
-`src/prueba-clinicas-premium-v2.html`**, con `noindex`. La v6
+`src/estetica/index.html`**, con `noindex`. La v6
 (`easyrobots-clinicas-premium.html`) no se toca.
 
 - Boceto en seis tiras en `src/assets/boceto/clinicas-v2/` (13 secciones).
@@ -1090,8 +1194,8 @@ Sin hacer, y es lo único realmente expuesto:
   EE. UU. y el derecho a reclamar ante la autoridad de control.
 - **No hay Impressum** (§5 DDG). Negocio registrado en Hamburgo: es de lo que más
   se denuncia en Alemania.
-- **`assets/social-preview.jpg` no existe** y el `og:image` apunta ahí, así que
-  el enlace sale sin imagen al compartirlo por WhatsApp o Instagram.
+- ~~**`assets/social-preview.jpg` no existe**~~ **Resuelto el 2026-10-02**: cada
+  página tiene su `assets/og-<nicho>.jpg` de 1200×630 recortado de su hero.
 
 ## Datos de la empresa
 
@@ -1112,8 +1216,8 @@ Sin hacer, y es lo único realmente expuesto:
 |---|---|---|
 | Caso Pilar, retrato | `assets/pilar.webp` | Puesta. Su foto de perfil de IG, recortada 3:2; se lee el sello PhiBrows, que suma credibilidad |
 | Caso Pilar, trabajo | `assets/cejas.webp` | Puesta. Cejas de una clienta, recortada quitando la barra del perfil de Instagram |
-| Equipo, Guillermo | `assets/guille.webp` | Puesta. 4:3.4. El cuadro va con fondo `#0B0B0D` porque la foto es un recorte sobre negro |
-| Equipo, Anaís | — | **Vacío a propósito.** Falta una foto real suya |
+| Equipo, Guillermo | `assets/guille.webp` | **Sustituida el 2026-10-02** por la foto nueva de la sesión de estudio, a 900×765 |
+| Equipo, Anaís | `assets/anais.webp` | **Puesta el 2026-10-02.** Misma sesión que la de Guillermo. El hueco ya no existe en ninguna página |
 
 Descartada una captura de Pilar trabajando en directo en TVE: resolución
 demasiado baja para ponerla al lado de las otras dos.
@@ -1124,7 +1228,9 @@ demasiado baja para ponerla al lado de las otras dos.
 IA**: representan a los dos hermanos, pero las caras no son las suyas. No
 ponerlos en el bloque de Equipo ni en ningún sitio donde se etiqueten con nombre
 y cargo. Decisión de Anaís el 2026-09-24: antes un hueco vacío que una cara
-inventada al lado de la foto real de Guillermo. En cuanto alguien les ve en
+inventada al lado de la foto real de Guillermo. **Desde el 2026-10-02 el hueco
+está cubierto con su foto real**, así que estos archivos ya no hacen falta para
+nada; están respaldados en `src/borradores/retratos-ia/`. En cuanto alguien les ve en
 Instagram o en la llamada, no cuadra, y ahí se va la credibilidad del equipo,
 que es medio argumento de venta.
 
@@ -1206,7 +1312,7 @@ Frases que se quedan porque generan confianza, no a pesar de restar:
   paramos y te devolvemos el dinero."**, sin distinguir montaje de mantenimiento.
   Se le planteó expresamente que así redactado se entiende devolución total,
   montaje incluido, y lo confirmó. Va en
-  `src/prueba-inmobiliarias-v3.html`, bloque de garantía.
+  `src/inmobiliarias/index.html`, bloque de garantía.
 
   **Consecuencia, y conviene tenerla presente:** es la única promesa de la web
   que compromete dinero. Si algún día se decide que el montaje no entra, hay que
@@ -1255,27 +1361,29 @@ sin explicar levanta sospecha; con la multiplicación delante, levanta confianza
 
 Suyos:
 
-- Foto real de Anaís para el hueco de Equipo (4:3.4, mismo tratamiento que la de
-  Guillermo).
 - Crear el alias `info@` en el panel de ImprovMX y el "Enviar como" en Gmail.
 
 Míos, cuando lo pida:
 
 - Reescribir `privacy.html` entera y crear el Impressum con la dirección de
   Hamburgo.
-- `assets/social-preview.jpg` (1200×630).
-- Enganchar el calendario de GHL (`api.leadconnectorhq.com/widget/booking/
-  XMQy1fOiMEz88wzKLVPe`) a los botones de reservar.
+- ~~Enganchar el calendario de GHL a los botones de reservar.~~ **Hecho el
+  2026-10-02 en las siete páginas** (ver "Los CTA van todos al calendario").
+  Falta probarlo con una reserva real.
 - Píxel de Meta y comprobar con una reserva de prueba que el evento
   `cita_agendada` llega a GA4.
-- Sustituir los retratos de IA que sigan vivos en `index.html` y en las landings
-  de `lanzamientos/`.
-- Montar la **home de nivel 1** (agencia de IA) con el recorrido de arriba. La
-  v6 **no** se usa como plantilla: es una landing de nicho.
-- Mover la v6 a `/estetica` (o `/microblading`) y quitarle el `noindex` cuando
-  esté lista.
+- ~~Sustituir los retratos de IA de las landings de `lanzamientos/`.~~ **Hecho el
+  2026-10-02**: apuntaban a un `anais.png` que no existía y ahora usan la foto real.
+- ~~Montar la **home de nivel 1**.~~ **Hecha y publicada en `/` el 2026-10-02.**
+- ~~Mover la v6 a `/estetica` y quitarle el `noindex`.~~ **Hecho el 2026-10-02**,
+  aunque en `/estetica/` vive la v2 del boceto nuevo, no la v6.
 - Ir creando las verticales de dental y las que vengan, con el mismo sistema
   visual.
+- **Terminar la de coaching** (`src/prueba-coaching-v2.html`), moverla a
+  `src/coaching/index.html`, quitarle el `noindex` y meterla en el `sitemap.xml`.
+  Hoy `/coaching/` sirve la versión anterior, fuera de Google a propósito.
+- Probar el calendario de GHL con una reserva real desde cada landing y
+  comprobar que el `?nicho=` llega.
 
 ## Documentos del proyecto
 

@@ -1,2 +1,11 @@
 User-agent: *
 Allow: /
+
+# Versiones antiguas de cada web. Se conservan, pero no compiten en Google
+# contra la pagina buena de su nicho.
+Disallow: /borradores/
+
+# Bocetos de trabajo, no son pagina.
+Disallow: /carpetas%20de%20bocetos%20para%20webs/
+
+Sitemap: https://easyrobots-ai.cloud/sitemap.xml

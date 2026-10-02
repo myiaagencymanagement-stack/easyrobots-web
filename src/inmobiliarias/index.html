@@ -1,0 +1,1715 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>IA para inmobiliarias: llamadas, visitas y seguimiento · EasyRobots</title>
+  <meta name="description" content="Automatización e IA para inmobiliarias. Atendemos la llamada, entendemos qué busca el cliente, seguimos por WhatsApp y agendamos la visita con tu equipo.">
+  <link rel="canonical" href="https://easyrobots-ai.cloud/inmobiliarias/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EasyRobots">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="IA para inmobiliarias: llamadas, visitas y seguimiento · EasyRobots">
+  <meta property="og:description" content="Automatización e IA para inmobiliarias. Atendemos la llamada, entendemos qué busca el cliente, seguimos por WhatsApp y agendamos la visita con tu equipo.">
+  <meta property="og:url" content="https://easyrobots-ai.cloud/inmobiliarias/">
+  <meta property="og:image" content="https://easyrobots-ai.cloud/assets/og-inmobiliarias.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IA para inmobiliarias: llamadas, visitas y seguimiento · EasyRobots">
+  <meta name="twitter:description" content="Automatización e IA para inmobiliarias. Atendemos la llamada, entendemos qué busca el cliente, seguimos por WhatsApp y agendamos la visita con tu equipo.">
+  <meta name="twitter:image" content="https://easyrobots-ai.cloud/assets/og-inmobiliarias.jpg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Sistemas de IA para inmobiliarias","description":"Automatización e IA para inmobiliarias. Atendemos la llamada, entendemos qué busca el cliente, seguimos por WhatsApp y agendamos la visita con tu equipo.","serviceType":"Automatización e inteligencia artificial","provider":{"@id":"https://easyrobots-ai.cloud/#organizacion"},"url":"https://easyrobots-ai.cloud/inmobiliarias/","areaServed":{"@type":"Country","name":"España"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://easyrobots-ai.cloud/"},{"@type":"ListItem","position":2,"name":"Inmobiliarias","item":"https://easyrobots-ai.cloud/inmobiliarias/"}]}]}</script>
+
+
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    /* Las tipografias se sirven desde este dominio: cargarlas desde Google
+       enviaba la IP de cada visitante a sus servidores sin permiso. */
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:400; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-400-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:500; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-500-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:600; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-600-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:700; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-700-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:800; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-800-latin.woff2) format('woff2'); }
+
+    /* ==========================================================
+       RECONSTRUCCION DEL BOCETO APROBADO
+       Colores y medidas muestreados del pixel de los nueve PNG,
+       no elegidos a ojo:
+         azul     #007FFE      verde WhatsApp  #18CF75
+         claro    #FCFBF9      panel claro     #F5F5F5
+         oscuro   #060C14      tarjeta hero    #262324
+       En el hero, la unidad --u vale un pixel del boceto (100/866 del
+       ancho), asi que las medidas se escriben tal cual se midieron.
+       ========================================================== */
+    :root {
+      --azul: #007FFE;
+      --azul-claro: #4DA3FF;
+      --verde: #18CF75;
+      --rojo: #E5484D;
+      --tinta: #0A1018;
+      --tinta-2: #3D4854;
+      --gris: #6B7685;
+      --claro: #FCFBF9;
+      --claro-2: #F5F5F5;
+      --linea: #E6E4E0;
+      --oscuro: #0A1220;
+      --oscuro-2: #0C1622;
+      --linea-o: rgba(255,255,255,.11);
+      --f: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { font-family: var(--f); background: var(--claro); color: var(--tinta); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    svg { flex: 0 0 auto; }
+
+    .wrap, .escena { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 5.89%; }
+    .sec { padding: 68px 0; }
+    .osc { background: var(--oscuro); color: #fff; }
+    .kick { font-size: .68rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--azul); margin-bottom: 1.1rem; }
+    .osc .kick { color: var(--azul-claro); }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.16; letter-spacing: -.035em; font-weight: 800; text-wrap: balance; }
+    .lede { font-size: .93rem; color: var(--gris); line-height: 1.62; margin-top: .9rem; max-width: 46ch; }
+    .osc .lede { color: rgba(255,255,255,.66); }
+
+    .btn { display: inline-flex; align-items: center; gap: .55rem; font-family: inherit; font-size: .9rem; font-weight: 600; border: 1px solid transparent; border-radius: 999px; padding: .85rem 1.6rem; cursor: pointer; transition: background .2s, transform .2s, border-color .2s; }
+    .btn:focus-visible { outline: 3px solid var(--azul-claro); outline-offset: 3px; }
+    .btn-azul { background: var(--azul); color: #fff; }
+    .btn-azul:hover { background: #0A6AE0; transform: translateY(-1px); }
+    .btn-linea { border-color: rgba(255,255,255,.42); color: #fff; background: transparent; }
+    .btn-linea:hover { border-color: #fff; transform: translateY(-1px); }
+    .btn svg { width: 15px; height: 15px; }
+
+    .saltar { position: absolute; left: 14px; top: -60px; z-index: 300; background: #fff; color: var(--tinta); padding: .7rem 1.1rem; border-radius: 8px; font-size: .84rem; font-weight: 600; transition: top .2s; }
+    .saltar:focus { top: 14px; }
+
+    /* ======================= 01 · HERO ======================= */
+    .hero { position: relative; overflow: hidden; color: #fff; background: #0C0706; }
+    /* La escena mide como el resto de la pagina, no como la ventana: por eso
+       antes el hero crecia sin freno en pantallas anchas y se desalineaba.
+       Dentro de ella, --u vale un pixel del boceto (866 px de ancho). */
+    .escena {
+      position: relative; padding: 0;
+      aspect-ratio: 866 / 445;
+      container-type: inline-size;
+      --u: 0.11547cqw;
+    }
+    .hero .foto { position: absolute; inset: 0; background: url(/assets/hero-inmobiliarias.webp) 55% center / cover no-repeat; }
+    .hero .velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(6,6,8,.92) 0%, rgba(6,6,8,.78) 22%, rgba(6,6,8,.30) 44%, rgba(6,6,8,.05) 60%, rgba(6,6,8,0) 72%); }
+
+    .h-nav { position: absolute; left: calc(51*var(--u)); right: calc(44*var(--u)); top: calc(12*var(--u)); height: calc(26*var(--u)); display: flex; align-items: center; z-index: 60; }
+    .h-links { display: flex; gap: calc(26*var(--u)); margin-left: calc(55*var(--u)); }
+    .h-links a { font-size: calc(9.5*var(--u)); font-weight: 500; color: rgba(255,255,255,.80); white-space: nowrap; padding: calc(4*var(--u)) 0; }
+    .h-links a:hover { color: #fff; }
+    .h-links a.act { color: #fff; font-weight: 600; position: relative; }
+    .h-links a.act::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: calc(2*var(--u)); background: var(--azul); border-radius: 2px; }
+    .h-navbtn { margin-left: auto; background: var(--azul); color: #fff; border: 0; font-family: inherit; border-radius: 999px; font-size: calc(9.5*var(--u)); font-weight: 600; white-space: nowrap; padding: calc(8*var(--u)) calc(15*var(--u)); display: flex; align-items: center; gap: calc(6*var(--u)); cursor: pointer; }
+    .h-navbtn:hover { background: #0A6AE0; }
+
+    .h-col { position: absolute; left: calc(51*var(--u)); top: calc(99*var(--u)); width: calc(310*var(--u)); z-index: 50; }
+    .h-kick { font-size: calc(8*var(--u)); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #6FB4FF; }
+    .h-t { margin-top: calc(13*var(--u)); font-size: calc(33*var(--u)); line-height: calc(36*var(--u)); font-weight: 800; letter-spacing: -.035em; color: #fff; }
+    .h-t em { font-style: normal; color: var(--azul); }
+    .h-sub { margin-top: calc(11*var(--u)); font-size: calc(11.5*var(--u)); line-height: calc(15*var(--u)); color: rgba(255,255,255,.80); max-width: calc(250*var(--u)); }
+    .h-btns { display: flex; gap: calc(22*var(--u)); margin-top: calc(20*var(--u)); align-items: center; flex-wrap: wrap; }
+    .h-b1 { background: var(--azul); color: #fff; border: 0; font-family: inherit; border-radius: 999px; font-size: calc(11*var(--u)); font-weight: 600; white-space: nowrap; padding: calc(11*var(--u)) calc(20*var(--u)); display: flex; align-items: center; gap: calc(8*var(--u)); cursor: pointer; }
+    .h-b1:hover { background: #0A6AE0; }
+    .h-b2 { border: calc(1.2*var(--u)) solid rgba(255,255,255,.45); color: #fff; border-radius: 999px; font-size: calc(11*var(--u)); font-weight: 600; white-space: nowrap; padding: calc(9*var(--u)) calc(18*var(--u)) calc(9*var(--u)) calc(9*var(--u)); display: flex; align-items: center; gap: calc(9*var(--u)); }
+    .h-b2:hover { border-color: #fff; }
+    .h-play { width: calc(20*var(--u)); height: calc(20*var(--u)); border-radius: 50%; background: #fff; color: #0B0A0C; display: flex; align-items: center; justify-content: center; font-size: calc(8*var(--u)); }
+    .h-meta { display: flex; gap: calc(23*var(--u)); margin-top: calc(22*var(--u)); flex-wrap: wrap; }
+    .h-meta div { display: flex; align-items: center; gap: calc(5*var(--u)); font-size: calc(9*var(--u)); color: rgba(255,255,255,.72); white-space: nowrap; }
+    .h-meta svg { width: calc(11*var(--u)); height: calc(11*var(--u)); }
+
+    .tarj { position: absolute; z-index: 40; background: rgba(38,35,36,.82); border: calc(1*var(--u)) solid rgba(255,255,255,.13); border-radius: calc(13*var(--u)); padding: calc(8*var(--u)) calc(10*var(--u)); display: flex; align-items: center; gap: calc(8*var(--u)); backdrop-filter: blur(calc(6*var(--u))); box-shadow: 0 calc(8*var(--u)) calc(22*var(--u)) rgba(0,0,0,.45); }
+    .tarj .ico { width: calc(24*var(--u)); height: calc(24*var(--u)); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .tarj .ico svg { width: calc(14*var(--u)); height: calc(14*var(--u)); color: #fff; }
+    .tarj b { display: block; font-size: calc(10*var(--u)); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -.01em; }
+    .tarj i { display: block; font-style: normal; font-size: calc(8.2*var(--u)); line-height: 1.3; margin-top: calc(2*var(--u)); }
+    .tarj .hora { color: var(--verde); font-weight: 600; }
+    .tarj .gris { color: rgba(255,255,255,.62); }
+    /* posiciones y alturas medidas del boceto */
+    .ic-verde { background: var(--verde); }
+    .ic-azul { background: var(--azul); }
+
+    /* pantalla medida: x 511-680, y 64-440 -> 169x376 */
+    .h-isla { position: absolute; top: calc(7*var(--u)); left: 50%; transform: translateX(-50%); width: calc(48*var(--u)); height: calc(13*var(--u)); background: #0B0B0D; border-radius: 999px; z-index: 3; }
+    .h-hora { display: flex; justify-content: space-between; padding: calc(7*var(--u)) calc(11*var(--u)) 0; font-size: calc(7.5*var(--u)); font-weight: 600; color: #0B0B0D; }
+    .h-wtop { display: flex; align-items: center; gap: calc(5*var(--u)); padding: calc(6*var(--u)) calc(8*var(--u)); border-bottom: calc(1*var(--u)) solid #E8E6E2; background: #F6F5F3; }
+    .h-wtop .atras { color: var(--azul); font-size: calc(11*var(--u)); line-height: 1; }
+    .h-wtop .av { width: calc(17*var(--u)); height: calc(17*var(--u)); border-radius: 50%; background: #D8E4F5; color: #3A5D8F; display: flex; align-items: center; justify-content: center; font-size: calc(7.5*var(--u)); font-weight: 700; }
+    .h-wtop b { display: block; font-size: calc(8*var(--u)); color: #0B0B0D; font-weight: 600; }
+    .h-wtop span { display: block; font-size: calc(6*var(--u)); color: #7B8794; }
+    .h-chat { background: #EFE9E1; padding: calc(7*var(--u)); display: flex; flex-direction: column; justify-content: flex-end; gap: calc(5*var(--u)); flex: 1; min-height: 0; overflow: hidden; }
+    .h-chat > * { flex: 0 0 auto; }
+    .h-msg { max-width: 88%; font-size: calc(7.6*var(--u)); line-height: 1.38; padding: calc(5*var(--u)) calc(6*var(--u)) calc(3*var(--u)); border-radius: calc(8*var(--u)); color: #101418; box-shadow: 0 calc(1*var(--u)) calc(1*var(--u)) rgba(0,0,0,.08); }
+    .h-msg .hh { display: block; text-align: right; font-size: calc(5.6*var(--u)); color: #97A0A8; margin-top: calc(1*var(--u)); }
+    .h-in { background: #fff; align-self: flex-start; border-top-left-radius: calc(2*var(--u)); }
+    .h-out { background: #DCF8C6; align-self: flex-end; border-top-right-radius: calc(2*var(--u)); }
+    .h-out .hh { color: #6E8C61; }
+    .h-ficha { background: #fff; border-radius: calc(8*var(--u)); overflow: hidden; align-self: flex-start; max-width: 88%; box-shadow: 0 calc(1*var(--u)) calc(1*var(--u)) rgba(0,0,0,.08); }
+    .h-ficha .txt { padding: calc(5*var(--u)) calc(6*var(--u)) calc(4*var(--u)); }
+    .h-ficha b { display: block; font-size: calc(7.6*var(--u)); color: #101418; }
+    .h-ficha span { display: block; font-size: calc(6.6*var(--u)); color: #6B7480; margin-top: calc(1*var(--u)); }
+    .h-ficha strong { display: block; font-size: calc(8.4*var(--u)); color: #101418; margin-top: calc(2*var(--u)); }
+    .h-horas { display: flex; gap: calc(4*var(--u)); margin-top: calc(2*var(--u)); }
+    .h-horas span { background: #fff; color: var(--azul); border-radius: calc(6*var(--u)); font-size: calc(6.6*var(--u)); font-weight: 600; white-space: nowrap; padding: calc(4*var(--u)) calc(6*var(--u)); box-shadow: 0 calc(1*var(--u)) calc(1*var(--u)) rgba(0,0,0,.08); }
+    .h-wfoot { display: flex; align-items: center; gap: calc(5*var(--u)); padding: calc(6*var(--u)) calc(8*var(--u)) calc(8*var(--u)); background: #fff; }
+    .h-wfoot .circ { width: calc(14*var(--u)); height: calc(14*var(--u)); border-radius: 50%; border: calc(1.2*var(--u)) solid var(--azul); }
+    .h-wfoot .caja { flex: 1; background: #F1EFEC; border-radius: 999px; padding: calc(4*var(--u)) calc(8*var(--u)); font-size: calc(7*var(--u)); color: #9AA3AD; }
+
+
+    /* ================== 03 · COMO FUNCIONA ==================
+       Medido sobre la referencia nueva. Su contenedor mide 814 px (el texto
+       arranca en 108 y la ultima tarjeta acaba en 922 dentro de una imagen de
+       1024 de ancho), asi que --u vale un pixel de esa referencia y las
+       medidas van escritas tal cual se midieron:
+         columna de texto 302 u · cuatro tarjetas de 110 u con 24 u de hueco
+         tarjeta 114 u de alto · icono 32 u · radio 10 u · flecha a 45 u
+       Colores del pixel: relleno de tarjeta de #1A202A (arriba izquierda) a
+       #0B121D, borde de arriba #353E49, icono azul #0075FE, verde #06CC65.
+       El container-type va en .cf-top y --u en .cf-grid: las unidades cq
+       dentro de una propiedad del propio contenedor se resolverian contra su
+       padre, no contra el. */
+    .cf-top { container-type: inline-size; }
+    .cf-grid { --u: 0.12285cqw; display: grid; grid-template-columns: calc(302*var(--u)) 1fr; align-items: start; }
+    .cf-txt .kick { font-size: calc(8*var(--u)); letter-spacing: .18em; margin-bottom: calc(15*var(--u)); }
+    .cf-txt h2 { font-size: calc(20*var(--u)); line-height: calc(24*var(--u)); }
+    .cf-txt .lede { font-size: calc(10*var(--u)); line-height: calc(15*var(--u)); margin-top: calc(13*var(--u)); max-width: calc(278*var(--u)); }
+
+    .pasos { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(24*var(--u)); }
+    .paso { position: relative; text-align: center;
+            background: linear-gradient(150deg, #1B212B 0%, #0E151F 45%, #0A111C 100%);
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: calc(10*var(--u));
+            padding: calc(9*var(--u)) calc(12*var(--u)) calc(14*var(--u)); }
+    .paso .ic { width: calc(32*var(--u)); height: calc(32*var(--u)); border-radius: 50%;
+                display: flex; align-items: center; justify-content: center; margin: 0 auto calc(11*var(--u)); }
+    .paso .ic svg { width: calc(17*var(--u)); height: calc(17*var(--u)); }
+    .paso .ic.bl { background: #fff; }
+    .paso .ic.bl svg { width: calc(19*var(--u)); height: calc(19*var(--u)); }
+    .paso .ic.az { background: var(--azul); }
+    .paso .ic.vd { background: #06CC65; }
+    .paso h3 { font-size: calc(10*var(--u)); line-height: calc(12*var(--u)); font-weight: 700; letter-spacing: -.015em; color: #fff; }
+    .paso p { font-size: calc(8.4*var(--u)); line-height: calc(11*var(--u)); color: rgba(255,255,255,.52); margin-top: calc(13*var(--u)); }
+    .paso:not(:last-child)::after { content: "→"; position: absolute; top: calc(45*var(--u)); right: calc(-18*var(--u));
+                                    width: calc(12*var(--u)); text-align: center; line-height: 1;
+                                    font-size: calc(13*var(--u)); color: rgba(255,255,255,.42); }
+
+    /* ==================== 04 · DEMOSTRACION ====================
+       Seccion clara, como en la referencia nueva: antes era oscura y venia
+       pegada a la de arriba. Mismo contenedor de 814 px del boceto:
+         texto 295 u · reproductor 204x120 u · panel 291 u · hueco 12 u
+       El detalle del reproductor se midio sobre el recorte de 926 px, que
+       trae la tarjeta a 298 px de ancho; el factor es 0,6846:
+         circulo 27 u · onda de 145 u centrada a 68 u del borde de arriba
+         pista de 109 u a 101 u · hora a 148 u
+       Las 43 alturas de la onda estan sacadas barra a barra de esa misma
+       imagen, no inventadas: por eso hay silencios en medio.
+       Colores del pixel: fondo #F5F9FC, panel #EEF6FE, linea #E1EBF6,
+       tarjeta #050B13 con borde #15273B, onda #19BDFD, check #12B85A.
+       La conversacion no esta en la referencia; se monta debajo, a lo ancho
+       del reproductor y el panel, con el mismo lenguaje del panel. */
+    /* Las secciones claras iban en blanco liso y se notaba el salto con las
+       oscuras, que si llevan escena. Llevan la misma foto, pero debajo de un
+       lavado blanco del 90-97 %: se intuye la escena y el texto no pierde ni
+       un punto de contraste. La de garantia se queda lisa a proposito. */
+    #demo { color: var(--tinta); padding: 46px 0;
+            background:
+              linear-gradient(180deg, rgba(245,249,252,.975) 0%, rgba(245,249,252,.90) 42%, rgba(245,249,252,.97) 100%),
+              url(/assets/escena-inmobiliaria.webp) center 46% / cover no-repeat; }
+    .demo-grid { container-type: inline-size; }
+    .demo-cols { --u: 0.12285cqw; display: grid;
+                 grid-template-columns: calc(295*var(--u)) calc(204*var(--u)) 1fr;
+                 column-gap: calc(12*var(--u)); row-gap: calc(14*var(--u)); align-items: start; }
+    .escuchar { display: inline-flex; align-items: center; gap: .8rem; background: var(--azul); color: #fff; border: 0; font-family: inherit; border-radius: 999px; padding: .5rem; cursor: pointer; margin-top: 1.7rem; font-size: .92rem; font-weight: 600; }
+    .escuchar:hover { background: #0A6AE0; }
+    .escuchar .rd { width: 38px; height: 38px; border-radius: 50%; background: #fff; color: var(--azul); display: flex; align-items: center; justify-content: center; font-size: .8rem; }
+    .escuchar .dur { background: rgba(0,0,0,.22); border-radius: 999px; padding: .35rem .8rem; font-size: .8rem; font-variant-numeric: tabular-nums; margin-right: .3rem; }
+    .pie-audio { font-size: .78rem; color: var(--gris); margin-top: 1rem; }
+    /* La demo enseñaba el sistema pero no pedia nada. Aqui se dice que lo
+       que se oye es un ejemplo y que el suyo se monta a medida, que es lo
+       que de verdad se vende. */
+    .demo-cta { grid-column: 1; grid-row: 2; padding-top: calc(4*var(--u)); }
+    .demo-cta p { font-size: .9rem; line-height: 1.55; color: var(--tinta-2); max-width: 34ch; }
+    .demo-cta .btn { margin-top: 1.1rem; }
+    .demo-cta span { display: block; font-size: .78rem; color: var(--gris); margin-top: .8rem; }
+
+    /* --- el reproductor --- */
+    .repro { position: relative; height: calc(120*var(--u)); border-radius: calc(10*var(--u));
+             border: 1px solid #15273B;
+             background: radial-gradient(115% 95% at 44% 44%, #16283C 0%, #0A1320 46%, #050B13 100%);
+             box-shadow: 0 calc(6*var(--u)) calc(18*var(--u)) rgba(10,18,32,.18); }
+    .repro-play { position: absolute; left: calc(10*var(--u)); top: calc(55*var(--u));
+                  width: calc(27*var(--u)); height: calc(27*var(--u)); border-radius: 50%;
+                  border: 0; padding: 0; background: #fff; cursor: pointer;
+                  display: flex; align-items: center; justify-content: center; }
+    .repro-play svg { width: calc(11*var(--u)); height: calc(11*var(--u)); color: var(--azul); margin-left: calc(1.5*var(--u)); }
+    .onda { position: absolute; left: calc(44.5*var(--u)); width: calc(145*var(--u));
+            top: calc(50.5*var(--u)); height: calc(36*var(--u));
+            display: flex; align-items: center; gap: calc(1.25*var(--u)); }
+    .onda i { flex: 1; min-height: calc(1.5*var(--u)); border-radius: calc(1*var(--u)); background: #19BDFD; }
+    .repro-pie { position: absolute; left: calc(13*var(--u)); right: calc(14*var(--u));
+                 top: calc(96*var(--u)); display: flex; align-items: center; }
+    .repro-pie .mini { display: none; }
+    .repro-pie .mini svg { width: 100%; height: 100%; }
+    .repro-pie .pista { flex: 1; height: calc(2*var(--u)); border-radius: 999px; margin: 0 calc(10*var(--u)) 0 0;
+                        background: linear-gradient(90deg, #A6ACB8 0%, #5C6470 38%, #3E4550 100%); }
+    .repro-pie .hora { font-size: calc(8*var(--u)); color: rgba(255,255,255,.88); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    /* --- el panel de lo recogido --- */
+    .recogida { background: #EEF6FE; border-radius: calc(10*var(--u)); padding: calc(14*var(--u)) calc(16*var(--u)); }
+    .recogida h3 { font-size: calc(10*var(--u)); font-weight: 700; color: var(--tinta); padding-bottom: calc(8*var(--u)); border-bottom: 1px solid #E1EBF6; }
+    .recogida ul { list-style: none; }
+    .recogida li { display: grid; grid-template-columns: calc(22*var(--u)) calc(112*var(--u)) 1fr;
+                   align-items: start; gap: 0; padding: calc(5*var(--u)) 0;
+                   border-bottom: 1px solid #E1EBF6; }
+    .recogida li:last-child { border-bottom: 0; }
+    .recogida li svg { width: calc(9*var(--u)); height: calc(9*var(--u)); color: #12B85A; margin-top: calc(1.5*var(--u)); }
+    .recogida .k { font-size: calc(9*var(--u)); line-height: calc(12*var(--u)); color: #5C6980; }
+    .recogida .v { font-size: calc(9*var(--u)); line-height: calc(12*var(--u)); color: #2E323C; font-weight: 500; }
+    .recogida .v.ok { color: #0F9E52; font-weight: 700; }
+
+    /* --- la conversacion, debajo del reproductor y el panel --- */
+    /* La conversacion iba en una sola columna y se estiraba hacia abajo
+       dejando media caja vacia a la derecha. Va a dos columnas que se
+       llenan **de arriba abajo primero** (grid-auto-flow: column), para
+       que el dialogo se siga leyendo en orden: 1-2-3 a la izquierda,
+       4-5-6 a la derecha. Y quien habla pasa encima del texto, que asi
+       cada turno se lee en dos lineas en vez de en cuatro. */
+    .trans { grid-column: 2 / 4; grid-row: 2; background: #EEF6FE; border-radius: calc(10*var(--u));
+             padding: calc(4*var(--u)) calc(16*var(--u));
+             display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto);
+             grid-auto-flow: column; column-gap: calc(30*var(--u)); }
+    .trans .l { padding: calc(5*var(--u)) 0; border-bottom: 1px solid #E1EBF6; }
+    .trans .l:nth-child(3n) { border-bottom: 0; }
+    .trans .l b { font-size: calc(9*var(--u)); font-weight: 700; }
+    .trans .l b.er { color: var(--azul); }
+    .trans .l b.cl { color: #0F9E52; }
+    .trans .l .t { font-size: calc(8*var(--u)); color: #8A93A3; margin-left: calc(5*var(--u)); font-variant-numeric: tabular-nums; }
+    .trans .l p { font-size: calc(9.2*var(--u)); line-height: calc(12.5*var(--u)); color: #2E323C; margin-top: calc(1.5*var(--u)); }
+
+    /* ===================== 05 · SISTEMA =====================
+       La referencia pone esta seccion **en oscuro**, sobre la misma foto
+       que el hero muy apagada, y cambia el diagrama: ya no son fichas en
+       columna sino un nucleo con cables tipo circuito hacia seis modulos,
+       y la lista de lo que se conecta se va a la derecha.
+       Medido sobre el contenedor de 814 u de la referencia:
+         texto 290 u · diagrama 240 u · lista a partir de 647 u
+         modulo 40 u · nucleo 58 u · check de la lista 11 u a 24,7 u de paso
+       Colores del pixel: fondo #030A13, modulo #131823, nucleo #0272FB,
+       cable de #0260AC a #03B4FF, texto de la lista casi blanco.
+       Los seis modulos van en **circulo de verdad**, a 100 u del centro y
+       cada 60 grados, no en las posiciones sueltas del boceto: ahi es una
+       ilustracion generada y no hay geometria que copiar.
+       El logotipo de HubSpot que sale en la referencia **no se pone**: la
+       pagina dice "se integra con lo que ya usas" y no nombra ningun CRM,
+       que es la regla de capacidades-reales.md. Va un icono generico. */
+    #sistema { position: relative; overflow: hidden; background: #030A13; padding: 38px 0; }
+        /* La foto la paso Anais entera (2043x770) y se usa sin recortar, solo
+       convertida a WebP. Va muy apagada a proposito: en la referencia el
+       diagrama se apoya en negro y la escena solo se intuye por el borde. */
+#sistema .foto { position: absolute; inset: 0; background: url(/assets/escena-piezas.webp) center 56% / cover no-repeat; opacity: .78; }
+    #sistema .velo { position: absolute; inset: 0; background:
+        radial-gradient(42% 100% at 46% 50%, rgba(3,10,19,.88) 0%, rgba(3,10,19,.66) 55%, rgba(3,10,19,.34) 100%),
+        linear-gradient(90deg, rgba(3,10,19,.50) 0%, rgba(3,10,19,.58) 45%, rgba(3,10,19,.72) 80%, rgba(3,10,19,.78) 100%); }
+    #sistema .wrap { position: relative; z-index: 2; }
+
+    .sis-grid { container-type: inline-size; }
+    .sis-cols { --u: 0.12285cqw; display: grid;
+                grid-template-columns: calc(290*var(--u)) calc(264*var(--u)) 1fr;
+                gap: 0; align-items: center; }
+    .sis-txt .kick { font-size: calc(8*var(--u)); letter-spacing: .18em; margin-bottom: calc(15*var(--u)); }
+    .sis-txt h2 { font-size: calc(20*var(--u)); line-height: calc(24*var(--u)); }
+    .sis-txt .lede { font-size: calc(10*var(--u)); line-height: calc(15*var(--u)); margin-top: calc(13*var(--u)); max-width: calc(278*var(--u)); }
+
+    /* --- el diagrama ---
+       Segunda pasada, esta vez midiendo el recorte grande de la referencia
+       (482 px de ancho), donde las tarjetas miden 63 px de lado. El factor
+       para pasarlo al contenedor de 814 u es 0,635, asi que la tarjeta son
+       40 u y el nucleo 56 u.
+       Las piezas **no estan en circulo**: lo estaban en la primera version
+       y por eso no se parecia. Medidas desde el centro del nucleo:
+         arriba   (+-83,8 / -26,0)
+         en medio (+-111,8 / +22,9)
+         abajo    (+-61,9 / +43,2)
+       Eso da una caja de 264 x 110 u, ancha y baja (2,4:1), que es la
+       silueta de la referencia. El rotulo EasyRobots cae a +34 u del
+       centro, justo debajo del nucleo, como alli. */
+    .diagrama { position: relative; width: 100%; aspect-ratio: 264/110; margin-left: calc(19*var(--u)); }
+    .resplandor { position: absolute; left: 50%; top: 42%; width: 74%; aspect-ratio: 1;
+                  transform: translate(-50%,-50%); border-radius: 50%; pointer-events: none;
+                  background: radial-gradient(circle, rgba(0,118,255,.38) 0%, rgba(0,118,255,.14) 38%, rgba(0,118,255,0) 68%); }
+    .cables { position: absolute; inset: 0; width: 100%; height: 100%;
+              filter: drop-shadow(0 0 calc(2.5*var(--u)) rgba(0,150,255,.60)); }
+    .cables .principal { stroke: #0096FF; stroke-width: 2; }
+    .cables .rama { stroke: #0A6ECB; stroke-width: 1.4; opacity: .75; }
+    .modulo { position: absolute; width: 15.15%; aspect-ratio: 1;
+              border-radius: 26%;
+              background: linear-gradient(145deg, #1D2331 0%, #151A26 45%, #10151F 100%);
+              border: 1px solid rgba(255,255,255,.10);
+              box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 calc(4*var(--u)) calc(12*var(--u)) rgba(0,0,0,.5);
+              display: flex; align-items: center; justify-content: center; }
+    .modulo svg { width: 48%; height: 48%; color: #fff; }
+    .modulo.crm svg { width: 54%; height: 54%; }
+    .modulo.vd svg { color: #25D366; }
+    .modulo.rj svg { color: #E5484D; }
+    /* La unica tarjeta de color solido de la referencia es la del CRM. */
+    .modulo.crm { background: linear-gradient(145deg, #FF6A3D 0%, #FB5328 55%, #E8431A 100%);
+                  border-color: rgba(255,255,255,.18); }
+    /* Ojo con los nombres: .m1-.m6 chocaban con el .m2 de la seccion "El
+       momento", que pinta el fondo blanco, y la tarjeta de WhatsApp salia
+       en blanco. Prefijo pz (pieza) para que no vuelva a pasar. */
+    .pz1 { left: 10.68%; top: 0; }
+    .pz2 { left: 74.17%; top: 0; }
+    .pz3 { left: 0;      top: 44.45%; }
+    .pz4 { left: 84.77%; top: 44.45%; }
+    .pz5 { left: 18.98%; top: 62.91%; }
+    .pz6 { left: 65.87%; top: 62.91%; }
+    .nucleo { position: absolute; left: 39.39%; top: 16.36%; width: 21.21%; aspect-ratio: 1;
+              border-radius: 27%; background: linear-gradient(155deg, #3B9BFF 0%, #0A70F5 48%, #0053CF 100%);
+              border: 1px solid rgba(150,205,255,.55);
+              display: flex; align-items: center; justify-content: center;
+              box-shadow: 0 0 calc(9*var(--u)) rgba(10,112,245,.85), 0 0 calc(24*var(--u)) rgba(10,112,245,.45); }
+    .nucleo svg { width: 62%; height: 62%; color: #fff; }
+    .nucleo-nombre { position: absolute; left: 0; right: 0; top: 70.5%; text-align: center;
+                     font-size: calc(11*var(--u)); font-weight: 700; letter-spacing: -.02em; color: #fff;
+                     text-shadow: 0 calc(2*var(--u)) calc(8*var(--u)) rgba(0,0,0,.85); }
+
+    /* --- la lista de lo que se conecta --- */
+    .sis-lista { margin-left: calc(74*var(--u)); list-style: none; display: flex; flex-direction: column; gap: calc(14.7*var(--u)); }
+    .sis-lista li { display: flex; align-items: center; gap: calc(12*var(--u)); }
+    .sis-lista .tic { flex: 0 0 auto; width: calc(11*var(--u)); height: calc(11*var(--u)); border-radius: 50%;
+                      background: #16283C; border: 1px solid rgba(120,175,255,.45);
+                      display: flex; align-items: center; justify-content: center; }
+    .sis-lista .tic svg { width: 62%; height: 62%; color: #1E9BFF; }
+    .sis-lista span { font-size: calc(9.5*var(--u)); line-height: calc(13*var(--u)); color: rgba(255,255,255,.92); }
+
+    /* ============ 06+07 · TECNOLOGIA, EQUIPO, GARANTIA ============
+       En el boceto estas dos laminas estan mal recortadas: la lista de
+       "Responder llamadas 24/7" sale en las dos y las caras quedan
+       cortadas. Aqui van como una sola seccion, que es como se leia. */
+    /* En la referencia esta seccion tiene la misma forma que las demas:
+       el texto a la izquierda y los dos cuadros a su derecha, no el
+       titular arriba a lo ancho. Medido sobre el contenedor de 814 u:
+         texto 290 u · cuadro 257 u · hueco 10 u · el segundo 240 u
+         icono del titulo 24 u · texto a 48 u del borde · filas a 14,3 u
+       Colores del pixel: fondo de seccion #F5F9FC, cuadro #ECF4FC,
+       icono azul #006FFE, check verde como el panel de la demo. */
+    #equipo { background: #F5F9FC; padding: 54px 0; }
+    .tec-grid { container-type: inline-size; }
+    .tec-cols { --u: 0.12285cqw; display: grid;
+                grid-template-columns: calc(290*var(--u)) calc(257*var(--u)) 1fr;
+                gap: 0; align-items: start; }
+    .tec-txt .kick { font-size: calc(8*var(--u)); letter-spacing: .18em; margin-bottom: calc(15*var(--u)); }
+    .tec-txt h2 { font-size: calc(20*var(--u)); line-height: calc(24*var(--u)); }
+    .tec { background: #ECF4FC; border-radius: calc(10*var(--u)); padding: calc(13*var(--u)); margin-left: calc(17*var(--u)); }
+    .tec + .tec { margin-left: calc(10*var(--u)); }
+    .tec h3 { display: flex; align-items: center; gap: calc(11*var(--u));
+              font-size: calc(9.5*var(--u)); font-weight: 700; color: var(--tinta);
+              margin-bottom: calc(11*var(--u)); }
+    .tec h3 .ic { width: calc(24*var(--u)); height: calc(24*var(--u)); border-radius: 50%;
+                  display: flex; align-items: center; justify-content: center; }
+    .tec h3 .ic svg { width: 56%; height: 56%; color: #fff; }
+    .tec h3 .ic.az { background: #006FFE; }
+    .tec h3 .ic.os { background: var(--tinta); }
+    .tec ul { list-style: none; padding-left: calc(35*var(--u)); }
+    .tec li { display: flex; gap: calc(9*var(--u)); align-items: flex-start;
+              font-size: calc(8.5*var(--u)); line-height: calc(11.5*var(--u));
+              color: var(--tinta-2); padding: calc(1.4*var(--u)) 0; }
+    .tec li svg { width: calc(8*var(--u)); height: calc(8*var(--u)); color: #12B85A; margin-top: calc(1.8*var(--u)); }
+
+    .pers-grid { display: grid; grid-template-columns: 1fr 1fr 1.05fr; gap: 40px; align-items: center; margin-top: 68px; }
+    .caras { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .cara .img { aspect-ratio: 4/3.4; border-radius: 13px; overflow: hidden; background: #0B0B0D; display: flex; align-items: center; justify-content: center; }
+    .cara .img img { width: 100%; height: 100%; object-fit: cover; }
+    .cara .img.vacia { background: var(--claro-2); border: 1px dashed var(--linea); }
+    .cara .img.vacia span { font-size: .7rem; color: var(--gris); text-align: center; padding: .5rem; }
+    .cara b { display: block; font-size: .84rem; margin-top: .6rem; }
+    .cara span.rol { font-size: .74rem; color: var(--gris); }
+    .garantia { background: var(--claro-2); border-radius: 16px; padding: 22px 20px; }
+    .garantia ul { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .garantia li { display: flex; gap: .65rem; align-items: flex-start; font-size: .84rem; color: var(--tinta-2); line-height: 1.45; }
+    .garantia li svg { width: 15px; height: 15px; color: var(--azul); margin-top: 2px; }
+    .tranquilidad { display: flex; gap: .6rem; align-items: center; background: #F1F7FF; border: 1px solid #DCEAFB; border-radius: 13px; padding: .9rem 1rem; font-size: .84rem; font-weight: 600; margin-top: 1.1rem; }
+    .tranquilidad svg { width: 17px; height: 17px; color: var(--azul); }
+
+    /* ======================= 08 · CTA ======================= */
+    .cierre { position: relative; overflow: hidden; color: #fff; background: var(--oscuro); }
+    .cierre .foto { position: absolute; inset: 0; background: url(/assets/escena-inmobiliaria.webp) center 38% / cover no-repeat; opacity: .82; }
+    /* El velo se abre en la CTA, donde la escena tiene que verse, y se
+       cierra sobre el pie, que es texto pequeno y necesita contraste. */
+    .cierre .velo { position: absolute; inset: 0; background:
+        linear-gradient(180deg, rgba(6,12,20,.30) 0%, rgba(6,12,20,.10) 22%, rgba(6,12,20,.46) 44%, rgba(6,12,20,.80) 62%, rgba(6,12,20,.90) 100%),
+        linear-gradient(90deg, rgba(6,12,20,.86) 0%, rgba(6,12,20,.40) 42%, rgba(6,12,20,.16) 100%); }
+    .cta { position: relative; z-index: 2; color: #fff; background: transparent; }
+    .cta .wrap { position: relative; z-index: 2; }
+    .cta-grid { display: grid; grid-template-columns: 1.3fr auto; gap: 40px; align-items: center; padding: 56px 0; }
+    .cta h2 { font-size: clamp(1.5rem, 2.7vw, 2rem); }
+    .cta .sub { font-size: .86rem; color: rgba(255,255,255,.66); margin-top: .8rem; }
+    .cta-meta { display: flex; gap: 22px; margin-top: 1.4rem; flex-wrap: wrap; }
+    .cta-meta div { display: flex; align-items: center; gap: .45rem; font-size: .82rem; color: rgba(255,255,255,.72); }
+    .cta-meta svg { width: 14px; height: 14px; }
+
+    /* ====================== 09 · PIE ====================== */
+    /* El pie lleva su propio lavado oscuro encima de la foto. Sin el, a
+       partir de 1600 px de ancho la lampara y el sofa caen justo detras
+       del texto pequeno y se lo comen: medido a 1920, la franja derecha
+       pasaba de 18 de brillo medio a 30 en el percentil 90. El degradado
+       entra en el 12 % de arriba para que no se vea el corte con la CTA. */
+    .pie { position: relative; z-index: 2; color: #fff; padding: 52px 0 26px;
+           background: linear-gradient(180deg, rgba(6,12,20,.20) 0%, rgba(6,12,20,.64) 12%, rgba(6,12,20,.70) 100%); }
+    .pie .wrap { position: relative; }
+    .pie-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr auto; gap: 34px; }
+    .pie-marca { display: flex; align-items: center; gap: .55rem; font-size: .84rem; font-weight: 800; letter-spacing: .08em; }
+    .pie-marca svg { width: 17px; height: 17px; }
+    .pie-marca + p { font-size: .78rem; color: rgba(255,255,255,.5); margin-top: .7rem; }
+    .pie h4 { font-size: .8rem; font-weight: 700; margin-bottom: .9rem; }
+    .pie a.enl { display: block; font-size: .8rem; color: rgba(255,255,255,.62); padding: .28rem 0; }
+    .pie a.enl:hover { color: #fff; }
+    .redes { display: flex; gap: .6rem; }
+    .redes a { width: 32px; height: 32px; border-radius: 9px; border: 1px solid var(--linea-o); display: flex; align-items: center; justify-content: center; }
+    .redes a:hover { background: rgba(255,255,255,.08); }
+    .redes svg { width: 15px; height: 15px; color: rgba(255,255,255,.75); }
+    .pie-abajo { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--linea-o); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: .74rem; color: rgba(255,255,255,.44); }
+
+    /* ===================== capas ===================== */
+    .capa { position: fixed; inset: 0; z-index: 1000; display: none; background: rgba(3,8,13,.74); backdrop-filter: blur(8px); padding: 24px 16px; overflow-y: auto; }
+    .capa.abierta { display: block; }
+    .caja-m { position: relative; width: min(660px,100%); margin: 4vh auto; background: #0B1620; border: 1px solid #29415B; border-radius: 20px; padding: 28px 26px 24px; color: #E6EAF0; }
+    .caja-m h2 { font-size: 1.25rem; }
+    .caja-m p { font-size: .88rem; color: #A9B7C6; margin-top: .5rem; }
+    .cerrar { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 9px; border: 1px solid #29415B; background: #102030; color: #fff; font-size: 1.05rem; cursor: pointer; }
+    .cerrar:hover { background: #16293C; }
+    .cerrar:focus-visible { outline: 3px solid var(--azul-claro); outline-offset: 3px; }
+    .marco { width: 100%; min-height: 620px; border: 0; border-radius: 12px; margin-top: 1.1rem; background: #0E1B27; }
+    .estado { margin-top: 1rem; font-size: .84rem; color: #8DD5FF; min-height: 1.2em; }
+
+    /* ==========================================================
+       02 · EL MOMENTO — reproduccion de la referencia
+       Medido sobre la referencia (1536 px de ancho):
+         tres columnas de 425 / 412 / 421 px con 24 px de hueco
+         titular a 47 px, interlineado 48
+         tarjeta HOY  #EFF0F3     ·  tarjeta EasyRobots #F2F8FE
+         azul #0780FE             ·  rojo #FD5B54
+       Las dos fotografias son provisionales, recortadas de la propia
+       referencia. Para cambiarlas basta sustituir el archivo:
+         /assets/momento-comprador.webp   (vertical, ~2:3)
+         /assets/momento-piso.webp        (casi cuadrada)
+       ========================================================== */
+    /* --- marca con el icono del robot --- */
+    .h-marca { display: flex; align-items: center; gap: calc(9*var(--u)); font-size: calc(15*var(--u)); font-weight: 800; letter-spacing: -.03em; color: #fff; }
+    .h-marca .cubo { width: calc(26*var(--u)); height: calc(26*var(--u)); border-radius: calc(8*var(--u)); background: var(--azul); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .h-marca .cubo svg { width: calc(16*var(--u)); height: calc(16*var(--u)); color: #fff; }
+
+
+    /* --- onda de sonido de las tarjetas de llamada --- */
+    .onda-mini { display: flex; align-items: center; gap: calc(1.6*var(--u)); height: calc(16*var(--u)); margin-top: calc(7*var(--u)); }
+    .onda-mini i { width: calc(1.7*var(--u)); border-radius: calc(1*var(--u)); flex: 0 0 auto; }
+    /* del azul al verde de izquierda a derecha, como en la referencia */
+    .onda-mini i:nth-child(-n+6)  { background: #2F6BFF; }
+    .onda-mini i:nth-child(n+7):nth-child(-n+11)  { background: #2B8AF0; }
+    .onda-mini i:nth-child(n+12):nth-child(-n+16) { background: #22A8C8; }
+    .onda-mini i:nth-child(n+17):nth-child(-n+21) { background: #1FC19A; }
+    .onda-mini i:nth-child(n+22) { background: #18CF75; }
+
+    /* --- miniatura y retrato dentro de las tarjetas --- */
+    .tarj .cuerpo { flex: 1; min-width: 0; }
+    .tarj .mini { position: relative; flex: 0 0 auto; width: calc(40*var(--u)); }
+    .tarj .mini img { width: 100%; aspect-ratio: 56/76; object-fit: cover; border-radius: calc(7*var(--u)); display: block; }
+    .tarj .retrato { position: relative; flex: 0 0 auto; width: calc(36*var(--u)); }
+    .tarj .retrato img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; display: block; }
+    .tarj .sello {
+      /* Estaba a -4/-3 y con 16 u se comia la boca del retrato. Baja a
+         13 u y sale del circulo, con un anillo del color de la tarjeta
+         para que se lea como una insignia y no como un parche. */
+      position: absolute; right: calc(-5*var(--u)); bottom: calc(-4*var(--u));
+      width: calc(13*var(--u)); height: calc(13*var(--u)); border-radius: 50%;
+      background: #22C55E; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 calc(1.6*var(--u)) rgba(32,29,30,.96);
+    }
+    .tarj .sello svg { width: calc(9*var(--u)); height: calc(9*var(--u)); color: #fff; }
+
+    /* --- posiciones medidas sobre la referencia nueva (1536 x 665) --- */
+    .t-llamada { left: 39.2%; top: 26.8%; width: 15.8%; min-height: 19.2%; }
+    .t-agente  { left: 39.2%; top: 48.1%; width: 15.8%; min-height: 23.9%; }
+    .t-wa      { left: 73.2%; top: 33.1%; width: 19.4%; min-height: 17.9%; }
+    .t-visita  { left: 73.2%; top: 54.2%; width: 19.4%; min-height: 17.4%; }
+    .t-comer   { left: 73.2%; top: 73.0%; width: 19.4%; min-height: 15.9%; }
+    .ic-rojo { background: #fff; }
+    .ic-rojo svg { color: #E5342B !important; }
+
+    /* --- el movil, remedido sobre la referencia nueva --- */
+    .h-movil { position: absolute; left: 53.6%; top: 16.6%; width: 18.3%; z-index: 45; background: #0B0B0D; border-radius: calc(26*var(--u)); padding: calc(4*var(--u)); box-shadow: 0 calc(16*var(--u)) calc(40*var(--u)) rgba(0,0,0,.6), 0 0 0 calc(1*var(--u)) rgba(255,255,255,.10); }
+    .h-pant { background: #fff; border-radius: calc(23*var(--u)); overflow: hidden; position: relative; aspect-ratio: 169 / 328; display: flex; flex-direction: column; }
+    .h-wtop .ic { margin-left: auto; display: flex; gap: calc(7*var(--u)); flex: 0 0 auto; }
+    .h-wtop .ic svg { width: calc(12*var(--u)); height: calc(12*var(--u)); color: var(--azul); }
+    .h-wfoot .emo { width: calc(15*var(--u)); height: calc(15*var(--u)); border-radius: 50%; border: calc(1.2*var(--u)) solid var(--azul); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .h-wfoot .emo svg { width: calc(9*var(--u)); height: calc(9*var(--u)); color: var(--azul); }
+    .h-wfoot .mic { flex: 0 0 auto; }
+    .h-wfoot .mic svg { width: calc(12*var(--u)); height: calc(12*var(--u)); color: var(--azul); }
+
+    .m2 { background:
+            linear-gradient(180deg, rgba(254,254,253,.975) 0%, rgba(254,254,253,.91) 46%, rgba(254,254,253,.975) 100%),
+            url(/assets/escena-inmobiliaria.webp) center 38% / cover no-repeat; }
+    .m2-grid { display: grid; grid-template-columns: .88fr 1.07fr 1.05fr; gap: 24px; align-items: stretch; }
+    .m2-txt { align-self: center; padding-right: 10px; }
+    .m2-kick { font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--azul); margin-bottom: 1.5rem; }
+    .m2-t { font-size: clamp(1.9rem, 3.3vw, 2.95rem); line-height: 1.04; letter-spacing: -.04em; font-weight: 800; color: #0B1119; text-wrap: balance; }
+    .m2-lede { font-size: 1.02rem; line-height: 1.55; color: #6F7885; margin-top: 1.5rem; max-width: 30ch; }
+
+    .m2-card { border-radius: 22px; overflow: hidden; position: relative; }
+
+    /* ---- HOY ---- */
+    .m2-hoy { background: #EFF0F3; display: grid; grid-template-columns: 1.24fr 1fr; }
+    .m2-hoy-txt { padding: 24px 14px 24px 24px; position: relative; z-index: 2; }
+    .m2-eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #0B1119; }
+    .m2-eyebrow.az { color: var(--azul); }
+
+    .m2-perdida { display: flex; align-items: center; gap: .75rem; background: #fff; border-radius: 16px; padding: .75rem .9rem; margin-top: 1.5rem; box-shadow: 0 6px 18px rgba(16,24,40,.09); }
+    .m2-perdida .ic { width: 38px; height: 38px; border-radius: 50%; background: #FD5B54; display: flex; align-items: center; justify-content: center; }
+    .m2-perdida .ic svg { width: 19px; height: 19px; color: #fff; }
+    .m2-perdida b { display: block; font-size: .92rem; font-weight: 700; letter-spacing: -.02em; color: #0B1119; white-space: nowrap; }
+    .m2-perdida span { display: block; font-size: .82rem; color: #8A929D; margin-top: .05rem; }
+
+    .m2-pasos { list-style: none; margin-top: 1.6rem; position: relative; }
+    .m2-pasos li { display: flex; align-items: center; gap: .65rem; font-size: .82rem; color: #7A828E; padding: .48rem 0; position: relative; }
+    .m2-pasos li .p { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #C7CCD3; background: #EFF0F3; display: flex; align-items: center; justify-content: center; position: relative; z-index: 2; }
+    .m2-pasos li .p svg { width: 13px; height: 13px; color: #868E99; }
+    /* hilo fino que une los pasos, como en la referencia */
+    .m2-pasos li:not(:last-child)::before { content: ""; position: absolute; left: 11.5px; top: 50%; height: 100%; width: 1px; background: #D5D9DE; z-index: 1; }
+    .m2-pasos li.fin { color: #0B1119; font-weight: 700; }
+    .m2-pasos li.fin .p { background: #FD5B54; border-color: #FD5B54; }
+    .m2-pasos li.fin .p svg { color: #fff; width: 11px; height: 11px; }
+
+    .m2-foto { position: relative; }
+    .m2-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 62% center; }
+    /* el borde izquierdo se funde con la tarjeta, como en la referencia */
+    .m2-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #EFF0F3 0%, rgba(239,240,243,.55) 18%, rgba(239,240,243,0) 44%); }
+
+    /* ---- CON EASYROBOTS ---- */
+    .m2-er { background: #F2F8FE; border: 1px solid #DDEBFB; padding: 24px 22px; display: flex; flex-direction: column; }
+    .m2-er-cols { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start; margin-top: 1.5rem; flex: 1; }
+    .m2-checks { list-style: none; display: flex; flex-direction: column; gap: .1rem; position: relative; }
+    .m2-checks li { display: flex; align-items: flex-start; gap: .65rem; font-size: .82rem; line-height: 1.42; color: #3F4855; padding: .42rem 0; position: relative; }
+    .m2-checks li .tk { width: 25px; height: 25px; border-radius: 50%; background: var(--azul); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; position: relative; z-index: 2; }
+    .m2-checks li .tk svg { width: 13px; height: 13px; color: #fff; }
+    .m2-checks li:not(:last-child)::before { content: ""; position: absolute; left: 12px; top: 50%; height: 100%; width: 1px; background: #CFE3FA; z-index: 1; }
+
+    .m2-visita { width: 172px; background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 26px rgba(16,24,40,.12); align-self: start; }
+    .m2-visita img { width: 100%; aspect-ratio: 137/150; object-fit: cover; }
+    .m2-visita .txt { padding: .7rem .75rem .8rem; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .4rem; }
+    .m2-visita b { grid-column: 1 / -1; font-size: .86rem; font-weight: 700; letter-spacing: -.02em; color: #0B1119; }
+    .m2-visita span.h { font-size: .84rem; color: #6F7885; }
+    .m2-visita .tk { width: 25px; height: 25px; border-radius: 50%; background: var(--azul); display: flex; align-items: center; justify-content: center; }
+    .m2-visita .tk svg { width: 13px; height: 13px; color: #fff; }
+
+    /* ---- responsive ---- */
+    @media (max-width: 1180px) {
+      .m2-grid { grid-template-columns: 1fr 1fr; gap: 22px; }
+      .m2-txt { grid-column: 1 / -1; align-self: start; padding-right: 0; }
+      .m2-lede { max-width: 52ch; }
+    }
+    @media (max-width: 760px) {
+      .m2-grid { grid-template-columns: 1fr; gap: 18px; }
+      .m2-hoy { grid-template-columns: 1fr; }
+      /* La foto pasa debajo: a este ancho, partida en dos columnas, no se
+         leia ni el texto ni la cara. */
+      .m2-foto { height: 215px; }
+      .m2-foto img { object-position: center 28%; }
+      .m2-foto::after { background: linear-gradient(180deg, #EFF0F3 0%, rgba(239,240,243,.55) 22%, rgba(239,240,243,0) 55%); }
+      .m2-er-cols { grid-template-columns: 1fr; }
+      .m2-visita { width: 100%; max-width: 230px; justify-self: start; }
+      .m2-visita img { aspect-ratio: 16/10; }
+    }
+
+    /* En el escritorio la pagina se veia demasiado grande. Anais la puso
+       al 90 % en el navegador y dijo que asi queda perfecta, asi que se
+       deja puesto. Solo de 1081 px para arriba, que es donde empieza la
+       maqueta de escritorio: por debajo el movil ya esta ajustado. */
+    @media (min-width: 1081px) { body { zoom: .9; } }
+
+    /* ===================== responsive ===================== */
+    @media (max-width: 1080px) {
+      .cta-grid { grid-template-columns: 1fr; gap: 30px; }
+      /* La 06 vuelve a rem por debajo de 1080, como las demas. */
+      .tec-cols { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .tec-txt { grid-column: 1 / -1; margin-bottom: 10px; }
+      .tec-txt .kick { font-size: .68rem; letter-spacing: .2em; margin-bottom: 1.1rem; }
+      .tec-txt h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.16; }
+      .tec { border-radius: 16px; padding: 22px 20px; margin-left: 0; }
+      .tec + .tec { margin-left: 0; }
+      .tec h3 { font-size: .92rem; gap: 12px; margin-bottom: 14px; }
+      .tec h3 .ic { width: 32px; height: 32px; }
+      .tec ul { padding-left: 44px; }
+      .tec li { font-size: .84rem; line-height: 1.45; gap: 10px; padding: 3px 0; }
+      .tec li svg { width: 13px; height: 13px; margin-top: 3px; }
+      /* La 05, como la 03 y la 04, deja de medirse en --u por debajo de
+         1080 px. El diagrama sigue siendo cuadrado y se centra. */
+      .sis-cols { grid-template-columns: 1fr; gap: 34px; justify-items: center; }
+      .sis-txt { justify-self: stretch; }
+      .sis-txt .kick { font-size: .68rem; letter-spacing: .2em; margin-bottom: 1.1rem; }
+      .sis-txt h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.16; }
+      .sis-txt .lede { font-size: .93rem; line-height: 1.62; margin-top: .9rem; max-width: 46ch; }
+      .diagrama { width: min(430px, 92%); margin-left: 0; }
+      .cables { filter: drop-shadow(0 0 5px rgba(10,155,255,.55)); }
+      .modulo { box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 6px 18px rgba(0,0,0,.45); }
+      .nucleo { box-shadow: 0 0 16px rgba(2,114,251,.75), 0 0 42px rgba(2,114,251,.40); }
+      .nucleo-nombre { font-size: 1.05rem; text-shadow: 0 3px 12px rgba(0,0,0,.8); }
+      .sis-lista { justify-self: stretch; gap: 16px; margin-left: 0; }
+      .sis-lista li { gap: 14px; }
+      .sis-lista .tic { width: 20px; height: 20px; }
+      .sis-lista span { font-size: .93rem; line-height: 1.45; }
+      /* La 04, como la 03, deja de medirse en --u por debajo de 1080 px.
+         El reproductor conserva su proporcion (204/120 del boceto). */
+      /* En el movil el orden salia desordenado porque .trans conservaba
+         su grid-row: 2 y se colaba antes del reproductor. Aqui la
+         columna es una pila y el orden se dice explicito: titular y
+         boton, el audio, lo que ha recogido, la conversacion y al final
+         la llamada a la accion. */
+      /* Ojo: en flex el reproductor se colapsaba, porque su alto sale de
+         un aspect-ratio y todos sus hijos van en absoluto. Se queda en
+         rejilla de una columna y el orden se fija con `order`. */
+      .demo-cols { display: grid; grid-template-columns: 1fr;
+                   grid-template-rows: none; grid-auto-flow: row; gap: 22px; }
+      .demo-txt { order: 1; }
+      .repro    { order: 2; }
+      .recogida { order: 3; }
+      .trans    { order: 4; grid-row: auto; }
+      .demo-cta { order: 5; }
+      .demo-cta { grid-column: auto; grid-row: auto; padding-top: 0; margin-top: 4px; }
+      .trans { grid-column: auto; margin-top: 0; padding: 6px 18px; border-radius: 16px; column-gap: 34px; }
+      .trans .l { padding: 9px 0; }
+      .trans .l b { font-size: .78rem; }
+      .trans .l .t { font-size: .7rem; margin-left: .45rem; }
+      .trans .l p { font-size: .85rem; line-height: 1.45; }
+      .repro { height: auto; aspect-ratio: 204/120; max-width: 460px; border-radius: 16px; }
+      .repro-play { left: 4.9%; top: 45.8%; width: 13.2%; height: auto; aspect-ratio: 1; }
+      .repro-play svg { width: 42%; height: auto; margin-left: 5%; }
+      .onda { left: 21.8%; width: 71.1%; top: 42%; height: 30%; gap: 1.5px; }
+      .repro-pie { left: 6.4%; right: 6.9%; top: 80%; }
+      .repro-pie .pista { height: 3px; margin: 0 12px 0 0; }
+      .repro-pie .hora { font-size: .72rem; }
+      .recogida { border-radius: 16px; padding: 16px 18px; }
+      .recogida h3 { font-size: .85rem; padding-bottom: 10px; }
+      .recogida li { grid-template-columns: 26px 150px 1fr; padding: 9px 0; }
+      .recogida li svg { width: 14px; height: 14px; margin-top: 3px; }
+      .recogida .k, .recogida .v { font-size: .84rem; line-height: 1.35; }
+      /* Por debajo de 1080 las medidas en --u dan tamanos impredecibles:
+         a partir de aqui la seccion 03 vuelve a rem. */
+      .cf-grid { grid-template-columns: 1fr; gap: 34px; }
+      .cf-txt .kick { font-size: .68rem; letter-spacing: .2em; margin-bottom: 1.1rem; }
+      .cf-txt h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.16; }
+      .cf-txt .lede { font-size: .93rem; line-height: 1.62; margin-top: .9rem; max-width: 46ch; }
+      .pasos { grid-template-columns: 1fr 1fr; gap: 26px; }
+      .paso { border-radius: 16px; padding: 18px 16px 20px; }
+      .paso .ic { width: 44px; height: 44px; border-radius: 50%; margin: 0 auto 14px; }
+      .paso .ic svg { width: 23px; height: 23px; }
+      .paso h3 { font-size: .95rem; line-height: 1.25; }
+      .paso p { font-size: .82rem; line-height: 1.5; margin-top: .6rem; }
+      .paso::after { display: none !important; }
+      .pers-grid { grid-template-columns: 1fr; gap: 30px; }
+      .pie-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .sec { padding: 58px 0; }
+      .wrap { padding: 0 22px; }
+    }
+    /* ---------- movil ----------
+       Por debajo de 900 px el hero deja de ser una composicion sobre la foto:
+       las tarjetas se solaparian con el titular. Todo pasa a apilarse y las
+       medidas dejan de depender de --u, que aqui daba tamanos impredecibles;
+       van en rem, que es lo unico fiable a estos anchos. */
+    @media (max-width: 900px) {
+      .escena { aspect-ratio: auto; padding: 22px 0 0; }
+      /* El velo del hero en movil estaba al 92 % y tapaba la foto del
+         todo. Se abre por el centro, que es donde no hay texto grande. */
+      .hero .velo { background: linear-gradient(180deg, rgba(6,6,8,.90) 0%, rgba(6,6,8,.80) 26%, rgba(6,6,8,.46) 52%, rgba(6,6,8,.62) 78%, rgba(6,6,8,.88) 100%); }
+
+      /* La barra se queda fija: al bajar, el boton de reservar baja con la
+         pagina. En el movil solo lleva la marca a la izquierda y el boton a
+         la derecha, que los enlaces ya estan ocultos. */
+      .h-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 120;
+               height: auto; margin: 0; padding: 9px 5.89%;
+               background: rgba(8,8,11,.88); -webkit-backdrop-filter: blur(12px);
+               backdrop-filter: blur(12px);
+               border-bottom: 1px solid rgba(255,255,255,.08); }
+      .hero { padding: 54px 0 44px; }
+      /* Para que los enlaces del menu no dejen el titular debajo de la barra. */
+      section[id], .cierre { scroll-margin-top: 58px; }
+      .h-links { display: none; }
+      .h-navbtn { font-size: .8rem; padding: .6rem 1.05rem; gap: .4rem; }
+
+      .h-col { position: static; width: auto; padding: 0 5.89%; }
+      .h-kick { font-size: .68rem; letter-spacing: .2em; }
+      .h-t { font-size: clamp(2.1rem, 8.5vw, 3rem); line-height: 1.05; margin-top: 1.1rem; }
+      .h-sub { font-size: 1rem; line-height: 1.55; max-width: 40ch; margin-top: 1.1rem; }
+      .h-btns { gap: 12px; margin-top: 1.8rem; }
+      .h-b1, .h-b2 { font-size: .92rem; border-radius: 999px; }
+      .h-b1 { padding: .9rem 1.5rem; gap: .5rem; }
+      .h-b2 { padding: .55rem 1.4rem .55rem .55rem; gap: .65rem; border-width: 1px; }
+      .h-play { width: 32px; height: 32px; font-size: .68rem; }
+      .h-meta { gap: 12px 20px; margin-top: 1.8rem; }
+      .h-meta div { font-size: .82rem; gap: .45rem; }
+      .h-meta svg { width: 15px; height: 15px; }
+
+      .h-movil { position: static; width: min(272px, 76%); margin: 34px auto 0;
+                 padding: 8px; border-radius: 34px; --u: 1.55px; }
+      .h-pant { border-radius: 27px; }
+
+      /* En el movil el hero salia: titular, botones y **cinco tarjetas**
+         antes del telefono con la conversacion, que es lo unico que
+         ensena el producto. Se le da la vuelta: primero el telefono y
+         despues solo dos tarjetas, la que abre la historia (entra la
+         llamada) y la que la cierra (sale la visita). Las otras tres
+         repiten lo que ya se ve dentro del telefono. */
+      .escena { display: flex; flex-direction: column; }
+      .h-movil { order: 1; }
+      .tarjetas-movil { order: 2; }
+      .tarjetas-movil { display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+                        margin: 26px 0 0; padding: 0 5.89%; }
+      .tarj { position: static; width: auto !important; min-height: 0 !important;
+              border-radius: 14px; padding: .75rem .8rem; gap: .6rem;
+              border-width: 1px; backdrop-filter: blur(6px); }
+      .tarj .ico { width: 32px; height: 32px; }
+      .tarj .ico svg { width: 17px; height: 17px; }
+      .tarj b { font-size: .82rem; }
+      .tarj i { font-size: .74rem; margin-top: .15rem; }
+      /* Los <br> de las tarjetas se ocultan en movil, pero sin espacio
+         delante las palabras se pegaban ("EasyRobotsen llamada"). Con
+         font-size:0 el salto desaparece y el espacio se conserva. */
+      .tarj br { display: inline; font-size: 0; }
+      .tarj br::after { content: " "; font-size: 1rem; }
+    }
+    @media (min-width: 901px) { .tarjetas-movil { display: contents; } }
+
+    /* ---------- fondos en movil ----------
+       Las fotos son panoramicas (casi 3:1) y en el movil las secciones son
+       altas y estrechas: con `cover` la imagen se amplia tanto que solo se
+       ve un parche liso. Medido a 390 px: de la foto de "Piezas" se veia el
+       18 % del ancho, y de la del cierre el 13 %, que caia justo en el
+       cielo naranja. Por eso en el movil no se veia la escena, se veia una
+       mancha. Aqui entran recortes verticales de las mismas fotos. */
+    @media (max-width: 900px) {
+      .hero .foto { background-image: url(/assets/hero-inmobiliarias-movil.webp); background-position: center 38%; background-size: cover; }
+      #sistema .foto { background-image: url(/assets/escena-piezas-movil.webp); background-position: center 50%; }
+      .cierre .foto { background-image: url(/assets/escena-inmobiliaria-movil.webp); background-position: center 44%; }
+      /* Las claras, con el recorte vertical por el mismo motivo: el
+         panoramico en una seccion alta y estrecha se queda en un parche. */
+      .m2 { background-image:
+              linear-gradient(180deg, rgba(254,254,253,.975) 0%, rgba(254,254,253,.91) 46%, rgba(254,254,253,.975) 100%),
+              url(/assets/escena-inmobiliaria-movil.webp); background-position: center, center 38%; }
+      #demo { background-image:
+              linear-gradient(180deg, rgba(245,249,252,.975) 0%, rgba(245,249,252,.90) 42%, rgba(245,249,252,.97) 100%),
+              url(/assets/escena-inmobiliaria-movil.webp); background-position: center, center 46%; }
+    }
+
+    /* ---------- compactar el movil ----------
+       Medido a 390 px: la pagina entera salia a 8.729 px, unas once
+       pantallas, y habia que deslizar demasiado. Lo que la estiraba eran
+       los rellenos y los huecos, no el contenido: aqui se recortan todos
+       de golpe. No se toca ni un texto. */
+    @media (max-width: 620px) {
+      .sec { padding: 38px 0; }
+      #demo, #equipo, #sistema { padding: 38px 0; }
+      h2 { line-height: 1.12; }
+      .lede { margin-top: .7rem; }
+      .kick { margin-bottom: .8rem; }
+
+      .cf-grid { gap: 22px; }
+      .pasos { gap: 12px; }
+      .paso { padding: 14px 14px 16px; }
+      .paso .ic { width: 38px; height: 38px; margin: 0 auto 10px; }
+      .paso p { margin-top: .45rem; }
+
+      .demo-cols { gap: 18px; }
+      .escuchar { margin-top: 1.1rem; }
+      .pie-audio { margin-top: .6rem; }
+      .demo-cta { margin-top: 0; }
+      .demo-cta .btn { margin-top: .8rem; }
+      .demo-cta span { margin-top: .55rem; }
+      .recogida { padding: 14px 16px; }
+      .recogida li { padding: 7px 0; }
+      .trans .l { padding: 7px 0; }
+
+      .sis-cols { gap: 22px; }
+      .diagrama { margin-bottom: 26px; }
+      .sis-lista { gap: 12px; }
+
+      .tec-cols { gap: 14px; }
+      .tec { padding: 16px 16px 18px; }
+      .tec h3 { margin-bottom: 10px; }
+      .tec li { padding: 2px 0; }
+      .pers-grid { gap: 22px; margin-top: 34px; }
+      .garantia { padding: 16px 16px; }
+      .garantia ul { gap: .7rem; }
+      .tranquilidad { margin-top: .7rem; padding: .7rem .85rem; }
+
+      .cta-grid { padding: 30px 0; gap: 18px; }
+      .pie { padding: 30px 0 18px; }
+      .pie-grid { gap: 16px; }
+
+      /* --- lo que de verdad estiraba la pagina --- */
+
+      /* El telefono del hero medía 513 px el solo. */
+      .h-movil { width: min(228px, 64%); margin-top: 22px; --u: 1.3px; }
+
+      /* "El momento": los dos paneles sumaban 1.096 px de relleno mas que
+         de contenido. */
+      .m2-hoy-txt { padding: 16px 14px 16px 16px; }
+      .m2-er { padding: 16px 16px 18px; }
+      .m2-er-cols { margin-top: .9rem; gap: 12px; }
+      .m2-pasos { margin-top: 1rem; }
+      .m2-pasos li { padding: .3rem 0; font-size: .8rem; }
+      .m2-visita { max-width: 190px; }
+      .m2-visita img { aspect-ratio: 16/9; }
+
+      /* La demo se hacia pesadisima con la conversacion entera. En el movil
+         se queda en los tres primeros turnos, con quien habla en la misma
+         linea que el texto: se entiende igual y baja de 497 a ~150 px. El
+         audio y el panel siguen contando la historia completa. */
+      .trans .l:nth-child(n+4) { display: none; }
+      .trans .l:nth-child(3) { border-bottom: 0; }
+      .trans .l { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: baseline; padding: 6px 0; }
+      .trans .l p { margin-top: 0; font-size: .84rem; line-height: 1.4; }
+      .trans .l b { font-size: .74rem; white-space: nowrap; }
+      .trans .l .t { display: none; }
+      .trans { padding: 4px 14px; }
+
+      /* --- que cada seccion quepa en una pantalla ---
+         Objetivo de Anais: como en la web de Apple, una seccion por
+         pantalla y un poco de la siguiente. Una pantalla util de movil son
+         ~720 px. Todo lo de aqui abajo es para llegar a esa cifra, y esta
+         medido: la pagina pasa de 8.729 px a algo menos de 6.000. */
+
+      .sec { padding: 30px 0; }
+      #demo, #equipo, #sistema { padding: 30px 0; }
+      h2 { font-size: clamp(1.45rem, 6.4vw, 1.9rem); }
+      .lede { font-size: .88rem; line-height: 1.5; }
+
+      /* HERO: el telefono pequeño en el centro y dos viñetas a los lados,
+         como en el escritorio pero en miniatura. Antes iban apiladas
+         debajo y eran 157 px mas de deslizar; asi no cuestan alto ninguno,
+         porque caben al lado del telefono. Se quedan las dos que cuentan
+         la historia: entra la llamada y sale la visita. */
+      .escena { display: grid; grid-template-columns: 1fr auto 1fr;
+                align-items: center; column-gap: 6px; }
+      .h-nav, .h-col { grid-column: 1 / -1; }
+      .tarjetas-movil { display: contents; }
+      /* Las cinco viñetas se reparten a los lados del telefono, dos a la
+         izquierda y tres a la derecha, como en el escritorio. No cuestan
+         alto: caben dentro de lo que ya mide el telefono. .escena pierde el
+         padding lateral en movil, asi que llevan el margen del texto. */
+      .escena { row-gap: 8px; }
+      .t-llamada { grid-column: 1; grid-row: 3; margin-left: 5.89%; }
+      .t-agente  { grid-column: 1; grid-row: 4; margin-left: 5.89%; }
+      .t-wa      { grid-column: 3; grid-row: 3; margin-right: 5.89%; }
+      .t-visita  { grid-column: 3; grid-row: 4; margin-right: 5.89%; }
+      .t-comer   { grid-column: 3; grid-row: 5; margin-right: 5.89%; }
+      .h-movil   { grid-column: 2; grid-row: 3 / 6; }
+      /* A este ancho el detalle largo no se lee: se queda el icono, el
+         titulo, la hora y la cara con su tick, que es lo que da la
+         sensacion de que el sistema ha hecho algo. */
+      .tarj { display: grid; grid-template-columns: auto 1fr;
+              grid-template-areas: "ico media" "txt txt"; gap: 5px 6px; }
+      .tarj .ico { grid-area: ico; }
+      .tarj .cuerpo { grid-area: txt; }
+      .tarj .retrato, .tarj .mini { grid-area: media; justify-self: end; display: block; width: 26px; }
+      .tarj .retrato img { width: 26px; height: 26px; }
+      .tarj .mini img { width: 26px; height: 30px; border-radius: 5px; object-fit: cover; }
+      .tarj .sello { width: 13px; height: 13px; right: -4px; bottom: -3px;
+                     box-shadow: 0 0 0 2px rgba(32,29,30,.96); }
+      .tarj .sello svg { width: 8px; height: 8px; }
+      .tarj i { display: none; }
+      .tarj i.hora, .tarj .hora { display: block; }
+      .tarj { position: static; width: auto !important; min-height: 0 !important;
+              flex-direction: column; align-items: flex-start; gap: .4rem;
+              padding: .55rem .6rem; border-radius: 12px; }
+      .tarj .ico { width: 26px; height: 26px; }
+      .tarj .ico svg { width: 14px; height: 14px; }
+      .tarj b { font-size: .72rem; line-height: 1.2; }
+      .tarj i { font-size: .66rem; line-height: 1.25; }
+      .tarj .onda-mini { display: none; }
+      .h-t { font-size: clamp(1.9rem, 7.6vw, 2.5rem); margin-top: .8rem; }
+      .h-sub { font-size: .92rem; line-height: 1.45; margin-top: .8rem; }
+      .h-btns { margin-top: 1.1rem; gap: 10px; }
+      .h-b1, .h-b2 { font-size: .86rem; }
+      .h-b1 { padding: .72rem 1.2rem; }
+      .h-b2 { padding: .45rem 1.1rem .45rem .45rem; }
+      .h-meta { margin-top: 1rem; gap: 8px 16px; }
+      .h-meta div { font-size: .76rem; }
+      .h-movil { width: 132px; margin: 12px auto 0; --u: .757px; padding: 5px; border-radius: 22px; }
+      .h-pant { border-radius: 18px; }
+      .hero { padding: 54px 0 26px; }
+      .escena { padding: 14px 0 0; }
+
+      /* EL MOMENTO: los dos paneles eran 1.096 px entre los dos. */
+      .m2-hoy-txt { padding: 13px 12px; }
+      .m2-er { padding: 13px 13px 15px; }
+      .m2-kick { margin-bottom: .7rem; font-size: .66rem; }
+      .m2-t { font-size: 1.25rem; }
+      .m2-p { font-size: .84rem; line-height: 1.45; }
+      .m2-er-cols { margin-top: .7rem; gap: 10px; }
+      .m2-pasos { margin-top: .7rem; }
+      .m2-pasos li { padding: .22rem 0; font-size: .78rem; gap: .5rem; }
+      .m2-pasos li .p { width: 20px; height: 20px; }
+      .m2-pasos li:not(:last-child)::before { left: 9.5px; }
+      .m2-er-cols { grid-template-columns: 1fr auto; align-items: start; }
+      .m2-visita { max-width: 118px; }
+      .m2-visita img { aspect-ratio: 16/9; }
+      .m2-visita .txt { padding: .5rem .55rem .55rem; }
+      .m2-visita b { font-size: .78rem; }
+      .m2-foto img { object-position: center 30%; }
+
+      /* DEMO: la conversacion entera fuera. El audio y lo recogido ya
+         cuentan la historia, y era lo que mas pesaba. */
+      .trans { display: none; }
+      .demo-cols { gap: 16px; }
+      .repro { max-width: 250px; margin: 0 auto; border-radius: 14px; }
+      .recogida { padding: 12px 14px; }
+      .recogida h3 { padding-bottom: 8px; }
+      .recogida li { padding: 5px 0; }
+      .recogida .k, .recogida .v { font-size: .8rem; }
+      .demo-cta p { font-size: .86rem; line-height: 1.45; }
+
+      /* EL SISTEMA */
+      .diagrama { width: min(330px, 84%); margin-bottom: 22px; }
+      .sis-lista { gap: 9px; }
+      .sis-lista span { font-size: .86rem; }
+
+      /* EQUIPO: los dos cuadros, uno al lado del otro. */
+      .tec-cols { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .tec { padding: 13px 11px 14px; }
+      .tec h3 { font-size: .8rem; gap: 8px; margin-bottom: 8px; }
+      .tec h3 .ic { width: 26px; height: 26px; }
+      .tec ul { padding-left: 0; }
+      .tec li { font-size: .74rem; line-height: 1.3; gap: 7px; padding: 2px 0; }
+      .tec li svg { width: 11px; height: 11px; margin-top: 3px; }
+      .pers-grid { gap: 16px; margin-top: 26px; }
+      .caras { max-width: 250px; gap: 10px; }
+      .cara b { margin-top: .35rem; font-size: .78rem; }
+      .cara span.rol { font-size: .7rem; }
+      .garantia { padding: 13px 14px; }
+      .garantia li { font-size: .79rem; line-height: 1.38; }
+      .garantia ul { gap: .55rem; }
+      .tranquilidad { font-size: .79rem; padding: .6rem .75rem; margin-top: .6rem; }
+
+      /* Segunda vuelta, con lo medido en la mano: lo que quedaba grande
+         eran fotos decorativas y listas apiladas. */
+
+      /* La foto del comprador al telefono son 215 px y no dice nada que no
+         diga ya el texto de al lado. En el movil se cae. */
+      /* La foto vuelve, pero **al lado** del texto como en el escritorio,
+         no debajo: apilada eran 215 px y asi no cuesta alto ninguno. */
+      .m2-hoy { grid-template-columns: 1.1fr .9fr; }
+      .m2-foto { display: block; height: auto; }
+      .m2-foto img { object-position: 58% center; }
+      .m2-foto::after { background: linear-gradient(90deg, #EFF0F3 0%, rgba(239,240,243,.5) 22%, rgba(239,240,243,0) 52%); }
+      .m2-txt { padding-right: 0; }
+
+      /* El pie tenia sus cinco grupos en columna. */
+      .pie-grid { grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+      .pie h4 { margin-bottom: .45rem; }
+      .pie .enl { font-size: .82rem; padding: .22rem 0; }
+      .pie-abajo { margin-top: 18px; padding-top: 14px; font-size: .72rem; }
+
+      /* Los retratos del equipo, mas bajos. */
+      .cara .img { aspect-ratio: 4/3; }
+      .caras { max-width: 230px; }
+    }
+
+    @media (max-width: 430px) {
+      .tarjetas-movil { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      /* Los cuatro pasos se quedan **en fila**, como en el escritorio, con
+         sus flechas entre medias; en el movil la fila se desliza de lado.
+         Apilados eran 720 px de deslizar hacia abajo y se perdia la idea
+         de secuencia, que es justo lo que cuenta esta seccion. La fila se
+         sale hasta el borde de la pantalla para que se vea que hay mas. */
+      /* Los cuatro tienen que verse de golpe, asi que 2x2 y no una fila que
+         se desliza. Las flechas se quedan entre las dos parejas, que es lo
+         que mantiene la idea de secuencia. */
+      .pasos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px;
+               overflow: visible; margin: 0; padding: 0; }
+      .paso { padding: 14px 10px 15px; max-width: none; }
+      .paso .ic { width: 36px; height: 36px; margin: 0 auto 9px; }
+      .paso h3 { font-size: .86rem; }
+      .paso p { font-size: .78rem; line-height: 1.38; margin-top: .4rem; }
+      /* Las flechas vuelven: son las que dicen que es una secuencia. */
+      .paso::after { display: none !important; }
+      .paso:nth-child(odd)::after { display: block !important; content: "→";
+              position: absolute; top: 50%; right: -18px; transform: translateY(-50%);
+              width: 12px; text-align: center; line-height: 1;
+              font-size: 14px; color: rgba(255,255,255,.42); }
+      .pie-grid { grid-template-columns: 1fr; }
+      .tec-cols { grid-template-columns: 1fr; }
+      .tec ul { padding-left: 0; }
+      /* La conversacion deja de ir a dos columnas: a 390 px la de texto se
+         quedaba en cuatro palabras por linea. Quien habla, encima. */
+      .trans { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; }
+      .trans .l { padding: 9px 0; border-bottom: 1px solid #E1EBF6; }
+      .trans .l:nth-child(3n) { border-bottom: 1px solid #E1EBF6; }
+      .trans .l:last-child { border-bottom: 0; }
+      .trans .l p { font-size: .88rem; }
+      /* El rotulo EasyRobots se sale del circulo de piezas cuando el
+         diagrama se estrecha: aqui baja justo debajo de la caja. */
+      .diagrama { margin-bottom: 30px; }
+      .nucleo-nombre { top: auto; bottom: -28px; font-size: 1rem; }
+      .paso::after { display: none !important; }
+      .caras { max-width: 320px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="saltar" href="#momento">Saltar al contenido</a>
+
+  <!-- ==================== 01 · HERO ==================== -->
+  <header class="hero" id="inicio">
+    <div class="foto" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+
+    <div class="escena">
+
+    <nav class="h-nav" aria-label="Principal">
+      <a href="#inicio" class="h-marca"><span class="cubo"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M11 2.2a.9.9 0 01.9.9v1.1h.7A4.2 4.2 0 0116.8 8.4v4.9a3 3 0 01-3 3H8.2a3 3 0 01-3-3V8.4a4.2 4.2 0 014.2-4.2h.7V3.1a.9.9 0 01.9-.9z"/><circle cx="8.8" cy="10.2" r="1.25" fill="#0B76F0"/><circle cx="13.2" cy="10.2" r="1.25" fill="#0B76F0"/><rect x="9" y="12.6" width="4" height="1.1" rx=".55" fill="#0B76F0"/><rect x="2.6" y="8.8" width="1.7" height="4" rx=".85"/><rect x="17.7" y="8.8" width="1.7" height="4" rx=".85"/></svg></span>EasyRobots</a>
+      <div class="h-links">
+        <a href="#momento" class="act">Inmobiliarias</a>
+        <a href="#demo">Ver demostraci&oacute;n</a>
+        <a href="#sistema">Integraciones</a>
+        <a href="#equipo">Equipo</a>
+      </div>
+      <button class="h-navbtn" type="button" data-reserva>Reservar una llamada &rarr;</button>
+    </nav>
+
+    <div class="h-col">
+      <p class="h-kick">Llamadas &middot; Voz &middot; WhatsApp &middot; Visitas</p>
+      <h1 class="h-t">El piso se lo lleva<br>quien llama<br><em>primero.</em></h1>
+      <p class="h-sub">Convierte cada llamada en una conversaci&oacute;n, recoge la informaci&oacute;n
+        y agenda la visita.</p>
+      <div class="h-btns">
+        <button class="h-b1" type="button" data-reserva>Reservar una llamada &rarr;</button>
+        <a class="h-b2" href="#demo"><span class="h-play">&#9654;</span>Ver c&oacute;mo funciona</a>
+      </div>
+      <div class="h-meta">
+        <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M10 5.8v4.4l3 1.8"/></svg>15 minutos</div>
+        <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M6.4 6.4l7.2 7.2M13.6 6.4l-7.2 7.2"/></svg>Sin compromiso</div>
+        <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3.5 17h13M5 17V8l5-3.5L15 8v9"/><path d="M8.5 17v-4h3v4"/></svg>Para tu inmobiliaria.</div>
+      </div>
+    </div>
+
+    <div class="tarjetas-movil">
+      <div class="tarj t-llamada">
+        <div class="ico ic-verde"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M7.4 3.2c.5-.2 1.1 0 1.4.5l1.4 2.4c.3.5.2 1.1-.2 1.5l-1 .9c-.2.2-.3.5-.1.8.9 1.7 2.3 3.1 4 4 .3.2.6.1.8-.1l.9-1c.4-.4 1-.5 1.5-.2l2.4 1.4c.5.3.7.9.5 1.4l-.7 1.7c-.2.5-.7.9-1.3.9C10.3 19.4 2.6 11.7 2.6 4.4c0-.6.4-1.1.9-1.3z"/></svg></div>
+        <div class="cuerpo">
+          <b>Llamada atendida</b>
+          <i class="hora">12:41</i>
+          <i class="hora">+34 612 345 6XX</i>
+          <span class="onda-mini" aria-hidden="true"><i style="height:22%"></i><i style="height:46%"></i><i style="height:70%"></i><i style="height:38%"></i><i style="height:88%"></i><i style="height:54%"></i><i style="height:30%"></i><i style="height:76%"></i><i style="height:100%"></i><i style="height:44%"></i><i style="height:62%"></i><i style="height:34%"></i><i style="height:82%"></i><i style="height:50%"></i><i style="height:26%"></i><i style="height:68%"></i><i style="height:92%"></i><i style="height:40%"></i><i style="height:58%"></i><i style="height:30%"></i><i style="height:74%"></i><i style="height:48%"></i><i style="height:84%"></i><i style="height:36%"></i><i style="height:60%"></i><i style="height:24%"></i></span>
+        </div>
+      </div>
+
+      <div class="tarj t-agente">
+        <div class="ico ic-azul"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M11 2.2a.9.9 0 01.9.9v1.1h.7A4.2 4.2 0 0116.8 8.4v4.9a3 3 0 01-3 3H8.2a3 3 0 01-3-3V8.4a4.2 4.2 0 014.2-4.2h.7V3.1a.9.9 0 01.9-.9z"/><circle cx="8.8" cy="10.2" r="1.25" fill="#0B0B0D"/><circle cx="13.2" cy="10.2" r="1.25" fill="#0B0B0D"/><rect x="9" y="12.6" width="4" height="1.1" rx=".55" fill="#0B0B0D"/><rect x="2.6" y="8.8" width="1.7" height="4" rx=".85"/><rect x="17.7" y="8.8" width="1.7" height="4" rx=".85"/></svg></div>
+        <div class="cuerpo">
+          <b>Agente EasyRobots<br>en llamada</b>
+          <i class="gris">Cualificando al cliente<br>y recogiendo la informaci&oacute;n&hellip;</i>
+          <span class="onda-mini" aria-hidden="true"><i style="height:30%"></i><i style="height:58%"></i><i style="height:36%"></i><i style="height:82%"></i><i style="height:48%"></i><i style="height:94%"></i><i style="height:26%"></i><i style="height:66%"></i><i style="height:42%"></i><i style="height:88%"></i><i style="height:54%"></i><i style="height:32%"></i><i style="height:76%"></i><i style="height:100%"></i><i style="height:40%"></i><i style="height:62%"></i><i style="height:28%"></i><i style="height:80%"></i><i style="height:50%"></i><i style="height:34%"></i><i style="height:70%"></i><i style="height:44%"></i><i style="height:86%"></i><i style="height:38%"></i><i style="height:56%"></i><i style="height:24%"></i></span>
+        </div>
+      </div>
+
+      <div class="tarj t-wa">
+        <div class="ico ic-verde"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.4 14.3c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.3-.15-1.25-.46-2.38-1.47a8.9 8.9 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.61.13-.13.3-.34.44-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.57-.48-.5-.66-.5h-.57c-.2 0-.51.07-.78.37-.27.3-1.03 1.01-1.03 2.46s1.06 2.86 1.2 3.06c.15.2 2.07 3.17 5.03 4.45.7.3 1.25.49 1.68.63.7.22 1.35.19 1.86.11.56-.08 1.75-.71 1.99-1.4.25-.68.25-1.27.17-1.39-.07-.12-.27-.2-.57-.35z"/></svg></div>
+        <div class="cuerpo">
+          <b>WhatsApp enviado</b>
+          <i class="hora">12:42</i>
+          <i class="gris">Informaci&oacute;n del piso<br>y disponibilidad</i>
+        </div>
+        <div class="mini">
+          <img src="/assets/hero-wa-piso.webp" alt="" loading="lazy" decoding="async">
+          <span class="sello"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>
+        </div>
+      </div>
+
+      <div class="tarj t-visita">
+        <div class="ico ic-rojo"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.2" y="5" width="15.6" height="14" rx="2.4"/><path d="M3.2 9.4h15.6M7.6 2.8v3.4M14.4 2.8v3.4"/></svg></div>
+        <div class="cuerpo">
+          <b>Visita propuesta</b>
+          <i style="color:rgba(255,255,255,.88)">Jueves 11:00</i>
+        </div>
+        <div class="retrato">
+          <img src="/assets/hero-visitante.webp" alt="" loading="lazy" decoding="async">
+          <span class="sello"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>
+        </div>
+      </div>
+
+      <div class="tarj t-comer">
+        <div class="ico ic-azul"><svg viewBox="0 0 22 22" fill="currentColor"><circle cx="8" cy="7.5" r="3.1"/><circle cx="15.2" cy="8.4" r="2.4"/><path d="M2.4 18c.5-3 2.9-4.6 5.6-4.6S13.1 15 13.6 18z"/><path d="M14.4 12.6c2.2 0 3.9 1.2 4.4 3.3l-4 .1z"/></svg></div>
+        <div class="cuerpo">
+          <b>Comercial informado</b>
+          <i class="gris">Cliente &middot; Piso &middot; Visita<br>Todo el contexto</i>
+        </div>
+        <div class="retrato">
+          <img src="/assets/hero-comercial.webp" alt="" loading="lazy" decoding="async">
+          <span class="sello"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="h-movil">
+      <div class="h-pant">
+        <div class="h-isla"></div>
+        <div class="h-hora"><span>12:41</span><span>&#9679;&#9679;&#9679;</span></div>
+        <div class="h-wtop">
+          <span class="atras">&#8249;</span>
+          <span class="av">I</span>
+          <div><b>Inmobiliaria</b><span>en l&iacute;nea</span></div><span class="ic"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M2.5 5.8A2.3 2.3 0 014.8 3.5h6.4a2.3 2.3 0 012.3 2.3v8.4a2.3 2.3 0 01-2.3 2.3H4.8a2.3 2.3 0 01-2.3-2.3z"/><path d="M14.6 8.4l3.2-2.2v7.6l-3.2-2.2z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.7 2.9c.5-.2 1 0 1.3.4l1.3 2.2c.3.4.2 1-.2 1.3l-.9.8c-.2.2-.2.5-.1.7.8 1.6 2.1 2.8 3.6 3.6.3.1.5.1.7-.1l.8-.9c.3-.4.9-.5 1.3-.2l2.2 1.3c.4.3.6.8.4 1.3l-.6 1.5c-.2.5-.7.8-1.2.8-6.5 0-13.4-7-13.4-13.4 0-.5.3-1 .8-1.2z"/></svg></span>
+        </div>
+        <div class="h-chat">
+          <div class="h-in h-msg">Hola, soy el asistente virtual de la inmobiliaria.
+            &iquest;En qu&eacute; puedo ayudarte?<span class="hh">12:41</span></div>
+          <div class="h-out h-msg">Hola, me interesa el piso de la Calle Serrano.
+            &iquest;Sigue disponible?<span class="hh">12:42</span></div>
+          <div class="h-in h-msg">S&iacute;, sigue disponible. Te env&iacute;o la informaci&oacute;n:<span class="hh">12:42</span></div>
+          <div class="h-ficha">
+            <img src="/assets/boceto-piso-chat.webp" alt="" loading="lazy" decoding="async">
+            <div class="txt">
+              <b>Piso en Calle Serrano</b>
+              <span>3 hab &middot; 120 m&sup2; &middot; Terraza</span>
+              <strong>940.000 &euro;</strong>
+            </div>
+          </div>
+          <div class="h-in h-msg">&iquest;Te viene bien alguna de estas horas para verlo?<span class="hh">12:43</span></div>
+          <div class="h-horas"><span>Hoy 17:00</span><span>Ma&ntilde;ana 10:00</span><span>Jueves 11:00</span></div>
+        </div>
+        <div class="h-wfoot">
+          <span class="emo"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="7"/><path d="M7.4 11.6a3.2 3.2 0 005.2 0"/><circle cx="7.8" cy="8.2" r=".8" fill="currentColor"/><circle cx="12.2" cy="8.2" r=".8" fill="currentColor"/></svg></span>
+          <div class="caja">Escribe un mensaje&hellip;</div><span class="mic"><svg viewBox="0 0 20 20" fill="currentColor"><rect x="7.6" y="2.4" width="4.8" height="9" rx="2.4"/><path d="M5 9.4a5 5 0 0010 0" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M10 14.4v3" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== 02 · EL MOMENTO ====================
+         Reproduccion de la referencia. Las dos fotografias son
+         provisionales, recortadas de la propia referencia: para poner las
+         definitivas basta sustituir el archivo, sin tocar nada mas.
+           /assets/momento-comprador.webp  ·  vertical, proporcion 2:3
+           /assets/momento-piso.webp       ·  casi cuadrada -->
+    <section class="sec m2" id="momento">
+      <div class="wrap">
+        <div class="m2-grid">
+
+          <div class="m2-txt">
+            <p class="m2-kick">El momento</p>
+            <h2 class="m2-t">Devolver la llamada no es retomar la conversaci&oacute;n.</h2>
+            <p class="m2-lede">Cuando nadie responde, el comprador llama a otra inmobiliaria.
+              La oportunidad se pierde.</p>
+          </div>
+
+          <div class="m2-card m2-hoy">
+            <div class="m2-hoy-txt">
+              <p class="m2-eyebrow">Hoy</p>
+
+              <div class="m2-perdida">
+                <span class="ic"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M7.4 3.2c.5-.2 1.1 0 1.4.5l1.4 2.4c.3.5.2 1.1-.2 1.5l-1 .9c-.2.2-.3.5-.1.8.9 1.7 2.3 3.1 4 4 .3.2.6.1.8-.1l.9-1c.4-.4 1-.5 1.5-.2l2.4 1.4c.5.3.7.9.5 1.4l-.7 1.7c-.2.5-.7.9-1.3.9C10.3 19.4 2.6 11.7 2.6 4.4c0-.6.4-1.1.9-1.3z"/><path d="M14.6 2.4l5.2 5.2M19.8 2.4l-5.2 5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/></svg></span>
+                <div>
+                  <b>Llamada perdida</b>
+                  <span>12:41</span>
+                </div>
+              </div>
+
+              <ul class="m2-pasos">
+                <li>
+                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6.2" y="2.6" width="7.6" height="14.8" rx="1.8"/><path d="M8.8 15h2.4"/></svg></span>
+                  El comprador llama
+                </li>
+                <li>
+                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2.8l6 2.6v4.2c0 3.1-2.4 5.6-6 6.4-3.6-.8-6-3.3-6-6.4V5.4z"/></svg></span>
+                  Nadie responde
+                </li>
+                <li>
+                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="10" cy="10" rx="4.4" ry="7"/></svg></span>
+                  Llama a otra inmobiliaria
+                </li>
+                <li class="fin">
+                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6.2 6.2l7.6 7.6M13.8 6.2l-7.6 7.6"/></svg></span>
+                  La oportunidad se pierde.
+                </li>
+              </ul>
+            </div>
+
+            <div class="m2-foto">
+              <img src="/assets/momento-comprador.webp" loading="lazy" decoding="async"
+                alt="Un comprador al tel&eacute;fono, con gesto de contrariedad, esperando respuesta">
+            </div>
+          </div>
+
+          <div class="m2-card m2-er">
+            <p class="m2-eyebrow az">Con EasyRobots</p>
+
+            <div class="m2-er-cols">
+              <ul class="m2-checks">
+                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>La llamada es atendida por un agente de voz</li>
+                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se contin&uacute;a en WhatsApp</li>
+                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se recoge la informaci&oacute;n</li>
+                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se propone una visita</li>
+                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Tu equipo recibe el contexto</li>
+              </ul>
+
+              <div class="m2-visita">
+                <img src="/assets/momento-piso.webp" loading="lazy" decoding="async"
+                  alt="Sal&oacute;n luminoso del piso de la visita">
+                <div class="txt">
+                  <b>Visita agendada</b>
+                  <span class="h">Jueves 11:00</span>
+                  <span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================== 03 · COMO FUNCIONA ================== -->
+    <section class="sec osc" id="como-funciona">
+      <div class="wrap">
+        <div class="cf-top">
+          <div class="cf-grid">
+            <div class="cf-txt">
+              <p class="kick">C&oacute;mo funciona</p>
+              <h2>De la llamada a la visita,<br>en 4 pasos.</h2>
+              <p class="lede">EasyRobots atiende tus llamadas, entiende qu&eacute;
+                busca el cliente, contin&uacute;a la conversaci&oacute;n por WhatsApp y agenda la visita
+                con tu equipo.</p>
+            </div>
+
+            <ol class="pasos">
+              <li class="paso">
+                <span class="ic az"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.1 3.5c.55-.22 1.2 0 1.53.55l1.53 2.62c.33.55.22 1.2-.22 1.64l-1.09.98c-.22.22-.33.55-.11.87a13.6 13.6 0 0 0 4.37 4.37c.33.22.66.11.87-.11l.98-1.09c.44-.44 1.09-.55 1.64-.22l2.62 1.53c.55.33.77.98.55 1.53l-.76 1.86c-.22.55-.77.98-1.42.98-8.19 0-15.07-6.88-15.07-15.07 0-.66.44-1.2.98-1.42z"/></svg></span>
+                <h3>1. Atiende<br>la llamada</h3>
+                <p>Un agente de voz responde al instante.</p>
+              </li>
+              <li class="paso">
+                <span class="ic vd"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2.02a9.9 9.9 0 0 0-8.58 14.86L2.05 22l5.26-1.38a9.9 9.9 0 1 0 4.73-18.6zm0 1.68a8.22 8.22 0 0 1 5.82 14.04 8.22 8.22 0 0 1-9.98 1.27l-.3-.18-3.12.82.83-3.04-.2-.31A8.2 8.2 0 0 1 12.04 3.7z"/><path d="M16.62 14.1c-.25-.13-1.48-.73-1.71-.81-.23-.09-.4-.13-.56.12-.17.25-.65.82-.79.99-.15.16-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24a7.5 7.5 0 0 1-1.39-1.73c-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.36-.77-1.86-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.09s.9 2.43 1.03 2.6c.12.16 1.77 2.7 4.28 3.79.6.26 1.06.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.48-.6 1.69-1.19.21-.58.21-1.08.15-1.19-.06-.1-.23-.17-.48-.3z"/></svg></span>
+                <h3>2. Recoge<br>la informaci&oacute;n</h3>
+                <p>Datos, inter&eacute;s, preferencias&hellip;</p>
+              </li>
+              <li class="paso">
+                <span class="ic bl"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.4" y="1.8" width="2.5" height="4.6" rx="1.25" fill="#E5484D"/><rect x="15.1" y="1.8" width="2.5" height="4.6" rx="1.25" fill="#E5484D"/><path fill="#E5484D" d="M4.4 3.9h15.2a2.4 2.4 0 0 1 2.4 2.4v13.3a2.4 2.4 0 0 1-2.4 2.4H4.4A2.4 2.4 0 0 1 2 19.6V6.3a2.4 2.4 0 0 1 2.4-2.4z"/><path fill="#fff" d="M2 8.6h20v1.5H2z"/><g fill="#fff"><rect x="5.3" y="12" width="2.2" height="2.2" rx=".6"/><rect x="10.9" y="12" width="2.2" height="2.2" rx=".6"/><rect x="16.5" y="12" width="2.2" height="2.2" rx=".6"/><rect x="5.3" y="16.2" width="2.2" height="2.2" rx=".6"/><rect x="10.9" y="16.2" width="2.2" height="2.2" rx=".6"/><rect x="16.5" y="16.2" width="2.2" height="2.2" rx=".6"/></g></svg></span>
+                <h3>3. Propone<br>la visita</h3>
+                <p>Muestra disponibilidad y agenda.</p>
+              </li>
+              <li class="paso">
+                <span class="ic az"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="7.6" r="4.2"/><path d="M12 13.4c-4.1 0-7.4 2.4-7.4 5.4 0 .8.7 1.4 1.5 1.4h11.8c.8 0 1.5-.6 1.5-1.4 0-3-3.3-5.4-7.4-5.4z"/></svg></span>
+                <h3>4. Informa<br>a tu equipo</h3>
+                <p>Tu comercial recibe todo el contexto.</p>
+              </li>
+            </ol>
+          </div>
+      </div>
+    </section>
+
+    <!-- ==================== 04 · DEMOSTRACION ==================== -->
+    <section class="sec" id="demo">
+      <div class="wrap">
+        <div class="demo-grid">
+          <div class="demo-cols">
+            <div class="demo-txt">
+              <p class="kick">Una demostraci&oacute;n real</p>
+              <h2>Escucha a EasyRobots<br>responder a un comprador.</h2>
+              <p class="lede">Una llamada real. Sin guiones. Para que veas c&oacute;mo funciona.</p>
+              <button class="escuchar" type="button" data-demo>
+                <span class="rd">&#9654;</span>
+                Escuchar la llamada
+                <span class="dur">02:18</span>
+              </button>
+              <p class="pie-audio">La llamada se reproduce directamente aqu&iacute;.</p>
+            </div>
+
+            <div class="demo-cta">
+                <p>Esta es una llamada de ejemplo. El tuyo se monta con tus inmuebles,
+                  tu agenda y tu forma de trabajar.</p>
+                <button class="btn btn-azul" type="button" data-reserva>Ver c&oacute;mo quedar&iacute;a el tuyo &rarr;</button>
+                <span>15 minutos. Miramos tu caso y te decimos si encaja.</span>
+              </div>
+
+            <div class="repro">
+              <button class="repro-play" type="button" data-demo aria-label="Escuchar la llamada">
+                <svg viewBox="0 0 12 14" fill="currentColor" aria-hidden="true"><path d="M1 1.2c0-.6.7-1 1.2-.7l8.3 5.3c.5.3.5 1 0 1.3L2.2 12.5c-.5.3-1.2 0-1.2-.7z"/></svg>
+              </button>
+              <span class="onda" aria-hidden="true"><i style="height:7%"></i><i style="height:17%"></i><i style="height:27%"></i><i style="height:41%"></i><i style="height:39%"></i><i style="height:69%"></i><i style="height:59%"></i><i style="height:44%"></i><i style="height:36%"></i><i style="height:37%"></i><i style="height:46%"></i><i style="height:37%"></i><i style="height:81%"></i><i style="height:95%"></i><i style="height:61%"></i><i style="height:39%"></i><i style="height:39%"></i><i style="height:71%"></i><i style="height:34%"></i><i style="height:37%"></i><i style="height:39%"></i><i style="height:42%"></i><i style="height:51%"></i><i style="height:32%"></i><i style="height:31%"></i><i style="height:25%"></i><i style="height:6%"></i><i style="height:31%"></i><i style="height:31%"></i><i style="height:25%"></i><i style="height:53%"></i><i style="height:73%"></i><i style="height:100%"></i><i style="height:41%"></i><i style="height:42%"></i><i style="height:25%"></i><i style="height:34%"></i><i style="height:29%"></i><i style="height:37%"></i><i style="height:24%"></i><i style="height:14%"></i><i style="height:5%"></i><i style="height:6%"></i></span>
+              <span class="repro-pie">
+                <span class="mini" aria-hidden="true"><svg viewBox="0 0 10 12" fill="currentColor"><path d="M1 .9c0-.5.5-.8.9-.5l7 5.1c.4.3.4.8 0 1.1l-7 5.1c-.4.3-.9 0-.9-.5z"/></svg></span>
+                <span class="pista"></span>
+                <span class="hora">0:00 / 2:18</span>
+              </span>
+            </div>
+
+            <div class="recogida">
+              <h3>Informaci&oacute;n recogida</h3>
+              <ul>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Cliente</span><span class="v">+34 612 345 6XX</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Inter&eacute;s</span><span class="v">Piso en Salamanca</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Presupuesto</span><span class="v">Entre 800.000 &euro; y 1.000.000 &euro;</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Disponibilidad</span><span class="v">Jueves 11:00</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Estado</span><span class="v ok">Visita propuesta</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Comercial asignado</span><span class="v">Laura M.</span></li>
+              </ul>
+            </div>
+
+            <div class="trans">
+              <div class="l">
+                <span><b class="er">Agente EasyRobots</b><span class="t">00:03</span></span>
+                <p>Hola, gracias por llamar a Inmobiliaria. &iquest;En qu&eacute; puedo ayudarte?</p>
+              </div>
+              <div class="l">
+                <span><b class="cl">Cliente</b><span class="t">00:08</span></span>
+                <p>Hola, me interesa un piso en la zona de Salamanca&hellip;</p>
+              </div>
+              <div class="l">
+                <span><b class="er">Agente EasyRobots</b><span class="t">00:15</span></span>
+                <p>Perfecto. &iquest;Buscas algo para entrar ya o a medio plazo?</p>
+              </div>
+              <div class="l">
+                <span><b class="cl">Cliente</b><span class="t">00:24</span></span>
+                <p>Para entrar ya. Tengo la financiaci&oacute;n preaprobada.</p>
+              </div>
+              <div class="l">
+                <span><b class="er">Agente EasyRobots</b><span class="t">00:36</span></span>
+                <p>Te paso la ficha por WhatsApp. &iquest;Te viene bien el jueves a las 11:00 para verlo?</p>
+              </div>
+              <div class="l">
+                <span><b class="cl">Cliente</b><span class="t">00:44</span></span>
+                <p>El jueves a las once me va bien.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 05 · SISTEMA ===================== -->
+    <section class="sec osc" id="sistema">
+      <div class="foto" aria-hidden="true"></div>
+      <div class="velo" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="sis-grid">
+          <div class="sis-cols">
+            <div class="sis-txt">
+              <p class="kick">El sistema</p>
+              <h2>Piezas, no un paquete cerrado.</h2>
+              <p class="lede">Nos adaptamos a las herramientas que ya utilizas. Y si hace falta una
+                pieza que no existe en tu software, la construimos.</p>
+            </div>
+
+            <div class="diagrama">
+              <span class="resplandor" aria-hidden="true"></span>
+              <svg class="cables" viewBox="0 0 264 110" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="rama"><path d="M132 18 V6 H98"/><path d="M132 6 H166"/><path d="M86 20 V9"/><path d="M178 20 V9"/><path d="M60 58 V40 H46"/><path d="M204 58 V40 H218"/><path d="M104 46 H90 V33"/><path d="M160 46 H174 V33"/><path d="M132 74 V102 H106"/><path d="M132 102 H158"/></g><g class="principal"><path d="M104 34 H86 V20 H68.2"/><path d="M160 34 H178 V20 H195.8"/><path d="M104 58 H60 V68.9 H40.2"/><path d="M160 58 H204 V68.9 H223.8"/><path d="M118 74 V89.2 H90.1"/><path d="M146 74 V89.2 H173.9"/></g></svg>
+              <div class="modulo pz1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.1 3.5c.55-.22 1.2 0 1.53.55l1.53 2.62c.33.55.22 1.2-.22 1.64l-1.09.98c-.22.22-.33.55-.11.87a13.6 13.6 0 0 0 4.37 4.37c.33.22.66.11.87-.11l.98-1.09c.44-.44 1.09-.55 1.64-.22l2.62 1.53c.55.33.77.98.55 1.53l-.76 1.86c-.22.55-.77.98-1.42.98-8.19 0-15.07-6.88-15.07-15.07 0-.66.44-1.2.98-1.42z"/></svg></div>
+              <div class="modulo pz2"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#25D366" d="M12.04 2.02c-5.46 0-9.9 4.44-9.91 9.9 0 1.75.46 3.45 1.33 4.95L2.05 22l5.26-1.38a9.9 9.9 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.44 9.9-9.9a9.82 9.82 0 0 0-2.9-7A9.82 9.82 0 0 0 12.05 2z"/><path fill="#fff" d="M16.62 14.1c-.25-.13-1.48-.73-1.71-.81-.23-.09-.4-.13-.56.12-.17.25-.65.82-.79.99-.15.16-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24a7.5 7.5 0 0 1-1.39-1.73c-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.36-.77-1.86-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.09s.9 2.43 1.03 2.6c.12.16 1.77 2.7 4.28 3.79.6.26 1.06.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.48-.6 1.69-1.19.21-.58.21-1.08.15-1.19-.06-.1-.23-.17-.48-.3z"/></svg></div>
+              <div class="modulo pz3"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.3" y="1.7" width="2.5" height="4.6" rx="1.25" fill="#E5484D"/><rect x="15.2" y="1.7" width="2.5" height="4.6" rx="1.25" fill="#E5484D"/><path fill="#fff" d="M4.3 3.8h15.4a2.4 2.4 0 0 1 2.4 2.4v13.4a2.4 2.4 0 0 1-2.4 2.4H4.3a2.4 2.4 0 0 1-2.4-2.4V6.2a2.4 2.4 0 0 1 2.4-2.4z"/><path fill="#E5484D" d="M1.9 6.2A2.4 2.4 0 0 1 4.3 3.8h15.4a2.4 2.4 0 0 1 2.4 2.4v3H1.9z"/><g fill="#E5484D"><rect x="5.2" y="11.6" width="2.3" height="2.3" rx=".6"/><rect x="10.85" y="11.6" width="2.3" height="2.3" rx=".6"/><rect x="16.5" y="11.6" width="2.3" height="2.3" rx=".6"/><rect x="5.2" y="16" width="2.3" height="2.3" rx=".6"/><rect x="10.85" y="16" width="2.3" height="2.3" rx=".6"/><rect x="16.5" y="16" width="2.3" height="2.3" rx=".6"/></g></svg></div>
+              <div class="modulo pz4 crm"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.5 9.2a6.35 6.35 0 1 0 0 12.7 6.35 6.35 0 0 0 0-12.7zm0 9.4a3.05 3.05 0 1 1 0-6.1 3.05 3.05 0 0 1 0 6.1z"/><path fill="currentColor" d="M13 4.9h3v5.6h-3z"/><circle cx="14.5" cy="3.3" r="2.6" fill="currentColor"/><path fill="currentColor" d="M6.9 14h4.3v2.9H6.9z"/><rect x="1.4" y="12.4" width="4.9" height="4.9" rx="1.3" fill="currentColor"/></svg></div>
+              <div class="modulo pz5"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2a6.2 6.2 0 0 0-6.2 6.2v3.4l-1.7 3.3a1.1 1.1 0 0 0 .98 1.6h13.84a1.1 1.1 0 0 0 .98-1.6l-1.7-3.3V8.4A6.2 6.2 0 0 0 12 2.2z"/><path d="M9.4 18.4a2.7 2.7 0 0 0 5.2 0z"/></svg></div>
+              <div class="modulo pz6"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8.5" r="3.2"/><path d="M12 12.8c-3.1 0-5.6 1.85-5.6 4.13 0 .6.5 1.07 1.1 1.07h9c.6 0 1.1-.47 1.1-1.07 0-2.28-2.5-4.13-5.6-4.13z"/><circle cx="5" cy="7.3" r="2.35"/><path d="M5 10.5c-2.25 0-4 1.32-4 2.96 0 .46.37.83.83.83h3.3c.33-1.45 1.28-2.66 2.6-3.4A7.3 7.3 0 0 0 5 10.5z"/><circle cx="19" cy="7.3" r="2.35"/><path d="M19 10.5c-.96 0-1.9.14-2.73.4 1.32.73 2.27 1.94 2.6 3.39h3.3c.46 0 .83-.37.83-.83 0-1.64-1.75-2.96-4-2.96z"/></svg></div>
+              <div class="nucleo"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.1 2.3a1.5 1.5 0 1 1 1.8 0v1.5h-1.8z"/><path d="M2.6 10.1h1.1v5.6H2.6a1.6 1.6 0 0 1-1.6-1.6v-2.4a1.6 1.6 0 0 1 1.6-1.6zM21.4 10.1h-1.1v5.6h1.1a1.6 1.6 0 0 0 1.6-1.6v-2.4a1.6 1.6 0 0 0-1.6-1.6zM11.1 19.6h1.8v2.1h-1.8z"/><path fill-rule="evenodd" d="M7.6 4.9h8.8a4 4 0 0 1 4 4v6.2a4 4 0 0 1-4 4H7.6a4 4 0 0 1-4-4V8.9a4 4 0 0 1 4-4zM9.5 9.8a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 1 0 0-3.2zM14.5 9.8a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 1 0 0-3.2zM8.9 15.1h6.2a.85.85 0 0 1 0 1.7H8.9a.85.85 0 0 1 0-1.7z"/></svg></div>
+              <p class="nucleo-nombre">EasyRobots</p>
+            </div>
+
+            <ul class="sis-lista">
+              <li><span class="tic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg></span><span>Llamadas · agente de voz</span></li>
+              <li><span class="tic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg></span><span>WhatsApp · conversaciones</span></li>
+              <li><span class="tic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg></span><span>Agenda · visitas</span></li>
+              <li><span class="tic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg></span><span>CRM · tu software</span></li>
+              <li><span class="tic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg></span><span>Seguimiento · recordatorios</span></li>
+              <li><span class="tic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg></span><span>Tu equipo · siempre informado</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= 06+07 · TECNOLOGIA, EQUIPO Y GARANTIA ========= -->
+    <!-- El padding de arriba vuelve: la 05 ya es oscura y estas dos
+         secciones han dejado de ser el mismo bloque claro. -->
+    <section class="sec" id="equipo">
+      <div class="wrap">
+        <div class="tec-grid">
+          <div class="tec-cols">
+            <div class="tec-txt">
+              <p class="kick">Lo mejor de cada uno</p>
+              <h2>Tecnolog&iacute;a que potencia<br>tu equipo, no lo sustituye.</h2>
+            </div>
+
+            <div class="tec">
+              <h3><span class="ic az"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.1 2.3a1.5 1.5 0 1 1 1.8 0v1.5h-1.8z"/><path d="M2.6 10.1h1.1v5.6H2.6a1.6 1.6 0 0 1-1.6-1.6v-2.4a1.6 1.6 0 0 1 1.6-1.6zM21.4 10.1h-1.1v5.6h1.1a1.6 1.6 0 0 0 1.6-1.6v-2.4a1.6 1.6 0 0 0-1.6-1.6zM11.1 19.6h1.8v2.1h-1.8z"/><path fill-rule="evenodd" d="M7.6 4.9h8.8a4 4 0 0 1 4 4v6.2a4 4 0 0 1-4 4H7.6a4 4 0 0 1-4-4V8.9a4 4 0 0 1 4-4zM9.5 9.8a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 1 0 0-3.2zM14.5 9.8a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 1 0 0-3.2zM8.9 15.1h6.2a.85.85 0 0 1 0 1.7H8.9a.85.85 0 0 1 0-1.7z"/></svg></span>EasyRobots se encarga de</h3>
+              <ul>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Responder llamadas 24/7</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Hacer las preguntas clave</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Recoger toda la informaci&oacute;n</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Agendar visitas en tu calendario</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Seguimiento y avisos</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Integrarse con tus herramientas</span></li>
+              </ul>
+            </div>
+            <div class="tec">
+              <h3><span class="ic os"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="7.4" r="2.8"/><circle cx="14.4" cy="8.4" r="2.1"/><path d="M2.6 16.8c.6-2.7 2.8-4.1 5.4-4.1s4.8 1.4 5.4 4.1"/></svg></span>Tu equipo se centra en</h3>
+              <ul>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Ense&ntilde;ar los inmuebles</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Valorar y negociar</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Captar nuevos propietarios</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Gestionar casos complejos</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Acompa&ntilde;ar en la venta</span></li>
+                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span>Lo que realmente necesita un toque humano</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="pers-grid">
+          <div>
+            <h2 style="font-size:1.5rem">No somos una centralita.</h2>
+            <p class="lede">Somos las personas que dise&ntilde;an, construyen y mantienen
+              tu sistema.</p>
+          </div>
+
+          <div class="caras">
+            <div class="cara">
+              <div class="img"><img src="/assets/guille.webp" alt="Guillermo, co-fundador de EasyRobots" loading="lazy" decoding="async"></div>
+              <b>Guillermo</b><span class="rol">Co-fundador</span>
+            </div>
+            <!-- En el boceto habia dos caras generadas con IA etiquetadas con
+                 nombre y cargo. Van las fotos reales de los dos (2026-10-02). -->
+            <div class="cara">
+              <div class="img"><img src="/assets/anais.webp" alt="Ana&iacute;s, cofundadora de EasyRobots" loading="lazy" decoding="async"></div>
+              <b>Ana&iacute;s</b><span class="rol">Co-fundadora</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="garantia">
+              <ul>
+                <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M10 5.8v4.4l3 1.8"/></svg>14 d&iacute;as para comprobar que encaja con tu forma de trabajar.</li>
+                <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M7.4 7.4h5.2v5.2H7.4z"/></svg>Si no hace lo que hemos definido o no encaja, lo paramos y te devolvemos el dinero.</li>
+                <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M6.6 10.2l2.3 2.3 4.5-4.6"/></svg>Primer mes de mantenimiento incluido.</li>
+              </ul>
+            </div>
+            <div class="tranquilidad">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 2.5l6.5 3v4.8c0 3.6-2.7 6.4-6.5 7.2-3.8-.8-6.5-3.6-6.5-7.2V5.5z"/><path d="M7 10l2 2 4-4"/></svg>
+              Tu tranquilidad tambi&eacute;n es parte del servicio.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ 08 + 09 · CTA Y PIE ============
+       Van juntos dentro de .cierre porque comparten la foto: en la
+       referencia la escena no se corta al acabar la CTA, sigue por detras
+       del pie y es el velo el que se va cerrando. -->
+  <div class="cierre">
+    <div class="foto" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+
+    <section class="cta" id="cta">
+      <div class="wrap">
+        <div class="cta-grid">
+          <div>
+            <p class="kick">Hablemos</p>
+            <h2>Vemos qu&eacute; pasa hoy con las llamadas<br>que no pod&eacute;is coger.</h2>
+            <p class="sub">Sin compromiso. 15 minutos.</p>
+          </div>
+          <div>
+            <button class="btn btn-azul" type="button" data-reserva>Reservar una llamada
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h11M11 6l4 4-4 4"/></svg>
+            </button>
+            <div class="cta-meta">
+              <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M10 5.8v4.4l3 1.8"/></svg>15 minutos</div>
+              <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M6.4 6.4l7.2 7.2M13.6 6.4l-7.2 7.2"/></svg>Sin compromiso</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pie">
+    <div class="wrap">
+      <div class="pie-grid">
+        <div>
+          <div class="pie-marca">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.6l1.9 6.3 6.3 1.9-6.3 1.9L12 18l-1.9-6.3L3.8 9.8l6.3-1.9z"/></svg>
+            EASYROBOTS
+          </div>
+          <p>Sistemas de IA para inmobiliarias.</p>
+        </div>
+        <div>
+          <h4>Producto</h4>
+          <a class="enl" href="#demo">Ver demostraci&oacute;n</a>
+          <a class="enl" href="#sistema">Integraciones</a>
+        </div>
+        <div>
+          <h4>Empresa</h4>
+          <a class="enl" href="#equipo">Sobre nosotros</a>
+          <a class="enl" href="#cta">Reservar llamada</a>
+          <a class="enl" href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a class="enl" href="/privacy.html">Pol&iacute;tica de privacidad y cookies</a>
+        </div>
+        <div>
+          <h4>S&iacute;guenos</h4>
+          <div class="redes">
+            <a href="https://www.instagram.com/easyrobots.ai/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="14" height="14" rx="4"/><circle cx="10" cy="10" r="3.2"/><circle cx="14.2" cy="5.8" r=".9" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/people/EasyRobotsAI/61587151053673/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M11.4 18v-7h2.3l.35-2.7H11.4V6.6c0-.78.22-1.31 1.34-1.31h1.4V2.88A19 19 0 0012.1 2.8c-2 0-3.4 1.23-3.4 3.5v1.99H6.4V11h2.3v7z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pie-abajo">
+        <span>EasyRobots AH-NICE &middot; Ana Isabel Gonz&aacute;lez Hoog &middot;
+          Tonndorfer Hauptstra&szlig;e 61, Hamburgo (Alemania) &middot; info@easyrobots-ai.cloud</span>
+        <span>&copy; 2026 EasyRobots. Todos los derechos reservados.</span>
+      </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ================= capa: reservar ================= -->
+  <div class="capa" id="capa-reserva" aria-hidden="true">
+    <div class="caja-m" role="dialog" aria-modal="true" aria-labelledby="t-reserva">
+      <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">&#10005;</button>
+      <h2 id="t-reserva">Elige un hueco y lo vemos contigo</h2>
+      <p>15 minutos. Sin presentaci&oacute;n comercial.</p>
+      <div id="hueco-cal"></div>
+    </div>
+  </div>
+
+  <!-- ================= capa: demo ================= -->
+  <div class="capa" id="capa-demo" aria-hidden="true">
+    <div class="caja-m" role="dialog" aria-modal="true" aria-labelledby="t-demo">
+      <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">&#10005;</button>
+      <h2 id="t-demo">Escucha la llamada</h2>
+      <p>La grabaci&oacute;n se reproduce aqu&iacute;, sin salir de la p&aacute;gina.</p>
+      <p class="estado" id="estado-demo" role="status"></p>
+      <div id="hueco-audio"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* =====================================================
+         PUNTOS DE CONEXION
+         Lo unico que hay que tocar para enchufar lo que falta.
+         ===================================================== */
+      // 1. CALENDARIO — conectado, el mismo de toda la web.
+      var CALENDARIO = 'https://api.leadconnectorhq.com/widget/booking/XMQy1fOiMEz88wzKLVPe';
+      var NICHO = 'inmobiliarias';
+      // 2. AUDIO DE LA LLAMADA — pendiente. Dejar el archivo en /assets/ y
+      //    escribir aqui su ruta; el boton lo reproduce solo.
+      var AUDIO_DEMO = '';
+      // 3. Redes, correo y privacidad ya estan conectados en el pie.
+
+      var ultimoFoco = null;
+
+      function abrir(capa) {
+        ultimoFoco = document.activeElement;
+        capa.classList.add('abierta');
+        capa.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = capa.querySelector('.cerrar');
+        if (c) c.focus();
+      }
+      function cerrar(capa) {
+        if (!capa) return;
+        capa.classList.remove('abierta');
+        capa.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus();
+      }
+
+      var capaReserva = document.getElementById('capa-reserva');
+      var capaDemo = document.getElementById('capa-demo');
+      var huecoCal = document.getElementById('hueco-cal');
+
+      document.querySelectorAll('[data-reserva]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (!huecoCal.firstChild) {   // el iframe se monta al abrir, no en la carga
+            var f = document.createElement('iframe');
+            f.className = 'marco';
+            f.src = CALENDARIO + '?nicho=' + NICHO;
+            f.title = 'Agenda tu llamada con EasyRobots';
+            huecoCal.appendChild(f);
+          }
+          abrir(capaReserva);
+        });
+      });
+
+      document.querySelectorAll('[data-demo]').forEach(function (b) {
+        b.addEventListener('click', function () { abrir(capaDemo); });
+      });
+      document.querySelectorAll('[data-cerrar]').forEach(function (b) {
+        b.addEventListener('click', function () { cerrar(b.closest('.capa')); });
+      });
+      document.querySelectorAll('.capa').forEach(function (c) {
+        c.addEventListener('click', function (e) { if (e.target === c) cerrar(c); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') document.querySelectorAll('.capa.abierta').forEach(cerrar);
+      });
+
+      var estado = document.getElementById('estado-demo');
+      var huecoAudio = document.getElementById('hueco-audio');
+      document.querySelectorAll('[data-demo]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (!AUDIO_DEMO) {
+            estado.textContent = 'La grabacion todavia no esta subida. En cuanto este el archivo, se reproduce aqui.';
+            return;
+          }
+          if (!huecoAudio.firstChild) {
+            var a = document.createElement('audio');
+            a.controls = true; a.preload = 'none'; a.src = AUDIO_DEMO;
+            a.style.width = '100%'; a.style.marginTop = '1rem';
+            huecoAudio.appendChild(a);
+          }
+          estado.textContent = '';
+        });
+      });
+
+      window.addEventListener('message', function (e) {
+        var d = e.data;
+        var esCita = d && (d.type === 'booking_confirmed' || d.type === 'appointmentBooked' ||
+          (typeof d === 'string' && d.indexOf('booking') > -1));
+        if (esCita && typeof gtag === 'function') {
+          gtag('event', 'cita_agendada', {
+            event_category: 'conversion', event_label: 'calendario_ghl', nicho: NICHO
+          });
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
