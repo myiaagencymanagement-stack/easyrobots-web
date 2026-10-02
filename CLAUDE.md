@@ -859,19 +859,28 @@ de referencia y no se toca.
 
 ### Decisiones que conviene no reabrir
 
-- `--u` = 1 px del boceto (`0.1146789cqw`). Margen 46 u (5,28 %).
-- **La 02 y la 04 tienen el alto exacto de su tira de fondos** (166 y 295 u)
-  porque la foto trae pintados la tableta y el movil y la interfaz va encima.
-  Esquinas de la pantalla de la tableta: (488,28) (808,11) (470,166), y la
-  interfaz se deforma con `matrix(1,-0.053,-0.13,1,0,0)`. Pantalla del movil:
-  x378..561 desde y19.
-- **En esas dos secciones la foto NO va a 100vw**: a 1920 el dispositivo se
-  desplazaba y la interfaz quedaba flotando. Se queda del ancho de la escena,
-  fundida por los bordes, y los lados llevan la misma foto desenfocada.
+- **No se maqueta con `--u` del boceto.** La primera version (todo en
+  unidades del boceto, cada seccion con la proporcion de su tira) salio
+  "aplastada, parece un boceto": el boceto es muy apaisado y a 1440 las
+  secciones median 200-480 px. Ahora es rejilla normal con tipografia de la
+  ficha (H1 70, H2 48, texto 18,5 a 1440).
+- **Regla de alto de Anais, aplicable a todas las landings:** el hero ocupa la
+  pantalla entera al entrar (`100svh`), ni mas ni menos; las demas, unos dos
+  tercios de pantalla (`min-height: clamp(540px, 66vh, 720px)`), para que se
+  vea una y media por pantalla. A 1440x900: hero 900, secciones ~594, la 04
+  (tres columnas con el movil) 802. Total ~6.700 px.
+- Para comprobarlo hay que capturar **pantalla a pantalla** en `<iframe>` de
+  1440x900, no la pagina entera con una ventana alta: `vh` vale el alto de la
+  ventana. Y fijar `scroll-behavior: auto` antes de `scrollTo`, o la pagina
+  (que lleva desplazamiento suave) no llega a moverse.
+- **La tableta y el movil son HTML entero**, no la interfaz encima de la foto.
+  Por eso sus fotos se recortan sin el dispositivo pintado (`dent-presu` y
+  `dent-demo` son la parte izquierda de su tira).
 - La tira de "Piezas" de la hoja **trae el diagrama pintado**: no se usa. Va la
-  de "Como funciona" en espejo.
-- La columna "Por que no se cierran" va en x612 y no en x600: el canto del
-  movil de la foto se comia la primera letra.
+  de "Como funciona" en espejo. El diagrama vive en una caja de 400x150 con su
+  propia unidad `--d` y conserva las posiciones del boceto.
+- Las fotos se amplian de 2 a 4 veces: llevan `blur(1.6px)` para que se lean
+  como profundidad de campo. El hero va ampliado x2 con Lanczos y enfoque.
 
 ### Lo del boceto que NO se reprodujo
 
@@ -895,8 +904,10 @@ de referencia y no se toca.
 - La foto del hero de la hoja de fondos **no trae al doctor** del boceto: es la
   clinica vacia. Si se quiere la persona, pedir la foto y sustituir
   `dent-hero.webp`.
-- Las fotos son de 872 px de ancho: a 1440 se ven blandas. Pedir la hoja de
-  fondos a mas resolucion si se nota.
+- **Las fotos son de 872 px de ancho** y con secciones de alto real se amplian
+  de 2 a 4 veces: se ven blandas, sobre todo el hero a pantalla completa.
+  Pedir la hoja de fondos a mas resolucion (o cada escena suelta, al menos
+  2400 px de ancho).
 - El bloque de datos dice "Trabajamos con los mas altos estandares" y
   "cumplimos con la normativa vigente", que es copy de la ficha pero choca con
   la regla de no responder con adjetivos (nombrar art. 9 RGPD, contrato de
