@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Solo las paginas buenas de cada nivel. Fuera: borradores, funnels (van con
-     trafico de pago y llevan noindex), guias entregadas y la de coaching,
-     que todavia no esta terminada. -->
+     trafico de pago y llevan noindex), guias entregadas y las paginas
+     de gracias. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://easyrobots-ai.cloud/</loc><lastmod>2026-10-02</lastmod><priority>1.0</priority></url>
   <url><loc>https://easyrobots-ai.cloud/estetica/</loc><lastmod>2026-10-02</lastmod><priority>0.9</priority></url>
@@ -9,6 +9,7 @@
   <url><loc>https://easyrobots-ai.cloud/inmobiliarias/</loc><lastmod>2026-10-02</lastmod><priority>0.9</priority></url>
   <url><loc>https://easyrobots-ai.cloud/concesionarios/</loc><lastmod>2026-10-02</lastmod><priority>0.9</priority></url>
   <url><loc>https://easyrobots-ai.cloud/ecommerce/</loc><lastmod>2026-10-02</lastmod><priority>0.9</priority></url>
+  <url><loc>https://easyrobots-ai.cloud/coaching/</loc><lastmod>2026-10-02</lastmod><priority>0.9</priority></url>
   <url><loc>https://easyrobots-ai.cloud/guias/</loc><lastmod>2026-10-02</lastmod><priority>0.5</priority></url>
   <url><loc>https://easyrobots-ai.cloud/privacy.html</loc><lastmod>2026-10-02</lastmod><priority>0.2</priority></url>
 </urlset>

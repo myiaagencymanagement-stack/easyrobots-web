@@ -301,7 +301,7 @@ demás está en `src/borradores/` con el sufijo `-version-antigua`.
 | `/inmobiliarias/` | `src/inmobiliarias/index.html` | Era `prueba-inmobiliarias-v3.html` |
 | `/concesionarios/` | `src/concesionarios/index.html` | Era `prueba-concesionarios-v2.html` |
 | `/ecommerce/` | `src/ecommerce/index.html` | Era `prueba-ecommerce-v2.html` |
-| `/coaching/` | `src/coaching/index.html` | Era `prueba-coaching.html`. **Sigue con `noindex`**: la v2 está a medias |
+| `/coaching/` | `src/coaching/index.html` | Era `prueba-coaching-v2.html`. Publicada e indexable el 2026-10-02 |
 
 **Por qué carpetas y no `estetica.html`:** nginx sirve `carpeta/index.html` con
 solo pedir `/carpeta/`, sin tocar ninguna configuración. La URL queda corta, sin
@@ -321,8 +321,6 @@ Lo que sigue en la raíz y se queda ahí:
   las indexa, se descargan sin dejar el email y el funnel deja de captar. El
   índice `guias/index.html` sí se deja indexable.
 - `src/lanzamientos/` — landings de coaching y ecommerce.
-- `prueba-coaching-v2.html` — la reconstrucción de coaching, **en curso**. Cuando
-  esté lista sustituye a `src/coaching/index.html` y se le quita el `noindex`.
 
 ### Los borradores
 
@@ -330,6 +328,25 @@ Lo que sigue en la raíz y se queda ahí:
 Todas llevan `noindex` y la carpeta está en `Disallow` del `robots.txt`, para que
 no compitan contra la página buena de su nicho. Sus rutas también se pasaron a
 absolutas, así que siguen abriéndose con sus imágenes y sus tipografías.
+
+## Landing de coaching v2 (2026-10-02)
+
+Reconstruccion contra su boceto, en `src/assets/boceto/coaching-v2/` (referencia,
+hoja de fondos, la tira de secciones claras, la CTA aspiracional y la referencia
+del diagrama). Los recortes salen de `docs/fondos-coaching-v2.py`.
+
+Lo que conviene saber al tocarla:
+
+- **La pagina no tiene JavaScript propio.** Es todo CSS; el unico script es el
+  del calendario. Si algo deja de moverse, no busques un observer: no lo hay.
+- El bloque de equipo va con **retratos redondos** (`.cara .foto-r`,
+  `aspect-ratio:1`, `border-radius:50%`) y `object-position: center 22%`. Usa los
+  mismos `guille.webp` y `anais.webp` que el resto; no hace falta recorte aparte.
+- Los seis CTA son `<a href="#hablemos">` con `data-cal`. Sin JavaScript siguen
+  llevando a la seccion de contacto.
+- Ojo al validarla con capturas: con `decoding="async"`, el **ultimo** retrato
+  sale en blanco en Chrome headless aunque en el navegador cargue bien. Ya paso
+  en dental con `loading="lazy"`. No es un fallo de la pagina.
 
 ## Los CTA van todos al calendario (2026-10-02)
 
@@ -384,8 +401,8 @@ Dos cosas que no cambian:
 ## SEO: lo que se dejo montado (2026-10-02)
 
 - **Una sola URL por nicho**, en carpeta, sin `.html` (ver "Paginas y URLs").
-- Las seis paginas buenas pasan a `index, follow, max-image-preview:large`.
-  **Coaching se queda en `noindex`** hasta que su v2 este terminada.
+- Las **siete** paginas buenas pasan a `index, follow, max-image-preview:large`.
+  Coaching entro la ultima, el mismo dia, cuando se termino su v2.
 - Cada pagina lleva `title` propio con la palabra clave de su nivel,
   `description` de 130-150 caracteres, `canonical` absoluto, Open Graph,
   Twitter Card y **JSON-LD**: `Organization` + `WebSite` en la home, y
@@ -393,8 +410,8 @@ Dos cosas que no cambian:
 - **`og:image` ya existe.** Antes apuntaba a un `assets/social-preview.jpg` que
   nunca se creo, asi que el enlace salia sin imagen al compartirlo. Ahora hay un
   `assets/og-<nicho>.jpg` de 1200x630 recortado del propio hero de cada pagina.
-- `sitemap.xml` nuevo, con las seis paginas, `/guias/` y `privacy.html`. **Fuera
-  del sitemap**: borradores, funnels, guias entregadas y coaching.
+- `sitemap.xml` nuevo, con las siete paginas, `/guias/` y `privacy.html`. **Fuera
+  del sitemap**: borradores, funnels, guias entregadas y las paginas de gracias.
 - `robots.txt` con `Disallow: /borradores/` y la linea `Sitemap:`.
 - Se respeta la regla de no canibalizar: la home titula por *agencia de IA* y
   cada vertical por *IA para \<sector\>*. La home no pelea por ninguna de las dos.
@@ -1462,9 +1479,6 @@ Míos, cuando lo pida:
   aunque en `/estetica/` vive la v2 del boceto nuevo, no la v6.
 - Ir creando las verticales de dental y las que vengan, con el mismo sistema
   visual.
-- **Terminar la de coaching** (`src/prueba-coaching-v2.html`), moverla a
-  `src/coaching/index.html`, quitarle el `noindex` y meterla en el `sitemap.xml`.
-  Hoy `/coaching/` sirve la versión anterior, fuera de Google a propósito.
 - Probar el calendario de GHL con una reserva real desde cada landing y
   comprobar que el `?nicho=` llega.
 
