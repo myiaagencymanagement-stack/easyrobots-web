@@ -445,7 +445,7 @@ Ojo, que hay dos juegos de landings y es facil trabajar sobre la equivocada:
 |---|---|---|
 | Inmobiliarias | `prueba-inmobiliarias-v3.html` | `inmobiliarias.html`, `prueba-inmobiliarias.html`, `-v1`, `-v2` |
 | Concesionarios | **`prueba-concesionarios-v2.html`** | `concesionarios.html`, `prueba-concesionarios.html` |
-| Dental | `prueba-dental.html` | `dental.html` |
+| Dental | **`prueba-dental-v2.html`** | `dental.html`, `prueba-dental.html` |
 | Coaching | `prueba-coaching.html` | `coaching.html` |
 | Ecommerce | **`prueba-ecommerce-v2.html`** | `ecommerce.html`, `prueba-ecommerce.html` |
 
@@ -840,6 +840,69 @@ Lo que pidio y como quedo:
 - La foto real de Anais para el hueco de Equipo.
 - Los botones no estan enganchados al calendario de GHL.
 - Decidir si sustituye a `prueba-ecommerce.html` y si se le quita el `noindex`.
+
+## Landing dental v2 (2026-10-02)
+
+Reconstruccion contra un boceto nuevo, con el metodo de `docs/boceto-a-html.md`.
+**La pagina viva es `src/prueba-dental-v2.html`.** `prueba-dental.html` se queda
+de referencia y no se toca.
+
+### Lo que llego
+
+- `src/assets/boceto/dental-v2/referencia.webp` (872x1803) y `fondos.webp`
+  (872x1802, la hoja de fondos). Los recortes salen de `docs/fondos-dental-v2.py`.
+- Una **ficha tecnica** de ChatGPT con copy y medidas aproximadas. **El copy de
+  la ficha manda** sobre `docs/copys/dental.md` (es posterior); donde la ficha
+  no dice nada (el chat, las fichas de "Por que pasa") va dental.md. **Las
+  medidas de la ficha no se siguieron**: piden una pagina de 7.000-7.800 px a
+  1440 y el boceto da unos 3.100. Manda el boceto, como en las demas.
+
+### Decisiones que conviene no reabrir
+
+- `--u` = 1 px del boceto (`0.1146789cqw`). Margen 46 u (5,28 %).
+- **La 02 y la 04 tienen el alto exacto de su tira de fondos** (166 y 295 u)
+  porque la foto trae pintados la tableta y el movil y la interfaz va encima.
+  Esquinas de la pantalla de la tableta: (488,28) (808,11) (470,166), y la
+  interfaz se deforma con `matrix(1,-0.053,-0.13,1,0,0)`. Pantalla del movil:
+  x378..561 desde y19.
+- **En esas dos secciones la foto NO va a 100vw**: a 1920 el dispositivo se
+  desplazaba y la interfaz quedaba flotando. Se queda del ancho de la escena,
+  fundida por los bordes, y los lados llevan la misma foto desenfocada.
+- La tira de "Piezas" de la hoja **trae el diagrama pintado**: no se usa. Va la
+  de "Como funciona" en espejo.
+- La columna "Por que no se cierran" va en x612 y no en x600: el canto del
+  movil de la foto se comia la primera letra.
+
+### Lo del boceto que NO se reprodujo
+
+- "Ya lo estan usando clinicas dentales de toda Espana" con tres caras: no hay
+  ningun cliente dental. Prueba social inventada. Va "15 minutos · Sin
+  compromiso".
+- Los dos retratos del equipo (IA). Va Guillermo y el hueco de Anais.
+- "Ver una conversacion real": el chat es un ejemplo. Pasa a "Ver la
+  conversacion entera" y recorre el chat hasta el aviso al equipo.
+- El enlace "Preguntas" del menu: no hay seccion de preguntas. Pasa a "Garantia".
+- El chat con los colores al reves (la clinica en blanco): se ve desde el
+  WhatsApp de la clinica, asi que lo que manda EasyRobots va en verde.
+- Erratas: el quinto paso numerado "3", el icono de WhatsApp en "Seguimiento
+  de presupuestos", "parte ele servicio".
+- Los porcentajes de "Motivos de no cierre" y la lista de la tableta van
+  marcados **Ejemplo**: no salen de ninguna clinica. Pacientes con iniciales,
+  sin caras.
+
+### Pendiente en esta landing
+
+- La foto del hero de la hoja de fondos **no trae al doctor** del boceto: es la
+  clinica vacia. Si se quiere la persona, pedir la foto y sustituir
+  `dent-hero.webp`.
+- Las fotos son de 872 px de ancho: a 1440 se ven blandas. Pedir la hoja de
+  fondos a mas resolucion si se nota.
+- El bloque de datos dice "Trabajamos con los mas altos estandares" y
+  "cumplimos con la normativa vigente", que es copy de la ficha pero choca con
+  la regla de no responder con adjetivos (nombrar art. 9 RGPD, contrato de
+  encargado, servidores en la UE). Decidir con Anais.
+- Botones sin enganchar al calendario de GHL. Decidir si sustituye a
+  `prueba-dental.html` y si se le quita el `noindex`.
 
 ## La calculadora
 

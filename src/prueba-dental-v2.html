@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sistemas de IA para cl&iacute;nicas dentales &middot; EasyRobots</title>
+  <meta name="description"
+    content="M&aacute;s pacientes. Menos cosas por gestionar. EasyRobots retoma los presupuestos que se quedan abiertos, registra por qu&eacute; no se cierran y avisa a tu equipo cuando el paciente quiere avanzar.">
+
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    /* Las tipografias se sirven desde este dominio: cargarlas desde Google
+       enviaba la IP de cada visitante a sus servidores sin permiso. */
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:400; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-400-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:500; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-500-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:600; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-600-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:700; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-700-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:800; font-display:swap; src:url(assets/fonts/plus-jakarta-sans-800-latin.woff2) format('woff2'); }
+
+    /* ==========================================================
+       RECONSTRUCCION DEL BOCETO DENTAL (v2) · 2026-10-02
+
+       Referencia: assets/boceto/dental-v2/referencia.webp (872x1803).
+       Hoja de fondos: .../fondos.webp, la misma composicion sin texto.
+       Los recortes salen de docs/fondos-dental-v2.py.
+
+       La unidad --u vale UN PIXEL DEL BOCETO (872 u de ancho). Margen
+       lateral: el boceto arranca todos los titulares en x46-48, asi que se
+       fija en 46 u (5,28 %), y el borde derecho en 826.
+
+       El copy es el de la ficha tecnica que paso Anais con el boceto, que es
+       posterior a docs/copys/dental.md. Donde la ficha no dice nada (el
+       chat, las fichas de "Por que pasa") va el texto aprobado de dental.md.
+
+       Colores muestreados del pixel:
+         fondo oscuro #030C12   tarjeta oscura #0F1518   pie #060F15
+         azul CTA     #0075FC   azul de paso  #1890FF   azul grafico #4EA5F9
+         claro        #F6F6F6   tarjeta paso  #EDF6FC   panel garantia #E7EDF6
+         verde        #0FBD6C   nucleo        #1B3969
+       ========================================================== */
+    :root {
+      --azul: #0075FC;
+      --azul-p: #1890FF;
+      --azul-g: #4EA5F9;
+      --verde: #0FBD6C;
+      --rojo: #E5484D;
+      --oscuro: #030C12;
+      --pie: #060F15;
+      --claro: #F6F6F6;
+      --tinta: #0B1220;
+      --gris: #5E6673;
+      --f: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { font-family: var(--f); background: var(--oscuro); color: #fff; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    u { text-decoration: none; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+    svg { flex: 0 0 auto; }
+
+    .escena { width: 100%; max-width: 1440px; margin: 0 auto; position: relative; container-type: inline-size; --u: 0.1146789cqw; }
+    /* Foto y velo viven dentro de la escena (1440 px como maximo): sin esto
+       quedaban franjas negras a los lados en pantallas grandes. Mas
+       especificidad que `.hero .foto` o gana el inset:0 de la seccion. */
+    body .escena > .foto, body .escena > .velo { left: 50%; right: auto; width: 100vw; transform: translateX(-50%); }
+    /* EXCEPCION en la 02 y la 04: su foto trae pintados la tableta y el
+       movil, y la interfaz va encima medida en u. Si la foto ocupa 100vw y
+       la escena solo 1440, a 1920 el dispositivo se desplaza y la interfaz
+       queda flotando fuera de la pantalla (visto en la captura a 1920). Ahi
+       la foto se queda del ancho de la escena, se funde por los bordes y
+       los lados se rellenan con la misma foto desenfocada. */
+    body .s02 .escena > .foto, body .s04 .escena > .foto,
+    body .s02 .escena > .velo, body .s04 .escena > .velo { left: 0; width: 100%; transform: none; }
+    .s02::before, .s04::before { content: ""; position: absolute; inset: 0; filter: blur(24px); transform: scale(1.1); }
+    .s02::before { background: linear-gradient(rgba(3,12,18,.72), rgba(3,12,18,.72)), url(assets/dent-presu.webp) center / cover; }
+    .s04::before { background: linear-gradient(rgba(246,246,246,.62), rgba(246,246,246,.62)), url(assets/dent-demo.webp) center / cover; }
+    @media (min-width: 1441px) {
+      .s02 .foto, .s04 .foto { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%); }
+    }
+    .foto { position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; }
+    .velo { position: absolute; inset: 0; }
+
+    .saltar { position: absolute; left: 14px; top: -60px; z-index: 300; background: #fff; color: var(--tinta); padding: .7rem 1.1rem; border-radius: 8px; font-size: .84rem; font-weight: 600; transition: top .2s; }
+    .saltar:focus { top: 14px; }
+
+    .kick { font-size: calc(7.6*var(--u)); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8D9096; }
+    .kick.cl { color: rgba(255,255,255,.88); }
+    .h2 { font-weight: 700; letter-spacing: -.03em; }
+    .flecha { width: calc(10*var(--u)); height: calc(10*var(--u)); }
+
+    /* ===================== 01 - HERO =====================
+       Alto 300 u (el boceto 290; se quita la fila de avatares y entra la de
+       "15 minutos · Sin compromiso"). Titular de 3 lineas a paso 28 u,
+       cuerpo a paso 14. Boton blanco 113x24 en y231.
+       La foto de la hoja de fondos NO trae al doctor del boceto: es la
+       clinica vacia. Se cambia sustituyendo dent-hero.webp. */
+    .hero { position: relative; overflow: hidden; background: #0A0C0E; }
+    .hero .escena { aspect-ratio: 872 / 300; }
+    .hero .foto { background-image: url(assets/dent-hero.webp); background-position: 70% center; }
+    .hero .velo { background:
+        linear-gradient(90deg, rgba(6,9,12,.92) 0%, rgba(6,9,12,.86) 26%, rgba(6,9,12,.52) 42%, rgba(6,9,12,.12) 60%, rgba(6,9,12,0) 74%),
+        linear-gradient(180deg, rgba(6,9,12,.55) 0%, rgba(6,9,12,0) 18%, rgba(6,9,12,0) 82%, rgba(6,9,12,.45) 100%); }
+
+    .h-nav { position: absolute; left: calc(46*var(--u)); right: calc(40*var(--u)); top: calc(9*var(--u)); height: calc(26*var(--u)); display: flex; align-items: center; z-index: 60; }
+    .h-marca { display: flex; align-items: center; gap: calc(6*var(--u)); font-size: calc(11.5*var(--u)); font-weight: 700; letter-spacing: -.03em; }
+    .h-marca svg { width: calc(15*var(--u)); height: calc(15*var(--u)); color: var(--azul-g); }
+    .h-links { position: absolute; left: calc(232*var(--u)); display: flex; gap: calc(22*var(--u)); }
+    .h-links a { font-size: calc(8.4*var(--u)); font-weight: 500; color: rgba(255,255,255,.88); white-space: nowrap; }
+    .h-links a:hover { color: #fff; }
+    .h-navbtn { margin-left: auto; background: #F9F9F6; color: var(--tinta); border-radius: 999px; font-size: calc(8.4*var(--u)); font-weight: 700; height: calc(24*var(--u)); padding: 0 calc(13*var(--u)); display: flex; align-items: center; gap: calc(6*var(--u)); white-space: nowrap; }
+    .h-navbtn:hover { background: #fff; }
+
+    .h-col { position: absolute; left: calc(46*var(--u)); top: calc(51*var(--u)); width: calc(300*var(--u)); z-index: 50; }
+    .h-t { margin-top: calc(9*var(--u)); font-size: calc(29.5*var(--u)); line-height: calc(28.5*var(--u)); font-weight: 700; letter-spacing: -.035em; }
+    .h-sub { margin-top: calc(13*var(--u)); width: calc(262*var(--u)); font-size: calc(10.6*var(--u)); line-height: calc(14.2*var(--u)); color: rgba(255,255,255,.90); }
+    .h-btn { margin-top: calc(15*var(--u)); display: inline-flex; align-items: center; gap: calc(7*var(--u)); height: calc(25*var(--u)); padding: 0 calc(15*var(--u)); border-radius: 999px; background: #F9F9F6; color: var(--tinta); font-size: calc(8.8*var(--u)); font-weight: 700; }
+    .h-btn:hover { background: #fff; }
+    .h-meta { margin-top: calc(11*var(--u)); display: flex; gap: calc(16*var(--u)); }
+    .h-meta div { display: flex; align-items: center; gap: calc(5*var(--u)); font-size: calc(8*var(--u)); color: rgba(255,255,255,.80); }
+    .h-meta svg { width: calc(10*var(--u)); height: calc(10*var(--u)); }
+
+    /* ============ 02 - LOS PRESUPUESTOS SE QUEDAN ABIERTOS ============
+       Alto 166 u = la tira de la hoja de fondos, para que la tableta de la
+       foto caiga exactamente debajo de la interfaz. Esquinas de la pantalla
+       medidas en la foto: arriba (488,28) y (808,11), abajo-izquierda en
+       (470,166). La interfaz se deforma con esa misma matriz:
+       borde de arriba -17/320, borde izquierdo -18/138. */
+    .s02 { position: relative; overflow: hidden; background: var(--oscuro); }
+    .s02 .escena { aspect-ratio: 872 / 166; }
+    .s02 .foto { background-image: url(assets/dent-presu.webp); }
+    .s02 .velo { background: linear-gradient(90deg, rgba(3,12,18,.97) 0%, rgba(3,12,18,.95) 34%, rgba(3,12,18,.55) 50%, rgba(3,12,18,.10) 62%, rgba(3,12,18,0) 100%); }
+    .p-col { position: absolute; left: calc(46*var(--u)); top: calc(21*var(--u)); width: calc(290*var(--u)); z-index: 20; }
+    .p-t { font-size: calc(21.5*var(--u)); line-height: calc(22.5*var(--u)); }
+    .p-p { margin-top: calc(13*var(--u)); font-size: calc(9.6*var(--u)); line-height: calc(14.4*var(--u)); color: rgba(255,255,255,.82); }
+
+    .tab { position: absolute; left: calc(488*var(--u)); top: calc(28*var(--u)); width: calc(320*var(--u)); height: calc(156*var(--u)); z-index: 20;
+           transform-origin: 0 0; transform: matrix(1, -0.053, -0.13, 1, 0, 0);
+           background: #F1F5FA; border-radius: calc(9*var(--u)) calc(9*var(--u)) 0 0; color: var(--tinta); padding: calc(9*var(--u)) calc(12*var(--u)) 0; overflow: hidden; }
+    .tb-cab { display: flex; align-items: center; gap: calc(7*var(--u)); }
+    .tb-cab b { font-size: calc(10*var(--u)); font-weight: 700; letter-spacing: -.02em; }
+    .tb-cab i { font-style: normal; font-size: calc(6*var(--u)); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #6E7887; background: #E1E8F1; border-radius: 999px; padding: calc(1.5*var(--u)) calc(6*var(--u)); }
+    .tb-cab svg { margin-left: auto; width: calc(9*var(--u)); height: calc(9*var(--u)); color: #5E6673; }
+    .tb-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(5*var(--u)); margin-top: calc(8*var(--u)); }
+    .tb-tabs span { height: calc(15*var(--u)); border-radius: calc(5*var(--u)); background: #E6ECF3; display: flex; align-items: center; justify-content: center; font-size: calc(6.6*var(--u)); font-weight: 500; color: #4F5866; white-space: nowrap; }
+    .tb-tabs span.on { background: #fff; color: #1D6FE0; font-weight: 700; box-shadow: 0 0 0 calc(1*var(--u)) #CFE0F7; }
+    .tb-filas { margin-top: calc(6*var(--u)); background: #fff; border-radius: calc(6*var(--u)); }
+    .tb-f { display: grid; grid-template-columns: calc(14*var(--u)) calc(76*var(--u)) calc(76*var(--u)) 1fr calc(10*var(--u)); align-items: center; gap: calc(6*var(--u)); height: calc(19.5*var(--u)); padding: 0 calc(8*var(--u)); border-bottom: calc(.8*var(--u)) solid #EDF1F6; }
+    .tb-av { width: calc(13*var(--u)); height: calc(13*var(--u)); border-radius: 50%; background: #DCE6F2; color: #4A5A70; font-size: calc(5.4*var(--u)); font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .tb-f b { font-size: calc(7.2*var(--u)); font-weight: 700; white-space: nowrap; }
+    .tb-f span { font-size: calc(6.8*var(--u)); color: #6E7887; white-space: nowrap; }
+    .tb-f em { justify-self: start; font-style: normal; font-size: calc(6.2*var(--u)); font-weight: 600; border-radius: calc(4*var(--u)); padding: calc(1.5*var(--u)) calc(6*var(--u)); white-space: nowrap; }
+    .tb-f em.r { background: #FDE8EA; color: #D23C4A; }
+    .tb-f em.a { background: #FEF1DD; color: #B86E0C; }
+    .tb-f svg { width: calc(8*var(--u)); height: calc(8*var(--u)); color: #A5AFBC; }
+
+    /* ============ 03 - POR QUE PASA ============
+       Alto 157 u. Las tres fichas en x479 / 600 / 721, de 110x113 u, a y38. */
+    .s03 { position: relative; overflow: hidden; background: var(--oscuro); }
+    .s03 .escena { aspect-ratio: 872 / 157; }
+    .s03 .foto { background-image: url(assets/dent-mostrador.webp); }
+    .s03 .velo { background: linear-gradient(90deg, rgba(9,21,27,.97) 0%, rgba(9,21,27,.93) 30%, rgba(9,21,27,.35) 46%, rgba(9,21,27,.08) 60%, rgba(9,21,27,.22) 100%); }
+    .m-col { position: absolute; left: calc(46*var(--u)); top: calc(17*var(--u)); width: calc(320*var(--u)); z-index: 20; }
+    .m-t { font-size: calc(21.5*var(--u)); line-height: calc(22.5*var(--u)); }
+    .m-p { margin-top: calc(12*var(--u)); width: calc(300*var(--u)); font-size: calc(9.6*var(--u)); line-height: calc(14.4*var(--u)); color: rgba(255,255,255,.82); }
+    .m-fi { position: absolute; top: calc(34*var(--u)); width: calc(110*var(--u)); height: calc(117*var(--u)); z-index: 20; background: rgba(15,21,24,.90); border: calc(1*var(--u)) solid rgba(255,255,255,.07); border-radius: calc(8*var(--u)); padding: calc(12*var(--u)) calc(11*var(--u)); backdrop-filter: blur(calc(5*var(--u))); }
+    .m-f1 { left: calc(479*var(--u)); } .m-f2 { left: calc(600*var(--u)); } .m-f3 { left: calc(721*var(--u)); }
+    .m-fi svg { width: calc(19*var(--u)); height: calc(19*var(--u)); color: #fff; }
+    .m-fi b { display: block; margin-top: calc(9*var(--u)); font-size: calc(8.6*var(--u)); line-height: calc(10.8*var(--u)); font-weight: 700; }
+    .m-fi span { display: block; margin-top: calc(5*var(--u)); font-size: calc(6.8*var(--u)); line-height: calc(9*var(--u)); color: rgba(255,255,255,.62); }
+
+    /* ============ 04 - EL SEGUIMIENTO + POR QUE NO SE CIERRAN ============
+       Alto 295 u = la tira de la hoja de fondos: el movil de la foto tiene
+       su pantalla en x378..561 desde y19, y el chat va encima.
+       Columna derecha en x612 y no en x600 como el boceto: alli el canto
+       oscuro del movil de la foto se comia la primera letra del cintillo. */
+    .s04 { position: relative; overflow: hidden; background: var(--claro); color: var(--tinta); }
+    .s04 .escena { aspect-ratio: 872 / 295; }
+    .s04 .foto { background-image: url(assets/dent-demo.webp); }
+    .s04 .velo { background:
+        linear-gradient(90deg, rgba(246,246,246,.94) 0%, rgba(246,246,246,.88) 30%, rgba(246,246,246,.25) 42%, rgba(246,246,246,0) 50%, rgba(246,246,246,0) 66%, rgba(246,246,246,.82) 72%, rgba(246,246,246,.88) 100%); }
+    .s-col { position: absolute; left: calc(46*var(--u)); top: calc(14*var(--u)); width: calc(300*var(--u)); z-index: 20; }
+    .s-t { margin-top: calc(8*var(--u)); font-size: calc(24*var(--u)); line-height: calc(25*var(--u)); }
+    .s-p { margin-top: calc(12*var(--u)); width: calc(270*var(--u)); font-size: calc(9.4*var(--u)); line-height: calc(14*var(--u)); color: #4A5260; }
+    .s-p + .s-p { margin-top: calc(8*var(--u)); }
+    .s-btns { margin-top: calc(16*var(--u)); display: flex; flex-direction: column; align-items: flex-start; gap: calc(9*var(--u)); }
+    .s-b { height: calc(26*var(--u)); border-radius: 999px; display: inline-flex; align-items: center; gap: calc(7*var(--u)); padding: 0 calc(16*var(--u)); font-size: calc(8.8*var(--u)); font-weight: 700; cursor: pointer; white-space: nowrap; }
+    .s-b1 { background: var(--oscuro); color: #fff; border: 0; }
+    .s-b1:hover { background: #12202B; }
+    .s-b2 { background: rgba(255,255,255,.55); color: var(--tinta); border: calc(1*var(--u)) solid #9AA1AB; }
+    .s-b2:hover { border-color: var(--tinta); }
+
+    .movil { position: absolute; left: calc(378*var(--u)); top: calc(19*var(--u)); width: calc(183*var(--u)); bottom: 0; z-index: 20;
+             background: #EFEAE2; border-radius: calc(20*var(--u)) calc(20*var(--u)) 0 0; overflow: hidden; display: flex; flex-direction: column; }
+    .mv-cab { flex: 0 0 auto; display: flex; align-items: center; gap: calc(6*var(--u)); background: #fff; padding: calc(13*var(--u)) calc(9*var(--u)) calc(7*var(--u)); border-bottom: calc(.8*var(--u)) solid #E5E1DA; }
+    .mv-cab .vol { width: calc(7*var(--u)); height: calc(7*var(--u)); color: #5E6673; }
+    .mv-cab .wa { width: calc(19*var(--u)); height: calc(19*var(--u)); border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; }
+    .mv-cab .wa svg { width: calc(12*var(--u)); height: calc(12*var(--u)); color: #fff; }
+    .mv-cab b { display: block; font-size: calc(8.4*var(--u)); line-height: calc(10*var(--u)); font-weight: 700; }
+    .mv-cab span { display: block; font-size: calc(6.4*var(--u)); color: #6E7887; }
+    .mv-cab .pts { margin-left: auto; width: calc(9*var(--u)); height: calc(9*var(--u)); color: #5E6673; }
+    .mv-chat { flex: 1 1 auto; overflow-y: auto; scrollbar-width: none; padding: calc(8*var(--u)) calc(8*var(--u)) calc(12*var(--u)); display: flex; flex-direction: column; gap: calc(6*var(--u)); scroll-behavior: smooth; }
+    .mv-chat::-webkit-scrollbar { display: none; }
+    .mv-sys { align-self: center; font-size: calc(5.8*var(--u)); font-weight: 600; color: #5C6470; background: #FFF6D8; border-radius: calc(5*var(--u)); padding: calc(2*var(--u)) calc(7*var(--u)); text-align: center; }
+    .mv-m { max-width: 88%; font-size: calc(7*var(--u)); line-height: calc(10*var(--u)); padding: calc(5*var(--u)) calc(7*var(--u)) calc(3.5*var(--u)); border-radius: calc(7*var(--u)); box-shadow: 0 calc(.6*var(--u)) calc(1*var(--u)) rgba(0,0,0,.10); }
+    .mv-m i { display: block; text-align: right; font-style: normal; font-size: calc(5.2*var(--u)); color: #8A929D; line-height: calc(7*var(--u)); }
+    /* La conversacion se ve desde el WhatsApp de la clinica: lo que manda
+       EasyRobots es el mensaje enviado (verde, a la derecha) y lo de la
+       paciente, el recibido (blanco). El boceto lo pintaba al reves. */
+    .mv-in { align-self: flex-start; background: #fff; border-top-left-radius: calc(2*var(--u)); }
+    .mv-out { align-self: flex-end; background: #D9FDD3; border-top-right-radius: calc(2*var(--u)); }
+    .mv-out i::after { content: " \2713\2713"; color: #34B7F1; letter-spacing: -.25em; margin-right: .25em; }
+    .mv-aviso { margin-top: calc(4*var(--u)); background: #fff; border-left: calc(2.5*var(--u)) solid var(--azul); border-radius: calc(6*var(--u)); padding: calc(6*var(--u)) calc(8*var(--u)); font-size: calc(6.6*var(--u)); line-height: calc(9.4*var(--u)); color: #3D4552; }
+    .mv-aviso b { display: block; font-size: calc(6*var(--u)); letter-spacing: .08em; text-transform: uppercase; color: var(--azul); margin-bottom: calc(2*var(--u)); }
+
+    .r-col { position: absolute; left: calc(612*var(--u)); top: calc(10*var(--u)); width: calc(220*var(--u)); z-index: 20; }
+    .r-t { margin-top: calc(6*var(--u)); font-size: calc(17*var(--u)); line-height: calc(19*var(--u)); }
+    .r-p { margin-top: calc(6*var(--u)); font-size: calc(8.2*var(--u)); line-height: calc(11.4*var(--u)); color: #4A5260; }
+    .graf { margin-top: calc(9*var(--u)); background: rgba(255,255,255,.96); border-radius: calc(9*var(--u)); padding: calc(9*var(--u)) calc(11*var(--u)); box-shadow: 0 calc(4*var(--u)) calc(14*var(--u)) rgba(15,30,60,.08); }
+    .gr-cab { display: flex; align-items: center; justify-content: space-between; }
+    .gr-cab b { font-size: calc(7.8*var(--u)); font-weight: 700; }
+    .gr-cab i { font-style: normal; font-size: calc(5.6*var(--u)); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #6E7887; background: #EEF1F5; border-radius: 999px; padding: calc(1.5*var(--u)) calc(6*var(--u)); }
+    .gr-cuerpo { display: flex; align-items: center; gap: calc(14*var(--u)); margin-top: calc(7*var(--u)); }
+    .gr-cuerpo svg { width: calc(58*var(--u)); height: calc(58*var(--u)); transform: rotate(-90deg); }
+    .gr-ley { flex: 1 1 auto; display: flex; flex-direction: column; gap: calc(3.6*var(--u)); }
+    .gr-ley div { display: flex; align-items: center; gap: calc(5*var(--u)); font-size: calc(6.6*var(--u)); color: #4A5260; }
+    .gr-ley div u { width: calc(5*var(--u)); height: calc(5*var(--u)); border-radius: 50%; flex: 0 0 auto; }
+    .gr-ley div span { margin-left: auto; font-weight: 600; color: var(--tinta); }
+    .casos { margin-top: calc(8*var(--u)); display: flex; flex-direction: column; gap: calc(5*var(--u)); }
+    .caso { display: grid; grid-template-columns: calc(16*var(--u)) calc(64*var(--u)) 1fr; gap: calc(7*var(--u)); align-items: center; }
+    .caso .tb-av { width: calc(16*var(--u)); height: calc(16*var(--u)); font-size: calc(6*var(--u)); }
+    .caso b { display: block; font-size: calc(6.8*var(--u)); line-height: calc(9*var(--u)); font-weight: 700; }
+    .caso span { display: block; font-size: calc(6.2*var(--u)); line-height: calc(8.4*var(--u)); color: #6E7887; }
+    .caso em { display: inline-block; font-style: normal; font-size: calc(6*var(--u)); font-weight: 600; color: #1D6FE0; background: #E3EEFD; border-radius: calc(4*var(--u)); padding: calc(1*var(--u)) calc(5*var(--u)); }
+
+    /* ============ 05 - COMO FUNCIONA ============
+       Alto 186 u (el boceto 180, mas aire para el texto real). Cinco fichas
+       de 124 u con 40 u de hueco entre 46 y 826, que es donde el boceto las
+       repartia. El quinto paso en el boceto llevaba un "3": errata. */
+    .s05 { position: relative; overflow: hidden; background: var(--claro); color: var(--tinta); }
+    .s05 .escena { aspect-ratio: 872 / 186; }
+    .s05 .foto { background-image: url(assets/dent-flujo.webp); }
+    .s05 .velo { background: linear-gradient(90deg, rgba(246,248,250,.95) 0%, rgba(246,248,250,.86) 40%, rgba(246,248,250,.55) 70%, rgba(246,248,250,.40) 100%); }
+    .f-col { position: absolute; left: calc(46*var(--u)); top: calc(10*var(--u)); z-index: 20; }
+    .f-t { margin-top: calc(6*var(--u)); font-size: calc(21*var(--u)); line-height: calc(22*var(--u)); }
+    .f-pasos { position: absolute; left: calc(46*var(--u)); top: calc(86*var(--u)); width: calc(780*var(--u)); display: flex; gap: calc(40*var(--u)); z-index: 20; }
+    .f-paso { position: relative; flex: 0 0 calc(124*var(--u)); height: calc(88*var(--u)); background: rgba(237,246,252,.92); border: calc(1*var(--u)) solid rgba(255,255,255,.95); border-radius: calc(10*var(--u)); text-align: center; padding: calc(17*var(--u)) calc(9*var(--u)) 0;
+              box-shadow: 0 0 calc(14*var(--u)) rgba(24,144,255,.14); }
+    .f-n { font-style: normal; position: absolute; left: 50%; top: calc(-10*var(--u)); transform: translateX(-50%); width: calc(18*var(--u)); height: calc(18*var(--u)); border-radius: 50%; background: var(--azul-p); color: #fff; font-size: calc(8.4*var(--u)); font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 calc(3*var(--u)) rgba(255,255,255,.9), 0 0 calc(10*var(--u)) rgba(24,144,255,.5); }
+    .f-ic { width: calc(20*var(--u)); height: calc(20*var(--u)); margin: 0 auto; }
+    .f-paso b { display: block; margin-top: calc(6*var(--u)); font-size: calc(8.2*var(--u)); line-height: calc(10*var(--u)); font-weight: 700; }
+    .f-paso span { display: block; margin-top: calc(3*var(--u)); font-size: calc(6.6*var(--u)); line-height: calc(9*var(--u)); color: #5E6673; }
+    /* el conector entre fichas: trazo, nodo y flecha, como en el boceto */
+    .f-paso + .f-paso::before { content: ""; position: absolute; left: calc(-36*var(--u)); top: calc(30*var(--u)); width: calc(32*var(--u)); height: calc(8*var(--u));
+              background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 8'%3E%3Cpath d='M0 4h9M23 4h7' stroke='%231890FF' stroke-width='1.2' stroke-dasharray='2 2'/%3E%3Ccircle cx='16' cy='4' r='2.6' fill='none' stroke='%231890FF' stroke-width='1.2'/%3E%3Cpath d='M28 1.5L31 4l-3 2.5' fill='none' stroke='%231890FF' stroke-width='1.2'/%3E%3C/svg%3E") center / contain no-repeat; }
+
+    /* ============ 06 - PIEZAS QUE SE ADAPTAN ============
+       Alto 160 u. Nucleo de 66x52 centrado en (529,74). Las seis piezas en
+       las posiciones del boceto, medidas desde su caja:
+         seguimiento x472 y9 · WhatsApp x364 y36 · agenda x609 y36
+         software x355 y64 · recordatorios x617 y64 · equipo x472 y112
+       La foto NO es la tira de "Piezas": esa traia los nodos pintados y
+       salian fantasmas detras. Va la de "Como funciona" en espejo. */
+    .s06 { position: relative; overflow: hidden; background: var(--claro); color: var(--tinta); }
+    .s06 .escena { aspect-ratio: 872 / 160; }
+    .s06 .foto { background-image: url(assets/dent-piezas.webp); }
+    .s06 .velo { background: linear-gradient(90deg, rgba(240,245,250,.95) 0%, rgba(240,245,250,.88) 38%, rgba(240,245,250,.62) 60%, rgba(240,245,250,.45) 100%); }
+    .z-col { position: absolute; left: calc(46*var(--u)); top: calc(18*var(--u)); width: calc(290*var(--u)); z-index: 20; }
+    .z-t { margin-top: calc(6*var(--u)); font-size: calc(21*var(--u)); line-height: calc(22*var(--u)); }
+    .z-p { margin-top: calc(11*var(--u)); font-size: calc(8.8*var(--u)); line-height: calc(13*var(--u)); color: #4A5260; }
+    .z-cables { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 15; pointer-events: none; }
+    .z-nuc { position: absolute; left: calc(496*var(--u)); top: calc(48*var(--u)); width: calc(66*var(--u)); height: calc(52*var(--u)); z-index: 20; border-radius: calc(10*var(--u));
+             background: linear-gradient(160deg, #1B3969 0%, #0B1A33 100%); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(3*var(--u));
+             font-size: calc(7.6*var(--u)); font-weight: 700; box-shadow: 0 0 0 calc(1*var(--u)) rgba(120,180,255,.35), 0 0 calc(22*var(--u)) rgba(24,144,255,.45); }
+    .z-nuc svg { width: calc(14*var(--u)); height: calc(14*var(--u)); color: var(--azul-g); }
+    .z-pz { position: absolute; z-index: 20; display: flex; align-items: center; gap: calc(7*var(--u)); background: rgba(255,255,255,.96); border-radius: calc(8*var(--u)); padding: 0 calc(10*var(--u));
+            font-size: calc(7.2*var(--u)); line-height: calc(8.8*var(--u)); font-weight: 700; box-shadow: 0 0 calc(12*var(--u)) rgba(24,144,255,.28); }
+    .z-pz svg { width: calc(14*var(--u)); height: calc(14*var(--u)); }
+    .pz1 { left: calc(472*var(--u)); top: calc(9*var(--u));  width: calc(113*var(--u)); height: calc(28*var(--u)); }
+    .pz2 { left: calc(364*var(--u)); top: calc(36*var(--u)); width: calc(89*var(--u));  height: calc(24*var(--u)); }
+    .pz3 { left: calc(609*var(--u)); top: calc(36*var(--u)); width: calc(83*var(--u));  height: calc(24*var(--u)); }
+    .pz4 { left: calc(355*var(--u)); top: calc(64*var(--u)); width: calc(98*var(--u));  height: calc(28*var(--u)); }
+    .pz5 { left: calc(617*var(--u)); top: calc(64*var(--u)); width: calc(108*var(--u)); height: calc(28*var(--u)); }
+    .pz6 { left: calc(472*var(--u)); top: calc(112*var(--u)); width: calc(113*var(--u)); height: calc(24*var(--u)); }
+
+    /* ============ 07 - LO QUE HACE / LO QUE NO HACE ============
+       Alto 148 u. Texto en x134 (el boceto lo mete ahi para dejar ver el
+       sillon de la foto). Cuadros x404 y x621, de 205 u. */
+    .s07 { position: relative; overflow: hidden; background: #0F1215; }
+    .s07 .escena { aspect-ratio: 872 / 148; }
+    .s07 .foto { background-image: url(assets/dent-hace.webp); }
+    .s07 .velo { background: linear-gradient(90deg, rgba(10,13,16,.15) 0%, rgba(10,13,16,.55) 14%, rgba(10,13,16,.90) 26%, rgba(10,13,16,.92) 100%); }
+    .l-col { position: absolute; left: calc(134*var(--u)); top: calc(22*var(--u)); width: calc(250*var(--u)); z-index: 20; }
+    .l-t { font-size: calc(18.6*var(--u)); line-height: calc(20*var(--u)); }
+    .l-p { margin-top: calc(10*var(--u)); font-size: calc(8.2*var(--u)); line-height: calc(13*var(--u)); color: rgba(255,255,255,.78); }
+    .l-box { position: absolute; top: calc(10*var(--u)); width: calc(205*var(--u)); height: calc(128*var(--u)); z-index: 20; background: rgba(3,15,21,.86); border: calc(1*var(--u)) solid rgba(90,170,210,.22); border-radius: calc(9*var(--u)); padding: calc(11*var(--u)) calc(14*var(--u)); }
+    .l-b1 { left: calc(404*var(--u)); } .l-b2 { left: calc(621*var(--u)); }
+    .l-box h3 { display: flex; align-items: center; gap: calc(8*var(--u)); font-size: calc(9.4*var(--u)); font-weight: 700; }
+    .l-box h3 u { width: calc(16*var(--u)); height: calc(16*var(--u)); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .l-box h3 u svg { width: calc(9*var(--u)); height: calc(9*var(--u)); color: #fff; }
+    .l-b1 h3 u { background: var(--verde); } .l-b2 h3 u { background: var(--rojo); }
+    .l-box ul { list-style: none; margin-top: calc(6*var(--u)); }
+    .l-box li { display: flex; align-items: center; gap: calc(9*var(--u)); font-size: calc(7.6*var(--u)); line-height: calc(14.2*var(--u)); color: rgba(255,255,255,.86); padding-left: calc(3*var(--u)); }
+    .l-box li svg { width: calc(8*var(--u)); height: calc(8*var(--u)); }
+    .l-b1 li svg { color: var(--verde); } .l-b2 li svg { color: var(--rojo); }
+
+    /* ============ 08 - CONTROL + DATOS ============
+       Alto 122 u. Dos columnas: x46 y x490. Sin "Encaje": la integracion ya
+       la cuenta "Piezas" (ficha tecnica). */
+    .s08 { position: relative; overflow: hidden; background: var(--claro); color: var(--tinta); }
+    .s08 .escena { aspect-ratio: 872 / 122; }
+    .s08 .foto { background-image: url(assets/dent-control.webp); }
+    .s08 .velo { background: rgba(246,246,246,.78); }
+    .c-col { position: absolute; top: calc(12*var(--u)); z-index: 20; }
+    .c-1 { left: calc(46*var(--u)); width: calc(330*var(--u)); }
+    .c-2 { left: calc(490*var(--u)); width: calc(336*var(--u)); }
+    .c-t1 { margin-top: calc(5*var(--u)); font-size: calc(17.5*var(--u)); line-height: calc(20*var(--u)); }
+    .c-t2 { margin-top: calc(5*var(--u)); font-size: calc(13*var(--u)); line-height: calc(16*var(--u)); }
+    .c-p { margin-top: calc(6*var(--u)); font-size: calc(8.2*var(--u)); line-height: calc(12.4*var(--u)); color: #4A5260; }
+    .c-2 .c-p { font-size: calc(7.8*var(--u)); line-height: calc(11.4*var(--u)); }
+    .c-sellos { margin-top: calc(11*var(--u)); display: flex; gap: calc(26*var(--u)); }
+    .c-sellos div { display: flex; align-items: center; gap: calc(6*var(--u)); font-size: calc(7.8*var(--u)); font-weight: 700; white-space: nowrap; }
+    .c-sellos svg { width: calc(12*var(--u)); height: calc(12*var(--u)); }
+
+    /* ============ 09 - EQUIPO + GARANTIA ============
+       Alto 136 u. Retratos de 84 u en x346 y x443. Panel de garantia x596,
+       230 u de ancho, y debajo el sello. */
+    .s09 { position: relative; overflow: hidden; background: #F0F3F3; color: var(--tinta); }
+    .s09 .escena { aspect-ratio: 872 / 136; }
+    .s09 .foto { background-image: url(assets/dent-equipo.webp); }
+    .s09 .velo { background: rgba(244,246,247,.70); }
+    .e-col { position: absolute; left: calc(46*var(--u)); top: calc(22*var(--u)); width: calc(250*var(--u)); z-index: 20; }
+    .e-t { margin-top: calc(9*var(--u)); font-size: calc(15.6*var(--u)); line-height: calc(19*var(--u)); }
+    .e-p { margin-top: calc(8*var(--u)); font-size: calc(8.4*var(--u)); line-height: calc(13*var(--u)); color: #5E6673; }
+    .e-per { position: absolute; top: calc(8*var(--u)); width: calc(84*var(--u)); z-index: 20; }
+    .e-p1 { left: calc(346*var(--u)); } .e-p2 { left: calc(443*var(--u)); }
+    .e-per img, .e-hueco { width: 100%; height: calc(94*var(--u)); object-fit: cover; object-position: center 20%; border-radius: calc(7*var(--u)); background: #0B0B0D; }
+    .e-hueco { background: #E4E8EC; border: calc(1*var(--u)) dashed #B9C1CB; display: flex; align-items: center; justify-content: center; font-size: calc(6.6*var(--u)); color: #7A8390; }
+    .e-per b { display: block; margin-top: calc(5*var(--u)); font-size: calc(7.6*var(--u)); line-height: calc(9.4*var(--u)); font-weight: 700; }
+    .e-per i { display: block; font-style: normal; font-size: calc(6.6*var(--u)); color: #6E7887; }
+    .g-panel { position: absolute; left: calc(596*var(--u)); top: calc(8*var(--u)); width: calc(230*var(--u)); z-index: 20; background: rgba(255,255,255,.72); border-radius: calc(8*var(--u)); padding: calc(10*var(--u)) calc(12*var(--u)); display: flex; flex-direction: column; gap: calc(7*var(--u)); }
+    .g-fila { display: flex; align-items: flex-start; gap: calc(9*var(--u)); font-size: calc(7.4*var(--u)); line-height: calc(10.6*var(--u)); color: #3D4552; }
+    .g-fila svg { width: calc(10*var(--u)); height: calc(10*var(--u)); color: var(--azul-p); margin-top: calc(.4*var(--u)); }
+    .g-fila b { font-weight: 700; color: var(--tinta); }
+    .g-sello { position: absolute; left: calc(596*var(--u)); top: calc(106*var(--u)); width: calc(230*var(--u)); height: calc(22*var(--u)); z-index: 20; background: #E7EDF6; border: calc(1*var(--u)) solid #D3DEEE; border-radius: calc(7*var(--u)); display: flex; align-items: center; gap: calc(9*var(--u)); padding: 0 calc(12*var(--u)); font-size: calc(7.4*var(--u)); font-weight: 600; color: #1D4F91; }
+    .g-sello svg { width: calc(10*var(--u)); height: calc(10*var(--u)); color: var(--azul-p); }
+
+    /* ============ 10 - CTA FINAL ============
+       Alto 130 u. Boton 163x30 en x657. */
+    .s10 { position: relative; overflow: hidden; background: #0A0C0E; }
+    .s10 .escena { aspect-ratio: 872 / 130; }
+    .s10 .foto { background-image: url(assets/dent-cierre.webp); }
+    .s10 .velo { background: linear-gradient(90deg, rgba(6,9,12,.90) 0%, rgba(6,9,12,.80) 40%, rgba(6,9,12,.45) 62%, rgba(6,9,12,.60) 100%); }
+    .k-col { position: absolute; left: calc(46*var(--u)); top: calc(24*var(--u)); width: calc(340*var(--u)); z-index: 20; }
+    .k-col .kick { color: #4D9BFF; }
+    .k-t { margin-top: calc(6*var(--u)); font-size: calc(18.6*var(--u)); line-height: calc(20*var(--u)); }
+    .k-sub { margin-top: calc(9*var(--u)); font-size: calc(9.4*var(--u)); color: rgba(255,255,255,.82); }
+    .k-btn { position: absolute; left: calc(657*var(--u)); top: calc(30*var(--u)); width: calc(163*var(--u)); height: calc(30*var(--u)); z-index: 20; border: 0; border-radius: 999px; background: var(--azul); color: #fff; font-size: calc(9.6*var(--u)); font-weight: 700; display: flex; align-items: center; justify-content: center; gap: calc(8*var(--u)); cursor: pointer; box-shadow: 0 calc(4*var(--u)) calc(16*var(--u)) rgba(0,117,252,.35); }
+    .k-btn:hover { background: #0A64D8; }
+    .k-meta { position: absolute; left: calc(652*var(--u)); top: calc(70*var(--u)); z-index: 20; display: flex; gap: calc(8*var(--u)); }
+    .k-meta div { display: flex; align-items: center; gap: calc(5*var(--u)); height: calc(18*var(--u)); padding: 0 calc(9*var(--u)); border-radius: 999px; background: rgba(6,9,12,.55); font-size: calc(7.6*var(--u)); color: rgba(255,255,255,.86); }
+    .k-meta svg { width: calc(9*var(--u)); height: calc(9*var(--u)); }
+
+    /* ===================== 11 - PIE =====================
+       Alto 104 u. Columnas en x46 / 250 / 395 / 558 / 755. */
+    .s11 { position: relative; background: var(--pie); }
+    .s11 .escena { aspect-ratio: 872 / 104; }
+    .pi-c { position: absolute; top: calc(20*var(--u)); display: flex; flex-direction: column; gap: calc(3*var(--u)); z-index: 5; }
+    .pi-1 { left: calc(46*var(--u)); } .pi-2 { left: calc(250*var(--u)); } .pi-3 { left: calc(395*var(--u)); } .pi-4 { left: calc(558*var(--u)); } .pi-5 { left: calc(755*var(--u)); }
+    .pi-c b { font-size: calc(7.6*var(--u)); font-weight: 700; margin-bottom: calc(5*var(--u)); display: flex; align-items: center; gap: calc(5*var(--u)); }
+    .pi-1 b { letter-spacing: .12em; text-transform: uppercase; }
+    .pi-1 b svg { width: calc(10*var(--u)); height: calc(10*var(--u)); color: var(--azul-g); }
+    .pi-c a, .pi-c span { font-size: calc(7.2*var(--u)); line-height: calc(11*var(--u)); color: rgba(255,255,255,.62); white-space: nowrap; }
+    .pi-c a:hover { color: #fff; }
+    .pi-rs { display: flex; gap: calc(6*var(--u)); }
+    .pi-rs a { width: calc(20*var(--u)); height: calc(20*var(--u)); border: calc(1*var(--u)) solid rgba(255,255,255,.22); border-radius: calc(6*var(--u)); display: flex; align-items: center; justify-content: center; color: #fff; }
+    .pi-rs svg { width: calc(10*var(--u)); height: calc(10*var(--u)); }
+    .pi-legal { position: absolute; left: calc(46*var(--u)); right: calc(46*var(--u)); top: calc(80*var(--u)); padding-top: calc(8*var(--u)); border-top: 1px solid rgba(255,255,255,.10); font-size: calc(6.6*var(--u)); color: rgba(255,255,255,.45); text-align: center; }
+
+    /* ===================== MOVIL =====================
+       Por debajo del corte --u deja de depender del ancho: a 390 px daba
+       tamanos impredecibles. Se fija en px y los bloques pasan a la
+       corriente normal de la pagina, apilados. */
+    @media (max-width: 860px) {
+      /* Al quedar estaticos se pintarian por debajo de .foto y .velo: se les
+         devuelve la pila y se anulan left/top, o el left:46u de cada bloque
+         se convierte en desplazamiento y todo desborda por la derecha. */
+      .escena > *:not(.foto):not(.velo) { position: relative; z-index: 4; left: auto; right: auto; top: auto; bottom: auto; width: auto; height: auto; transform: none; }
+      .escena { aspect-ratio: auto !important; padding: 2.6rem 1.15rem; --u: 1.62px; }
+      .escena > .foto { background-position: center top; }
+
+      .kick { font-size: .72rem; }
+
+      /* --- hero, una pantalla justa (100svh descuenta la barra de iOS) --- */
+      .hero .escena { min-height: 100svh; padding: .9rem 1.15rem 1.6rem; display: flex; flex-direction: column; }
+      .hero .foto { background-image: url(assets/dent-hero-movil.webp); }
+      .hero .velo { background: linear-gradient(180deg, rgba(6,9,12,.70) 0%, rgba(6,9,12,.45) 30%, rgba(6,9,12,.78) 62%, rgba(6,9,12,.94) 100%); }
+      .h-nav { display: flex; margin-bottom: auto; }
+      .h-links { display: none; }
+      .h-marca { font-size: 1.15rem; } .h-marca svg { width: 22px; height: 22px; }
+      .h-navbtn { height: 36px; font-size: .8rem; padding: 0 .9rem; }
+      .h-col { margin-top: 3rem; }
+      .h-t { font-size: 2.6rem; line-height: 1.06; }
+      .h-sub { width: auto; font-size: 1.02rem; line-height: 1.5; }
+      .h-btn { height: 50px; font-size: .98rem; padding: 0 1.4rem; margin-top: 1.4rem; }
+      .h-meta div { font-size: .82rem; }
+
+      /* --- 02 --- */
+      .s02 .foto { background-image: url(assets/dent-presu-movil.webp); }
+      .s02 .velo, .s03 .velo, .s07 .velo, .s10 .velo { background: linear-gradient(180deg, rgba(3,12,18,.94) 0%, rgba(3,12,18,.80) 45%, rgba(3,12,18,.90) 100%); }
+      .p-t, .m-t { font-size: 1.85rem; line-height: 1.14; }
+      .p-p, .m-p { width: auto; font-size: 1rem; line-height: 1.55; }
+      .tab { margin-top: 1.6rem; border-radius: 14px; padding: 12px 12px 10px; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+      .tb-f { grid-template-columns: 22px 1fr auto; height: auto; padding: 8px; gap: 8px 10px; }
+      .tb-f span, .tb-f svg { display: none; }
+      .tb-av { width: 22px; height: 22px; font-size: .6rem; }
+      .tb-tabs span { height: 28px; }
+
+      /* --- 03 --- */
+      .s03 .foto { background-image: url(assets/dent-mostrador-movil.webp); }
+      .m-fi { margin-top: .7rem; display: grid; grid-template-columns: 38px 1fr; gap: .1rem .9rem; padding: 1rem; border-radius: 14px; }
+      .m-col + .m-fi { margin-top: 1.6rem; }
+      .m-fi svg { grid-row: span 2; width: 32px; height: 32px; }
+      .m-fi b { margin-top: 0; font-size: 1rem; line-height: 1.35; }
+      .m-fi span { margin-top: 0; font-size: .88rem; line-height: 1.45; }
+
+      /* --- 04 --- */
+      .s04 .foto { background-image: url(assets/dent-demo-movil.webp); }
+      .s04 .velo, .s05 .velo, .s06 .velo, .s08 .velo, .s09 .velo { background: linear-gradient(180deg, rgba(246,247,249,.93) 0%, rgba(246,247,249,.84) 45%, rgba(246,247,249,.93) 100%); }
+      .s-t { font-size: 1.95rem; line-height: 1.12; }
+      .s-p { width: auto; font-size: 1rem; line-height: 1.55; }
+      .s-btns { flex-direction: row; flex-wrap: wrap; gap: .55rem; }
+      .s-b { height: 46px; font-size: .9rem; padding: 0 1.1rem; }
+      .movil { margin: 1.6rem auto 0; max-width: 340px; height: 470px !important; border-radius: 30px; border: 8px solid #111; }
+      .mv-cab { padding-top: 14px; }
+      .r-col { margin-top: 2.4rem; }
+      .r-t { font-size: 1.6rem; line-height: 1.15; }
+      .r-p { font-size: .95rem; line-height: 1.55; }
+      .graf { padding: 14px 16px; border-radius: 14px; }
+      .gr-cuerpo svg { width: 96px; height: 96px; }
+
+      /* --- 05 --- */
+      .s05 .foto { background-image: url(assets/dent-flujo-movil.webp); }
+      .f-t, .z-t { font-size: 1.75rem; line-height: 1.15; }
+      .f-pasos { flex-direction: column; gap: 1.4rem; margin-top: 2rem; }
+      .f-paso { flex: none; height: auto; display: grid; grid-template-columns: 34px 1fr; gap: .15rem .9rem; text-align: left; padding: 1.1rem 1rem; border-radius: 14px; }
+      .f-n { left: auto; right: 12px; top: -12px; transform: none; width: 26px; height: 26px; font-size: .82rem; }
+      .f-ic { grid-row: span 2; width: 32px; height: 32px; margin: 0; }
+      .f-paso b { margin-top: 0; font-size: 1rem; }
+      .f-paso span { margin-top: 0; font-size: .88rem; line-height: 1.45; }
+      .f-paso + .f-paso::before { left: 32px; top: -22px; width: 10px; height: 20px; background: linear-gradient(#1890FF 50%, transparent 0) center / 2px 6px repeat-y; }
+
+      /* --- 06: el diagrama pasa a nucleo arriba y piezas en rejilla --- */
+      .s06 .foto { background-image: url(assets/dent-piezas-movil.webp); }
+      .z-p { font-size: 1rem; line-height: 1.55; }
+      .z-cables { display: none; }
+      .z-nuc { margin: 1.8rem auto 0; width: 150px !important; height: 64px !important; font-size: .95rem; }
+      .z-nuc svg { width: 20px; height: 20px; }
+      /* nucleo arriba y las seis piezas de dos en dos */
+      .s06 .escena { display: flex; flex-wrap: wrap; justify-content: space-between; }
+      .z-col { flex: 0 0 100%; }
+      .z-nuc { flex: 0 0 150px; margin: 1.8rem calc(50% - 75px) .4rem !important; }
+      .z-pz br { display: none; }
+      .z-pz { flex: 0 0 calc(50% - .3rem); height: 52px !important; margin-top: .6rem; font-size: .84rem; line-height: 1.2; }
+      .z-pz svg { width: 22px; height: 22px; }
+
+      /* --- 07 --- */
+      .s07 .foto { background-image: url(assets/dent-hace-movil.webp); }
+      .l-t { font-size: 1.7rem; line-height: 1.15; }
+      .l-p { font-size: 1rem; line-height: 1.55; }
+      .l-box { margin-top: 1.2rem; padding: 1.1rem 1.15rem; border-radius: 14px; }
+      .l-box h3 { font-size: 1.1rem; }
+      .l-box li { font-size: .95rem; line-height: 2; }
+
+      /* --- 08 --- */
+      .s08 .foto { background-image: url(assets/dent-control-movil.webp); }
+      .c-t1 { font-size: 1.75rem; line-height: 1.15; }
+      .c-t2 { font-size: 1.4rem; line-height: 1.2; }
+      .c-p, .c-2 .c-p { font-size: 1rem; line-height: 1.55; }
+      .c-2 { margin-top: 2.2rem; }
+      .c-sellos { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+      .c-sellos div { font-size: .92rem; }
+
+      /* --- 09 --- */
+      .s09 .foto { background-image: url(assets/dent-equipo-movil.webp); }
+      .e-t { font-size: 1.75rem; line-height: 1.15; }
+      .e-p { font-size: 1rem; line-height: 1.55; }
+      .e-per { display: inline-block; width: calc(50% - .4rem) !important; margin-top: 1.4rem; vertical-align: top; }
+      .e-p1 { margin-right: .6rem; }
+      .e-per img, .e-hueco { height: 190px; border-radius: 12px; }
+      .e-per b { font-size: .98rem; } .e-per i { font-size: .86rem; }
+      .g-panel { margin-top: 1.6rem; padding: 1rem 1.1rem; border-radius: 14px; gap: .8rem; }
+      .g-fila { font-size: .95rem; line-height: 1.45; }
+      .g-sello { margin-top: .7rem; height: auto; padding: .85rem 1.1rem; border-radius: 12px; font-size: .92rem; }
+
+      /* --- 10 --- */
+      .s10 .foto { background-image: url(assets/dent-cierre-movil.webp); }
+      .k-t { font-size: 1.75rem; line-height: 1.15; }
+      /* el salto del boceto esta calculado para 872 u y en movil dejaba
+         "con / los" en una linea suelta; el espacio antes del <br> separa */
+      .k-t br { display: none; }
+      .k-sub { font-size: 1rem; }
+      .k-btn { width: 100% !important; height: 52px !important; margin-top: 1.5rem; font-size: 1rem; }
+      .k-meta { margin-top: .9rem; flex-wrap: wrap; }
+
+      /* --- pie --- */
+      .s11 .escena { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem 1rem; padding: 2.4rem 1.15rem 1.6rem; }
+      .pi-1 { grid-column: 1 / -1; }
+      .pi-c a, .pi-c span { white-space: normal; }
+      .pi-legal { grid-column: 1 / -1; }
+    }
+    @media (max-width: 860px) and (max-height: 700px) {
+      .hero .escena { min-height: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- =================== 01 - HERO =================== -->
+  <header class="hero" id="inicio">
+    <div class="escena">
+      <div class="foto" aria-hidden="true"></div>
+      <div class="velo" aria-hidden="true"></div>
+
+      <nav class="h-nav" aria-label="Principal">
+        <div class="h-marca">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 2.6a1 1 0 011.8-.3L11.4 4h1.2l1.1-1.7a1 1 0 111.7 1.1L14.9 4H16a4 4 0 014 4v7a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h1.1L8.4 3.4a1 1 0 01.1-.8zM9 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM9 15h6v1.4H9V15z"/></svg>
+          EasyRobots
+        </div>
+        <!-- El boceto traia "Preguntas", pero la pagina no tiene seccion de
+             preguntas frecuentes: un enlace que no lleva a nada resta. -->
+        <div class="h-links">
+          <a href="#como">C&oacute;mo funciona</a>
+          <a href="#demo">Demo</a>
+          <a href="#piezas">Integraciones</a>
+          <a href="#garantia">Garant&iacute;a</a>
+        </div>
+        <a class="h-navbtn" href="#hablemos">Reservar llamada
+          <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+      </nav>
+
+      <div class="h-col" id="contenido">
+        <div class="kick cl">Agente para cl&iacute;nicas dentales</div>
+        <h1 class="h-t">M&aacute;s pacientes.<br>Menos cosas<br>por gestionar.</h1>
+        <p class="h-sub">EasyRobots se ocupa de las conversaciones y seguimientos que no puedes atender mientras t&uacute; te centras en hacer crecer tu cl&iacute;nica.</p>
+        <a class="h-btn" href="#hablemos">Reservar llamada
+          <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+        <!-- El boceto ponia aqui tres caras y "Ya lo estan usando clinicas
+             dentales de toda Espana". No hay ninguna clinica dental como
+             cliente: es prueba social inventada y no entra (reglas de
+             honestidad de CLAUDE.md). Va el microcopy de la ficha. -->
+        <div class="h-meta">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>15 minutos</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9"/></svg>Sin compromiso</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =================== 02 - LOS PRESUPUESTOS SE QUEDAN ABIERTOS =================== -->
+  <section class="s02">
+    <div class="escena">
+      <div class="foto" aria-hidden="true"></div>
+      <div class="velo" aria-hidden="true"></div>
+
+      <div class="p-col">
+        <h2 class="h2 p-t">Los presupuestos <br>no se rechazan. <br>Se quedan abiertos.</h2>
+        <p class="p-p">Te dicen que se lo van a pensar, que hablar&aacute;n con su pareja, que ya te avisar&aacute;n&hellip; Pero pasan las semanas. Sin un no, sin un s&iacute; y sin una fecha.</p>
+      </div>
+
+      <!-- La pantalla de la tableta de la foto. Nombres de ejemplo, con
+           iniciales en vez de caras: no hay pacientes reales detras. -->
+      <div class="tab" aria-label="Ejemplo de lista de presupuestos abiertos">
+        <div class="tb-cab"><b>Presupuestos</b><i>Ejemplo</i>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+        <div class="tb-tabs"><span class="on">Abiertos (12)</span><span>En seguimiento (8)</span><span>Cerrados (24)</span></div>
+        <div class="tb-filas">
+          <div class="tb-f"><u class="tb-av">MG</u><b>Marta G&oacute;mez</b><span>2 implantes</span><em class="r">Hace 5 semanas</em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></div>
+          <div class="tb-f"><u class="tb-av">JR</u><b>Javier Ruiz</b><span>Ortodoncia</span><em class="r">Hace 3 semanas</em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></div>
+          <div class="tb-f"><u class="tb-av">LM</u><b>Luc&iacute;a Mart&iacute;n</b><span>Corona</span><em class="a">Hace 9 d&iacute;as</em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></div>
+          <div class="tb-f"><u class="tb-av">PS</u><b>Pedro S&aacute;nchez</b><span>Carillas</span><em class="a">Hace 6 d&iacute;as</em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></div>
+          <div class="tb-f"><u class="tb-av">AT</u><b>Ana Torres</b><span>Ortodoncia</span><em class="r">Hace 4 semanas</em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 03 - POR QUE PASA =================== -->
+  <section class="s03">
+    <div class="escena">
+      <div class="foto" aria-hidden="true"></div>
+      <div class="velo" aria-hidden="true"></div>
+
+      <div class="m-col">
+        <h2 class="h2 m-t">No es dejadez. <br>Es que quien tendr&iacute;a <br>que llamar est&aacute; en el mostrador.</h2>
+        <p class="m-p">Tu equipo est&aacute; atendiendo pacientes, gestionando la agenda, resolviendo imprevistos y mil cosas m&aacute;s. El seguimiento de presupuestos siempre acaba quedando para despu&eacute;s.</p>
+      </div>
+
+      <div class="m-fi m-f1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M6.5 17.5c.8-2.6 3-4 5.5-4s4.7 1.4 5.5 4"/><path d="M3 20.5h18"/><path d="M4 5.5l1.5-1M2.8 9h1.8"/></svg>
+        <b>Recepci&oacute;n no da abasto</b>
+        <span>Siempre hay algo m&aacute;s urgente.</span>
+      </div>
+      <div class="m-fi m-f2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 2"/><path d="M4.5 4.5l2.5-2M19.5 4.5l-2.5-2"/></svg>
+        <b>Nunca es lo urgente</b>
+        <span>El mostrador tiene mil tareas por delante.</span>
+      </div>
+      <div class="m-fi m-f3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c5 0 8.5 3.2 8.5 7.4s-3.5 7.4-8.5 7.4c-1 0-2-.1-2.9-.4L5 20l.9-3.6C4.4 15 3.5 13 3.5 10.9 3.5 6.7 7 3.5 12 3.5z"/><circle cx="8.5" cy="11" r=".6" fill="currentColor"/><circle cx="12" cy="11" r=".6" fill="currentColor"/><circle cx="15.5" cy="11" r=".6" fill="currentColor"/></svg>
+        <b>Hablar de dinero incomoda</b>
+        <span>No es f&aacute;cil retomar la conversaci&oacute;n sobre el presupuesto.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 04 - EL SEGUIMIENTO =================== -->
+  <section class="s04" id="demo">
+    <div class="escena">
+      <div class="foto" aria-hidden="true"></div>
+      <div class="velo" aria-hidden="true"></div>
+
+      <div class="s-col">
+        <div class="kick">El seguimiento</div>
+        <h2 class="h2 s-t">Una conversaci&oacute;n <br>que s&iacute; ocurre, <br>y que queda registrada.</h2>
+        <p class="s-p">EasyRobots retoma la conversaci&oacute;n con cada paciente en el momento adecuado, resuelve sus dudas, propone opciones y, si est&aacute; preparado, le ayuda a pedir cita.</p>
+        <p class="s-p">Todo queda registrado, para que siempre sepas qu&eacute; ha pasado y cu&aacute;l es el siguiente paso.</p>
+        <!-- "Ver una conversacion real" no se puede decir: el chat es un
+             ejemplo, no una paciente. El boton recorre el chat hasta el
+             aviso que recibe el equipo. -->
+        <div class="s-btns">
+          <button class="s-b s-b1" type="button" id="ver-chat">Ver la conversaci&oacute;n entera
+            <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </button>
+          <a class="s-b s-b2" href="#hablemos">Reservar llamada
+            <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- La pantalla del movil de la foto. El texto es el aprobado en
+           docs/copys/dental.md, seccion 11. -->
+      <div class="movil">
+        <div class="mv-cab">
+          <svg class="vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+          <span class="wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg></span>
+          <div><b>Marta G&oacute;mez</b><span>en l&iacute;nea</span></div>
+          <svg class="pts" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg>
+        </div>
+        <div class="mv-chat" id="chat">
+          <div class="mv-sys">Ejemplo del sistema. No es una paciente real.</div>
+          <div class="mv-m mv-out">Hola Marta, te escribo de la Cl&iacute;nica Dental Ribera. Hace unas semanas el doctor te present&oacute; el presupuesto de los dos implantes. &iquest;Has podido pensarlo?<i>10:24</i></div>
+          <div class="mv-m mv-in">S&iacute;, lo que pasa es que ahora mismo no puedo asumir ese pago de golpe.<i>10:26</i></div>
+          <div class="mv-m mv-out">Lo entiendo perfectamente. Se puede fraccionar, y la cl&iacute;nica trabaja con financiaci&oacute;n. &iquest;Quieres que te lo expliquen sin compromiso?<i>10:27</i></div>
+          <div class="mv-m mv-in">S&iacute;, eso s&iacute; me interesar&iacute;a.<i>10:29</i></div>
+          <div class="mv-m mv-out">Perfecto. &iquest;Te viene mejor el martes a las 17:00 o el jueves a las 10:30?<i>10:30</i></div>
+          <div class="mv-m mv-in">El martes a las 17:00.<i>10:31</i></div>
+          <div class="mv-aviso"><b>Lo que recibe el equipo</b>Marta G. quiere informaci&oacute;n de financiaci&oacute;n. Presupuesto de implantes, parado desde hace 5 semanas. Cita el martes a las 17:00.</div>
+        </div>
+      </div>
+
+      <div class="r-col">
+        <div class="kick">Y por fin sabes</div>
+        <h2 class="h2 r-t">Por qu&eacute; no se cierran.</h2>
+        <p class="r-p">EasyRobots detecta el motivo real de cada caso, para que puedas tomar mejores decisiones y ajustar tu comunicaci&oacute;n.</p>
+        <!-- Los porcentajes son los de la ficha y NO salen de ninguna clinica:
+             van marcados como ejemplo, igual que el escenario de reactivacion
+             de la v6. Toda cifra que no es real dice que no lo es. -->
+        <div class="graf">
+          <div class="gr-cab"><b>Motivos de no cierre</b><i>Ejemplo</i></div>
+          <div class="gr-cuerpo">
+            <svg viewBox="0 0 42 42" aria-hidden="true">
+              <circle cx="21" cy="21" r="15.915" fill="none" stroke="#2F7DF0" stroke-width="7" stroke-dasharray="32 68" stroke-dashoffset="0"/>
+              <circle cx="21" cy="21" r="15.915" fill="none" stroke="#7DB6F8" stroke-width="7" stroke-dasharray="24 76" stroke-dashoffset="-32"/>
+              <circle cx="21" cy="21" r="15.915" fill="none" stroke="#C9BBA9" stroke-width="7" stroke-dasharray="18 82" stroke-dashoffset="-56"/>
+              <circle cx="21" cy="21" r="15.915" fill="none" stroke="#DDD4C9" stroke-width="7" stroke-dasharray="14 86" stroke-dashoffset="-74"/>
+              <circle cx="21" cy="21" r="15.915" fill="none" stroke="#ECE8E3" stroke-width="7" stroke-dasharray="12 88" stroke-dashoffset="-88"/>
+            </svg>
+            <div class="gr-ley">
+              <div><u style="background:#2F7DF0"></u>Precio<span>32 %</span></div>
+              <div><u style="background:#7DB6F8"></u>Lo consulta con su pareja<span>24 %</span></div>
+              <div><u style="background:#C9BBA9"></u>Esperaba hueco<span>18 %</span></div>
+              <div><u style="background:#DDD4C9"></u>Miedo al tratamiento<span>14 %</span></div>
+              <div><u style="background:#ECE8E3"></u>Otros<span>12 %</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="casos">
+          <div class="caso"><u class="tb-av">MG</u><div><b>Marta G&oacute;mez</b><span>2 implantes</span></div><div><em>Precio</em><span>No puede pagarlo de una vez</span></div></div>
+          <div class="caso"><u class="tb-av">JR</u><div><b>Javier Ruiz</b><span>Ortodoncia</span></div><div><em>Lo habla en casa</em><span>Lo est&aacute; valorando con su pareja</span></div></div>
+          <div class="caso"><u class="tb-av">LM</u><div><b>Luc&iacute;a Mart&iacute;n</b><span>Corona</span></div><div><em>Esperaba hueco</em><span>Solo esperaba a tener disponibilidad</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 05 - COMO FUNCIONA =================== -->
+  <section class="s05" id="como">
+    <div class="escena">
+      <div class="foto" aria-hidden="true"></div>
+      <div class="velo" aria-hidden="true"></div>
+
+      <div class="f-col">
+        <div class="kick">C&oacute;mo funciona</div>
+        <h2 class="h2 f-t">De un presupuesto abierto <br>a una cita agendada.</h2>
+      </div>
+
+      <ol class="f-pasos" style="list-style:none">
+        <li class="f-paso"><i class="f-n">1</i>
+          <svg class="f-ic" viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="1.7" stroke-linejoin="round"><path d="M6 2.8h8l4 4v14.4H6z" fill="#DCEAFD"/><path d="M14 2.8v4h4M9 12h6M9 15.5h6M9 19h3.5" stroke-linecap="round"/></svg>
+          <b>Queda pendiente</b><span>Se detecta un presupuesto sin cerrar.</span></li>
+        <li class="f-paso"><i class="f-n">2</i>
+          <svg class="f-ic" viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg>
+          <b>Se retoma</b><span>EasyRobots contacta al paciente en el momento adecuado.</span></li>
+        <li class="f-paso"><i class="f-n">3</i>
+          <svg class="f-ic" viewBox="0 0 24 24"><path d="M12 3.5c5 0 8.5 3 8.5 7s-3.5 7-8.5 7c-1 0-1.9-.1-2.8-.4L5 19l.9-3.4C4.3 14.3 3.5 12.5 3.5 10.5c0-4 3.5-7 8.5-7z" fill="#3B82F6"/><circle cx="8.5" cy="10.5" r="1.1" fill="#fff"/><circle cx="12" cy="10.5" r="1.1" fill="#fff"/><circle cx="15.5" cy="10.5" r="1.1" fill="#fff"/></svg>
+          <b>Responde</b><span>Resuelve dudas y ofrece opciones.</span></li>
+        <li class="f-paso"><i class="f-n">4</i>
+          <svg class="f-ic" viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="1.7" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" fill="#DCEAFD"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke-width="2.4"/></svg>
+          <b>Se hace algo</b><span>Si est&aacute; preparado, se agenda la cita o se avisa al equipo.</span></li>
+        <li class="f-paso"><i class="f-n">5</i>
+          <svg class="f-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1E4FB8"/><path d="M7.5 12.3l3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <b>Queda escrito</b><span>Todo queda registrado en tu sistema.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- =================== 06 - PIEZAS QUE SE ADAPTAN =================== -->
+  <section class="s06" id="piezas">
+    <div class="escena">
+      <div class="foto" aria-hidden="true"></div>
+      <div class="velo" aria-hidden="true"></div>
+
+      <div class="z-col">
+        <div class="kick">Tu cl&iacute;nica, tu sistema</div>
+        <h2 class="h2 z-t">Piezas que se adaptan <br>a tu cl&iacute;nica.</h2>
+        <p class="z-p">Puedes empezar solo con el seguimiento de presupuestos o a&ntilde;adir otras piezas seg&uacute;n lo que necesites. EasyRobots se integra con el software que ya us&aacute;is.</p>
+      </div>
+
+      <!-- Los cables, en el mismo sistema de coordenadas que la escena
+           (872 x 160): la escena tiene esa proporcion fija, asi que los
+           extremos caen siempre en el borde de cada pieza. -->
+      <svg class="z-cables" viewBox="0 0 872 160" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="cb" x1="0" x2="1"><stop offset="0" stop-color="#7DB6F8"/><stop offset="1" stop-color="#1890FF"/></linearGradient></defs>
+        <g stroke="url(#cb)" stroke-width="1.1" fill="none" stroke-dasharray="3 2.5" opacity=".9">
+          <path d="M529 48V37"/><path d="M529 100v12"/>
+          <path d="M496 62H475l-22-14"/><path d="M562 62h21l26-14"/>
+          <path d="M496 86H475l-22-8"/><path d="M562 86h21l34-8"/>
+        </g>
+      </svg>
+      <div class="z-nuc">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 2.6a1 1 0 011.8-.3L11.4 4h1.2l1.1-1.7a1 1 0 111.7 1.1L14.9 4H16a4 4 0 014 4v7a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h1.1L8.4 3.4a1 1 0 01.1-.8zM9 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM9 15h6v1.4H9V15z"/></svg>
+        EasyRobots
+      </div>
+      <!-- En el boceto "Seguimiento de presupuestos" llevaba el logo de
+           WhatsApp, repetido con la pieza de al lado. Lleva su propio icono. -->
+      <div class="z-pz pz1"><svg viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="1.8" stroke-linejoin="round"><path d="M6 2.8h8l4 4v14.4H6z" fill="#DCEAFD"/><path d="M9 14.5l2 2 4-4.2" stroke-linecap="round"/></svg>Seguimiento <br>de presupuestos</div>
+      <div class="z-pz pz2"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg>WhatsApp</div>
+      <div class="z-pz pz3"><svg viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" fill="#DCEAFD"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke-width="2.4"/></svg>Agenda</div>
+      <div class="z-pz pz4"><svg viewBox="0 0 24 24" fill="none" stroke="#1E3A6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12.5" rx="1.8"/><path d="M8.5 20.5h7M12 16.5v4"/></svg>Tu software <br>de cl&iacute;nica</div>
+      <div class="z-pz pz5"><svg viewBox="0 0 24 24" fill="#F5B53D"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z"/></svg>Recordatorios <br>y rese&ntilde;as</div>
+      <div class="z-pz pz6"><svg viewBox="0 0 24 24" fill="#1D6FE0"><circle cx="12" cy="7.5" r="4"/><path d="M4 20.5c.6-4.2 3.8-6.5 8-6.5s7.4 2.3 8 6.5z"/></svg>Tu equipo</div>
+    </div>
+  </section>
+
+  <!-- =================== 07 - LO QUE HACE / LO QUE NO HACE =================== -->
+  <section class="s07" id="limites">
+    <div class="escena">
+      <div class="foto" aria-hidden="true"></div>
+      <div class="velo" aria-hidden="true"></div>
+
+      <div class="l-col">
+        <h2 class="h2 l-t">En una cl&iacute;nica, <br>esto importa m&aacute;s <br>que cualquier funcionalidad.</h2>
+        <p class="l-p">Un asistente que se inventa una respuesta en una cl&iacute;nica no te ahorra trabajo: te lo crea.</p>
+      </div>
+
+      <div class="l-box l-b1">
+        <h3><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></u>Lo que hace</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#04120D" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Seguimiento de presupuestos</li>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#04120D" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Conversaciones con pacientes</li>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#04120D" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Recoge informaci&oacute;n</li>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#04120D" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Agenda cuando corresponde</li>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#04120D" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Registra lo ocurrido</li>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#04120D" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Avisa al equipo cuando hace falta</li>
+        </ul>
+      </div>
+      <div class="l-box l-b2">
+        <h3><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></u>Lo que no hace</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>No diagnostica</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>No interpreta s&iacute;ntomas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>No recomienda tratamientos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>No improvisa</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>No sustituye a tu equipo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>No toma decisiones cl&iacute;nicas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 08 - CONTROL + DATOS =================== -->
+  <section class="s08" id="control">
+    <div class="escena">
+      <div class="foto" aria-hidden="true"></div>
+      <div class="velo" aria-hidden="true"></div>
+
+      <div class="c-col c-1">
+        <div class="kick">Control</div>
+        <h2 class="h2 c-t1">T&uacute; decides hasta d&oacute;nde llega.</h2>
+        <p class="c-p">T&uacute; marcas qu&eacute; puede contestar y qu&eacute; no. Cualquiera de tu equipo puede entrar en una conversaci&oacute;n en cualquier momento: sigue siendo el WhatsApp de tu cl&iacute;nica. Hay situaciones en las que el sistema se aparta solo: dolor, urgencia, una queja o cualquier cosa que no est&eacute; en lo autorizado.</p>
+      </div>
+
+      <div class="c-col c-2">
+        <div class="kick">Protecci&oacute;n de datos de salud</div>
+        <h2 class="h2 c-t2">Trabajamos con los m&aacute;s altos est&aacute;ndares.</h2>
+        <p class="c-p">Tu informaci&oacute;n y la de tus pacientes est&aacute; protegida. Cumplimos con la normativa vigente y aplicamos todas las medidas necesarias para garantizar la seguridad de los datos de salud.</p>
+        <div class="c-sellos">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2.8l7.5 3v5.6c0 4.6-3.2 8.3-7.5 9.8-4.3-1.5-7.5-5.2-7.5-9.8V5.8z"/><path d="M8.8 12l2.2 2.2 4.2-4.4" stroke-linecap="round"/></svg>RGPD</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 018 0v3"/><circle cx="12" cy="15.5" r="1.3" fill="currentColor"/></svg>Datos de salud</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 2.8h8l4 4v14.4H6z"/><path d="M14 2.8v4h4M9 12h6M9 15.5h6" stroke-linecap="round"/></svg>DPA</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg>Control</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 09 - EQUIPO + GARANTIA =================== -->
+  <section class="s09" id="garantia">
+    <div class="escena">
+      <div class="foto" aria-hidden="true"></div>
+      <div class="velo" aria-hidden="true"></div>
+
+      <div class="e-col" id="equipo">
+        <div class="kick">C&oacute;mo trabajamos</div>
+        <h2 class="h2 e-t">No somos una centralita.</h2>
+        <p class="e-p">Somos las personas que dise&ntilde;an, construyen y mantienen tu sistema.</p>
+      </div>
+
+      <!-- Los dos retratos del boceto son caras generadas con IA. Va la foto
+           real de Guillermo y el hueco de Anais sigue vacio a proposito. -->
+      <div class="e-per e-p1">
+        <img src="assets/guille.webp" alt="Guillermo, cofundador de EasyRobots" loading="lazy" decoding="async">
+        <b>Guillermo</b><i>Co-fundador</i>
+      </div>
+      <div class="e-per e-p2">
+        <div class="e-hueco">Foto pendiente</div>
+        <b>Ana&iacute;s</b><i>Co-fundadora</i>
+      </div>
+
+      <!-- Las dos garantias, tal cual se aprobaron: la frase de devolucion
+           cubre el montaje (decision de Anais del 2026-09-29). -->
+      <div class="g-panel">
+        <div class="g-fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9"/></svg><span><b>14 d&iacute;as</b> para comprobar que encaja con tu forma de trabajar.</span></div>
+        <div class="g-fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9"/></svg><span>Si no hace lo que hemos definido o no encaja, lo paramos y te devolvemos el dinero.</span></div>
+        <div class="g-fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9"/></svg><span>Primer mes de mantenimiento incluido.</span></div>
+      </div>
+      <div class="g-sello"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2.8l7.5 3v5.6c0 4.6-3.2 8.3-7.5 9.8-4.3-1.5-7.5-5.2-7.5-9.8V5.8z"/><path d="M8.8 12l2.2 2.2 4.2-4.4" stroke-linecap="round"/></svg>Tu tranquilidad tambi&eacute;n es parte del servicio.</div>
+    </div>
+  </section>
+
+  <!-- =================== 10 - CTA FINAL =================== -->
+  <section class="s10" id="hablemos">
+    <div class="escena">
+      <div class="foto" aria-hidden="true"></div>
+      <div class="velo" aria-hidden="true"></div>
+
+      <div class="k-col">
+        <div class="kick">Hablemos</div>
+        <h2 class="h2 k-t">Vemos qu&eacute; pasa hoy con los <br>presupuestos que se quedan abiertos.</h2>
+        <p class="k-sub">Sin compromiso. 15 minutos.</p>
+      </div>
+      <!-- Pendiente: enganchar al calendario de GHL, como en el resto. -->
+      <button class="k-btn" type="button">Reservar una llamada
+        <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+      </button>
+      <div class="k-meta">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>15 minutos</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9"/></svg>Sin compromiso</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 11 - PIE =================== -->
+  <footer class="s11">
+    <div class="escena">
+      <div class="pi-c pi-1"><b><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 2.6a1 1 0 011.8-.3L11.4 4h1.2l1.1-1.7a1 1 0 111.7 1.1L14.9 4H16a4 4 0 014 4v7a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h1.1L8.4 3.4a1 1 0 01.1-.8zM9 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM9 15h6v1.4H9V15z"/></svg>EasyRobots</b><span>Sistemas de IA para cl&iacute;nicas dentales.</span></div>
+      <div class="pi-c pi-2"><b>Producto</b><a href="#demo">Ver demostraci&oacute;n</a><a href="#piezas">Integraciones</a></div>
+      <div class="pi-c pi-3"><b>Empresa</b><a href="#equipo">Sobre nosotros</a><a href="#hablemos">Reservar llamada</a><a href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a></div>
+      <div class="pi-c pi-4"><b>Legal</b><a href="privacy.html">Pol&iacute;tica de privacidad y cookies</a></div>
+      <div class="pi-c pi-5"><b>S&iacute;guenos</b>
+        <div class="pi-rs">
+          <a href="https://instagram.com/easyrobots.ai" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://facebook.com/people/EasyRobotsAI/61587151053673/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M14.4 7.5h-1.6c-1 0-1.6.6-1.6 1.5v2h3l-.4 2.8h-2.6V21"/></svg></a>
+        </div>
+      </div>
+      <p class="pi-legal">EasyRobots AH-NICE &middot; Hamburgo (Alemania) &middot; &copy; 2026 EasyRobots</p>
+    </div>
+  </footer>
+
+  <script>
+    // "Ver la conversacion entera": recorre el chat del movil hasta el aviso
+    // que recibe el equipo. Envuelto por si se quita la seccion (fallo 1 de
+    // CLAUDE.md: el JS huerfano tumbaba todo lo que venia detras).
+    (function () {
+      var btn = document.getElementById('ver-chat');
+      var chat = document.getElementById('chat');
+      if (!btn || !chat) return;
+      btn.addEventListener('click', function () {
+        chat.scrollTop = chat.scrollHeight;
+        chat.closest('.movil').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    })();
+  </script>
+</body>
+
+</html>
