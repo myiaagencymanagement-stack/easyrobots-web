@@ -1073,6 +1073,89 @@ Reconstruccion contra un boceto nuevo. **La pagina viva es
   boceto y responde con adjetivos, contra la regla de nombrar art. 9 RGPD,
   encargado del tratamiento y servidores en la UE.
 
+## Landing de coaching v2 (2026-10-02)
+
+Reconstruccion contra un boceto nuevo. **La pagina viva es
+`src/prueba-coaching-v2.html`**, con `noindex`. `prueba-coaching.html` y
+`coaching.html` no se tocan.
+
+### Lo que llego
+
+En `src/assets/boceto/coaching-v2/`:
+
+| Archivo | Que es |
+|---|---|
+| `referencia.png` | 779x2019, la pagina entera pintada |
+| `fondos.png` | 779x2019, la hoja de fondos |
+| `cta-aspiracional.png` | 1993x789, la terraza al atardecer del cierre |
+| `sistema-referencia.png` | 1993x789, la seccion 6 pintada CON el diagrama |
+| `claras.png` | 1994x789, tres terrazas luminosas. **Sin usar**, de reserva |
+
+Mas una **ficha tecnica** con copy, paleta y escala tipografica.
+
+**Ojo: referencia y fondos miden lo mismo pero NO estan alineadas seccion a
+seccion.** La hoja son once escenas sueltas apiladas, cada una con su alto.
+Las costuras (lineas blancas de 1-2 px) salen midiendo el salto de brillo
+medio entre filas: 178 · 371 · 550 · 706 · 858 · 1088 · 1259 · 1401 · 1546 ·
+1757. La de 1259 no la pilla el umbral que vale para las demas porque separa
+dos escenas claras. Todo el recorte esta en `docs/fondos-coaching-v2.py`.
+
+`sistema-referencia.png` **no sirve de fondo**: lleva el diagrama y un panel
+de cifras quemados en la foto. Se usa solo para medir donde va cada pieza.
+
+### Decisiones
+
+- **Alto**: la regla de Anais que ya se aplico en dental v2. Hero `100svh`,
+  las demas `clamp(540px, 66vh, 720px)`. Nada de maquetar con `--u` del
+  boceto: eso fue lo que salio "aplastado" en la primera dental.
+- **El recorrido emocional del boceto manda el orden de las fotos**: oscuro
+  en el dolor (hero, donde se cae, el mismo interes), claro en la
+  transicion (asi funciona), oscuro tecnologico (demo y sistema), claro en
+  la confianza (el limite, como trabajamos, equipo y garantia) y
+  aspiracional en el cierre.
+- **Las secciones 9 y 10 van juntas en una franja**, quienes somos a la
+  izquierda y la garantia a la derecha, que es como lo pinta el boceto.
+  La ficha las separa; mando el boceto por peticion de Anais.
+- **El portatil del hero y el de la demo son HTML entero**, no una interfaz
+  encima de la foto. En movil el del hero se oculta: no cabe sin comerse el
+  titular.
+- **El diagrama de la 06 es el protagonista** y por eso no hay seccion
+  aparte de "piezas". Las posiciones salen de medir `sistema-referencia.png`
+  y viven en una caja de 790x370 con su unidad `--d`. En movil pasa a lista,
+  con el nucleo arriba: en una columna de 390 px no se lee.
+
+### Lo del boceto que NO se reprodujo
+
+- **El portatil con el panel de resumen de la seccion 6**: traia 124
+  conversaciones, 48 citas, 32 clientes nuevos y +27 % de conversion. Son
+  cifras inventadas, lo mismo que tumbo el "Automatizaciones hoy: 24" de la
+  v4.
+- **Los dos retratos del equipo**, que son caras generadas con IA. Va la
+  foto real de Guillermo y el hueco de Anais.
+- **"Resultados" en el menu**: no hay seccion de resultados ni ningun coach
+  como cliente. Pasa a "Demo".
+- **Privacidad / Cookies / Aviso legal** en el pie, tres enlaces al mismo
+  sitio: va solo `privacy.html`, que ya recoge dentro los otros dos.
+- Erratas de la generacion: "Reservar llmnada", "Co-fundadadara",
+  "Recordatorios y noti-shows", "Puedes usar todo el sistema entran un
+  miezas que necesites".
+
+### Pendiente en esta landing
+
+- **No hay video de demostracion**: el boton "Ver una demostracion real"
+  lleva de momento a la llamada. Cuando exista, se cambia el `href`.
+- Las bandas de la hoja miden 779 px de ancho y aqui se amplian 2x: se ven
+  blandas. Si Anais pasa la hoja a mas resolucion, se vuelve a correr
+  `docs/fondos-coaching-v2.py` y no hay que tocar el HTML.
+- Decidir donde entran las tres terrazas de `claras.png`, que llegaron a
+  2,5 veces la resolucion de la hoja y no se han usado.
+- La foto real de Anais para el hueco de Equipo.
+- Botones sin enganchar al calendario de GHL. Decidir si sustituye a
+  `prueba-coaching.html` y si se le quita el `noindex`.
+- La garantia dice "seguimos trabajando contigo sin coste adicional hasta
+  conseguirlo", que es copy de la ficha y es un compromiso abierto en el
+  tiempo. Conviene mirarlo antes de quitar el `noindex`.
+
 ## La calculadora
 
 Fórmula, visible en la propia página:
