@@ -915,6 +915,31 @@ de referencia y no se toca.
 - Botones sin enganchar al calendario de GHL. Decidir si sustituye a
   `prueba-dental.html` y si se le quita el `noindex`.
 
+## Home de agencia v2 (2026-10-02)
+
+**La pagina viva es `src/prueba-index-v2.html`.** Es la home de nivel 1
+(agencia de IA horizontal). `index.html`, `home.html` y `prueba-home.html` no
+se tocan.
+
+- Boceto en `src/assets/boceto/index-v2/`, nueve tiras numeradas en el orden
+  de la pagina: 01 hero · 02 lo que construimos · 03 sectores · 04 como
+  trabajamos · 05 integraciones · 06 caso real · 07 equipo+garantia+datos ·
+  10 cierre · 11 pie. El original esta en Descargas, carpeta "FONDOS WEB
+  PRINCIPAL" (pese al nombre, es el boceto con texto).
+- **No llego ni hoja de fondos ni ficha tecnica.** Todas las fotos `home-*`
+  son recortes provisionales del boceto, con el texto y las tarjetas pintadas
+  borrados por inpainting (`docs/fondos-index-v2.py`). Debajo de cada tarjeta
+  del hero hay una mancha desenfocada: si se mueven las tarjetas, aparece.
+- **Es clara (crema #F9F6F3), no oscura como la v6**: lo manda el boceto. Los
+  iconos violeta del hero pasan a azul (morado fuera de paleta).
+- Quitado del boceto: las cifras de dos pantallas (+248 / 89 / 12 y "1.248
+  leads +12 %", emborronadas en la foto), los retratos IA del equipo (va
+  Guillermo y el hueco de Anais), "Site-Bots" (pasa a "chat web"), los tres
+  enlaces legales del pie (uno solo a `privacy.html`) y el "cumplimos con el
+  RGPD" con adjetivos (se nombra contrato de encargado y servidores en la UE).
+- Las tarjetas de sectores llevan a la pagina buena de cada nicho; clinicas va
+  a `easyrobots-clinicas-premium.html`.
+
 ## La calculadora
 
 Fórmula, visible en la propia página:
