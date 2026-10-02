@@ -446,6 +446,7 @@ Ojo, que hay dos juegos de landings y es facil trabajar sobre la equivocada:
 | Inmobiliarias | `prueba-inmobiliarias-v3.html` | `inmobiliarias.html`, `prueba-inmobiliarias.html`, `-v1`, `-v2` |
 | Concesionarios | **`prueba-concesionarios-v2.html`** | `concesionarios.html`, `prueba-concesionarios.html` |
 | Dental | **`prueba-dental-v2.html`** | `dental.html`, `prueba-dental.html` |
+| Clinicas esteticas | **`prueba-clinicas-premium-v2.html`** (en prueba) | `easyrobots-clinicas-premium.html` (la v6) sigue siendo la publicada |
 | Coaching | `prueba-coaching.html` | `coaching.html` |
 | Ecommerce | **`prueba-ecommerce-v2.html`** | `ecommerce.html`, `prueba-ecommerce.html` |
 
@@ -939,6 +940,34 @@ se tocan.
   RGPD" con adjetivos (se nombra contrato de encargado y servidores en la UE).
 - Las tarjetas de sectores llevan a la pagina buena de cada nicho; clinicas va
   a `easyrobots-clinicas-premium.html`.
+
+## Landing de clinicas premium v2 (2026-10-02)
+
+Reconstruccion contra un boceto nuevo. **La pagina viva es
+`src/prueba-clinicas-premium-v2.html`**, con `noindex`. La v6
+(`easyrobots-clinicas-premium.html`) no se toca.
+
+- Boceto en seis tiras en `src/assets/boceto/clinicas-v2/` (13 secciones).
+  **No llego hoja de fondos ni ficha tecnica**: Anais decidio arrancar sin
+  ellas. Los fondos salen del propio boceto con el texto y las tarjetas
+  **borrados con inpaint de OpenCV** (`docs/fondos-clinicas-v2.py`; hace falta
+  `pip install opencv-python-headless`). Donde habia una tarjeta grande queda
+  una mancha suave que tapa la tarjeta de verdad. Cuando llegue la hoja, se
+  sustituyen los `cl-*.webp` sin tocar el HTML.
+- **El copy es el de las imagenes del boceto** (peticion de Anais). Solo se
+  cambio lo que chocaba con las reglas: cuerpo ilegible de "Recupera
+  clientas" (va el de la v6), retratos de IA (va Guillermo y el hueco),
+  letrero falso de Pilar (van sus fotos reales), LinkedIn y "Trabaja con
+  EasyRobots" del pie, erratas ("Tene presupuesto", "Abril 2024").
+- **La calculadora del boceto volvia a tener la cuenta mal**: 100 x 40 % x
+  250 = 10.000 EUR supone que reservan todas las que no reciben respuesta. Se
+  anade la barra "% que acabaria reservando" y el resultado anual.
+- El boceto **cambia el acento azul por dorado** (#E4BA6C) y **titula en
+  serif**: Source Serif 4, servida desde `assets/fonts/`. Es decision del
+  boceto. Las secciones 11 y 12 del boceto venian en sans; se unifican en serif.
+- Pendiente de decidir: el bloque "Tus datos estan protegidos" es copy del
+  boceto y responde con adjetivos, contra la regla de nombrar art. 9 RGPD,
+  encargado del tratamiento y servidores en la UE.
 
 ## La calculadora
 
