@@ -1086,6 +1086,14 @@ Reconstruccion contra un boceto nuevo. **La pagina viva es
 - El boceto **cambia el acento azul por dorado** (#E4BA6C) y **titula en
   serif**: Source Serif 4, servida desde `assets/fonts/`. Es decision del
   boceto. Las secciones 11 y 12 del boceto venian en sans; se unifican en serif.
+- **Segunda pasada de Anais (2026-10-03)**: escritorio al 90 % con `body {
+  zoom: .9 }` desde 1081 px, como inmobiliarias (el hero divide su 100svh entre
+  .9 para seguir llenando la pantalla); en "De caotica a organizada" la imagen
+  va encima y las dos tarjetas debajo, y el fondo ya no lleva los dispositivos
+  duplicados; el diagrama de piezas pasa a rejilla de tres columnas con letra
+  de 17 / 14,5 px; equipo y garantia mas compactos; y el movil copia las
+  medidas de inmobiliarias (h2 1,6 rem, texto .93 rem, 38 px de relleno, barra
+  fija). El movil baja de 13.055 a 9.884 px.
 - Pendiente de decidir: el bloque "Tus datos estan protegidos" es copy del
   boceto y responde con adjetivos, contra la regla de nombrar art. 9 RGPD,
   encargado del tratamiento y servidores en la UE.

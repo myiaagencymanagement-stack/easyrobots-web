@@ -121,8 +121,10 @@ guardar(reac, 'cl-reactiva', xm=700, ampliar=2, calidad=70)
 caos = seccion(T2, (0, 0, 1536, 364),
                texto=[(80, 55, 570, 142)],
                bloques=[(55, 40, 418, 337), (1182, 132, 1498, 337), (1036, 55, 1198, 112)])
-guardar(caos, 'cl-caos', xm=780)
 disp = Image.fromarray(cv2.cvtColor(caos[95:345, 418:1182], cv2.COLOR_BGR2RGB))
+# El fondo va SIN los dispositivos: la imagen de arriba ya los ensena y,
+# desenfocados detras, salian duplicados (2026-10-03).
+guardar(borrar_bloques(caos, [(418, 95, 1182, 345)]), 'cl-caos', xm=780)
 disp = disp.resize((disp.width * 2, disp.height * 2), Image.LANCZOS) \
            .filter(ImageFilter.UnsharpMask(radius=2, percent=50, threshold=2))
 disp.save(OUT + 'cl-dispositivos.webp', 'WEBP', quality=74, method=6)
