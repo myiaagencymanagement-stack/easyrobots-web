@@ -129,7 +129,11 @@
     .hero .velo { background:
         linear-gradient(90deg, rgba(6,5,4,.95) 0%, rgba(6,5,4,.88) 30%, rgba(6,5,4,.55) 48%, rgba(6,5,4,.12) 66%, rgba(6,5,4,0) 80%),
         linear-gradient(180deg, rgba(6,5,4,.55) 0%, rgba(6,5,4,0) 22%, rgba(6,5,4,0) 76%, rgba(6,5,4,.6) 100%); }
-    .h-nav { position: relative; z-index: 60; border-bottom: 1px solid rgba(255,255,255,.10); background: rgba(4,4,4,.55); backdrop-filter: blur(6px); }
+    /* La barra (marca y boton de reservar) se queda fija al deslizar, en
+       escritorio y en movil. Peticion de Anais (2026-10-03). Al salir del
+       flujo, el cuerpo del hero reserva su alto con padding-top. */
+    .h-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 120; border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(8,8,11,.84); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+    section[id] { scroll-margin-top: 80px; }
     .h-nav-in { width: 100%; max-width: 1440px; margin: 0 auto; padding: 14px max(22px, 5.6vw); display: flex; align-items: center; }
     @media (min-width: 1440px) { .h-nav-in { padding-left: 80px; padding-right: 80px; } }
     .h-marca { font-size: 19px; font-weight: 500; letter-spacing: .32em; }
@@ -137,7 +141,7 @@
     .h-links a { font-size: 15.5px; font-weight: 500; color: rgba(255,255,255,.88); white-space: nowrap; }
     .h-links a:hover { color: var(--oro); }
     .h-navbtn { height: 46px; padding: 0 22px; font-size: 15.5px; }
-    .h-cuerpo { position: relative; z-index: 50; flex: 1 1 auto; display: flex; align-items: center; width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 max(22px, 5.6vw) 5vh; }
+    .h-cuerpo { position: relative; z-index: 50; flex: 1 1 auto; display: flex; align-items: center; width: 100%; max-width: 1440px; margin: 0 auto; padding: 74px max(22px, 5.6vw) 5vh; }
     @media (min-width: 1440px) { .h-cuerpo { padding-left: 80px; padding-right: 80px; } }
     .h-col { max-width: 620px; }
     .h-t { margin-top: 18px; font-family: var(--s); font-size: var(--h1); line-height: 1.02; font-weight: 500; letter-spacing: -.02em; }
@@ -286,6 +290,7 @@
     .cs-nom { margin-top: 26px; font-family: var(--s); font-size: clamp(28px, 2.4vw, 36px); line-height: 1.1; font-weight: 500; }
     .cs-tec { margin-top: 4px; font-size: clamp(18px, 1.6vw, 24px); color: rgba(255,255,255,.88); }
     .cs-tec2 { margin-top: 6px; font-size: 16px; color: rgba(255,255,255,.72); }
+    .cs-btn { margin-top: 28px; }
     .cs-der { display: flex; flex-direction: column; gap: 18px; }
     .cs-ig { align-self: flex-end; display: flex; align-items: center; gap: 10px; font-size: 16px; color: rgba(255,255,255,.88); }
     .cs-ig svg { width: 26px; height: 26px; }
@@ -320,7 +325,6 @@
     .s08 .velo { background: linear-gradient(90deg, rgba(250,246,242,.88) 0%, rgba(250,246,242,.72) 38%, rgba(250,246,242,.40) 100%); }
     .s08 .h2 { font-size: clamp(32px, 2.9vw, 46px); }
     .s08 .caja { display: grid; grid-template-columns: 4.2fr 7.8fr; gap: clamp(28px, 3vw, 56px); align-items: center; }
-    .s08 .btn { margin-top: 34px; }
     /* El diagrama era una copia en posiciones absolutas del boceto, con la
        letra escalada a su ancho: salia a 10-12 px y Anais pidio letra mas
        grande (2026-10-03). Ahora es una rejilla de tres columnas, piezas,
@@ -570,6 +574,7 @@
       .cs-nom { margin-top: 16px; font-size: 1.4rem; }
       .cs-tec { font-size: 1rem; }
       .cs-tec2 { font-size: .84rem; }
+      .cs-btn { margin-top: 1.2rem; }
       .cs-der { margin-top: 22px; gap: 12px; }
       .cs-ig { align-self: flex-start; font-size: .88rem; }
       .cs-ig svg { width: 20px; height: 20px; }
@@ -594,7 +599,6 @@
       .cs-miedo u::after { display: none; }
 
       /* --- 08: nucleo arriba y piezas de dos en dos --- */
-      .s08 .btn { margin-top: 1.4rem; }
       .dg { margin-top: 30px; grid-template-columns: 1fr 1fr; gap: 10px; }
       .dg-col { display: contents; }
       .dg-nuc { order: -1; grid-column: 1 / -1; justify-self: center; width: 168px; height: 168px; margin: 14px 0 22px; padding: 0 18px; }
@@ -938,6 +942,11 @@
           <div class="cs-nom">Pilar Márquez</div>
           <div class="cs-tec">Microblading y hairstroke</div>
           <div class="cs-tec2">Técnicas de micropigmentación</div>
+          <!-- Peticion de Anais (2026-10-03): justo despues de la prueba es
+               donde mas apetece preguntar "y en mi clinica?". -->
+          <a class="btn b-oro cs-btn" href="#hablemos" data-cal>Reservar llamada
+            <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
         </div>
       </div>
 
@@ -988,11 +997,6 @@
       <div>
         <h2 class="h2">Las piezas del sistema. <br>Tú eliges lo que necesitas.</h2>
         <p class="p">Un sistema modular que se adapta a tu clínica y se integra con las herramientas que ya usas.</p>
-        <!-- No existe una pagina con "todas las piezas": el boton lleva al
-             diagrama (en el movil queda debajo) en vez de a ninguna parte. -->
-        <a class="btn b-oro" href="#diagrama">Ver todas las piezas
-          <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </a>
       </div>
 
       <!-- Iconos en dorado: el boceto los pintaba en rojo y naranja, que la
