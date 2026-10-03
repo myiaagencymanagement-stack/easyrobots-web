@@ -79,7 +79,7 @@
       --f: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
       --s: 'Source Serif 4', Georgia, 'Times New Roman', serif;
 
-      --h1: clamp(46px, 4.6vw, 70px);
+      --h1: clamp(40px, 3.9vw, 56px);
       --h2: clamp(34px, 3.3vw, 52px);
       --txt: clamp(16px, 1.2vw, 18.5px);
       --pad: clamp(72px, 9vh, 112px);
@@ -124,7 +124,10 @@
     .b-linea:hover { background: rgba(228,186,108,.14); }
 
     /* ===================== 01 - HERO ===================== */
-    .hero { position: relative; overflow: hidden; background: #070605; height: 100vh; height: 100svh; min-height: 640px; display: flex; flex-direction: column; }
+    /* Como la home (2026-10-03): el hero entero es el foco, pero al 86 % de
+       la pantalla para que asome la seccion de abajo. Tamanos de letra
+       copiados de alli. */
+    .hero { position: relative; overflow: hidden; background: #070605; height: 86vh; height: 86svh; min-height: 600px; display: flex; flex-direction: column; }
     .hero .foto { background-image: url(/assets/cl-hero.webp); background-position: 78% center; }
     .hero .velo { background:
         linear-gradient(90deg, rgba(6,5,4,.95) 0%, rgba(6,5,4,.88) 30%, rgba(6,5,4,.55) 48%, rgba(6,5,4,.12) 66%, rgba(6,5,4,0) 80%),
@@ -144,20 +147,15 @@
     .h-cuerpo { position: relative; z-index: 50; flex: 1 1 auto; display: flex; align-items: center; width: 100%; max-width: 1440px; margin: 0 auto; padding: 74px max(22px, 5.6vw) 5vh; }
     @media (min-width: 1440px) { .h-cuerpo { padding-left: 80px; padding-right: 80px; } }
     .h-col { max-width: 620px; }
-    .h-t { margin-top: 18px; font-family: var(--s); font-size: var(--h1); line-height: 1.02; font-weight: 500; letter-spacing: -.02em; }
-    .h-sub { margin-top: 24px; max-width: 540px; font-size: clamp(17px, 1.3vw, 19.5px); line-height: 1.55; color: rgba(255,255,255,.90); }
-    .h-btns { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .h-t { margin-top: 22px; font-family: var(--s); font-size: var(--h1); line-height: 1.02; font-weight: 500; letter-spacing: -.02em; }
+    .h-sub { margin-top: 26px; max-width: 560px; font-size: clamp(17px, 1.35vw, 20.5px); line-height: 1.55; color: rgba(255,255,255,.90); }
+    .h-btns { margin-top: 38px; display: flex; gap: 14px; flex-wrap: wrap; }
     .h-meta { margin-top: 30px; display: flex; gap: 34px; flex-wrap: wrap; }
     .h-meta div { display: flex; align-items: center; gap: 10px; font-size: 15px; color: rgba(255,255,255,.88); }
     .h-meta svg { width: 26px; height: 26px; color: var(--oro); }
 
     /* ===================== 02 - OPORTUNIDADES ===================== */
     .s02 { background: var(--oscuro); }
-    /* Anais (2026-10-03): el hueco de arriba alejaba esta seccion del hero.
-       Sin alto minimo (que la centraba en vertical) y con poco relleno
-       arriba, el titular aparece en cuanto se empieza a deslizar. */
-    .sec.s02 { min-height: 0; }
-    .s02 .caja { padding-top: 40px; }
     .s02 .h2 { max-width: 640px; }
     .fu-fila { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.2vw, 30px); }
     .fu { position: relative; border-radius: 12px; overflow: hidden; background: #0E1416; border: 1px solid rgba(255,255,255,.06); }
@@ -441,7 +439,7 @@
        hero divide entre .9 para seguir ocupando la pantalla justa. */
     @media (min-width: 1081px) {
       body { zoom: .9; }
-      .hero { height: calc(100vh / .9); height: calc(100svh / .9); min-height: 711px; }
+      .hero { height: calc(86vh / .9); height: calc(86svh / .9); min-height: 667px; }
       .sec { min-height: calc(var(--alto) / .9); }
       .s07, .s11 { min-height: 0; }
     }
@@ -519,7 +517,6 @@
       .s11 .velo { background: linear-gradient(180deg, rgba(40,28,18,.70) 0%, rgba(40,28,18,.45) 40%, rgba(246,240,236,.3) 100%); }
 
       /* --- 02 --- */
-      .s02 .caja { padding-top: 28px; }
       .fu-fila { margin-top: 22px; grid-template-columns: 1fr; gap: 12px; }
       .fu-img { aspect-ratio: 431 / 160; }
       .fu-ic { left: 16px; width: 40px; height: 40px; top: calc(100% - 50px); }
