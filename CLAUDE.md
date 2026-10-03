@@ -282,6 +282,11 @@ llamativos.
 - **Consecuencia importante:** no hay red de seguridad. Cada push sale publicado.
   Todo lo que sea una prueba va con `<meta name="robots" content="noindex,
   nofollow">` para que no compita en Google con la web real.
+- **El despliegue puede saltarse un push** si llegan varios en el mismo minuto
+  (pasó el 2026-10-03 con tres sesiones empujando a la vez: el dominio se quedó
+  20 minutos en el commit anterior). Después de empujar, comprobar con `curl`
+  que la página trae algo nuevo, y si no llega en 5-10 minutos, relanzar con
+  `git commit --allow-empty` y otro push.
 - Autenticación de git: el Windows Credential Manager ya la tiene guardada. No
   hace falta ningún token. **Nunca meter un token dentro de la URL de `git pull`
   o `git push`**: queda escrito en `.git/logs/HEAD`. Ya pasó una vez.
@@ -788,6 +793,29 @@ Ademas, y siguiendo el fallo 10 de la lista de abajo, hay **recortes verticales*
 de las fotos panoramicas para el movil: `conce-hero-movil`, `conce-momentos-movil`,
 `conce-sabado-movil` y `conce-hablemos-movil`.
 
+### Segunda maqueta (2026-10-03): fuera el "modo folleto"
+
+Anais: concesionarios y ecommerce estaban "en modo folleto". Era la maqueta con
+`--u` del boceto: cada seccion tenia la proporcion fija de su tira y a 1440
+salian secciones de 200-450 px con letra de 13-15 px. **Las dos se rehicieron
+como rejilla normal con los tamanos de `/estetica/`** (H1 40-56, H2 32-46 en
+las de dos columnas, texto 16-18,5, secciones de 560-760 de alto, hero al 86 %,
+`zoom: .9` desde 1081 px, barra fija) y **el movil con las medidas de
+inmobiliarias** (h2 1,6 rem y 1,45-1,9 bajo 620 px, texto .93 / .88 rem, 30 px
+de relleno bajo 620). Mismo copy, piezas, colores y fotos. Las medidas en `u`
+de esta seccion ya no se usan; se conservan como referencia del boceto.
+
+Cosas que se decidieron al rehacerla: los `<br>` de los titulares se ocultan y
+reparte `text-wrap: balance` (en columna partian mal); las fichas de "Piezas"
+de ecommerce pasan a rejilla 3x3, como el diagrama de estetica; y en ecommerce
+`.rd-ambar` de limites lleva prefijo `.lm-ficha` porque pisaba el icono de la
+segunda tarjeta de la demo.
+
+Fondos de ecommerce: las bandas apaisadas se ampliaban de 3 a 6 veces con las
+secciones nuevas. `docs/fondos-ecommerce-v2.py` saca ahora para escritorio una
+**ventana 2,3:1 de la escena entera** (tabla `ESCRITORIO`); los `*-movil.webp`
+no cambian. Las fotos de concesionarios aguantan y no se tocaron.
+
 ### Pendiente en esta landing
 
 - El audio de la demo: no hay archivo. El boton y el reproductor son de momento
@@ -951,6 +979,10 @@ Lo que pidio y como quedo:
   `margin-bottom` a las pestanas y las filas suben de 22,5 a 24 u.
 - **Las tarjetas del hero estaban pegadas al borde de abajo.** Se encogen entre
   un 5 y un 8 % y el hero crece, asi que la de "Cliente 23:40" respira.
+
+**Desde el 2026-10-03 esta landing ya no usa `--u`**: se rehizo como rejilla
+con los tamanos de estetica y el movil de inmobiliarias. Ver "Segunda maqueta"
+en la seccion de concesionarios, que explica las dos.
 
 ### Lo siguiente en esta landing
 
