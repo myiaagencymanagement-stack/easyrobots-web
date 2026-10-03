@@ -69,6 +69,38 @@ for nombre, y0, alto, ancho, cal, cx in SECCIONES:
           (nombre, ancho, round(ancho * alto / 1024), kb, kbm))
 
 
+# ESCRITORIO, SEGUNDA MAQUETA (2026-10-03)
+# La pagina dejo de ser "folleto": las secciones ya no tienen la proporcion de
+# su tira del boceto (1024/134, 1024/88...) sino alto real, unos 2,3:1 a 1440.
+# Con las bandas de arriba, `cover` las ampliaba de 3 a 6 veces. Ahora cada
+# seccion toma una VENTANA de la escena entera, con la proporcion de su hueco.
+# Las que comparten escena llevan ventanas distintas, para no repetir encuadre.
+# (archivo, escena, ancho de ventana, centro x, ancla vertical 0 arriba / 1 abajo)
+ESCRITORIO = [
+    ('ecom-hero.webp',      0, 1024, 0.50, 0.5),
+    ('ecom-postventa.webp', 3,  730, 0.34, 0.5),
+    ('ecom-dato.webp',      0,  880, 0.72, 1.0),
+    ('ecom-seda.webp',      1,  880, 0.34, 1.0),
+    ('ecom-demo.webp',      2, 1024, 0.50, 0.5),
+    ('ecom-piezas.webp',    2,  820, 0.66, 1.0),
+    ('ecom-tecno.webp',     1,  820, 0.60, 1.0),
+    ('ecom-limites.webp',   1,  820, 0.62, 0.0),
+    ('ecom-equipo.webp',    2,  820, 0.28, 0.0),
+    ('ecom-cierre.webp',    3, 1024, 0.50, 0.5),
+]
+if __name__ == '__main__':
+    for nombre, e, vw, cx, ancla in ESCRITORIO:
+        ea, eb = ESCENAS[e]
+        vh = min(eb - ea, round(vw / 2.3))
+        vx = min(max(int(cx * 1024) - vw // 2, 0), 1024 - vw)
+        vy = ea + round((eb - ea - vh) * ancla)
+        sal = 1600
+        HOJA.crop((vx, vy, vx + vw, vy + vh)).resize((sal, round(sal * vh / vw)), Image.LANCZOS) \
+            .save(OUT + nombre, 'WEBP', quality=56, method=6)
+        print('%-24s %sx%-4s %5.1f KB  (escritorio, ventana %sx%s)' %
+              (nombre, sal, round(sal * vh / vw), len(open(OUT + nombre, 'rb').read()) / 1024, vw, vh))
+
+
 def pieza(nombre, caja, sal, calidad=78):
     """Piezas pequenas que la hoja de fondos no trae y se recortan de la
     referencia: van a la resolucion de la captura y son provisionales."""
