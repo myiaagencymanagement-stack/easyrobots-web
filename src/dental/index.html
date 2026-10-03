@@ -265,11 +265,17 @@
               background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 10'%3E%3Cpath d='M4 5h10M26 5h8' stroke='%231890FF' stroke-width='1.4' stroke-dasharray='2.4 2.4'/%3E%3Ccircle cx='20' cy='5' r='3' fill='none' stroke='%231890FF' stroke-width='1.4'/%3E%3Cpath d='M33 2l3.5 3-3.5 3' fill='none' stroke='%231890FF' stroke-width='1.4'/%3E%3C/svg%3E") center / contain no-repeat; }
 
     /* ============ 06 - PIEZAS QUE SE ADAPTAN ============
-       El diagrama conserva las posiciones del boceto: vive en su propia
-       caja de 400 x 150 unidades (--d = una unidad), medidas desde la caja
-       de cada pieza:
-         seguimiento x132 y9 · WhatsApp x24 y36 · agenda x269 y36
-         software x15 y64 · recordatorios x277 y64 · equipo x132 y112
+       Segunda version del diagrama (2026-10-03): Anais paso el recorte del
+       boceto porque la primera "no lo consiguio". Se volvio a medir sobre el
+       boceto ampliado x4 (la primera medicion estaba desplazada y las piezas
+       salian pequenas, de alturas distintas y apelotonadas). Caja de 380 x
+       140 unidades (--d = una unidad = un pixel del boceto), origen en
+       (350,1080) del boceto. Todas las piezas miden 30 de alto:
+         seguimiento x121 y5 w114 · WhatsApp x14 y35 w90 · agenda x259 y35 w83
+         software x4 y81 w99 · recordatorios x266 y81 w108 · equipo x121 y106 w114
+         nucleo x145 y44, 69 x 54, sin icono, solo el nombre
+       Los cables salen de los lados del nucleo, con brillo, y rematan en un
+       punto de luz en el borde de cada pieza, como en el boceto.
        La foto NO es la tira de "Piezas": traia los nodos pintados. Va la de
        "Como funciona" en espejo. */
     .s06 { background: var(--claro); }
@@ -277,21 +283,25 @@
     .s06 .velo { background: linear-gradient(90deg, rgba(240,245,250,.95) 0%, rgba(240,245,250,.86) 42%, rgba(240,245,250,.62) 100%); }
     .s06 .h2 { font-size: var(--h2s); }
     .s06 .caja { display: grid; grid-template-columns: 4fr 7fr; gap: clamp(32px, 4vw, 72px); align-items: center; }
-    .z-diag { position: relative; aspect-ratio: 400 / 150; container-type: inline-size; --d: calc(100cqw / 400); }
-    .z-cables { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-    .z-nuc { position: absolute; left: calc(156*var(--d)); top: calc(48*var(--d)); width: calc(66*var(--d)); height: calc(52*var(--d)); border-radius: calc(10*var(--d));
-             background: linear-gradient(160deg, #1B3969 0%, #0B1A33 100%); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(3*var(--d));
-             font-size: calc(7.6*var(--d)); font-weight: 700; box-shadow: 0 0 0 1px rgba(120,180,255,.35), 0 0 calc(22*var(--d)) rgba(24,144,255,.45); }
-    .z-nuc svg { width: calc(14*var(--d)); height: calc(14*var(--d)); color: var(--azul-g); }
-    .z-pz { position: absolute; display: flex; align-items: center; gap: calc(7*var(--d)); background: rgba(255,255,255,.97); border-radius: calc(8*var(--d)); padding: 0 calc(10*var(--d));
-            font-size: calc(7.2*var(--d)); line-height: 1.2; font-weight: 700; color: var(--tinta); box-shadow: 0 0 calc(12*var(--d)) rgba(24,144,255,.28); }
-    .z-pz svg { width: calc(14*var(--d)); height: calc(14*var(--d)); }
-    .pz1 { left: calc(132*var(--d)); top: calc(9*var(--d));  width: calc(113*var(--d)); height: calc(28*var(--d)); }
-    .pz2 { left: calc(24*var(--d));  top: calc(36*var(--d)); width: calc(89*var(--d));  height: calc(24*var(--d)); }
-    .pz3 { left: calc(269*var(--d)); top: calc(36*var(--d)); width: calc(83*var(--d));  height: calc(24*var(--d)); }
-    .pz4 { left: calc(15*var(--d));  top: calc(64*var(--d)); width: calc(98*var(--d));  height: calc(28*var(--d)); }
-    .pz5 { left: calc(277*var(--d)); top: calc(64*var(--d)); width: calc(108*var(--d)); height: calc(28*var(--d)); }
-    .pz6 { left: calc(132*var(--d)); top: calc(112*var(--d)); width: calc(113*var(--d)); height: calc(24*var(--d)); }
+    .z-diag { position: relative; aspect-ratio: 380 / 140; container-type: inline-size; --d: calc(100cqw / 380); }
+    /* el halo azul que envuelve el diagrama en el boceto */
+    .z-diag::before { content: ""; position: absolute; left: 12%; right: 12%; top: -6%; bottom: -6%; border-radius: 50%; pointer-events: none;
+             background: radial-gradient(closest-side, rgba(90,170,255,.30), rgba(90,170,255,.12) 55%, rgba(90,170,255,0)); }
+    .z-cables { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+    .z-nuc { position: absolute; left: calc(145*var(--d)); top: calc(44*var(--d)); width: calc(69*var(--d)); height: calc(54*var(--d)); border-radius: calc(9*var(--d));
+             background: linear-gradient(170deg, #22427A 0%, #13284F 45%, #0A1630 100%); color: #fff; display: flex; align-items: center; justify-content: center;
+             font-size: calc(8.4*var(--d)); font-weight: 700; letter-spacing: -.01em;
+             box-shadow: inset 0 0 0 calc(.8*var(--d)) rgba(150,200,255,.45), 0 0 calc(10*var(--d)) rgba(60,150,255,.55), 0 0 calc(26*var(--d)) rgba(60,150,255,.35); }
+    .z-pz { position: absolute; height: calc(30*var(--d)); display: flex; align-items: center; gap: calc(9*var(--d)); background: #fff; border-radius: calc(8*var(--d)); padding: 0 calc(9*var(--d)) 0 calc(11*var(--d));
+            font-size: calc(7.4*var(--d)); line-height: 1.18; font-weight: 700; color: #1B2330;
+            box-shadow: 0 0 0 calc(.8*var(--d)) rgba(170,210,255,.9), 0 0 calc(9*var(--d)) rgba(70,160,255,.45), 0 0 calc(18*var(--d)) rgba(70,160,255,.22); }
+    .z-pz svg { width: calc(17*var(--d)); height: calc(17*var(--d)); }
+    .pz1 { left: calc(121*var(--d)); top: calc(5*var(--d));   width: calc(114*var(--d)); justify-content: center; }
+    .pz2 { left: calc(14*var(--d));  top: calc(35*var(--d));  width: calc(90*var(--d)); }
+    .pz3 { left: calc(259*var(--d)); top: calc(35*var(--d));  width: calc(83*var(--d)); }
+    .pz4 { left: calc(4*var(--d));   top: calc(81*var(--d));  width: calc(99*var(--d)); }
+    .pz5 { left: calc(266*var(--d)); top: calc(81*var(--d));  width: calc(108*var(--d)); }
+    .pz6 { left: calc(121*var(--d)); top: calc(106*var(--d)); width: calc(114*var(--d)); justify-content: center; }
 
     /* ============ 07 - LO QUE HACE / LO QUE NO HACE ============
        El texto deja ver el sillon de la foto a la izquierda, como el boceto. */
@@ -367,6 +377,18 @@
     .pi-rs a { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.22); border-radius: 11px; display: flex; align-items: center; justify-content: center; color: #fff; }
     .pi-rs svg { width: 19px; height: 19px; }
     .pi-legal { grid-column: 1 / -1; margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.10); font-size: 13px; color: rgba(255,255,255,.45); text-align: center; }
+
+    /* Al 90 % en escritorio, como /estetica/, /inmobiliarias/ y la home:
+       Anais la ve "como con el navegador al 90 %" (2026-10-03). Con zoom,
+       los vh se pintan al 90 %: el hero y las secciones dividen entre .9 para
+       seguir ocupando lo mismo de la ventana (hero = pantalla entera, el
+       resto una y media por pantalla). */
+    @media (min-width: 1081px) {
+      body { zoom: .9; }
+      .hero { height: calc(100vh / .9); height: calc(100svh / .9); }
+      .sec { min-height: calc(var(--alto) / .9); }
+      .s10 { min-height: calc(clamp(440px, 54vh, 600px) / .9); }
+    }
 
     /* ===================== TABLET ===================== */
     @media (max-width: 1180px) {
@@ -463,6 +485,7 @@
       .z-pz { flex: 0 0 calc(50% - 5px); width: auto; height: 56px; font-size: 13.5px; gap: 10px; padding: 0 12px; border-radius: 12px; }
       .z-pz svg { width: 22px; height: 22px; }
       .z-pz br { display: none; }
+      .pz1, .pz6 { justify-content: flex-start; }
 
       /* --- 07 --- */
       .l-col { padding-left: 0; }
@@ -735,26 +758,40 @@
       </div>
 
       <div class="z-diag">
-        <svg class="z-cables" viewBox="0 0 400 150" aria-hidden="true">
-          <defs><linearGradient id="cb" x1="0" x2="1"><stop offset="0" stop-color="#7DB6F8"/><stop offset="1" stop-color="#1890FF"/></linearGradient></defs>
-          <g stroke="url(#cb)" stroke-width="1.1" fill="none" stroke-dasharray="3 2.5" opacity=".9">
-            <path d="M189 48V37"/><path d="M189 100v12"/>
-            <path d="M156 62H135l-22-14"/><path d="M222 62h21l26-14"/>
-            <path d="M156 86H135l-22-8"/><path d="M222 86h21l34-8"/>
+        <!-- Cables en el mismo sistema de 380 x 140 que las piezas: salen de
+             los lados del nucleo y acaban en el borde de cada pieza. -->
+        <svg class="z-cables" viewBox="0 0 380 140" aria-hidden="true">
+          <defs>
+            <filter id="brillo" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <g fill="none" stroke-linecap="round" filter="url(#brillo)">
+            <g stroke="#9FD0FF" stroke-width="2.2" opacity=".35">
+              <path d="M179.5 44V35"/><path d="M179.5 98v8"/>
+              <path d="M145 58L104 50"/><path d="M145 84L103 96"/>
+              <path d="M214 58l45-8"/><path d="M214 84l52 12"/>
+            </g>
+            <g stroke="#3D9BFF" stroke-width=".8" stroke-dasharray="2.2 1.6">
+              <path d="M179.5 44V35"/><path d="M179.5 98v8"/>
+              <path d="M145 58L104 50"/><path d="M145 84L103 96"/>
+              <path d="M214 58l45-8"/><path d="M214 84l52 12"/>
+            </g>
+          </g>
+          <g fill="#CFE8FF" filter="url(#brillo)">
+            <circle cx="104" cy="50" r="1.3"/><circle cx="103" cy="96" r="1.3"/>
+            <circle cx="259" cy="50" r="1.3"/><circle cx="266" cy="96" r="1.3"/>
+            <circle cx="235" cy="20" r="1.3"/><circle cx="121" cy="20" r="1.3"/>
+            <circle cx="235" cy="121" r="1.3"/><circle cx="121" cy="121" r="1.3"/>
           </g>
         </svg>
-        <div class="z-nuc">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 2.6a1 1 0 011.8-.3L11.4 4h1.2l1.1-1.7a1 1 0 111.7 1.1L14.9 4H16a4 4 0 014 4v7a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h1.1L8.4 3.4a1 1 0 01.1-.8zM9 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM9 15h6v1.4H9V15z"/></svg>
-          EasyRobots
-        </div>
-        <!-- En el boceto "Seguimiento de presupuestos" llevaba el logo de
-             WhatsApp, repetido con la pieza de al lado. Lleva su propio icono. -->
-        <div class="z-pz pz1"><svg viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="1.8" stroke-linejoin="round"><path d="M6 2.8h8l4 4v14.4H6z" fill="#DCEAFD"/><path d="M9 14.5l2 2 4-4.2" stroke-linecap="round"/></svg><span>Seguimiento <br>de presupuestos</span></div>
+        <div class="z-nuc">EasyRobots</div>
+        <!-- Como en el boceto, "Seguimiento de presupuestos" lleva el icono de
+             WhatsApp: es por donde ocurre el seguimiento. -->
+        <div class="z-pz pz1"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg><span>Seguimiento <br>de presupuestos</span></div>
         <div class="z-pz pz2"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg><span>WhatsApp</span></div>
-        <div class="z-pz pz3"><svg viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" fill="#DCEAFD"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke-width="2.4"/></svg><span>Agenda</span></div>
-        <div class="z-pz pz4"><svg viewBox="0 0 24 24" fill="none" stroke="#1E3A6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12.5" rx="1.8"/><path d="M8.5 20.5h7M12 16.5v4"/></svg><span>Tu software <br>de cl&iacute;nica</span></div>
-        <div class="z-pz pz5"><svg viewBox="0 0 24 24" fill="#F5B53D"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z"/></svg><span>Recordatorios <br>y rese&ntilde;as</span></div>
-        <div class="z-pz pz6"><svg viewBox="0 0 24 24" fill="#1D6FE0"><circle cx="12" cy="7.5" r="4"/><path d="M4 20.5c.6-4.2 3.8-6.5 8-6.5s7.4 2.3 8 6.5z"/></svg><span>Tu equipo</span></div>
+        <div class="z-pz pz3"><svg viewBox="0 0 24 24" fill="none" stroke="#1E4FB8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="3"/><path d="M3.5 10h17M8 2.8v4.4M16 2.8v4.4"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01M16 17.5h.01" stroke-width="2.8"/></svg><span>Agenda</span></div>
+        <div class="z-pz pz4"><svg viewBox="0 0 24 24" fill="none" stroke="#1E3A6E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12.5" rx="1.6"/><path d="M8 20.5h8M12 16.5v4"/></svg><span>Tu software <br>de cl&iacute;nica</span></div>
+        <div class="z-pz pz5"><svg viewBox="0 0 24 24" fill="#F5B53D"><path d="M12 2.4l2.9 6 6.5.9-4.7 4.6 1.1 6.5L12 17.3l-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9z"/></svg><span>Recordatorios <br>y rese&ntilde;as</span></div>
+        <div class="z-pz pz6"><svg viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4.2"/><path d="M4.5 20.5c.8-3.8 3.8-6 7.5-6s6.7 2.2 7.5 6z"/></svg><span>Tu equipo</span></div>
       </div>
     </div>
   </section>

@@ -999,10 +999,19 @@ de referencia y no se toca.
   Por eso sus fotos se recortan sin el dispositivo pintado (`dent-presu` y
   `dent-demo` son la parte izquierda de su tira).
 - La tira de "Piezas" de la hoja **trae el diagrama pintado**: no se usa. Va la
-  de "Como funciona" en espejo. El diagrama vive en una caja de 400x150 con su
-  propia unidad `--d` y conserva las posiciones del boceto.
+  de "Como funciona" en espejo.
 - Las fotos se amplian de 2 a 4 veces: llevan `blur(1.6px)` para que se lean
   como profundidad de campo. El hero va ampliado x2 con Lanczos y enfoque.
+- **Segunda pasada de Anais (2026-10-03)**: escritorio al 90 % con `body {
+  zoom: .9 }` desde 1081 px, como las demas; el hero y las secciones dividen
+  sus `vh` entre .9 para seguir siendo pantalla entera y una y media por
+  pantalla. Y el diagrama de piezas **rehecho** porque "no lo conseguiste
+  hacer bien": la primera medicion estaba desplazada. Ahora caja de 380x140
+  con origen en (350,1080) del boceto, las seis piezas de 30 de alto en sus
+  posiciones medidas sobre el boceto ampliado x4, nucleo de 69x54 **sin icono**,
+  cables con brillo que salen de los lados del nucleo y halo azul detras.
+  "Seguimiento de presupuestos" lleva el icono de WhatsApp como en el boceto.
+  El resto de la pagina le gusta como esta.
 
 ### Lo del boceto que NO se reprodujo
 
