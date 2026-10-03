@@ -153,6 +153,11 @@
 
     /* ===================== 02 - OPORTUNIDADES ===================== */
     .s02 { background: var(--oscuro); }
+    /* Anais (2026-10-03): el hueco de arriba alejaba esta seccion del hero.
+       Sin alto minimo (que la centraba en vertical) y con poco relleno
+       arriba, el titular aparece en cuanto se empieza a deslizar. */
+    .sec.s02 { min-height: 0; }
+    .s02 .caja { padding-top: 40px; }
     .s02 .h2 { max-width: 640px; }
     .fu-fila { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.2vw, 30px); }
     .fu { position: relative; border-radius: 12px; overflow: hidden; background: #0E1416; border: 1px solid rgba(255,255,255,.06); }
@@ -514,6 +519,7 @@
       .s11 .velo { background: linear-gradient(180deg, rgba(40,28,18,.70) 0%, rgba(40,28,18,.45) 40%, rgba(246,240,236,.3) 100%); }
 
       /* --- 02 --- */
+      .s02 .caja { padding-top: 28px; }
       .fu-fila { margin-top: 22px; grid-template-columns: 1fr; gap: 12px; }
       .fu-img { aspect-ratio: 431 / 160; }
       .fu-ic { left: 16px; width: 40px; height: 40px; top: calc(100% - 50px); }
