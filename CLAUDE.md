@@ -1061,6 +1061,14 @@ se tocan.
   RGPD" con adjetivos (se nombra contrato de encargado y servidores en la UE).
 - Las tarjetas de sectores llevan a la pagina buena de cada nicho; clinicas va
   a `easyrobots-clinicas-premium.html`.
+- **Segunda pasada de Anais (2026-10-03)**: escritorio al 90 % con `body {
+  zoom: .9 }` desde 1081 px, como estetica e inmobiliarias. El hero ya no es la
+  pantalla entera sino el 86 % ("mucho espacio que no sugiere nada"), con la
+  foto subida al 30 % para recortar mesa y no al hombre. Caso real y
+  equipo/garantia copian las medidas compactas de `/estetica/` (sin alto
+  minimo, la cita de Pilar dentro de la columna derecha, filas de garantia de
+  44 px). El resto de secciones le gusta como esta: no tocarlas sin que lo
+  pida. El movil no se toco en esta pasada (12.084 px, largo).
 
 ## Landing de clinicas premium v2 (2026-10-02)
 
