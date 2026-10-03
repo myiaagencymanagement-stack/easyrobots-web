@@ -320,38 +320,62 @@
     .g-datos p { margin-top: 2px; font-size: 13px; line-height: 1.5; color: #5A6270; }
 
     /* ============ 10 - CTA FINAL ============ */
-    .s10 { background: #0A0C0E; min-height: clamp(440px, 54vh, 600px); }
-    .s10 .foto { background-image: url(/assets/home-cierre.webp); filter: blur(1.4px); transform: scale(1.02); }
-    .s10 .velo { background: linear-gradient(90deg, rgba(5,7,9,.86) 0%, rgba(5,7,9,.62) 45%, rgba(5,7,9,.40) 100%); }
-    .s10 .caja { display: grid; grid-template-columns: 1fr minmax(0, 470px); gap: 56px; align-items: center; }
-    .s10 .h2 { color: #fff; }
-    .s10 .p { margin-top: 20px; color: rgba(255,255,255,.84); }
-    .k-acc { margin-top: 38px; display: flex; align-items: center; flex-wrap: wrap; gap: 28px; }
-    .btn-bl { background: #fff; color: var(--tinta); height: 60px; padding: 0 34px; font-size: 17px; }
-    .btn-bl:hover { background: #ECEEF1; }
-    .k-meta { display: flex; align-items: center; gap: 10px; font-size: 15px; color: rgba(255,255,255,.82); }
-    .k-meta svg { width: 20px; height: 20px; }
-    .k-lista { background: rgba(14,16,17,.82); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 14px 30px; list-style: none; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-    .k-lista li { display: flex; align-items: center; gap: 18px; padding: 18px 0; font-size: 16.5px; color: rgba(255,255,255,.92); }
-    .k-lista li + li { border-top: 1px solid rgba(255,255,255,.08); }
-    .k-lista u { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.55); display: flex; align-items: center; justify-content: center; }
-    .k-lista u svg { width: 19px; height: 19px; }
+    /* ============ 10 - CTA FINAL ============
+       Tercera pasada (2026-10-03): "no esta nada igual". Era una seccion de
+       dos tercios de pantalla con la foto ampliada, desenfocada y muy
+       oscurecida. Ahora es la tira del boceto tal cual: una escena con su
+       proporcion (761:209) y todo medido en unidades del boceto (--u = 1 px
+       de los 761). Medidas: titular 24 u, entradilla 10,6 u en dos lineas,
+       boton 126 x 30 u, panel 208 x 116 u en x513 y47, filas cada 33 u.
+       El texto arranca en 40 u (= 76 px a 1440) para alinearse con el resto
+       de secciones; el boceto lo ponia en 48. */
+    .s10 { background: #06080A; min-height: 0; display: block; }
+    .k-esc { position: relative; max-width: 1440px; margin: 0 auto; aspect-ratio: 761 / 209; container-type: inline-size; overflow: hidden; }
+    .k-foto { position: absolute; inset: 0; background: url(/assets/home-cierre.webp) center / 100% 100% no-repeat;
+              -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); }
+    .k-velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4,6,8,.45) 0%, rgba(4,6,8,.18) 40%, rgba(4,6,8,0) 60%); }
+    .k-in { position: absolute; inset: 0; --u: calc(100cqw / 761); color: #fff; }
+    .k-tx { position: absolute; left: calc(40 * var(--u)); top: calc(22 * var(--u)); }
+    .k-kick { font-size: calc(7.4 * var(--u)); line-height: 1; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; color: rgba(255,255,255,.92); }
+    .k-t { margin-top: calc(12 * var(--u)); font-size: calc(24 * var(--u)); line-height: 1.1; font-weight: 700; letter-spacing: -.035em; }
+    .k-sub { margin-top: calc(9 * var(--u)); width: calc(300 * var(--u)); font-size: calc(10.6 * var(--u)); line-height: calc(16 * var(--u)); color: rgba(255,255,255,.88); }
+    .k-acc { margin-top: calc(17 * var(--u)); display: flex; align-items: center; gap: calc(18 * var(--u)); }
+    .k-btn { display: inline-flex; align-items: center; justify-content: center; gap: calc(7 * var(--u)); width: calc(126 * var(--u)); height: calc(30 * var(--u)); border: 0; border-radius: calc(5 * var(--u)); background: #fff; color: var(--tinta); font-family: inherit; font-size: calc(9.4 * var(--u)); font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .k-btn:hover { background: #ECEEF1; }
+    .k-btn svg { width: calc(10 * var(--u)); height: calc(10 * var(--u)); }
+    .k-meta { display: flex; align-items: center; gap: calc(6 * var(--u)); font-size: calc(8.6 * var(--u)); color: rgba(255,255,255,.86); white-space: nowrap; }
+    .k-meta svg { width: calc(12 * var(--u)); height: calc(12 * var(--u)); }
+    /* El cristal oscuro del panel viene en la foto (borde medido en x524-733,
+       y44-162): el panel HTML va encima, casi transparente, para no
+       oscurecerlo dos veces. Si se mueve, se descuadra con el de la foto. */
+    .k-lista { position: absolute; left: calc(523.5 * var(--u)); top: calc(43.5 * var(--u)); width: calc(210 * var(--u)); height: calc(119 * var(--u)); list-style: none;
+               display: flex; flex-direction: column; padding: calc(12 * var(--u)) calc(14 * var(--u)) 0 calc(21 * var(--u));
+               background: rgba(14,16,18,.15); border: 1px solid rgba(255,255,255,.12); border-radius: calc(8 * var(--u)); }
+    .k-lista li { display: flex; align-items: center; gap: calc(6.5 * var(--u)); height: calc(33 * var(--u)); font-size: calc(8.7 * var(--u)); color: rgba(255,255,255,.92); white-space: nowrap; }
+    .k-lista li + li { border-top: 0; }
+    .k-lista u { width: calc(17 * var(--u)); height: calc(17 * var(--u)); border-radius: 50%; border: 1px solid rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .k-lista u svg { width: calc(10 * var(--u)); height: calc(10 * var(--u)); }
 
     /* ===================== 11 - PIE =====================
-       El boceto pone "Aviso legal", "Privacidad" y "Cookies", pero las tres
-       viven hoy dentro de privacy.html (CLAUDE.md): un solo enlace. Sin
-       LinkedIn: EasyRobots no tiene perfil. */
-    .s11 { background: var(--pie); color: #fff; border-top: 1px solid rgba(255,255,255,.14); }
-    .s11 .caja { padding-top: 40px; padding-bottom: 40px; display: flex; align-items: center; gap: 40px; }
-    .pi-marca b { display: block; font-size: 30px; font-weight: 700; letter-spacing: -.045em; line-height: 1.1; }
-    .pi-marca span { display: block; margin-top: 6px; font-size: 15px; color: rgba(255,255,255,.80); }
-    .pi-sep { width: 1px; height: 26px; background: rgba(255,255,255,.55); }
-    .pi-links { display: flex; flex-wrap: wrap; gap: 10px 32px; }
-    .pi-links a, .pi-legal a { font-size: 15px; color: rgba(255,255,255,.90); white-space: nowrap; }
-    .pi-links a:hover, .pi-legal a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
-    .pi-legal { margin-left: auto; }
-    .pi-rs { display: flex; gap: 18px; }
-    .pi-rs svg { width: 28px; height: 28px; }
+       Tercera pasada (2026-10-03): Anais lo queria con todo lo legal, como
+       el de las landings. Misma estructura que /estetica/: columnas y la
+       linea de la razon social abajo. Los tres enlaces legales llevan a
+       privacy.html, que hoy recoge los tres. Sin LinkedIn: no hay perfil. */
+    .s11 { background: var(--pie); color: #fff; }
+    .s11 .caja { padding-top: 60px; padding-bottom: 36px; display: grid; grid-template-columns: 1.6fr 1fr 1.25fr 1.05fr auto; }
+    .pi-c { display: flex; flex-direction: column; gap: 5px; padding: 0 clamp(16px, 2.4vw, 36px); }
+    .pi-c + .pi-c { border-left: 1px solid rgba(255,255,255,.14); }
+    .pi-c:first-child { padding-left: 0; }
+    .pi-c b { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .pi-marca b { font-size: 26px; letter-spacing: -.045em; line-height: 1.1; margin-bottom: 8px; }
+    .pi-c a, .pi-c span { font-size: 14.5px; line-height: 1.5; color: rgba(255,255,255,.78); white-space: nowrap; }
+    .pi-marca span { white-space: normal; max-width: 250px; }
+    .pi-c a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+    .pi-rs { display: flex; gap: 12px; }
+    .pi-rs a { width: 40px; height: 40px; border: 1.5px solid rgba(255,255,255,.7); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; }
+    .pi-rs a:hover { border-color: #fff; text-decoration: none; }
+    .pi-rs svg { width: 19px; height: 19px; }
+    .pi-legal { grid-column: 1 / -1; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.08); font-size: 13px; color: rgba(255,255,255,.45); text-align: center; }
 
     /* Al 90 % en escritorio, como /estetica/ e /inmobiliarias/: Anais ve la
        pagina con el navegador al 90 % y pidio que se quede asi (2026-10-03).
@@ -361,7 +385,7 @@
       body { zoom: .9; }
       .hero { height: calc(86vh / .9); height: calc(86svh / .9); }
       .sec { min-height: calc(var(--alto) / .9); }
-      .s06, .s07 { min-height: 0; }
+      .s06, .s07, .s10 { min-height: 0; }
     }
 
     /* ===================== TABLET ===================== */
@@ -377,16 +401,37 @@
       .k-ig { align-self: flex-start; margin-left: 0; }
       .s07 .caja { grid-template-columns: 1fr 1.4fr; }
       .g-col { grid-column: 1 / -1; }
-      .s11 .caja { flex-wrap: wrap; }
-      .pi-sep { display: none; }
-      .pi-legal { margin-left: 0; }
+      .s11 .caja { grid-template-columns: 1fr 1fr 1fr; row-gap: 32px; }
+      .pi-c:first-child { grid-column: 1 / -1; padding-left: 0; }
+      .pi-c:nth-child(2) { border-left: 0; padding-left: 0; }
+
+      /* CTA: en tableta (hasta 1180 px) las unidades del boceto quedan pequenas
+         (la entradilla bajaba de 14 px) y pasa a apilada. */
+      .k-esc { aspect-ratio: auto; max-width: none; }
+      .k-foto { background-size: cover; background-position: 40% center; -webkit-mask-image: none; mask-image: none; }
+      .k-velo { background: linear-gradient(90deg, rgba(4,6,8,.80) 0%, rgba(4,6,8,.55) 50%, rgba(4,6,8,.40) 100%); }
+      .k-in { position: relative; display: grid; grid-template-columns: 1fr minmax(0, 380px); gap: 40px; align-items: center; padding: 72px var(--lado); }
+      .k-tx, .k-lista { position: static; }
+      .k-kick { font-size: 12.5px; }
+      .k-t { margin-top: 14px; font-size: 38px; }
+      .k-sub { margin-top: 14px; width: auto; max-width: 440px; font-size: 17px; line-height: 1.55; }
+      .k-acc { margin-top: 28px; gap: 20px; flex-wrap: wrap; }
+      .k-btn { width: auto; height: 54px; padding: 0 28px; gap: 10px; border-radius: 8px; font-size: 16px; }
+      .k-btn svg { width: 17px; height: 17px; }
+      .k-meta { gap: 9px; font-size: 14.5px; }
+      .k-meta svg { width: 19px; height: 19px; }
+      .k-lista { width: auto; height: auto; padding: 6px 24px; border-radius: 14px; background: rgba(14,16,18,.72); border-color: rgba(255,255,255,.16); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+      .k-lista li { height: auto; padding: 16px 0; gap: 14px; font-size: 15.5px; white-space: normal; }
+      .k-lista li + li { border-top: 1px solid rgba(255,255,255,.08); }
+      .k-lista u { width: 36px; height: 36px; }
+      .k-lista u svg { width: 18px; height: 18px; }
     }
 
     /* ===================== MOVIL ===================== */
     @media (max-width: 860px) {
       :root { --pad: 64px; --alto: 0px; }
       .sec { display: block; }
-      .caja, .s07 .caja, .s10 .caja { display: block; }
+      .caja, .s07 .caja { display: block; }
       .h2 { font-size: 31px; }
       .kick { font-size: 11.5px; letter-spacing: .22em; }
       .btn { height: 52px; padding: 0 22px; font-size: 15.5px; }
@@ -491,16 +536,23 @@
       .g-fila br, .e-col .p br, .s07 .h2 br { display: none; }
 
       /* --- 10 --- */
-      .s10 { min-height: 0; }
-      .s10 .foto { background-image: url(/assets/home-cierre-movil.webp); filter: none; transform: none; }
-      .s10 .velo { background: linear-gradient(180deg, rgba(5,7,9,.80) 0%, rgba(5,7,9,.70) 50%, rgba(5,7,9,.86) 100%); }
+      .k-foto { background-image: url(/assets/home-cierre-movil.webp); background-position: center; }
+      .k-velo { background: linear-gradient(180deg, rgba(4,6,8,.80) 0%, rgba(4,6,8,.66) 50%, rgba(4,6,8,.86) 100%); }
+      .k-in { display: block; padding: 64px 22px; }
+      .k-t { font-size: 31px; }
+      .k-sub { font-size: 16px; }
       .k-acc { gap: 16px; }
-      .k-lista { margin-top: 34px; padding: 6px 20px; }
-      .k-lista li { font-size: 15px; padding: 14px 0; }
+      .k-lista { margin-top: 32px; padding: 4px 20px; }
+      .k-lista li { font-size: 15px; padding: 13px 0; }
 
       /* --- pie --- */
-      .s11 .caja { flex-direction: column; align-items: flex-start; gap: 26px; }
-      .pi-links { gap: 12px 22px; }
+      .s11 .caja { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 0; padding-top: 44px; padding-bottom: 28px; }
+      .pi-c, .pi-c + .pi-c { padding: 0 12px 0 0; border-left: 0; }
+      .pi-c b { font-size: 15px; margin-bottom: 4px; }
+      .pi-marca b { font-size: 24px; }
+      .pi-c a, .pi-c span { font-size: 14px; }
+      .pi-c a { white-space: normal; overflow-wrap: anywhere; }
+      .pi-legal { margin-top: 24px; padding-top: 14px; font-size: 12px; }
     }
   
     /* Calendario de GHL en modal. Mismo patron que inmobiliarias y coaching. */
@@ -765,48 +817,62 @@
 
   <!-- =================== 10 - CTA FINAL =================== -->
   <section class="sec s10" id="hablemos">
-    <div class="foto" aria-hidden="true"></div>
-    <div class="velo" aria-hidden="true"></div>
-    <div class="caja">
-      <div>
-        <div class="kick cl">Cuéntanos tu caso</div>
-        <h2 class="h2">Hablemos de tu negocio.</h2>
-        <p class="p">Te escuchamos, analizamos tu situación y te mostramos cómo podemos ayudarte.</p>
-        <div class="k-acc">
-          <!-- Pendiente: enganchar al calendario de GHL, como en el resto. -->
-          <button class="btn btn-bl" type="button" data-cal>Reservar llamada
-            <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-          </button>
-          <div class="k-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>15 minutos · Sin compromiso</div>
+    <div class="k-esc">
+      <div class="k-foto" aria-hidden="true"></div>
+      <div class="k-velo" aria-hidden="true"></div>
+      <div class="k-in">
+        <div class="k-tx">
+          <div class="k-kick">Cuéntanos tu caso</div>
+          <h2 class="k-t">Hablemos de tu negocio.</h2>
+          <p class="k-sub">Te escuchamos, analizamos tu situación y te mostramos cómo podemos ayudarte.</p>
+          <div class="k-acc">
+            <button class="k-btn" type="button" data-cal>Reservar llamada
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </button>
+            <div class="k-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4" stroke-linejoin="round"/></svg>15 minutos · Sin compromiso</div>
+          </div>
         </div>
+        <!-- Iconos como en el boceto: persona con lupa, bombilla y dos personas. -->
+        <ul class="k-lista">
+          <li><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.5"/><path d="M3.5 20c0-3.3 2.7-6 6-6 1.2 0 2.3.3 3.2.9"/><circle cx="17" cy="16.5" r="2.8"/><path d="M19.1 18.6L21 20.5"/></svg></u>Analizamos tu situación actual</li>
+          <li><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0012 3z"/></svg></u>Vemos oportunidades en tu negocio</li>
+          <li><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 20c0-3.3 2.7-5.8 6-5.8s6 2.5 6 5.8"/><circle cx="17" cy="9.5" r="2.6"/><path d="M16.5 14.3c2.6.2 4.5 2.4 4.5 5.2"/></svg></u>Te proponemos un sistema a medida</li>
+        </ul>
       </div>
-      <ul class="k-lista">
-        <li><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></u>Analizamos tu situación actual</li>
-        <li><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.4 5 5.3.6-4 3.6 1.1 5.3-4.8-2.7-4.8 2.7 1.1-5.3-4-3.6 5.3-.6z"/></svg></u>Vemos oportunidades en tu negocio</li>
-        <li><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></u>Te proponemos un sistema a medida</li>
-      </ul>
     </div>
   </section>
 
   <!-- =================== 11 - PIE =================== -->
   <footer class="s11">
     <div class="caja">
-      <div class="pi-marca"><b>EasyRobots</b><span>Sistemas que hacen que tu negocio funcione.</span></div>
-      <i class="pi-sep" aria-hidden="true"></i>
-      <nav class="pi-links" aria-label="Sectores">
-        <a href="#inicio">Inicio</a>
-        <a href="/estetica/">Clínicas</a>
+      <div class="pi-c pi-marca"><b>EasyRobots</b><span>Sistemas que hacen que tu negocio funcione.</span></div>
+      <nav class="pi-c" aria-label="Soluciones por sector"><b>Soluciones</b>
+        <a href="/estetica/">Clínicas estéticas</a>
+        <a href="/dental/">Clínicas dentales</a>
         <a href="/inmobiliarias/">Inmobiliarias</a>
         <a href="/concesionarios/">Concesionarios</a>
-        <a href="/dental/">Dental</a>
-        <a href="/coaching/">Coaching</a>
         <a href="/ecommerce/">Ecommerce</a>
+        <a href="/coaching/">Coaching</a>
       </nav>
-      <div class="pi-legal"><a href="/privacy.html">Aviso legal, privacidad y cookies</a></div>
-      <div class="pi-rs">
-        <a href="https://instagram.com/easyrobots.ai" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="https://facebook.com/people/EasyRobotsAI/61587151053673/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0012 2z"/></svg></a>
+      <div class="pi-c"><b>Empresa</b>
+        <a href="#como">Cómo trabajamos</a>
+        <a href="#caso">Casos reales</a>
+        <a href="#equipo">Sobre nosotros</a>
+        <a href="/guias/">Recursos</a>
+        <a href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a>
       </div>
+      <div class="pi-c"><b>Legal</b>
+        <a href="/privacy.html">Aviso legal</a>
+        <a href="/privacy.html">Política de privacidad</a>
+        <a href="/privacy.html">Política de cookies</a>
+      </div>
+      <div class="pi-c"><b>Síguenos</b>
+        <div class="pi-rs">
+          <a href="https://instagram.com/easyrobots.ai" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://facebook.com/people/EasyRobotsAI/61587151053673/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.6 21v-7.6h2.5l.4-3h-2.9V8.6c0-.9.3-1.4 1.5-1.4h1.5V4.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.2H8.2v3h2.5V21z"/></svg></a>
+        </div>
+      </div>
+      <p class="pi-legal">EasyRobots AH-NICE · Ana Isabel González Hoog · Tonndorfer Hauptstraße 61, Hamburgo (Alemania) · © 2026 EasyRobots</p>
     </div>
   </footer>
 

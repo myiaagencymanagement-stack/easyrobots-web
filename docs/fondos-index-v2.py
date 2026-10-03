@@ -161,14 +161,17 @@ guarda(e, 'home-equipo.webp', q=70)
 guarda(e[:, 0:540], 'home-equipo-movil.webp', q=70)
 
 # ---------------- 10 · CIERRE ----------------
+# Segunda version (2026-10-03). La primera borraba con rectangulos el panel
+# entero y el bloque de texto, y se llevaba las ventanas con la ciudad y la
+# copa de la planta: la seccion salia como una mancha y no se parecia al
+# boceto. Ahora se borran SOLO los pixeles de letra e icono; el cristal oscuro
+# del panel se queda en la foto y el panel HTML va encima, en su sitio exacto.
 k = carga('10-cta.webp')
-m = mascara_rect(k.shape, [
-    (40, 122, 180, 162),      # boton
-    (188, 128, 330, 156),     # "15 minutos"
-    (496, 40, 740, 192),      # panel
-    (40, 18, 470, 115),       # titular y texto
-], crece=4)
-k = borra(k, m, 9, 14)
+m = mascara_rect(k.shape, [(44, 125, 177, 160)], crece=3)          # boton blanco
+m |= mascara_texto(k, (40, 18, 470, 115), oscuro=False, umbral=34, crece=2)   # cintillo, titular, texto
+m |= mascara_texto(k, (186, 126, 330, 158), oscuro=False, umbral=34, crece=2) # "15 minutos"
+m |= mascara_texto(k, (528, 56, 724, 156), oscuro=False, umbral=30, crece=2)  # filas del panel
+k = borra(k, m, 5, 2)
 guarda(k, 'home-cierre.webp', q=72, ancho=1522)
 guarda(k[:, 180:480], 'home-cierre-movil.webp', q=72, ancho=600)
 

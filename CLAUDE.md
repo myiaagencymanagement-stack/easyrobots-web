@@ -1078,6 +1078,15 @@ se tocan.
   minimo, la cita de Pilar dentro de la columna derecha, filas de garantia de
   44 px). El resto de secciones le gusta como esta: no tocarlas sin que lo
   pida. El movil no se toco en esta pasada (12.084 px, largo).
+- **Tercera pasada (2026-10-03)**: la CTA "no estaba nada igual" al boceto.
+  Ahora es la tira tal cual: escena con proporcion 761:209 y todo en
+  unidades del boceto (`--u` = 1 px de 761). La foto ya no borra el panel
+  entero, solo letras e iconos: el cristal del panel viene en la foto (borde
+  x524-733, y44-162) y el `.k-lista` HTML va encima casi transparente. Si se
+  mueve el panel, se descuadra. En tableta y movil pasa a apilada. El pie
+  copia el de estetica: columnas Soluciones / Empresa / Legal (aviso legal,
+  privacidad y cookies, los tres a `privacy.html`) / Siguenos y la linea con
+  razon social, titular y direccion de Hamburgo.
 
 ## Landing de clinicas premium v2 (2026-10-02)
 
