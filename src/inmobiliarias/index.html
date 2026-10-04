@@ -637,6 +637,77 @@
        maqueta de escritorio: por debajo el movil ya esta ajustado. */
     @media (min-width: 1081px) { body { zoom: .9; } }
 
+    /* Escritorio, 2026-10-04: medidas en --u del boceto daban letra de 13-14 px
+       y secciones de 330 px de alto en "El sistema" y "Lo mejor de cada uno".
+       Anais: "muy pequenas". Aqui pasan a px con los tamanos de /estetica/
+       (H2 ~44, texto 17-18) y mas aire; como funciona, demo y garantia suben
+       un punto. El movil (por debajo de 1081) no se toca. */
+    @media (min-width: 1081px) {
+      #como-funciona { padding: 110px 0; }
+      .cf-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr); gap: 56px; align-items: center; }
+      .cf-txt .kick, .sis-txt .kick, .tec-txt .kick { font-size: .78rem; letter-spacing: .2em; margin-bottom: 1.2rem; }
+      .cf-txt h2, .sis-txt h2, .tec-txt h2 { font-size: 2.7rem; line-height: 1.1; }
+      .cf-txt .lede, .sis-txt .lede { font-size: 1.08rem; line-height: 1.6; margin-top: 1.2rem; max-width: 40ch; }
+      .pasos { gap: 34px; }
+      .paso { border-radius: 16px; padding: 24px 18px 26px; }
+      .paso .ic { width: 52px; height: 52px; margin-bottom: 18px; }
+      .paso .ic svg { width: 26px; height: 26px; }
+      .paso .ic.bl svg { width: 29px; height: 29px; }
+      .paso h3 { font-size: 1.08rem; line-height: 1.3; }
+      .paso p { font-size: .95rem; line-height: 1.5; margin-top: 12px; }
+      .paso:not(:last-child)::after { top: 48px; right: -27px; width: 20px; font-size: 1.3rem; }
+
+      #demo { padding: 96px 0; }
+      .demo-txt h2 { font-size: 2.7rem; line-height: 1.1; }
+      .demo-txt .lede { font-size: 1.08rem; line-height: 1.6; }
+      .escuchar { font-size: 1rem; }
+      .pie-audio, .demo-cta span { font-size: .86rem; }
+      .demo-cta p { font-size: 1rem; }
+      /* El reproductor iba pegado arriba, a la altura del titular, y el boton
+         "Escuchar la llamada" quedaba mas abajo. Baja en su fila para
+         quedar a la altura del boton: abajo en su fila, junto a "Escuchar". */
+      .repro { align-self: end; }
+      .recogida h3 { font-size: 1.05rem; }
+      .recogida .k, .recogida .v { font-size: .98rem; line-height: 1.4; }
+      .recogida li { padding: 8px 0; }
+      .trans .l b { font-size: .95rem; }
+      .trans .l .t { font-size: .82rem; }
+      .trans .l p { font-size: .98rem; line-height: 1.45; }
+      .trans .l { padding: 9px 0; }
+
+      #sistema { padding: 120px 0; }
+      .sis-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, .85fr); gap: 48px; }
+      .diagrama { margin-left: 0; }
+      .nucleo-nombre { font-size: 1.3rem; }
+      .cables { filter: drop-shadow(0 0 4px rgba(0,150,255,.60)); }
+      .sis-lista { margin-left: 0; gap: 20px; }
+      .sis-lista li { gap: 14px; }
+      .sis-lista .tic { width: 22px; height: 22px; }
+      .sis-lista span { font-size: 1.05rem; line-height: 1.4; }
+
+      #equipo { padding: 110px 0 120px; }
+      .tec-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: stretch; }
+      .tec-txt { align-self: center; }
+      .tec-txt h2 br { display: none; }
+      .tec, .tec + .tec { margin-left: 0; border-radius: 18px; padding: 30px 28px; }
+      .tec h3 { font-size: 1.12rem; gap: 14px; margin-bottom: 18px; }
+      .tec h3 .ic { width: 42px; height: 42px; }
+      .tec ul { padding-left: 56px; }
+      .tec li { font-size: 1rem; line-height: 1.45; gap: 12px; padding: 5px 0; }
+      .tec li svg { width: 15px; height: 15px; margin-top: 4px; }
+
+      .pers-grid { margin-top: 110px; gap: 48px; }
+      .pers-grid h2 { font-size: 2.1rem !important; }
+      .pers-grid .lede { font-size: 1.05rem; }
+      .cara b { font-size: 1rem; margin-top: .75rem; }
+      .cara span.rol { font-size: .88rem; }
+      .garantia { border-radius: 18px; padding: 28px 26px; }
+      .garantia ul { gap: 1.2rem; }
+      .garantia li { font-size: .98rem; gap: .8rem; }
+      .garantia li svg { width: 18px; height: 18px; }
+      .tranquilidad { font-size: .98rem; padding: 1.05rem 1.2rem; border-radius: 15px; }
+    }
+
     /* ===================== responsive ===================== */
     @media (max-width: 1080px) {
       .cta-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -1452,7 +1523,7 @@
           <div class="tec-cols">
             <div class="tec-txt">
               <p class="kick">Lo mejor de cada uno</p>
-              <h2>Tecnolog&iacute;a que potencia<br>tu equipo, no lo sustituye.</h2>
+              <h2>Tecnolog&iacute;a que potencia <br>tu equipo, no lo sustituye.</h2>
             </div>
 
             <div class="tec">
