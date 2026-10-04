@@ -67,7 +67,8 @@
       --oscuro: #020A14;
       --claro: #F5F8FD;
       --tinta: #0B1220;
-      --gris: #47535F;
+      --gris: #2A3542;
+      --gris2: #3A4654;
       --f: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
 
       --h1: clamp(40px, 3.9vw, 56px);
@@ -108,6 +109,7 @@
     .p + .p { margin-top: 14px; }
     .oscura { color: #fff; } .oscura .p { color: rgba(255,255,255,.82); }
     .clara { color: var(--tinta); } .clara .p { color: var(--gris); }
+    .clara .kick { color: #0A57D8; }
     .chk { width: 20px; height: 20px; color: var(--verde); flex: 0 0 auto; }
     .pt { width: 8px; height: 8px; border-radius: 50%; background: var(--verde); flex: 0 0 auto; display: inline-block; }
 
@@ -121,7 +123,7 @@
     .meta div { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; white-space: nowrap; }
     .meta svg { width: 20px; height: 20px; }
     .oscura .meta div { color: rgba(255,255,255,.85); } .oscura .meta svg { color: rgba(255,255,255,.72); }
-    .clara .meta div { color: #3C4757; } .clara .meta svg { color: #1E293B; }
+    .clara .meta div { color: #111A26; font-weight: 600; } .clara .meta svg { color: #111A26; }
 
     /* ===================== 01 - HERO ===================== */
     .hero { position: relative; overflow: hidden; background: #01070E; height: 86vh; height: 86svh; min-height: 600px; display: flex; flex-direction: column; }
@@ -159,7 +161,7 @@
     .h-piezas { position: relative; justify-self: end; width: min(100%, 390px); display: flex; flex-direction: column; gap: 14px; }
     .h-cli { margin-right: 44px; background: #fff; border-radius: 16px 16px 16px 4px; display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; box-shadow: 0 14px 40px rgba(0,0,0,.35); }
     .h-cli img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
-    .h-cli b { display: block; font-size: 13.5px; font-weight: 700; color: #5A6675; }
+    .h-cli b { display: block; font-size: 13.5px; font-weight: 700; color: #4A5664; }
     .h-cli span { display: block; margin-top: 2px; font-size: 15px; line-height: 1.4; color: var(--tinta); }
     .h-resp { position: relative; margin-left: 44px; background: var(--azul); border-radius: 16px 16px 4px 16px; padding: 12px 16px 13px; box-shadow: 0 14px 40px rgba(0,40,120,.45); }
     .h-resp b { display: block; font-size: 13.5px; font-weight: 700; color: rgba(255,255,255,.78); }
@@ -195,9 +197,9 @@
     .bandeja { justify-self: end; width: min(100%, 620px); background: #fff; border-radius: 14px; color: var(--tinta); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.42); }
     .bd-cab { display: flex; align-items: baseline; gap: 12px; padding: 18px 22px 0; }
     .bd-cab b { font-size: 18px; font-weight: 700; letter-spacing: -.02em; }
-    .bd-cab span { font-size: 14px; color: #64748B; }
+    .bd-cab span { font-size: 14px; color: #4A5664; }
     .bd-tabs { display: flex; gap: 24px; padding: 12px 22px; border-bottom: 1px solid #EAEFF6; }
-    .bd-tabs div { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #64748B; white-space: nowrap; }
+    .bd-tabs div { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #4A5664; white-space: nowrap; }
     .bd-tabs div i { font-style: normal; font-weight: 500; font-size: 13px; color: #A6B0BF; }
     .bd-tabs div.on { color: var(--tinta); position: relative; }
     .bd-tabs div.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: -13px; height: 2px; background: var(--tinta); border-radius: 2px; }
@@ -208,8 +210,8 @@
     .ic-r { background: #F2463F; } .ic-a { background: #F59E0B; } .ic-v { background: #22C55E; }
     .bd-tx { flex: 1 1 auto; min-width: 0; }
     .bd-tx b { display: block; font-size: 15px; font-weight: 700; letter-spacing: -.01em; line-height: 1.35; }
-    .bd-tx span { display: block; font-size: 13.5px; color: #8A94A4; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .bd-h { font-size: 13.5px; color: #8A94A4; flex: 0 0 auto; }
+    .bd-tx span { display: block; font-size: 13.5px; color: #5E6A78; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .bd-h { font-size: 13.5px; color: #5E6A78; flex: 0 0 auto; }
     .bd-et { flex: 0 0 auto; width: 104px; text-align: center; border-radius: 7px; font-size: 13px; font-weight: 600; padding: 5px 0; }
     .et-r { background: #FDE8E8; color: #D93A3A; }
     .et-v { background: #E4F8EC; color: #12A150; }
@@ -229,7 +231,7 @@
     .d-linea { display: flex; align-items: flex-start; gap: 12px; margin-top: 18px; }
     .d-linea img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
     .d-bub { background: #fff; color: var(--tinta); border-radius: 12px; padding: 12px 14px 8px; font-size: 15.5px; line-height: 1.45; flex: 1 1 auto; }
-    .hh { display: block; text-align: right; font-style: normal; font-size: 12px; color: #9AA4B2; margin-top: 2px; }
+    .hh { display: block; text-align: right; font-style: normal; font-size: 12px; color: #7A8594; margin-top: 2px; }
     .d-nota { margin-top: 16px; font-size: 15px; line-height: 1.55; color: rgba(255,255,255,.66); }
     .d-prod { margin-top: 16px; display: flex; align-items: center; gap: 14px; }
     .d-prod img { width: 64px; height: 52px; object-fit: contain; background: #fff; border-radius: 10px; padding: 3px; flex: 0 0 auto; }
@@ -254,7 +256,7 @@
     .r-fl svg { width: 100%; height: 100%; }
     .r-tx { margin-top: 18px; }
     .r-tx b { display: block; font-size: 17px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
-    .r-tx span { display: block; margin-top: 6px; font-size: 15px; line-height: 1.5; color: #5A6675; }
+    .r-tx span { display: block; margin-top: 6px; font-size: 15px; line-height: 1.5; color: var(--gris2); }
 
     /* ============ 05 - UNA DEMOSTRACION REAL ============
        Tres tarjetas de conversacion y, a su derecha, lo que queda registrado
@@ -281,7 +283,7 @@
     .dm-rot .rd svg { width: 22px; height: 22px; color: #fff; }
     .rd-azul { background: var(--azul); } .rd-ambar { background: #D97706; } .rd-estrella { background: #F2B441; }
     .dm-rot b { display: block; font-size: 17px; font-weight: 700; letter-spacing: -.02em; line-height: 1.3; }
-    .dm-rot span { display: block; font-size: 14px; color: #5A6675; }
+    .dm-rot span { display: block; font-size: 14px; color: var(--gris2); }
     .dm-cab { margin: 0 10px; background: #1D4ED8; border-radius: 10px; height: 38px; display: flex; align-items: center; gap: 9px; padding: 0 12px; }
     .dm-cab .av { width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,.28); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
     .dm-cab .av svg { width: 14px; height: 14px; color: #fff; }
@@ -305,7 +307,7 @@
     .dm-bot { align-self: stretch; background: #EDF4FE; border: 0; border-radius: 10px; min-height: 38px; padding: 6px 10px; font-size: 14px; font-weight: 700; color: var(--azul); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .dm-bot svg { width: 15px; height: 15px; }
     .dm-aviso b { display: block; font-size: 15px; line-height: 1.35; letter-spacing: -.01em; }
-    .dm-aviso span { display: block; margin-top: 2px; font-size: 13px; line-height: 1.4; color: #6B7686; }
+    .dm-aviso span { display: block; margin-top: 2px; font-size: 13px; line-height: 1.4; color: var(--gris2); }
     .hh-abajo { margin-top: auto; }
     .dm-ped { border-top: 1px solid #EAEFF6; padding-top: 10px; }
     .dm-ped .ti { display: flex; align-items: center; gap: 9px; font-size: 15.5px; font-weight: 700; letter-spacing: -.02em; }
@@ -316,25 +318,26 @@
     .dm-via .pn.off { background: #CBD4DF; }
     .dm-via .ln { flex: 1 1 auto; height: 3px; background: #12A150; }
     .dm-via .ln.off { background: #E1E7EF; }
-    .dm-vias { display: flex; margin-top: 6px; font-size: 12.5px; color: #7A8595; }
+    .dm-vias { display: flex; margin-top: 6px; font-size: 12.5px; color: #4A5664; }
     .dm-vias span { flex: 1 1 0; text-align: center; }
     .dm-vias span:first-child { text-align: left; } .dm-vias span:last-child { text-align: right; }
     .dm-vias span.on { font-weight: 700; color: var(--tinta); }
     .dm-link { margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 13.5px; font-weight: 700; color: var(--azul); }
     .dm-link svg { width: 15px; height: 15px; }
     .dm-pie { border-top: 1px solid #EEF2F7; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
-    .dm-pie .campo { flex: 1 1 auto; background: #F3F6FA; border-radius: 999px; height: 36px; display: flex; align-items: center; padding: 0 14px; font-size: 14px; color: #9AA4B2; }
+    .dm-pie .campo { flex: 1 1 auto; background: #F3F6FA; border-radius: 999px; height: 36px; display: flex; align-items: center; padding: 0 14px; font-size: 14px; color: #6B7686; }
     .dm-pie .env { width: 36px; height: 36px; border-radius: 50%; background: var(--azul); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
     .dm-pie .env svg { width: 16px; height: 16px; color: #fff; }
 
     .dm-lado { display: flex; flex-direction: column; gap: 18px; }
     .dm-reg { background: #fff; border-radius: 14px; padding: 20px 22px 22px; box-shadow: 0 14px 40px rgba(15,40,80,.10); }
-    .dm-reg > b { display: block; font-size: 13px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #3C4757; }
+    .dm-reg > b { display: block; font-size: 13px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #1F2A37; }
     .dm-reg .fila { display: flex; align-items: flex-start; gap: 12px; margin-top: 14px; }
     .dm-reg .fila svg { width: 20px; height: 20px; color: var(--azul); flex: 0 0 auto; }
-    .dm-reg .fila i { font-style: normal; font-size: 14.5px; color: #6B7686; width: 92px; flex: 0 0 auto; }
+    .dm-reg .fila i { font-style: normal; font-size: 14.5px; color: #4A5664; width: 92px; flex: 0 0 auto; }
     .dm-reg .fila span { font-size: 14.5px; font-weight: 600; color: var(--tinta); line-height: 1.4; }
     .dm-lado .btn { width: 100%; height: 56px; font-size: 17px; }
+    .dm-lado .meta { background: rgba(255,255,255,.82); border-radius: 12px; padding: 10px 14px; gap: 10px 22px; }
 
     /* ============ 06 - PIEZAS, NO UN PAQUETE CERRADO ============
        En el boceto las nueve fichas iban sueltas y con letra de 9 px. Pasan
@@ -369,7 +372,7 @@
     .tc-ic svg { width: 23px; height: 23px; color: #fff; }
     .tc-ic.az { background: var(--azul); } .tc-ic.ng { background: #0B1220; }
     .tc-in > b { display: block; margin-top: 16px; font-size: 19px; font-weight: 700; letter-spacing: -.02em; }
-    .tc-in .fila { display: flex; align-items: flex-start; gap: 11px; margin-top: 11px; font-size: 15.5px; line-height: 1.4; color: #3C4757; }
+    .tc-in .fila { display: flex; align-items: flex-start; gap: 11px; margin-top: 11px; font-size: 15.5px; line-height: 1.4; color: #1F2A37; }
     .tc-in .fila .chk { margin-top: 1px; }
 
     /* ============ 08 - LIMITES ============
@@ -389,7 +392,7 @@
     .lm-ficha .rd-az { background: #E6F0FE; color: var(--azul); }
     .lm-ficha .rd-gris { background: #EDF1F6; color: #0B1220; }
     .lm-ficha b { display: block; margin-top: 18px; font-size: 17.5px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
-    .lm-ficha span { display: block; margin-top: 8px; font-size: 15px; line-height: 1.55; color: #5A6675; }
+    .lm-ficha span { display: block; margin-top: 8px; font-size: 15px; line-height: 1.55; color: var(--gris2); }
     /* con el velo mas abierto la frase caia sobre la foto: va en su panel */
     .lm-pie { margin-top: 18px; display: inline-block; max-width: 860px; background: rgba(255,255,255,.88); border-radius: 12px; padding: 14px 20px; font-size: 16px; line-height: 1.55; color: #2B3646; box-shadow: 0 10px 30px rgba(15,40,80,.08); }
 
@@ -402,7 +405,7 @@
     .eq-pers { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .eq-per img { width: 100%; aspect-ratio: 4 / 4.7; object-fit: cover; object-position: center 20%; border-radius: 12px; background: #0B0B0D; }
     .eq-per b { display: block; margin-top: 10px; font-size: 16px; font-weight: 700; letter-spacing: -.01em; }
-    .eq-per i { display: block; font-style: normal; font-size: 14px; color: #5A6675; }
+    .eq-per i { display: block; font-style: normal; font-size: 14px; color: var(--gris2); }
     .ga-panel { background: rgba(255,255,255,.94); border-radius: 14px; padding: 6px 22px; box-shadow: 0 16px 44px rgba(15,40,80,.12); }
     .ga-fila { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; font-size: 15.5px; line-height: 1.5; color: #2B3646; }
     .ga-fila + .ga-fila { border-top: 1px solid #E6ECF4; }
@@ -507,7 +510,8 @@
       .s10 .foto   { background-image: url(/assets/ecom-cierre-movil.webp); }
       .s11 .foto   { background-image: url(/assets/ecom-pie-movil.webp); }
       .foto { background-position: center top !important; }
-      .hero .velo { background: linear-gradient(180deg, rgba(2,8,16,.88) 0%, rgba(2,8,16,.70) 40%, rgba(2,8,16,.86) 75%, rgba(2,8,16,.96) 100%); }
+      .hero .velo { background: linear-gradient(180deg, rgba(2,8,16,.72) 0%, rgba(2,8,16,.42) 35%, rgba(2,8,16,.58) 62%, rgba(2,8,16,.86) 100%); }
+      .h-t, .h-sub { text-shadow: 0 2px 14px rgba(0,0,0,.55); }
       .duo > .velo { background: linear-gradient(180deg, rgba(8,22,42,.86) 0%, rgba(8,22,42,.80) 50%, rgba(8,22,42,.92) 100%); }
       .s11 .velo { background: linear-gradient(180deg, rgba(0,6,13,.92) 0%, rgba(0,6,13,.80) 50%, rgba(0,6,13,.92) 100%); }
       /* la CTA "ni se ve": el velo se abre en medio, donde no hay texto */
@@ -732,8 +736,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
           </a>
           <button class="btn b-linea" type="button" data-cal>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/></svg>
-            Hablar 15 minutos
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            Reservar llamada
           </button>
         </div>
         <div class="meta">
