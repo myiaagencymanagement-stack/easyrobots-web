@@ -765,10 +765,24 @@
        llamaba "SECCION 7 DEMO".) */
     .sec.s08, .sec.s09 { min-height: 0; }
     .s08 .caja, .s09 .caja { padding-top: 84px; padding-bottom: 84px; }
+    /* "De caotica a organizada", muy grande en ordenador (2026-10-04):
+       sin alto minimo, imagen mas pequena y tarjetas mas bajas. */
+    @media (min-width: 861px) {
+      .sec.s04 { min-height: 0; }
+      .s04 .caja { padding-top: 70px; padding-bottom: 70px; }
+      .ca-fila { margin-top: 18px; gap: 18px 24px; }
+      .ca-centro { width: min(100%, 600px); }
+      .ca-box { padding: 20px 26px 22px; }
+      .ca-box ul { margin-top: 14px; gap: 10px; }
+    }
     /* Limites y CTA, lo mismo (2026-10-04): "muy grandes en ordenador". */
+    /* Solo escritorio: fuera de este bloque inflaba el movil (s10 449 a
+       541 px, s12 359 a 435), porque va despues de sus reglas. */
     .sec.s10, .sec.s12 { min-height: 0; }
-    .s10 .caja { padding-top: 84px; padding-bottom: 84px; }
-    .s12 .caja { padding-top: 76px; padding-bottom: 76px; }
+    @media (min-width: 861px) {
+      .s10 .caja { padding-top: 84px; padding-bottom: 84px; }
+      .s12 .caja { padding-top: 76px; padding-bottom: 76px; }
+    }
     .s07 .caja { padding-top: 76px; padding-bottom: 76px; }
     .s07 .h2 { font-size: clamp(32px, 3vw, 46px); }
     .cs-fotos { margin-top: 26px; }
