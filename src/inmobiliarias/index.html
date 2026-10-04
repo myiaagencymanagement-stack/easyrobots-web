@@ -706,7 +706,25 @@
       .garantia li { font-size: .98rem; gap: .8rem; }
       .garantia li svg { width: 18px; height: 18px; }
       .tranquilidad { font-size: .98rem; padding: 1.05rem 1.2rem; border-radius: 15px; }
+      /* La lista de "Con EasyRobots" iba pegada al rotulo. */
+      .m2-er-cols { margin-top: 2.2rem; }
     }
+
+    /* Los cuadros iban en azul muy claro (#EEF6FE, #F2F8FE, #ECF4FC) sobre
+       un fondo casi igual y se confundian con el. Anais: "parece del
+       fondo". Pasan a blanco con borde y sombra suaves, y los grises de la
+       demo se oscurecen porque "no se lee bien". */
+    .recogida, .trans, .m2-er, .tec, .garantia {
+      background: #fff; border: 1px solid #E3E9F1;
+      box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 10px 30px rgba(16,24,40,.08); }
+    .recogida h3, .recogida li, .trans .l { border-color: #E8EDF3; }
+    #demo .lede, .pie-audio, .demo-cta span { color: #4A5563; }
+    .demo-cta p { color: #2A3340; }
+    .recogida .k { color: #46505E; }
+    .recogida .v { color: #141A22; }
+    .trans .l .t { color: #6B7480; }
+    .trans .l p { color: #1E242D; }
+    .m2-checks li { color: #2A3340; }
 
     /* ===================== responsive ===================== */
     @media (max-width: 1080px) {
