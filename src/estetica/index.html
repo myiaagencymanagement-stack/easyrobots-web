@@ -755,6 +755,110 @@
       .ga-dato b { font-size: .8rem; }
       .ga-dato span { font-size: .7rem; line-height: 1.4; }
     }
+
+    /* ---------- cuarta pasada (2026-10-04) ----------
+       Escritorio: piezas y "potenciar a tu equipo" median 567 px por el alto
+       minimo de la seccion (70 % de pantalla) con la mitad de contenido:
+       "mucho espacio para lo que sugieren". Pasan a medir lo que pide su
+       contenido mas un relleno fijo. El caso de Pilar se aprieta un poco.
+       (Para Anais "la demo" es el caso real: su archivo de fondos se
+       llamaba "SECCION 7 DEMO".) */
+    .sec.s08, .sec.s09 { min-height: 0; }
+    .s08 .caja, .s09 .caja { padding-top: 84px; padding-bottom: 84px; }
+    .s07 .caja { padding-top: 76px; padding-bottom: 76px; }
+    .s07 .h2 { font-size: clamp(32px, 3vw, 46px); }
+    .cs-fotos { margin-top: 26px; }
+    .cs-nom { margin-top: 18px; }
+    .cs-btn { margin-top: 20px; }
+    .cs-der { gap: 14px; }
+    .cs-kpi { padding: 20px 24px 18px; }
+    .cs-kpi b { font-size: clamp(34px, 3vw, 48px); }
+    .cs-kpi span { margin-top: 10px; }
+    .cs-pub { padding: 16px 24px; }
+    .cs-nota { margin-top: 8px; padding-top: 10px; }
+    .cs-dos .vidrio { padding: 18px 20px 20px; }
+    .cs-dos p { margin-top: 8px; font-size: 14.5px; }
+    .cs-miedo { padding: 16px 24px; }
+    .cs-miedo u { width: 58px; height: 58px; }
+    .cs-miedo u svg { width: 32px; height: 32px; }
+    .cs-miedo span { font-size: 15px; }
+    /* Las fotos difuminadas con transform dejaban una raya oscura en la
+       juntura entre secciones: se amplian un poco mas para que el borde
+       borroso quede fuera. */
+    .foto.suave { transform: scale(1.06); }
+
+    @media (max-width: 860px) {
+      .sec.s08, .sec.s09 { min-height: 0; }
+      .s09 .caja { padding-top: 38px; padding-bottom: 38px; }
+      .s08 .caja { padding-top: 34px; padding-bottom: 34px; }
+      .foto.suave { transform: none; }
+
+      /* Caso de Pilar en el movil: el boton al final de la seccion y todo
+         mas junto. Medido antes: 1.626 px. */
+      .s07 .caja { display: flex; flex-direction: column; gap: 0; padding-top: 34px; padding-bottom: 34px; }
+      .cs-izq, .cs-izq > div:last-child { display: contents; }
+      .cs-btn { order: 2; align-self: flex-start; margin-top: 18px; }
+      .s07 .h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+      .cs-fotos { margin-top: 14px; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .cs-fotos img { aspect-ratio: 16 / 11; border-radius: 10px; }
+      .cs-nom { margin-top: 12px; font-size: 1.2rem; }
+      .cs-tec { font-size: .9rem; }
+      .cs-tec2 { font-size: .78rem; margin-top: 2px; }
+      .cs-der { margin-top: 14px; gap: 10px; }
+      .cs-kpis { grid-template-columns: 1fr 1fr 1.25fr; }
+      .cs-kpi { padding: 12px 10px; }
+      .cs-kpi:nth-child(3) { grid-column: auto; border-left: 1px solid rgba(255,255,255,.12); border-top: 0; }
+      .cs-kpi b { font-size: 1.45rem; }
+      .cs-kpi span { margin-top: 6px; font-size: .56rem; letter-spacing: .06em; }
+      .cs-kpi em { font-size: .66rem; }
+      .cs-pub { padding: 10px 12px; }
+      .cs-pub b { font-size: .84rem; }
+      .cs-pub span { font-size: .78rem; line-height: 1.45; }
+      .cs-nota { font-size: .66rem; margin-top: 6px; padding-top: 8px; }
+      .cs-dos { gap: 10px; }
+      .cs-dos .vidrio { padding: 12px 14px 14px; }
+      .cs-dos b, .cs-miedo b { font-size: .84rem; }
+      .cs-dos p, .cs-miedo span { font-size: .78rem; line-height: 1.45; margin-top: 4px; }
+      .cs-miedo { grid-template-columns: 36px 1fr; gap: 12px; padding: 12px 14px; }
+      .cs-miedo u { width: 36px; height: 36px; }
+      .cs-miedo u svg { width: 20px; height: 20px; }
+    }
+
+    /* ---------- quinta pasada del movil (2026-10-04) ----------
+       "Hay que deslizar demasiado" en el caso de Pilar (1.210 px) y en
+       "Asi funciona" (1.068 px). Los cuatro pasos pasan a 2 x 2, como en
+       inmobiliarias, y el caso se aprieta otro poco. */
+    @media (max-width: 860px) {
+      .s05 .caja { padding-top: 34px; padding-bottom: 34px; }
+      .fn-fila { margin-top: 16px; grid-template-columns: 1fr 1fr; gap: 16px 12px; }
+      .fn-vis { height: 96px; padding: 5px; border-radius: 8px; }
+      .fn-cab { margin-top: 8px; gap: 7px; }
+      .fn-n { width: 22px; height: 22px; font-size: .72rem; }
+      .fn-cab b { padding-top: 1px; font-size: .8rem; line-height: 1.2; }
+      .fn-cab span { margin-top: 3px; font-size: .72rem; line-height: 1.4; }
+      .ui { padding: 5px 7px; font-size: .58rem; border-radius: 6px; }
+      .ui-t { font-size: .6rem; margin-bottom: 3px; }
+      .ui-op { padding: 1px 4px; gap: 5px; }
+      .ui-op u { width: 10px; height: 10px; }
+      .ui-mes { margin-bottom: 1px; }
+      .ui-cal { font-size: .55rem; gap: 1px 0; }
+      .ui-horas { margin-top: 3px; gap: 3px; }
+      .ui-horas span { font-size: .55rem; padding: 2px 0; }
+      .ui-not { padding: 4px 6px; gap: 5px; font-size: .55rem; border-radius: 6px; }
+      .ui-not + .ui-not { margin-top: 4px; }
+      .ui-not svg { width: 14px; height: 14px; }
+      .ui-not i { display: none; }
+
+      .cs-fotos img { aspect-ratio: 16 / 9; }
+      .cs-ig { font-size: .8rem; }
+      .cs-pub span { font-size: .74rem; }
+      .cs-nota { font-size: .62rem; line-height: 1.4; }
+      .cs-dos p, .cs-miedo span { font-size: .74rem; line-height: 1.42; }
+      .cs-dos .vidrio { padding: 10px 12px 12px; }
+      .cs-miedo { grid-template-columns: 1fr; padding: 10px 12px; }
+      .cs-miedo u { display: none; }
+      .cs-btn { margin-top: 14px; }
+    }
   </style>
 </head>
 
