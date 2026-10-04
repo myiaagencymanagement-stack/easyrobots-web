@@ -186,7 +186,9 @@
     .rd-azul { background: var(--azul); }
 
     /* ============ 02 - DOS MOMENTOS - EL MISMO CLIENTE ============ */
-    .s02 { background: #000C15; border-top: 1px solid rgba(90,150,255,.28); }
+    /* Anais (2026-10-04): la raya entre hero y 02, "mas gordita" para que se
+       vea la separacion */
+    .s02 { background: #000C15; border-top: 4px solid #0070FE; border-image: linear-gradient(90deg, rgba(0,112,254,.25) 0%, #0070FE 30%, #00C8FF 50%, #0070FE 70%, rgba(0,112,254,.25) 100%) 1; }
     .s02 .foto { background-image: url(/assets/conce-momentos.webp); opacity: .85; }
     .s02 .velo { background: linear-gradient(90deg, rgba(0,8,14,.92) 0%, rgba(0,8,14,.80) 32%, rgba(0,8,14,.50) 55%, rgba(0,8,14,.35) 100%); }
     .s02 .dos { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
@@ -343,7 +345,8 @@
     /* ============ 07 - LO QUE HACE Y LO QUE NO ============ */
     .s07 { background: var(--claro); }
     .s07 .foto { background-image: url(/assets/conce-posventa.webp); background-position: center 45%; opacity: 1; }
-    .s07 .velo { background: linear-gradient(90deg, rgba(241,247,253,.90) 0%, rgba(241,247,253,.72) 40%, rgba(241,247,253,.52) 100%); }
+    /* menos tapada que la demo, para que no parezcan la misma seccion */
+    .s07 .velo { background: linear-gradient(90deg, rgba(241,247,253,.80) 0%, rgba(241,247,253,.42) 40%, rgba(241,247,253,.10) 100%); }
     .n-dos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .n-box { border-radius: 16px; border: 1px solid #E1EBF6; padding: 22px 24px 24px; box-shadow: 0 14px 40px rgba(15,40,80,.07); }
     .n-si { background: linear-gradient(135deg, #E6F7EE, #F6FBFE); }
@@ -492,7 +495,8 @@
       .s04 .velo { background: linear-gradient(180deg, rgba(10,29,58,.86) 0%, rgba(10,29,58,.70) 35%, rgba(10,29,58,.88) 60%, rgba(10,29,58,.97) 100%); }
       .s05 .velo { background: rgba(10,29,58,.90); }
       .s09 .velo { background: linear-gradient(180deg, rgba(0,7,13,.78) 0%, rgba(0,7,13,.70) 35%, rgba(0,7,13,.92) 70%, #00070E 100%); }
-      .s06 .velo, .s07 .velo { background: rgba(241,247,253,.92); }
+      .s06 .velo { background: rgba(241,247,253,.92); }
+      .s07 .velo { background: linear-gradient(180deg, rgba(241,247,253,.86) 0%, rgba(241,247,253,.55) 40%, rgba(241,247,253,.35) 100%); }
 
       /* --- barra y hero --- */
       .h-nav-in { padding: 9px 22px; }
