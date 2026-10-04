@@ -115,10 +115,11 @@
        de 1440 con el margen del boceto (52 de 779 = 6,7 %). */
     .sec { position: relative; overflow: hidden; display: flex; align-items: center; min-height: var(--alto); }
     .foto { position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; }
-    /* Las bandas de la hoja de fondos miden 779 px de ancho y aqui se ven a
-       1440 y mas: un desenfoque minimo hace que se lean como profundidad de
-       campo y no como pixelado. Misma receta que en dental v2. */
-    .foto.suave { filter: blur(1.5px); transform: scale(1.02); }
+    /* Antes esta clase metia blur(1.5px) para disimular que las bandas de la
+       hoja miden 779 px de ancho. Anais: "o las opacas o las pones borrosas".
+       Se quita el desenfoque; el reescalado y el enfoque se hacen ahora al
+       generar el archivo, en docs/fondos-coaching-v2.py. */
+    .foto.suave { filter: none; transform: none; }
     .velo { position: absolute; inset: 0; }
     .caja { position: relative; z-index: 5; width: 100%; max-width: 1440px; margin: 0 auto; padding: var(--pad) max(22px, 6.7vw); }
     @media (min-width: 1440px) { .caja { padding-left: 96px; padding-right: 96px; } }
@@ -258,7 +259,7 @@
        que es lo que pide la ficha. */
     .s04 { background: var(--claro2); }
     .s04 .foto { background-image: url(/assets/coach-funciona.webp); background-position: center 38%; }
-    .s04 .velo { background: linear-gradient(180deg, rgba(244,245,242,.90) 0%, rgba(244,245,242,.78) 42%, rgba(244,245,242,.88) 100%); }
+    .s04 .velo { background: linear-gradient(100deg, rgba(244,245,242,.86) 0%, rgba(244,245,242,.64) 34%, rgba(244,245,242,.32) 62%, rgba(244,245,242,.20) 100%); }
     .flujo { margin-top: clamp(28px, 4vh, 46px); display: grid; grid-template-columns: minmax(170px, 210px) 30px minmax(130px, 165px) 30px minmax(0, 5fr); align-items: center; gap: 0; }
     .canales { display: flex; flex-direction: column; gap: 7px; background: #fff; border: 1px solid var(--borde); border-radius: 16px; padding: 10px; box-shadow: 0 10px 30px rgba(17,24,39,.07); }
     .canal { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 10px; font-size: 13.5px; font-weight: 500; color: var(--tinta); }
@@ -394,23 +395,25 @@
        La banda de la hoja era un interior apagado que el velo se comia
        entero ("los fondos ni estan"). El velo baja a .78 para que se vea. */
     .s07 .foto { background-image: url(/assets/coach-limite.webp); background-position: center 42%; }
-    .s07 .velo { background: linear-gradient(180deg, rgba(245,242,234,.88) 0%, rgba(245,242,234,.74) 45%, rgba(245,242,234,.88) 100%); }
-    .lim { margin-top: clamp(22px, 3vh, 34px); display: grid; grid-template-columns: 1fr 1fr .78fr; gap: clamp(18px, 2.4vw, 34px); align-items: start; }
-    .cuad { border-radius: 18px; padding: 22px 24px 26px; }
+    .s07 .velo { background: linear-gradient(100deg, rgba(247,245,238,.90) 0%, rgba(247,245,238,.72) 34%, rgba(247,245,238,.40) 62%, rgba(247,245,238,.26) 100%); }
+    .lim { margin-top: clamp(18px, 2.4vh, 28px); display: grid; grid-template-columns: 1fr 1fr .74fr; gap: clamp(16px, 2vw, 28px); align-items: start; }
+    .cuad { border-radius: 18px; padding: 17px 19px 19px; }
     .cuad.v { background: var(--verde-s); }
     .cuad.r { background: var(--rojo-s); }
     .cuad h3 { font-size: 16.5px; font-weight: 700; letter-spacing: -.02em; }
     .cuad.v h3 { color: #15803D; }
     .cuad.r h3 { color: #DC2626; }
-    .cuad ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 12px; }
-    .cuad li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; line-height: 1.35; color: var(--tinta); }
-    .cierre-nota { font-size: 15.5px; line-height: 1.5; color: var(--gris); padding-top: 4px; }
+    .cuad ul { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 9px; }
+    .cuad li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; line-height: 1.32; color: var(--tinta); }
+    .cierre-nota { font-size: 14.5px; line-height: 1.45; color: #3B4453; background: rgba(255,255,255,.80); border: 1px solid rgba(17,24,39,.07); border-radius: 18px; padding: 17px 19px 19px; backdrop-filter: blur(3px); }
 
     /* ===================== 08 · COMO TRABAJAMOS ===================== */
-    .s08 { background: var(--claro2); min-height: 0; }
-    /* Mesa de marmol con portatil, primera tira de claras.png. */
-    .s08 .foto { background-image: url(/assets/coach-proceso.webp); background-position: center 45%; }
-    .s08 .velo { background: linear-gradient(180deg, rgba(244,245,242,.88) 0%, rgba(244,245,242,.72) 50%, rgba(244,245,242,.88) 100%); }
+    .s08 { background: var(--claro2); min-height: clamp(380px, 35vw, 560px); }
+    /* Unica seccion, ademas del hero, con fondo a resolucion de verdad:
+       Anais paso la escena a 2086x754 y el texto pintado se borro columna a
+       columna (docs/fondos-coaching-v2.py). Se sirve casi a 1:1. */
+    .s08 .foto { background-image: url(/assets/coach-proceso.webp); background-position: center top; }
+    .s08 .velo { background: linear-gradient(100deg, rgba(246,248,250,.82) 0%, rgba(246,248,250,.56) 34%, rgba(246,248,250,.26) 62%, rgba(246,248,250,.14) 100%); }
     .s08 .caja { display: grid; grid-template-columns: .96fr 1.04fr; gap: clamp(26px, 4vw, 64px); align-items: center; }
     .s08 .h2 { font-size: clamp(28px, 2.7vw, 41px); }
     .proc { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
@@ -431,7 +434,7 @@
     .s09 { background: var(--claro2); min-height: 0; }
     /* Terraza al atardecer, tercera tira de claras.png. */
     .s09 .foto { background-image: url(/assets/coach-equipo.webp); background-position: center 55%; }
-    .s09 .velo { background: linear-gradient(180deg, rgba(246,246,243,.90) 0%, rgba(246,246,243,.76) 50%, rgba(246,246,243,.90) 100%); }
+    .s09 .velo { background: linear-gradient(100deg, rgba(247,246,242,.88) 0%, rgba(247,246,242,.66) 36%, rgba(247,246,242,.36) 64%, rgba(247,246,242,.24) 100%); }
     .s09 .caja { display: grid; grid-template-columns: .92fr auto 1fr; gap: clamp(26px, 3.6vw, 60px); align-items: start; }
     .s09 .caras { margin-top: 10px; }
     .s09 .h2 { font-size: clamp(27px, 2.5vw, 38px); }
@@ -443,7 +446,8 @@
     .cara .hueco svg { width: 34px; height: 34px; color: #B6B9B2; }
     .cara b { display: block; margin-top: 12px; font-size: 17px; font-weight: 700; color: var(--tinta); letter-spacing: -.02em; }
     .cara span { display: block; margin-top: 2px; font-size: 13px; color: var(--gris); }
-    .gar ul { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 11px; }
+    .gar { background: rgba(255,255,255,.76); border: 1px solid rgba(17,24,39,.07); border-radius: 20px; padding: 22px 24px 24px; backdrop-filter: blur(3px); }
+    .gar ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
     .gar li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; line-height: 1.38; color: var(--tinta); }
     .gar li svg { width: 19px; height: 19px; flex: 0 0 auto; margin-top: 1px; color: var(--azul); }
 
