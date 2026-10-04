@@ -1060,7 +1060,10 @@
          cuentan la historia, y era lo que mas pesaba. */
       .trans { display: none; }
       .demo-cols { gap: 16px; }
-      .repro { max-width: 250px; margin: 0 auto; border-radius: 14px; }
+      /* Con margin auto y sin ancho, el reproductor (todo en absoluto) se
+         encogia a 0 y solo asomaba la hora. Ancho explicito, como el de
+         concesionarios. */
+      .repro { width: 100%; max-width: 340px; margin: 0 auto; border-radius: 14px; }
       .recogida { padding: 12px 14px; }
       .recogida h3 { padding-bottom: 8px; }
       .recogida li { padding: 5px 0; }
