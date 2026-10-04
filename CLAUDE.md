@@ -1138,6 +1138,14 @@ se tocan.
   en carrusel horizontal; "como trabajamos" cabe en una pantalla; caso y
   garantia con las medidas exactas del movil de estetica; en sectores la
   flecha sube a la esquina. Movil de 8.500 a 6.400 px.
+- **Sexta pasada (2026-10-04), deshace parte de la quinta** porque no le
+  gusto a Anais: la garantia va **sin foto** (fondo liso marron oscuro; "si
+  no tiene arreglo la pones sin fondo"), el salon de inmobiliarias fuera; en
+  movil el hero vuelve a llevar la foto **de fondo**, no en bloque (bajada a
+  330 px para que el texto arranque bajo la barra); "lo que construimos" e
+  integraciones vuelven a la rejilla de dos, **nada de carruseles**; y las
+  flechas de sectores van **abajo a la derecha junto al titulo**, nunca en la
+  esquina de arriba. Lo demas de la quinta se queda.
 
 ## Landing de clinicas premium v2 (2026-10-02)
 
