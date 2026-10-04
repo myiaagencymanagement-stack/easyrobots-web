@@ -1119,6 +1119,13 @@ se tocan.
   copia el de estetica: columnas Soluciones / Empresa / Legal (aviso legal,
   privacidad y cookies, los tres a `privacy.html`) / Siguenos y la linea con
   razon social, titular y direccion de Hamburgo.
+- **Cuarta pasada (2026-10-04)**: barra fija al deslizar en escritorio y
+  movil (fondo crema translucido); los avisos del hero bajan a 47 % / 58 %
+  porque tapaban la cara; el boton principal del hero pasa a "Ver soluciones
+  para mi sector" y lleva a `#sectores`. El movil copia las medidas de
+  inmobiliarias y se compacta: sectores de dos en dos y solo con el nombre,
+  "como trabajamos" con la foto a la izquierda de cada paso, integraciones y
+  caso real mas cortos. Movil de 12.300 a 8.500 px.
 
 ## Landing de clinicas premium v2 (2026-10-02)
 
