@@ -91,6 +91,11 @@
     .velo { position: absolute; inset: 0; }
     .caja { position: relative; z-index: 5; width: 100%; max-width: 1440px; margin: 0 auto; padding: var(--pad) max(22px, 5.6vw); }
     @media (min-width: 1440px) { .caja { padding-left: 80px; padding-right: 80px; } }
+    /* sin alto minimo: cada seccion mide lo que su contenido (2026-10-04) */
+    .sec { min-height: 0; }
+    .sec > .caja { padding-top: 84px; padding-bottom: 84px; }
+    .s02 > .caja { padding-bottom: 42px; }
+    .s03 > .caja { padding-top: 42px; }
     .dos { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 4vw, 64px); align-items: center; }
 
     .saltar { position: absolute; left: 14px; top: -60px; z-index: 300; background: #fff; color: var(--tinta); padding: .7rem 1.1rem; border-radius: 8px; font-size: .84rem; font-weight: 600; transition: top .2s; }
@@ -107,7 +112,8 @@
     .m-p, .b-p, .w-p, .h2-p, .d-sub, .n-p, .e-p, .c-sub { margin-top: 22px; font-size: var(--txt); line-height: 1.6; max-width: 500px; }
     .m-p br, .b-p br, .w-p br, .h2-p br, .n-p br, .e-p br, .h-sub br { display: none; }
     .oscura { color: #fff; } .oscura .m-p, .oscura .b-p, .oscura .w-p, .oscura .h2-p, .oscura .c-sub { color: rgba(255,255,255,.82); }
-    .clara { color: var(--tinta); } .clara .d-sub, .clara .n-p, .clara .e-p { color: var(--gris); }
+    .clara { color: var(--tinta); }
+    .clara .d-t, .clara .d-sub, .clara .n-t, .clara .n-p, .clara .d-kick, .clara .d-pie { text-shadow: 0 0 18px rgba(255,255,255,.85), 0 1px 2px rgba(255,255,255,.6); } .clara .d-sub, .clara .n-p, .clara .e-p { color: #1F2A37; }
 
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 11px; height: 54px; padding: 0 28px; border-radius: 999px; font-size: 16px; font-weight: 700; white-space: nowrap; cursor: pointer; border: 0; transition: background .2s, border-color .2s; }
     .btn svg { width: 17px; height: 17px; }
@@ -118,8 +124,11 @@
     .hero { position: relative; overflow: hidden; background: #01080F; height: 86vh; height: 86svh; min-height: 600px; display: flex; flex-direction: column; }
     .hero .foto { background-image: url(/assets/conce-hero.webp); background-position: 70% center; }
     .hero .velo { background:
-        linear-gradient(90deg, rgba(1,8,15,.94) 0%, rgba(1,8,15,.88) 30%, rgba(1,8,15,.52) 48%, rgba(1,8,15,.14) 64%, rgba(1,8,15,0) 78%),
-        linear-gradient(180deg, rgba(1,8,15,.55) 0%, rgba(1,8,15,0) 22%, rgba(1,8,15,0) 78%, rgba(1,8,15,.65) 100%); }
+        linear-gradient(90deg, rgba(1,8,15,.86) 0%, rgba(1,8,15,.66) 30%, rgba(1,8,15,.26) 50%, rgba(1,8,15,0) 66%),
+        linear-gradient(180deg, rgba(1,8,15,.40) 0%, rgba(1,8,15,0) 20%, rgba(1,8,15,0) 82%, rgba(1,8,15,.50) 100%); }
+    /* el velo del hero se abrio (2026-10-04): el texto lleva una sombra
+       suave para no perder lectura sobre la foto */
+    .h-col { text-shadow: 0 2px 18px rgba(0,0,0,.55); }
     /* La barra se queda fija al deslizar, como en estetica e inmobiliarias. */
     .h-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 120; border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(1,9,16,.84); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
     section[id] { scroll-margin-top: 80px; }
@@ -177,8 +186,8 @@
 
     /* ============ 02 - DOS MOMENTOS - EL MISMO CLIENTE ============ */
     .s02 { background: #000C15; }
-    .s02 .foto { background-image: url(/assets/conce-momentos.webp); opacity: .5; }
-    .s02 .velo { background: linear-gradient(90deg, rgba(0,8,14,.97) 0%, rgba(0,8,14,.94) 32%, rgba(0,8,14,.80) 50%, rgba(0,8,14,.72) 100%); }
+    .s02 .foto { background-image: url(/assets/conce-momentos.webp); opacity: .85; }
+    .s02 .velo { background: linear-gradient(90deg, rgba(0,8,14,.92) 0%, rgba(0,8,14,.80) 32%, rgba(0,8,14,.50) 55%, rgba(0,8,14,.35) 100%); }
     .s02 .dos { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
     .m-fila { display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto minmax(0, 1fr); gap: 14px; align-items: center; }
     .m-card { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); }
@@ -205,6 +214,8 @@
     /* ============ 03 - LOS QUE NO HAN VUELTO ============
        Fondo plano, sin foto (muestreado #00080F). */
     .s03 { background: #00080F; }
+    .s03 .foto { background-image: url(/assets/conce-pie.webp); background-position: center 60%; opacity: .75; }
+    .s03 .velo { background: linear-gradient(90deg, rgba(0,8,15,.92) 0%, rgba(0,8,15,.78) 36%, rgba(0,8,15,.50) 70%, rgba(0,8,15,.40) 100%); }
     .b-card { background: linear-gradient(180deg, rgba(10,22,34,.92), rgba(5,14,24,.92)); border: 1px solid rgba(255,255,255,.08); border-radius: 16px;
               display: flex; align-items: center; flex-wrap: wrap; gap: 22px; padding: 24px 26px; }
     .b-g1 b { display: block; font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
@@ -228,7 +239,7 @@
     /* ============ 04 - EL QUE PREGUNTA UN SABADO ============ */
     .s04 { background: #00080F; }
     .s04 .foto { background-image: url(/assets/conce-sabado.webp); background-position: right center; }
-    .s04 .velo { background: linear-gradient(90deg, rgba(0,7,13,.97) 0%, rgba(0,7,13,.94) 34%, rgba(0,7,13,.74) 52%, rgba(0,7,13,.30) 78%, rgba(0,7,13,.15) 100%); }
+    .s04 .velo { background: linear-gradient(90deg, rgba(0,7,13,.92) 0%, rgba(0,7,13,.78) 34%, rgba(0,7,13,.40) 54%, rgba(0,7,13,.08) 78%, rgba(0,7,13,0) 100%); }
     .w-card { width: min(100%, 480px); background: rgba(6,16,26,.84); border: 1px solid rgba(255,255,255,.09); border-radius: 18px; backdrop-filter: blur(8px); padding: 16px 18px 18px; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
     .w-cab { display: flex; align-items: center; }
     .w-wa { width: 38px; height: 38px; border-radius: 10px; background: #1FA855; display: flex; align-items: center; justify-content: center; }
@@ -255,8 +266,8 @@
 
     /* ============ 05 - NO SON DOS HERRAMIENTAS ============ */
     .s05 { background: #000B14; }
-    .s05 .foto { background-image: url(/assets/conce-herramientas.webp); background-position: left center; background-size: 42% 100%; opacity: .6; }
-    .s05 .velo { background: linear-gradient(90deg, rgba(0,10,18,.94) 0%, rgba(0,10,18,.90) 40%, rgba(0,10,18,.86) 100%); }
+    .s05 .foto { background-image: url(/assets/conce-hero.webp); background-position: center 70%; background-size: cover; opacity: .7; }
+    .s05 .velo { background: linear-gradient(90deg, rgba(0,10,18,.92) 0%, rgba(0,10,18,.80) 40%, rgba(0,10,18,.62) 100%); }
     .h2-card { background: rgba(7,18,29,.62); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; display: flex; align-items: center; justify-content: space-around; gap: 10px; padding: 34px 18px; }
     .h2-it { text-align: center; }
     .h2-rd { width: 64px; height: 64px; margin: 0 auto; border-radius: 50%; border: 1px solid rgba(255,255,255,.18); display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.03); }
@@ -270,17 +281,40 @@
        negro. El reproductor se queda oscuro, que es una tarjeta dentro.
        Las 44 alturas de la onda estan leidas barra a barra del boceto. */
     .s06 { background: var(--claro); }
-    .s06 .foto { background-image: url(/assets/conce-equipo.webp); opacity: .55; }
-    .s06 .velo { background: linear-gradient(90deg, rgba(241,247,253,.90) 0%, rgba(241,247,253,.95) 45%, rgba(241,247,253,.88) 100%); }
+    /* OJO: conce-equipo.webp es una tira del boceto con DOS CARAS PINTADAS
+       por IA. Tapada al 90 % no se notaba; al abrir el velo (2026-10-04)
+       salian enormes detras del texto. Fuera de las dos secciones claras:
+       van la sala de exposicion y el taller, que son fotos de escena. */
+    .s06 .foto { background-image: url(/assets/conce-hero.webp); background-position: center 40%; opacity: 1; }
+    .s06 .velo { background: linear-gradient(180deg, rgba(241,247,253,.88) 0%, rgba(241,247,253,.74) 50%, rgba(241,247,253,.66) 100%); }
     .d-btn { margin-top: 32px; width: min(100%, 360px); height: 64px; background: var(--azul); border: 0; border-radius: 999px; display: flex; align-items: center; padding: 0 10px; cursor: pointer; transition: background .2s; }
     .d-btn:hover { background: var(--azul-h); }
     .d-play { width: 44px; height: 44px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
     .d-play svg { width: 17px; height: 17px; color: var(--azul); }
     .d-btn b { flex: 1; text-align: center; font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -.01em; }
     .d-chip { height: 36px; padding: 0 14px; border-radius: 999px; background: rgba(0,0,0,.24); display: flex; align-items: center; font-size: 15px; font-weight: 700; color: #fff; }
-    .d-pie { margin-top: 14px; font-size: 14.5px; color: #5C6980; }
-    .d-der { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 16px; align-items: start; }
-    .d-card { position: relative; height: 210px; background: #0A1622; border: 1px solid rgba(255,255,255,.07); border-radius: 16px; box-shadow: 0 16px 40px rgba(10,30,60,.18); }
+    .d-pie { margin-top: 14px; font-size: 14.5px; color: #3A4654; }
+    /* rejilla de inmobiliarias: texto 36 % · reproductor 25 % · panel 36 %,
+       y en la segunda fila la llamada a la accion bajo el texto y la
+       transcripcion bajo el reproductor y el panel */
+    .dm { display: grid; grid-template-columns: minmax(0, 36fr) minmax(0, 25fr) minmax(0, 37fr); gap: 20px 18px; align-items: start; }
+    .dm-txt { grid-column: 1; grid-row: 1; }
+    .dm .d-card { grid-column: 2; grid-row: 1; }
+    .dm .d-panel { grid-column: 3; grid-row: 1; }
+    .dm-cta { grid-column: 1; grid-row: 2; }
+    .dm-cta p { font-size: 16px; line-height: 1.55; color: #1F2A37; max-width: 34ch; }
+    .dm-cta .btn { margin-top: 16px; }
+    .dm-cta span { display: block; margin-top: 12px; font-size: 14px; color: #3A4654; }
+    .dm-trans { grid-column: 2 / 4; grid-row: 2; background: #fff; border: 1px solid #DCE7F4; border-radius: 16px; padding: 6px 22px; box-shadow: 0 14px 36px rgba(15,40,80,.12);
+                display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; column-gap: 32px; }
+    .dm-trans .l { padding: 10px 0; border-bottom: 1px solid #E6EDF6; }
+    .dm-trans .l:nth-child(3n) { border-bottom: 0; }
+    .dm-trans .l b { font-size: 13.5px; font-weight: 700; }
+    .dm-trans .l b.er { color: var(--azul); }
+    .dm-trans .l b.cl { color: #0F9E52; }
+    .dm-trans .l i { font-style: normal; margin-left: 8px; font-size: 12.5px; color: #6B7480; }
+    .dm-trans .l p { margin-top: 3px; font-size: 14.5px; line-height: 1.45; color: #1E242D; }
+    .d-card { position: relative; height: 252px; background: #0A1622; border: 1px solid rgba(255,255,255,.07); border-radius: 16px; box-shadow: 0 16px 40px rgba(10,30,60,.18); }
     .d-rd { position: absolute; left: 18px; top: 72px; width: 44px; height: 44px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 0; cursor: pointer; }
     .d-rd svg { width: 17px; height: 17px; color: var(--azul); }
     .d-onda { position: absolute; left: 76px; right: 18px; top: 62px; height: 64px; color: #22C8F5; }
@@ -289,21 +323,21 @@
     .d-prog .pista { flex: 1; height: 3px; border-radius: 999px; background: rgba(255,255,255,.16); position: relative; }
     .d-prog .pista::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 12px; border-radius: 999px; background: rgba(255,255,255,.85); }
     .d-prog i { font-style: normal; font-size: 13.5px; color: rgba(255,255,255,.80); white-space: nowrap; }
-    .d-panel { background: #EEF6FE; border: 1px solid #E1EBF6; border-radius: 16px; padding: 18px 20px 6px; }
+    .d-panel { background: #fff; border: 1px solid #DCE7F4; border-radius: 16px; padding: 18px 20px 6px; box-shadow: 0 14px 36px rgba(15,40,80,.12); }
     .d-panel > b { display: block; font-size: 16px; font-weight: 700; color: var(--tinta); }
     .d-fila { display: flex; align-items: center; min-height: 40px; padding: 6px 0; border-bottom: 1px solid #E1EBF6; }
     .d-fila:last-child { border-bottom: 0; }
     .d-fila:first-of-type { margin-top: 6px; }
     .d-fila svg { width: 14px; height: 14px; color: #12B85A; }
-    .d-fila .et { width: 46%; margin-left: 12px; font-size: 14px; color: #5C6980; }
+    .d-fila .et { width: 46%; margin-left: 12px; font-size: 14px; color: #3A4654; }
     .d-fila .va { flex: 1; font-size: 14px; color: #2E323C; }
     .d-fila .va.verde { color: #12B85A; font-weight: 600; }
     .d-fila .va.neg { font-weight: 700; }
 
     /* ============ 07 - LO QUE HACE Y LO QUE NO ============ */
     .s07 { background: var(--claro); }
-    .s07 .foto { background-image: url(/assets/conce-equipo.webp); opacity: .55; }
-    .s07 .velo { background: linear-gradient(90deg, rgba(241,247,253,.90) 0%, rgba(241,247,253,.95) 40%, rgba(241,247,253,.88) 100%); }
+    .s07 .foto { background-image: url(/assets/conce-posventa.webp); background-position: center 45%; opacity: 1; }
+    .s07 .velo { background: linear-gradient(90deg, rgba(241,247,253,.90) 0%, rgba(241,247,253,.72) 40%, rgba(241,247,253,.52) 100%); }
     .n-dos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .n-box { border-radius: 16px; border: 1px solid #E1EBF6; padding: 22px 24px 24px; box-shadow: 0 14px 40px rgba(15,40,80,.07); }
     .n-si { background: linear-gradient(135deg, #E6F7EE, #F6FBFE); }
@@ -338,9 +372,9 @@
     .e-fila b + span { margin-left: .28em; }
 
     /* ============ 09 - HABLEMOS (CTA) ============ */
-    .s09 { background: #00070E; min-height: clamp(420px, 52vh, 560px); }
+    .s09 { background: #00070E; }
     .s09 .foto { background-image: url(/assets/conce-hablemos.webp); background-position: right center; }
-    .s09 .velo { background: linear-gradient(90deg, rgba(0,7,13,.96) 0%, rgba(0,7,13,.90) 40%, rgba(0,7,13,.60) 64%, rgba(0,7,13,.22) 86%, rgba(0,7,13,.10) 100%); }
+    .s09 .velo { background: linear-gradient(90deg, rgba(0,7,13,.92) 0%, rgba(0,7,13,.74) 40%, rgba(0,7,13,.36) 64%, rgba(0,7,13,.06) 86%, rgba(0,7,13,0) 100%); }
     .s09 .caja { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; }
     .ct-der { display: flex; flex-direction: column; align-items: flex-start; gap: 26px; }
     .c-btn { height: 64px; padding: 0 44px; font-size: 20px; gap: 16px; }
@@ -374,15 +408,19 @@
     @media (min-width: 1081px) {
       body { zoom: .9; }
       .hero { height: calc(86vh / .9); height: calc(86svh / .9); min-height: 667px; }
-      .sec { min-height: calc(var(--alto) / .9); }
-      .s08 { min-height: 0; }
-      .s09 { min-height: calc(clamp(420px, 52vh, 560px) / .9); }
+      .sec, .s08, .s09 { min-height: 0; }
     }
 
     /* ===================== TABLET ===================== */
     @media (max-width: 1180px) {
       .h-links { gap: 26px; }
-      .s02 .dos, .s06 .dos { grid-template-columns: 1fr; }
+      .s02 .dos { grid-template-columns: 1fr; }
+      .dm { grid-template-columns: 1fr 1fr; }
+      .dm-txt { grid-column: 1 / -1; }
+      .dm .d-card { grid-column: 1; grid-row: 2; }
+      .dm .d-panel { grid-column: 2; grid-row: 2; }
+      .dm-cta { grid-column: 1 / -1; grid-row: 4; }
+      .dm-trans { grid-column: 1 / -1; grid-row: 3; }
       .m-fila { margin-top: 8px; }
       /* a este ancho los tres pasos no caben con sus flechas: rejilla de tres */
       .b-pasos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -403,6 +441,9 @@
       :root { --pad: 58px; --alto: 0px; }
       .sec { display: block; }
       .caja, .s08 .caja, .s09 .caja { display: block; padding-left: 22px; padding-right: 22px; }
+      .sec > .caja { padding-top: var(--pad); padding-bottom: var(--pad); }
+      .s02 > .caja { padding-bottom: 16px; }
+      .s03 > .caja { padding-top: 16px; }
       .dos { display: block; }
       .m-t, .b-t, .w-t, .h2-t, .d-t, .n-t, .e-t, .c-t { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.14; }
       .d-t, .c-t { margin-top: 12px; }
@@ -418,8 +459,9 @@
       .s02 .foto { background-image: url(/assets/conce-momentos-movil.webp); opacity: .6; }
       .s04 .foto { background-image: url(/assets/conce-sabado-movil.webp); background-position: center top; }
       .s09 .foto { background-image: url(/assets/conce-hablemos-movil.webp); background-position: center top; }
-      .s05 .foto { background-size: cover; }
-      .hero .velo { background: linear-gradient(180deg, rgba(1,8,15,.80) 0%, rgba(1,8,15,.62) 30%, rgba(1,8,15,.84) 55%, rgba(1,8,15,.97) 100%); }
+      .s05 .foto { background-image: url(/assets/conce-hero-movil.webp); background-size: cover; }
+      .hero .velo { background: linear-gradient(180deg, rgba(1,8,15,.66) 0%, rgba(1,8,15,.40) 30%, rgba(1,8,15,.66) 58%, rgba(1,8,15,.92) 100%); }
+      .s03 .velo { background: rgba(0,8,15,.86); }
       .s02 .velo { background: linear-gradient(180deg, rgba(0,8,14,.86) 0%, rgba(0,8,14,.78) 40%, rgba(0,8,14,.94) 100%); }
       .s04 .velo { background: linear-gradient(180deg, rgba(0,7,13,.86) 0%, rgba(0,7,13,.70) 35%, rgba(0,7,13,.88) 60%, rgba(0,7,13,.97) 100%); }
       .s05 .velo { background: rgba(0,10,18,.92); }
@@ -504,13 +546,30 @@
       .h2-it b { font-size: .64rem; line-height: 1.3; margin-top: 8px; white-space: normal; }
       .h2-fle { width: 11px; height: 9px; margin-bottom: 26px; }
 
+      /* --- las tarjetas, mas destacadas: sobre oscuro un azul marino con
+         filo azul; sobre claro, blancas con franja de color arriba --- */
+      .m-a, .b-card, .w-card, .h2-card, .h-tarj { background: rgba(14,36,66,.94); border: 1px solid rgba(90,150,255,.45); box-shadow: 0 14px 32px rgba(0,0,0,.45); }
+      .b-box, .w-box { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.16); }
+      .m-pil, .m-cab { background: rgba(10,28,54,.92); }
+      .d-panel { border-top: 3px solid var(--azul); box-shadow: 0 12px 28px rgba(15,40,80,.16); }
+      .n-si { background: #fff; border-top: 3px solid #16B45E; box-shadow: 0 12px 28px rgba(15,40,80,.14); }
+      .n-no { background: #fff; border-top: 3px solid #EA2A3C; box-shadow: 0 12px 28px rgba(15,40,80,.14); }
+
       /* --- 06 --- */
       .d-btn { width: 100%; height: 54px; margin-top: 1.2rem; padding: 0 8px; }
       .d-play { width: 38px; height: 38px; }
       .d-btn b { font-size: .95rem; } .d-chip { height: 30px; font-size: .84rem; }
       .d-pie { font-size: .8rem; margin-top: .6rem; }
-      .d-der { margin-top: 20px; grid-template-columns: 1fr; gap: 12px; }
-      .d-card { height: 116px; }
+      .dm { display: block; }
+      .dm .d-card { margin-top: 20px; height: 116px; }
+      .dm .d-panel { margin-top: 12px; }
+      /* en el movil la demo se queda como estaba (Anais la prefiere asi),
+         sin la transcripcion, pero ahora con su boton al final */
+      .dm-trans { display: none; }
+      .dm-cta { margin-top: 18px; }
+      .dm-cta p { font-size: .86rem; }
+      .dm-cta .btn { margin-top: 12px; width: 100%; }
+      .dm-cta span { font-size: .76rem; margin-top: 8px; }
       .d-rd { left: 14px; top: 30px; width: 36px; height: 36px; }
       .d-onda { left: 60px; right: 14px; top: 24px; height: 46px; }
       .d-prog { left: 14px; right: 14px; bottom: 14px; }
@@ -721,6 +780,8 @@
 
   <!-- =================== 03 - LOS QUE NO HAN VUELTO =================== -->
   <section class="sec s03 oscura" id="base">
+      <div class="foto"></div>
+      <div class="velo"></div>
     <div class="caja dos">
       <div class="b-col">
         <h2 class="b-t">Los que no han vuelto <br>no te lo van a decir.</h2>
@@ -841,12 +902,14 @@
   </section>
 
   <!-- =================== 06 - UNA DEMOSTRACION REAL =================== -->
+  <!-- La demo copia la forma de la de inmobiliarias (Anais, 2026-10-04):
+       texto y boton a la izquierda, reproductor y datos recogidos a su
+       derecha, y debajo la llamada a la accion y la transcripcion. -->
   <section class="sec s06 clara" id="demo">
       <div class="foto"></div>
       <div class="velo"></div>
-    <div class="caja dos">
-
-      <div>
+    <div class="caja dm">
+      <div class="dm-txt">
       <div class="d-col">
         <p class="d-kick">Una demostración real</p>
         <h2 class="d-t">Escucha a EasyRobots <br>responder a un cliente.</h2>
@@ -860,8 +923,6 @@
       </button>
       <p class="d-pie">La llamada se reproduce directamente aquí.</p>
       </div>
-
-      <div class="d-der">
 
       <div class="d-card">
         <button class="d-rd" type="button" aria-label="Reproducir"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button>
@@ -882,6 +943,24 @@
         <div class="d-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="et">Estado</span><span class="va verde">Cita agendada</span></div>
         <div class="d-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="et">Comercial asignado</span><span class="va neg">Laura M.</span></div>
       </div>
+
+      <!-- La demo ensenaba el sistema pero no pedia nada, y en el movil se
+           quedaba sin boton. -->
+      <div class="dm-cta">
+        <p>Esta es una llamada de ejemplo. El tuyo se monta con tu stock, tu agenda de taller y tu forma de trabajar.</p>
+        <button class="btn b-azul" type="button" data-cal>Ver cómo quedaría el tuyo
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <span>15 minutos. Miramos tu caso y te decimos si encaja.</span>
+      </div>
+
+      <div class="dm-trans">
+        <div class="l"><span><b class="er">Agente EasyRobots</b><i>00:03</i></span><p>Hola, gracias por llamar al concesionario. ¿En qué puedo ayudarte?</p></div>
+        <div class="l"><span><b class="cl">Cliente</b><i>00:08</i></span><p>He visto el SEAT León que tenéis en la web. ¿Sigue disponible?</p></div>
+        <div class="l"><span><b class="er">Agente EasyRobots</b><i>00:15</i></span><p>Sí, sigue disponible. ¿Qué presupuesto manejas, más o menos?</p></div>
+        <div class="l"><span><b class="cl">Cliente</b><i>00:24</i></span><p>Entre dieciocho y veintidós mil.</p></div>
+        <div class="l"><span><b class="er">Agente EasyRobots</b><i>00:36</i></span><p>Encaja. ¿Te viene bien venir a verlo el jueves a las 17:00?</p></div>
+        <div class="l"><span><b class="cl">Cliente</b><i>00:44</i></span><p>El jueves a las cinco me va bien.</p></div>
       </div>
     </div>
   </section>
