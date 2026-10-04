@@ -29,7 +29,7 @@ viene más baja, se amplía y se vuelve a ver blanda.
 
 | # | Sección | Pedir | Escena |
 |---|---|---|---|
-| 01 | Hero | 2400 × 1170 | *ya está*: terraza al atardecer sobre la ciudad |
+| 01 | Hero | **2400 × 1300** | terraza al atardecer sobre la ciudad. La que hay (1993 × 789) se amplía un 18 % |
 | 02 | Dónde se cae | **2400 × 900** | coach agobiada de noche ante el portátil. Ella a la **derecha**, el tercio izquierdo en penumbra |
 | 03 | El mismo interés | **2400 × 650** | coach grabando contenido, tranquilo. Él a la **derecha** |
 | 04 | Así funciona | **2400 × 845** | escritorio luminoso de día con vistas al mar. Claro |
@@ -40,6 +40,11 @@ viene más baja, se amplía y se vuelve a ver blanda.
 | 09 | Equipo y garantía | **2400 × 625** | terraza al atardecer, mesa puesta. Clara y cálida |
 | 11 | Cierre | **2400 × 455** | atardecer sobre la ciudad desde la terraza |
 | 12 | Pie | **2400 × 320** | terraza de noche con las luces de la ciudad |
+
+**El hero es el único que cambia de proporción con la pantalla**, porque mide
+el 86 % del alto de la ventana y no un ancho fijo: 1425 × 774 (ratio 1,84) a
+1440 × 900, y 1905 × 929 (ratio 2,05) a 1920 × 1080. Los 1300 de alto salen
+del caso más exigente, el de 1440.
 
 Los recortes verticales del móvil (`*-movil.webp`) **no hay que pedirlos**:
 salen de la misma imagen con `docs/fondos-coaching-v2.py`.
