@@ -687,6 +687,51 @@
       .s02 .velo { background: linear-gradient(180deg, rgba(14,32,52,.70) 0%, rgba(8,22,36,.86) 38%, rgba(3,12,18,.94) 100%); }
     }
   
+    /* ============ SEXTA PASADA DE ANAIS (2026-10-04) ============
+       - Letra: los textos grises de las secciones claras "no se leen bien"
+         sobre las fotos ya mas abiertas. Se oscurecen cintillo, cuerpo,
+         leyenda y casos.
+       - Escritorio: piezas y control aun menos opacas; todas las secciones
+         mas bajas (menos relleno); la garantia ya sin alto minimo; la demo
+         con el movil a la izquierda, el texto en medio y "Y por fin sabes" a
+         la derecha.
+       - Movil: la 02 se distingue del hero con un azul marino claramente mas
+         claro y un filo azul arriba; "lo que hace" bastante mas compacta,
+         control un pelin y la garantia un poco. */
+    :root { --gris: #333A46; }
+    .kick { color: #59616D; }
+    .gr-ley div { color: #3A414D; }
+    .caso span, .e-per i { color: #4F5866; }
+    .f-paso span { color: #4A5260; }
+
+    @media (min-width: 861px) {
+      .s02 .caja, .s03 .caja, .s05 .caja, .s06 .caja, .s07 .caja, .s08 .caja { padding-top: clamp(46px, 6vh, 68px); padding-bottom: clamp(46px, 6vh, 68px); }
+      .sec.s09 { min-height: 0; }
+      .s09 .caja { padding-top: clamp(46px, 6vh, 68px); padding-bottom: clamp(46px, 6vh, 68px); }
+      .e-pers { max-width: 300px; }
+      .s06 .velo { background: linear-gradient(90deg, rgba(244,247,250,.80) 0%, rgba(244,247,250,.50) 42%, rgba(244,247,250,.26) 100%); }
+      .s08 .velo { background: rgba(246,246,246,.48); }
+
+      .s04 .caja { grid-template-columns: auto 1.05fr 1fr; padding-top: clamp(46px, 6vh, 68px); padding-bottom: clamp(46px, 6vh, 68px); }
+      .s04 .movil { order: -1; height: 600px; }
+      .sec.s04 { min-height: 0; }
+    }
+    @media (min-width: 861px) and (max-width: 1180px) {
+      .s04 .caja { grid-template-columns: auto 1fr; }
+    }
+
+    @media (max-width: 860px) {
+      .s02 { border-top: 2px solid rgba(78,165,249,.45); }
+      .s02 .velo { background: linear-gradient(180deg, rgba(24,52,84,.80) 0%, rgba(16,38,62,.88) 45%, rgba(9,24,40,.94) 100%); }
+      .hero .velo { background: linear-gradient(180deg, rgba(6,9,12,.70) 0%, rgba(6,9,12,.40) 28%, rgba(6,9,12,.82) 60%, rgba(3,5,8,.98) 100%); }
+
+      .s07 .caja { zoom: .86; padding-top: 34px; padding-bottom: 36px; }
+      .l-box li { padding: 3px 0; }
+      .s08 .caja { zoom: .94; }
+      .s09 .caja { zoom: .86; }
+      .e-per img, .e-hueco { aspect-ratio: 4 / 3.6; }
+    }
+
     /* Calendario de GHL en modal. Mismo patron que inmobiliarias y coaching. */
     .er-modal { position: fixed; inset: 0; z-index: 9000; display: none; background: rgba(6,10,16,.62); backdrop-filter: blur(6px); padding: 24px 16px; overflow-y: auto; }
     .er-modal.open { display: block; }

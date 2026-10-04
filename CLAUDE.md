@@ -1071,6 +1071,14 @@ de referencia y no se toca.
   `.s05` es ahora la seccion que va primero). Velos abiertos de la demo en
   adelante ("muy opacos"); como funciona en tono azulado y la demo en neutro
   calido, con linea fina entre secciones, para que no parezcan la misma.
+- **Sexta pasada (2026-10-04)**: textos grises de las secciones claras
+  oscurecidos (`--gris` #333A46, cintillo #59616D): con las fotos mas abiertas
+  "no se leian". Escritorio: todas mas bajas (relleno 46-68 px, garantia sin
+  alto minimo), piezas y control aun menos opacas, y la demo pasa a **movil a
+  la izquierda, texto en medio y "Y por fin sabes" a la derecha**. Movil: la
+  02 en azul marino mas claro con filo azul arriba (seguia pareciendo el
+  hero), "lo que hace" con `zoom: .86`, control `.94` y garantia `.86`.
+  Escritorio ~4.700 px, movil ~7.870.
 
 ### Lo del boceto que NO se reprodujo
 
