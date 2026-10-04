@@ -531,18 +531,21 @@
       .p-pie { margin-top: 18px; gap: 10px; font-size: .58rem; letter-spacing: .16em; text-align: center; }
       .p-pie::before, .p-pie::after { flex-basis: 30px; }
 
-      /* --- 05: foto arriba mas baja y las ocho fichas de dos en dos --- */
-      .s05 .foto, .s05 .velo { left: 0; height: 220px; }
+      /* --- 05: "alejala un poco" (2026-10-04): las ocho fichas de cuatro en
+         cuatro, con la foto y el nombre, y la foto de arriba mas baja. La
+         linea de debajo de cada ficha no cabe a ese ancho; el nombre ya dice
+         la herramienta. --- */
+      .s05 .foto, .s05 .velo { left: 0; height: 170px; }
       .s05 .foto { background-image: url(/assets/home-integ-movil.webp); background-position: center 30%; }
       .s05 .velo { background: linear-gradient(0deg, #FAF8F6 0%, rgba(250,248,246,0) 45%); }
-      .s05 .caja { padding-top: 196px; }
-      .i-tx .p { margin-top: .8rem; }
-      .i-grid { margin-top: 22px; grid-template-columns: 1fr 1fr; gap: 9px; }
-      .i-card img { aspect-ratio: 16 / 8; }
-      .i-card div { padding: 9px 11px 12px; }
-      .i-card b { font-size: .86rem; }
-      .i-card span { margin-top: 3px; font-size: .76rem; line-height: 1.4; }
-      .i-card br { display: none; }
+      .s05 .caja { padding-top: 150px; padding-bottom: 44px; }
+      .i-tx .p { margin-top: .7rem; font-size: .88rem; }
+      .i-grid { margin-top: 18px; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+      .i-card { border-radius: 10px; }
+      .i-card img { aspect-ratio: 1 / .8; }
+      .i-card div { padding: 6px 6px 8px; }
+      .i-card b { font-size: .68rem; line-height: 1.2; letter-spacing: -.01em; }
+      .i-card span { display: none; }
 
       /* --- 06: medidas del caso de Pilar en /estetica/ movil, que Anais da
          por buenas ("estan mas pequeñas") --- */
