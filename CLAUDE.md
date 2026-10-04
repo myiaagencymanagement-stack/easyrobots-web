@@ -1066,6 +1066,11 @@ de referencia y no se toca.
   a 560 px: el de 440 "no era"); se compacta el texto, los botones y el panel
   de motivos. La 02 arranca con una linea y un tono azulado para que no parezca
   la continuacion del hero. Movil 8.170 px.
+- **Quinta pasada (2026-10-04, escritorio)**: **"Como funciona" va antes de
+  la demo** (se movio el HTML; las clases `.s04`/`.s05` no cambian, asi que
+  `.s05` es ahora la seccion que va primero). Velos abiertos de la demo en
+  adelante ("muy opacos"); como funciona en tono azulado y la demo en neutro
+  calido, con linea fina entre secciones, para que no parezcan la misma.
 
 ### Lo del boceto que NO se reprodujo
 
