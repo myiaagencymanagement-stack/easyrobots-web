@@ -1126,6 +1126,18 @@ se tocan.
   inmobiliarias y se compacta: sectores de dos en dos y solo con el nombre,
   "como trabajamos" con la foto a la izquierda de cada paso, integraciones y
   caso real mas cortos. Movil de 12.300 a 8.500 px.
+- **Quinta pasada (2026-10-04)**: el hero y la garantia se veian "muy
+  borrosos". En el hero eran las manchas del inpainting donde iban las
+  tarjetas del boceto, que quedaron a la vista al bajar las viñetas: ahora
+  esos huecos se rellenan columna a columna (pilar y edificios siguen
+  nitidos) y la bruma de la izquierda con un relleno suave. **No volver a
+  usar inpainting con desenfoque en huecos grandes.** La garantia pasa a
+  `escena-inmobiliaria.webp` (foto real nitida) hasta que lleguen los fondos
+  de la home. Movil: el titular arranca bajo la barra y la foto va en un
+  bloque debajo con las viñetas encima; "lo que construimos" e integraciones
+  en carrusel horizontal; "como trabajamos" cabe en una pantalla; caso y
+  garantia con las medidas exactas del movil de estetica; en sectores la
+  flecha sube a la esquina. Movil de 8.500 a 6.400 px.
 
 ## Landing de clinicas premium v2 (2026-10-02)
 

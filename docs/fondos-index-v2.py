@@ -85,21 +85,76 @@ def emborrona(arr, rect, sigma=4):
 
 
 # ---------------- 01 · HERO ----------------
+# Segunda version (2026-10-04). La primera borraba con inpainting y
+# desenfoque, y dejaba manchas grises donde iban las tarjetas del boceto.
+# Mientras las tarjetas HTML estaban encima no se veian; al bajarlas para
+# despejar la cara del chico quedaron a la vista y Anais vio el hero "muy
+# borroso". Ahora:
+#  - la zona del pilar se rellena columna a columna (pixel de arriba a pixel
+#    de abajo): el pilar sigue siendo una linea vertical limpia;
+#  - el resto con un relleno suave que parte de los cuatro bordes del hueco
+#    (ecuacion de Laplace, por piramide), fundido en el borde y con grano.
+#    En la bruma y el fondo desenfocado se lee como profundidad de campo,
+#    no como mancha ni como recuadro.
+def rellena_vertical(arr, rect):
+    x0, y0, x1, y1 = rect
+    arr = arr.astype(np.float32)
+    arriba = arr[y0 - 1, x0:x1]
+    abajo = arr[y1, x0:x1]
+    t = np.linspace(0, 1, y1 - y0, dtype=np.float32)[:, None, None]
+    arr[y0:y1, x0:x1] = arriba[None] * (1 - t) + abajo[None] * t
+    return arr
+
+
+def rellena_suave(arr, mascara):
+    """Relleno armonico: dentro de la mascara, cada pixel es la media de sus
+    vecinos; se resuelve de grueso a fino para que converja rapido."""
+    img = arr.astype(np.float32)
+    m = mascara > 0
+    niveles = []
+    a, mm = img, m
+    while min(a.shape[:2]) > 40:
+        niveles.append((a, mm))
+        a = cv2.resize(a, (a.shape[1] // 2, a.shape[0] // 2), interpolation=cv2.INTER_AREA)
+        mm = cv2.resize(mm.astype(np.uint8), (mm.shape[1] // 2, mm.shape[0] // 2), interpolation=cv2.INTER_NEAREST) > 0
+    sol = None
+    for a, mm in reversed(niveles):
+        a = a.copy()
+        if sol is not None:
+            sube = cv2.resize(sol, (a.shape[1], a.shape[0]), interpolation=cv2.INTER_LINEAR)
+            a[mm] = sube[mm]
+        for _ in range(120):
+            media = cv2.blur(a, (3, 3))
+            a[mm] = media[mm]
+        sol = a
+    return sol
+
+
+def funde(base, relleno, mascara, borde=14, grano=1.4, semilla=7):
+    a = cv2.GaussianBlur((mascara > 0).astype(np.float32), (0, 0), borde)[..., None]
+    a = np.clip(a * 1.25, 0, 1) * ((mascara > 0)[..., None] * .0 + 1)
+    rng = np.random.default_rng(semilla)
+    r = relleno + rng.normal(0, grano, relleno.shape) * (mascara > 0)[..., None]
+    out = base.astype(np.float32) * (1 - a) + r * a
+    return np.clip(out, 0, 255).astype(np.uint8)
+
+
 h = carga('01-hero.webp')
+# Rellenos verticales: detras de las viñetas habia lineas verticales reales
+# (el pilar de la ventana a la izquierda; el edificio, el marco y la planta a
+# la derecha). Un poco de suavizado horizontal quita las rayas de cortina.
+for r in [(828, 168, 1144, 372),         # "Nuevo cliente" y "Cita confirmada"
+          (1442, 270, 1748, 454)]:       # "Lead cualificado" y "Proceso automatizado"
+    hv = rellena_vertical(h, r)
+    hv = cv2.blur(hv, (7, 1))
+    h = funde(h, hv, mascara_rect(h.shape, [r], crece=0), borde=4)
 m = mascara_rect(h.shape, [
-    (95, 15, 285, 70),        # logotipo
-    (470, 25, 1085, 58),      # menu
-    (1462, 12, 1684, 70),     # boton de la barra
-    (100, 540, 465, 610),     # boton negro
-    (484, 540, 724, 610),     # boton con borde
-    (832, 172, 1140, 270),    # tarjeta "Nuevo cliente"
-    (832, 282, 1140, 368),    # tarjeta "Cita confirmada"
-    (1446, 275, 1744, 356),   # tarjeta "Lead cualificado"
-    (1446, 367, 1744, 450),   # tarjeta "Proceso automatizado"
-    (95, 170, 790, 520),      # titular y entradilla: fondo de bruma, se borra entero
-])
-h = borra(h, m, 9, 22)
-guarda(h, 'home-hero.webp', q=72)
+    (95, 12, 1090, 72),       # logotipo y menu
+    (1458, 10, 1688, 72),     # boton de la barra
+    (95, 168, 792, 614),      # titular, entradilla y botones: bruma
+], crece=4)
+h = funde(h, rellena_suave(h, m), m, borde=10)
+guarda(h, 'home-hero.webp', q=80)
 # movil: ventana vertical sobre el hombre y la mesa
 guarda(h[:, 1000:1460], 'home-hero-movil.webp', q=72)
 
