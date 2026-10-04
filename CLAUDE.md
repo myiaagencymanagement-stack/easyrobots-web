@@ -342,8 +342,9 @@ del diagrama). Los recortes salen de `docs/fondos-coaching-v2.py`.
 
 Lo que conviene saber al tocarla:
 
-- **La pagina no tiene JavaScript propio.** Es todo CSS; el unico script es el
-  del calendario. Si algo deja de moverse, no busques un observer: no lo hay.
+- **La pagina casi no tiene JavaScript propio.** Es todo CSS; los unicos
+  scripts son el del calendario y el de la barra comun (ver "La barra de
+  navegacion"). Si algo deja de moverse, no busques un observer: no lo hay.
 - El bloque de equipo va con **retratos redondos** (`.cara .foto-r`,
   `aspect-ratio:1`, `border-radius:50%`) y `object-position: center 22%`. Usa los
   mismos `guille.webp` y `anais.webp` que el resto; no hace falta recorte aparte.
@@ -380,6 +381,34 @@ Como esta montado, que conviene no cambiarlo sin motivo:
 
 Pendiente: el calendario sigue sin probarse de punta a punta con una reserva real
 que confirme que el evento llega a GHL.
+
+## La barra de navegacion (2026-10-04)
+
+Peticion de Anais. **La marca, en las siete paginas, es solo la palabra
+EASYROBOTS** espaciada (Plus Jakarta Sans 500, 19 px, `letter-spacing: .32em`),
+sin icono de robot ni cuadro de color: la que ya tenia `/estetica/`. Blanca
+sobre los heroes oscuros y negra (#111) en la home, que es clara.
+
+Las **cinco landings de nicho** (dental, inmobiliarias, concesionarios,
+ecommerce, coaching) comparten la misma barra, con clases `bn-` y el mismo
+bloque de CSS y JS pegado en cada una:
+
+- Arriba del todo, transparente sobre la foto, con **el nicho** (subrayado en
+  azul, lleva a la primera seccion) · **Ver demostracion** (`#demo`) ·
+  **Quienes somos** (`#equipo`) y el boton **Reservar una llamada**.
+- Al bajar 40 px se queda **fija y oscura con solo la marca y el boton**. Lo
+  hace un script de cinco lineas que pone la clase `bn-baja`.
+- Por debajo de 1000 px de ancho ya solo van marca y boton.
+- En dental y coaching la barra antigua ocupaba sitio en el hero; la nueva es
+  fija, asi que lleva un `.bn-hueco` detras para que el hero no suba.
+- La barra antigua de cada pagina (`.h-nav`) se quito del HTML; su CSS se
+  quedo y no afecta a nada.
+
+Estetica y la home conservan su propio menu; solo cambio la marca.
+
+Ojo al validarlo con capturas: en Chrome sin cabeza **las transiciones se
+quedan congeladas en el tiempo 0**, asi que al deslizar los enlaces salen
+visibles aunque en el navegador se oculten. Comprobado con `getAnimations()`.
 
 ## Fotos de equipo reales (2026-10-02)
 

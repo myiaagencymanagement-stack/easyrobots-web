@@ -149,7 +149,10 @@
     .h-nav-in { width: 100%; max-width: 1440px; margin: 0 auto; padding: 14px var(--lado); display: flex; align-items: center; }
     @media (min-width: 1440px) { .h-nav-in { padding-left: 76px; padding-right: 76px; } }
     section[id] { scroll-margin-top: 84px; }
-    .marca { font-size: 26px; font-weight: 700; letter-spacing: -.045em; }
+    /* La marca es la palabra EASYROBOTS espaciada, sin icono ni color: la
+       misma de todas las paginas (2026-10-04). Aqui en negro porque la home
+       es clara. */
+    .marca { font-size: 19px; font-weight: 500; letter-spacing: .32em; color: #111; }
     .h-links { display: flex; gap: 42px; margin: 0 auto; }
     .h-links a { font-size: 15.5px; font-weight: 500; color: #1A1E24; white-space: nowrap; }
     .h-links a:hover { color: var(--azul); }
@@ -470,7 +473,7 @@
       .hero .velo { background: linear-gradient(180deg, var(--crema) 0%, var(--crema) 370px, rgba(249,248,246,.5) 430px, rgba(249,248,246,0) 490px); }
       .h-nav-in { padding: 9px 22px; }
       .h-links { display: none; }
-      .marca { font-size: 20px; }
+      .marca { font-size: .82rem; letter-spacing: .26em; }
       .h-navbtn { margin-left: auto; padding: .6rem 1.05rem; font-size: .8rem; gap: .4rem; }
       .h-cuerpo { flex-direction: column; justify-content: flex-start; align-items: stretch; padding: 84px 22px 24px; }
       .h-t { font-size: clamp(2rem, 8.4vw, 2.6rem); line-height: 1.05; margin-top: .8rem; }
@@ -648,7 +651,7 @@
     <div class="velo" aria-hidden="true"></div>
 
     <nav class="h-nav" aria-label="Principal"><div class="h-nav-in">
-      <a class="marca" href="#inicio">EasyRobots</a>
+      <a class="marca" href="#inicio">EASYROBOTS</a>
       <div class="h-links">
         <a href="#soluciones">Soluciones</a>
         <a href="#como">Cómo funciona</a>

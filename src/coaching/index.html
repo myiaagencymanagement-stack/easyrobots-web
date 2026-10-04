@@ -651,6 +651,42 @@
     .er-modal-x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 9px; border: 1px solid #e1e8f2; background: #f5f8fc; color: #5c6980; font-size: 1rem; cursor: pointer; line-height: 1; }
     .er-cal { width: 100%; min-height: 620px; border: 0; border-radius: 12px; margin-top: 1.2rem; background: #f5f8fc; }
     @media (max-width: 900px) { .er-modal-box { padding: 1.6rem 1rem 1rem; margin: 0 auto; } .er-cal { min-height: 560px; } }
+  
+    /* ---- Barra comun de las landings de nicho (2026-10-04, peticion de Anais) ----
+       La marca es solo la palabra EASYROBOTS, sin icono ni color: la misma de
+       /estetica/. Arriba del todo la barra va transparente sobre la foto del
+       hero con el menu entero (el nicho, la demo y quienes somos); al
+       deslizar se queda fija y oscura con solo la marca y el boton de
+       reservar, que es lo unico que hace falta a mitad de pagina. Es igual en
+       las cinco landings de nicho; estetica y la home llevan su propia barra. */
+    .bn { position: fixed; top: 0; left: 0; right: 0; z-index: 130; border-bottom: 1px solid transparent; transition: background-color .3s, border-color .3s; }
+    .bn.bn-baja { background: rgba(6,9,14,.86); border-bottom-color: rgba(255,255,255,.08); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+    .bn-in { width: 100%; max-width: 1440px; margin: 0 auto; padding: 14px max(22px, 5.6vw); display: flex; align-items: center; }
+    @media (min-width: 1440px) { .bn-in { padding-left: 80px; padding-right: 80px; } }
+    .bn-marca { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 19px; font-weight: 500; letter-spacing: .32em; color: #fff; text-decoration: none; white-space: nowrap; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+    .bn-links { display: flex; gap: 40px; margin: 0 auto; transition: opacity .25s, visibility .25s; }
+    .bn-links a { position: relative; padding: 4px 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 15.5px; font-weight: 500; color: rgba(255,255,255,.86); text-decoration: none; white-space: nowrap; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+    .bn-links a:hover { color: #fff; }
+    .bn-links a.act { color: #fff; font-weight: 700; }
+    .bn-links a.act::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; border-radius: 2px; background: var(--azul, #0070FE); }
+    .bn-baja .bn-links { opacity: 0; visibility: hidden; pointer-events: none; }
+    .bn-btn { display: inline-flex; align-items: center; gap: 9px; height: 46px; padding: 0 22px; border: 0; border-radius: 999px; background: var(--azul, #0070FE); color: #fff; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 15.5px; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; transition: filter .2s; }
+    .bn-btn:hover { filter: brightness(1.1); }
+    .bn-btn svg { width: 17px; height: 17px; flex: 0 0 auto; }
+    .bn-hueco { flex: 0 0 auto; height: 74px; }
+    section[id], header[id], #equipo { scroll-margin-top: 80px; }
+    @media (max-width: 1200px) { .bn-links { gap: 28px; } }
+    /* Por debajo de 1000 px el menu no cabe junto a la marca y el boton:
+       se queda la marca y el boton, como al deslizar. */
+    @media (max-width: 1000px) { .bn-links { display: none; } .bn-btn { margin-left: auto; } }
+    @media (max-width: 900px) {
+      .bn-in { padding: 9px 22px; }
+      .bn-marca { font-size: .82rem; letter-spacing: .26em; }
+      .bn-btn { height: auto; padding: .6rem 1.05rem; font-size: .8rem; gap: .4rem; }
+      .bn-btn svg { width: 14px; height: 14px; }
+      .bn-hueco { height: 56px; }
+      section[id], header[id], #equipo { scroll-margin-top: 58px; }
+    }
   </style>
 </head>
 
@@ -658,28 +694,20 @@
   <a class="saltar" href="#contenido">Saltar al contenido</a>
 
   <!-- =================== 01 · HERO =================== -->
-  <header class="hero">
+  <header class="hero" id="inicio">
     <div class="foto suave" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
 
-    <nav class="h-nav" aria-label="Principal">
-      <div class="h-marca">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 2.6a1 1 0 011.8-.3L11.4 4h1.2l1.1-1.7a1 1 0 111.7 1.1L14.9 4H16a4 4 0 014 4v7a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h1.1L8.4 3.4a1 1 0 01.1-.8zM9 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM9 15h6v1.4H9V15z"/></svg>
-        EasyRobots
+    <nav class="bn" aria-label="Principal"><div class="bn-in">
+      <a class="bn-marca" href="#inicio">EASYROBOTS</a>
+      <div class="bn-links">
+        <a href="#donde" class="act">Coaching</a>
+        <a href="#demo">Ver demostraci&oacute;n</a>
+        <a href="#equipo">Qui&eacute;nes somos</a>
       </div>
-      <!-- La ficha pone "Resultados" en el menu, pero esta landing no tiene
-           seccion de resultados: no hay ningun coach como cliente y el unico
-           caso publicable es el de una clinica. Un enlace que no lleva a
-           ningun sitio resta mas que su ausencia, asi que va "Demo". -->
-      <div class="h-links">
-        <a href="#donde">Para qui&eacute;n es</a>
-        <a href="#como">C&oacute;mo funciona</a>
-        <a href="#demo">Demo</a>
-        <a href="#equipo">Equipo</a>
-        <a href="#garantia">Garant&iacute;a</a>
-      </div>
-      <a class="btn btn-bl h-navbtn" href="#hablemos" data-cal>Reservar llamada</a>
-    </nav>
+      <a class="bn-btn" href="#hablemos" data-cal>Reservar una llamada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+    </div></nav>
+    <div class="bn-hueco" aria-hidden="true"></div>
 
     <div class="h-cuerpo">
       <div class="h-col" id="contenido">
@@ -1245,6 +1273,14 @@
       document.getElementById('er-modal-x').addEventListener('click', cerrar);
       modal.addEventListener('click', function (e) { if (e.target === modal) cerrar(); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(); });
+    })();
+  </script>
+  <script>
+    /* Al bajar, la barra se queda con la marca y el boton de reservar. */
+    (function () {
+      var b = document.querySelector('.bn'); if (!b) return;
+      function mira() { b.classList.toggle('bn-baja', window.scrollY > 40); }
+      mira(); window.addEventListener('scroll', mira, { passive: true });
     })();
   </script>
 </body>
