@@ -732,6 +732,20 @@
       .e-per img, .e-hueco { aspect-ratio: 4 / 3.6; }
     }
 
+    /* ============ SEPTIMA PASADA (2026-10-04), ESCRITORIO ============
+       El hero ocupaba la pantalla entera y Anais lo quiere como el de
+       /concesionarios/: al 86 %, para que asome la siguiente seccion, y con
+       la letra algo mas pequena. "Piezas" iba pegada a la demo (las dos casi
+       blancas): pasa a un velo azulado y abierto, con la foto mas saturada. */
+    @media (min-width: 861px) {
+      .hero { height: calc(86vh / .9); height: calc(86svh / .9); min-height: 0; }
+      .h-t { font-size: clamp(42px, 4.1vw, 60px); }
+      .h-sub { font-size: clamp(16px, 1.2vw, 18px); margin-top: 22px; }
+      .h-btn { margin-top: 28px; }
+      .s06 .foto.suave { filter: blur(1.4px) saturate(1.3); }
+      .s06 .velo { background: linear-gradient(90deg, rgba(222,235,251,.86) 0%, rgba(206,226,250,.50) 42%, rgba(190,216,248,.22) 100%); }
+    }
+
     /* Calendario de GHL en modal. Mismo patron que inmobiliarias y coaching. */
     .er-modal { position: fixed; inset: 0; z-index: 9000; display: none; background: rgba(6,10,16,.62); backdrop-filter: blur(6px); padding: 24px 16px; overflow-y: auto; }
     .er-modal.open { display: block; }

@@ -1079,6 +1079,12 @@ de referencia y no se toca.
   02 en azul marino mas claro con filo azul arriba (seguia pareciendo el
   hero), "lo que hace" con `zoom: .86`, control `.94` y garantia `.86`.
   Escritorio ~4.700 px, movil ~7.870.
+- **Septima pasada (2026-10-04, escritorio)**: el hero deja de ser la
+  pantalla entera y pasa al **86 %, como concesionarios**, para que asome la
+  02; titular 42-60 px. "Piezas" con velo azulado abierto y foto saturada
+  (`saturate(1.3)`), porque junto a la demo parecian la misma seccion. **La
+  regla del hero a pantalla completa queda sustituida por esta en escritorio**;
+  en movil sigue siendo una pantalla.
 
 ### Lo del boceto que NO se reprodujo
 
