@@ -110,6 +110,8 @@
     .oscura { color: #fff; } .oscura .p { color: rgba(255,255,255,.82); }
     .clara { color: var(--tinta); } .clara .p { color: var(--gris); }
     .clara .kick { color: #0A57D8; }
+    /* con los velos abiertos, un halo blanco suave mantiene el texto legible */
+    .clara .h2, .clara .p, .clara .kick { text-shadow: 0 0 18px rgba(255,255,255,.85), 0 1px 2px rgba(255,255,255,.6); }
     .chk { width: 20px; height: 20px; color: var(--verde); flex: 0 0 auto; }
     .pt { width: 8px; height: 8px; border-radius: 50%; background: var(--verde); flex: 0 0 auto; display: inline-block; }
 
@@ -242,7 +244,9 @@
     /* ============ 04 - UN PEDIDO, DE LA DUDA A LA RESENA ============ */
     .s04 { background: var(--claro); }
     .s04 .foto { background-image: url(/assets/ecom-seda.webp); }
-    .s04 .velo { background: linear-gradient(90deg, rgba(245,248,253,.90) 0%, rgba(245,248,253,.74) 45%, rgba(245,248,253,.40) 100%); }
+    /* Anais (2026-10-04): "que se vean mas los fondos". El velo solo frena la
+       franja del texto y deja la foto casi limpia a la derecha. */
+    .s04 .velo { background: linear-gradient(90deg, rgba(245,248,253,.80) 0%, rgba(245,248,253,.52) 36%, rgba(245,248,253,.12) 68%, rgba(245,248,253,0) 100%); }
     /* "un pelin grande": sin alto minimo y con algo menos de relleno */
     .s04 { min-height: 0; }
     .s04 .caja { padding-top: 84px; padding-bottom: 84px; }
@@ -265,7 +269,7 @@
        conversables, el gancho se pone una vez y sirve para las tres. */
     .s05 { background: var(--claro); }
     .s05 .foto { background-image: url(/assets/ecom-demo.webp); }
-    .s05 .velo { background: linear-gradient(120deg, rgba(245,248,253,.72) 0%, rgba(240,246,253,.36) 50%, rgba(236,243,252,.50) 100%); }
+    .s05 .velo { background: linear-gradient(180deg, rgba(245,248,253,.74) 0%, rgba(245,248,253,.42) 32%, rgba(245,248,253,.10) 62%, rgba(245,248,253,.04) 100%); }
     /* Anais (2026-10-04): de la demo para abajo las secciones eran "demasiado
        grandes" y los fondos "muy opacos". Sin alto minimo, y los velos se
        abren a la derecha, donde no hay texto suelto sino tarjetas blancas. */
@@ -381,7 +385,7 @@
     /* ============ 07 - TECNOLOGIA QUE POTENCIA TU EQUIPO ============ */
     .s07 { background: var(--claro); }
     .s07 .foto { background-image: url(/assets/ecom-tecno.webp); }
-    .s07 .velo { background: linear-gradient(90deg, rgba(245,248,253,.90) 0%, rgba(245,248,253,.62) 42%, rgba(245,248,253,.28) 100%); }
+    .s07 .velo { background: linear-gradient(90deg, rgba(245,248,253,.80) 0%, rgba(245,248,253,.52) 36%, rgba(245,248,253,.12) 68%, rgba(245,248,253,0) 100%); }
     .s07 .p { max-width: 460px; }
     .tc-dos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .tc-box { background: rgba(255,255,255,.95); border-radius: 12px; padding: 24px 24px 26px; box-shadow: 0 14px 40px rgba(15,40,80,.10); }
