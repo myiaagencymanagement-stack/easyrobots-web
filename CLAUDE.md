@@ -1044,6 +1044,18 @@ de referencia y no se toca.
   cables con brillo que salen de los lados del nucleo y halo azul detras.
   "Seguimiento de presupuestos" lleva el icono de WhatsApp como en el boceto.
   El resto de la pagina le gusta como esta.
+- **Tercera pasada (2026-10-04)**: en escritorio solo hero, demo, garantia y
+  CTA estaban bien; las demas "muy grandes, con mucho margen". **Deroga en
+  parte la regla de los dos tercios**: 02, 03, 05, 06, 07 y 08 van sin alto
+  minimo y con 60-88 px de relleno (miden lo que pide su contenido); el hero
+  sigue a pantalla entera. Las fichas de "Por que pasa" copian las del movil
+  (icono a la izquierda, sin hueco) porque las de escritorio tenian 270 px con
+  mucho vacio. En movil: cintillo de la demo "Una demostracion real", "Y por
+  fin sabes" pasa a panel blanco propio a todo lo ancho (la seccion media
+  1.900 px), todo mas compacto (relleno 44 px, h2 29 px), la garantia algo
+  menos, las claras seguidas alternan tono con una linea fina entre ellas y
+  la CTA abre el velo para que se vea la foto. Movil de 9.575 a 8.500 px;
+  escritorio de 6.580 a 5.120 px.
 
 ### Lo del boceto que NO se reprodujo
 
