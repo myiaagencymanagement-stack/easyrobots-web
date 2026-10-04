@@ -114,7 +114,7 @@
     .m-p br, .b-p br, .w-p br, .h2-p br, .n-p br, .e-p br, .h-sub br { display: none; }
     .oscura { color: #fff; } .oscura .m-p, .oscura .b-p, .oscura .w-p, .oscura .h2-p, .oscura .c-sub { color: rgba(255,255,255,.82); }
     .clara { color: var(--tinta); }
-    .clara .d-t, .clara .d-sub, .clara .n-t, .clara .n-p, .clara .d-kick, .clara .d-pie { text-shadow: 0 0 18px rgba(255,255,255,.85), 0 1px 2px rgba(255,255,255,.6); } .clara .d-sub, .clara .n-p, .clara .e-p { color: #1F2A37; }
+    .clara .d-sub, .clara .n-p, .clara .e-p { color: #111A26; font-weight: 500; }
 
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 11px; height: 54px; padding: 0 28px; border-radius: 999px; font-size: 16px; font-weight: 700; white-space: nowrap; cursor: pointer; border: 0; transition: background .2s, border-color .2s; }
     .btn svg { width: 17px; height: 17px; }
@@ -172,16 +172,28 @@
     .h-meta svg { width: 20px; height: 20px; color: rgba(255,255,255,.72); }
 
     /* las tres tarjetas de la derecha, escalonadas como en el boceto */
-    .h-tarjs { justify-self: end; width: min(100%, 330px); display: flex; flex-direction: column; gap: 18px; }
-    .h-tarj { background: rgba(2,12,21,.82); border: 1px solid rgba(255,255,255,.10); border-radius: 16px; display: flex; align-items: center; gap: 16px; padding: 14px 18px 14px 14px;
-              backdrop-filter: blur(10px); box-shadow: 0 14px 40px rgba(0,0,0,.45); }
-    .t1p { margin-right: 40px; } .t2p { margin-right: 40px; margin-left: 6px; }
-    .h-tarj b { display: block; font-size: 16px; font-weight: 700; line-height: 1.35; letter-spacing: -.01em; }
-    .h-tarj i { display: block; font-style: normal; white-space: nowrap; font-size: 15px; font-weight: 500; line-height: 1.35; color: rgba(255,255,255,.72); }
-    .h-tarj .rd { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
-    .h-tarj .rd svg { width: 27px; height: 27px; color: #fff; }
-    .h-tarj .cuad { width: 52px; display: flex; justify-content: center; flex: 0 0 auto; }
-    .h-tarj .cuad svg { width: 40px; height: 40px; color: #fff; }
+    .h-tarjs { justify-self: end; width: min(100%, 380px); display: flex; flex-direction: column; gap: 14px; }
+    .hv-cli { margin-right: 46px; background: #fff; color: #0B121B; border-radius: 16px 16px 16px 4px; padding: 12px 16px; box-shadow: 0 14px 40px rgba(0,0,0,.4); }
+    .hv-cli b, .hv-er b { display: block; font-size: 13.5px; font-weight: 700; }
+    .hv-cli b { color: #4A5664; }
+    .hv-cli span, .hv-er > span:last-child { display: block; margin-top: 2px; font-size: 15px; line-height: 1.42; }
+    .hv-er { position: relative; margin-left: 46px; background: var(--azul); color: #fff; border-radius: 16px 16px 4px 16px; padding: 12px 16px 13px; box-shadow: 0 14px 40px rgba(0,50,140,.5); }
+    .hv-er b { color: rgba(255,255,255,.78); }
+    .hv-wa { position: absolute; left: -15px; top: -15px; width: 34px; height: 34px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.4); }
+    .hv-wa svg { width: 20px; height: 20px; color: #fff; }
+    .hv-agenda { background: rgba(4,14,26,.90); border: 1px solid rgba(90,150,255,.30); border-radius: 16px; padding: 14px 18px 8px; backdrop-filter: blur(10px); box-shadow: 0 14px 40px rgba(0,0,0,.45); }
+    .hv-cab { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.10); }
+    .hv-cab .ic { width: 30px; height: 30px; border-radius: 8px; background: rgba(0,112,254,.22); color: #6FB4FF; display: flex; align-items: center; justify-content: center; }
+    .hv-cab .ic svg { width: 17px; height: 17px; }
+    .hv-cab b { font-size: 14.5px; font-weight: 700; }
+    .hv-fila { display: grid; grid-template-columns: 12px 1fr; gap: 2px 10px; padding: 10px 0; align-items: center; }
+    .hv-fila + .hv-fila { border-top: 1px solid rgba(255,255,255,.08); }
+    .hv-fila .pt { width: 9px; height: 9px; border-radius: 50%; }
+    .hv-fila .pt.v { background: #16C873; box-shadow: 0 0 0 3px rgba(22,200,115,.22); }
+    .hv-fila .pt.a { background: #3B9BFF; box-shadow: 0 0 0 3px rgba(59,155,255,.22); }
+    .hv-fila span { font-size: 14.5px; color: rgba(255,255,255,.92); }
+    .hv-fila span b { color: #fff; }
+    .hv-fila em { grid-column: 2; font-style: normal; font-size: 13px; color: rgba(255,255,255,.62); }
     .rd-verde { background: var(--verde); }
     .rd-azul { background: var(--azul); }
 
@@ -291,29 +303,29 @@
        salian enormes detras del texto. Fuera de las dos secciones claras:
        van la sala de exposicion y el taller, que son fotos de escena. */
     .s06 .foto { background-image: url(/assets/conce-hero.webp); background-position: center 40%; opacity: 1; }
-    .s06 .velo { background: linear-gradient(90deg, rgba(241,247,253,.86) 0%, rgba(241,247,253,.62) 34%, rgba(241,247,253,.30) 66%, rgba(241,247,253,.18) 100%); }
+    .s06 .velo { background: linear-gradient(90deg, rgba(241,247,253,.93) 0%, rgba(241,247,253,.88) 30%, rgba(241,247,253,.40) 46%, rgba(241,247,253,.16) 70%, rgba(241,247,253,.10) 100%); }
     .d-btn { margin-top: 32px; width: min(100%, 360px); height: 64px; background: var(--azul); border: 0; border-radius: 999px; display: flex; align-items: center; padding: 0 10px; cursor: pointer; transition: background .2s; }
     .d-btn:hover { background: var(--azul-h); }
     .d-play { width: 44px; height: 44px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
     .d-play svg { width: 17px; height: 17px; color: var(--azul); }
     .d-btn b { flex: 1; text-align: center; font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -.01em; }
     .d-chip { height: 36px; padding: 0 14px; border-radius: 999px; background: rgba(0,0,0,.24); display: flex; align-items: center; font-size: 15px; font-weight: 700; color: #fff; }
-    .d-pie { margin-top: 14px; font-size: 14.5px; color: #3A4654; }
+    .d-pie { margin-top: 14px; font-size: 14.5px; color: #1F2A37; }
     /* rejilla de inmobiliarias: texto 36 % · reproductor 25 % · panel 36 %,
        y en la segunda fila la llamada a la accion bajo el texto y la
        transcripcion bajo el reproductor y el panel */
     /* Anais (2026-10-04): el reproductor "muy grande": pasa a un cuadrado
        pequeno en la segunda fila, a la altura del CTA, junto a los datos
        recogidos. La transcripcion sube a la primera fila, junto al titular. */
-    .dm { display: grid; grid-template-columns: minmax(0, 36fr) minmax(0, 22fr) minmax(0, 42fr); gap: 22px 18px; align-items: start; }
+    .dm { display: grid; grid-template-columns: minmax(0, 36fr) minmax(0, 25fr) minmax(0, 37fr); gap: 18px 16px; align-items: start; }
     .dm-txt { grid-column: 1; grid-row: 1; }
-    .dm .d-card { grid-column: 2; grid-row: 2; }
-    .dm .d-panel { grid-column: 3; grid-row: 2; }
+    .dm .d-card { grid-column: 2; grid-row: 1; align-self: end; }
+    .dm .d-panel { grid-column: 3; grid-row: 1; }
     .dm-cta { grid-column: 1; grid-row: 2; }
-    .dm-cta p { font-size: 16px; line-height: 1.55; color: #1F2A37; max-width: 34ch; }
+    .dm-cta p { font-size: 16px; line-height: 1.55; color: #111A26; font-weight: 500; max-width: 34ch; }
     .dm-cta .btn { margin-top: 16px; }
-    .dm-cta span { display: block; margin-top: 12px; font-size: 14px; color: #3A4654; }
-    .dm-trans { grid-column: 2 / 4; grid-row: 1; align-self: center; background: #fff; border: 1px solid #DCE7F4; border-radius: 16px; padding: 6px 22px; box-shadow: 0 14px 36px rgba(15,40,80,.12);
+    .dm-cta span { display: block; margin-top: 12px; font-size: 14px; color: #1F2A37; }
+    .dm-trans { grid-column: 2 / 4; grid-row: 2; background: #fff; border: 1px solid #DCE7F4; border-radius: 16px; padding: 6px 22px; box-shadow: 0 14px 36px rgba(15,40,80,.12);
                 display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; column-gap: 32px; }
     .dm-trans .l { padding: 10px 0; border-bottom: 1px solid #E6EDF6; }
     .dm-trans .l:nth-child(3n) { border-bottom: 0; }
@@ -322,11 +334,11 @@
     .dm-trans .l b.cl { color: #0F9E52; }
     .dm-trans .l i { font-style: normal; margin-left: 8px; font-size: 12.5px; color: #6B7480; }
     .dm-trans .l p { margin-top: 3px; font-size: 14.5px; line-height: 1.45; color: #1E242D; }
-    .d-card { position: relative; height: auto; aspect-ratio: 1 / 1; width: 100%; max-width: 240px; justify-self: center; background: #0A1622; border: 1px solid rgba(255,255,255,.07); border-radius: 16px; box-shadow: 0 16px 40px rgba(10,30,60,.18); }
-    .d-rd { position: absolute; left: 20px; top: 22px; width: 44px; height: 44px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 0; cursor: pointer; }
+    .d-card { position: relative; height: 150px; width: 100%; justify-self: stretch; background: #0A1622; border: 1px solid rgba(255,255,255,.07); border-radius: 16px; box-shadow: 0 16px 40px rgba(10,30,60,.18); }
+    .d-rd { position: absolute; left: 14px; top: 58px; width: 36px; height: 36px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 0; cursor: pointer; }
     .d-rd svg { width: 17px; height: 17px; color: var(--azul); }
-    .d-onda { position: absolute; left: 20px; right: 20px; top: 46%; height: 54px; transform: translateY(-50%); color: #22C8F5; }
-    .d-prog { position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .d-onda { position: absolute; left: 60px; right: 16px; top: 52px; height: 48px; color: #22C8F5; }
+    .d-prog { position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; align-items: center; gap: 12px; }
     .d-prog .tri { width: 11px; height: 13px; color: #fff; }
     .d-prog .pista { flex: 1; height: 3px; border-radius: 999px; background: rgba(255,255,255,.16); position: relative; }
     .d-prog .pista::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 12px; border-radius: 999px; background: rgba(255,255,255,.85); }
@@ -343,10 +355,10 @@
     .d-fila .va.neg { font-weight: 700; }
 
     /* ============ 07 - LO QUE HACE Y LO QUE NO ============ */
-    .s07 { background: var(--claro); }
+    .s07 { background: var(--claro); border-top: 3px solid rgba(0,112,254,.55); }
     .s07 .foto { background-image: url(/assets/conce-posventa.webp); background-position: center 45%; opacity: 1; }
     /* menos tapada que la demo, para que no parezcan la misma seccion */
-    .s07 .velo { background: linear-gradient(90deg, rgba(241,247,253,.80) 0%, rgba(241,247,253,.42) 40%, rgba(241,247,253,.10) 100%); }
+    .s07 .velo { background: linear-gradient(90deg, rgba(241,247,253,.93) 0%, rgba(241,247,253,.86) 30%, rgba(241,247,253,.30) 46%, rgba(241,247,253,.06) 70%, rgba(241,247,253,0) 100%); }
     .n-dos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .n-box { border-radius: 16px; border: 1px solid #E1EBF6; padding: 22px 24px 24px; box-shadow: 0 14px 40px rgba(15,40,80,.07); }
     .n-si { background: linear-gradient(135deg, #E6F7EE, #F6FBFE); }
@@ -445,9 +457,9 @@
       .s02 .dos { grid-template-columns: 1fr; }
       .dm { grid-template-columns: 1fr 1fr; }
       .dm-txt { grid-column: 1 / -1; }
-      .dm-trans { grid-column: 1 / -1; grid-row: 2; }
-      .dm .d-card { grid-column: 1; grid-row: 3; }
-      .dm .d-panel { grid-column: 2; grid-row: 3; }
+      .dm .d-card { grid-column: 1; grid-row: 2; }
+      .dm .d-panel { grid-column: 2; grid-row: 2; }
+      .dm-trans { grid-column: 1 / -1; grid-row: 3; }
       .dm-cta { grid-column: 1 / -1; grid-row: 4; }
       .m-fila { margin-top: 8px; }
       /* a este ancho los tres pasos no caben con sus flechas: rejilla de tres */
@@ -518,11 +530,17 @@
       .h-play { width: 38px; height: 38px; } .h-play svg { width: 14px; height: 14px; }
       .h-meta { margin-top: 1.1rem; gap: 8px 16px; }
       .h-meta div { font-size: .8rem; gap: 7px; } .h-meta svg { width: 16px; height: 16px; }
-      .h-tarjs { width: 100%; margin-top: 1.4rem; gap: 8px; }
-      .t1p, .t2p { margin: 0; }
-      .h-tarj { padding: 9px 12px; gap: 12px; border-radius: 12px; }
-      .h-tarj .rd, .h-tarj .cuad { width: 34px; height: 34px; } .h-tarj .rd svg { width: 18px; height: 18px; } .h-tarj .cuad svg { width: 28px; height: 28px; }
-      .h-tarj b { font-size: .86rem; } .h-tarj i { font-size: .8rem; }
+      .h-tarjs { width: 100%; margin-top: 1.2rem; gap: 7px; }
+      .hv-cli { margin-right: 34px; padding: 8px 12px; border-radius: 14px 14px 14px 4px; }
+      .hv-er { margin-left: 34px; padding: 8px 12px 9px; border-radius: 14px 14px 4px 14px; }
+      .hv-cli b, .hv-er b { font-size: .7rem; }
+      .hv-cli span, .hv-er > span:last-child { font-size: .8rem; line-height: 1.35; }
+      .hv-wa { width: 24px; height: 24px; left: -10px; top: -10px; } .hv-wa svg { width: 14px; height: 14px; }
+      .hv-agenda { padding: 9px 12px 4px; border-radius: 12px; }
+      .hv-cab { padding-bottom: 7px; } .hv-cab .ic { width: 24px; height: 24px; } .hv-cab .ic svg { width: 14px; height: 14px; }
+      .hv-cab b { font-size: .8rem; }
+      .hv-fila { padding: 6px 0; gap: 1px 8px; }
+      .hv-fila span { font-size: .78rem; } .hv-fila em { font-size: .7rem; }
 
       /* --- 02 --- */
       .m-fila { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
@@ -578,7 +596,7 @@
 
       /* --- las tarjetas, mas destacadas: sobre oscuro un azul marino con
          filo azul; sobre claro, blancas con franja de color arriba --- */
-      .m-a, .b-card, .w-card, .h2-card, .h-tarj { background: rgba(14,36,66,.94); border: 1px solid rgba(90,150,255,.45); box-shadow: 0 14px 32px rgba(0,0,0,.45); }
+      .m-a, .b-card, .w-card, .h2-card { background: rgba(14,36,66,.94); border: 1px solid rgba(90,150,255,.45); box-shadow: 0 14px 32px rgba(0,0,0,.45); }
       .b-box, .w-box { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.16); }
       .m-pil, .m-cab { background: rgba(10,28,54,.92); }
       .d-panel { border-top: 3px solid var(--azul); box-shadow: 0 12px 28px rgba(15,40,80,.16); }
@@ -602,8 +620,7 @@
       .d-btn b { font-size: .95rem; } .d-chip { height: 30px; font-size: .84rem; }
       .d-pie { font-size: .8rem; margin-top: .6rem; }
       .dm { display: block; }
-      .dm .d-card { margin-top: 20px; height: 116px; aspect-ratio: auto; max-width: none; }
-      .d-onda { transform: none; }
+      .dm .d-card { margin-top: 20px; height: 116px; }
       .dm .d-panel { margin-top: 12px; }
       /* en el movil la demo se queda como estaba (Anais la prefiere asi),
          sin la transcripcion, pero ahora con su boton al final */
@@ -674,9 +691,6 @@
       .h-meta { margin-top: .8rem; gap: 6px 14px; }
       .h-meta div { font-size: .72rem; } .h-meta svg { width: 14px; height: 14px; }
       .h-tarjs { margin-top: 1rem; gap: 6px; }
-      .h-tarj { padding: 7px 11px; gap: 10px; }
-      .h-tarj .rd, .h-tarj .cuad { width: 30px; height: 30px; } .h-tarj .rd svg { width: 16px; height: 16px; } .h-tarj .cuad svg { width: 24px; height: 24px; }
-      .h-tarj b { font-size: .8rem; line-height: 1.3; } .h-tarj i { font-size: .74rem; line-height: 1.3; }
       .h-cuerpo { padding-top: 68px; padding-bottom: 24px; }
       /* la 02, un pelin mas pequena */
       .m-fila { margin-top: 16px; gap: 8px; }
@@ -770,23 +784,26 @@
         </div>
       </div>
 
+      <!-- Anais (2026-10-04): las tres vinetas sueltas ("Nueva consulta",
+           "Cita de taller", "Cliente recurrente") "no sugieren nada". Ahora
+           cuentan la tesis del titular: una pregunta de venta un sabado, la
+           respuesta, y la agenda donde caen juntas la prueba del coche y la
+           revision del taller. Mismo ejemplo que la 04 y la demo (el Leon,
+           jueves 17:00, Laura M.). -->
       <div class="h-tarjs">
-        <div class="h-tarj t1p">
-          <span class="rd rd-verde"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 3.5 9 8l-2 2c.8 2 2.5 3.7 4.5 4.5l2-2 4.5 2.5v3c0 1-.8 1.7-1.8 1.6C8.6 19 4.4 14 3.6 5.8 3.5 4.8 4.2 4 5.2 4z" fill="currentColor"/><path d="M15 3.5a6 6 0 0 1 5.5 5.5M15 7a3 3 0 0 1 2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-          <span><b>Nueva consulta</b><i>Venta</i><i>Ahora</i></span>
+        <div class="hv-cli">
+          <b>Cliente &middot; s&aacute;bado 20:14</b>
+          <span>Hola, &iquest;sigue disponible el SEAT Le&oacute;n de la web?</span>
         </div>
-        <div class="h-tarj t2p">
-          <span class="cuad"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="2.5" y="4.5" width="19" height="17" rx="2.5" stroke="currentColor" stroke-width="1.9"/>
-            <path d="M2.5 9.5h19M7.5 2.5v4M16.5 2.5v4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-            <circle cx="7.5" cy="13" r="1.2" fill="currentColor"/><circle cx="12" cy="13" r="1.2" fill="currentColor"/><circle cx="16.5" cy="13" r="1.2" fill="currentColor"/>
-            <circle cx="7.5" cy="17.5" r="1.2" fill="currentColor"/><circle cx="12" cy="17.5" r="1.2" fill="currentColor"/>
-          </svg></span>
-          <span><b>Cita de taller</b><i>Confirmada</i><i>Mañana 10.00</i></span>
+        <div class="hv-er">
+          <span class="hv-wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2m0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.3-.4A8 8 0 0 1 12 4m-3.3 4.2c-.2 0-.5.1-.7.4s-.9.9-.9 2.2.9 2.5 1 2.7c.2.2 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.7s1.5-.6 1.7-1.2.2-1.1.2-1.2-.2-.2-.4-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4z"/></svg></span>
+          <b>EasyRobots &middot; 20:14</b>
+          <span>S&iacute;, sigue disponible. &iquest;Te viene bien verlo el jueves a las 17:00?</span>
         </div>
-        <div class="h-tarj t3p">
-          <span class="rd rd-azul"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></span>
-          <span><b>Cliente recurrente</b><b>Posventa</b><i>Última visita: hace 8 meses</i></span>
+        <div class="hv-agenda">
+          <div class="hv-cab"><span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="17" rx="2.5" stroke="currentColor" stroke-width="1.9"/><path d="M2.5 9.5h19M7.5 2.5v4M16.5 2.5v4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><b>Agenda del concesionario</b></div>
+          <div class="hv-fila"><i class="pt v"></i><span><b>Jueves 17:00</b> &middot; Prueba del Le&oacute;n</span><em>Ventas &middot; Laura M.</em></div>
+          <div class="hv-fila"><i class="pt a"></i><span><b>Viernes 9:00</b> &middot; Revisi&oacute;n 30.000 km</span><em>Taller &middot; recordatorio enviado</em></div>
         </div>
       </div>
     </div>
