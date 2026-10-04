@@ -154,31 +154,40 @@
     .h-btns { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
     .h-col .meta { margin-top: 28px; }
 
-    /* las tres piezas de la derecha: pedido, estado del envio y la consulta
-       del cliente a las 23:40. Van escalonadas como en el boceto. */
-    .h-piezas { position: relative; justify-self: end; width: min(100%, 360px); display: flex; flex-direction: column; gap: 16px; }
-    .h-ped { margin-left: 44px; background: #fff; border-radius: 14px; display: flex; align-items: center; gap: 14px; padding: 12px 16px; box-shadow: 0 14px 40px rgba(0,0,0,.35); }
-    .h-ped img { width: 58px; height: 42px; object-fit: contain; }
-    .h-ped b { display: block; font-size: 16px; font-weight: 700; color: var(--tinta); letter-spacing: -.01em; }
-    .h-ped span { display: flex; align-items: center; gap: 7px; font-size: 15px; font-weight: 600; color: #15803D; }
-    .h-env { margin-left: 44px; background: rgba(4,12,21,.86); border: 1px solid rgba(255,255,255,.10); border-radius: 14px; padding: 18px 20px; backdrop-filter: blur(10px); box-shadow: 0 14px 40px rgba(0,0,0,.45); }
-    .h-env > b { display: block; font-size: 16.5px; font-weight: 700; letter-spacing: -.01em; }
-    .h-pasos { margin-top: 14px; display: flex; flex-direction: column; gap: 12px; }
-    .h-paso { position: relative; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 500; color: rgba(255,255,255,.90); white-space: nowrap; }
-    .h-paso .an { width: 12px; height: 12px; border-radius: 50%; background: var(--verde); flex: 0 0 auto; box-shadow: 0 0 0 3px rgba(22,200,115,.22); }
-    /* el hilo que une los cuatro estados */
-    .h-paso + .h-paso::before { content: ""; position: absolute; left: 5px; top: -14px; width: 2px; height: 14px; background: rgba(22,200,115,.45); }
-    .h-cli { margin-right: 24px; background: #fff; border-radius: 14px; display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; box-shadow: 0 14px 40px rgba(0,0,0,.35); }
-    .h-cli img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
-    .h-cli b { display: block; font-size: 14.5px; font-weight: 700; color: #3F4A5A; }
-    .h-cli span { display: block; font-size: 15px; line-height: 1.4; color: var(--tinta); }
-    .h-wa { position: absolute; right: -14px; bottom: 62px; width: 46px; height: 46px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; z-index: 3; box-shadow: 0 6px 18px rgba(0,0,0,.4); }
-    .h-wa svg { width: 28px; height: 28px; color: #fff; }
+    /* la conversacion de la derecha: pregunta, respuesta y el pedido que la
+       respalda, escalonadas como en el boceto */
+    .h-piezas { position: relative; justify-self: end; width: min(100%, 390px); display: flex; flex-direction: column; gap: 14px; }
+    .h-cli { margin-right: 44px; background: #fff; border-radius: 16px 16px 16px 4px; display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; box-shadow: 0 14px 40px rgba(0,0,0,.35); }
+    .h-cli img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
+    .h-cli b { display: block; font-size: 13.5px; font-weight: 700; color: #5A6675; }
+    .h-cli span { display: block; margin-top: 2px; font-size: 15px; line-height: 1.4; color: var(--tinta); }
+    .h-resp { position: relative; margin-left: 44px; background: var(--azul); border-radius: 16px 16px 4px 16px; padding: 12px 16px 13px; box-shadow: 0 14px 40px rgba(0,40,120,.45); }
+    .h-resp b { display: block; font-size: 13.5px; font-weight: 700; color: rgba(255,255,255,.78); }
+    .h-resp > span { display: block; margin-top: 2px; font-size: 15px; line-height: 1.45; color: #fff; }
+    .h-resp .h-wa { position: absolute; left: -15px; top: -15px; margin: 0; width: 34px; height: 34px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.4); }
+    .h-wa svg { width: 21px; height: 21px; color: #fff; }
+    .h-env { margin-left: 44px; background: rgba(4,12,21,.88); border: 1px solid rgba(255,255,255,.10); border-radius: 16px; padding: 14px 18px 16px; backdrop-filter: blur(10px); box-shadow: 0 14px 40px rgba(0,0,0,.45); }
+    .h-ped { display: flex; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,.10); }
+    .h-ped img { width: 52px; height: 38px; object-fit: contain; background: #fff; border-radius: 8px; padding: 2px; }
+    .h-ped b { display: block; font-size: 15.5px; font-weight: 700; letter-spacing: -.01em; }
+    .h-ped span { display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: #3DDC97; }
+    .h-pasos { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+    .h-paso { position: relative; display: flex; align-items: center; gap: 13px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,.90); white-space: nowrap; }
+    .h-paso .an { width: 11px; height: 11px; border-radius: 50%; background: var(--verde); flex: 0 0 auto; box-shadow: 0 0 0 3px rgba(22,200,115,.22); }
+    .h-paso.off { color: rgba(255,255,255,.62); }
+    .h-paso.off .an { background: transparent; border: 2px solid rgba(255,255,255,.45); box-shadow: none; }
+    /* el hilo que une los estados */
+    .h-paso + .h-paso::before { content: ""; position: absolute; left: 5px; top: -12px; width: 2px; height: 12px; background: rgba(22,200,115,.45); }
 
     /* ============ 02 - TODO EMPUJA HACIA LA VENTA ============ */
-    .s02 { background: var(--oscuro); }
-    .s02 .foto { background-image: url(/assets/ecom-postventa.webp); opacity: .62; }
-    .s02 .velo { background: linear-gradient(90deg, rgba(2,10,20,.94) 0%, rgba(2,10,20,.92) 30%, rgba(2,10,20,.80) 55%, rgba(2,10,20,.66) 100%); }
+    /* Fondo comun de la 02 y la 03. Mas azul que el hero y con un filo
+       arriba, para que se note que ahi empieza otra cosa. */
+    .duo { position: relative; overflow: hidden; background: linear-gradient(180deg, #0B1D37 0%, #06111F 100%); border-top: 1px solid rgba(80,140,255,.25); }
+    .duo > .foto { background-image: url(/assets/ecom-postventa.webp); opacity: .40; }
+    .duo > .velo { background: linear-gradient(90deg, rgba(8,22,42,.94) 0%, rgba(8,22,42,.82) 42%, rgba(8,22,42,.58) 100%); }
+    .duo .sec { background: transparent; min-height: 0; }
+    .s02 .caja { padding-bottom: 44px; }
+    .s03 .caja { padding-top: 44px; }
     .dos { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 4vw, 64px); align-items: center; }
     .s02 .h2 { max-width: 560px; }
     .s02 .p { max-width: 500px; }
@@ -206,9 +215,6 @@
     .et-v { background: #E4F8EC; color: #12A150; }
 
     /* ============ 03 - RESPONDE CON LOS DATOS DE TU TIENDA ============ */
-    .s03 { background: var(--oscuro); }
-    .s03 .foto { background-image: url(/assets/ecom-dato.webp); opacity: .6; }
-    .s03 .velo { background: linear-gradient(90deg, rgba(2,10,20,.94) 0%, rgba(2,10,20,.92) 30%, rgba(2,10,20,.82) 55%, rgba(2,10,20,.70) 100%); }
     .s03 .p { max-width: 480px; }
     .d-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
     .d-card { border-radius: 14px; padding: 22px 22px 24px; backdrop-filter: blur(6px); }
@@ -234,8 +240,11 @@
     /* ============ 04 - UN PEDIDO, DE LA DUDA A LA RESENA ============ */
     .s04 { background: var(--claro); }
     .s04 .foto { background-image: url(/assets/ecom-seda.webp); }
-    .s04 .velo { background: linear-gradient(90deg, rgba(245,248,253,.92) 0%, rgba(245,248,253,.86) 45%, rgba(245,248,253,.62) 100%); }
-    .r-barra { margin-top: 44px; background: rgba(255,255,255,.97); border-radius: 14px; padding: 30px 32px 32px; box-shadow: 0 14px 40px rgba(15,40,80,.08);
+    .s04 .velo { background: linear-gradient(90deg, rgba(245,248,253,.90) 0%, rgba(245,248,253,.74) 45%, rgba(245,248,253,.40) 100%); }
+    /* "un pelin grande": sin alto minimo y con algo menos de relleno */
+    .s04 { min-height: 0; }
+    .s04 .caja { padding-top: 84px; padding-bottom: 84px; }
+    .r-barra { margin-top: 34px; background: rgba(255,255,255,.97); border-radius: 14px; padding: 30px 32px 32px; box-shadow: 0 14px 40px rgba(15,40,80,.08);
                display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 32px; }
     .r-paso { position: relative; }
     .r-top { display: flex; align-items: center; gap: 14px; }
@@ -254,10 +263,19 @@
        conversables, el gancho se pone una vez y sirve para las tres. */
     .s05 { background: var(--claro); }
     .s05 .foto { background-image: url(/assets/ecom-demo.webp); }
-    .s05 .velo { background: linear-gradient(120deg, rgba(245,248,253,.80) 0%, rgba(240,246,253,.66) 45%, rgba(236,243,252,.78) 100%); }
+    .s05 .velo { background: linear-gradient(120deg, rgba(245,248,253,.72) 0%, rgba(240,246,253,.36) 50%, rgba(236,243,252,.50) 100%); }
+    /* Anais (2026-10-04): de la demo para abajo las secciones eran "demasiado
+       grandes" y los fondos "muy opacos". Sin alto minimo, y los velos se
+       abren a la derecha, donde no hay texto suelto sino tarjetas blancas. */
+    .s05, .s06, .s07, .s08 { min-height: 0; }
+    .s05 .caja, .s06 .caja, .s07 .caja, .s08 .caja { padding-top: 84px; padding-bottom: 84px; }
     .dm-cab0 { max-width: 760px; }
-    .dm-rej { margin-top: 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.15fr); gap: 20px; align-items: start; }
-    .dm-card { background: #fff; border-radius: 14px; box-shadow: 0 14px 40px rgba(15,40,80,.10); display: flex; flex-direction: column; overflow: hidden; min-height: 470px; }
+    /* Las tres tarjetas a la misma altura (Anais: "descuadradas"). La tercera
+       era la mas larga y estiraba la seccion: pierde la hora repetida del
+       final y el chat se aprieta un poco en las tres. */
+    .dm-cuerpo { margin-top: 34px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1.15fr); gap: 20px; align-items: start; }
+    .dm-rej { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+    .dm-card { background: #fff; border-radius: 14px; box-shadow: 0 14px 40px rgba(15,40,80,.14); display: flex; flex-direction: column; overflow: hidden; }
     .dm-rot { display: flex; align-items: center; gap: 12px; padding: 14px 16px 12px; }
     .dm-rot .rd { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
     .dm-rot .rd svg { width: 22px; height: 22px; color: #fff; }
@@ -269,8 +287,8 @@
     .dm-cab .av svg { width: 14px; height: 14px; color: #fff; }
     .dm-cab b { font-size: 14px; font-weight: 600; color: #fff; letter-spacing: -.01em; }
     .dm-cab .pt2 { margin-left: auto; width: 16px; height: 16px; color: rgba(255,255,255,.75); }
-    .dm-chat { flex: 1 1 auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
-    .dm-in, .dm-out { max-width: 92%; border-radius: 12px; padding: 8px 11px 5px; font-size: 14.5px; line-height: 1.45; }
+    .dm-chat { flex: 1 1 auto; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .dm-in, .dm-out { max-width: 94%; border-radius: 12px; padding: 7px 10px 4px; font-size: 14px; line-height: 1.42; }
     .dm-in { align-self: flex-end; background: #E7F6F0; color: var(--tinta); }
     .dm-out { align-self: flex-start; background: #EDF4FE; color: var(--tinta); }
     .dm-fila { display: flex; align-items: flex-start; gap: 9px; }
@@ -287,7 +305,7 @@
     .dm-bot { align-self: stretch; background: #EDF4FE; border: 0; border-radius: 10px; min-height: 38px; padding: 6px 10px; font-size: 14px; font-weight: 700; color: var(--azul); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .dm-bot svg { width: 15px; height: 15px; }
     .dm-aviso b { display: block; font-size: 15px; line-height: 1.35; letter-spacing: -.01em; }
-    .dm-aviso span { display: block; margin-top: 3px; font-size: 13.5px; line-height: 1.45; color: #6B7686; }
+    .dm-aviso span { display: block; margin-top: 2px; font-size: 13px; line-height: 1.4; color: #6B7686; }
     .hh-abajo { margin-top: auto; }
     .dm-ped { border-top: 1px solid #EAEFF6; padding-top: 10px; }
     .dm-ped .ti { display: flex; align-items: center; gap: 9px; font-size: 15.5px; font-weight: 700; letter-spacing: -.02em; }
@@ -324,7 +342,7 @@
        hizo con el diagrama de estetica cuando Anais pidio letra mas grande. */
     .s06 { background: var(--claro); }
     .s06 .foto { background-image: url(/assets/ecom-piezas.webp); }
-    .s06 .velo { background: linear-gradient(90deg, rgba(245,248,253,.93), rgba(245,248,253,.80) 50%, rgba(245,248,253,.70)); }
+    .s06 .velo { background: linear-gradient(90deg, rgba(245,248,253,.90) 0%, rgba(245,248,253,.62) 42%, rgba(245,248,253,.28) 100%); }
     .s06 .p { max-width: 470px; }
     .pz-rejilla { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
     .pz-ch { background: #fff; border-radius: 12px; min-height: 84px; padding: 10px 12px; display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -339,13 +357,11 @@
     .pz3 span b { color: #E4405F; }
     .pz-ch .lg-woo { background: #7F54B3; border-radius: 6px; display: flex; align-items: center; justify-content: center; width: 36px; }
     .pz-ch .lg-woo svg { width: 70%; height: 70%; }
-    .pz-lista { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
-    .pz-lista div { display: flex; align-items: flex-start; gap: 10px; font-size: 15.5px; line-height: 1.4; color: #3C4757; }
 
     /* ============ 07 - TECNOLOGIA QUE POTENCIA TU EQUIPO ============ */
     .s07 { background: var(--claro); }
     .s07 .foto { background-image: url(/assets/ecom-tecno.webp); }
-    .s07 .velo { background: linear-gradient(90deg, rgba(245,248,253,.93), rgba(245,248,253,.80) 50%, rgba(245,248,253,.70)); }
+    .s07 .velo { background: linear-gradient(90deg, rgba(245,248,253,.90) 0%, rgba(245,248,253,.62) 42%, rgba(245,248,253,.28) 100%); }
     .s07 .p { max-width: 460px; }
     .tc-dos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .tc-box { background: rgba(255,255,255,.95); border-radius: 12px; padding: 24px 24px 26px; box-shadow: 0 14px 40px rgba(15,40,80,.10); }
@@ -361,8 +377,8 @@
        pidio que fuese JUSTO ENCIMA de la garantia. */
     .s08 { background: var(--claro); }
     .s08 .foto { background-image: url(/assets/ecom-limites.webp); }
-    .s08 .velo { background: linear-gradient(90deg, rgba(245,248,253,.93), rgba(245,248,253,.82) 50%, rgba(245,248,253,.78)); }
-    .lm-fila { margin-top: 40px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+    .s08 .velo { background: linear-gradient(180deg, rgba(245,248,253,.88) 0%, rgba(245,248,253,.55) 45%, rgba(245,248,253,.42) 100%); }
+    .lm-fila { margin-top: 32px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
     .lm-ficha { background: #fff; border-radius: 14px; padding: 24px 22px 26px; box-shadow: 0 10px 30px rgba(15,40,80,.08); }
     .lm-ficha .rd { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
     .lm-ficha .rd svg { width: 24px; height: 24px; }
@@ -374,7 +390,8 @@
     .lm-ficha .rd-gris { background: #EDF1F6; color: #0B1220; }
     .lm-ficha b { display: block; margin-top: 18px; font-size: 17.5px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
     .lm-ficha span { display: block; margin-top: 8px; font-size: 15px; line-height: 1.55; color: #5A6675; }
-    .lm-pie { margin-top: 30px; max-width: 820px; font-size: 16.5px; line-height: 1.6; color: var(--gris); }
+    /* con el velo mas abierto la frase caia sobre la foto: va en su panel */
+    .lm-pie { margin-top: 18px; display: inline-block; max-width: 860px; background: rgba(255,255,255,.88); border-radius: 12px; padding: 14px 20px; font-size: 16px; line-height: 1.55; color: #2B3646; box-shadow: 0 10px 30px rgba(15,40,80,.08); }
 
     /* ============ 09 - NO SOMOS UNA CENTRALITA + GARANTIA ============
        Medidas compactas de estetica: sin alto minimo y con su relleno. */
@@ -426,7 +443,7 @@
       body { zoom: .9; }
       .hero { height: calc(86vh / .9); height: calc(86svh / .9); min-height: 667px; }
       .sec { min-height: calc(var(--alto) / .9); }
-      .s09 { min-height: 0; }
+      .duo .sec, .s04, .s05, .s06, .s07, .s08, .s09 { min-height: 0; }
       .s10 { min-height: calc(clamp(420px, 52vh, 560px) / .9); }
     }
 
@@ -434,8 +451,8 @@
     @media (max-width: 1180px) {
       .h-links { gap: 30px; }
       .s03 .dos { grid-template-columns: 1fr; }
-      .dm-rej { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .dm-lado { grid-column: 1 / -1; display: grid; grid-template-columns: 1.2fr 1fr; align-items: start; }
+      .dm-cuerpo { grid-template-columns: 1fr; }
+      .dm-lado { display: grid; grid-template-columns: 1.2fr 1fr; align-items: start; }
       .dm-lado .meta { grid-column: 2; }
       .r-barra { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 30px; }
       .r-paso:nth-child(3) .r-fl { display: none; }
@@ -451,11 +468,18 @@
        Medidas de inmobiliarias, que es la que Anais da por buena en el
        movil: titulares a 1,6 rem, texto a .93 rem, cintillos a .68 rem,
        botones a .92 rem. Por debajo de 620 px se aprieta como alli: 30 px
-       de relleno, h2 de 1,45 a 1,9 rem y texto a .88 rem. */
+       de relleno, h2 de 1,45 a 1,9 rem y texto a .88 rem.
+
+       Segunda pasada de Anais (2026-10-04): hero, 02 y 03 "supergrandes", la
+       demo "un no parar de deslizar", equipo y limites demasiado grandes
+       para lo que cuentan, y el fondo de la CTA no se veia. Y que en el
+       movil los fondos pueden quedarse discretos, pero las tarjetas tienen
+       que destacar mas, con mas color. */
     @media (max-width: 860px) {
       :root { --pad: 58px; --alto: 0px; }
       .sec { display: block; }
       .caja, .s09 .caja, .s10 .caja, .s11 .caja { display: block; padding-left: 22px; padding-right: 22px; }
+      .s04 .caja, .s05 .caja, .s06 .caja, .s07 .caja, .s08 .caja { padding-top: var(--pad); padding-bottom: var(--pad); }
       .dos { display: block; }
       .h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.14; }
       .kick { font-size: .68rem; letter-spacing: .2em; }
@@ -471,12 +495,9 @@
       .chk { width: 16px; height: 16px; }
       section[id], header[id] { scroll-margin-top: 58px; }
 
-      /* --- fotos: recortes verticales y velos en vertical. Los velos del
-         escritorio son horizontales: en 390 px cubrian la seccion entera y
-         la foto no se veia nunca (fallo 10 de CLAUDE.md). --- */
+      /* --- fotos: recortes verticales y velos en vertical (fallo 10) --- */
       .hero .foto  { background-image: url(/assets/ecom-hero-movil.webp); }
-      .s02 .foto   { background-image: url(/assets/ecom-postventa-movil.webp); }
-      .s03 .foto   { background-image: url(/assets/ecom-dato-movil.webp); }
+      .duo > .foto { background-image: url(/assets/ecom-postventa-movil.webp); }
       .s04 .foto   { background-image: url(/assets/ecom-seda-movil.webp); }
       .s05 .foto   { background-image: url(/assets/ecom-demo-movil.webp); }
       .s06 .foto   { background-image: url(/assets/ecom-piezas-movil.webp); }
@@ -486,133 +507,143 @@
       .s10 .foto   { background-image: url(/assets/ecom-cierre-movil.webp); }
       .s11 .foto   { background-image: url(/assets/ecom-pie-movil.webp); }
       .foto { background-position: center top !important; }
-      .hero .velo, .s02 .velo, .s03 .velo {
-        background: linear-gradient(180deg, rgba(2,8,16,.90) 0%, rgba(2,8,16,.72) 36%, rgba(2,8,16,.80) 66%, rgba(2,8,16,.94) 100%); }
-      .s10 .velo, .s11 .velo {
-        background: linear-gradient(180deg, rgba(0,6,13,.92) 0%, rgba(0,6,13,.78) 50%, rgba(0,6,13,.92) 100%); }
+      .hero .velo { background: linear-gradient(180deg, rgba(2,8,16,.88) 0%, rgba(2,8,16,.70) 40%, rgba(2,8,16,.86) 75%, rgba(2,8,16,.96) 100%); }
+      .duo > .velo { background: linear-gradient(180deg, rgba(8,22,42,.86) 0%, rgba(8,22,42,.80) 50%, rgba(8,22,42,.92) 100%); }
+      .s11 .velo { background: linear-gradient(180deg, rgba(0,6,13,.92) 0%, rgba(0,6,13,.80) 50%, rgba(0,6,13,.92) 100%); }
+      /* la CTA "ni se ve": el velo se abre en medio, donde no hay texto */
+      .s10 .velo { background: linear-gradient(180deg, rgba(0,6,13,.80) 0%, rgba(0,6,13,.52) 38%, rgba(0,6,13,.30) 62%, rgba(0,6,13,.82) 100%); }
       .s04 .velo, .s05 .velo, .s06 .velo, .s07 .velo, .s08 .velo, .s09 .velo {
-        background: linear-gradient(180deg, rgba(246,249,253,.92) 0%, rgba(246,249,253,.78) 40%, rgba(246,249,253,.76) 68%, rgba(246,249,253,.92) 100%); }
+        background: linear-gradient(180deg, rgba(246,249,253,.92) 0%, rgba(246,249,253,.80) 40%, rgba(246,249,253,.78) 68%, rgba(246,249,253,.92) 100%); }
 
-      /* --- barra y hero --- */
+      /* --- barra y hero: sin la pantalla entera a la fuerza y sin el
+         parrafo largo, que repite lo que dicen los limites mas abajo --- */
       .h-nav-in { padding: 9px 22px; }
       .h-links { display: none; }
       .h-logo { width: 30px; height: 30px; border-radius: 9px; }
       .h-logo svg { width: 18px; height: 18px; }
       .h-marca b { font-size: 1.02rem; }
       .h-navbtn { margin-left: auto; height: auto; padding: .6rem 1.05rem; font-size: .8rem; gap: .4rem; }
-      .hero { height: auto; min-height: 100svh; }
-      .h-cuerpo { display: block; padding: 76px 22px 30px; }
-      .h-t { font-size: clamp(2.1rem, 8.5vw, 3rem); line-height: 1.05; margin-top: .9rem; }
-      .h-sub { font-size: 1rem; line-height: 1.55; margin-top: 1rem; }
-      .h-p { font-size: .9rem; line-height: 1.55; margin-top: .6rem; }
-      .h-btns { margin-top: 1.4rem; gap: 10px; }
+      .hero { height: auto; min-height: 0; }
+      .h-cuerpo { display: block; padding: 74px 22px 30px; }
+      .h-t { font-size: clamp(2.1rem, 8.5vw, 3rem); line-height: 1.05; margin-top: .8rem; }
+      .h-sub { font-size: 1rem; line-height: 1.5; margin-top: .9rem; }
+      .h-p { display: none; }
+      .h-btns { margin-top: 1.2rem; gap: 10px; }
       .h-btns .btn { flex: 1 1 auto; }
-      .h-col .meta { margin-top: 1.1rem; }
-      .h-piezas { width: 100%; margin-top: 1.4rem; gap: 8px; }
-      .h-ped, .h-env { margin-left: 0; }
-      .h-cli { margin-right: 0; }
-      .h-ped { padding: 9px 12px; gap: 10px; border-radius: 12px; }
-      .h-ped img { width: 44px; height: 32px; }
-      .h-ped b { font-size: .88rem; } .h-ped span { font-size: .82rem; }
-      .h-env { padding: 11px 14px; border-radius: 12px; }
-      .h-env > b { font-size: .9rem; }
-      .h-pasos { margin-top: 8px; gap: 7px; }
-      .h-paso { font-size: .82rem; gap: 10px; }
-      .h-paso .an { width: 10px; height: 10px; }
-      .h-paso + .h-paso::before { left: 4px; top: -9px; height: 9px; }
-      .h-cli { padding: 9px 12px; gap: 10px; border-radius: 12px; }
-      .h-cli img { width: 30px; height: 30px; }
-      .h-cli b, .h-cli span { font-size: .82rem; line-height: 1.35; }
-      .h-wa { display: none; }
+      .h-col .meta { margin-top: 1rem; }
+      .h-piezas { width: 100%; margin-top: 1.3rem; gap: 8px; }
+      .h-cli { margin-right: 34px; padding: 9px 12px; gap: 10px; border-radius: 14px 14px 14px 4px; }
+      .h-cli img { width: 28px; height: 28px; }
+      .h-cli b, .h-resp b { font-size: .72rem; }
+      .h-cli span, .h-resp > span { font-size: .84rem; line-height: 1.38; }
+      .h-resp { margin-left: 34px; padding: 9px 12px 10px; border-radius: 14px 14px 4px 14px; }
+      .h-resp .h-wa { width: 26px; height: 26px; left: -11px; top: -11px; }
+      .h-wa svg { width: 16px; height: 16px; }
+      .h-env { display: none; }
 
-      /* --- 02 --- */
-      .bandeja { margin-top: 22px; width: 100%; border-radius: 14px; }
+      /* --- 02 y 03, con su fondo comun --- */
+      .s02 .caja { padding-bottom: 14px; }
+      .s03 .caja { padding-top: 14px; }
+      .bandeja { margin-top: 18px; width: 100%; border-radius: 14px; box-shadow: 0 14px 34px rgba(0,0,0,.45); }
       .bd-cab { padding: 12px 14px 0; gap: 8px; }
       .bd-cab b { font-size: .95rem; } .bd-cab span { font-size: .76rem; }
       .bd-tabs { gap: .8rem; padding: .5rem 14px .55rem; overflow-x: auto; }
       .bd-tabs div { font-size: .74rem; } .bd-tabs div i { font-size: .7rem; }
       .bd-tabs div.on::after { bottom: -9px; }
+      /* cuatro filas bastan para ver la bandeja llena */
+      .bd-fila:nth-child(n+5) { display: none; }
       .bd-fila { padding: 8px 14px; gap: 10px; }
       .bd-ic { width: 26px; height: 26px; border-radius: 8px; } .bd-ic svg { width: 14px; height: 14px; }
       .bd-tx b { font-size: .84rem; } .bd-tx span { font-size: .74rem; }
       .bd-h { display: none; }
       .bd-et { width: auto; padding: .2rem .5rem; font-size: .7rem; border-radius: 6px; }
 
-      /* --- 03 --- */
-      .d-cards { margin-top: 22px; grid-template-columns: 1fr; gap: 12px; }
-      .d-card { padding: 14px 16px 16px; }
+      .d-cards { margin-top: 18px; grid-template-columns: 1fr; gap: 10px; }
+      .d-card { padding: 13px 14px 14px; backdrop-filter: none; }
+      .d-mal { background: rgba(88,16,24,.90); border-color: rgba(255,107,107,.55); }
+      .d-bien { background: rgba(5,74,46,.90); border-color: rgba(61,220,151,.60); }
       .d-cab .rd { width: 26px; height: 26px; border-radius: 8px; } .d-cab .rd svg { width: 14px; height: 14px; }
       .d-cab b { font-size: .92rem; }
-      .d-linea { margin-top: 12px; gap: 10px; }
-      .d-linea img { width: 30px; height: 30px; }
-      .d-bub { font-size: .84rem; padding: 8px 11px 6px; border-radius: 11px; }
+      .d-mal .d-cab b { color: #FF9A9A; } .d-bien .d-cab b { color: #6EF0B6; }
+      .d-linea { margin-top: 10px; }
+      .d-linea img { display: none; }
+      .d-bub { font-size: .84rem; padding: 7px 10px 5px; border-radius: 11px; }
       .hh { font-size: .68rem; }
-      .d-nota { margin-top: 10px; font-size: .8rem; }
-      .d-prod { margin-top: 12px; gap: 10px; }
-      .d-prod img { width: 52px; height: 42px; }
-      .d-prod b { font-size: .88rem; } .d-prod i, .d-prod span { font-size: .8rem; }
+      .d-nota { margin-top: 8px; font-size: .8rem; line-height: 1.45; color: rgba(255,255,255,.80); }
+      .d-prod { margin-top: 10px; gap: 10px; }
+      .d-prod img { width: 46px; height: 38px; }
+      .d-prod b { font-size: .86rem; } .d-prod i, .d-prod span { font-size: .78rem; }
 
       /* --- 04 --- */
-      .r-barra { margin-top: 22px; padding: 16px; grid-template-columns: 1fr; gap: 14px; }
+      .r-barra { margin-top: 18px; padding: 14px 16px; grid-template-columns: 1fr; gap: 12px; box-shadow: 0 10px 30px rgba(15,40,80,.12); }
       .r-paso { display: flex; align-items: flex-start; gap: 12px; }
       .r-top { gap: 8px; }
-      .r-n { width: 28px; height: 28px; font-size: .8rem; }
-      .r-ic { width: 22px; height: 22px; }
+      .r-n { width: 26px; height: 26px; font-size: .78rem; }
+      .r-ic { width: 20px; height: 20px; }
       .r-fl { display: none; }
-      .r-tx { margin-top: 3px; }
-      .r-tx b { font-size: .92rem; } .r-tx span { margin-top: 2px; font-size: .84rem; line-height: 1.45; }
+      .r-tx { margin-top: 2px; }
+      .r-tx b { font-size: .9rem; } .r-tx span { margin-top: 1px; font-size: .82rem; line-height: 1.42; }
 
-      /* --- 05 --- */
-      .dm-rej { margin-top: 22px; display: flex; flex-direction: column; gap: 12px; }
-      .dm-card { min-height: 0; }
-      .dm-rot { padding: 12px 14px 10px; gap: 10px; }
-      .dm-rot .rd { width: 34px; height: 34px; } .dm-rot .rd svg { width: 18px; height: 18px; }
-      .dm-rot b { font-size: .95rem; } .dm-rot span { font-size: .8rem; }
-      .dm-cab { height: 32px; margin: 0 8px; } .dm-cab b { font-size: .8rem; }
+      /* --- 05: las tres conversaciones en carrusel, de lado. Apiladas eran
+         casi 1.600 px de deslizar. Asoma la siguiente para que se vea que
+         hay mas. --- */
+      .dm-cuerpo { margin-top: 18px; display: block; }
+      .dm-rej { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -22px; padding: 4px 22px 14px; scrollbar-width: none; }
+      .dm-rej::-webkit-scrollbar { display: none; }
+      .dm-card { flex: 0 0 82%; scroll-snap-align: center; box-shadow: 0 10px 28px rgba(15,40,80,.16); }
+      .dm-rot { padding: 11px 13px 9px; gap: 10px; }
+      .dm-rot .rd { width: 32px; height: 32px; } .dm-rot .rd svg { width: 17px; height: 17px; }
+      .dm-rot b { font-size: .92rem; } .dm-rot span { font-size: .76rem; }
+      .dm-cab { height: 30px; margin: 0 8px; } .dm-cab b { font-size: .76rem; }
       .dm-cab .av { width: 18px; height: 18px; } .dm-cab .av svg { width: 11px; height: 11px; }
-      .dm-chat { padding: 12px; gap: 8px; }
-      .dm-in, .dm-out { font-size: .84rem; }
-      .dm-fila .bt, .dm-fila .gr { width: 26px; height: 26px; } .dm-fila .bt svg, .dm-fila .gr svg { width: 14px; height: 14px; }
-      .dm-prod img { width: 60px; height: 46px; }
-      .dm-prod b { font-size: .88rem; } .dm-prod i { font-size: .8rem; } .dm-prod u { font-size: .95rem; }
-      .dm-bot { font-size: .82rem; min-height: 34px; }
-      .dm-aviso b { font-size: .88rem; } .dm-aviso span { font-size: .8rem; }
-      .dm-ped .ti { font-size: .9rem; } .dm-ped .ti svg { width: 18px; height: 18px; }
-      .dm-via .pn { width: 20px; height: 20px; } .dm-via .pn svg { width: 12px; height: 12px; }
-      .dm-vias { font-size: .74rem; } .dm-link { font-size: .8rem; }
-      .dm-pie { padding: 8px 12px; } .dm-pie .campo { height: 32px; font-size: .8rem; } .dm-pie .env { width: 32px; height: 32px; }
-      .dm-lado { display: flex; gap: 12px; }
-      .dm-reg { padding: 14px 16px 16px; }
-      .dm-reg > b { font-size: .74rem; }
-      .dm-reg .fila { margin-top: 9px; gap: 10px; }
-      .dm-reg .fila svg { width: 17px; height: 17px; }
-      .dm-reg .fila i { font-size: .82rem; width: 5.6rem; } .dm-reg .fila span { font-size: .82rem; }
+      .dm-chat { padding: 10px; gap: 7px; }
+      .dm-in, .dm-out { font-size: .8rem; }
+      .dm-fila .bt, .dm-fila .gr { width: 24px; height: 24px; } .dm-fila .bt svg, .dm-fila .gr svg { width: 13px; height: 13px; }
+      .dm-prod img { width: 54px; height: 42px; }
+      .dm-prod b { font-size: .84rem; } .dm-prod i { font-size: .76rem; } .dm-prod u { font-size: .9rem; }
+      .dm-bot { font-size: .78rem; min-height: 32px; }
+      .dm-aviso b { font-size: .84rem; } .dm-aviso span { font-size: .76rem; }
+      .dm-ped .ti { font-size: .86rem; } .dm-ped .ti svg { width: 17px; height: 17px; }
+      .dm-via .pn { width: 18px; height: 18px; } .dm-via .pn svg { width: 11px; height: 11px; }
+      .dm-vias { font-size: .7rem; } .dm-link { font-size: .76rem; }
+      .dm-pie { padding: 7px 10px; } .dm-pie .campo { height: 30px; font-size: .76rem; } .dm-pie .env { width: 30px; height: 30px; }
+      .dm-lado { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+      .dm-reg { padding: 12px 14px 14px; }
+      .dm-reg > b { font-size: .7rem; }
+      .dm-reg .fila { margin-top: 7px; gap: 9px; }
+      .dm-reg .fila svg { width: 15px; height: 15px; }
+      .dm-reg .fila i { font-size: .78rem; width: 5.2rem; } .dm-reg .fila span { font-size: .78rem; }
       .dm-lado .btn { height: auto; font-size: .92rem; }
 
       /* --- 06 --- */
-      .pz-lista { margin-top: 18px; grid-template-columns: 1fr; gap: 8px; }
-      .pz-lista div { font-size: .86rem; }
-      .pz-rejilla { margin-top: 22px; gap: 8px; }
-      .pz-ch, .pz-ch.col { min-height: 62px; flex-direction: column; gap: 4px; padding: 8px 4px; font-size: .74rem; border-radius: 10px; }
-      .pz-ch svg, .pz-ch .lg { width: 20px; height: 20px; }
+      .pz-rejilla { margin-top: 18px; gap: 8px; }
+      .pz-ch, .pz-ch.col { min-height: 60px; flex-direction: column; gap: 4px; padding: 8px 4px; font-size: .72rem; border-radius: 10px; box-shadow: 0 8px 20px rgba(15,40,80,.12); }
+      .pz-ch svg, .pz-ch .lg, .pz-ch.col svg { width: 20px; height: 20px; }
       .pz-ch .lg-woo { width: 26px; }
-      .pz1 span { font-size: .95rem; }
-      .pz2 span { font-size: .7rem; }
+      .pz1 span { font-size: .92rem; }
+      .pz2 span { font-size: .68rem; }
 
-      /* --- 07 --- */
-      .tc-dos { margin-top: 22px; grid-template-columns: 1fr; gap: 12px; }
-      .tc-box { padding: 16px 18px 18px; }
-      .tc-ic { width: 34px; height: 34px; } .tc-ic svg { width: 18px; height: 18px; }
-      .tc-in > b { margin-top: 10px; font-size: .95rem; }
-      .tc-in .fila { margin-top: 7px; font-size: .86rem; gap: 9px; }
+      /* --- 07: los dos cuadros de lado, en carrusel --- */
+      .tc-dos { margin: 18px -22px 0; padding: 4px 22px 12px; display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+      .tc-dos::-webkit-scrollbar { display: none; }
+      .tc-box { flex: 0 0 80%; scroll-snap-align: center; padding: 14px 16px 16px; border-top: 3px solid var(--azul); box-shadow: 0 10px 28px rgba(15,40,80,.14); }
+      .tc-box + .tc-box { border-top-color: var(--tinta); }
+      .tc-ic { width: 30px; height: 30px; } .tc-ic svg { width: 16px; height: 16px; }
+      .tc-in > b { margin-top: 8px; font-size: .9rem; }
+      .tc-in .fila { margin-top: 6px; font-size: .8rem; gap: 8px; }
+      .tc-in .fila .chk { width: 14px; height: 14px; }
 
-      /* --- 08 --- */
-      .lm-fila { margin-top: 22px; grid-template-columns: 1fr; gap: 10px; }
-      .lm-ficha { padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; }
-      .lm-ficha .rd { width: 38px; height: 38px; flex: 0 0 auto; } .lm-ficha .rd svg { width: 19px; height: 19px; }
-      .lm-ficha b { margin-top: 0; font-size: .92rem; } .lm-ficha span { margin-top: 4px; font-size: .84rem; line-height: 1.5; }
+      /* --- 08: dos por fila y cada ficha con el color de su icono --- */
+      .lm-fila { margin-top: 18px; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .lm-ficha { padding: 12px 12px 13px; box-shadow: 0 8px 22px rgba(15,40,80,.12); border-top: 3px solid #E6ECF4; }
+      .lm-ficha:nth-child(1) { border-top-color: #E5484D; }
+      .lm-ficha:nth-child(2) { border-top-color: #D97706; }
+      .lm-ficha:nth-child(3) { border-top-color: var(--azul); }
+      .lm-ficha:nth-child(4) { border-top-color: #0B1220; }
+      .lm-ficha .rd { width: 30px; height: 30px; } .lm-ficha .rd svg { width: 16px; height: 16px; }
+      .lm-ficha b { margin-top: 8px; font-size: .82rem; line-height: 1.28; } .lm-ficha span { margin-top: 4px; font-size: .74rem; line-height: 1.42; }
       .lm-ficha b br { display: none; }
-      .lm-pie { margin-top: 16px; font-size: .86rem; }
+      .lm-pie { margin-top: 10px; padding: 10px 12px; font-size: .78rem; line-height: 1.5; }
 
       /* --- 09 --- */
       .eq-pers { margin-top: 20px; gap: 10px; max-width: 320px; }
@@ -646,7 +677,6 @@
       .p { font-size: .88rem; line-height: 1.5; }
       .h-t { font-size: clamp(1.9rem, 7.6vw, 2.5rem); }
       .h-sub { font-size: .92rem; line-height: 1.45; margin-top: .8rem; }
-      .h-p { font-size: .84rem; line-height: 1.5; }
       .h-btns { margin-top: 1.1rem; }
       .h-btns .btn { padding: .78rem 1rem; font-size: .86rem; }
       .meta div { font-size: .76rem; }
@@ -712,36 +742,38 @@
         </div>
       </div>
 
-      <!-- las tres piezas de la derecha: pedido, estado del envio y la
-           consulta del cliente a las 23:40 -->
+      <!-- Segunda pasada de Anais (2026-10-04): la pregunta de la clienta
+           se quedaba sin contestar. Ahora se lee como una conversacion: la
+           pregunta, la respuesta de EasyRobots y el dato del pedido que la
+           respalda. El estado es "en reparto", como en la seccion 03: antes
+           decia "Entregado" y no cuadraba con que la clienta no sepa nada. -->
       <div class="h-piezas">
-        <div class="h-ped">
-          <img src="/assets/ecom-prod.webp" alt="" decoding="async">
-          <div>
-            <b>Pedido #10482</b>
-            <span><i class="pt"></i>Entregado</span>
-          </div>
-        </div>
-
-        <div class="h-env">
-          <b>Estado del env&iacute;o</b>
-          <div class="h-pasos">
-            <div class="h-paso"><i class="an"></i>Pedido confirmado</div>
-            <div class="h-paso"><i class="an"></i>En preparaci&oacute;n</div>
-            <div class="h-paso"><i class="an"></i>En transporte</div>
-            <div class="h-paso"><i class="an"></i>Entregado</div>
-          </div>
-        </div>
-
-        <span class="h-wa" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg>
-        </span>
-
         <div class="h-cli">
           <img src="/assets/ecom-cliente.webp" alt="" decoding="async">
           <div>
             <b>Cliente &middot; 23:40</b>
             <span>Hice un pedido el lunes y no s&eacute; nada. &iquest;D&oacute;nde est&aacute;?</span>
+          </div>
+        </div>
+
+        <div class="h-resp">
+          <b>EasyRobots &middot; 23:40</b>
+          <span>Tu pedido #10482 sali&oacute; ayer del almac&eacute;n y est&aacute; en reparto. Te llega ma&ntilde;ana antes de las 14:00.</span>
+          <span class="h-wa" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4 4.1-1.3A10 10 0 1012 2zm5.6 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4 0 0 0 .6-.3 1.2z"/></svg>
+          </span>
+        </div>
+
+        <div class="h-env">
+          <div class="h-ped">
+            <img src="/assets/ecom-prod.webp" alt="" decoding="async">
+            <div><b>Pedido #10482</b><span><i class="pt"></i>En reparto</span></div>
+          </div>
+          <div class="h-pasos">
+            <div class="h-paso"><i class="an"></i>Pedido confirmado</div>
+            <div class="h-paso"><i class="an"></i>En preparaci&oacute;n</div>
+            <div class="h-paso"><i class="an"></i>En reparto</div>
+            <div class="h-paso off"><i class="an"></i>Entrega ma&ntilde;ana antes de las 14:00</div>
           </div>
         </div>
       </div>
@@ -751,9 +783,13 @@
   <main>
 
   <!-- =================== 02 - TODO EMPUJA HACIA LA VENTA =================== -->
+  <!-- La 02 y la 03 comparten fondo (2026-10-04): cuentan una sola idea
+       (despues de cobrar, lo que importa es contestar con el dato) y asi se
+       separan del hero, que antes parecia seguir en la 02. -->
+  <div class="duo">
+  <div class="foto" aria-hidden="true"></div>
+  <div class="velo" aria-hidden="true"></div>
   <section class="sec s02 oscura" id="como">
-    <div class="foto" aria-hidden="true"></div>
-    <div class="velo" aria-hidden="true"></div>
     <div class="caja dos">
       <div>
         <div class="kick">Despu&eacute;s de cobrar</div>
@@ -809,8 +845,6 @@
 
   <!-- =================== 03 - RESPONDE CON LOS DATOS DE TU TIENDA =================== -->
   <section class="sec s03 oscura" id="sistema">
-    <div class="foto" aria-hidden="true"></div>
-    <div class="velo" aria-hidden="true"></div>
     <div class="caja dos">
       <div>
         <div class="kick">La diferencia</div>
@@ -851,6 +885,8 @@
       </div>
     </div>
   </section>
+
+  </div>
 
   <!-- =================== 04 - UN PEDIDO, DE LA DUDA A LA RESENA =================== -->
   <section class="sec s04 clara">
@@ -916,6 +952,7 @@
         <p class="p">Prueba tres situaciones reales de una tienda online y ve c&oacute;mo responde EasyRobots con los datos de tu tienda, sin intervenci&oacute;n humana.</p>
       </div>
 
+      <div class="dm-cuerpo">
       <div class="dm-rej">
         <!-- 1 - antes de comprar -->
         <div class="dm-card dm-c1">
@@ -1018,13 +1055,14 @@
             <button class="dm-bot" type="button">Generar etiqueta de devoluci&oacute;n
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 4h6v6M20 4l-8 8M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>
             </button>
-            <i class="hh hh-abajo">12:18</i>
           </div>
           <div class="dm-pie">
             <span class="campo">Escribe un mensaje&hellip;</span>
             <span class="env"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
+
+      </div>
 
         <div class="dm-lado">
           <div class="dm-reg">
@@ -1058,14 +1096,6 @@
         <div class="kick">Integraciones</div>
         <h2 class="h2">Piezas, no un paquete cerrado.</h2>
         <p class="p">Nos adaptamos a las herramientas que ya utilizas. Y si hace falta una pieza que no existe en tu software, la construimos.</p>
-        <div class="pz-lista">
-          <div><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Tienda online (Shopify, WooCommerce, etc.)</div>
-          <div><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Email / Helpdesk</div>
-          <div><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7"/></svg>WhatsApp</div>
-          <div><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Chat web</div>
-          <div><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Transportistas</div>
-          <div><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Y otras herramientas</div>
-        </div>
       </div>
 
       <div class="pz-rejilla">
