@@ -1056,6 +1056,16 @@ de referencia y no se toca.
   menos, las claras seguidas alternan tono con una linea fina entre ellas y
   la CTA abre el velo para que se vea la foto. Movil de 9.575 a 8.500 px;
   escritorio de 6.580 a 5.120 px.
+- **Cuarta pasada (2026-10-04, solo movil)**: el diagrama de piezas deja la
+  rejilla de dos en dos y pasa a ser **como el de escritorio** (nucleo en el
+  centro, cables con brillo), en una caja vertical de 350x330 con unidad `--m`
+  y su propio SVG `.z-cables-m` con filtro `#brillo-m` (el del escritorio va
+  oculto y algunos navegadores no aplican un filtro de un SVG oculto). La 03 y
+  la garantia "alejadas" con `zoom: .9` en su `.caja`. Control, "lo que hace"
+  y "como funciona" mas compactos. **El movil de la demo no se recorta** (vuelve
+  a 560 px: el de 440 "no era"); se compacta el texto, los botones y el panel
+  de motivos. La 02 arranca con una linea y un tono azulado para que no parezca
+  la continuacion del hero. Movil 8.170 px.
 
 ### Lo del boceto que NO se reprodujo
 

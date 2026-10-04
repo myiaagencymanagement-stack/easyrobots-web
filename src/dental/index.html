@@ -602,6 +602,75 @@
       /* la CTA: con el velo a .80-.93 la foto no se veia */
       .s10 .velo { background: linear-gradient(180deg, rgba(3,10,16,.80) 0%, rgba(3,10,16,.42) 45%, rgba(3,10,16,.84) 100%); }
     }
+
+    /* ============ CUARTA PASADA, SOLO MOVIL (2026-10-04) ============
+       - El diagrama de piezas pasa a ser como el del ordenador (nucleo en el
+         centro, piezas alrededor, cables con brillo) en una caja vertical de
+         350 x 330 con su unidad --m. La rejilla de dos en dos no le gustaba.
+       - "Alejar un poco" la 03 y la garantia: zoom .9 sobre su contenido.
+       - Control y "lo que hace" muy grandes; "como funciona" un pelin.
+       - La demo: el movil vuelve a su alto (recortado a 440 "no era") y lo que
+         se compacta es el texto, los botones y el panel de motivos.
+       - La 02 parecia la continuacion del hero: arranca con una linea y un
+         tono azulado mas claro, para que se note el cambio. */
+    .z-cables-m { display: none; }
+    @media (max-width: 860px) {
+      .z-diag { display: block; position: relative; aspect-ratio: 350 / 330; max-width: 420px; margin: 26px auto 0; container-type: inline-size; --m: calc(100cqw / 350); }
+      .z-diag::before { left: 0; right: 0; top: 18%; bottom: 18%; }
+      .z-cables { display: none; }
+      .z-cables-m { display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+      .z-nuc, .z-pz { position: absolute; margin: 0; flex: none; }
+      .z-nuc { left: calc(125*var(--m)); top: calc(140*var(--m)); width: calc(100*var(--m)); height: calc(52*var(--m)); margin: 0 !important; border-radius: calc(12*var(--m)); font-size: calc(14*var(--m)); }
+      .z-pz { width: calc(160*var(--m)); height: calc(44*var(--m)); gap: calc(9*var(--m)); padding: 0 calc(10*var(--m)); border-radius: calc(11*var(--m)); font-size: calc(12.6*var(--m)); line-height: 1.15; justify-content: flex-start; }
+      .z-pz svg { width: calc(20*var(--m)); height: calc(20*var(--m)); }
+      .pz1 { left: calc(95*var(--m));  top: 0; }
+      .pz2 { left: 0;                  top: calc(70*var(--m)); }
+      .pz3 { left: calc(190*var(--m)); top: calc(70*var(--m)); }
+      .pz4 { left: 0;                  top: calc(218*var(--m)); }
+      .pz5 { left: calc(190*var(--m)); top: calc(218*var(--m)); }
+      .pz6 { left: calc(95*var(--m));  top: calc(286*var(--m)); }
+
+      .s03 .caja, .s09 .caja { zoom: .9; }
+
+      .s07 .caja, .s08 .caja { padding-top: 38px; padding-bottom: 40px; }
+      .s07 .h2, .s08 .h2 { font-size: 26px; }
+      .s08 .c-2 .h2 { font-size: 23px; }
+      .s07 .p, .s08 .p { font-size: 15px; }
+      .l-cuadros { margin-top: 20px; gap: 10px; }
+      .l-box { padding: 16px 16px 8px; }
+      .l-box h3 { font-size: 16px; gap: 10px; }
+      .l-box h3 u { width: 26px; height: 26px; }
+      .l-box ul { margin-top: 8px; }
+      .l-box li { font-size: 14px; padding: 4px 0; gap: 12px; }
+      .c-2 { margin-top: 28px; }
+      .c-sellos { margin-top: 18px; gap: 10px; }
+      .c-sellos div { font-size: 14px; }
+
+      .s05 .caja { padding-top: 40px; padding-bottom: 42px; }
+      .f-pasos { margin-top: 26px; gap: 16px; }
+      .f-paso { padding: 12px 16px; }
+
+      .s04 .h2 { font-size: 27px; }
+      .s04 .p { font-size: 15px; }
+      .s04 .p + .p { margin-top: 10px; }
+      .s-btns { margin-top: 20px; gap: 8px; }
+      .s-btns .btn { height: 44px; padding: 0 18px; font-size: 14.5px; }
+      .movil { margin-top: 26px; height: 560px; max-width: 340px; }
+      .r-col { margin-top: 34px; padding: 30px max(22px, 5.3vw) 32px; }
+      .r-t { font-size: 25px; }
+      .r-col .p { font-size: 15px; }
+      .graf { margin-top: 14px; padding: 14px 16px; }
+      .gr-cuerpo { margin-top: 10px; gap: 14px; }
+      .gr-cuerpo svg { width: 78px; height: 78px; }
+      .gr-ley { gap: 4px; }
+      .gr-ley div { font-size: 12.5px; }
+      .casos { margin-top: 12px; gap: 8px; }
+      .caso { grid-template-columns: 28px 92px 1fr; gap: 10px; }
+      .caso .av { width: 28px; height: 28px; font-size: 10px; }
+
+      .s02 { border-top: 1px solid rgba(140,190,255,.22); }
+      .s02 .velo { background: linear-gradient(180deg, rgba(14,32,52,.70) 0%, rgba(8,22,36,.86) 38%, rgba(3,12,18,.94) 100%); }
+    }
   
     /* Calendario de GHL en modal. Mismo patron que inmobiliarias y coaching. */
     .er-modal { position: fixed; inset: 0; z-index: 9000; display: none; background: rgba(6,10,16,.62); backdrop-filter: blur(6px); padding: 24px 16px; overflow-y: auto; }
@@ -861,6 +930,29 @@
             <circle cx="259" cy="50" r="1.3"/><circle cx="266" cy="96" r="1.3"/>
             <circle cx="235" cy="20" r="1.3"/><circle cx="121" cy="20" r="1.3"/>
             <circle cx="235" cy="121" r="1.3"/><circle cx="121" cy="121" r="1.3"/>
+          </g>
+        </svg>
+        <!-- Los mismos cables para el movil, en su caja vertical de 350 x 330:
+             el nucleo en el centro, dos piezas encima, dos debajo y una arriba
+             y otra abajo del todo. -->
+        <svg class="z-cables-m" viewBox="0 0 350 330" aria-hidden="true">
+          <defs><filter id="brillo-m" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <g fill="none" stroke-linecap="round" filter="url(#brillo-m)">
+            <g stroke="#9FD0FF" stroke-width="3" opacity=".35">
+              <path d="M175 140V44"/><path d="M175 192v94"/>
+              <path d="M140 140l-30-26"/><path d="M210 140l30-26"/>
+              <path d="M140 192l-30 26"/><path d="M210 192l30 26"/>
+            </g>
+            <g stroke="#3D9BFF" stroke-width="1.2" stroke-dasharray="3 2.4">
+              <path d="M175 140V44"/><path d="M175 192v94"/>
+              <path d="M140 140l-30-26"/><path d="M210 140l30-26"/>
+              <path d="M140 192l-30 26"/><path d="M210 192l30 26"/>
+            </g>
+          </g>
+          <g fill="#CFE8FF" filter="url(#brillo-m)">
+            <circle cx="175" cy="44" r="2"/><circle cx="175" cy="286" r="2"/>
+            <circle cx="110" cy="114" r="2"/><circle cx="240" cy="114" r="2"/>
+            <circle cx="110" cy="218" r="2"/><circle cx="240" cy="218" r="2"/>
           </g>
         </svg>
         <div class="z-nuc">EasyRobots</div>
