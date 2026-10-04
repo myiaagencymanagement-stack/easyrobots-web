@@ -680,6 +680,81 @@
     .er-modal-x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 9px; border: 1px solid #e1e8f2; background: #f5f8fc; color: #5c6980; font-size: 1rem; cursor: pointer; line-height: 1; }
     .er-cal { width: 100%; min-height: 620px; border: 0; border-radius: 12px; margin-top: 1.2rem; background: #f5f8fc; }
     @media (max-width: 900px) { .er-modal-box { padding: 1.6rem 1rem 1rem; margin: 0 auto; } .er-cal { min-height: 560px; } }
+
+    /* ---------- tercera pasada del movil (2026-10-04) ----------
+       Peticion de Anais: que la seccion 2, piezas y garantia se vean
+       enteras en una pantalla (390 x 844, menos la barra fija: ~786 px) y
+       que la calculadora se deslice algo menos, con el boton al final.
+       Medido antes: s02 856 · s06 894 · s08 826 · s11 801. */
+    @media (max-width: 860px) {
+      /* 02: las tres tarjetas en una pantalla. Foto mas baja y una sola
+         burbuja: a ese alto las dos se pisaban. */
+      .s02 .caja { padding-top: 34px; padding-bottom: 34px; }
+      .fu-fila { margin-top: 16px; gap: 10px; }
+      .fu-img { aspect-ratio: 431 / 112; }
+      .fu-ic { width: 34px; height: 34px; top: calc(100% - 40px); left: 14px; }
+      .fu-ic svg { width: 20px; height: 20px; }
+      .bu2 { display: none; }
+      .bu1 { top: 12%; }
+      .fu-txt { padding: 8px 14px 12px; }
+      .fu-txt b { font-size: .9rem; }
+      .fu-txt span { font-size: .8rem; line-height: 1.42; }
+
+      /* 03: el boton despues de la conversacion */
+      .s03 .caja { display: flex; flex-direction: column; gap: 0; }
+      .s03 .chat { margin-top: 20px; }
+      .s03 .caja > div:first-child { display: contents; }
+      .s03 .btn { order: 2; align-self: flex-start; margin-top: 18px; }
+
+      /* 06: calculadora mas apretada y el boton al final, tras la nota */
+      .k-box, .r-box { margin-top: 14px; padding: 14px 16px; }
+      .k-campo + .k-campo { margin-top: 6px; }
+      .k-fila { gap: 4px 12px; }
+      .k-fila label { font-size: .8rem; }
+      .k-fila input { margin-top: 4px; }
+      .k-fila output { height: 32px; font-size: .92rem; }
+      .r-box { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; align-items: end; }
+      .r-box h3, .r-sep, .r-nota, .r-box .btn { grid-column: 1 / -1; }
+      .r-box h3 { margin-bottom: 4px; }
+      .r-n { grid-column: 1; grid-row: 2; font-size: 1.7rem; }
+      .r-box .r-l:first-of-type { grid-column: 1; grid-row: 3; }
+      .r-sep { display: none; }
+      .r-box .r-l:nth-of-type(2) { grid-column: 2; grid-row: 3; order: 0; }
+      .r-eur { grid-column: 2; grid-row: 2; font-size: 1.7rem; }
+      .r-anio { grid-column: 1 / -1; grid-row: 4; margin-top: 8px; }
+      .r-nota { grid-row: 5; margin-top: 8px; }
+      .r-box .btn { grid-row: 6; margin-top: 12px; }
+
+      /* 08: piezas en una pantalla. Nucleo mas pequeno y tarjetas bajas,
+         icono al lado del titulo. */
+      .s08 .caja { padding-top: 34px; padding-bottom: 34px; }
+      .dg { margin-top: 14px; gap: 8px; }
+      .dg-nuc { width: 128px; height: 128px; margin: 10px 0 14px; padding: 0 12px; }
+      .dg-nuc::before { inset: -9px; }
+      .dg-nuc svg { width: 22px; height: 22px; }
+      .dg-nuc b { margin-top: 3px; font-size: .92rem; }
+      .dg-nuc span { font-size: .6rem; line-height: 1.3; }
+      .dg-pz { display: grid; grid-template-columns: 20px 1fr; gap: 2px 8px; align-items: center; padding: 9px 10px; }
+      .dg-pz svg { width: 20px; height: 20px; }
+      .dg-pz > div { display: contents; }
+      .dg-pz span { grid-column: 1 / -1; font-size: .72rem; line-height: 1.35; }
+      .dg-pz b { font-size: .82rem; }
+
+      /* 11: garantia en una pantalla. Retratos mas pequenos y panel junto. */
+      .s11 .caja { padding-top: 32px; padding-bottom: 32px; }
+      .s11 .p { font-size: .86rem; line-height: 1.5; }
+      .eq-pers { margin-top: 14px; max-width: 250px; gap: 8px; }
+      .eq-per { aspect-ratio: 4 / 3.6; }
+      .ga-col { margin-top: 14px; }
+      .ga-panel { padding: 2px 12px 10px; }
+      .ga-fila { padding: 6px 0; font-size: .8rem; }
+      .ga-fila, .ga-dato { grid-template-columns: 30px 1fr; gap: 10px; }
+      .ga-fila u, .ga-dato u { width: 30px; height: 30px; }
+      .ga-fila u svg, .ga-dato u svg { width: 16px; height: 16px; }
+      .ga-dato { padding: 8px 10px; margin-top: 2px; }
+      .ga-dato b { font-size: .8rem; }
+      .ga-dato span { font-size: .7rem; line-height: 1.4; }
+    }
   </style>
 </head>
 
