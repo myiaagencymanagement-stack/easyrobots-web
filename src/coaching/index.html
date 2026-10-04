@@ -91,12 +91,15 @@
       --rojo-s: #FEF2F2;
       --f: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
 
-      --h1: clamp(42px, 4.45vw, 64px);
-      --h2: clamp(31px, 3.1vw, 47px);
-      --h3: clamp(21px, 1.75vw, 26px);
-      --txt: clamp(15.5px, 1.25vw, 18.5px);
-      --pad: clamp(68px, 8.5vh, 110px);
-      --alto: clamp(540px, 66vh, 720px);
+      /* Escala de /estetica/, que es la referencia de la casa. La primera
+         version iba con el H1 a 64 y el hero a pantalla entera, y Anais lo
+         vio grande: "mas pequeno, similar a esteticas". */
+      --h1: clamp(38px, 3.8vw, 54px);
+      --h2: clamp(30px, 2.95vw, 44px);
+      --h3: clamp(20px, 1.65vw, 25px);
+      --txt: clamp(15.5px, 1.2vw, 18px);
+      --pad: clamp(60px, 7.5vh, 96px);
+      --alto: clamp(500px, 62vh, 680px);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
@@ -146,11 +149,16 @@
        Una pantalla justa al entrar. El titular se apoya en el tercio
        izquierdo de la foto, que es la zona en penumbra; el velo cierra por
        la izquierda para que no haya que oscurecer la escena entera. */
-    .hero { position: relative; overflow: hidden; background: #060A10; height: 100vh; height: 100svh; min-height: 640px; display: flex; flex-direction: column; }
-    .hero .foto { background-image: url(/assets/coach-hero.webp); background-position: 62% center; }
+        /* 86svh y no la pantalla entera, como en /estetica/. La foto es la
+       terraza al atardecer que antes estaba en el cierre: llego a 1993 px
+       y es la unica de esta landing que no se amplia. El velo se abrio
+       bastante ("estaba super opaca"): solo cierra el tercio izquierdo,
+       que es donde se apoya el titular. */
+    .hero { position: relative; overflow: hidden; background: #060A10; height: 86vh; height: 86svh; min-height: 580px; display: flex; flex-direction: column; }
+    .hero .foto { background-image: url(/assets/coach-hero.webp); background-position: 40% center; }
     .hero .velo { background:
-        linear-gradient(90deg, rgba(5,9,14,.93) 0%, rgba(5,9,14,.86) 26%, rgba(5,9,14,.52) 46%, rgba(5,9,14,.14) 66%, rgba(5,9,14,0) 82%),
-        linear-gradient(180deg, rgba(5,9,14,.58) 0%, rgba(5,9,14,0) 18%, rgba(5,9,14,0) 74%, rgba(5,9,14,.62) 100%); }
+        linear-gradient(90deg, rgba(4,7,12,.92) 0%, rgba(4,7,12,.82) 28%, rgba(4,7,12,.44) 48%, rgba(4,7,12,.08) 66%, rgba(4,7,12,0) 80%),
+        linear-gradient(180deg, rgba(4,7,12,.46) 0%, rgba(4,7,12,0) 16%, rgba(4,7,12,0) 72%, rgba(4,7,12,.52) 100%); }
 
     .h-nav { position: relative; z-index: 60; width: 100%; max-width: 1440px; margin: 0 auto; padding: 24px max(22px, 6.7vw) 0; display: flex; align-items: center; }
     @media (min-width: 1440px) { .h-nav { padding-left: 96px; padding-right: 96px; } }
@@ -199,14 +207,20 @@
     /* ===================== 02 · DONDE SE CAE =====================
        Foto a la izquierda (la coach agobiada de noche), texto y las cuatro
        caidas a la derecha, como en el boceto. */
-    .s02 { background: #080C12; }
-    .s02 .foto { background-image: url(/assets/coach-cae.webp); background-position: 0% center; }
-    .s02 .velo { background: linear-gradient(90deg, rgba(6,10,15,.95) 0%, rgba(6,10,15,.92) 38%, rgba(6,10,15,.74) 56%, rgba(6,10,15,.34) 78%, rgba(6,10,15,.26) 100%); }
-    .s02 .caja { display: grid; grid-template-columns: 1.18fr .82fr; gap: clamp(24px, 4vw, 64px); align-items: center; }
+        /* Venia pegada al hero y parecia su continuacion: misma foto nocturna,
+       mismo tono y sin linea de corte. Ahora lleva un filete azulado arriba
+       y un fondo mas frio que el hero, y el velo se abre por la derecha
+       para que se vea la cara de la coach, que es el dolor de la seccion. */
+    .s02 { background: #070D16; border-top: 1px solid rgba(96,150,230,.22); }
+    .s02::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 180px; z-index: 4; background: linear-gradient(180deg, rgba(10,22,40,.75), rgba(10,22,40,0)); pointer-events: none; }
+    .s02 .foto { background-image: url(/assets/coach-cae.webp); background-position: 2% center; }
+    .s02 .velo { background: linear-gradient(90deg, rgba(5,9,15,.94) 0%, rgba(5,9,15,.88) 34%, rgba(5,9,15,.52) 52%, rgba(5,9,15,.14) 72%, rgba(5,9,15,.06) 100%); }
+    .s02 { min-height: 0; }
+    .s02 .caja { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(24px, 4vw, 64px); align-items: center; }
     .s02 .col { grid-column: 1; }
     .s02 .h2 { max-width: 15ch; }
-    .caidas { margin-top: 26px; display: flex; flex-direction: column; gap: 10px; }
-    .cai { display: grid; grid-template-columns: 34px 116px 1fr 14px 178px; align-items: center; gap: 14px; min-height: 68px; padding: 11px 18px; border-radius: 14px; background: rgba(10,18,28,.78); border: 1px solid rgba(255,255,255,.10); }
+    .caidas { margin-top: 22px; display: flex; flex-direction: column; gap: 8px; }
+    .cai { display: grid; grid-template-columns: 32px 112px 1fr 14px 172px; align-items: center; gap: 13px; min-height: 60px; padding: 9px 16px; border-radius: 14px; background: rgba(10,18,28,.78); border: 1px solid rgba(255,255,255,.10); }
     .cai i { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
     .cai i svg { width: 18px; height: 18px; color: #fff; }
     .cai i.r { background: var(--rojo); }
@@ -220,12 +234,15 @@
     /* ===================== 03 · EL MISMO INTERES =====================
        Texto y las dos columnas a la izquierda, la foto del coach grabando
        a la derecha, con la nota a mano del boceto encima. */
-    .s03 { background: #060B11; }
-    .s03 .foto { background-image: url(/assets/coach-interes.webp); background-position: 26% center; }
-    .s03 .velo { background: linear-gradient(90deg, rgba(5,9,14,.95) 0%, rgba(5,9,14,.92) 34%, rgba(5,9,14,.62) 50%, rgba(5,9,14,.12) 66%, rgba(5,9,14,0) 80%); }
-    .s03 .caja { display: grid; grid-template-columns: 1.22fr .78fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
-    .dos { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .lista { border-radius: 16px; padding: 18px 18px 20px; border: 1px solid; }
+        /* El encuadre se corrio hasta dejar al coach grabando en el tercio
+       derecho, que es lo que pide el boceto; antes caia detras de las
+       tarjetas. La nota a mano "Tu a lo importante" se quita (Anais). */
+    .s03 { background: #060B11; min-height: 0; }
+    .s03 .foto { background-image: url(/assets/coach-interes.webp); background-position: 93% center; }
+    .s03 .velo { background: linear-gradient(90deg, rgba(5,9,14,.94) 0%, rgba(5,9,14,.88) 30%, rgba(5,9,14,.46) 48%, rgba(5,9,14,.04) 66%, rgba(5,9,14,0) 82%); }
+    .s03 .caja { display: grid; grid-template-columns: 1.26fr .74fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+    .dos { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .lista { border-radius: 16px; padding: 16px 16px 18px; border: 1px solid; }
     .lista.neg { background: rgba(14,10,12,.74); border-color: rgba(239,68,68,.30); }
     .lista.pos { background: rgba(8,18,14,.74); border-color: rgba(34,197,94,.32); }
     .lista h3 { display: flex; align-items: center; gap: 9px; font-size: 14.5px; font-weight: 700; }
@@ -234,10 +251,7 @@
     .pin { width: 19px; height: 19px; border-radius: 50%; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
     .pin svg { width: 11px; height: 11px; color: #fff; }
     .pin.r { background: var(--rojo); } .pin.v { background: var(--verde); }
-    .nota { position: relative; justify-self: end; align-self: start; margin-top: clamp(10px, 4vh, 48px); margin-right: clamp(0px, 3vw, 40px); text-align: center; }
-    .nota b { display: block; font-size: clamp(14px, 1.3vw, 18px); font-weight: 700; line-height: 1.25; letter-spacing: .04em; text-transform: uppercase; transform: rotate(-4deg); text-shadow: 0 2px 14px rgba(0,0,0,.85), 0 0 4px rgba(0,0,0,.6); }
-    .nota svg { width: 54px; height: 32px; margin: 4px auto 0; color: #fff; opacity: .95; filter: drop-shadow(0 2px 10px rgba(0,0,0,.8)); }
-
+            
     /* ===================== 04 · ASI FUNCIONA =====================
        Aqui cambia el lenguaje visual: fondo claro. La arquitectura es
        canales -> EasyRobots -> recorrido, no una lista de funcionalidades,
@@ -266,57 +280,122 @@
     .paso b { display: block; font-size: 14.5px; font-weight: 700; letter-spacing: -.02em; color: var(--tinta); }
     .paso span { display: block; margin-top: 5px; font-size: 12.5px; line-height: 1.3; color: var(--gris); }
 
-    /* ===================== 05 · DEMO ===================== */
-    .s05 { background: #070C13; }
+    /* ===================== 05 · DEMO =====================
+       Rehecha el 2026-10-04: la primera version era una tarjeta blanca
+       plana flotando en medio ("comparada con la del folleto esta feisima,
+       no tiene diseno"). En el boceto la conversacion esta PINTADA SOBRE
+       el portatil de la fotografia, y el boton azul va centrado abajo,
+       cruzando la seccion, no al lado del blanco. Eso es lo que se copia:
+         - la pantalla se inclina en perspectiva y se apoya sobre la mesa,
+           con marco oscuro, reflejo y sombra, para que se lea como el
+           portatil de la foto y no como un cuadro pegado encima;
+         - el velo se abre por la derecha para que la mesa y las velas de
+           la fotografia sigan viendose detras;
+         - "Reservar llamada" baja al centro, a caballo entre las dos
+           columnas, como en el boceto. */
+    .s05 { background: #070C13; min-height: 0; }
     .s05 .foto { background-image: url(/assets/coach-demo.webp); background-position: 58% center; }
-    .s05 .velo { background: linear-gradient(90deg, rgba(5,9,14,.94) 0%, rgba(5,9,14,.88) 32%, rgba(5,9,14,.52) 50%, rgba(5,9,14,.22) 70%, rgba(5,9,14,.30) 100%); }
-    .s05 .caja { display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(28px, 4.5vw, 72px); align-items: center; }
-    .s05 .h2 { font-size: clamp(29px, 2.8vw, 42px); }
-    .s05 .btns { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 14px; }
+    .s05 .velo { background: linear-gradient(90deg, rgba(5,9,14,.93) 0%, rgba(5,9,14,.84) 28%, rgba(5,9,14,.40) 48%, rgba(5,9,14,.10) 68%, rgba(5,9,14,.18) 100%); }
+    .s05 .caja { display: grid; grid-template-columns: .86fr 1.14fr; gap: clamp(26px, 4vw, 64px); align-items: center; padding-bottom: calc(var(--pad) - 18px); }
+    .s05 .h2 { font-size: clamp(28px, 2.7vw, 40px); }
+    .s05 .btns { margin-top: 28px; }
+    .s05-cta { grid-column: 1 / -1; display: flex; justify-content: center; margin-top: clamp(-26px, -1.6vw, -8px); }
+    .s05-cta .btn { box-shadow: 0 16px 40px rgba(37,99,235,.42); }
+    /* La pantalla inclinada. El marco inferior hace de bisagra y la base
+       de teclado, asi que la pieza completa se lee como un portatil. */
+    .s05 .port { transform: perspective(2000px) rotateY(-11deg) rotateX(2.5deg); transform-origin: right center; }
+    .s05 .port-pant { border-width: 12px; box-shadow: 0 50px 110px rgba(0,0,0,.72), 0 0 0 1px rgba(255,255,255,.08), inset 0 0 0 1px rgba(255,255,255,.05); }
+    .s05 .port-base { height: 14px; margin: 0 -3%; }
+    .s05 .pt-chat { padding: 18px 18px 20px; }
+    .s05 .bu p { font-size: 12.5px; }
+    .s05 .pt-h span, .s05 .pt-conf { height: 31px; font-size: 12.5px; }
 
     /* ===================== 06 · SISTEMA COMPLETO =====================
-       El diagrama es el protagonista, asi que no hay una seccion aparte de
-       "piezas". Las posiciones salen de medir sistema-referencia.png (la
-       seccion pintada a 1993x789) y van en una caja de 790x370 con su
-       propia unidad --d, para que escalen juntas.
+       Rehecha el 2026-10-04 contra sistema-referencia.png, que es la
+       seccion pintada a 1993x789 y la unica pieza del boceto que llego a
+       esa resolucion. La primera version se quedaba corta: nucleo pequeno,
+       cables que no se veian y sin el portatil de la derecha.
 
-       Del boceto NO entra el portatil con el panel de resumen: traia
-       124 conversaciones, 48 citas, 32 clientes nuevos y +27 % de
-       conversion, que son cifras inventadas (reglas de honestidad de
-       CLAUDE.md, lo mismo que tumbo el "Automatizaciones hoy: 24" de la v4). */
-    .s06 { background: var(--oscuro); }
+       Las posiciones salen de medir esa referencia sobre el recorte
+       x620-1993 ampliado 1,1, y van en una caja de 1340x590 con su unidad
+       --d, asi que escalan todas juntas.
+
+       El panel del portatil SI entra ahora, pero con la etiqueta "Ejemplo":
+       las cifras son las que pinta el boceto y no salen de ningun cliente.
+       Es el mismo trato que se le da a la conversacion del hero y a la
+       lista de presupuestos de dental. Sin esa etiqueta serian metricas
+       inventadas y no podrian publicarse. */
+    .s06 { background: var(--oscuro); min-height: 0; }
     .s06 .foto { background-image: url(/assets/coach-sistema.webp); background-position: center; }
     .s06 .velo { background:
-        radial-gradient(70% 90% at 72% 50%, rgba(0,107,255,.22) 0%, rgba(7,17,31,0) 70%),
-        linear-gradient(90deg, rgba(5,11,20,.95) 0%, rgba(5,11,20,.88) 30%, rgba(5,11,20,.58) 50%, rgba(5,11,20,.42) 100%); }
-    .s06 .caja { display: grid; grid-template-columns: .86fr 1.14fr; gap: clamp(24px, 3.5vw, 56px); align-items: center; }
-    .diag { position: relative; container-type: inline-size; --d: 0.1265823cqw; aspect-ratio: 790 / 370; }
+        radial-gradient(58% 86% at 40% 48%, rgba(0,118,255,.30) 0%, rgba(7,17,31,0) 72%),
+        linear-gradient(90deg, rgba(4,9,17,.93) 0%, rgba(4,9,17,.80) 24%, rgba(4,9,17,.46) 42%, rgba(4,9,17,.40) 100%); }
+    .s06 .caja { display: grid; grid-template-columns: .62fr 1.38fr; gap: clamp(20px, 2.6vw, 44px); align-items: center; }
+
+    .diag { position: relative; container-type: inline-size; --d: calc(100cqw / 1430); aspect-ratio: 1430 / 600; }
     .diag > * { position: absolute; }
     .diag svg.cables { inset: 0; width: 100%; height: 100%; }
-    .pz { background: rgba(10,20,35,.85); border: 1px solid rgba(59,130,246,.35); border-radius: calc(14*var(--d)); padding: calc(13*var(--d)) calc(15*var(--d)); backdrop-filter: blur(2px); }
-    .pz b { display: block; font-size: calc(15.5*var(--d)); line-height: 1.22; font-weight: 600; letter-spacing: -.01em; }
-    .pz .ic { width: calc(27*var(--d)); height: calc(27*var(--d)); border-radius: calc(8*var(--d)); display: flex; align-items: center; justify-content: center; margin-bottom: calc(9*var(--d)); }
-    .pz .ic svg { width: calc(15*var(--d)); height: calc(15*var(--d)); color: #fff; }
-    .pz .logos { display: flex; gap: calc(7*var(--d)); margin-top: calc(10*var(--d)); }
-    .pz .logos i { width: calc(25*var(--d)); height: calc(25*var(--d)); border-radius: calc(7*var(--d)); display: flex; align-items: center; justify-content: center; }
-    .pz .logos i svg { width: calc(14*var(--d)); height: calc(14*var(--d)); color: #fff; }
-    .pz .cab { display: flex; align-items: center; gap: calc(10*var(--d)); }
-    .pz .cab .ic { margin-bottom: 0; }
-    .nuc { display: flex; align-items: center; justify-content: center; background: #071226; border: calc(1.6*var(--d)) solid var(--azul-b); border-radius: calc(16*var(--d)); box-shadow: 0 0 calc(30*var(--d)) rgba(37,99,235,.55), inset 0 0 calc(30*var(--d)) rgba(0,107,255,.35); font-size: calc(21*var(--d)); font-weight: 700; letter-spacing: -.02em; }
-    .p1 { left: 0;                 top: 0;                 width: calc(286*var(--d)); }
-    .p2 { left: calc(325*var(--d)); top: 0;                width: calc(180*var(--d)); }
-    .p3 { left: calc(553*var(--d)); top: 0;                width: calc(222*var(--d)); }
-    .p4 { left: calc(2*var(--d));   top: calc(150*var(--d)); width: calc(214*var(--d)); }
-    .nuc { left: calc(322*var(--d)); top: calc(136*var(--d)); width: calc(174*var(--d)); height: calc(98*var(--d)); }
-    .p5 { left: calc(568*var(--d)); top: calc(150*var(--d)); width: calc(214*var(--d)); }
-    .p6 { left: calc(174*var(--d)); top: calc(258*var(--d)); width: calc(190*var(--d)); }
-    .p7 { left: calc(412*var(--d)); top: calc(258*var(--d)); width: calc(222*var(--d)); }
+    .diag svg.cables-m { display: none; }
+    .pz { background: rgba(11,18,30,.88); border: 1px solid rgba(96,150,230,.30); border-radius: calc(18*var(--d)); padding: calc(18*var(--d)) calc(20*var(--d)); backdrop-filter: blur(3px); box-shadow: 0 calc(18*var(--d)) calc(40*var(--d)) rgba(0,0,0,.45); }
+    .pz b { display: block; font-size: calc(24*var(--d)); line-height: 1.22; font-weight: 600; letter-spacing: -.01em; }
+    .pz .ic { width: calc(40*var(--d)); height: calc(40*var(--d)); border-radius: calc(12*var(--d)); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .pz .ic svg { width: calc(22*var(--d)); height: calc(22*var(--d)); color: #fff; }
+    .pz .cab { display: flex; align-items: center; gap: calc(14*var(--d)); }
+    .pz .logos { display: flex; gap: calc(10*var(--d)); margin-top: calc(14*var(--d)); }
+    .pz .logos i { width: calc(38*var(--d)); height: calc(38*var(--d)); border-radius: calc(11*var(--d)); display: flex; align-items: center; justify-content: center; }
+    .pz .logos i svg { width: calc(21*var(--d)); height: calc(21*var(--d)); color: #fff; }
+    /* El nucleo es lo que mas cantaba: en la referencia es una caja grande
+       con doble halo azul, no un rectangulo con borde fino. */
+    .nuc { display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, #0A2A5C, #061735); border: calc(2*var(--d)) solid #2E9BFF; border-radius: calc(22*var(--d));
+           box-shadow: 0 0 calc(26*var(--d)) rgba(46,155,255,.75), 0 0 calc(80*var(--d)) rgba(0,107,255,.45), inset 0 0 calc(50*var(--d)) rgba(0,107,255,.55);
+           font-size: calc(32*var(--d)); font-weight: 700; letter-spacing: -.02em; }
+    .p1  { left: calc(46*var(--d));  top: 0;                  width: calc(228*var(--d)); }
+    .p2  { left: calc(329*var(--d)); top: calc(6*var(--d));   width: calc(227*var(--d)); }
+    .p3  { left: calc(604*var(--d)); top: calc(6*var(--d));   width: calc(232*var(--d)); }
+    .p4  { left: 0;                  top: calc(164*var(--d)); width: calc(232*var(--d)); }
+    .nuc { left: calc(329*var(--d)); top: calc(136*var(--d)); width: calc(225*var(--d)); height: calc(140*var(--d)); }
+    .p5  { left: calc(611*var(--d)); top: calc(164*var(--d)); width: calc(223*var(--d)); }
+    .p6  { left: calc(136*var(--d)); top: calc(296*var(--d)); width: calc(258*var(--d)); }
+    .p7  { left: calc(470*var(--d)); top: calc(302*var(--d)); width: calc(229*var(--d)); }
+
+    /* El portatil con el panel de resumen, a la derecha, como en la
+       referencia. Es HTML entero: asi el texto se lee de verdad. */
+    .lap { left: calc(856*var(--d)); top: calc(176*var(--d)); width: calc(574*var(--d)); }
+    .lap-p { background: #F7F9FC; border: calc(10*var(--d)) solid #171A20; border-radius: calc(16*var(--d)); overflow: hidden; display: grid; grid-template-columns: calc(118*var(--d)) 1fr; box-shadow: 0 calc(40*var(--d)) calc(90*var(--d)) rgba(0,0,0,.6); }
+    .lap-lat { background: #EEF2F7; padding: calc(14*var(--d)) calc(10*var(--d)); display: flex; flex-direction: column; gap: calc(11*var(--d)); }
+    .lap-lat b { display: flex; align-items: center; gap: calc(7*var(--d)); font-size: calc(15*var(--d)); font-weight: 700; color: #16233A; }
+    .lap-lat b::before { content: ""; width: calc(14*var(--d)); height: calc(14*var(--d)); border-radius: calc(4*var(--d)); background: var(--azul); }
+    .lap-lat span { font-size: calc(13*var(--d)); color: #7A8597; }
+    .lap-cue { padding: calc(14*var(--d)) calc(14*var(--d)) calc(16*var(--d)); }
+    .lap-cab { display: flex; align-items: center; gap: calc(9*var(--d)); }
+    .lap-cab u { font-size: calc(17*var(--d)); font-weight: 700; color: #16233A; }
+    .lap-cab i { font-style: normal; font-size: calc(11*var(--d)); font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #6B7280; background: #E4EAF2; border-radius: 999px; padding: calc(3*var(--d)) calc(9*var(--d)); }
+    .lap-kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(8*var(--d)); margin-top: calc(11*var(--d)); }
+    .lap-kpi div { background: #fff; border: 1px solid #E6ECF4; border-radius: calc(10*var(--d)); padding: calc(9*var(--d)) calc(4*var(--d)); text-align: center; }
+    .lap-kpi b { display: block; font-size: calc(24*var(--d)); font-weight: 700; color: #16233A; letter-spacing: -.03em; }
+    .lap-kpi b.v { color: #12A454; }
+    .lap-kpi span { display: block; margin-top: calc(2*var(--d)); font-size: calc(11*var(--d)); color: #7A8597; }
+    .lap-bajo { display: grid; grid-template-columns: 1fr calc(150*var(--d)); gap: calc(10*var(--d)); margin-top: calc(11*var(--d)); }
+    .lap-graf { background: #fff; border: 1px solid #E6ECF4; border-radius: calc(10*var(--d)); padding: calc(8*var(--d)); }
+    .lap-graf svg { width: 100%; height: calc(52*var(--d)); display: block; }
+    .lap-lis { margin-top: calc(8*var(--d)); display: flex; flex-direction: column; gap: calc(6*var(--d)); }
+    .lap-f { display: grid; grid-template-columns: calc(16*var(--d)) 1fr auto; align-items: center; gap: calc(7*var(--d)); font-size: calc(12*var(--d)); color: #46536B; }
+    .lap-f em { font-style: normal; width: calc(16*var(--d)); height: calc(16*var(--d)); border-radius: 50%; background: #D9E2EE; }
+    .lap-f i { font-style: normal; color: #12A454; }
+    .lap-can { background: #fff; border: 1px solid #E6ECF4; border-radius: calc(10*var(--d)); padding: calc(10*var(--d)); }
+    .lap-can > b { display: block; font-size: calc(13*var(--d)); font-weight: 700; color: #16233A; margin-bottom: calc(7*var(--d)); }
+    .lap-c { display: flex; align-items: center; gap: calc(7*var(--d)); font-size: calc(12*var(--d)); color: #46536B; margin-top: calc(6*var(--d)); }
+    .lap-c s { text-decoration: none; margin-left: auto; color: #8A94A6; }
+    .lap-c u { width: calc(16*var(--d)); height: calc(16*var(--d)); border-radius: calc(5*var(--d)); flex: 0 0 auto; }
 
     /* ===================== 07 · EL LIMITE ===================== */
-    .s07 { background: var(--claro); }
-    .s07 .foto { background-image: url(/assets/coach-limite.webp); background-position: center 45%; }
-    .s07 .velo { background: linear-gradient(180deg, rgba(245,242,234,.93) 0%, rgba(245,242,234,.86) 45%, rgba(245,242,234,.94) 100%); }
-    .lim { margin-top: clamp(26px, 4vh, 44px); display: grid; grid-template-columns: 1fr 1fr .78fr; gap: clamp(18px, 2.4vw, 34px); align-items: start; }
+    .s07 { background: var(--claro); min-height: 0; }
+    /* Fondo nuevo: la terraza con sofa de claras.png, que llego a 1994 px.
+       La banda de la hoja era un interior apagado que el velo se comia
+       entero ("los fondos ni estan"). El velo baja a .78 para que se vea. */
+    .s07 .foto { background-image: url(/assets/coach-limite.webp); background-position: center 42%; }
+    .s07 .velo { background: linear-gradient(180deg, rgba(245,242,234,.88) 0%, rgba(245,242,234,.74) 45%, rgba(245,242,234,.88) 100%); }
+    .lim { margin-top: clamp(22px, 3vh, 34px); display: grid; grid-template-columns: 1fr 1fr .78fr; gap: clamp(18px, 2.4vw, 34px); align-items: start; }
     .cuad { border-radius: 18px; padding: 22px 24px 26px; }
     .cuad.v { background: var(--verde-s); }
     .cuad.r { background: var(--rojo-s); }
@@ -328,9 +407,10 @@
     .cierre-nota { font-size: 15.5px; line-height: 1.5; color: var(--gris); padding-top: 4px; }
 
     /* ===================== 08 · COMO TRABAJAMOS ===================== */
-    .s08 { background: var(--claro2); }
-    .s08 .foto { background-image: url(/assets/coach-proceso.webp); background-position: center 40%; }
-    .s08 .velo { background: linear-gradient(180deg, rgba(244,245,242,.94) 0%, rgba(244,245,242,.88) 50%, rgba(244,245,242,.94) 100%); }
+    .s08 { background: var(--claro2); min-height: 0; }
+    /* Mesa de marmol con portatil, primera tira de claras.png. */
+    .s08 .foto { background-image: url(/assets/coach-proceso.webp); background-position: center 45%; }
+    .s08 .velo { background: linear-gradient(180deg, rgba(244,245,242,.88) 0%, rgba(244,245,242,.72) 50%, rgba(244,245,242,.88) 100%); }
     .s08 .caja { display: grid; grid-template-columns: .96fr 1.04fr; gap: clamp(26px, 4vw, 64px); align-items: center; }
     .s08 .h2 { font-size: clamp(28px, 2.7vw, 41px); }
     .proc { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
@@ -348,9 +428,10 @@
        Los dos retratos del boceto son caras generadas con IA. Va la foto
        real de Guillermo y el hueco de Anais sigue vacio: antes un hueco que
        una cara inventada al lado de una real (decision del 2026-09-24). */
-    .s09 { background: var(--claro2); }
-    .s09 .foto { background-image: url(/assets/coach-equipo.webp); background-position: center 42%; }
-    .s09 .velo { background: linear-gradient(180deg, rgba(246,246,243,.95) 0%, rgba(246,246,243,.90) 50%, rgba(246,246,243,.95) 100%); }
+    .s09 { background: var(--claro2); min-height: 0; }
+    /* Terraza al atardecer, tercera tira de claras.png. */
+    .s09 .foto { background-image: url(/assets/coach-equipo.webp); background-position: center 55%; }
+    .s09 .velo { background: linear-gradient(180deg, rgba(246,246,243,.90) 0%, rgba(246,246,243,.76) 50%, rgba(246,246,243,.90) 100%); }
     .s09 .caja { display: grid; grid-template-columns: .92fr auto 1fr; gap: clamp(26px, 3.6vw, 60px); align-items: start; }
     .s09 .caras { margin-top: 10px; }
     .s09 .h2 { font-size: clamp(27px, 2.5vw, 38px); }
@@ -369,27 +450,51 @@
     /* ===================== 11 · CIERRE =====================
        El fondo aspiracional del boceto, que llego aparte a 1993x789: es la
        unica foto de esta landing que no viene de la hoja de fondos. */
-    .s11 { background: #0A0E14; text-align: left; }
-    .s11 .foto { background-image: url(/assets/coach-cierre.webp); background-position: 58% center; }
+    /* El fondo vuelve a ser la banda 10 de la hoja, que es la escena del
+       atardecer que pinta el boceto bajo este titular; la terraza de Dubai
+       que estaba aqui se fue al hero. Mas bajo que las demas. */
+    .s11 { background: #0A0E14; text-align: left; min-height: 0; }
+    .s11 .caja { padding-top: calc(var(--pad) - 14px); padding-bottom: calc(var(--pad) - 14px); }
+    .s11 .foto { background-image: url(/assets/coach-cierre.webp); background-position: 56% center; }
     .s11 .velo { background:
         linear-gradient(90deg, rgba(4,8,13,.90) 0%, rgba(4,8,13,.78) 32%, rgba(4,8,13,.38) 54%, rgba(4,8,13,.10) 74%, rgba(4,8,13,0) 90%),
         linear-gradient(180deg, rgba(4,8,13,.40) 0%, rgba(4,8,13,0) 30%, rgba(4,8,13,.45) 100%); }
-    .s11 .h2 { max-width: 16ch; font-size: clamp(33px, 3.4vw, 52px); }
+    .s11 .h2 { max-width: 17ch; font-size: clamp(29px, 2.9vw, 44px); }
     .s11 .p { margin-top: 20px; max-width: 46ch; }
     .s11 .btn { margin-top: 30px; }
 
     /* ===================== 12 · PIE ===================== */
+    /* El pie es el mismo de las demas landings (columnas Producto /
+       Empresa / Legal / Siguenos y la linea legal centrada). El de antes
+       era una fila suelta y Anais lo vio distinto del resto. */
     .pie { position: relative; overflow: hidden; background: var(--negro); }
-    .pie .foto { background-image: url(/assets/coach-pie.webp); background-position: center 60%; }
-    .pie .velo { background: linear-gradient(180deg, rgba(5,5,5,.93) 0%, rgba(5,5,5,.96) 100%); }
-    .pie .caja { padding-top: 34px; padding-bottom: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 34px; }
-    .pie-marca { display: flex; align-items: center; gap: 9px; font-size: 17px; font-weight: 700; letter-spacing: -.03em; }
-    .pie-marca svg { width: 21px; height: 21px; color: var(--azul-g); }
-    .pie-desc { font-size: 13.5px; color: var(--gris2); }
-    .pie-enl { display: flex; gap: 26px; margin-left: auto; }
-    .pie-enl a { font-size: 13.5px; color: var(--gris2); }
-    .pie-enl a:hover { color: #fff; }
-    .pie-cr { font-size: 12.5px; color: #6B7280; }
+    .pie .foto { background-image: url(/assets/coach-pie.webp); background-position: center 60%; opacity: .5; }
+    .pie .velo { background: linear-gradient(90deg, rgba(5,5,5,.93), rgba(5,5,5,.78) 55%, rgba(5,5,5,.90)); }
+    .pie .caja { padding-top: 56px; padding-bottom: 36px; }
+    .p-cols { display: grid; grid-template-columns: 1.5fr 1fr 1.3fr 1fr auto; }
+    .p-c { display: flex; flex-direction: column; padding: 0 clamp(16px, 2.4vw, 36px); }
+    .p-c + .p-c { border-left: 1px solid rgba(255,255,255,.14); }
+    .p-c:first-child { padding-left: 0; }
+    .p-c b { font-size: 16.5px; font-weight: 700; margin-bottom: 10px; }
+    .p-c a, .p-c span { display: block; font-size: 15px; line-height: 1.55; color: rgba(255,255,255,.72); }
+    .p-c a:hover { color: #fff; }
+    .p-c .p-lista { display: flex; flex-direction: column; gap: 3px; }
+    .p-rs { display: flex; gap: 12px; }
+    .p-rs a { width: 40px; height: 40px; border-radius: 11px; border: 1.5px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; color: #fff; }
+    .p-rs a:hover { border-color: #fff; }
+    .p-rs svg { width: 19px; height: 19px; }
+    .p-legal { margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.08); font-size: 13px; color: rgba(255,255,255,.5); text-align: center; }
+
+    /* El escritorio se ve al 90 %, como estetica, inmobiliarias, dental y
+       la home. Con zoom, 100svh se pinta al 90 % del alto de la ventana,
+       asi que el hero divide su 86svh entre .9 para seguir midiendo lo
+       mismo en pantalla. */
+    @media (min-width: 1081px) {
+      body { zoom: .9; }
+      .hero { height: calc(86vh / .9); height: calc(86svh / .9); min-height: 644px; }
+      .sec { min-height: calc(var(--alto) / .9); }
+      .s02, .s03, .s05, .s06, .s07, .s08, .s09, .s11 { min-height: 0; }
+    }
 
     /* ===================== PANTALLAS MEDIANAS ===================== */
     @media (max-width: 1180px) {
@@ -413,8 +518,11 @@
       .sec { display: block; }
       .caja { display: block !important; }
       .foto.suave { filter: none; transform: none; }
-      .h2 { font-size: 30px; }
-      .h2 br { display: none; }
+      .h2 { font-size: 29px; }
+      /* Los saltos del boceto estan calculados para el escritorio; en movil
+         parten mal. Llevan un espacio delante en el HTML para que al
+         ocultarlos no se peguen las palabras (fallo de concesionarios). */
+      .h2 br, .p br, .h-sub br { display: none; }
       .p { font-size: 16px; }
       .btn { height: 50px; padding: 0 22px; font-size: 15.5px; }
 
@@ -431,8 +539,11 @@
       .h-t br { display: none; }
       .h-sub { font-size: 16px; margin-top: 16px; }
       .h-btn { margin-top: 22px; }
-      .h-meta { margin-top: 20px; gap: 10px 20px; }
-      .h-meta div { font-size: 12.5px; }
+      /* Anais: "las vinetas estan en colores muy claros, destacalas mas
+         para que no se vean los fondos". Pasan a fichas solidas. */
+      .h-meta { margin-top: 20px; gap: 8px; }
+      .h-meta div { font-size: 12.5px; font-weight: 600; color: #fff; background: rgba(10,18,30,.72); border: 1px solid rgba(120,170,240,.32); border-radius: 999px; padding: 7px 13px; backdrop-filter: blur(4px); }
+      .h-meta svg { opacity: 1; color: #6FB4FF; }
       /* El portatil no cabe en el hero del movil sin comerse el titular:
          se ve en la seccion de demo, que es donde manda. */
       .hero .port { display: none; }
@@ -451,25 +562,61 @@
       .s06 .velo { background: linear-gradient(180deg, rgba(5,11,20,.70) 0%, rgba(5,11,20,.88) 40%, rgba(5,11,20,.93) 100%); }
       .s11 .velo { background: linear-gradient(180deg, rgba(4,8,13,.52) 0%, rgba(4,8,13,.30) 26%, rgba(4,8,13,.80) 62%, rgba(4,8,13,.94) 100%); }
 
-      .cai { grid-template-columns: 30px 1fr; row-gap: 6px; padding: 13px 15px; }
-      .cai span { grid-column: 2; } .cai > svg { display: none; }
-      .cai em { grid-column: 2; text-align: left; font-size: 12.5px; }
-      .dos { grid-template-columns: 1fr; }
-      .nota { display: none; }
+      .cai { grid-template-columns: 28px 1fr; row-gap: 3px; gap: 10px; min-height: 0; padding: 10px 13px; }
+      .cai i { width: 28px; height: 28px; } .cai i svg { width: 15px; height: 15px; }
+      .cai b { font-size: 12px; }
+      .cai span { grid-column: 2; font-size: 12.5px; } .cai > svg { display: none; }
+      .cai em { grid-column: 2; text-align: left; font-size: 11.5px; }
+      .caidas { gap: 7px; margin-top: 18px; }
+      .dos { grid-template-columns: 1fr; gap: 12px; }
+      .lista li { font-size: 13px; gap: 8px; } .lista ul { gap: 9px; margin-top: 11px; }
+      .cuad { padding: 16px 16px 18px; } .cuad li { font-size: 13.5px; gap: 9px; }
+      .cuad ul { gap: 9px; margin-top: 12px; }
+      .lim { gap: 14px; } .cierre-nota { font-size: 14px; }
 
-      .flujo { display: block; }
-      .enl, .enl + .enl { display: none; }
-      .nucleo { height: 72px; margin: 16px 0; }
-      .pasos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-      .paso { padding: 14px 10px 16px; }
+      /* "Asi funciona": en vertical ocupaba media pantalla por pieza.
+         Los canales pasan a una fila de fichas y los cinco pasos a tres
+         columnas, asi que el recorrido sigue leyendose de lado, no como
+         una lista larga. */
+      .flujo { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+      .canales { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 9px; }
+      .canal { font-size: 11.5px; gap: 6px; padding: 5px 9px; background: #F4F6F9; }
+      .canal:nth-child(odd) { background: #F4F6F9; }
+      .mk { width: 18px; height: 18px; } .mk svg { width: 11px; height: 11px; }
+      .enl { display: none; }
+      .nucleo { height: 58px; font-size: 17px; }
+      .pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-left: 0; }
+      .paso { padding: 12px 7px 13px; border-radius: 13px; }
+      .paso i { width: 28px; height: 28px; margin-bottom: 8px; } .paso i svg { width: 15px; height: 15px; }
+      .paso b { font-size: 12.5px; }
+      .paso span { font-size: 10.5px; margin-top: 3px; }
 
-      /* El diagrama en una columna estrecha no se lee: pasa a lista. */
-      .diag { aspect-ratio: auto; container-type: normal; --d: 1px; display: flex; flex-direction: column; gap: 10px; margin-top: 26px; }
-      .diag > * { position: static; }
+      /* El diagrama del sistema NO pasa a lista: Anais lo quiere horizontal,
+         como en escritorio. Es la misma composicion radial recolocada en
+         una caja de 350x275, sin los logotipos ni el portatil, que a este
+         ancho no se leerian. */
+      .diag { aspect-ratio: 350 / 300; --d: calc(100cqw / 350); margin-top: 24px; }
       .diag svg.cables { display: none; }
-      .pz, .nuc { left: auto !important; top: auto !important; width: auto !important; height: auto !important; }
-      .nuc { order: -1; padding: 16px; font-size: 20px; }
-      .pz .logos i { width: 26px; height: 26px; }
+      .diag svg.cables-m { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
+      .lap { display: none; }
+      .pz { padding: calc(9*var(--d)) calc(9*var(--d)); border-radius: calc(12*var(--d)); }
+      .pz b { font-size: calc(12*var(--d)); line-height: 1.22; }
+      .pz .cab { flex-direction: column; align-items: flex-start; gap: calc(6*var(--d)); }
+      .pz .ic { width: calc(22*var(--d)); height: calc(22*var(--d)); border-radius: calc(6*var(--d)); }
+      .pz .ic svg { width: calc(13*var(--d)); height: calc(13*var(--d)); }
+      .pz .logos { display: none; }
+      .nuc { font-size: calc(17*var(--d)); border-radius: calc(13*var(--d)); }
+      .p1  { left: 0;                  top: 0;                  width: calc(168*var(--d)); }
+      .p6  { left: calc(182*var(--d)); top: 0;                  width: calc(168*var(--d)); }
+      .p4  { left: 0;                  top: calc(112*var(--d)); width: calc(112*var(--d)); }
+      .nuc { left: calc(124*var(--d)); top: calc(118*var(--d)); width: calc(102*var(--d)); height: calc(58*var(--d)); }
+      .p5  { left: calc(238*var(--d)); top: calc(112*var(--d)); width: calc(112*var(--d)); }
+      .p2  { left: 0;                  top: calc(214*var(--d)); width: calc(112*var(--d)); }
+      .p3  { left: calc(119*var(--d)); top: calc(214*var(--d)); width: calc(112*var(--d)); }
+      .p7  { left: calc(238*var(--d)); top: calc(214*var(--d)); width: calc(112*var(--d)); }
+
+      .s05-cta { margin-top: 20px; }
+      .s05 .port { transform: none; }
 
       .lim { grid-template-columns: 1fr; }
       .proc { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
@@ -478,10 +625,14 @@
       .gar { margin-top: 30px; }
       .s09 .h2 { font-size: 28px; }
 
-      .pie .caja { display: block; }
-      .pie-desc { margin-top: 8px; }
-      .pie-enl { margin: 16px 0 0; gap: 20px; flex-wrap: wrap; }
-      .pie-cr { margin-top: 14px; }
+      .pie .caja { padding-top: 38px; padding-bottom: 28px; }
+      .p-cols { display: grid !important; grid-template-columns: 1fr 1fr; gap: 22px 0; }
+      .p-c, .p-c + .p-c { padding: 0 12px 0 0; border-left: 0; }
+      .p-c b { font-size: 14px; margin-bottom: 4px; }
+      .p-c a, .p-c span { font-size: 13px; overflow-wrap: anywhere; }
+      .p-c span br, .p-c a br { display: none; }
+      .p-rs a { width: 34px; height: 34px; } .p-rs svg { width: 16px; height: 16px; }
+      .p-legal { margin-top: 22px; padding-top: 14px; font-size: 11.5px; }
     }
 
     /* Pantallas de movil bajas: soltar el alto del hero antes que apretar
@@ -649,11 +800,8 @@
         </div>
       </div>
 
-      <!-- La nota a mano del boceto, sobre la foto del coach grabando. -->
-      <div class="nota" aria-hidden="true">
-        <b>T&uacute; a lo <br>importante.</b>
-        <svg viewBox="0 0 54 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M48 2C46 14 38 24 24 28M24 28l8 1M24 28l5-6"/></svg>
-      </div>
+      <!-- La nota a mano del boceto ("Tu a lo importante") se quito el
+           2026-10-04 por peticion de Anais. -->
     </div>
   </section>
 
@@ -718,10 +866,6 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
             Ver una demostraci&oacute;n real
           </a>
-          <a class="btn btn-az" href="#hablemos" data-cal>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
-            Reservar llamada
-          </a>
         </div>
       </div>
 
@@ -745,6 +889,14 @@
         </div>
         <div class="port-base" aria-hidden="true"></div>
       </div>
+
+      <!-- En el boceto este boton va centrado abajo, cruzando la seccion. -->
+      <div class="s05-cta">
+        <a class="btn btn-az" href="#hablemos" data-cal>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+          Reservar llamada
+        </a>
+      </div>
     </div>
   </section>
 
@@ -756,32 +908,58 @@
       <div>
         <h2 class="h2">Un sistema completo, <br>que se adapta a ti.</h2>
         <p class="p">Puedes usar todo el sistema o solo las piezas que necesites. <br>Se integra con tus herramientas actuales.</p>
-        <a class="btn btn-bl" href="#hablemos" data-cal style="margin-top:30px">
+        <a class="btn btn-bl" href="#hablemos" data-cal style="margin-top:28px">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
           Ver c&oacute;mo se integra
         </a>
       </div>
 
       <div class="diag">
-        <svg class="cables" viewBox="0 0 790 370" fill="none" aria-hidden="true">
+        <svg class="cables" viewBox="0 0 1430 600" fill="none" aria-hidden="true">
           <defs>
             <linearGradient id="cb" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#0260AC"/><stop offset="1" stop-color="#00A8FF"/>
+              <stop offset="0" stop-color="#1E6ACB"/><stop offset="1" stop-color="#3FB4FF"/>
             </linearGradient>
+            <filter id="gl" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="4" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
           </defs>
-          <g stroke="url(#cb)" stroke-width="1.6" opacity=".85">
-            <path d="M376 170C300 150 240 110 190 86"/>
-            <path d="M409 136C409 110 412 96 414 74"/>
-            <path d="M442 160C520 128 580 100 640 76"/>
-            <path d="M322 185C280 185 250 186 216 186"/>
-            <path d="M496 185C540 185 570 186 604 186"/>
-            <path d="M380 234C340 258 310 272 280 282"/>
-            <path d="M440 234C470 254 490 268 510 278"/>
+          <g stroke="url(#cb)" stroke-width="2" stroke-dasharray="7 6" filter="url(#gl)" opacity=".92">
+            <path d="M350 175C292 150 240 132 192 118"/>
+            <path d="M441 136L442 108"/>
+            <path d="M534 172C580 150 620 130 656 114"/>
+            <path d="M329 206L236 212"/>
+            <path d="M554 206L607 212"/>
+            <path d="M380 276C342 290 302 293 268 296"/>
+            <path d="M500 276C530 290 560 296 582 302"/>
+            <path d="M554 232C660 258 760 288 852 316"/>
           </g>
-          <g fill="#00A8FF">
-            <circle cx="190" cy="86" r="3"/><circle cx="414" cy="74" r="3"/><circle cx="640" cy="76" r="3"/>
-            <circle cx="216" cy="186" r="3"/><circle cx="604" cy="186" r="3"/>
-            <circle cx="280" cy="282" r="3"/><circle cx="510" cy="278" r="3"/>
+          <g fill="#4FC0FF" filter="url(#gl)">
+            <circle cx="192" cy="118" r="4"/><circle cx="442" cy="108" r="4"/><circle cx="656" cy="114" r="4"/>
+            <circle cx="236" cy="212" r="4"/><circle cx="607" cy="212" r="4"/>
+            <circle cx="268" cy="296" r="4"/><circle cx="582" cy="302" r="4"/>
+          </g>
+        </svg>
+
+        <svg class="cables-m" viewBox="0 0 350 300" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="cbm" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#1E6ACB"/><stop offset="1" stop-color="#3FB4FF"/>
+            </linearGradient>
+            <filter id="glm" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="2.4" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g stroke="url(#cbm)" stroke-width="1.8" stroke-dasharray="5 4" filter="url(#glm)" opacity=".9">
+            <path d="M152 118C128 110 108 104 90 100"/>
+            <path d="M198 118C222 110 242 104 260 100"/>
+            <path d="M124 147L114 147"/>
+            <path d="M226 147L236 147"/>
+            <path d="M152 176C124 190 90 204 58 211"/>
+            <path d="M175 176L175 211"/>
+            <path d="M198 176C226 190 260 204 292 211"/>
           </g>
         </svg>
 
@@ -799,25 +977,33 @@
         </div>
 
         <div class="pz p2">
-          <span class="ic" style="background:#1E3A8A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 5h16l-6.2 7.3V19l-3.6 1.6v-8.3z"/></svg></span>
-          <b>Cualificaci&oacute;n <br>de leads</b>
+          <div class="cab">
+            <span class="ic" style="background:#1E3A8A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 5h16l-6.2 7.3V19l-3.6 1.6v-8.3z"/></svg></span>
+            <b>Cualificaci&oacute;n <br>de leads</b>
+          </div>
         </div>
 
         <div class="pz p3">
-          <span class="ic" style="background:#1D4ED8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9.4 14.2l2 2 3.4-3.6"/></svg></span>
-          <b>Agendamiento <br>de llamadas</b>
+          <div class="cab">
+            <span class="ic" style="background:#1D4ED8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9.4 14.2l2 2 3.4-3.6"/></svg></span>
+            <b>Agendamiento <br>de llamadas</b>
+          </div>
         </div>
 
         <div class="pz p4">
-          <span class="ic" style="background:#13713F"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 12a8 8 0 11-2.4-5.7"/><path d="M20 4v4h-4"/></svg></span>
-          <b>Seguimiento <br>autom&aacute;tico</b>
+          <div class="cab">
+            <span class="ic" style="background:#13713F"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 12a8 8 0 11-2.4-5.7"/><path d="M20 4v4h-4"/></svg></span>
+            <b>Seguimiento <br>autom&aacute;tico</b>
+          </div>
         </div>
 
         <div class="nuc">EasyRobots</div>
 
         <div class="pz p5">
-          <span class="ic" style="background:#9A1C3A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 10a6 6 0 1112 0c0 4 1.6 5.6 1.6 5.6H4.4S6 14 6 10z"/><path d="M10 18.5a2.2 2.2 0 004 0"/></svg></span>
-          <b>Recordatorios <br>y no-shows</b>
+          <div class="cab">
+            <span class="ic" style="background:#9A1C3A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 10a6 6 0 1112 0c0 4 1.6 5.6 1.6 5.6H4.4S6 14 6 10z"/><path d="M10 18.5a2.2 2.2 0 004 0"/></svg></span>
+            <b>Recordatorios <br>y no-shows</b>
+          </div>
         </div>
 
         <div class="pz p6">
@@ -834,9 +1020,78 @@
         </div>
 
         <div class="pz p7">
-          <span class="ic" style="background:#0E5FAF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 19V11M12 19V5M19 19v-6"/></svg></span>
-          <b>Reportes <br>y control</b>
+          <div class="cab">
+            <span class="ic" style="background:#0E5FAF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 19V11M12 19V5M19 19v-6"/></svg></span>
+            <b>Reportes <br>y control</b>
+          </div>
         </div>
+
+        <!-- El panel del portatil es una MAQUETA: las cifras son las que
+             pinta el boceto y no salen de ningun cliente, por eso va
+             etiquetado "Ejemplo" y los nombres llevan solo la inicial del
+             apellido. Mismo trato que la lista de dental. -->
+        <div class="lap" aria-label="Ejemplo de panel de control">
+          <div class="lap-p">
+            <div class="lap-lat">
+              <b>EasyRobots</b>
+              <span>Conversaciones</span><span>Contactos</span><span>Automatizaciones</span>
+              <span>Calendario</span><span>Reportes</span><span>Configuraci&oacute;n</span>
+            </div>
+            <div class="lap-cue">
+              <div class="lap-cab"><u>Resumen</u><i>Ejemplo</i></div>
+              <div class="lap-kpi">
+                <div><b>124</b><span>Conversaciones</span></div>
+                <div><b>48</b><span>Citas agendadas</span></div>
+                <div><b>32</b><span>Clientes nuevos</span></div>
+                <div><b class="v">+27&nbsp;%</b><span>Conversi&oacute;n</span></div>
+              </div>
+              <div class="lap-bajo">
+                <div>
+                  <div class="lap-graf">
+                    <svg viewBox="0 0 220 56" fill="none" preserveAspectRatio="none" aria-hidden="true">
+                      <path d="M0 44L24 38 48 41 72 28 96 31 120 18 144 24 168 12 192 16 220 6" stroke="#2F7FE8" stroke-width="2"/>
+                      <path d="M0 44L24 38 48 41 72 28 96 31 120 18 144 24 168 12 192 16 220 6V56H0z" fill="#2F7FE8" opacity=".10"/>
+                    </svg>
+                  </div>
+                  <div class="lap-lis">
+                    <div class="lap-f"><em></em>Laura M.<i>Cita confirmada</i></div>
+                    <div class="lap-f"><em></em>Carlos G.<i>En seguimiento</i></div>
+                    <div class="lap-f"><em></em>Ana L.<i>Nuevo lead</i></div>
+                    <div class="lap-f"><em></em>David R.<i>Cita confirmada</i></div>
+                  </div>
+                </div>
+                <div class="lap-can">
+                  <b>Canales</b>
+                  <div class="lap-c"><u style="background:#25D366"></u>WhatsApp<s>42&nbsp;%</s></div>
+                  <div class="lap-c"><u style="background:linear-gradient(45deg,#F9A03C,#E1306C 60%,#8134AF)"></u>Instagram<s>28&nbsp;%</s></div>
+                  <div class="lap-c"><u style="background:#1E70F0"></u>Email<s>15&nbsp;%</s></div>
+                  <div class="lap-c"><u style="background:#F2A63B"></u>Tel&eacute;fono<s>10&nbsp;%</s></div>
+                  <div class="lap-c"><u style="background:#5B6B8A"></u>Web<s>5&nbsp;%</s></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 08 · COMO TRABAJAMOS =================== -->
+  <section class="sec s08">
+    <div class="foto suave" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja clara">
+      <div>
+        <div class="kick">C&oacute;mo trabajamos</div>
+        <h2 class="h2">Analizamos, dise&ntilde;amos, <br>construimos y mantenemos.</h2>
+        <p class="p">Un proceso claro, sin complicaciones y <br>adaptado a tu negocio.</p>
+      </div>
+      <div class="proc">
+        <div class="pr"><b>01</b><strong>Analizamos</strong><span>por d&oacute;nde llegan tus leads.</span></div>
+        <div class="pr"><b>02</b><strong>Dise&ntilde;amos</strong><span>las respuestas y criterios.</span></div>
+        <div class="pr"><b>03</b><strong>Construimos</strong><span>sobre tus herramientas.</span></div>
+        <div class="pr"><b>04</b><strong>Probamos</strong><span>y ajustamos contigo.</span></div>
+        <div class="pr"><b>05</b><strong>Mantenemos</strong><span>y optimizamos cada mes.</span></div>
       </div>
     </div>
   </section>
@@ -874,26 +1129,6 @@
           </ul>
         </div>
         <p class="cierre-nota">Cuando el sistema no sabe algo, no improvisa: lo dice y te lo pasa. En una marca personal, inventarse una respuesta cuesta m&aacute;s caro que no contestar.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =================== 08 · COMO TRABAJAMOS =================== -->
-  <section class="sec s08">
-    <div class="foto suave" aria-hidden="true"></div>
-    <div class="velo" aria-hidden="true"></div>
-    <div class="caja clara">
-      <div>
-        <div class="kick">C&oacute;mo trabajamos</div>
-        <h2 class="h2">Analizamos, dise&ntilde;amos, <br>construimos y mantenemos.</h2>
-        <p class="p">Un proceso claro, sin complicaciones y <br>adaptado a tu negocio.</p>
-      </div>
-      <div class="proc">
-        <div class="pr"><b>01</b><strong>Analizamos</strong><span>por d&oacute;nde llegan tus leads.</span></div>
-        <div class="pr"><b>02</b><strong>Dise&ntilde;amos</strong><span>las respuestas y criterios.</span></div>
-        <div class="pr"><b>03</b><strong>Construimos</strong><span>sobre tus herramientas.</span></div>
-        <div class="pr"><b>04</b><strong>Probamos</strong><span>y ajustamos contigo.</span></div>
-        <div class="pr"><b>05</b><strong>Mantenemos</strong><span>y optimizamos cada mes.</span></div>
       </div>
     </div>
   </section>
@@ -956,19 +1191,19 @@
     <div class="foto" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
     <div class="caja">
-      <div class="pie-marca">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 2.6a1 1 0 011.8-.3L11.4 4h1.2l1.1-1.7a1 1 0 111.7 1.1L14.9 4H16a4 4 0 014 4v7a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h1.1L8.4 3.4a1 1 0 01.1-.8zM9 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM9 15h6v1.4H9V15z"/></svg>
-        EasyRobots
+      <div class="p-cols">
+        <div class="p-c"><b>EasyRobots</b><span>Sistemas de IA para <br>coaches e infoproductores.</span></div>
+        <div class="p-c"><b>Producto</b><div class="p-lista"><a href="#demo">Ver demostraci&oacute;n</a><a href="#sistema">Integraciones</a></div></div>
+        <div class="p-c"><b>Empresa</b><div class="p-lista"><a href="#equipo">Sobre nosotros</a><a href="#hablemos" data-cal>Reservar llamada</a><a href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a></div></div>
+        <div class="p-c"><b>Legal</b><div class="p-lista"><a href="/privacy.html">Pol&iacute;tica de privacidad <br>y cookies</a></div></div>
+        <div class="p-c"><b>S&iacute;guenos</b>
+          <div class="p-rs">
+            <a href="https://instagram.com/easyrobots.ai" aria-label="Instagram" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.9"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg></a>
+            <a href="https://www.facebook.com/people/EasyRobotsAI/61587151053673/" aria-label="Facebook" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12"/></svg></a>
+          </div>
+        </div>
       </div>
-      <div class="pie-desc">Sistemas de IA para coaches e infoproductores.</div>
-      <!-- El boceto separa Privacidad, Cookies y Aviso legal. En esta web va
-           un solo enlace: privacy.html ya recoge dentro el aviso legal y las
-           cookies, y tres enlaces al mismo sitio confunden. -->
-      <div class="pie-enl">
-        <a href="/privacy.html">Privacidad</a>
-        <a href="https://www.instagram.com/easyrobots.ai" target="_blank" rel="noopener">Instagram</a>
-      </div>
-      <div class="pie-cr">&copy; 2026 EasyRobots. Todos los derechos reservados.</div>
+      <p class="p-legal">EasyRobots AI &middot; Hamburg (Alemania) &nbsp;&middot;&nbsp; info@easyrobots-ai.cloud &nbsp;&middot;&nbsp; &copy; 2026 EasyRobots. Todos los derechos reservados.</p>
     </div>
   </footer>
 

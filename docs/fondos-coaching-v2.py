@@ -54,16 +54,16 @@ SALIDA = RAIZ / 'src' / 'assets'
 
 # (nombre, y0, y1, x del centro del recorte movil en tanto por uno)
 BANDAS = [
-    ('coach-hero',      0,  177, 0.62),   # escritorio de noche, portatil y ciudad
+    ('coach-hero-banda',0,  177, 0.62),   # escritorio de noche. Ya NO es el hero (ver abajo)
     ('coach-cae',     180,  370, 0.30),   # coach agobiada de noche ante el portatil
     ('coach-interes', 374,  549, 0.72),   # coach grabando, tranquilo
     ('coach-funciona',552,  705, 0.50),   # escritorio de dia, plantas y mar
     ('coach-demo',    708,  857, 0.55),   # escritorio de noche con velas
     ('coach-sistema', 861, 1087, 0.50),   # red azul abstracta (fondo del diagrama)
-    ('coach-limite', 1090, 1258, 0.45),   # mesa de marmol clara con luz de manana
-    ('coach-proceso',1261, 1400, 0.50),   # oficina luminosa con plantas
-    ('coach-equipo', 1403, 1545, 0.50),   # despacho claro, madera y plantas
-    ('coach-cierre', 1548, 1756, 0.55),   # atardecer sobre la ciudad (version hoja)
+    ('coach-limite-banda', 1090, 1258, 0.45),  # sustituidas por las tiras de claras.png
+    ('coach-proceso-banda',1261, 1400, 0.50),
+    ('coach-equipo-banda', 1403, 1545, 0.50),
+    ('coach-cierre', 1548, 1756, 0.55),   # atardecer sobre la ciudad: el CTA
     ('coach-pie',    1760, 2019, 0.50),   # terraza de noche con la ciudad al fondo
 ]
 
@@ -110,16 +110,36 @@ def main():
         escritorio(hoja, nombre, y0, y1)
         movil(hoja, nombre, y0, y1, centro)
 
-    # El cierre tiene foto propia a 1993x789, que es 2,5 veces la banda de
-    # la hoja. Se usa esa y la banda 10 se queda de reserva.
-    cta = Image.open(BOCETO / 'cta-aspiracional.png').convert('RGB')
-    guarda(cta.resize((ANCHO_ESC, int(cta.height * ANCHO_ESC / cta.width)),
-                      Image.LANCZOS), SALIDA / 'coach-cierre.webp')
-    # Movil del cierre: la mitad derecha, que es donde esta el sol.
-    a = int(cta.height * ANCHO_MOV / ALTO_MOV)
-    x0 = int(cta.width * 0.72 - a / 2)
-    guarda(cta.crop((x0, 0, x0 + a, cta.height)).resize((ANCHO_MOV, ALTO_MOV), Image.LANCZOS),
-           SALIDA / 'coach-cierre-movil.webp')
+    # ---- cambios del 2026-10-04, pedidos por Anais ----------------
+    # 1. La terraza de Dubai, que estaba en el cierre, pasa al HERO: es la
+    #    foto con mas resolucion de las que llegaron (1993x789 contra los
+    #    779 de la hoja) y la del hero se veia blanda y apagada.
+    #    El cierre se queda con la banda 10 de la hoja, que es la escena
+    #    del atardecer que pinta el boceto bajo "Menos oportunidades
+    #    perdidas" (la de la chica de espaldas).
+    dubai = Image.open(BOCETO / 'cta-aspiracional.png').convert('RGB')
+    guarda(dubai.resize((ANCHO_ESC, int(dubai.height * ANCHO_ESC / dubai.width)),
+                        Image.LANCZOS), SALIDA / 'coach-hero.webp')
+    a = int(dubai.height * ANCHO_MOV / ALTO_MOV)
+    x0 = int(dubai.width * 0.72 - a / 2)          # el sol esta a la derecha
+    guarda(dubai.crop((x0, 0, x0 + a, dubai.height)).resize((ANCHO_MOV, ALTO_MOV), Image.LANCZOS),
+           SALIDA / 'coach-hero-movil.webp')
+
+    # 2. Las tres secciones claras (como trabajamos, el limite, equipo y
+    #    garantia) se quedaban sin fondo visible: sus bandas de la hoja son
+    #    interiores apagados y el velo se los comia. Entran las tres tiras
+    #    de `claras.png`, que llegaron a 1994x789, o sea 2,5 veces la
+    #    resolucion de la hoja, y nunca se habian usado.
+    #    Costuras medidas igual que en la hoja: 265 y 521.
+    claras = Image.open(BOCETO / 'claras.png').convert('RGB')
+    TIRAS = [
+        ('coach-proceso', 0, 264, 0.50),   # mesa de marmol, portatil y cafe
+        ('coach-limite', 269, 520, 0.42),  # terraza con sofa y piscina
+        ('coach-equipo', 525, 789, 0.55),  # terraza al atardecer, mesa puesta
+    ]
+    for nombre, y0, y1, centro in TIRAS:
+        escritorio(claras, nombre, y0, y1)
+        movil(claras, nombre, y0, y1, centro)
 
 
 if __name__ == '__main__':
