@@ -746,6 +746,35 @@
       .s06 .velo { background: linear-gradient(90deg, rgba(222,235,251,.86) 0%, rgba(206,226,250,.50) 42%, rgba(190,216,248,.22) 100%); }
     }
 
+    /* ============ OCTAVA PASADA (2026-10-04) ============
+       - Hero con la foto que paso Anais (dentista con paciente; trae pintadas
+         las tres fichas de la derecha). Ya no sale de la hoja de fondos: el
+         original esta en assets/boceto/dental-v2/hero-anais.webp. Es nitida,
+         asi que sin el desenfoque de las demas. En movil, recorte vertical
+         desde x560: dentista y paciente, SIN las fichas pintadas, que al
+         quedar cortadas detras del titular ensuciaban.
+       - Los cuerpos de la demo, "Y por fin sabes", control y el cintillo de
+         piezas "no se ven bien" sobre fondo tan claro: texto casi negro y un
+         punto mas de velo detras de las columnas de texto.
+       - "En una clinica, esto importa mas..." empezaba mas a la derecha que
+         los demas titulares: fuera su sangria. */
+    .hero .foto.suave { filter: none; transform: none; }
+    .hero .foto { background-position: 62% center; }
+    .clara .p, .r-col .p { color: #1E2430; }
+    .clara .kick { color: #444C58; }
+    .l-col { padding-left: 0 !important; }
+    @media (min-width: 861px) {
+      .hero .velo { background:
+        linear-gradient(90deg, rgba(6,9,12,.90) 0%, rgba(6,9,12,.80) 26%, rgba(6,9,12,.42) 44%, rgba(6,9,12,.06) 62%, rgba(6,9,12,0) 78%),
+        linear-gradient(180deg, rgba(6,9,12,.50) 0%, rgba(6,9,12,0) 18%, rgba(6,9,12,0) 82%, rgba(6,9,12,.45) 100%); }
+      .s04 .velo { background: linear-gradient(90deg, rgba(250,248,245,.78) 0%, rgba(250,248,245,.84) 30%, rgba(250,248,245,.80) 62%, rgba(250,248,245,.86) 100%); }
+      .s08 .velo { background: rgba(246,246,246,.70); }
+      .s06 .velo { background: linear-gradient(90deg, rgba(226,238,252,.92) 0%, rgba(210,229,250,.62) 42%, rgba(190,216,248,.24) 100%); }
+    }
+    @media (max-width: 860px) {
+      .hero .foto { background-position: center top; }
+    }
+
     /* Calendario de GHL en modal. Mismo patron que inmobiliarias y coaching. */
     .er-modal { position: fixed; inset: 0; z-index: 9000; display: none; background: rgba(6,10,16,.62); backdrop-filter: blur(6px); padding: 24px 16px; overflow-y: auto; }
     .er-modal.open { display: block; }

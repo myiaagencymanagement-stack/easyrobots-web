@@ -1114,6 +1114,14 @@ de referencia y no se toca.
   (`saturate(1.3)`), porque junto a la demo parecian la misma seccion. **La
   regla del hero a pantalla completa queda sustituida por esta en escritorio**;
   en movil sigue siendo una pantalla.
+- **Octava pasada (2026-10-04)**: **el hero ya tiene foto propia**, la que
+  paso Anais (dentista con paciente y tres fichas pintadas a la derecha),
+  original en `assets/boceto/dental-v2/hero-anais.webp`; `dent-hero.webp` es
+  ella entera, sin desenfoque, y `dent-hero-movil.webp` un recorte vertical
+  desde x560 **sin las fichas** (cortadas detras del titular ensuciaban).
+  Textos de demo, control, "Y por fin sabes" y cintillos casi negros
+  (#1E2430) con algo mas de velo detras: sobre fondo claro no se leian. El
+  titular de "Lo que hace" pierde su sangria y arranca donde los demas.
 
 ### Lo del boceto que NO se reprodujo
 
@@ -1134,9 +1142,8 @@ de referencia y no se toca.
 
 ### Pendiente en esta landing
 
-- La foto del hero de la hoja de fondos **no trae al doctor** del boceto: es la
-  clinica vacia. Si se quiere la persona, pedir la foto y sustituir
-  `dent-hero.webp`.
+- ~~La foto del hero no trae al doctor del boceto.~~ **Resuelto el
+  2026-10-04** con la foto que paso Anais (ver octava pasada).
 - **Las fotos son de 872 px de ancho** y con secciones de alto real se amplian
   de 2 a 4 veces: se ven blandas, sobre todo el hero a pantalla completa.
   Pedir la hoja de fondos a mas resolucion (o cada escena suelta, al menos
