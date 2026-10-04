@@ -106,6 +106,7 @@
     .clara .d-kick { color: #0A72D8; }
     .m-t, .b-t, .w-t, .h2-t, .d-t, .n-t, .e-t, .c-t { font-size: var(--h2); line-height: 1.08; font-weight: 800; letter-spacing: -.035em; text-wrap: balance; }
     .d-t, .c-t { margin-top: 16px; }
+    .w-t em, .h2-t em, .lm-t em { font-style: normal; color: var(--azul-t); }
     /* Los saltos del boceto estaban pensados para sus 845 px: en una columna
        real partian mal los titulares. Se quitan y el navegador reparte. */
     .m-t br, .b-t br, .w-t br, .h2-t br, .d-t br, .n-t br, .e-t br, .c-t br { display: none; }
@@ -185,7 +186,7 @@
     .rd-azul { background: var(--azul); }
 
     /* ============ 02 - DOS MOMENTOS - EL MISMO CLIENTE ============ */
-    .s02 { background: #000C15; }
+    .s02 { background: #000C15; border-top: 1px solid rgba(90,150,255,.28); }
     .s02 .foto { background-image: url(/assets/conce-momentos.webp); opacity: .85; }
     .s02 .velo { background: linear-gradient(90deg, rgba(0,8,14,.92) 0%, rgba(0,8,14,.80) 32%, rgba(0,8,14,.50) 55%, rgba(0,8,14,.35) 100%); }
     .s02 .dos { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
@@ -237,9 +238,11 @@
     .b-fle { width: 22px; height: 18px; color: #1183FF; }
 
     /* ============ 04 - EL QUE PREGUNTA UN SABADO ============ */
-    .s04 { background: #00080F; }
+    .s04 { background: #0A1D3A; border-top: 1px solid rgba(90,150,255,.35); }
+    .s04 > .caja { padding-bottom: 42px; }
+    .s05 > .caja { padding-top: 42px; }
     .s04 .foto { background-image: url(/assets/conce-sabado.webp); background-position: right center; }
-    .s04 .velo { background: linear-gradient(90deg, rgba(0,7,13,.92) 0%, rgba(0,7,13,.78) 34%, rgba(0,7,13,.40) 54%, rgba(0,7,13,.08) 78%, rgba(0,7,13,0) 100%); }
+    .s04 .velo { background: linear-gradient(90deg, rgba(10,29,58,.94) 0%, rgba(10,29,58,.80) 34%, rgba(10,29,58,.42) 54%, rgba(10,29,58,.10) 78%, rgba(10,29,58,0) 100%); }
     .w-card { width: min(100%, 480px); background: rgba(6,16,26,.84); border: 1px solid rgba(255,255,255,.09); border-radius: 18px; backdrop-filter: blur(8px); padding: 16px 18px 18px; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
     .w-cab { display: flex; align-items: center; }
     .w-wa { width: 38px; height: 38px; border-radius: 10px; background: #1FA855; display: flex; align-items: center; justify-content: center; }
@@ -265,9 +268,9 @@
     .w-box i { display: block; font-style: normal; font-size: 14.5px; color: rgba(255,255,255,.78); line-height: 1.3; }
 
     /* ============ 05 - NO SON DOS HERRAMIENTAS ============ */
-    .s05 { background: #000B14; }
+    .s05 { background: #0A1D3A; }
     .s05 .foto { background-image: url(/assets/conce-hero.webp); background-position: center 70%; background-size: cover; opacity: .7; }
-    .s05 .velo { background: linear-gradient(90deg, rgba(0,10,18,.92) 0%, rgba(0,10,18,.80) 40%, rgba(0,10,18,.62) 100%); }
+    .s05 .velo { background: linear-gradient(90deg, rgba(10,29,58,.94) 0%, rgba(10,29,58,.82) 40%, rgba(10,29,58,.64) 100%); }
     .h2-card { background: rgba(7,18,29,.62); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; display: flex; align-items: center; justify-content: space-around; gap: 10px; padding: 34px 18px; }
     .h2-it { text-align: center; }
     .h2-rd { width: 64px; height: 64px; margin: 0 auto; border-radius: 50%; border: 1px solid rgba(255,255,255,.18); display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.03); }
@@ -286,7 +289,7 @@
        salian enormes detras del texto. Fuera de las dos secciones claras:
        van la sala de exposicion y el taller, que son fotos de escena. */
     .s06 .foto { background-image: url(/assets/conce-hero.webp); background-position: center 40%; opacity: 1; }
-    .s06 .velo { background: linear-gradient(180deg, rgba(241,247,253,.88) 0%, rgba(241,247,253,.74) 50%, rgba(241,247,253,.66) 100%); }
+    .s06 .velo { background: linear-gradient(90deg, rgba(241,247,253,.86) 0%, rgba(241,247,253,.62) 34%, rgba(241,247,253,.30) 66%, rgba(241,247,253,.18) 100%); }
     .d-btn { margin-top: 32px; width: min(100%, 360px); height: 64px; background: var(--azul); border: 0; border-radius: 999px; display: flex; align-items: center; padding: 0 10px; cursor: pointer; transition: background .2s; }
     .d-btn:hover { background: var(--azul-h); }
     .d-play { width: 44px; height: 44px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
@@ -297,15 +300,18 @@
     /* rejilla de inmobiliarias: texto 36 % · reproductor 25 % · panel 36 %,
        y en la segunda fila la llamada a la accion bajo el texto y la
        transcripcion bajo el reproductor y el panel */
-    .dm { display: grid; grid-template-columns: minmax(0, 36fr) minmax(0, 25fr) minmax(0, 37fr); gap: 20px 18px; align-items: start; }
+    /* Anais (2026-10-04): el reproductor "muy grande": pasa a un cuadrado
+       pequeno en la segunda fila, a la altura del CTA, junto a los datos
+       recogidos. La transcripcion sube a la primera fila, junto al titular. */
+    .dm { display: grid; grid-template-columns: minmax(0, 36fr) minmax(0, 22fr) minmax(0, 42fr); gap: 22px 18px; align-items: start; }
     .dm-txt { grid-column: 1; grid-row: 1; }
-    .dm .d-card { grid-column: 2; grid-row: 1; }
-    .dm .d-panel { grid-column: 3; grid-row: 1; }
+    .dm .d-card { grid-column: 2; grid-row: 2; }
+    .dm .d-panel { grid-column: 3; grid-row: 2; }
     .dm-cta { grid-column: 1; grid-row: 2; }
     .dm-cta p { font-size: 16px; line-height: 1.55; color: #1F2A37; max-width: 34ch; }
     .dm-cta .btn { margin-top: 16px; }
     .dm-cta span { display: block; margin-top: 12px; font-size: 14px; color: #3A4654; }
-    .dm-trans { grid-column: 2 / 4; grid-row: 2; background: #fff; border: 1px solid #DCE7F4; border-radius: 16px; padding: 6px 22px; box-shadow: 0 14px 36px rgba(15,40,80,.12);
+    .dm-trans { grid-column: 2 / 4; grid-row: 1; align-self: center; background: #fff; border: 1px solid #DCE7F4; border-radius: 16px; padding: 6px 22px; box-shadow: 0 14px 36px rgba(15,40,80,.12);
                 display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; column-gap: 32px; }
     .dm-trans .l { padding: 10px 0; border-bottom: 1px solid #E6EDF6; }
     .dm-trans .l:nth-child(3n) { border-bottom: 0; }
@@ -314,11 +320,11 @@
     .dm-trans .l b.cl { color: #0F9E52; }
     .dm-trans .l i { font-style: normal; margin-left: 8px; font-size: 12.5px; color: #6B7480; }
     .dm-trans .l p { margin-top: 3px; font-size: 14.5px; line-height: 1.45; color: #1E242D; }
-    .d-card { position: relative; height: 252px; background: #0A1622; border: 1px solid rgba(255,255,255,.07); border-radius: 16px; box-shadow: 0 16px 40px rgba(10,30,60,.18); }
-    .d-rd { position: absolute; left: 18px; top: 72px; width: 44px; height: 44px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 0; cursor: pointer; }
+    .d-card { position: relative; height: auto; aspect-ratio: 1 / 1; width: 100%; max-width: 240px; justify-self: center; background: #0A1622; border: 1px solid rgba(255,255,255,.07); border-radius: 16px; box-shadow: 0 16px 40px rgba(10,30,60,.18); }
+    .d-rd { position: absolute; left: 20px; top: 22px; width: 44px; height: 44px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 0; cursor: pointer; }
     .d-rd svg { width: 17px; height: 17px; color: var(--azul); }
-    .d-onda { position: absolute; left: 76px; right: 18px; top: 62px; height: 64px; color: #22C8F5; }
-    .d-prog { position: absolute; left: 20px; right: 18px; bottom: 26px; display: flex; align-items: center; gap: 12px; }
+    .d-onda { position: absolute; left: 20px; right: 20px; top: 46%; height: 54px; transform: translateY(-50%); color: #22C8F5; }
+    .d-prog { position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; align-items: center; gap: 12px; }
     .d-prog .tri { width: 11px; height: 13px; color: #fff; }
     .d-prog .pista { flex: 1; height: 3px; border-radius: 999px; background: rgba(255,255,255,.16); position: relative; }
     .d-prog .pista::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 12px; border-radius: 999px; background: rgba(255,255,255,.85); }
@@ -352,6 +358,25 @@
     .n-fila svg { width: 16px; height: 16px; margin-top: 3px; }
     .n-si .n-fila svg { color: #16B45E; }
     .n-no .n-fila svg { color: #EA2A3C; }
+
+    /* ============ 07B - LIMITES Y CONTROL ============
+       Oscura y sin foto, como la de ecommerce: azul marino con un brillo
+       azul arriba a la derecha. Las fichas blancas hacen el trabajo. */
+    .slm { background: radial-gradient(ellipse 60% 70% at 85% 0%, rgba(0,112,254,.22) 0%, rgba(0,112,254,0) 70%), linear-gradient(180deg, #071630 0%, #040D1C 100%); }
+    .lm-t { margin-top: 16px; max-width: 860px; font-size: var(--h2); line-height: 1.08; font-weight: 800; letter-spacing: -.035em; text-wrap: balance; }
+    .lm-fila { margin-top: 32px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+    .lm-ficha { color: var(--tinta); background: #fff; border-radius: 14px; padding: 22px 20px 24px; box-shadow: 0 14px 34px rgba(0,0,0,.30); }
+    .lm-ficha .rd { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lm-ficha .rd svg { width: 23px; height: 23px; }
+    .lm-rojo .rd { background: #FDE8E8; color: #E5484D; }
+    .lm-ambar .rd { background: #FDF0D9; color: #D97706; }
+    .lm-az .rd { background: #E6F0FE; color: var(--azul); }
+    .lm-gris .rd { background: #EDF1F6; color: #0B1220; }
+    .lm-verde .rd { background: #E3F7EC; color: #0F9E52; }
+    .lm-ficha b { display: block; margin-top: 16px; font-size: 17px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
+    .lm-ficha .tx { display: block; margin-top: 8px; font-size: 15px; line-height: 1.55; color: #3A4654; }
+    .lm-pie { margin-top: 26px; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.84); }
+    .lm-pie strong { color: #fff; }
 
     /* ============ 08 - NO SOMOS UNA CENTRALITA ============
        La garantia va SIN foto, a peticion de Anais: "eso es muy serio".
@@ -417,16 +442,17 @@
       .s02 .dos { grid-template-columns: 1fr; }
       .dm { grid-template-columns: 1fr 1fr; }
       .dm-txt { grid-column: 1 / -1; }
-      .dm .d-card { grid-column: 1; grid-row: 2; }
-      .dm .d-panel { grid-column: 2; grid-row: 2; }
+      .dm-trans { grid-column: 1 / -1; grid-row: 2; }
+      .dm .d-card { grid-column: 1; grid-row: 3; }
+      .dm .d-panel { grid-column: 2; grid-row: 3; }
       .dm-cta { grid-column: 1 / -1; grid-row: 4; }
-      .dm-trans { grid-column: 1 / -1; grid-row: 3; }
       .m-fila { margin-top: 8px; }
       /* a este ancho los tres pasos no caben con sus flechas: rejilla de tres */
       .b-pasos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .b-fle { display: none; }
       .s08 .caja { grid-template-columns: 1fr 1.4fr; }
       .e-panel { grid-column: 1 / -1; }
+      .lm-fila { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .p-cols { grid-template-columns: 1fr 1fr 1fr; row-gap: 32px; }
       .p-c:first-child { grid-column: 1 / -1; }
       .p-c:nth-child(2) { border-left: 0; padding-left: 0; }
@@ -463,8 +489,8 @@
       .hero .velo { background: linear-gradient(180deg, rgba(1,8,15,.66) 0%, rgba(1,8,15,.40) 30%, rgba(1,8,15,.66) 58%, rgba(1,8,15,.92) 100%); }
       .s03 .velo { background: rgba(0,8,15,.86); }
       .s02 .velo { background: linear-gradient(180deg, rgba(0,8,14,.86) 0%, rgba(0,8,14,.78) 40%, rgba(0,8,14,.94) 100%); }
-      .s04 .velo { background: linear-gradient(180deg, rgba(0,7,13,.86) 0%, rgba(0,7,13,.70) 35%, rgba(0,7,13,.88) 60%, rgba(0,7,13,.97) 100%); }
-      .s05 .velo { background: rgba(0,10,18,.92); }
+      .s04 .velo { background: linear-gradient(180deg, rgba(10,29,58,.86) 0%, rgba(10,29,58,.70) 35%, rgba(10,29,58,.88) 60%, rgba(10,29,58,.97) 100%); }
+      .s05 .velo { background: rgba(10,29,58,.90); }
       .s09 .velo { background: linear-gradient(180deg, rgba(0,7,13,.78) 0%, rgba(0,7,13,.70) 35%, rgba(0,7,13,.92) 70%, #00070E 100%); }
       .s06 .velo, .s07 .velo { background: rgba(241,247,253,.92); }
 
@@ -475,7 +501,7 @@
       .h-logo svg { width: 18px; height: 18px; }
       .h-marca b { font-size: 1.02rem; }
       .h-navbtn { margin-left: auto; height: auto; padding: .6rem 1.05rem; font-size: .8rem; gap: .4rem; }
-      .hero { height: auto; min-height: 100svh; }
+      .hero { height: auto; min-height: 0; }
       .h-cuerpo { display: block; padding: 76px 22px 30px; }
       .h-kick { margin-top: 0; }
       .h-t { font-size: clamp(2.1rem, 8.5vw, 3rem); line-height: 1.05; margin-top: .9rem; }
@@ -555,13 +581,25 @@
       .n-si { background: #fff; border-top: 3px solid #16B45E; box-shadow: 0 12px 28px rgba(15,40,80,.14); }
       .n-no { background: #fff; border-top: 3px solid #EA2A3C; box-shadow: 0 12px 28px rgba(15,40,80,.14); }
 
+      /* --- limites: de dos en dos, cada ficha con el color de su icono --- */
+      .lm-t { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.14; margin-top: 12px; }
+      .lm-fila { margin-top: 18px; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .lm-ficha { padding: 12px 12px 13px; border-top: 3px solid #E6ECF4; }
+      .lm-ficha:last-child { grid-column: 1 / -1; }
+      .lm-rojo { border-top-color: #E5484D; } .lm-ambar { border-top-color: #D97706; } .lm-az { border-top-color: var(--azul); }
+      .lm-gris { border-top-color: #0B1220; } .lm-verde { border-top-color: #0F9E52; }
+      .lm-ficha .rd { width: 30px; height: 30px; } .lm-ficha .rd svg { width: 16px; height: 16px; }
+      .lm-ficha b { margin-top: 8px; font-size: .84rem; } .lm-ficha .tx { margin-top: 4px; font-size: .75rem; line-height: 1.42; }
+      .lm-pie { margin-top: 14px; font-size: .84rem; line-height: 1.5; }
+
       /* --- 06 --- */
       .d-btn { width: 100%; height: 54px; margin-top: 1.2rem; padding: 0 8px; }
       .d-play { width: 38px; height: 38px; }
       .d-btn b { font-size: .95rem; } .d-chip { height: 30px; font-size: .84rem; }
       .d-pie { font-size: .8rem; margin-top: .6rem; }
       .dm { display: block; }
-      .dm .d-card { margin-top: 20px; height: 116px; }
+      .dm .d-card { margin-top: 20px; height: 116px; aspect-ratio: auto; max-width: none; }
+      .d-onda { transform: none; }
       .dm .d-panel { margin-top: 12px; }
       /* en el movil la demo se queda como estaba (Anais la prefiere asi),
          sin la transcripcion, pero ahora con su boton al final */
@@ -619,9 +657,33 @@
     @media (max-width: 620px) {
       :root { --pad: 30px; }
       .s08 .caja { padding-top: 30px; padding-bottom: 30px; }
-      .m-t, .b-t, .w-t, .h2-t, .d-t, .n-t, .e-t, .c-t { font-size: clamp(1.45rem, 6.4vw, 1.9rem); line-height: 1.12; }
+      .m-t, .b-t, .w-t, .h2-t, .d-t, .n-t, .e-t, .c-t, .lm-t { font-size: clamp(1.45rem, 6.4vw, 1.9rem); line-height: 1.12; }
       .m-p, .b-p, .w-p, .h2-p, .d-sub, .n-p, .e-p, .c-sub { font-size: .88rem; line-height: 1.5; }
-      .h-t { font-size: clamp(1.9rem, 7.6vw, 2.5rem); }
+      .h-t { font-size: clamp(1.75rem, 7vw, 2.3rem); }
+      /* "alejala un poquito, que se vea entera" (2026-10-04) */
+      .h-sub { font-size: .86rem; line-height: 1.45; margin-top: .7rem; }
+      .h-btns { margin-top: 1rem; gap: 8px; }
+      .h-b { height: 48px; }
+      .h-b .t1 { font-size: .86rem; } .h-b .t2 { font-size: .7rem; }
+      .h-b1 .ico { width: 21px; height: 21px; }
+      .h-play { width: 32px; height: 32px; }
+      .h-meta { margin-top: .8rem; gap: 6px 14px; }
+      .h-meta div { font-size: .72rem; } .h-meta svg { width: 14px; height: 14px; }
+      .h-tarjs { margin-top: 1rem; gap: 6px; }
+      .h-tarj { padding: 7px 11px; gap: 10px; }
+      .h-tarj .rd, .h-tarj .cuad { width: 30px; height: 30px; } .h-tarj .rd svg { width: 16px; height: 16px; } .h-tarj .cuad svg { width: 24px; height: 24px; }
+      .h-tarj b { font-size: .8rem; line-height: 1.3; } .h-tarj i { font-size: .74rem; line-height: 1.3; }
+      .h-cuerpo { padding-top: 68px; padding-bottom: 24px; }
+      /* la 02, un pelin mas pequena */
+      .m-fila { margin-top: 16px; gap: 8px; }
+      .m-a .m-cab { padding: 8px 12px; }
+      .m-cab svg { width: 24px; height: 24px; }
+      .m-cab .gr { font-size: 1rem; }
+      .m-a .m-foto { height: 84px; }
+      .m-b { min-height: 136px; }
+      .m-pil { min-height: 30px; font-size: .72rem; }
+      .m-rd { width: 38px; height: 38px; } .m-rd svg { width: 20px; height: 20px; }
+      .m-centro b { font-size: .84rem; }
       .h-sub { font-size: .92rem; line-height: 1.45; margin-top: .8rem; }
       .h-btns { margin-top: 1.1rem; }
       .h-b { height: 50px; }
@@ -834,7 +896,7 @@
     <div class="caja dos">
 
       <div class="w-col">
-        <h2 class="w-t">El que pregunta <br>un sábado no espera <br>al lunes.</h2>
+        <h2 class="w-t">El que pregunta <br>un sábado <em>no espera <br>al lunes.</em></h2>
         <p class="w-p">Cuando entra una consulta, el tiempo importa. <br>Nuestro sistema responde, cualifica y agenda, <br>aunque tu equipo no esté.</p>
       </div>
 
@@ -873,7 +935,7 @@
     <div class="caja dos">
 
       <div class="h2-col">
-        <h2 class="h2-t">No son dos herramientas. <br>Es la misma conversación.</h2>
+        <h2 class="h2-t">No son dos herramientas. <br>Es la <em>misma conversación.</em></h2>
         <p class="h2-p">Ventas y posventa conectadas. Toda la información <br>del cliente en un solo sistema para que cada interacción <br>sume, en cualquier momento del ciclo.</p>
       </div>
 
@@ -994,6 +1056,25 @@
         <div class="n-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 5.5l13 13m0-13-13 13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>No trabajamos con soluciones genéricas</div>
       </div>
       </div>
+    </div>
+  </section>
+
+  <!-- =================== 07B - LIMITES Y CONTROL ===================
+       Copy aprobado (docs/copys/concesionarios.md, seccion 7). No estaba
+       montada en la v2; Anais la echo en falta el 2026-10-04. Va en oscuro
+       entre "Lo que hace" y la garantia, que eran tres claras seguidas. -->
+  <section class="sec slm oscura" id="limites">
+    <div class="caja">
+      <p class="c-kick">L&iacute;mites y control</p>
+      <h2 class="lm-t">Lo que no hace, <em>y por qu&eacute; eso os interesa.</em></h2>
+      <div class="lm-fila">
+        <div class="lm-ficha lm-rojo"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 6.5A7 7 0 1 0 17 17.5"/><path d="M4 10h9M4 14h9"/></svg></span><b>No cierra condiciones.</b><span class="tx">No da precio final, ni descuento, ni lo que vale tu coche a cambio. Eso es del asesor.</span></div>
+        <div class="lm-ficha lm-ambar"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4.5 16a8 8 0 1 1 15 0"/><path d="M12 15l3.5-5"/><circle cx="12" cy="15.5" r="1.4" fill="currentColor" stroke="none"/></svg></span><b>No tasa.</b><span class="tx">Recoge matr&iacute;cula, kil&oacute;metros y estado, y lo pasa al tasador. Nada m&aacute;s.</span></div>
+        <div class="lm-ficha lm-az"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 8l8-4 8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg></span><b>No inventa stock ni recambios.</b><span class="tx">Si tiene vuestros datos, los consulta. Si no le consta, lo dice y abre una tarea.</span></div>
+        <div class="lm-ficha lm-gris"><span class="rd"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 11.4a3.3 3.3 0 100-6.6 3.3 3.3 0 000 6.6zm7 .1a2.8 2.8 0 100-5.6 2.8 2.8 0 000 5.6zM9 13.2c-3.1 0-6 1.7-6 3.9V20h12v-2.9c0-2.2-2.9-3.9-6-3.9zm7 .3c-.6 0-1.2.1-1.7.2 1.2.9 1.9 2.1 1.9 3.4V20h5v-2.6c0-2-2.5-3.9-5.2-3.9z"/></svg></span><b>No sustituye a nadie.</b><span class="tx">Ni al asesor, ni a recepci&oacute;n de taller. Les quita de encima lo que no necesita a una persona.</span></div>
+        <div class="lm-ficha lm-verde"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span><b>Vosotros mand&aacute;is.</b><span class="tx">Decid&iacute;s qu&eacute; contesta y hasta d&oacute;nde llega. Cualquiera del equipo puede entrar en una conversaci&oacute;n en cualquier momento: sigue siendo vuestro n&uacute;mero.</span></div>
+      </div>
+      <p class="lm-pie">Un sistema que improvisa una respuesta en un concesionario no ahorra trabajo: <strong>lo genera.</strong></p>
     </div>
   </section>
 
