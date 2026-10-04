@@ -497,7 +497,8 @@
       body { zoom: .9; }
       .hero { height: calc(86vh / .9); height: calc(86svh / .9); min-height: 644px; }
       .sec { min-height: calc(var(--alto) / .9); }
-      .s02, .s03, .s05, .s06, .s07, .s08, .s09, .s11 { min-height: 0; }
+      .s02, .s03, .s05, .s06, .s07, .s09, .s11 { min-height: 0; }
+      .s08 { min-height: calc(clamp(380px, 35vw, 560px) / .9); }
     }
 
     /* ===================== PANTALLAS MEDIANAS ===================== */
