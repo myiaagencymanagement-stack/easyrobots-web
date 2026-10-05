@@ -121,7 +121,7 @@
        generar el archivo, en docs/fondos-coaching-v2.py. */
     .foto.suave { filter: none; transform: none; }
     .velo { position: absolute; inset: 0; display: none; }
-    .s04 .velo, .s08 .velo, .s07 .velo { display: block; background: linear-gradient(94deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.26) 42%, rgba(0,0,0,.10) 72%, rgba(0,0,0,.06) 100%); }
+    .s04 .velo, .s08 .velo, .s07 .velo { display: block; background: linear-gradient(96deg, rgba(2,6,12,.93) 0%, rgba(2,6,12,.88) 30%, rgba(2,6,12,.72) 50%, rgba(2,6,12,.38) 72%, rgba(2,6,12,.08) 92%, rgba(2,6,12,0) 100%); }
 
     /* Las cuatro que eran claras vuelven a serlo, pero con el tratamiento
        de /estetica/: la foto se intuye muy lavada detras, el titular y el
@@ -142,12 +142,19 @@
     .s09 .cara b { color: #fff !important; text-shadow: 0 2px 14px rgba(0,0,0,.7); }
     .s09 .cara span { color: #D6DBE2 !important; text-shadow: 0 2px 14px rgba(0,0,0,.7); }
     .tarj { background: #fff; border: 1px solid #E7E4DE; border-radius: 16px; box-shadow: 0 10px 30px rgba(17,24,39,.07); }
-    .s08 .pr { background: #fff; border: 1px solid #E7E4DE; border-radius: 16px; box-shadow: 0 10px 30px rgba(17,24,39,.07); padding: 18px 16px 20px; }
+    .s08 .pr { padding: 0; }
     .s08 .pr::after { display: none; }
-    .cuad.v, .cuad.r { background: #fff; border: 1px solid #E7E4DE; box-shadow: 0 10px 30px rgba(17,24,39,.07); }
-    .cierre-nota { background: #fff; border: 1px solid #E7E4DE; border-radius: 16px; box-shadow: 0 10px 30px rgba(17,24,39,.07); padding: 18px 20px 20px; }
-    .gar { background: #fff; border: 1px solid #E7E4DE; border-radius: 18px; box-shadow: 0 10px 30px rgba(17,24,39,.07); padding: 24px 26px 26px; }
-    .s04 .canales, .s04 .paso { background: #fff; border-color: #E7E4DE; box-shadow: 0 10px 30px rgba(17,24,39,.07); }
+    .cuad.v { background: rgba(8,26,18,.52); border: 1px solid rgba(74,222,128,.34); }
+    .cuad.r { background: rgba(26,10,12,.52); border: 1px solid rgba(248,113,113,.34); }
+    .cuad.v h3 { color: #6EE7A0; } .cuad.r h3 { color: #FCA5A5; }
+    .cuad li { color: #E2E6EC; }
+    .cierre-nota { color: #CBD2DB !important; padding: 0; }
+    .gar { padding: 0; } .gar li { color: #E2E6EC; } .gar li svg { color: #8CC0FF; }
+    .s04 .canales, .s04 .paso { background: rgba(10,16,26,.62); border-color: rgba(255,255,255,.14); box-shadow: none; }
+    .s04 .canal { color: #fff; } .s04 .canal:nth-child(odd) { background: rgba(255,255,255,.06); }
+    .s04 .paso b { color: #fff; } .s04 .paso span { color: #C3CAD4; }
+    .s04 .paso i { background: rgba(37,99,235,.26); } .s04 .paso i svg { color: #8CC0FF; }
+    .s08 .pr strong { color: #fff; } .s08 .pr span { color: #C3CAD4; } .s08 .pr b { color: #7FB4FF; }
     .hero .velo, .s02 .velo, .s05 .velo { display: block; background: linear-gradient(90deg, rgba(3,6,11,.93) 0%, rgba(3,6,11,.86) 30%, rgba(3,6,11,.58) 50%, rgba(3,6,11,.16) 68%, rgba(3,6,11,0) 82%); }
     .caja { position: relative; z-index: 5; width: 100%; max-width: 1440px; margin: 0 auto; padding: var(--pad) max(22px, 6.7vw); }
     @media (min-width: 1440px) { .caja { padding-left: 96px; padding-right: 96px; } }
@@ -290,7 +297,7 @@
        que es lo que pide la ficha. */
     .s04 { background: var(--claro2); }
     .s04 .foto { background-image: url(/assets/coach-funciona.webp); background-position: center; }
-    .s04 .velo { background: linear-gradient(94deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.26) 42%, rgba(0,0,0,.10) 72%, rgba(0,0,0,.06) 100%); }
+    .s04 .velo { background: linear-gradient(96deg, rgba(2,6,12,.93) 0%, rgba(2,6,12,.88) 30%, rgba(2,6,12,.72) 50%, rgba(2,6,12,.38) 72%, rgba(2,6,12,.08) 92%, rgba(2,6,12,0) 100%); }
     .flujo { margin-top: clamp(28px, 4vh, 46px); display: grid; grid-template-columns: minmax(170px, 210px) 30px minmax(130px, 165px) 30px minmax(0, 5fr); align-items: center; gap: 0; }
     .canales { display: flex; flex-direction: column; gap: 7px; background: #fff; border: 1px solid var(--borde); border-radius: 16px; padding: 10px; box-shadow: 0 10px 30px rgba(17,24,39,.07); }
     .canal { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 10px; font-size: 13.5px; font-weight: 500; color: var(--tinta); }
@@ -433,7 +440,7 @@
        La banda de la hoja era un interior apagado que el velo se comia
        entero ("los fondos ni estan"). El velo baja a .78 para que se vea. */
     .s07 .foto { background-image: url(/assets/coach-limite.webp); background-position: center 42%; }
-    .s07 .velo { background: linear-gradient(94deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.26) 42%, rgba(0,0,0,.10) 72%, rgba(0,0,0,.06) 100%); }
+    .s07 .velo { background: linear-gradient(96deg, rgba(2,6,12,.93) 0%, rgba(2,6,12,.89) 28%, rgba(2,6,12,.78) 48%, rgba(2,6,12,.62) 68%, rgba(2,6,12,.50) 88%, rgba(2,6,12,.46) 100%); }
     .lim { margin-top: clamp(18px, 2.4vh, 28px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); align-items: start; }
     .cierre-nota { grid-column: 1 / -1; max-width: 86ch; }
     .cuad { border-radius: 18px; padding: 17px 19px 19px; }
@@ -462,7 +469,7 @@
        Anais paso la escena a 2086x754 y el texto pintado se borro columna a
        columna (docs/fondos-coaching-v2.py). Se sirve casi a 1:1. */
     .s08 .foto { background-image: url(/assets/coach-proceso.webp); background-position: center top; }
-    .s08 .velo { background: linear-gradient(94deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.26) 42%, rgba(0,0,0,.10) 72%, rgba(0,0,0,.06) 100%); }
+    .s08 .velo { background: linear-gradient(96deg, rgba(2,6,12,.93) 0%, rgba(2,6,12,.89) 28%, rgba(2,6,12,.78) 48%, rgba(2,6,12,.62) 68%, rgba(2,6,12,.50) 88%, rgba(2,6,12,.46) 100%); }
     .s08 .caja { display: grid; grid-template-columns: .96fr 1.04fr; gap: clamp(26px, 4vw, 64px); align-items: center; }
     .s08 .h2 { font-size: clamp(28px, 2.7vw, 41px); }
     .proc { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
@@ -481,7 +488,7 @@
        real de Guillermo y el hueco de Anais sigue vacio: antes un hueco que
        una cara inventada al lado de una real (decision del 2026-09-24). */
     .s09 { min-height: 0; margin-top: 0; border-top: 1px solid rgba(255,255,255,.28); }
-    .s09::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(94deg, rgba(10,6,2,.52) 0%, rgba(10,6,2,.34) 44%, rgba(10,6,2,.16) 100%); }
+    .s09::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(96deg, rgba(2,6,12,.92) 0%, rgba(2,6,12,.86) 30%, rgba(2,6,12,.70) 52%, rgba(2,6,12,.40) 74%, rgba(2,6,12,.14) 94%, rgba(2,6,12,.06) 100%); }
     .s09 .caja { position: relative; z-index: 2; }
     /* Con la franja clara detras, el texto ya no necesita su propio panel. */
     .s09 .panel, .s09 .gar { background: none; border: 0; padding: 0; backdrop-filter: none; box-shadow: none; }
