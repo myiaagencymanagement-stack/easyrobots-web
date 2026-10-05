@@ -121,8 +121,26 @@
        generar el archivo, en docs/fondos-coaching-v2.py. */
     .foto.suave { filter: none; transform: none; }
     .velo { position: absolute; inset: 0; display: none; }
-    .s04 .velo { display: block; background: linear-gradient(94deg, rgba(246,245,241,.96) 0%, rgba(246,245,241,.92) 34%, rgba(246,245,241,.62) 54%, rgba(246,245,241,.26) 74%, rgba(246,245,241,.12) 100%); }
-    .s08 .velo, .s07 .velo { display: block; background: linear-gradient(94deg, rgba(246,245,241,.96) 0%, rgba(246,245,241,.93) 36%, rgba(246,245,241,.80) 58%, rgba(246,245,241,.66) 80%, rgba(246,245,241,.58) 100%); }
+    .s04 .velo, .s08 .velo, .s07 .velo { display: block; background:
+        linear-gradient(94deg, rgba(5,10,16,.90) 0%, rgba(5,10,16,.80) 38%, rgba(5,10,16,.62) 70%, rgba(5,10,16,.56) 100%); }
+    /* texto en blanco en las cuatro que eran claras */
+    .s04 .clara, .s08 .clara, .s07 .clara, .s09 .clara { color: #fff; }
+    .s04 .clara .p, .s08 .clara .p, .s07 .clara .p, .s09 .clara .p { color: #D6DBE2; }
+    .s04 .kick, .s08 .kick, .s07 .kick, .s09 .kick { color: rgba(255,255,255,.70); }
+    .s04 .canales { background: rgba(10,16,26,.82); border-color: rgba(255,255,255,.12); }
+    .s04 .canal { color: #fff; } .s04 .canal:nth-child(odd) { background: rgba(255,255,255,.06); }
+    .s04 .paso { background: rgba(10,16,26,.82); border-color: rgba(255,255,255,.12); }
+    .s04 .paso b { color: #fff; } .s04 .paso span { color: #AFB7C2; }
+    .s04 .paso i { background: rgba(37,99,235,.22); } .s04 .paso i svg { color: #7FB4FF; }
+    .s08 .pr strong { color: #fff; } .s08 .pr span { color: #B4BCC7; }
+    .s08 .pr b { color: #6FA8FF; }
+    .cuad.v { background: rgba(8,26,18,.74); border: 1px solid rgba(34,197,94,.30); }
+    .cuad.r { background: rgba(26,10,12,.74); border: 1px solid rgba(239,68,68,.30); }
+    .cuad li { color: #D6DBE2; }
+    .cuad.v h3 { color: #4ADE80; } .cuad.r h3 { color: #F87171; }
+    .cierre-nota { color: #B4BCC7 !important; }
+    .cara b { color: #fff !important; } .cara span { color: #AFB7C2 !important; }
+    .gar li { color: #D6DBE2; } .gar li svg { color: #7FB4FF; }
     .hero .velo, .s02 .velo, .s05 .velo { display: block; background: linear-gradient(90deg, rgba(3,6,11,.93) 0%, rgba(3,6,11,.86) 30%, rgba(3,6,11,.58) 50%, rgba(3,6,11,.16) 68%, rgba(3,6,11,0) 82%); }
     .caja { position: relative; z-index: 5; width: 100%; max-width: 1440px; margin: 0 auto; padding: var(--pad) max(22px, 6.7vw); }
     @media (min-width: 1440px) { .caja { padding-left: 96px; padding-right: 96px; } }
@@ -263,9 +281,9 @@
        Aqui cambia el lenguaje visual: fondo claro. La arquitectura es
        canales -> EasyRobots -> recorrido, no una lista de funcionalidades,
        que es lo que pide la ficha. */
-    .s04 { background: var(--claro2); }
+    .s04 { background: #060B12; }
     .s04 .foto { background-image: url(/assets/coach-funciona.webp); background-position: center; }
-    .s04 .velo { background: linear-gradient(100deg, rgba(244,245,242,.86) 0%, rgba(244,245,242,.64) 34%, rgba(244,245,242,.32) 62%, rgba(244,245,242,.20) 100%); }
+    .s04 .velo { background: linear-gradient(94deg, rgba(5,10,16,.90) 0%, rgba(5,10,16,.80) 38%, rgba(5,10,16,.62) 70%, rgba(5,10,16,.56) 100%); }
     .flujo { margin-top: clamp(28px, 4vh, 46px); display: grid; grid-template-columns: minmax(170px, 210px) 30px minmax(130px, 165px) 30px minmax(0, 5fr); align-items: center; gap: 0; }
     .canales { display: flex; flex-direction: column; gap: 7px; background: #fff; border: 1px solid var(--borde); border-radius: 16px; padding: 10px; box-shadow: 0 10px 30px rgba(17,24,39,.07); }
     .canal { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 10px; font-size: 13.5px; font-weight: 500; color: var(--tinta); }
@@ -403,13 +421,14 @@
     .lap-c u { width: calc(16*var(--d)); height: calc(16*var(--d)); border-radius: calc(5*var(--d)); flex: 0 0 auto; }
 
     /* ===================== 07 · EL LIMITE ===================== */
-    .s07 { background: var(--claro); min-height: 0; }
+    .s07 { background: #060B12; min-height: 0; }
     /* Fondo nuevo: la terraza con sofa de claras.png, que llego a 1994 px.
        La banda de la hoja era un interior apagado que el velo se comia
        entero ("los fondos ni estan"). El velo baja a .78 para que se vea. */
     .s07 .foto { background-image: url(/assets/coach-limite.webp); background-position: center 42%; }
-    .s07 .velo { background: linear-gradient(100deg, rgba(247,245,238,.90) 0%, rgba(247,245,238,.72) 34%, rgba(247,245,238,.40) 62%, rgba(247,245,238,.26) 100%); }
-    .lim { margin-top: clamp(18px, 2.4vh, 28px); display: grid; grid-template-columns: 1fr 1fr .74fr; gap: clamp(16px, 2vw, 28px); align-items: start; }
+    .s07 .velo { background: linear-gradient(94deg, rgba(5,10,16,.90) 0%, rgba(5,10,16,.80) 38%, rgba(5,10,16,.62) 70%, rgba(5,10,16,.56) 100%); }
+    .lim { margin-top: clamp(18px, 2.4vh, 28px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); align-items: start; }
+    .cierre-nota { grid-column: 1 / -1; max-width: 86ch; }
     .cuad { border-radius: 18px; padding: 17px 19px 19px; }
     .cuad.v { background: var(--verde-s); }
     .cuad.r { background: var(--rojo-s); }
@@ -427,16 +446,16 @@
     /* Las tres claras comparten UNA foto, puesta en el bloque que las
        envuelve. Peticion de Anais el 2026-10-05. */
     .tres { position: relative; background: url(/assets/coach-tres.webp) center / cover no-repeat; }
-    .tres::before { content: ""; position: absolute; inset: 0; background: rgba(252,251,248,.10); pointer-events: none; }
+    .tres::before { content: ""; position: absolute; inset: 0; background: none; pointer-events: none; }
     .tres > .sec { position: relative; z-index: 1; }
     .tres > .sec { background: transparent; }
     .tres > .sec > .foto { display: none; }
-    .s08 { background: var(--claro2); min-height: clamp(380px, 35vw, 560px); }
+    .s08 { background: #060B12; min-height: clamp(380px, 35vw, 560px); }
     /* Unica seccion, ademas del hero, con fondo a resolucion de verdad:
        Anais paso la escena a 2086x754 y el texto pintado se borro columna a
        columna (docs/fondos-coaching-v2.py). Se sirve casi a 1:1. */
     .s08 .foto { background-image: url(/assets/coach-proceso.webp); background-position: center top; }
-    .s08 .velo { background: linear-gradient(100deg, rgba(246,248,250,.82) 0%, rgba(246,248,250,.56) 34%, rgba(246,248,250,.26) 62%, rgba(246,248,250,.14) 100%); }
+    .s08 .velo { background: linear-gradient(94deg, rgba(5,10,16,.90) 0%, rgba(5,10,16,.80) 38%, rgba(5,10,16,.62) 70%, rgba(5,10,16,.56) 100%); }
     .s08 .caja { display: grid; grid-template-columns: .96fr 1.04fr; gap: clamp(26px, 4vw, 64px); align-items: center; }
     .s08 .h2 { font-size: clamp(28px, 2.7vw, 41px); }
     .proc { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
@@ -454,8 +473,8 @@
        Los dos retratos del boceto son caras generadas con IA. Va la foto
        real de Guillermo y el hueco de Anais sigue vacio: antes un hueco que
        una cara inventada al lado de una real (decision del 2026-09-24). */
-    .s09 { min-height: 0; margin-top: 0; border-top: 1px solid rgba(17,24,39,.12); }
-    .s09::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(94deg, rgba(247,246,242,.97) 0%, rgba(247,246,242,.93) 36%, rgba(247,246,242,.66) 58%, rgba(247,246,242,.34) 78%, rgba(247,246,242,.20) 100%); }
+    .s09 { min-height: 0; margin-top: 0; border-top: 1px solid rgba(255,255,255,.16); }
+    .s09::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(94deg, rgba(5,10,16,.90) 0%, rgba(5,10,16,.82) 40%, rgba(5,10,16,.66) 72%, rgba(5,10,16,.60) 100%); }
     .s09 .caja { position: relative; z-index: 2; }
     /* Con la franja clara detras, el texto ya no necesita su propio panel. */
     .s09 .panel, .s09 .gar { background: none; border: 0; padding: 0; backdrop-filter: none; box-shadow: none; }
