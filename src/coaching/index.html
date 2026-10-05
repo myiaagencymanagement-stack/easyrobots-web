@@ -121,7 +121,7 @@
        generar el archivo, en docs/fondos-coaching-v2.py. */
     .foto.suave { filter: none; transform: none; }
     .velo { position: absolute; inset: 0; display: none; }
-    .hero .velo, .s05 .velo { display: block; background: linear-gradient(90deg, rgba(4,7,12,.82) 0%, rgba(4,7,12,.66) 26%, rgba(4,7,12,.30) 46%, rgba(4,7,12,0) 64%); }
+    .hero .velo, .s02 .velo, .s05 .velo { display: block; background: linear-gradient(90deg, rgba(3,6,11,.93) 0%, rgba(3,6,11,.86) 30%, rgba(3,6,11,.58) 50%, rgba(3,6,11,.16) 68%, rgba(3,6,11,0) 82%); }
     .caja { position: relative; z-index: 5; width: 100%; max-width: 1440px; margin: 0 auto; padding: var(--pad) max(22px, 6.7vw); }
     @media (min-width: 1440px) { .caja { padding-left: 96px; padding-right: 96px; } }
 
@@ -425,6 +425,8 @@
     /* Las tres claras comparten UNA foto, puesta en el bloque que las
        envuelve. Peticion de Anais el 2026-10-05. */
     .tres { position: relative; background: url(/assets/coach-tres.webp) center / cover no-repeat; }
+    .tres::before { content: ""; position: absolute; inset: 0; background: rgba(252,251,248,.22); pointer-events: none; }
+    .tres > .sec { position: relative; z-index: 1; }
     .tres > .sec { background: transparent; }
     .tres > .sec > .foto { display: none; }
     .s08 { background: var(--claro2); min-height: clamp(380px, 35vw, 560px); }
@@ -450,7 +452,7 @@
        Los dos retratos del boceto son caras generadas con IA. Va la foto
        real de Guillermo y el hueco de Anais sigue vacio: antes un hueco que
        una cara inventada al lado de una real (decision del 2026-09-24). */
-    .s09 { background: var(--claro2); min-height: 0; border-top: 1px solid rgba(255,255,255,.45); box-shadow: inset 0 1px 0 rgba(17,24,39,.08); }
+    .s09 { background: var(--claro2); min-height: 0; margin-top: 26px; border-top: 2px solid rgba(255,255,255,.75); box-shadow: 0 -14px 34px rgba(17,24,39,.14), inset 0 1px 0 rgba(17,24,39,.10); }
     /* Terraza al atardecer, tercera tira de claras.png. */
     .s09 .foto { background-image: url(/assets/coach-equipo.webp); background-position: center 55%; }
     .s09 .velo { background: linear-gradient(100deg, rgba(247,246,242,.94) 0%, rgba(247,246,242,.80) 34%, rgba(247,246,242,.44) 60%, rgba(247,246,242,.26) 100%); }
@@ -479,7 +481,9 @@
        que estaba aqui se fue al hero. Mas bajo que las demas. */
     .s11 { background: #0A0E14; text-align: left; min-height: 0; }
     .s11 .caja { padding-top: calc(var(--pad) - 14px); padding-bottom: calc(var(--pad) - 14px); }
-    .s11 .foto { background-image: url(/assets/coach-cierre.webp); background-position: 78% 42%; }
+    .s11 .foto { background-image: url(/assets/coach-cierre.webp); background-position: 26% 42%; }
+    .s11 .velo { display: block; background: linear-gradient(90deg, rgba(0,0,0,.94) 0%, rgba(0,0,0,.88) 30%, rgba(0,0,0,.60) 50%, rgba(0,0,0,.18) 70%, rgba(0,0,0,0) 86%); }
+    .s11 .panel-osc { background: none; border: 0; padding: 0; backdrop-filter: none; }
     .s11 .velo { background:
         linear-gradient(90deg, rgba(4,8,13,.80) 0%, rgba(4,8,13,.62) 30%, rgba(4,8,13,.24) 52%, rgba(4,8,13,0) 72%),
         linear-gradient(180deg, rgba(4,8,13,.30) 0%, rgba(4,8,13,0) 26%, rgba(4,8,13,.34) 100%); }
