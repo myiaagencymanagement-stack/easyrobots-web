@@ -948,6 +948,57 @@
   </section>
 
   <!-- =================== 04 - EL SEGUIMIENTO =================== -->
+
+  <!-- =================== PRUEBALO TU (chat real, 05/10) =================== -->
+  <style>
+  /* "Pruebalo tu" (05/10): el chat real con aspecto de WhatsApp, antes de la
+     llamada grabada. Bloque autonomo (prefijo wz-) para no tocar la rejilla
+     de la seccion de demo, que es una maqueta medida al pixel. */
+  .wz-sec { background: #F4F6F9; padding: 56px 16px; }
+  .wz-caja { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr minmax(0, 400px); gap: 48px; align-items: center; }
+  .wz-kick { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #128C7E; }
+  .wz-txt h2 { margin: 0; font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.12; letter-spacing: -.02em; color: #0F1B2D; }
+  .wz-txt p.wz-sub { margin: 14px 0 0; font-size: 1.05rem; line-height: 1.6; color: #3A4554; max-width: 40ch; }
+  .wz-txt ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; color: #2A3340; font-size: .98rem; }
+  .wz-txt li::before { content: "\2713"; color: #128C7E; font-weight: 700; margin-right: 8px; }
+  .wz-card { background: #ECE5DD; border-radius: 18px; overflow: hidden; box-shadow: 0 20px 50px rgba(15,40,80,.18); display: flex; flex-direction: column; }
+  .wz-cab { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #075E54; color: #fff; }
+  .wz-av { width: 34px; height: 34px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+  .wz-cab b { display: block; font-size: 15px; } .wz-cab i { font-style: normal; font-size: 12px; opacity: .8; }
+  .wz-chat { height: 360px; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+  .wz-in, .wz-out { max-width: 86%; border-radius: 9px; padding: 6px 9px 4px; font-size: 14.5px; line-height: 1.4; color: #111B21; white-space: pre-wrap; box-shadow: 0 1px 1px rgba(0,0,0,.08); }
+  .wz-in { align-self: flex-end; background: #D9FDD3; }
+  .wz-out { align-self: flex-start; background: #fff; }
+  .wz-pie { display: flex; gap: 8px; padding: 8px 10px; background: #F0F2F5; }
+  .wz-pie .campo { flex: 1 1 auto; background: #fff; border-radius: 999px; height: 40px; display: flex; align-items: center; padding: 0 14px; font-size: 14.5px; color: #667781; }
+  .wz-pie .env { width: 40px; height: 40px; border-radius: 50%; background: #00A884; color: #fff; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+  .wz-pie .env svg { width: 18px; height: 18px; }
+  .wz-card .cd-botones button { border-color: #00A884; color: #008069; }
+  .wz-card .cd-botones button:hover { background: #00A884; color: #fff; }
+  @media (max-width: 860px) {
+    .wz-sec { padding: 40px 16px; }
+    .wz-caja { grid-template-columns: 1fr; gap: 24px; }
+    .wz-chat { height: 340px; }
+  }
+</style>
+  <section class="wz-sec" id="pruebalo">
+    <div class="wz-caja">
+      <div class="wz-txt">
+        <p class="wz-kick">Pru&eacute;balo t&uacute;</p>
+        <h2>Escr&iacute;bele como lo har&iacute;a un paciente.</h2>
+        <p class="wz-sub">Es el mismo asistente que contestar&iacute;a a tus pacientes. Pide una cita, elige con qu&eacute; doctora y mira c&oacute;mo queda en la agenda.</p>
+        <ul><li>Agenda con cada profesional</li><li>Atiende primero las urgencias</li><li>Habla de financiaci&oacute;n antes de que se vayan</li></ul>
+      </div>
+      <div class="wz-card" data-chat-demo data-sitio="demo-dental" data-personalidad="dental"
+           data-sel-chat=".wz-chat" data-sel-campo=".wz-pie .campo" data-sel-enviar=".wz-pie .env"
+           data-clase-in="wz-in" data-clase-out="wz-out"
+           data-frases="Quiero una limpieza|Me duele una muela|&iquest;Ten&eacute;is financiaci&oacute;n?">
+        <div class="wz-cab"><span class="wz-av">D</span><div><b>Dental EasyRobots</b><i>en l&iacute;nea</i></div></div>
+        <div class="wz-chat"><div class="wz-out">&iexcl;Hola! Soy Elena, de Dental EasyRobots. &iquest;En qu&eacute; te puedo ayudar?</div></div>
+        <div class="wz-pie"><span class="campo">Escribe un mensaje&hellip;</span><span class="env"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+      </div>
+    </div>
+  </section>
   <section class="sec s04" id="demo">
     <div class="foto suave" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
@@ -1303,6 +1354,7 @@
       mira(); window.addEventListener('scroll', mira, { passive: true });
     })();
   </script>
+  <script src="/js/chat-demo.js" defer></script>
 </body>
 
 </html>
