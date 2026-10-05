@@ -121,6 +121,7 @@
        generar el archivo, en docs/fondos-coaching-v2.py. */
     .foto.suave { filter: none; transform: none; }
     .velo { position: absolute; inset: 0; display: none; }
+    .hero .velo, .s05 .velo { display: block; background: linear-gradient(90deg, rgba(4,7,12,.82) 0%, rgba(4,7,12,.66) 26%, rgba(4,7,12,.30) 46%, rgba(4,7,12,0) 64%); }
     .caja { position: relative; z-index: 5; width: 100%; max-width: 1440px; margin: 0 auto; padding: var(--pad) max(22px, 6.7vw); }
     @media (min-width: 1440px) { .caja { padding-left: 96px; padding-right: 96px; } }
 
@@ -415,6 +416,7 @@
     .cuad.r h3 { color: #DC2626; }
     .cuad ul { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 9px; }
     .cuad li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; line-height: 1.32; color: var(--tinta); }
+    .panel-osc { background: rgba(6,10,16,.56); border: 1px solid rgba(255,255,255,.12); border-radius: 22px; padding: 26px 30px 28px; backdrop-filter: blur(5px); display: inline-block; }
     .panel { background: rgba(255,255,255,.82); border: 1px solid rgba(17,24,39,.07); border-radius: 20px; padding: 22px 26px 24px; backdrop-filter: blur(4px); box-shadow: 0 14px 40px rgba(17,24,39,.08); }
     .panel .kick { margin-bottom: 2px; }
     .cierre-nota { font-size: 14.5px; line-height: 1.45; color: #3B4453; background: rgba(255,255,255,.80); border: 1px solid rgba(17,24,39,.07); border-radius: 18px; padding: 17px 19px 19px; backdrop-filter: blur(3px); }
@@ -448,7 +450,7 @@
        Los dos retratos del boceto son caras generadas con IA. Va la foto
        real de Guillermo y el hueco de Anais sigue vacio: antes un hueco que
        una cara inventada al lado de una real (decision del 2026-09-24). */
-    .s09 { background: var(--claro2); min-height: 0; }
+    .s09 { background: var(--claro2); min-height: 0; border-top: 1px solid rgba(255,255,255,.45); box-shadow: inset 0 1px 0 rgba(17,24,39,.08); }
     /* Terraza al atardecer, tercera tira de claras.png. */
     .s09 .foto { background-image: url(/assets/coach-equipo.webp); background-position: center 55%; }
     .s09 .velo { background: linear-gradient(100deg, rgba(247,246,242,.94) 0%, rgba(247,246,242,.80) 34%, rgba(247,246,242,.44) 60%, rgba(247,246,242,.26) 100%); }
@@ -461,8 +463,9 @@
     .cara img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
     .cara .hueco { display: flex; align-items: center; justify-content: center; border: 1.5px dashed #C9CBC5; background: #F0F0EC; }
     .cara .hueco svg { width: 34px; height: 34px; color: #B6B9B2; }
-    .cara b { display: block; margin-top: 12px; font-size: 17px; font-weight: 700; color: var(--tinta); letter-spacing: -.02em; }
-    .cara span { display: block; margin-top: 2px; font-size: 13px; color: var(--gris); }
+    .cara u.rot { display: block; margin-top: 12px; background: rgba(255,255,255,.84); border: 1px solid rgba(17,24,39,.07); border-radius: 12px; padding: 7px 10px 8px; backdrop-filter: blur(3px); }
+    .cara b { display: block; font-size: 16px; font-weight: 700; color: var(--tinta); letter-spacing: -.02em; }
+    .cara span { display: block; margin-top: 1px; font-size: 12.5px; color: var(--gris); }
     .gar { background: rgba(255,255,255,.76); border: 1px solid rgba(17,24,39,.07); border-radius: 20px; padding: 22px 24px 24px; backdrop-filter: blur(3px); }
     .gar ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
     .gar li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; line-height: 1.38; color: var(--tinta); }
@@ -476,7 +479,7 @@
        que estaba aqui se fue al hero. Mas bajo que las demas. */
     .s11 { background: #0A0E14; text-align: left; min-height: 0; }
     .s11 .caja { padding-top: calc(var(--pad) - 14px); padding-bottom: calc(var(--pad) - 14px); }
-    .s11 .foto { background-image: url(/assets/coach-cierre.webp); background-position: center 42%; }
+    .s11 .foto { background-image: url(/assets/coach-cierre.webp); background-position: 78% 42%; }
     .s11 .velo { background:
         linear-gradient(90deg, rgba(4,8,13,.80) 0%, rgba(4,8,13,.62) 30%, rgba(4,8,13,.24) 52%, rgba(4,8,13,0) 72%),
         linear-gradient(180deg, rgba(4,8,13,.30) 0%, rgba(4,8,13,0) 26%, rgba(4,8,13,.34) 100%); }
@@ -490,7 +493,7 @@
        era una fila suelta y Anais lo vio distinto del resto. */
     .pie { position: relative; overflow: hidden; background: var(--negro); }
     .pie .foto { background-image: url(/assets/coach-pie.webp); background-position: center 60%; opacity: .5; }
-    .pie .velo { background: linear-gradient(90deg, rgba(5,5,5,.93), rgba(5,5,5,.78) 55%, rgba(5,5,5,.90)); }
+    .pie .velo { display: block; background: linear-gradient(180deg, rgba(4,4,6,.90), rgba(4,4,6,.95)); }
     .pie .caja { padding-top: 56px; padding-bottom: 36px; }
     .p-cols { display: grid; grid-template-columns: 1.5fr 1fr 1.3fr 1fr auto; }
     .p-c { display: flex; flex-direction: column; padding: 0 clamp(16px, 2.4vw, 36px); }
@@ -1213,11 +1216,11 @@
       <div class="caras">
         <div class="cara">
           <div class="foto-r"><img src="/assets/guille.webp" alt="Guillermo, cofundador de EasyRobots" loading="lazy" decoding="async" width="300" height="300"></div>
-          <b>Guillermo</b><span>Co-fundador</span>
+          <u class="rot"><b>Guillermo</b><span>Co-fundador</span></u>
         </div>
         <div class="cara">
           <div class="foto-r"><img src="/assets/anais.webp" alt="Ana&iacute;s, cofundadora de EasyRobots" loading="lazy" decoding="async" width="300" height="300"></div>
-          <b>Ana&iacute;s</b><span>Co-fundadora</span>
+          <u class="rot"><b>Ana&iacute;s</b><span>Co-fundadora</span></u>
         </div>
       </div>
 
@@ -1241,6 +1244,7 @@
     <div class="foto" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
     <div class="caja oscura">
+      <div class="panel-osc">
       <h2 class="h2">Menos oportunidades perdidas. M&aacute;s personas en tu programa.</h2>
       <p class="p">Hablemos 15 minutos y vemos c&oacute;mo puede funcionar en tu caso.</p>
       <!-- Pendiente: enganchar el calendario de GHL a este boton. -->
@@ -1248,6 +1252,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
         Reservar llamada
       </a>
+      </div>
     </div>
   </section>
 
