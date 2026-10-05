@@ -120,7 +120,7 @@
        Se quita el desenfoque; el reescalado y el enfoque se hacen ahora al
        generar el archivo, en docs/fondos-coaching-v2.py. */
     .foto.suave { filter: none; transform: none; }
-    .velo { position: absolute; inset: 0; }
+    .velo { position: absolute; inset: 0; display: none; }
     .caja { position: relative; z-index: 5; width: 100%; max-width: 1440px; margin: 0 auto; padding: var(--pad) max(22px, 6.7vw); }
     @media (min-width: 1440px) { .caja { padding-left: 96px; padding-right: 96px; } }
 
@@ -415,6 +415,8 @@
     .cuad.r h3 { color: #DC2626; }
     .cuad ul { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 9px; }
     .cuad li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; line-height: 1.32; color: var(--tinta); }
+    .panel { background: rgba(255,255,255,.82); border: 1px solid rgba(17,24,39,.07); border-radius: 20px; padding: 22px 26px 24px; backdrop-filter: blur(4px); box-shadow: 0 14px 40px rgba(17,24,39,.08); }
+    .panel .kick { margin-bottom: 2px; }
     .cierre-nota { font-size: 14.5px; line-height: 1.45; color: #3B4453; background: rgba(255,255,255,.80); border: 1px solid rgba(17,24,39,.07); border-radius: 18px; padding: 17px 19px 19px; backdrop-filter: blur(3px); }
 
     /* ===================== 08 · COMO TRABAJAMOS ===================== */
@@ -637,6 +639,7 @@
       .s05-cta { margin-top: 20px; }
       .s05 .port { transform: none; }
 
+      .panel { padding: 16px 18px 18px; border-radius: 16px; max-width: none !important; }
       .lim { grid-template-columns: 1fr; }
       .proc { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
       .pr::after { display: none; }
@@ -857,8 +860,10 @@
     <div class="foto suave" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
     <div class="caja clara">
-      <h2 class="h2">As&iacute; funciona.</h2>
-      <p class="p">Todas las conversaciones entran en un mismo sistema, <br>y cada persona avanza hasta la llamada.</p>
+      <div class="panel" style="max-width:min(640px,54%)">
+        <h2 class="h2">As&iacute; funciona.</h2>
+        <p class="p">Todas las conversaciones entran en un mismo sistema, <br>y cada persona avanza hasta la llamada.</p>
+      </div>
 
       <div class="flujo">
         <div class="canales">
@@ -1130,7 +1135,7 @@
     <div class="foto suave" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
     <div class="caja clara">
-      <div>
+      <div class="panel">
         <div class="kick">C&oacute;mo trabajamos</div>
         <h2 class="h2">Analizamos, dise&ntilde;amos, <br>construimos y mantenemos.</h2>
         <p class="p">Un proceso claro, sin complicaciones y <br>adaptado a tu negocio.</p>
@@ -1150,9 +1155,11 @@
     <div class="foto suave" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
     <div class="caja clara">
-      <div class="kick">El l&iacute;mite</div>
-      <h2 class="h2">Tu programa lo vendes t&uacute;. <br>Eso no se toca.</h2>
-      <p class="p">Un programa de cuatro cifras se vende hablando. Por eso el <br>objetivo de todo esto es la llamada, no la venta.</p>
+      <div class="panel" style="max-width:min(680px,58%)">
+        <div class="kick">El l&iacute;mite</div>
+        <h2 class="h2">Tu programa lo vendes t&uacute;. <br>Eso no se toca.</h2>
+        <p class="p">Un programa de cuatro cifras se vende hablando. Por eso el <br>objetivo de todo esto es la llamada, no la venta.</p>
+      </div>
 
       <div class="lim">
         <div class="cuad v">
@@ -1187,7 +1194,7 @@
     <div class="foto suave" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
     <div class="caja clara">
-      <div>
+      <div class="panel">
         <div class="kick">Qui&eacute;nes somos</div>
         <h2 class="h2">No somos una centralita.</h2>
         <p class="p">Somos las personas que dise&ntilde;an, construyen y mantienen tu sistema.</p>
