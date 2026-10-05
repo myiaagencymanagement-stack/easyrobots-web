@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Prueba de chats</title>
+  <!-- Pagina PRIVADA de Anais para probar los 6 negocios de demo de la web
+       (archivo 82 del CRM). No esta enlazada en ningun sitio y no se indexa.
+       Cada tarjeta habla con su cuenta: data-sitio = integraciones.identificador.
+       "Empezar de cero" borra la sesion de esa tarjeta en este navegador: el
+       agente la trata como una persona nueva. -->
+  <style>
+    :root { --azul: #006FFE; --tinta: #0F1B2D; --gris2: #5B6675; --fondo: #F2F5FA; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--fondo); color: var(--tinta); }
+    header { padding: 24px 16px 8px; max-width: 1400px; margin: 0 auto; }
+    h1 { margin: 0; font-size: 22px; }
+    header p { margin: 6px 0 0; color: var(--gris2); font-size: 14px; }
+    .rej { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; padding: 16px; max-width: 1400px; margin: 0 auto; }
+    .dm-card { background: #fff; border-radius: 14px; box-shadow: 0 10px 30px rgba(15,40,80,.12); display: flex; flex-direction: column; overflow: hidden; }
+    .cab { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 14px; background: #1D4ED8; color: #fff; }
+    .cab b { font-size: 15px; }
+    .cab span { display: block; font-size: 12px; opacity: .8; }
+    .cab button { background: rgba(255,255,255,.18); color: #fff; border: 0; border-radius: 999px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    .dm-chat { height: 420px; padding: 12px; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; }
+    .dm-in, .dm-out { max-width: 90%; border-radius: 12px; padding: 7px 10px 4px; font-size: 14px; line-height: 1.42; white-space: pre-wrap; }
+    .dm-in { align-self: flex-end; background: #E7F6F0; }
+    .dm-out { align-self: flex-start; background: #EDF4FE; }
+    .hint { color: var(--gris2); font-size: 13px; }
+    .dm-pie { border-top: 1px solid #EEF2F7; padding: 10px 12px; display: flex; gap: 8px; }
+    .dm-pie .campo { flex: 1 1 auto; background: #F3F6FA; border-radius: 999px; height: 36px; display: flex; align-items: center; padding: 0 14px; font-size: 14px; color: #6B7686; }
+    .dm-pie .env { width: 36px; height: 36px; border-radius: 50%; background: var(--azul); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; color: #fff; }
+    .dm-pie .env svg { width: 16px; height: 16px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Prueba de los 6 chats de demo</h1>
+    <p>Cada tarjeta es un negocio aparte. Lo que pase en una no lo ve otra.</p>
+  </header>
+  <main class="rej" id="rej"></main>
+
+  <script>
+    (function () {
+      var demos = [
+        ['demo-estetica',      'estetica',      'Estética EasyRobots',  'Prueba: quiero cita para microblading'],
+        ['demo-dental',        'dental',        'Dental EasyRobots',         'Prueba: quiero una limpieza (Ana o Marta)'],
+        ['demo-coaching',      'coaching',      'Coaching EasyRobots',       'Prueba: me interesa el programa'],
+        ['demo-concesionario', 'concesionario', 'Concesionario EasyRobots',  'Prueba: ¿tienes el T-Roc? quiero probarlo'],
+        ['demo-inmobiliaria',  'inmobiliaria',  'Inmobiliaria EasyRobots',   'Prueba: busco piso de 3 hab. en Madrid'],
+        ['demo-ecommerce',     'ecommerce',     'Tienda EasyRobots',         'Prueba: ¿dónde está mi pedido 10482?']
+      ];
+      var flecha = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
+      var rej = document.getElementById('rej');
+      demos.forEach(function (d) {
+        var c = document.createElement('div');
+        c.className = 'dm-card';
+        c.setAttribute('data-chat-demo', '');
+        c.setAttribute('data-sitio', d[0]);
+        c.setAttribute('data-personalidad', d[1]);
+        c.innerHTML =
+          '<div class="cab"><div><b></b><span></span></div><button type="button">Empezar de cero</button></div>' +
+          '<div class="dm-chat"><div class="hint"></div></div>' +
+          '<div class="dm-pie"><span class="campo">Escribe un mensaje…</span><span class="env">' + flecha + '</span></div>';
+        c.querySelector('.cab b').textContent = d[2];
+        c.querySelector('.cab span').textContent = d[0];
+        c.querySelector('.hint').textContent = d[3];
+        c.querySelector('.cab button').addEventListener('click', function () {
+          try { localStorage.removeItem('er-chat-' + d[0] + '-' + d[1] + '-'); } catch (e) {}
+          location.reload();
+        });
+        rej.appendChild(c);
+      });
+    })();
+  </script>
+  <script src="/js/chat-demo.js" defer></script>
+</body>
+</html>
