@@ -1386,6 +1386,43 @@ Después se rehízo la geometría:
 - Barra de arriba **fija**, y **no hay barra inferior**: se probó y Anaís la
   descartó.
 
+## Cómo trabajar aquí sin quemar la sesión (2026-10-05)
+
+Escrito después de una sesión en la que se gastó muchísimo en cosas que no se
+habían pedido. Anaís: *"tienes que empezar siempre a evaluar antes de hacer
+algo cuál es la manera más rápida, si merece la pena gastar tokens, si te
+puedo facilitar yo cosas"*. Esto manda sobre cualquier impulso de revisar.
+
+**Lo que más gasta, por orden real medido en esa sesión:**
+
+1. **Mirar capturas de pantalla.** Cada captura cuesta como varias páginas de
+   texto. Se hicieron unas treinta y la mitad eran "a ver cómo ha quedado".
+2. **Intentar borrar el texto de una imagen generada.** Cuatro intentos con
+   máscaras, interpolaciones y detección del horizonte, cada uno con su
+   captura. Y la regla de no hacerlo ya estaba escrita en
+   `docs/boceto-a-html.md` desde inmobiliarias.
+3. **Medir lo que Anaís ya había dado medido** en la ficha técnica.
+4. **Hacer de más**: se pidió "incrústalo sin velo" y además se metieron
+   paneles, se ajustaron grises y cintillos.
+5. **Esperar al despliegue** con `curl` en bucle.
+
+**Reglas:**
+
+- **Antes de tocar nada, una línea**: qué se va a hacer y qué hace falta de
+  ella. Si lo puede dar ella (una imagen, una medida, un copy), se pide; no
+  se deduce con scripts.
+- **Nunca limpiar texto de una imagen generada.** Se pide limpia. Si llega
+  con texto, se dice y se espera; cero intentos de inpainting.
+- **Una captura por bloque de cambios, no una por paso.** Y recortada a la
+  zona que se está mirando, no la página entera.
+- **Si hay medidas dadas, no se mide.** Medir es para cuando no hay nada.
+- **Se hace exactamente lo pedido.** Si se ve un problema (texto que deja de
+  leerse, una sección que se rompe), se dice en una frase y se espera
+  respuesta. No se arregla por iniciativa propia dentro del mismo encargo.
+- **No se espera al despliegue.** Se empuja, se avisa y se sigue.
+- Revisar a fondo (tres anchos, desbordes, solapes) es para **auditorías**,
+  cuando ella lo pide, no para cada cambio.
+
 ## Fallos ya cometidos en este proyecto (no repetirlos)
 
 1. **JavaScript huérfano tumba toda la página.** Al borrar la sección "Así
