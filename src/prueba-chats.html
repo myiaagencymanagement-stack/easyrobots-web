@@ -44,13 +44,14 @@
   <script>
     (function () {
       var demos = [
-        ['demo-estetica',      'estetica',      'Estética EasyRobots',  'Prueba: quiero cita para microblading'],
-        ['demo-dental',        'dental',        'Dental EasyRobots',         'Prueba: quiero una limpieza (Ana o Marta)'],
-        ['demo-coaching',      'coaching',      'Coaching EasyRobots',       'Prueba: me interesa el programa'],
-        ['demo-concesionario', 'concesionario', 'Concesionario EasyRobots',  'Prueba: ¿tienes el T-Roc? quiero probarlo'],
-        ['demo-inmobiliaria',  'inmobiliaria',  'Inmobiliaria EasyRobots',   'Prueba: busco piso de 3 hab. en Madrid'],
-        ['demo-ecommerce',     'ecommerce',     'Tienda EasyRobots',         'Prueba: ¿dónde está mi pedido 10482?']
+        ['demo-estetica',      'estetica',      'Estética EasyRobots',  'Quiero cita para microblading|¿Cuánto cuesta?|¿Duele?'],
+        ['demo-dental',        'dental',        'Dental EasyRobots',         'Quiero una limpieza|Me duele una muela|¿Tenéis financiación?'],
+        ['demo-coaching',      'coaching',      'Coaching EasyRobots',       '¿De qué va el programa?|¿Cuánto cuesta?|Quiero hablar con alguien'],
+        ['demo-concesionario', 'concesionario', 'Concesionario EasyRobots',  'Busco un automático|¿Tenéis el T-Roc?|Quiero tasar mi coche'],
+        ['demo-inmobiliaria',  'inmobiliaria',  'Inmobiliaria EasyRobots',   'Busco piso de 3 hab. para comprar|Busco alquiler|Quiero vender mi piso'],
+        ['demo-ecommerce',     'ecommerce',     'Tienda EasyRobots',         '¿Tenéis la Runner Pro en la 43?|¿Dónde está mi pedido 10482?|Quiero cambiar la talla']
       ];
+
       var flecha = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
       var rej = document.getElementById('rej');
       demos.forEach(function (d) {
@@ -59,13 +60,14 @@
         c.setAttribute('data-chat-demo', '');
         c.setAttribute('data-sitio', d[0]);
         c.setAttribute('data-personalidad', d[1]);
+        c.setAttribute('data-frases', d[3]);
         c.innerHTML =
           '<div class="cab"><div><b></b><span></span></div><button type="button">Empezar de cero</button></div>' +
           '<div class="dm-chat"><div class="hint"></div></div>' +
           '<div class="dm-pie"><span class="campo">Escribe un mensaje…</span><span class="env">' + flecha + '</span></div>';
         c.querySelector('.cab b').textContent = d[2];
         c.querySelector('.cab span').textContent = d[0];
-        c.querySelector('.hint').textContent = d[3];
+        c.querySelector('.hint').textContent = 'Pulsa una frase o escribe lo que quieras.';
         c.querySelector('.cab button').addEventListener('click', function () {
           try { localStorage.removeItem('er-chat-' + d[0] + '-' + d[1] + '-'); } catch (e) {}
           location.reload();
