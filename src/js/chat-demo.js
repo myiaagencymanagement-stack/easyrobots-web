@@ -19,8 +19,8 @@
    Lo que hace:
    - El chat de ejemplo se queda tal cual hasta que la persona escribe. Al
      mandar el primer mensaje se vacia y empieza la conversacion real.
-   - Cada tarjeta tiene su propia sesion (personalidad + caso), asi que las
-     tres de ecommerce son tres conversaciones distintas.
+   - Cada tarjeta tiene su propia sesion, nueva en cada carga de la pagina:
+     las tres de ecommerce son tres conversaciones distintas.
    - El agente espera unos segundos por si llegan varios mensajes seguidos. Si
      se mandan dos, la primera peticion vuelve vacia y la segunda trae las
      respuestas de las dos: por eso se cuenta lo pendiente y no se da por
@@ -293,17 +293,12 @@
     }
   }
 
-  // Una sesion por tarjeta y por navegador. Si el almacenamiento no esta
-  // disponible (modo privado), vale una sesion de esta visita.
-  function sesionDe(personalidad, caso) {
-    var clave = 'er-chat-' + personalidad + '-' + caso;
-    var id = null;
-    try { id = window.localStorage.getItem(clave); } catch (e) { id = null; }
-    if (!id) {
-      id = 'web-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
-      try { window.localStorage.setItem(clave, id); } catch (e) { /* sin memoria, da igual */ }
-    }
-    return id;
+  // Una sesion por tarjeta y POR CARGA DE PAGINA (05/10). Antes se guardaba en
+  // el navegador y al refrescar la base seguia viendo a la misma persona, con
+  // su cita de la prueba anterior ("ya tienes cita"), mientras la pantalla
+  // salia vacia. En una demo cada visita tiene que empezar de cero.
+  function sesionDe() {
+    return 'web-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
   }
 
   function hora() {
