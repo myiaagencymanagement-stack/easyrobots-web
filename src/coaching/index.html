@@ -452,7 +452,12 @@
        Los dos retratos del boceto son caras generadas con IA. Va la foto
        real de Guillermo y el hueco de Anais sigue vacio: antes un hueco que
        una cara inventada al lado de una real (decision del 2026-09-24). */
-    .s09 { background: var(--claro2); min-height: 0; margin-top: 26px; border-top: 2px solid rgba(255,255,255,.75); box-shadow: 0 -14px 34px rgba(17,24,39,.14), inset 0 1px 0 rgba(17,24,39,.10); }
+    .s09 { min-height: 0; margin-top: 0; border-top: 1px solid rgba(17,24,39,.10); }
+    .s09::before { content: ""; position: absolute; inset: 0; z-index: 0; background: rgba(247,246,242,.90); }
+    .s09 .caja { position: relative; z-index: 2; }
+    /* Con la franja clara detras, el texto ya no necesita su propio panel. */
+    .s09 .panel, .s09 .gar { background: none; border: 0; padding: 0; backdrop-filter: none; box-shadow: none; }
+    .s09 .cara u.rot { background: none; border: 0; padding: 0; backdrop-filter: none; }
     /* Terraza al atardecer, tercera tira de claras.png. */
     .s09 .foto { background-image: url(/assets/coach-equipo.webp); background-position: center 55%; }
     .s09 .velo { background: linear-gradient(100deg, rgba(247,246,242,.94) 0%, rgba(247,246,242,.80) 34%, rgba(247,246,242,.44) 60%, rgba(247,246,242,.26) 100%); }
