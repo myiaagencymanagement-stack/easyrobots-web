@@ -420,6 +420,11 @@
     .cierre-nota { font-size: 14.5px; line-height: 1.45; color: #3B4453; background: rgba(255,255,255,.80); border: 1px solid rgba(17,24,39,.07); border-radius: 18px; padding: 17px 19px 19px; backdrop-filter: blur(3px); }
 
     /* ===================== 08 · COMO TRABAJAMOS ===================== */
+    /* Las tres claras comparten UNA foto, puesta en el bloque que las
+       envuelve. Peticion de Anais el 2026-10-05. */
+    .tres { position: relative; background: url(/assets/coach-tres.webp) center / cover no-repeat; }
+    .tres > .sec { background: transparent; }
+    .tres > .sec > .foto { display: none; }
     .s08 { background: var(--claro2); min-height: clamp(380px, 35vw, 560px); }
     /* Unica seccion, ademas del hero, con fondo a resolucion de verdad:
        Anais paso la escena a 2086x754 y el texto pintado se borro columna a
@@ -640,6 +645,7 @@
       .s05 .port { transform: none; }
 
       .panel { padding: 16px 18px 18px; border-radius: 16px; max-width: none !important; }
+      .tres { background-image: url(/assets/coach-tres-movil.webp); }
       .lim { grid-template-columns: 1fr; }
       .proc { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
       .pr::after { display: none; }
@@ -1130,6 +1136,7 @@
     </div>
   </section>
 
+  <div class="tres">
   <!-- =================== 08 · COMO TRABAJAMOS =================== -->
   <section class="sec s08">
     <div class="foto suave" aria-hidden="true"></div>
@@ -1226,6 +1233,8 @@
       </div>
     </div>
   </section>
+
+  </div>
 
   <!-- =================== 11 · CIERRE =================== -->
   <section class="sec s11" id="hablemos">
