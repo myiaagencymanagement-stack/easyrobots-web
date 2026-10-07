@@ -795,6 +795,23 @@
       .anim-on .visto .r-n, .anim-on .visto .pz-ch, .anim-on .visto .h-paso .an { animation: none !important; }
     }
   </style>
+  <style>
+    /* Anais (2026-10-07): la demo tiene que "incitar a escribir". En cada
+       tarjeta el mensaje ya esta escrito en la caja, un aviso azul dice que basta con enviar, y
+       enviar y las preguntas laten. Todo eso se quita en cuanto la persona
+       manda su primer mensaje en esa tarjeta. */
+    .dm-pista { display: none; }
+    .dm-card.sin-usar .dm-pista { display: flex; align-items: center; gap: 8px; margin: 0 14px 8px; padding: 8px 12px; border-radius: 10px; background: var(--azul); color: #fff; font-size: 12.5px; font-weight: 600; line-height: 1.3; box-shadow: 0 8px 20px rgba(0,100,255,.3); animation: dm-flota 2.4s ease-in-out infinite; }
+    .dm-pista svg { width: 15px; height: 15px; margin-left: auto; flex: 0 0 auto; animation: dm-baja 1.2s ease-in-out infinite; }
+    .dm-card.sin-usar .cd-enviar { animation: dm-pulso 1.6s ease-out infinite; }
+    .dm-card.sin-usar .cd-botones button { animation: dm-pulso 1.8s ease-out .5s infinite; }
+    .dm-card.sin-usar .cd-input { border-color: var(--azul) !important; box-shadow: 0 0 0 3px rgba(0,100,255,.15); }
+    @keyframes dm-pulso { 0% { box-shadow: 0 0 0 0 rgba(0,100,255,.55); } 70% { box-shadow: 0 0 0 10px rgba(0,100,255,0); } 100% { box-shadow: 0 0 0 0 rgba(0,100,255,0); } }
+    @keyframes dm-flota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    @keyframes dm-baja { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+    @media (max-width: 620px) { .dm-card.sin-usar .dm-pista { margin: 0 10px 6px; font-size: 11.5px; padding: 7px 10px; } }
+    @media (prefers-reduced-motion: reduce) { .dm-pista, .dm-pista svg, .dm-card .cd-enviar, .dm-card .cd-botones button { animation: none !important; } }
+  </style>
 </head>
 
 <body>
@@ -1583,6 +1600,31 @@
     })();
   </script>
   <script src="/js/chat-demo.js" defer></script>
+  <script>
+    /* Demo de ecommerce: mensaje ya escrito, aviso y pulso hasta el primer
+       envio (ver el comentario del CSS). Va despues de chat-demo.js, que es
+       el que convierte la caja en un input de verdad. */
+    window.addEventListener('load', function () {
+      var cards = document.querySelectorAll('#demo [data-chat-demo]');
+      cards.forEach(function (card) {
+        var input = card.querySelector('.cd-input'), pie = card.querySelector('.dm-pie'), chat = card.querySelector('.dm-chat');
+        if (!input || !pie) return;
+        var frase = ((card.getAttribute('data-frases') || '').split('|')[0] || '').trim();
+        card.classList.add('sin-usar');
+        var pista = document.createElement('div');
+        pista.className = 'dm-pista'; pista.setAttribute('aria-hidden', 'true');
+        pista.innerHTML = 'Pru&eacute;balo: pulsa enviar o elige una pregunta<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v13M6 12l6 6 6-6"/></svg>';
+        pie.parentNode.insertBefore(pista, pie);
+        if (chat) chat.scrollTop = chat.scrollHeight;
+        function usado() { card.classList.remove('sin-usar'); }
+        card.addEventListener('click', function (e) { if (e.target.closest('.cd-enviar, .cd-botones button')) usado(); }, true);
+        input.addEventListener('keydown', function (e) { if (e.key === 'Enter') usado(); });
+        /* El mensaje ya esta escrito: basta con pulsar enviar. */
+        input.value = frase;
+      });
+    });
+  </script>
+
 </body>
 
 </html>
