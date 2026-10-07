@@ -1495,6 +1495,17 @@
     .pb-pie .campo::placeholder { color: #8A94A4; }
     .pb-pie .env { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--azul); color: #fff; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; cursor: pointer; }
     .pb-pie .env svg { width: 20px; height: 20px; }
+    .pb-pista { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 10px; padding: 10px 14px; border-radius: 12px; background: var(--azul); color: #fff; font-size: 13.5px; font-weight: 600; line-height: 1.3; box-shadow: 0 8px 22px rgba(0,127,254,.35); animation: pb-flota 2.4s ease-in-out infinite; }
+    .pb-pista-n { width: 20px; height: 20px; border-radius: 50%; background: #fff; color: var(--azul); font-size: 12px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
+    .pb-pista-y { opacity: .75; font-weight: 500; margin: 0 2px; }
+    .pb-pista svg { width: 16px; height: 16px; margin-left: auto; animation: pb-baja 1.2s ease-in-out infinite; }
+    .pb-chat:not(.usado) .cd-botones button { animation: pb-pulso 1.8s ease-out infinite; }
+    .pb-chat:not(.usado) .pb-pie .env { animation: pb-pulso 1.8s ease-out .9s infinite; }
+    .pb-chat.usado .pb-pista { display: none; }
+    @keyframes pb-pulso { 0% { box-shadow: 0 0 0 0 rgba(0,127,254,.55); } 70% { box-shadow: 0 0 0 9px rgba(0,127,254,0); } 100% { box-shadow: 0 0 0 0 rgba(0,127,254,0); } }
+    @keyframes pb-flota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    @keyframes pb-baja { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+    @media (prefers-reduced-motion: reduce) { .pb-pista, .pb-pista svg, .pb-chat .cd-botones button, .pb-pie .env { animation: none !important; } }
     .pb-cal { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
     .pb-cal-in { padding: 18px 16px; border-radius: 14px; background: #fff; box-shadow: 0 2px 10px rgba(20,30,50,.06); }
     .pb-cal-t { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: #0B1220; }
@@ -1563,6 +1574,15 @@
                    data-clase-in="pb-in" data-clase-out="pb-out"
                    data-frases="Busco piso de 3 hab. para comprar|Busco alquiler|Quiero vender mi piso">
                 <div class="pb-cab"><span class="pb-av">I</span><div><b>Inmobiliaria EasyRobots</b><i>en l&iacute;nea</i></div></div>
+                <!-- Anais (2026-10-07): que se vea que hay que tocar algo. El
+                     aviso y el pulso de botones y enviar se van en cuanto la
+                     persona manda su primer mensaje. -->
+                <div class="pb-pista" aria-hidden="true">
+                  <span class="pb-pista-n">1</span>Toca una de las tres opciones
+                  <span class="pb-pista-y">o</span>
+                  <span class="pb-pista-n">2</span>escribe y pulsa enviar
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v13M6 12l6 6 6-6"/></svg>
+                </div>
                 <div class="pb-msgs"><div class="pb-out">&iexcl;Hola! Soy Nacho, de Inmobiliaria EasyRobots. &iquest;Buscas comprar o alquilar?</div></div>
                 <div class="pb-pie">
                   <span class="campo">Escribe un mensaje&hellip;</span>
@@ -1594,6 +1614,11 @@
       var D = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
       var d = new Date(), dias = [];
       while (dias.length < 5) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) dias.push(new Date(d)); }
+      /* El aviso de "toca una opcion" se quita con el primer mensaje. */
+      var ch = document.querySelector('.pb-chat'), ms = ch && ch.querySelector('.pb-msgs');
+      if (ms && window.MutationObserver) new MutationObserver(function (r, o) {
+        if (ms.querySelector('.pb-in')) { ch.classList.add('usado'); o.disconnect(); }
+      }).observe(ms, { childList: true });
       c.querySelector('.pb-mes').textContent = M[dias[0].getMonth()] + ' ' + dias[0].getFullYear();
       c.querySelector('.pb-dias').innerHTML = dias.map(function (x, i) {
         return '<span' + (i === 1 ? ' class="on"' : '') + '>' + D[x.getDay()] + '<b>' + x.getDate() + '</b></span>';
