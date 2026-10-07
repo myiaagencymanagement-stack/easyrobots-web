@@ -1677,19 +1677,19 @@
          Rehecha como la de coaching v3 (.x3): texto a la izquierda con boton
          blanco y los iconos de herramientas, y las seis piezas en tarjetas
          alrededor del ordenador. Aqui el ordenador es de la foto
-         (assets/inmo-piezas.webp, 2139x735, pasada por Anais), asi que la
+         (assets/inmo-piezas.webp, 1853x849 = 2,18:1, pasada por Anais; la primera era 2,9:1 y a 1440 la seccion se quedaba en 441 px contra los 588 de coaching), asi que la
          escena va con la proporcion de la foto y las tarjetas se colocan en
          unidades de esa foto (--u = 1/2000 del ancho). Titular y entradilla
          son los aprobados; las seis piezas son las de la lista anterior.
          El panel de la pantalla viene pintado y no se lee: no son cifras. -->
     <style>
       section#sistema.pzs { padding: 0 !important; background: #050A12; color: #fff; }
-      .pzs-esc { position: relative; container-type: inline-size; aspect-ratio: 2139 / 735; background: url(/assets/inmo-piezas.webp) center / 100% 100% no-repeat; }
+      .pzs-esc { position: relative; container-type: inline-size; aspect-ratio: 1853 / 849; background: url(/assets/inmo-piezas.webp?v=2) center / 100% 100% no-repeat; }
       .pzs-in { --u: calc(100cqw / 2000); position: absolute; inset: 0; }
       .pzs-velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3,8,16,.92) 0%, rgba(3,8,16,.78) 22%, rgba(3,8,16,.25) 31%, rgba(3,8,16,0) 40%); }
       .pzs-txt { position: absolute; left: calc(110 * var(--u)); top: 0; bottom: 0; width: calc(470 * var(--u)); display: flex; flex-direction: column; justify-content: center; }
       .pzs-txt .kick { margin-bottom: calc(14 * var(--u)); color: var(--azul-claro); }
-      .pzs-txt h2 { font-size: calc(54 * var(--u)); line-height: 1.04; letter-spacing: -.035em; font-weight: 800; color: #fff; }
+      .pzs-txt h2 { font-size: calc(58 * var(--u)); line-height: 1.04; letter-spacing: -.035em; font-weight: 800; color: #fff; }
       .pzs-txt .lede { margin-top: calc(18 * var(--u)); font-size: calc(19 * var(--u)); line-height: 1.5; color: rgba(255,255,255,.78); }
       .pzs-btn { align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; margin-top: calc(26 * var(--u)); height: calc(58 * var(--u)); padding: 0 calc(30 * var(--u)); border: 0; border-radius: 999px; background: #fff; color: #0B1220; font: inherit; font-size: calc(18 * var(--u)); font-weight: 600; cursor: pointer; transition: background .2s; }
       .pzs-btn:hover { background: #EEF1F5; }
@@ -1699,7 +1699,7 @@
       .pzs-apps svg { width: calc(27 * var(--u)); height: calc(27 * var(--u)); }
       .pzs-nota { margin-top: calc(12 * var(--u)); font-size: calc(15 * var(--u)); color: rgba(255,255,255,.72); }
       .pzs-fl { position: absolute; inset: 0; width: 100%; height: 100%; }
-      .pzs-fl path { stroke-dasharray: 90; stroke-dashoffset: 90; }
+      .pzs-fl path { stroke-dasharray: 60; stroke-dashoffset: 60; }
       .anim-on .visto .pzs-fl path { animation: pzs-cable 1.2s ease 1.6s forwards, pzs-brillo 2.6s ease-in-out 2.8s infinite; }
       @keyframes pzs-cable { to { stroke-dashoffset: 0; } }
       @keyframes pzs-brillo { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
@@ -1710,11 +1710,12 @@
       .pzs-c i svg { width: calc(26 * var(--u)); height: calc(26 * var(--u)); }
       .pzs-c b { display: block; font-size: calc(21 * var(--u)); font-weight: 700; line-height: 1.2; letter-spacing: -.01em; color: #fff; }
       .pzs-c span { display: block; margin-top: calc(4 * var(--u)); font-size: calc(16.5 * var(--u)); line-height: 1.35; color: #C9D2DE; }
-      .pzs-c.c1, .pzs-c.c2, .pzs-c.c3 { left: calc(590 * var(--u)); width: calc(330 * var(--u)); }
-      .pzs-c.c4, .pzs-c.c5, .pzs-c.c6 { left: calc(1620 * var(--u)); width: calc(350 * var(--u)); }
-      .pzs-c.c1, .pzs-c.c4 { top: calc(120 * var(--u)); }
-      .pzs-c.c2, .pzs-c.c5 { top: calc(285 * var(--u)); }
-      .pzs-c.c3, .pzs-c.c6 { top: calc(450 * var(--u)); }
+      /* Monitor en la foto (unidades de 2000 de ancho): x 977-1533, y 250-596. */
+      .pzs-c.c1, .pzs-c.c2, .pzs-c.c3 { left: calc(610 * var(--u)); width: calc(330 * var(--u)); }
+      .pzs-c.c4, .pzs-c.c5, .pzs-c.c6 { left: calc(1575 * var(--u)); width: calc(370 * var(--u)); }
+      .pzs-c.c1, .pzs-c.c4 { top: calc(215 * var(--u)); }
+      .pzs-c.c2, .pzs-c.c5 { top: calc(385 * var(--u)); }
+      .pzs-c.c3, .pzs-c.c6 { top: calc(555 * var(--u)); }
       @media (max-width: 1180px) {
         .pzs-esc { aspect-ratio: auto; background-size: cover; background-position: 62% center; padding: 56px 22px; }
         .pzs-in { position: static; --u: 1px; }
@@ -1737,14 +1738,14 @@
       <div class="pzs-esc">
         <div class="pzs-velo" aria-hidden="true"></div>
         <div class="pzs-in" data-vi>
-          <svg class="pzs-fl" viewBox="0 0 2000 687" preserveAspectRatio="none" fill="none" aria-hidden="true">
-            <g stroke="#3D9BFF" stroke-width="2.4" stroke-linecap="round" vector-effect="non-scaling-stroke" style="filter: drop-shadow(0 0 4px rgba(61,155,255,.9))">
-              <path vector-effect="non-scaling-stroke" d="M920 172C960 172 960 190 1000 190"/>
-              <path vector-effect="non-scaling-stroke" d="M920 337H998"/>
-              <path vector-effect="non-scaling-stroke" d="M920 502C960 502 960 470 1000 470"/>
-              <path vector-effect="non-scaling-stroke" d="M1620 172C1590 172 1590 150 1555 150"/>
-              <path vector-effect="non-scaling-stroke" d="M1620 337H1560"/>
-              <path vector-effect="non-scaling-stroke" d="M1620 502C1590 502 1590 470 1555 470"/>
+          <svg class="pzs-fl" viewBox="0 0 2000 917" preserveAspectRatio="none" fill="none" aria-hidden="true">
+            <g stroke="#3D9BFF" stroke-width="2.4" stroke-linecap="round" style="filter: drop-shadow(0 0 4px rgba(61,155,255,.9))">
+              <path vector-effect="non-scaling-stroke" d="M940 270C960 270 960 300 980 300"/>
+              <path vector-effect="non-scaling-stroke" d="M940 440H980"/>
+              <path vector-effect="non-scaling-stroke" d="M940 610C960 610 960 580 980 580"/>
+              <path vector-effect="non-scaling-stroke" d="M1575 270C1555 270 1555 300 1532 300"/>
+              <path vector-effect="non-scaling-stroke" d="M1575 440H1532"/>
+              <path vector-effect="non-scaling-stroke" d="M1575 610C1555 610 1555 580 1532 580"/>
             </g>
           </svg>
           <div class="pzs-txt">

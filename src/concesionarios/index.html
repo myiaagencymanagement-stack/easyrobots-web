@@ -1214,6 +1214,105 @@
     })();
   </script>
 
+  <!-- =================== 06B - PIEZAS (2026-10-07) ===================
+       Anais: "en concesionarios no hay esa seccion, pon el mismo copy que
+       inmobiliarias". Es el mismo bloque (prefijo pzs-): texto a la
+       izquierda, boton blanco e iconos, y las seis piezas alrededor del
+       ordenador de la foto (assets/conce-piezas.webp, 1852x849), mas clara
+       que la de inmobiliarias a peticion suya porque la pagina es muy
+       oscura. Monitor en unidades de 2000: x 952-1522, y 232-588. -->
+    <style>
+      section#piezas.pzs { padding: 0 !important; background: #050A12; color: #fff; }
+      .pzs-esc { position: relative; container-type: inline-size; aspect-ratio: 1852 / 849; background: url(/assets/conce-piezas.webp) center / 100% 100% no-repeat; }
+      .pzs-in { --u: calc(100cqw / 2000); position: absolute; inset: 0; }
+      .pzs-velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3,8,16,.86) 0%, rgba(3,8,16,.66) 22%, rgba(3,8,16,.18) 31%, rgba(3,8,16,0) 40%); }
+      .pzs-txt { position: absolute; left: calc(110 * var(--u)); top: 0; bottom: 0; width: calc(470 * var(--u)); display: flex; flex-direction: column; justify-content: center; }
+      .pzs-txt .c-kick { margin-bottom: calc(14 * var(--u)); }
+      .pzs-txt h2 { font-size: calc(58 * var(--u)); line-height: 1.04; letter-spacing: -.035em; font-weight: 800; color: #fff; }
+      .pzs-txt .lede { margin-top: calc(18 * var(--u)); font-size: calc(19 * var(--u)); line-height: 1.5; color: rgba(255,255,255,.78); }
+      .pzs-btn { align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; margin-top: calc(26 * var(--u)); height: calc(58 * var(--u)); padding: 0 calc(30 * var(--u)); border: 0; border-radius: 999px; background: #fff; color: #0B1220; font: inherit; font-size: calc(18 * var(--u)); font-weight: 600; cursor: pointer; transition: background .2s; }
+      .pzs-btn:hover { background: #EEF1F5; }
+      .pzs-btn svg { width: calc(16 * var(--u)); height: calc(16 * var(--u)); }
+      .pzs-apps { display: flex; gap: calc(10 * var(--u)); margin-top: calc(24 * var(--u)); }
+      .pzs-apps i { width: calc(52 * var(--u)); height: calc(52 * var(--u)); border-radius: calc(13 * var(--u)); background: rgba(18,22,30,.88); border: 1px solid rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; }
+      .pzs-apps svg { width: calc(27 * var(--u)); height: calc(27 * var(--u)); }
+      .pzs-nota { margin-top: calc(12 * var(--u)); font-size: calc(15 * var(--u)); color: rgba(255,255,255,.72); }
+      .pzs-fl { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .pzs-fl path { stroke-dasharray: 60; stroke-dashoffset: 60; }
+      .anim-on .visto .pzs-fl path { animation: pzs-cable 1.2s ease 1.6s forwards, pzs-brillo 2.6s ease-in-out 2.8s infinite; }
+      @keyframes pzs-cable { to { stroke-dashoffset: 0; } }
+      @keyframes pzs-brillo { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+      .pzs-c { position: absolute; display: grid; grid-template-columns: auto 1fr; gap: calc(14 * var(--u)); align-items: center; padding: calc(16 * var(--u)); background: rgba(8,14,26,.86); border: 1px solid rgba(70,140,255,.5); border-radius: calc(16 * var(--u)); box-shadow: 0 0 calc(24 * var(--u)) rgba(30,110,255,.18); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+      .pzs-c i { width: calc(46 * var(--u)); height: calc(46 * var(--u)); border-radius: calc(12 * var(--u)); background: #1167FF; color: #fff; display: flex; align-items: center; justify-content: center; }
+      .pzs-c i.wa { background: #25D366; }
+      .pzs-c i.cl { background: linear-gradient(180deg, #2BA6FF, #1167FF); }
+      .pzs-c i svg { width: calc(26 * var(--u)); height: calc(26 * var(--u)); }
+      .pzs-c b { display: block; font-size: calc(21 * var(--u)); font-weight: 700; line-height: 1.2; letter-spacing: -.01em; color: #fff; }
+      .pzs-c span { display: block; margin-top: calc(4 * var(--u)); font-size: calc(16.5 * var(--u)); line-height: 1.35; color: #C9D2DE; }
+      /* Monitor en la foto (unidades de 2000 de ancho): x 952-1522, y 232-588. */
+      .pzs-c.c1, .pzs-c.c2, .pzs-c.c3 { left: calc(590 * var(--u)); width: calc(330 * var(--u)); }
+      .pzs-c.c4, .pzs-c.c5, .pzs-c.c6 { left: calc(1565 * var(--u)); width: calc(380 * var(--u)); }
+      .pzs-c.c1, .pzs-c.c4 { top: calc(215 * var(--u)); }
+      .pzs-c.c2, .pzs-c.c5 { top: calc(385 * var(--u)); }
+      .pzs-c.c3, .pzs-c.c6 { top: calc(555 * var(--u)); }
+      @media (max-width: 1180px) {
+        .pzs-esc { aspect-ratio: auto; background-size: cover; background-position: 62% center; padding: 56px 22px; }
+        .pzs-in { position: static; --u: 1px; }
+        .pzs-velo { background: rgba(3,8,16,.72); }
+        .pzs-txt { position: relative; left: auto; width: auto; max-width: 560px; }
+        .pzs-txt h2 { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+        .pzs-txt .lede { font-size: .95rem; }
+        .pzs-btn { height: 50px; font-size: 15.5px; padding: 0 24px; }
+        .pzs-apps i { width: 44px; height: 44px; } .pzs-apps svg { width: 23px; height: 23px; }
+        .pzs-nota { font-size: 13.5px; }
+        .pzs-fl { display: none; }
+        .pzs-cs { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
+        .pzs-c { position: relative; left: auto !important; top: auto !important; width: auto !important; grid-template-columns: 1fr; gap: 8px; padding: 12px; border-radius: 12px; }
+        .pzs-c i { width: 34px; height: 34px; border-radius: 9px; } .pzs-c i svg { width: 19px; height: 19px; }
+        .pzs-c b { font-size: 14px; } .pzs-c span { font-size: 12.5px; }
+      }
+      @media (prefers-reduced-motion: reduce) { .pzs-fl path { stroke-dashoffset: 0; } .anim-on .visto .pzs-fl path { animation: none; } }
+    </style>
+    <section class="pzs" id="piezas">
+      <div class="pzs-esc">
+        <div class="pzs-velo" aria-hidden="true"></div>
+        <div class="pzs-in" data-vi>
+          <svg class="pzs-fl" viewBox="0 0 2000 917" preserveAspectRatio="none" fill="none" aria-hidden="true">
+            <g stroke="#3D9BFF" stroke-width="2.4" stroke-linecap="round" style="filter: drop-shadow(0 0 4px rgba(61,155,255,.9))">
+              <path vector-effect="non-scaling-stroke" d="M920 270C938 270 938 295 955 295"/>
+              <path vector-effect="non-scaling-stroke" d="M920 440H955"/>
+              <path vector-effect="non-scaling-stroke" d="M920 610C938 610 938 575 955 575"/>
+              <path vector-effect="non-scaling-stroke" d="M1565 270C1545 270 1545 295 1521 295"/>
+              <path vector-effect="non-scaling-stroke" d="M1565 440H1521"/>
+              <path vector-effect="non-scaling-stroke" d="M1565 610C1545 610 1545 575 1521 575"/>
+            </g>
+          </svg>
+          <div class="pzs-txt">
+            <p class="c-kick">El sistema</p>
+            <h2>Piezas, no un <br>paquete cerrado.</h2>
+            <p class="lede">Nos adaptamos a las herramientas que ya utilizas. Y si hace falta una pieza que no existe en tu software, la construimos.</p>
+            <button class="pzs-btn" type="button" data-cal><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>Ver c&oacute;mo se integra</button>
+            <div class="pzs-apps" aria-label="Algunas herramientas con las que se integra">
+              <i title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
+              <i title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="url(#pzig2)" stroke-width="2.2"><defs><linearGradient id="pzig2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F9A03C"/><stop offset=".5" stop-color="#E1306C"/><stop offset="1" stop-color="#8134AF"/></linearGradient></defs><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="#E1306C" stroke="none"/></svg></i>
+              <i title="Gmail"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linejoin="round"><path d="M3.5 18V7l8.5 6.5L20.5 7v11" stroke="#EA4335"/><path d="M3.5 18h3V10M20.5 18h-3V10" stroke="#4285F4"/></svg></i>
+              <i title="Google Calendar"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5" fill="#fff"/><path d="M3.5 7.5h17" stroke="#4285F4" stroke-width="3"/><text x="12" y="17.6" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1A73E8" font-family="Arial,sans-serif">31</text></svg></i>
+              <i title="HubSpot"><svg viewBox="0 0 24 24" fill="none" stroke="#FB5328" stroke-width="2.1" stroke-linecap="round"><path d="M15 6.5v4.2M15 13.3v4.2"/><circle cx="15" cy="12" r="3.6"/><circle cx="15" cy="5" r="1.6"/><circle cx="15" cy="19" r="1.6"/><path d="M11.4 12H7"/><circle cx="6" cy="12" r="1.6"/></svg></i>
+            </div>
+            <p class="pzs-nota">Se integra con tus herramientas actuales.</p>
+          </div>
+          <div class="pzs-cs">
+          <div class="pzs-c c1 vi" style="--d:.4s"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.4 3.2c.5-.2 1.1 0 1.4.5l1.4 2.4c.3.5.2 1.1-.2 1.5l-1 .9c-.2.2-.3.5-.1.8.9 1.7 2.3 3.1 4 4 .3.2.6.1.8-.1l.9-1c.4-.4 1-.5 1.5-.2l2.4 1.4c.5.3.7.9.5 1.4l-.6 1.6c-.3.8-1.1 1.3-2 1.2C9.9 18.9 5.1 14.1 4.4 7.6c-.1-.9.4-1.7 1.2-2z"/></svg></i><div><b>Llamadas</b><span>Un agente de voz atiende al instante.</span></div></div>
+          <div class="pzs-c c2 vi" style="--d:.8s"><i class="wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i><div><b>WhatsApp</b><span>Sigue la conversaci&oacute;n y env&iacute;a la ficha del coche.</span></div></div>
+          <div class="pzs-c c3 vi" style="--d:1.2s"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></i><div><b>Agenda</b><span>Pruebas, tasaciones y citas de taller.</span></div></div>
+          <div class="pzs-c c4 vi" style="--d:.6s"><i class="cl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 3.5l8.5 4.5-8.5 4.5L3.5 8z"/><path d="M3.5 12l8.5 4.5 8.5-4.5M3.5 16l8.5 4.5 8.5-4.5"/></svg></i><div><b>CRM &middot; tu software</b><span>Contacto y cita, registrados solos.</span></div></div>
+          <div class="pzs-c c5 vi" style="--d:1.0s"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 10a6 6 0 1112 0c0 4 1.6 5.6 1.6 5.6H4.4S6 14 6 10z"/><path d="M10 18.5a2.2 2.2 0 004 0"/></svg></i><div><b>Seguimiento</b><span>Recordatorios de cita y de revisi&oacute;n.</span></div></div>
+          <div class="pzs-c c6 vi" style="--d:1.4s"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 19.5c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6z"/><circle cx="17" cy="9" r="2.6"/><path d="M16.5 13.6c3 .2 5 2.3 5 5.9h-4.4c0-2.3-.2-4.4-.6-5.9z"/></svg></i><div><b>Tu equipo</b><span>Ventas y taller reciben el aviso con todo.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   <!-- =================== 07 - LO QUE HACE Y LO QUE NO =================== -->
   <section class="sec s07 clara" id="alcance">
       <div class="foto"></div>
