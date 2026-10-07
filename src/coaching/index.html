@@ -1569,7 +1569,7 @@
     <div class="velo" aria-hidden="true"></div>
     <div class="caja">
       <div class="m3-txt">
-        <div class="k3">Demo</div>
+        <button class="er-prueba" type="button" data-prueba><span class="pt" aria-hidden="true"></span>Pru&eacute;balo t&uacute; mismo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
         <h2 class="t3">As&iacute; responde <br><em>EasyRobots</em> <br>a un interesado.</h2>
         <p class="p3">Prueba la conversaci&oacute;n y descubre c&oacute;mo responde a sus dudas, lo cualifica y puede reservar una llamada directamente en el calendario.</p>
         <div class="m3-info">
@@ -1947,6 +1947,34 @@
     })();
   </script>
   <script src="/js/chat-demo.js" defer></script>
+<!-- "Pruebalo tu mismo" (2026-10-07, Anais): resaltado en azul y con pulso
+     para que se vea que la demo se puede tocar. Al pulsarlo lleva al chat,
+     lo ilumina y pone el foco en el primer boton de frase. -->
+<style>
+  .er-prueba { display: inline-flex; align-items: center; gap: 10px; padding: 9px 16px 9px 13px; border: 0; border-radius: 999px; background: #1E6FF2; color: #fff; font-family: inherit; font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; line-height: 1; cursor: pointer; box-shadow: 0 8px 24px rgba(30,111,242,.35); transition: background .2s, transform .2s; }
+  .er-prueba:hover { background: #3A84FF; transform: translateY(-1px); }
+  .er-prueba svg { width: 15px; height: 15px; }
+  .er-prueba .pt { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+  .er-prueba .pt::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid #fff; opacity: 0; animation: erPulso 1.6s ease-out infinite; }
+  @keyframes erPulso { 0% { transform: scale(.5); opacity: .9; } 100% { transform: scale(1.7); opacity: 0; } }
+  .er-flash { animation: erFlash 1.5s ease-out 1; }
+  @keyframes erFlash { 0% { box-shadow: 0 0 0 0 rgba(30,111,242,.75); } 100% { box-shadow: 0 0 0 26px rgba(30,111,242,0); } }
+  @media (prefers-reduced-motion: reduce) { .er-prueba .pt::after, .er-flash { animation: none; } }
+</style>
+<script>
+(function () {
+  document.querySelectorAll('[data-prueba]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var sec = b.closest('section') || document;
+      var chats = sec.querySelectorAll('[data-chat-demo]'), c = sec.querySelector('[data-chat-demo].on') || chats[0];
+      if (!c) return;
+      c.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      c.classList.remove('er-flash'); void c.offsetWidth; c.classList.add('er-flash');
+      setTimeout(function () { var f = c.querySelector('.cd-botones button, input, textarea'); if (f) f.focus({ preventScroll: true }); }, 600);
+    });
+  });
+})();
+</script>
 </body>
 
 </html>
