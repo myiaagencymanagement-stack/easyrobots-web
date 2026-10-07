@@ -1233,7 +1233,7 @@
     /* Anais (2026-10-07): el hero y "Asi funciona" estaban "muy sosos".
        Hero: la conversacion de Instagram se escribe sola, con "escribiendo"
        antes de cada respuesta, y al final sale la reserva con la hora
-       latiendo. Asi funciona: los canales entran uno a uno, un punto de luz
+       latiendo. Asi funciona: los canales estan siempre (Anais), un punto de luz
        viaja por los cables hasta EasyRobots, el nucleo late y una luz azul
        recorre los cinco pasos en bucle. Todo se reinicia al salir de
        pantalla. Mismo patron que /estetica/ ([data-vi] + .vi y --d). Sin
@@ -1256,8 +1256,7 @@
 
     /* Pantalla del portatil del hero (ver comentario en el HTML). Mide
        600x380 de diseno; el script la lleva a las cuatro esquinas. */
-    .lp { display: none; }
-    @media (min-width: 861px) {
+    @media all {
       .lp { display: block; position: absolute; left: 0; top: 0; width: 600px; height: 380px; transform-origin: 0 0; z-index: 1;
             background: linear-gradient(160deg, #F4F6FA 0%, #ECEFF4 60%, #E6E9EF 100%); overflow: hidden; font-family: inherit; }
       .lp::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,214,160,.14) 0%, rgba(255,255,255,0) 40%, rgba(255,190,120,.10) 100%); pointer-events: none; }
@@ -1320,7 +1319,8 @@
            (esquinas medidas en coach3-hero.webp, 1704x923: 1036,372 /
            1574,383 / 1543,738 / 986,700). El script de abajo recalcula la
            deformacion al cambiar el tamano, porque la foto va en "cover".
-           Solo en escritorio: en movil la foto es otra. -->
+           En movil va igual sobre coach3-hero-movil.webp (780x1386), con sus
+           propias esquinas: 398,768 / 786,757 / 752,1005 / 363,988. -->
       <div class="lp" data-vi>
         <div class="lp-chat">
           <div class="lp-m vi" style="--d:.5s"><u>MC</u><p>Hola, estoy interesado en el programa. &iquest;Crees que podr&iacute;a encajar conmigo?<i>10:24</i></p></div>
@@ -1504,11 +1504,11 @@
 
       <div class="flujo" data-vi>
         <div class="canales">
-          <div class="canal vi" style="--d:.2s"><i class="mk ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></i>Instagram</div>
-          <div class="canal vi" style="--d:.32s"><i class="mk wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>WhatsApp</div>
-          <div class="canal vi" style="--d:.44s"><i class="mk we"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M3.5 9h17M7.5 12.5h9M7.5 16h5"/></svg></i>Formulario web</div>
-          <div class="canal vi" style="--d:.56s"><i class="mk gm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M3 7.5l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></i>Gmail</div>
-          <div class="canal vi" style="--d:.68s"><i class="mk ot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 12h.01M12 12h.01M18 12h.01"/></svg></i>Otras fuentes</div>
+          <div class="canal"><i class="mk ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></i>Instagram</div>
+          <div class="canal"><i class="mk wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>WhatsApp</div>
+          <div class="canal"><i class="mk we"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M3.5 9h17M7.5 12.5h9M7.5 16h5"/></svg></i>Formulario web</div>
+          <div class="canal"><i class="mk gm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M3 7.5l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></i>Gmail</div>
+          <div class="canal"><i class="mk ot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 12h.01M12 12h.01M18 12h.01"/></svg></i>Otras fuentes</div>
         </div>
         <div class="enl vi" style="--d:1.0s" aria-hidden="true"></div>
         <div class="nucleo vi" style="--d:1.3s">EasyRobots</div>
@@ -1886,8 +1886,9 @@
        .lp con matrix3d (homografia de 600x380 a ese cuadrilatero). */
     (function () {
       var lp = document.querySelector('.lp'); if (!lp) return;
-      var foto = lp.parentNode, IW = 1704, IH = 923, W = 600, H = 380;
-      var Q = [[1036, 372], [1574, 383], [1543, 738], [986, 700]];
+      var foto = lp.parentNode, W = 600, H = 380, mq = window.matchMedia('(max-width: 860px)');
+      var ESC = { iw: 1704, ih: 923, arriba: false, q: [[1036, 372], [1574, 383], [1543, 738], [986, 700]] };
+      var MOV = { iw: 780, ih: 1386, arriba: true, q: [[398, 768], [786, 757], [752, 1005], [363, 988]] };
       function homo(src, dst) {
         var A = [], B = [];
         for (var i = 0; i < 4; i++) {
@@ -1905,8 +1906,10 @@
       }
       function ajusta() {
         var w = foto.clientWidth, hh = foto.clientHeight; if (!w || !hh) return;
-        var s = Math.max(w / IW, hh / IH), ox = (w - IW * s) / 2, oy = (hh - IH * s) / 2;
-        var dst = Q.map(function (q) { return [ox + q[0] * s, oy + q[1] * s]; });
+        var F = mq.matches ? MOV : ESC, s, ox, oy;
+        if (mq.matches) { s = w / F.iw; ox = 0; oy = -.5 * window.innerWidth; }  /* movil: 100% auto, subida medio ancho */
+        else { s = Math.max(w / F.iw, hh / F.ih); ox = (w - F.iw * s) / 2; oy = (hh - F.ih * s) / 2; }
+        var dst = F.q.map(function (q) { return [ox + q[0] * s, oy + q[1] * s]; });
         var h = homo([[0, 0], [W, 0], [W, H], [0, H]], dst);
         lp.style.transform = 'matrix3d(' + [h[0], h[3], 0, h[6], h[1], h[4], 0, h[7], 0, 0, 1, 0, h[2], h[5], 0, 1].join(',') + ')';
       }
