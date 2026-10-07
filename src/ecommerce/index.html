@@ -800,6 +800,11 @@
        tarjeta el mensaje ya esta escrito en la caja, un aviso azul dice que basta con enviar, y
        enviar y las preguntas laten. Todo eso se quita en cuanto la persona
        manda su primer mensaje en esa tarjeta. */
+    /* Anais (2026-10-07): la conversacion de ejemplo que traia cada
+       tarjeta "sobra", porque la demo la escribe en vivo. Queda solo el
+       saludo; el alto minimo evita que la tarjeta encoja. */
+    .dm-chat { min-height: 300px; }
+    @media (max-width: 620px) { .dm-chat { min-height: 230px; } }
     .dm-pista { display: none; }
     .dm-card.sin-usar .dm-pista { display: flex; align-items: center; gap: 8px; margin: 0 14px 8px; padding: 8px 12px; border-radius: 10px; background: var(--azul); color: #fff; font-size: 12.5px; font-weight: 600; line-height: 1.3; box-shadow: 0 8px 20px rgba(0,100,255,.3); animation: dm-flota 2.4s ease-in-out infinite; }
     .dm-pista svg { width: 15px; height: 15px; margin-left: auto; flex: 0 0 auto; animation: dm-baja 1.2s ease-in-out infinite; }
@@ -1078,20 +1083,10 @@
             <svg class="pt2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
           <div class="dm-chat">
-            <div class="dm-in">&iquest;Ten&eacute;is esta zapatilla en talla 43? &iquest;La ten&eacute;is en stock?<i class="hh">10:24</i></div>
             <div class="dm-fila">
               <span class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
-              <div class="dm-out">S&iacute;, quedan 3 unidades en talla 43. Te la puedo a&ntilde;adir al carrito si quieres.<i class="hh">10:24</i></div>
+              <div class="dm-out">&iexcl;Hola! &iquest;Buscas algo en concreto? Preg&uacute;ntame por tallas, stock o env&iacute;os.</div>
             </div>
-            <div class="dm-prod">
-              <img src="/assets/ecom-prod.webp" alt="" loading="lazy" decoding="async">
-              <div>
-                <b>Zapatilla Runner Pro</b>
-                <i><span class="pt"></span>Talla 43 &middot; En stock</i>
-                <u>79,90 &euro;</u>
-              </div>
-            </div>
-            <button class="dm-bot" type="button">A&ntilde;adir al carrito</button>
           </div>
           <div class="dm-pie">
             <span class="campo">Escribe un mensaje&hellip;</span>
@@ -1111,24 +1106,9 @@
             <svg class="pt2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
           <div class="dm-chat">
-            <div class="dm-in">Hola, hice un pedido el lunes y no s&eacute; nada. &iquest;D&oacute;nde est&aacute;?<i class="hh">11:03</i></div>
             <div class="dm-fila">
               <span class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
-              <div class="dm-out">Tu pedido #10482 sali&oacute; ayer y est&aacute; en reparto: lo entregan ma&ntilde;ana antes de las 14:00.<i class="hh">11:03</i></div>
-            </div>
-            <div class="dm-ped">
-              <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8l8-4 8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg>Pedido #10482</div>
-              <div class="dm-via">
-                <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 12.5l4 4 8-9"/></svg></span>
-                <span class="ln"></span>
-                <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/></svg></span>
-                <span class="ln off"></span>
-                <span class="pn off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M8 8l8 8M16 8l-8 8"/></svg></span>
-              </div>
-              <div class="dm-vias"><span>Confirmado</span><span class="on">En reparto</span><span>Entregado</span></div>
-              <div class="dm-link">Ver seguimiento en tiempo real
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 4h6v6M20 4l-8 8M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>
-              </div>
+              <div class="dm-out">&iexcl;Hola! Dime tu n&uacute;mero de pedido y te digo d&oacute;nde est&aacute;.</div>
             </div>
           </div>
           <div class="dm-pie">
@@ -1150,23 +1130,9 @@
           </div>
           <div class="dm-chat">
             <div class="dm-fila">
-              <span class="gr"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.2 4.2 0 100-8.4 4.2 4.2 0 000 8.4zm0 2c-4 0-7.2 2.2-7.2 4.8V21h14.4v-2.2c0-2.6-3.2-4.8-7.2-4.8z"/></svg></span>
-              <div class="dm-in">La talla no me vale, &iquest;qu&eacute; hago?<i class="hh">12:18</i></div>
-            </div>
-            <div class="dm-fila">
               <span class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
-              <div class="dm-out">Tienes 30 d&iacute;as para cambiarla. Cuando lo recibas, me escribes y te genero el cambio con la talla que necesites.<i class="hh">12:28</i></div>
+              <div class="dm-out">&iexcl;Hola! &iquest;Quieres cambiar o devolver algo? Te ayudo con el proceso.</div>
             </div>
-            <div class="dm-fila">
-              <span class="bt amb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="12" cy="13" r="3"/><path d="M8 7l1.5-2h5L16 7"/></svg></span>
-              <div class="dm-aviso">
-                <b>Cambio de talla</b>
-                <span>Te genero la etiqueta de devoluci&oacute;n y en cuanto lo recibamos te enviamos la nueva talla.</span>
-              </div>
-            </div>
-            <button class="dm-bot" type="button">Generar etiqueta de devoluci&oacute;n
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 4h6v6M20 4l-8 8M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>
-            </button>
           </div>
           <div class="dm-pie">
             <span class="campo">Escribe un mensaje&hellip;</span>
