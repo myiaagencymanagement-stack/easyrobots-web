@@ -539,7 +539,6 @@
          barra y el antetitulo, sobre la profesional trabajando. En pantallas
          bajas no cabe y se quita. */
       .h-noti { left: 50%; top: 78px; width: min(300px, 82vw); transform: translateX(-50%); align-items: center; }
-      .hn-tag { margin-left: 0; }
       .h-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 120; background: rgba(8,8,11,.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08); }
       .h-nav-in { padding: 9px 22px; }
       .h-links { display: none; }
@@ -787,8 +786,14 @@
       /* Segunda vertical (07/10): el movil de la foto esta a la izquierda y
          al 54 % del ancho de pantalla en alto. La notificacion va arriba a la
          derecha, mas estrecha, para no taparlo. */
-      .h-noti { top: 70px; left: auto; right: 14px; transform: none; width: min(255px, 66vw); align-items: flex-end; }
-      .hn-card { font-size: 12.5px; padding: 9px 12px 10px 9px; }
+      /* (07/10) A la izquierda y pequena: a la derecha y mas grande tapaba
+         la foto. Queda justo encima del movil de la foto. */
+      .h-noti { top: 66px; left: 14px; right: auto; transform: none; width: min(205px, 54vw); gap: 6px; }
+      .hn-card { gap: 8px; font-size: 11px; line-height: 1.35; padding: 7px 10px 8px 7px; border-radius: 12px; }
+      .hn-ic { flex-basis: 22px; height: 22px; border-radius: 6px; }
+      .hn-ic svg { width: 15px; height: 15px; }
+      .hn-cab i { font-size: 10px; }
+      .hn-tag { margin-left: 30px; padding: 3px 8px; font-size: 10.5px; }
       /* 04: el flujo de mensajes y agenda, mas compacto. */
       .ca-centro { zoom: .84; }
       .cf-entra { gap: 6px; }
