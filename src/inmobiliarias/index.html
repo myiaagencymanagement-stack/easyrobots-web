@@ -222,10 +222,13 @@
        oscuras, que si llevan escena. Llevan la misma foto, pero debajo de un
        lavado blanco del 90-97 %: se intuye la escena y el texto no pierde ni
        un punto de contraste. La de garantia se queda lisa a proposito. */
+    /* Fondo propio desde el 2026-10-07 (oficina de dia, mismo piso que el
+       hero): lavado a la izquierda, donde va el texto, y abierto detras
+       del portatil. */
     #demo { color: var(--tinta); padding: 46px 0;
             background:
-              linear-gradient(180deg, rgba(245,249,252,.975) 0%, rgba(245,249,252,.90) 42%, rgba(245,249,252,.97) 100%),
-              url(/assets/escena-inmobiliaria.webp) center 46% / cover no-repeat; }
+              linear-gradient(90deg, rgba(245,249,252,.95) 0%, rgba(245,249,252,.86) 36%, rgba(245,249,252,.55) 72%, rgba(245,249,252,.45) 100%),
+              url(/assets/inmo-demo.webp) center 50% / cover no-repeat; }
     .demo-grid { container-type: inline-size; }
     .demo-cols { --u: 0.12285cqw; display: grid;
                  grid-template-columns: calc(295*var(--u)) calc(204*var(--u)) 1fr;
@@ -906,9 +909,9 @@
       #como-funciona { background:
               linear-gradient(180deg, rgba(6,12,22,.55) 0%, rgba(6,12,22,.70) 30%, rgba(6,12,22,.94) 60%, #060C16 100%),
               url(/assets/inmo-como-movil.webp) center top / 100% auto no-repeat #060C16; }
-      #demo { background-image:
-              linear-gradient(180deg, rgba(245,249,252,.975) 0%, rgba(245,249,252,.90) 42%, rgba(245,249,252,.97) 100%),
-              url(/assets/escena-inmobiliaria-movil.webp); background-position: center, center 46%; }
+      #demo { background:
+              linear-gradient(180deg, rgba(245,249,252,.80) 0%, rgba(245,249,252,.88) 30%, rgba(245,249,252,.97) 62%, #F5F9FC 100%),
+              url(/assets/inmo-demo-movil.webp) center top / 100% auto no-repeat #F5F9FC; }
     }
 
     /* ---------- compactar el movil ----------
@@ -1206,13 +1209,36 @@
       section[id], header[id], #equipo { scroll-margin-top: 58px; }
     }
   </style>
+  <style>
+    /* Anais (2026-10-07): el hero "que se vea guapo segun entras". Las
+       tarjetas cuentan la llamada en orden (atendida, agente, WhatsApp,
+       visita, comercial) y la conversacion del movil se escribe sola, con
+       un "escribiendo..." antes de la respuesta. Al salir de pantalla se
+       reinicia. Mismo patron que /estetica/ ([data-vi] + .vi y --d). Sin
+       JavaScript o con movimiento reducido se ve todo quieto. */
+    .anim-on [data-vi] .vi { opacity: 0; transform: translateY(12px) scale(.96); transition: opacity .25s ease, transform .25s ease; }
+    .anim-on [data-vi].visto .vi { opacity: 1; transform: none; transition: opacity .5s ease var(--d, 0s), transform .55s cubic-bezier(.2,.9,.25,1.15) var(--d, 0s); }
+    .h-escr { display: none; }
+    .anim-on .h-escr { display: flex; gap: 4px; width: fit-content; padding: 0 12px; border-radius: 12px; background: #fff; overflow: hidden; opacity: 0; max-height: 0; }
+    .h-escr span { width: 6px; height: 6px; border-radius: 50%; background: #8A94A4; animation: h-pt 1s ease-in-out infinite; }
+    .h-escr span:nth-child(2) { animation-delay: .15s; } .h-escr span:nth-child(3) { animation-delay: .3s; }
+    .anim-on .visto .h-escr { animation: h-escr 1s ease 1.4s both; }
+    @keyframes h-escr { 0% { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; }
+      18%, 82% { opacity: 1; max-height: 30px; padding-top: 9px; padding-bottom: 9px; }
+      100% { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; } }
+    @keyframes h-pt { 0%, 100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(-3px); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .anim-on [data-vi] .vi { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .anim-on .h-escr { display: none; }
+    }
+  </style>
 </head>
 
 <body>
   <a class="saltar" href="#momento">Saltar al contenido</a>
 
   <!-- ==================== 01 · HERO ==================== -->
-  <header class="hero" id="inicio">
+  <header class="hero" id="inicio" data-vi>
     <div class="foto" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
 
@@ -1245,7 +1271,7 @@
     </div>
 
     <div class="tarjetas-movil">
-      <div class="tarj t-llamada">
+      <div class="tarj t-llamada vi" style="--d:.3s">
         <div class="ico ic-verde"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M7.4 3.2c.5-.2 1.1 0 1.4.5l1.4 2.4c.3.5.2 1.1-.2 1.5l-1 .9c-.2.2-.3.5-.1.8.9 1.7 2.3 3.1 4 4 .3.2.6.1.8-.1l.9-1c.4-.4 1-.5 1.5-.2l2.4 1.4c.5.3.7.9.5 1.4l-.7 1.7c-.2.5-.7.9-1.3.9C10.3 19.4 2.6 11.7 2.6 4.4c0-.6.4-1.1.9-1.3z"/></svg></div>
         <div class="cuerpo">
           <b>Llamada atendida</b>
@@ -1255,7 +1281,7 @@
         </div>
       </div>
 
-      <div class="tarj t-agente">
+      <div class="tarj t-agente vi" style="--d:1.0s">
         <div class="ico ic-azul"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M11 2.2a.9.9 0 01.9.9v1.1h.7A4.2 4.2 0 0116.8 8.4v4.9a3 3 0 01-3 3H8.2a3 3 0 01-3-3V8.4a4.2 4.2 0 014.2-4.2h.7V3.1a.9.9 0 01.9-.9z"/><circle cx="8.8" cy="10.2" r="1.25" fill="#0B0B0D"/><circle cx="13.2" cy="10.2" r="1.25" fill="#0B0B0D"/><rect x="9" y="12.6" width="4" height="1.1" rx=".55" fill="#0B0B0D"/><rect x="2.6" y="8.8" width="1.7" height="4" rx=".85"/><rect x="17.7" y="8.8" width="1.7" height="4" rx=".85"/></svg></div>
         <div class="cuerpo">
           <b>Agente EasyRobots<br>en llamada</b>
@@ -1264,7 +1290,7 @@
         </div>
       </div>
 
-      <div class="tarj t-wa">
+      <div class="tarj t-wa vi" style="--d:2.4s">
         <div class="ico ic-verde"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.4 14.3c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.3-.15-1.25-.46-2.38-1.47a8.9 8.9 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.61.13-.13.3-.34.44-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.57-.48-.5-.66-.5h-.57c-.2 0-.51.07-.78.37-.27.3-1.03 1.01-1.03 2.46s1.06 2.86 1.2 3.06c.15.2 2.07 3.17 5.03 4.45.7.3 1.25.49 1.68.63.7.22 1.35.19 1.86.11.56-.08 1.75-.71 1.99-1.4.25-.68.25-1.27.17-1.39-.07-.12-.27-.2-.57-.35z"/></svg></div>
         <div class="cuerpo">
           <b>WhatsApp enviado</b>
@@ -1277,7 +1303,7 @@
         </div>
       </div>
 
-      <div class="tarj t-visita">
+      <div class="tarj t-visita vi" style="--d:3.8s">
         <div class="ico ic-rojo"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.2" y="5" width="15.6" height="14" rx="2.4"/><path d="M3.2 9.4h15.6M7.6 2.8v3.4M14.4 2.8v3.4"/></svg></div>
         <div class="cuerpo">
           <b>Visita propuesta</b>
@@ -1289,7 +1315,7 @@
         </div>
       </div>
 
-      <div class="tarj t-comer">
+      <div class="tarj t-comer vi" style="--d:4.6s">
         <div class="ico ic-azul"><svg viewBox="0 0 22 22" fill="currentColor"><circle cx="8" cy="7.5" r="3.1"/><circle cx="15.2" cy="8.4" r="2.4"/><path d="M2.4 18c.5-3 2.9-4.6 5.6-4.6S13.1 15 13.6 18z"/><path d="M14.4 12.6c2.2 0 3.9 1.2 4.4 3.3l-4 .1z"/></svg></div>
         <div class="cuerpo">
           <b>Comercial informado</b>
@@ -1313,12 +1339,13 @@
           <div><b>Inmobiliaria</b><span>en l&iacute;nea</span></div><span class="ic"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M2.5 5.8A2.3 2.3 0 014.8 3.5h6.4a2.3 2.3 0 012.3 2.3v8.4a2.3 2.3 0 01-2.3 2.3H4.8a2.3 2.3 0 01-2.3-2.3z"/><path d="M14.6 8.4l3.2-2.2v7.6l-3.2-2.2z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.7 2.9c.5-.2 1 0 1.3.4l1.3 2.2c.3.4.2 1-.2 1.3l-.9.8c-.2.2-.2.5-.1.7.8 1.6 2.1 2.8 3.6 3.6.3.1.5.1.7-.1l.8-.9c.3-.4.9-.5 1.3-.2l2.2 1.3c.4.3.6.8.4 1.3l-.6 1.5c-.2.5-.7.8-1.2.8-6.5 0-13.4-7-13.4-13.4 0-.5.3-1 .8-1.2z"/></svg></span>
         </div>
         <div class="h-chat">
-          <div class="h-in h-msg">Hola, soy el asistente virtual de la inmobiliaria.
+          <div class="h-in h-msg vi" style="--d:.5s">Hola, soy el asistente virtual de la inmobiliaria.
             &iquest;En qu&eacute; puedo ayudarte?<span class="hh">12:41</span></div>
-          <div class="h-out h-msg">Hola, me interesa el piso de la Calle Serrano.
+          <div class="h-out h-msg vi" style="--d:1.3s">Hola, me interesa el piso de la Calle Serrano.
             &iquest;Sigue disponible?<span class="hh">12:42</span></div>
-          <div class="h-in h-msg">S&iacute;, sigue disponible. Te env&iacute;o la informaci&oacute;n:<span class="hh">12:42</span></div>
-          <div class="h-ficha">
+          <div class="h-escr" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="h-in h-msg vi" style="--d:2.3s">S&iacute;, sigue disponible. Te env&iacute;o la informaci&oacute;n:<span class="hh">12:42</span></div>
+          <div class="h-ficha vi" style="--d:2.8s">
             <img src="/assets/boceto-piso-chat.webp" alt="" loading="lazy" decoding="async">
             <div class="txt">
               <b>Piso en Calle Serrano</b>
@@ -1326,8 +1353,8 @@
               <strong>940.000 &euro;</strong>
             </div>
           </div>
-          <div class="h-in h-msg">&iquest;Te viene bien alguna de estas horas para verlo?<span class="hh">12:43</span></div>
-          <div class="h-horas"><span>Hoy 17:00</span><span>Ma&ntilde;ana 10:00</span><span>Jueves 11:00</span></div>
+          <div class="h-in h-msg vi" style="--d:3.4s">&iquest;Te viene bien alguna de estas horas para verlo?<span class="hh">12:43</span></div>
+          <div class="h-horas vi" style="--d:4.0s"><span>Hoy 17:00</span><span>Ma&ntilde;ana 10:00</span><span>Jueves 11:00</span></div>
         </div>
         <div class="h-wfoot">
           <span class="emo"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="7"/><path d="M7.4 11.6a3.2 3.2 0 005.2 0"/><circle cx="7.8" cy="8.2" r=".8" fill="currentColor"/><circle cx="12.2" cy="8.2" r=".8" fill="currentColor"/></svg></span>
@@ -2013,6 +2040,18 @@
       var b = document.querySelector('.bn'); if (!b) return;
       function mira() { b.classList.toggle('bn-baja', window.scrollY > 40); }
       mira(); window.addEventListener('scroll', mira, { passive: true });
+    })();
+  </script>
+  <script>
+    /* Vinetas: .visto mientras el bloque esta en pantalla; al salir se quita
+       para que vuelvan a aparecer la proxima vez. */
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      document.documentElement.classList.add('anim-on');
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.target.classList.toggle('visto', e.isIntersecting); });
+      }, { threshold: .35 });
+      document.querySelectorAll('[data-vi]').forEach(function (el) { io.observe(el); });
     })();
   </script>
   <script src="/js/chat-demo.js" defer></script>
