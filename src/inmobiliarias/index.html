@@ -1469,10 +1469,13 @@
     .pb-info > svg { width: 26px; height: 26px; color: var(--azul); flex: 0 0 auto; }
     .pb-info b { display: block; font-size: .95rem; font-weight: 600; color: #0B1220; }
     .pb-info span { display: block; margin-top: 3px; font-size: .9rem; line-height: 1.45; color: #4A5568; }
-    .pb-acc { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 26px; }
+    .pb-acc { margin-top: 26px; }
     .pb-acc .escuchar { margin-top: 0; }
-    .pb-acc .btn { padding: .95rem 1.6rem; }
-    .pb-nota { margin-top: 12px; font-size: .82rem; color: #4A5563; }
+    .pb-nota { margin-top: 10px; font-size: .8rem; line-height: 1.5; color: #4A5563; max-width: 44ch; }
+    .pb-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(11,18,32,.1); }
+    .pb-cta span { font-size: .82rem; color: #4A5563; }
+    .pb-negro { background: #0B0D12; color: #fff; padding: .95rem 1.7rem; }
+    .pb-negro:hover { background: #fff; color: #0B0D12; border-color: #0B0D12; transform: translateY(-1px); }
 
     .pb-pant { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; padding: 16px; background: #F3F6FA; border: 13px solid #121418; border-radius: 22px; box-shadow: 0 40px 80px rgba(20,30,50,.28), 0 0 0 1px rgba(0,0,0,.15); }
     .pb-chat { display: flex; flex-direction: column; min-width: 0; }
@@ -1522,7 +1525,8 @@
       .pb-txt h2 { font-size: 1.6rem; }
       .pb-txt .lede { font-size: .93rem; }
       .pb-info { padding: 13px 15px; }
-      .pb-acc .btn, .pb-acc .escuchar { width: 100%; justify-content: center; }
+      .pb-acc .escuchar, .pb-negro { width: 100%; justify-content: center; }
+      .pb-cta { margin-top: 26px; padding-top: 20px; }
     }
   </style>
     <section class="sec" id="demo">
@@ -1542,9 +1546,14 @@
                 Escuchar la llamada
                 <span class="dur">02:18</span>
               </button>
-              <button class="btn btn-azul" type="button" data-reserva>Reservar una llamada &rarr;</button>
+              <p class="pb-nota">Es una grabaci&oacute;n, pero real: as&iacute; es como se escuchar&iacute;a una llamada atendida por EasyRobots.</p>
             </div>
-            <p class="pb-nota">La llamada es un ejemplo real, sin guiones. La reuni&oacute;n son 15 minutos y sin compromiso.</p>
+            <!-- Anais (2026-10-07): la CTA en blanco y negro y bien separada
+                 de la llamada, para que no compitan los dos botones. -->
+            <div class="pb-cta">
+              <button class="btn pb-negro" type="button" data-reserva>Reservar una llamada &rarr;</button>
+              <span>15 minutos. Sin compromiso.</span>
+            </div>
           </div>
 
           <div class="pb-lap">
@@ -1634,7 +1643,7 @@
     <!-- ========= 06+07 · TECNOLOGIA, EQUIPO Y GARANTIA ========= -->
     <!-- El padding de arriba vuelve: la 05 ya es oscura y estas dos
          secciones han dejado de ser el mismo bloque claro. -->
-    <section class="sec" id="equipo">
+    <section class="sec" id="reparto">
       <div class="wrap">
         <div class="tec-grid">
           <div class="tec-cols">
@@ -1667,7 +1676,70 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
+    <!-- =================== LIMITES Y CONTROL (2026-10-07) ===================
+         Anais la echo en falta comparando con concesionarios. Mismo diseno
+         que alli (oscura, cinco fichas). El copy sale de
+         docs/copys/inmobiliarias.md: bloque "Y lo que hace cuando no sabe
+         algo" (5D) y "Tres cosas que quedan claras" (7). No se escribio
+         nada nuevo. Para meterla entre "Lo mejor de cada uno" y el equipo
+         se partio #equipo en dos: la primera mitad es ahora #reparto. -->
+    <style>
+      #reparto { background: #F5F9FC; padding: 54px 0; }
+      #equipo .pers-grid { margin-top: 0; }
+      .slm { background: radial-gradient(ellipse 60% 70% at 85% 0%, rgba(0,127,254,.22) 0%, rgba(0,127,254,0) 70%), linear-gradient(180deg, #071630 0%, #040D1C 100%); color: #fff; }
+      .lm-t { max-width: 860px; font-size: clamp(2rem, 3.2vw, 2.7rem); line-height: 1.08; font-weight: 800; letter-spacing: -.035em; text-wrap: balance; }
+      .lm-t em { font-style: normal; color: var(--azul-claro); }
+      .lm-fila { margin-top: 32px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+      .lm-ficha { color: #0B1220; background: #fff; border-radius: 14px; padding: 22px 20px 24px; box-shadow: 0 14px 34px rgba(0,0,0,.30); }
+      .lm-ficha .rd { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+      .lm-ficha .rd svg { width: 23px; height: 23px; }
+      .lm-rojo .rd { background: #FDE8E8; color: #E5484D; }
+      .lm-ambar .rd { background: #FDF0D9; color: #D97706; }
+      .lm-az .rd { background: #E6F0FE; color: var(--azul); }
+      .lm-gris .rd { background: #EDF1F6; color: #0B1220; }
+      .lm-verde .rd { background: #E3F7EC; color: #0F9E52; }
+      .lm-ficha b { display: block; margin-top: 16px; font-size: 17px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
+      .lm-ficha .tx { display: block; margin-top: 8px; font-size: 15px; line-height: 1.55; color: #3A4654; }
+      .lm-pie { margin-top: 26px; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.84); }
+      .lm-pie strong { color: #fff; }
+      @media (min-width: 1081px) {
+        #reparto { padding: 110px 0 90px; }
+        #limites { padding: 96px 0; }
+      }
+      @media (max-width: 1080px) { .lm-fila { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+      @media (max-width: 620px) {
+        #reparto { padding: 38px 0; }
+        .lm-t { font-size: clamp(1.45rem, 6.4vw, 1.9rem); line-height: 1.12; }
+        .lm-fila { margin-top: 18px; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .lm-ficha { padding: 12px 12px 13px; border-top: 3px solid #E6ECF4; }
+        .lm-ficha:last-child { grid-column: 1 / -1; }
+        .lm-rojo { border-top-color: #E5484D; } .lm-ambar { border-top-color: #D97706; } .lm-az { border-top-color: var(--azul); }
+        .lm-gris { border-top-color: #0B1220; } .lm-verde { border-top-color: #0F9E52; }
+        .lm-ficha .rd { width: 30px; height: 30px; } .lm-ficha .rd svg { width: 16px; height: 16px; }
+        .lm-ficha b { margin-top: 8px; font-size: .84rem; } .lm-ficha .tx { margin-top: 4px; font-size: .75rem; line-height: 1.42; }
+        .lm-pie { margin-top: 14px; font-size: .84rem; line-height: 1.5; }
+      }
+    </style>
+    <section class="sec slm" id="limites">
+      <div class="wrap">
+        <p class="kick">L&iacute;mites y control</p>
+        <h2 class="lm-t">Lo que no hace, <em>y por qu&eacute; eso os interesa.</em></h2>
+        <div class="lm-fila">
+          <div class="lm-ficha lm-rojo"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 6.5A7 7 0 1 0 17 17.5"/><path d="M4 10h9M4 14h9"/></svg></span><b>No negocia el precio.</b><span class="tx">No improvisa un precio ni promete una rebaja. Eso lo lleva tu equipo directamente.</span></div>
+          <div class="lm-ficha lm-ambar"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3.5l9 16H3z" stroke-linejoin="round"/><path d="M12 10v4.2"/><circle cx="12" cy="17" r="1.1" fill="currentColor" stroke="none"/></svg></span><b>No inventa.</b><span class="tx">No da por disponible nada que no le conste. Cuando no lo sabe, lo dice y abre una tarea para el equipo.</span></div>
+          <div class="lm-ficha lm-az"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 11l8-6.5 8 6.5V20H4z"/><path d="M10 20v-5h4v5"/></svg></span><b>Los datos son vuestros.</b><span class="tx">Las conversaciones y los contactos son de vuestra oficina.</span></div>
+          <div class="lm-ficha lm-gris"><span class="rd"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 11.4a3.3 3.3 0 100-6.6 3.3 3.3 0 000 6.6zm7 .1a2.8 2.8 0 100-5.6 2.8 2.8 0 000 5.6zM9 13.2c-3.1 0-6 1.7-6 3.9V20h12v-2.9c0-2.2-2.9-3.9-6-3.9zm7 .3c-.6 0-1.2.1-1.7.2 1.2.9 1.9 2.1 1.9 3.4V20h5v-2.6c0-2-2.5-3.9-5.2-3.9z"/></svg></span><b>No sustituye al comercial.</b><span class="tx">Ense&ntilde;ar, valorar, negociar y cerrar sigue siendo de tu equipo.</span></div>
+          <div class="lm-ficha lm-verde"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span><b>Vosotros mand&aacute;is.</b><span class="tx">Decid&iacute;s qu&eacute; contesta y hasta d&oacute;nde llega. Pod&eacute;is entrar en cualquier conversaci&oacute;n: sigue siendo vuestro WhatsApp.</span></div>
+        </div>
+        <p class="lm-pie">Un asistente que inventa te cuesta m&aacute;s caro <strong>que uno que pregunta.</strong></p>
+      </div>
+    </section>
+
+    <section class="sec" id="equipo">
+      <div class="wrap">
         <div class="pers-grid">
           <div>
             <h2 style="font-size:1.5rem">No somos una centralita.</h2>
