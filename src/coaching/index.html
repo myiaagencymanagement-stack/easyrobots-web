@@ -835,7 +835,7 @@
     .d3-txt { padding-top: 22px; }
     .d3 .t3, .x3 .t3 { font-size: clamp(30px, 2.65vw, 43px); }
 
-    .dc { container-type: inline-size; width: min(100%, 600px); justify-self: start; }
+    .dc { container-type: inline-size; width: min(100%, 690px); justify-self: start; }
     /* Anais: no puede verse mas grande que el hero. El esquema manda la
        altura de la seccion, asi que se limita a 700 de ancho (unos 550 de alto). */
     .dc-in { --u: calc(100cqw / 910); position: relative; }
@@ -1135,6 +1135,9 @@
       .m3-msgs { height: 290px; }
       .s04 .caja { zoom: .68; }
       .d3-txt, .d3 .dc { zoom: .82; }
+      /* Movil: las tarjetas del esquema solo con titulo, que si no cansa. */
+      .dc-c > div > span:not(.dc-dia) { display: none; }
+      .dc-c, .dc-lis .dc-c { min-height: calc(46 * var(--u)); }
       .xl { margin-bottom: 16px; }
       .ps li, .ps li:first-child { padding: 12px 0; }
       .l3-c li { padding: 8px 0; }
