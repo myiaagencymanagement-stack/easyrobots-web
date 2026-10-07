@@ -92,7 +92,7 @@
       --rojo: #EF4444;
       --rojo-s: #FEF2F2;
       --f: 'Inter', -apple-system, system-ui, sans-serif;
-      --ft: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+      --ft: 'Inter', -apple-system, system-ui, sans-serif;
 
       /* Escala de /estetica/, que es la referencia de la casa. La primera
          version iba con el H1 a 64 y el hero a pantalla entera, y Anais lo
@@ -217,6 +217,8 @@
     .h-cuerpo { position: relative; z-index: 50; flex: 1 1 auto; display: grid; grid-template-columns: 1.06fr .94fr; align-items: center; gap: clamp(28px, 4vw, 70px); width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 max(22px, 6.7vw) 4vh; }
     @media (min-width: 1440px) { .h-cuerpo { padding-left: 96px; padding-right: 96px; } }
     .h-col { max-width: 680px; }
+    .h-t em { font-style: normal; color: #1E7BFF; }
+    .h-sub { max-width: 600px !important; }
     .h-t { margin-top: 18px; font-size: var(--h1); line-height: 1.02; font-weight: 700; letter-spacing: -.04em; }
     .h-sub { margin-top: 24px; max-width: 520px; font-size: clamp(16.5px, 1.3vw, 19px); line-height: 1.42; color: rgba(255,255,255,.88); }
     .h-btn { margin-top: 30px; }
@@ -785,6 +787,12 @@
        familia de las demas.
        ========================================================== */
     body { letter-spacing: -.011em; }
+    /* 2026-10-07, segunda vuelta: Anais no veia "la letra de Apple" porque
+       los titulares seguian en Plus Jakarta. Ahora todo es Inter, como hace
+       Apple con SF: el titulo se distingue del subtitulo por peso, tamano y
+       color, no por cambiar de letra. Titulares en 650 con el tracking
+       apretado de SF Pro Display. */
+    .h-t, .h2, .t3 { font-weight: 650 !important; letter-spacing: -.032em !important; }
     .h-t, .h2, .h3, .t3, .nucleo, .dc-tit b, .dc-fin b, .ps b, .ps strong, .l3-c h3, .e3-gc h3, .e3-f b { font-family: var(--ft); }
 
     .c3 { position: relative; overflow: hidden; }
@@ -800,12 +808,13 @@
     /* ---------- 02 · DONDE SE CAE ---------- */
     .d3 { background: #05080D; }
     .d3 .foto { background-image: url(/assets/coach3-cae.webp); }
-    .d3 .velo { background: linear-gradient(90deg, rgba(4,6,10,.80) 0%, rgba(4,6,10,.50) 24%, rgba(4,6,10,.10) 40%, rgba(4,6,10,0) 60%); }
-    .d3 .caja { display: grid; grid-template-columns: minmax(0, 450px) minmax(0, 1fr); gap: clamp(24px, 3vw, 48px); align-items: start; padding-top: 56px; padding-bottom: 48px; }
+    .d3 .foto { filter: brightness(1.35) saturate(1.1); }
+    .d3 .velo { background: linear-gradient(90deg, rgba(4,6,10,.55) 0%, rgba(4,6,10,.25) 26%, rgba(4,6,10,0) 42%); }
+    .d3 .caja { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: clamp(20px, 2vw, 32px); padding-right: max(22px, 3vw) !important; align-items: start; padding-top: 56px; padding-bottom: 48px; }
     .d3-txt { padding-top: 22px; }
     .d3 .t3, .x3 .t3 { font-size: clamp(30px, 2.65vw, 43px); }
 
-    .dc { container-type: inline-size; width: min(100%, 800px); }
+    .dc { container-type: inline-size; width: min(100%, 860px); }
     .dc-in { --u: calc(100cqw / 910); position: relative; }
     .dc-top { position: relative; height: calc(240 * var(--u)); }
     .dc-fl { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -822,18 +831,20 @@
     .dc-tit b { font-size: calc(23 * var(--u)); font-weight: 700; letter-spacing: -.03em; color: #fff; }
     .dc-tit em, .dc-fin.ok em { font-style: normal; color: #3B9BFF; }
 
-    .dc-cols { display: grid; grid-template-columns: calc(420 * var(--u)) calc(410 * var(--u)); column-gap: calc(80 * var(--u)); }
+    .dc-cols { display: grid; grid-template-columns: calc(430 * var(--u)) calc(420 * var(--u)); column-gap: calc(60 * var(--u)); }
+    .dc-lis .dc-c { min-height: calc(68 * var(--u)); }
     .dc-lis { position: relative; display: flex; flex-direction: column; gap: calc(7 * var(--u)); padding-left: calc(var(--pl) * var(--u)); }
-    .dc-lis.no { --pl: 112; --off: 22; margin-top: calc(25 * var(--u)); }
+    .dc-lis.no { --pl: 100; --off: 22; margin-top: calc(25 * var(--u)); }
+    .dc-lis.no .dc-c { width: calc(318 * var(--u)); }
     .dc-lis.ok { --pl: 65; --off: 27; }
     .dc-lis::before { content: ""; position: absolute; left: calc((var(--pl) - var(--off)) * var(--u) - 1px); top: calc(30 * var(--u)); bottom: calc(26 * var(--u)); border-left: 2px dashed #FF3B4E; opacity: .8; }
     .dc-lis.ok::before { border-left-color: #19D3A2; }
     .dc-c { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; column-gap: calc(12 * var(--u)); width: calc(270 * var(--u)); min-height: calc(65 * var(--u)); padding: calc(10 * var(--u)) calc(26 * var(--u)) calc(10 * var(--u)) calc(12 * var(--u)); background: rgba(14,16,22,.9); border: 1px solid rgba(255,255,255,.09); border-radius: calc(11 * var(--u)); }
-    .dc-lis.ok .dc-c { width: calc(295 * var(--u)); padding-right: calc(14 * var(--u)); background: rgba(6,14,28,.9); border-color: rgba(47,140,255,.5); box-shadow: 0 0 calc(14 * var(--u)) rgba(30,120,255,.22); }
-    .dc-c b { display: block; font-size: calc(13.2 * var(--u)); font-weight: 600; color: #fff; letter-spacing: -.01em; }
-    .dc-c span { display: block; margin-top: calc(2 * var(--u)); font-size: calc(12 * var(--u)); color: #B4BCC8; }
+    .dc-lis.ok .dc-c { width: calc(330 * var(--u)); padding-right: calc(14 * var(--u)); background: rgba(6,14,28,.9); border-color: rgba(47,140,255,.5); box-shadow: 0 0 calc(14 * var(--u)) rgba(30,120,255,.22); }
+    .dc-c b { display: block; white-space: nowrap; font-size: calc(15 * var(--u)); font-weight: 600; color: #fff; letter-spacing: -.01em; }
+    .dc-c span { display: block; margin-top: calc(2 * var(--u)); white-space: nowrap; font-size: calc(13 * var(--u)); color: #B4BCC8; }
     .dc-c > em { align-self: start; margin-top: calc(4 * var(--u)); font-style: normal; font-size: calc(11.5 * var(--u)); color: #B4BCC8; white-space: nowrap; }
-    .dc-lis.no .dc-c > em { align-self: end; margin-bottom: calc(4 * var(--u)); }
+    .dc-lis.no .dc-c > em { align-self: center; }
     .dc-c > p { grid-column: 2 / -1; margin-top: calc(8 * var(--u)); }
     .dc-d, .dc-v { position: absolute; left: calc(var(--off) * var(--u) * -1 - 8 * var(--u)); top: 50%; transform: translateY(-50%); width: calc(16 * var(--u)); height: calc(16 * var(--u)); border-radius: 50%; background: #FF3B4E; box-shadow: 0 0 calc(10 * var(--u)) rgba(255,59,78,.7); }
     .dc-v { width: calc(20 * var(--u)); height: calc(20 * var(--u)); left: calc(var(--off) * var(--u) * -1 - 10 * var(--u)); background: #12C48B; box-shadow: 0 0 calc(10 * var(--u)) rgba(18,196,139,.6); display: flex; align-items: center; justify-content: center; color: #fff; }
@@ -924,7 +935,7 @@
     .x3 { background: #050A12; }
     .x3 .foto { background-image: url(/assets/coach3-sistema.webp); }
     .x3 .velo { background: linear-gradient(90deg, rgba(3,6,12,.90) 0%, rgba(3,6,12,.72) 24%, rgba(3,6,12,.25) 42%, rgba(3,6,12,0) 58%); }
-    .x3 .caja { display: grid; grid-template-columns: minmax(0, 450px) minmax(0, 1fr); gap: 24px; align-items: center; padding-top: 70px; padding-bottom: 70px; }
+    .x3 .caja { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: 16px; padding-right: max(22px, 3vw) !important; align-items: center; padding-top: 70px; padding-bottom: 70px; }
     .x3-btn { display: inline-flex; align-items: center; gap: 14px; margin-top: 28px; height: 58px; padding: 0 32px; border-radius: 999px; background: #fff; color: #0B1220; font-size: 18px; font-weight: 500; transition: background .2s; }
     .x3-btn:hover { background: #EEF1F5; }
     .x3-btn svg { width: 18px; height: 18px; }
@@ -936,18 +947,18 @@
     .xd { container-type: inline-size; }
     .xd-in { --u: calc(100cqw / 1190); position: relative; height: calc(565 * var(--u)); }
     .xd-fl { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .xc { position: absolute; display: grid; grid-template-columns: auto 1fr; gap: calc(16 * var(--u)); align-items: start; padding: calc(20 * var(--u)) calc(22 * var(--u)); background: rgba(8,14,26,.86); border: 1px solid rgba(70,140,255,.5); border-radius: calc(14 * var(--u)); box-shadow: 0 0 calc(22 * var(--u)) rgba(30,110,255,.22); backdrop-filter: blur(4px); }
+    .xc { position: absolute; display: grid; grid-template-columns: auto 1fr; gap: calc(14 * var(--u)); align-items: start; padding: calc(16 * var(--u)) calc(18 * var(--u)); background: rgba(8,14,26,.86); border: 1px solid rgba(70,140,255,.5); border-radius: calc(14 * var(--u)); box-shadow: 0 0 calc(22 * var(--u)) rgba(30,110,255,.22); backdrop-filter: blur(4px); }
     .xc i { width: calc(52 * var(--u)); height: calc(52 * var(--u)); border-radius: calc(12 * var(--u)); background: #1167FF; color: #fff; display: flex; align-items: center; justify-content: center; }
     .xc i.wa { background: #25D366; }
     .xc i.cl { background: linear-gradient(180deg, #2BA6FF, #1167FF); }
     .xc i svg { width: calc(28 * var(--u)); height: calc(28 * var(--u)); }
-    .xc b { display: block; font-size: calc(19 * var(--u)); font-weight: 600; line-height: 1.25; color: #fff; letter-spacing: -.01em; }
-    .xc span { display: block; margin-top: calc(7 * var(--u)); font-size: calc(15.5 * var(--u)); line-height: 1.35; color: #C9D2DE; }
+    .xc b { display: block; font-size: calc(22 * var(--u)); font-weight: 600; line-height: 1.25; color: #fff; letter-spacing: -.01em; }
+    .xc span { display: block; margin-top: calc(6 * var(--u)); font-size: calc(17.5 * var(--u)); line-height: 1.35; color: #C9D2DE; }
     .xc.c1 { left: calc(105 * var(--u)); top: calc(30 * var(--u)); width: calc(280 * var(--u)); }
     .xc.c2 { left: calc(447 * var(--u)); top: calc(4 * var(--u)); width: calc(298 * var(--u)); }
     .xc.c3 { left: calc(818 * var(--u)); top: calc(18 * var(--u)); width: calc(287 * var(--u)); }
-    .xc.c4 { left: calc(15 * var(--u)); top: calc(198 * var(--u)); width: calc(232 * var(--u)); }
-    .xc.c5 { left: calc(5 * var(--u)); top: calc(365 * var(--u)); width: calc(243 * var(--u)); }
+    .xc.c4 { left: 0; top: calc(166 * var(--u)); width: calc(262 * var(--u)); }
+    .xc.c5 { left: 0; top: calc(352 * var(--u)); width: calc(262 * var(--u)); }
     .xc.c6 { left: calc(938 * var(--u)); top: calc(215 * var(--u)); width: calc(229 * var(--u)); }
     .xc.c7 { left: calc(940 * var(--u)); top: calc(365 * var(--u)); width: calc(242 * var(--u)); }
 
@@ -990,8 +1001,11 @@
     /* ---------- 08 · COMO TRABAJAMOS ---------- */
     .p3s { background: #05080D; }
     .p3s .foto { background-image: url(/assets/coach3-proceso.webp); }
-    .p3s .velo { background: linear-gradient(90deg, rgba(3,6,11,.72) 0%, rgba(3,6,11,.36) 30%, rgba(3,6,11,0) 50%), linear-gradient(0deg, rgba(3,6,11,.88) 0%, rgba(3,6,11,.45) 26%, rgba(3,6,11,0) 46%); }
-    .p3s .caja { min-height: clamp(560px, 40vw, 760px); display: flex; flex-direction: column; justify-content: space-between; gap: 60px; padding-top: 80px; padding-bottom: 64px; }
+    .p3s { border-top: 1px solid rgba(255,255,255,.14); }
+    .p3s .foto { background-position: center 30%; }
+    /* Anais: los pasos van sobre negro, como en la referencia, no sobre la mesa. */
+    .p3s .velo { background: linear-gradient(90deg, rgba(3,6,11,.72) 0%, rgba(3,6,11,.36) 30%, rgba(3,6,11,0) 50%), linear-gradient(0deg, #03060B 0%, #03060B 27%, rgba(3,6,11,.7) 38%, rgba(3,6,11,0) 54%), linear-gradient(180deg, rgba(3,6,11,.85) 0%, rgba(3,6,11,0) 16%); }
+    .p3s .caja { min-height: clamp(660px, 48vw, 860px); display: flex; flex-direction: column; justify-content: space-between; gap: 60px; padding-top: 80px; padding-bottom: 64px; }
     .p3s .t3 { font-size: clamp(34px, 3.3vw, 54px); }
     .ps { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); }
     .ps li { padding: 0 clamp(16px, 2.2vw, 34px); border-left: 1px solid rgba(255,255,255,.28); }
@@ -1150,18 +1164,14 @@
 
     <div class="h-cuerpo">
       <div class="h-col" id="contenido">
-        <div class="kick cl">Para coaches e infoproductores</div>
-        <h1 class="h-t">Esto no vende por ti. <br>Se ocupa de que el <br>que dice que s&iacute; llegue <br>a tu llamada.</h1>
-        <p class="h-sub">Entre el &laquo;s&iacute;, me interesa&raquo; y la llamada hay un tramo entero donde muchas oportunidades se enfr&iacute;an.</p>
-        <a class="btn btn-bl h-btn" href="#hablemos" data-cal>
+        <div class="k3">Para coaches e infoproductores</div>
+        <h1 class="h-t">Que el inter&eacute;s <br><em>no se quede</em> <br>a medio camino.</h1>
+        <p class="h-sub">EasyRobots responde, cualifica, agenda y hace seguimiento para que tus interesados lleguen preparados a tu llamada.</p>
+        <a class="m3-btn h-btn" href="#hablemos" data-cal>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
           Reservar llamada
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
         </a>
-        <div class="h-meta">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v9M7.5 12h9"/></svg>Multi-canal</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8.6 12.3l2.3 2.3 4.5-4.8"/></svg>Se integra con tu stack</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 9.2h6M9 12h6M9 14.8h3.6"/></svg>Sin cambiar tu forma de trabajar</div>
-        </div>
       </div>
 
       <!-- La conversacion y las horas son un ejemplo: no son un pantallazo
@@ -1428,12 +1438,12 @@
               <path d="M215 136C215 185 240 205 292 210"/>
               <path d="M596 108V175"/>
               <path d="M958 122C958 170 930 190 868 196"/>
-              <path d="M247 262H290"/>
-              <path d="M131 325V365"/>
+              <path d="M262 236H290"/>
+              <path d="M131 320V352"/>
               <path d="M938 270H868"/>
               <path d="M1052 325V365"/>
             </g>
-            <g fill="#5DB4FF" filter="url(#xdg)"><circle cx="292" cy="210" r="4"/><circle cx="596" cy="175" r="4"/><circle cx="868" cy="196" r="4"/><circle cx="290" cy="262" r="4"/><circle cx="868" cy="270" r="4"/></g>
+            <g fill="#5DB4FF" filter="url(#xdg)"><circle cx="292" cy="210" r="4"/><circle cx="596" cy="175" r="4"/><circle cx="868" cy="196" r="4"/><circle cx="290" cy="236" r="4"/><circle cx="868" cy="270" r="4"/></g>
           </svg>
 
           <div class="xc c1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg></i><div><b>Cualificaci&oacute;n de leads</b><span>Filtra y prioriza los mejores contactos.</span></div></div>

@@ -1352,8 +1352,8 @@ Seis secciones rehechas contra referencias nuevas de Anais
 como trabajamos, el limite y quienes somos + garantia. Clases nuevas con
 prefijo propio (`d3`, `m3`, `x3`, `p3s`, `l3`, `e3`); el CSS viejo se quedo.
 
-- **Letra: Inter en el texto y Plus Jakarta en los titulares, solo en
-  coaching** ("la letra de Apple"; SF Pro no se puede servir en web). Esta en
+- **Letra: todo en Inter, titulares incluidos (650, tracking apretado), solo en
+  coaching** ("la letra de Apple"; SF Pro no se puede servir en web; con Plus Jakarta en los titulares Anais no lo veia). Esta en
   `assets/fonts/inter-*.woff2`. Si gusta, se decide si pasa a las demas.
 - Las cifras del panel del sistema (124 / 48 / 32 / 27 %) se quedan por
   decision de Anais, con la nota "Panel de ejemplo".
