@@ -358,7 +358,7 @@
     .k-t { margin-top: calc(12 * var(--u)); font-size: calc(24 * var(--u)); line-height: 1.1; font-weight: 700; letter-spacing: -.035em; }
     .k-sub { margin-top: calc(9 * var(--u)); width: calc(300 * var(--u)); font-size: calc(10.6 * var(--u)); line-height: calc(16 * var(--u)); color: rgba(255,255,255,.88); }
     .k-acc { margin-top: calc(17 * var(--u)); display: flex; align-items: center; gap: calc(18 * var(--u)); }
-    .k-btn { display: inline-flex; align-items: center; justify-content: center; gap: calc(7 * var(--u)); width: calc(126 * var(--u)); height: calc(30 * var(--u)); border: 0; border-radius: calc(5 * var(--u)); background: #121A27; color: var(--tinta); font-family: inherit; font-size: calc(9.4 * var(--u)); font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .k-btn { display: inline-flex; align-items: center; justify-content: center; gap: calc(7 * var(--u)); width: calc(126 * var(--u)); height: calc(30 * var(--u)); border: 0; border-radius: calc(5 * var(--u)); background: #fff; color: #05080C; font-family: inherit; font-size: calc(9.4 * var(--u)); font-weight: 600; cursor: pointer; white-space: nowrap; }
     .k-btn:hover { background: #ECEEF1; }
     .k-btn svg { width: calc(10 * var(--u)); height: calc(10 * var(--u)); }
     .k-meta { display: flex; align-items: center; gap: calc(6 * var(--u)); font-size: calc(8.6 * var(--u)); color: rgba(255,255,255,.86); white-space: nowrap; }
@@ -607,8 +607,12 @@
       .g-fila br, .e-col .p br { display: none; }
 
       /* --- 10 --- */
-      .k-foto { background-image: url(/assets/home-cierre-movil.webp); background-position: center; }
-      .k-velo { background: linear-gradient(180deg, rgba(4,6,8,.80) 0%, rgba(4,6,8,.66) 50%, rgba(4,6,8,.86) 100%); }
+      /* Movil: la foto apaisada del cierre, con cover y el velo al 80 %, no se
+         veia. Provisional hasta que llegue la vertical del CTA: recorte
+         vertical del escritorio de noche (misma escena que el hero) y velo
+         mas abierto en el centro para que se vea el portatil. */
+      .k-foto { background-image: url(/assets/home3-cta-movil.webp?v=1); background-size: cover; background-position: center 40%; }
+      .k-velo { background: linear-gradient(180deg, rgba(4,6,8,.72) 0%, rgba(4,6,8,.35) 45%, rgba(4,6,8,.80) 100%); }
       .k-in { display: block; padding: 52px 22px; }
       .k-kick { font-size: .68rem; letter-spacing: .2em; }
       .k-t { margin-top: 12px; font-size: clamp(1.6rem, 3vw, 2.15rem); }
