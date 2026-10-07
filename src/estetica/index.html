@@ -485,8 +485,12 @@
       section[id] { scroll-margin-top: 58px; }
 
       /* --- hero, una pantalla justa, con la barra fija como inmobiliarias --- */
-      .hero .foto { background-image: url(/assets/cl-hero-movil.webp?v=2); background-position: center top; }
-      .hero .velo { background: linear-gradient(180deg, rgba(6,5,4,.55) 0%, rgba(6,5,4,.25) 26%, rgba(6,5,4,.80) 52%, rgba(6,5,4,.96) 100%); }
+      /* Foto vertical de la cabina (ChatGPT, 07/10). Va a todo el ancho y
+         anclada arriba, no con cover: con cover el telefono de la foto caia a
+         media pantalla, debajo del texto. Asi queda a un tercio; la foto
+         acaba en negro y empalma con el fondo del hero. */
+      .hero .foto { background-image: url(/assets/cl-hero-movil.webp?v=3); background-position: center top; background-size: 100% auto; background-repeat: no-repeat; }
+      .hero .velo { background: linear-gradient(180deg, rgba(6,5,4,.50) 0%, rgba(6,5,4,.12) 18%, rgba(6,5,4,.30) 40%, rgba(6,5,4,.85) 58%, rgba(6,5,4,.96) 100%); }
       .h-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 120; background: rgba(8,8,11,.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08); }
       .h-nav-in { padding: 9px 22px; }
       .h-links { display: none; }
