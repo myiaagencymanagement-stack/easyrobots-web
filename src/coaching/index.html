@@ -935,7 +935,11 @@
     .x3 { background: #050A12; }
     .x3 .foto { background-image: url(/assets/coach3-sistema.webp); }
     .x3 .velo { background: linear-gradient(90deg, rgba(3,6,12,.90) 0%, rgba(3,6,12,.72) 24%, rgba(3,6,12,.25) 42%, rgba(3,6,12,0) 58%); }
-    .x3 .caja { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: 16px; padding-right: max(22px, 3vw) !important; align-items: center; padding-top: 70px; padding-bottom: 70px; }
+    /* 2026-10-07, tercera vuelta: "no caben las vinetas". El esquema sale
+       del contenedor de 1440 y llega hasta el borde derecho de la pantalla;
+       el texto sigue arrancando donde las demas secciones. */
+    .x3 .caja { max-width: none; padding-left: max(max(22px, 6.7vw), calc(50% - 624px)) !important; padding-right: max(20px, 2.4vw) !important; padding-top: 90px !important; padding-bottom: 90px !important; }
+    .x3 .caja { display: grid; grid-template-columns: minmax(0, 350px) minmax(0, 1fr); gap: 20px; align-items: center; padding-top: 70px; padding-bottom: 70px; }
     .x3-btn { display: inline-flex; align-items: center; gap: 14px; margin-top: 28px; height: 58px; padding: 0 32px; border-radius: 999px; background: #fff; color: #0B1220; font-size: 18px; font-weight: 500; transition: background .2s; }
     .x3-btn:hover { background: #EEF1F5; }
     .x3-btn svg { width: 18px; height: 18px; }
@@ -945,25 +949,25 @@
     .x3-nota { margin-top: 16px; font-size: 16px; color: #DCE1E8; }
 
     .xd { container-type: inline-size; }
-    .xd-in { --u: calc(100cqw / 1190); position: relative; height: calc(565 * var(--u)); }
+    .xd-in { --u: calc(100cqw / 1300); position: relative; height: calc(600 * var(--u)); }
     .xd-fl { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .xc { position: absolute; display: grid; grid-template-columns: auto 1fr; gap: calc(14 * var(--u)); align-items: start; padding: calc(16 * var(--u)) calc(18 * var(--u)); background: rgba(8,14,26,.86); border: 1px solid rgba(70,140,255,.5); border-radius: calc(14 * var(--u)); box-shadow: 0 0 calc(22 * var(--u)) rgba(30,110,255,.22); backdrop-filter: blur(4px); }
-    .xc i { width: calc(52 * var(--u)); height: calc(52 * var(--u)); border-radius: calc(12 * var(--u)); background: #1167FF; color: #fff; display: flex; align-items: center; justify-content: center; }
+    .xc { position: absolute; display: grid; grid-template-columns: auto 1fr; gap: calc(12 * var(--u)); align-items: start; padding: calc(16 * var(--u)) calc(16 * var(--u)); background: rgba(8,14,26,.86); border: 1px solid rgba(70,140,255,.5); border-radius: calc(14 * var(--u)); box-shadow: 0 0 calc(22 * var(--u)) rgba(30,110,255,.22); backdrop-filter: blur(4px); }
+    .xc i { width: calc(44 * var(--u)); height: calc(44 * var(--u)); border-radius: calc(12 * var(--u)); background: #1167FF; color: #fff; display: flex; align-items: center; justify-content: center; }
     .xc i.wa { background: #25D366; }
     .xc i.cl { background: linear-gradient(180deg, #2BA6FF, #1167FF); }
     .xc i svg { width: calc(28 * var(--u)); height: calc(28 * var(--u)); }
-    .xc b { display: block; font-size: calc(22 * var(--u)); font-weight: 600; line-height: 1.25; color: #fff; letter-spacing: -.01em; }
-    .xc span { display: block; margin-top: calc(6 * var(--u)); font-size: calc(17.5 * var(--u)); line-height: 1.35; color: #C9D2DE; }
-    .xc.c1 { left: calc(105 * var(--u)); top: calc(30 * var(--u)); width: calc(280 * var(--u)); }
-    .xc.c2 { left: calc(447 * var(--u)); top: calc(4 * var(--u)); width: calc(298 * var(--u)); }
-    .xc.c3 { left: calc(818 * var(--u)); top: calc(18 * var(--u)); width: calc(287 * var(--u)); }
-    .xc.c4 { left: 0; top: calc(166 * var(--u)); width: calc(262 * var(--u)); }
-    .xc.c5 { left: 0; top: calc(352 * var(--u)); width: calc(262 * var(--u)); }
-    .xc.c6 { left: calc(938 * var(--u)); top: calc(215 * var(--u)); width: calc(229 * var(--u)); }
-    .xc.c7 { left: calc(940 * var(--u)); top: calc(365 * var(--u)); width: calc(242 * var(--u)); }
+    .xc b { display: block; font-size: calc(21 * var(--u)); font-weight: 600; line-height: 1.25; color: #fff; letter-spacing: -.01em; }
+    .xc span { display: block; margin-top: calc(5 * var(--u)); font-size: calc(17 * var(--u)); line-height: 1.35; color: #C9D2DE; }
+    .xc.c1 { left: calc(70 * var(--u)); top: calc(0 * var(--u)); width: calc(340 * var(--u)); }
+    .xc.c2 { left: calc(450 * var(--u)); top: calc(0 * var(--u)); width: calc(340 * var(--u)); }
+    .xc.c3 { left: calc(830 * var(--u)); top: calc(0 * var(--u)); width: calc(340 * var(--u)); }
+    .xc.c4 { left: calc(0 * var(--u)); top: calc(215 * var(--u)); width: calc(300 * var(--u)); }
+    .xc.c5 { left: calc(0 * var(--u)); top: calc(405 * var(--u)); width: calc(300 * var(--u)); }
+    .xc.c6 { left: calc(950 * var(--u)); top: calc(225 * var(--u)); width: calc(350 * var(--u)); }
+    .xc.c7 { left: calc(950 * var(--u)); top: calc(415 * var(--u)); width: calc(350 * var(--u)); }
 
-    .xl { position: absolute; left: calc(280 * var(--u)); top: calc(165 * var(--u)); width: calc(590 * var(--u)); }
-    .xl-p { height: calc(372 * var(--u)); display: grid; grid-template-columns: calc(120 * var(--u)) 1fr; overflow: hidden; background: #F6F8FB; border: calc(9 * var(--u)) solid #15181E; border-radius: calc(14 * var(--u)); box-shadow: 0 0 calc(40 * var(--u)) rgba(47,140,255,.35), 0 calc(30 * var(--u)) calc(60 * var(--u)) rgba(0,0,0,.55); color: #16233A; }
+    .xl { position: absolute; left: calc(360 * var(--u)); top: calc(190 * var(--u)); width: calc(540 * var(--u)); }
+    .xl-p { height: calc(345 * var(--u)); display: grid; grid-template-columns: calc(120 * var(--u)) 1fr; overflow: hidden; background: #F6F8FB; border: calc(9 * var(--u)) solid #15181E; border-radius: calc(14 * var(--u)); box-shadow: 0 0 calc(40 * var(--u)) rgba(47,140,255,.35), 0 calc(30 * var(--u)) calc(60 * var(--u)) rgba(0,0,0,.55); color: #16233A; }
     .xl-lat { padding: calc(12 * var(--u)) calc(8 * var(--u)); background: #F0F3F8; border-right: 1px solid #E3E8EF; display: flex; flex-direction: column; gap: calc(8 * var(--u)); }
     .xl-lat b { display: flex; align-items: center; gap: calc(6 * var(--u)); font-size: calc(12 * var(--u)); font-weight: 700; margin-bottom: calc(6 * var(--u)); }
     .xl-lat b u { width: calc(14 * var(--u)); height: calc(14 * var(--u)); border-radius: calc(4 * var(--u)); background: #1167FF; }
@@ -1432,18 +1436,22 @@
 
       <div class="xd">
         <div class="xd-in">
-          <svg class="xd-fl" viewBox="0 0 1190 565" fill="none" aria-hidden="true">
-            <defs><filter id="xdg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-            <g stroke="#2F8CFF" stroke-width="2.2" filter="url(#xdg)">
-              <path d="M215 136C215 185 240 205 292 210"/>
-              <path d="M596 108V175"/>
-              <path d="M958 122C958 170 930 190 868 196"/>
-              <path d="M262 236H290"/>
-              <path d="M131 320V352"/>
-              <path d="M938 270H868"/>
-              <path d="M1052 325V365"/>
+          <svg class="xd-fl" viewBox="0 0 1300 600" fill="none" aria-hidden="true">
+            <defs><filter id="xdg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+            <g stroke="#3D9BFF" stroke-width="2.6" stroke-linecap="round" filter="url(#xdg)">
+              <path d="M240 112C240 160 300 186 412 192"/>
+              <path d="M620 112V192"/>
+              <path d="M1000 112C1000 160 940 186 848 192"/>
+              <path d="M300 268H362"/>
+              <path d="M300 458H362"/>
+              <path d="M950 282H898"/>
+              <path d="M950 472H898"/>
             </g>
-            <g fill="#5DB4FF" filter="url(#xdg)"><circle cx="292" cy="210" r="4"/><circle cx="596" cy="175" r="4"/><circle cx="868" cy="196" r="4"/><circle cx="290" cy="236" r="4"/><circle cx="868" cy="270" r="4"/></g>
+            <g fill="#6CC0FF" filter="url(#xdg)">
+              <circle cx="240" cy="112" r="4.5"/><circle cx="412" cy="192" r="4.5"/><circle cx="620" cy="112" r="4.5"/><circle cx="620" cy="192" r="4.5"/><circle cx="1000" cy="112" r="4.5"/><circle cx="848" cy="192" r="4.5"/>
+              <circle cx="300" cy="268" r="4.5"/><circle cx="362" cy="268" r="4.5"/><circle cx="300" cy="458" r="4.5"/><circle cx="362" cy="458" r="4.5"/>
+              <circle cx="950" cy="282" r="4.5"/><circle cx="898" cy="282" r="4.5"/><circle cx="950" cy="472" r="4.5"/><circle cx="898" cy="472" r="4.5"/>
+            </g>
           </svg>
 
           <div class="xc c1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg></i><div><b>Cualificaci&oacute;n de leads</b><span>Filtra y prioriza los mejores contactos.</span></div></div>
