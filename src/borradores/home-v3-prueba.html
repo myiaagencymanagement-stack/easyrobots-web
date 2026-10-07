@@ -653,12 +653,18 @@
         radial-gradient(60% 70% at 78% 45%, rgba(30,111,242,.20), rgba(30,111,242,0) 70%),
         radial-gradient(40% 50% at 10% 100%, rgba(30,111,242,.10), rgba(30,111,242,0) 70%),
         linear-gradient(180deg, #070B12, #0A0F18); }
-    .hero .foto, .hero .velo { display: none; }
+    /* Fondo nuevo (ChatGPT, 2026-10-07): escritorio de noche con la ciudad.
+       El chat tapa el portatil a proposito: queda su brillo azul alrededor,
+       como si la conversacion saliera de la pantalla. */
+    .hero .foto { background-image: url(/assets/home3-hero.webp?v=1); background-position: 62% 62%; }
+    .hero .velo { background:
+        linear-gradient(90deg, rgba(7,11,18,.88) 0%, rgba(7,11,18,.55) 38%, rgba(7,11,18,.20) 70%, rgba(7,11,18,.30) 100%),
+        linear-gradient(0deg, #0A0F18 0%, rgba(10,15,24,0) 22%); }
     .h-links a { color: #C9D1DC; }
     .h-cuerpo { gap: 48px; }
     .hx { flex: 0 0 auto; width: clamp(360px, 31vw, 450px); margin-left: auto; }
     .hx-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-    .hx-tabs button { font: inherit; font-size: 13.5px; font-weight: 600; color: #A3ADBB; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.10); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
+    .hx-tabs button { font: inherit; font-size: 13.5px; font-weight: 600; color: #C9D1DC; background: rgba(10,15,24,.62); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
     .hx-tabs button:hover { color: #fff; }
     .hx-tabs button[aria-selected="true"] { color: #fff; background: var(--azul); border-color: var(--azul); }
     .hx-card { background: linear-gradient(180deg, #111A28, #0C131F); border: 1px solid rgba(255,255,255,.09); border-radius: 20px; box-shadow: 0 30px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(30,111,242,.06); overflow: hidden; }
@@ -685,7 +691,8 @@
     @keyframes hxDot { 0%, 60%, 100% { opacity: .3; } 30% { opacity: 1; } }
     @media (max-width: 1080px) { .hx { width: 380px; } }
     @media (max-width: 900px) {
-      .hero .foto, .hero .velo { display: none; }
+      .hero .foto { background-image: url(/assets/home3-hero-movil.webp?v=1); background-size: 100% auto; background-position: center top; }
+      .hero .velo { background: linear-gradient(180deg, rgba(7,11,18,.30) 0%, rgba(7,11,18,.62) 40%, rgba(10,15,24,.95) 70%, #0A0F18 82%); }
       .h-cuerpo { flex-direction: column; align-items: stretch; gap: 28px; }
       .hx { width: 100%; margin: 0 0 36px; }
       .hx-tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: -22px; padding-right: 22px; }
