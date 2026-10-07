@@ -25,7 +25,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Sistemas de IA para coaches e infoproductores","description":"Automatización e IA para coaches e infoproductores: cualificamos, agendamos, recordamos y recuperamos los no-shows para que el que dice que sí llegue.","serviceType":"Automatización e inteligencia artificial","provider":{"@id":"https://easyrobots-ai.cloud/#organizacion"},"url":"https://easyrobots-ai.cloud/coaching/","areaServed":{"@type":"Country","name":"España"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://easyrobots-ai.cloud/"},{"@type":"ListItem","position":2,"name":"Coaching","item":"https://easyrobots-ai.cloud/coaching/"}]}]}</script>
 
 
-  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-700-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/coach-hero.webp" as="image">
 
@@ -37,6 +37,8 @@
     @font-face { font-family:'Plus Jakarta Sans'; font-weight:600; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-600-latin.woff2) format('woff2'); }
     @font-face { font-family:'Plus Jakarta Sans'; font-weight:700; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-700-latin.woff2) format('woff2'); }
     @font-face { font-family:'Plus Jakarta Sans'; font-weight:800; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-800-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap; src:url(/assets/fonts/inter-latin.woff2) format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap; src:url(/assets/fonts/inter-latin-ext.woff2) format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
 
     /* ==========================================================
        LANDING DE COACHING (v2) · 2026-10-02
@@ -89,7 +91,8 @@
       --verde-s: #ECFDF3;
       --rojo: #EF4444;
       --rojo-s: #FEF2F2;
-      --f: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+      --f: 'Inter', -apple-system, system-ui, sans-serif;
+      --ft: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
 
       /* Escala de /estetica/, que es la referencia de la casa. La primera
          version iba con el H1 a 64 y el hero a pantalla entera, y Anais lo
@@ -764,6 +767,365 @@
       .bn-hueco { height: 56px; }
       section[id], header[id], #equipo { scroll-margin-top: 58px; }
     }
+
+    /* ==========================================================
+       COACHING v3 · 2026-10-07
+       Seis secciones rehechas contra las referencias de Anais, que estan
+       en /assets/boceto/coaching-v3/ (ref-*.png) con sus fondos limpios
+       (fondo-*.png). Clases nuevas con prefijo propio (d3, m3, x3, p3s, l3,
+       e3, dc, xd, xl) para no heredar nada de la v2; el CSS viejo de las
+       secciones que se fueron se queda, no pinta nada.
+
+       Letra: peticion de Anais, "la letra de Apple" y solo en coaching de
+       momento. SF Pro no se puede servir en una web (su licencia es solo
+       para apps de Apple); va Inter, que esta dibujada con el mismo
+       criterio, servida desde este dominio. Los titulares siguen en Plus
+       Jakarta Sans para que los subtitulos y el texto no vayan en la misma
+       letra que el titulo, y para que la pagina siga pareciendo de la
+       familia de las demas.
+       ========================================================== */
+    body { letter-spacing: -.011em; }
+    .h-t, .h2, .h3, .t3, .nucleo, .dc-tit b, .dc-fin b, .ps b, .ps strong, .l3-c h3, .e3-gc h3, .e3-f b { font-family: var(--ft); }
+
+    .c3 { position: relative; overflow: hidden; }
+    .c3 .foto { background-size: cover; background-position: center; }
+    .c3 .velo { display: block; }
+    .k3 { display: flex; align-items: center; gap: 18px; font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.86); }
+    .k3::after { content: ""; width: 80px; height: 1px; background: currentColor; opacity: .6; }
+    .t3 { margin-top: 18px; font-size: clamp(32px, 3vw, 48px); line-height: 1.04; font-weight: 700; letter-spacing: -.035em; color: #fff; }
+    .t3 em { font-style: normal; color: #1E7BFF; }
+    .p3 { margin-top: 20px; font-size: clamp(16px, 1.15vw, 18px); line-height: 1.5; color: #DCE1E8; }
+    .p3 + .p3 { margin-top: 14px; }
+
+    /* ---------- 02 · DONDE SE CAE ---------- */
+    .d3 { background: #05080D; }
+    .d3 .foto { background-image: url(/assets/coach3-cae.webp); }
+    .d3 .velo { background: linear-gradient(90deg, rgba(4,6,10,.80) 0%, rgba(4,6,10,.50) 24%, rgba(4,6,10,.10) 40%, rgba(4,6,10,0) 60%); }
+    .d3 .caja { display: grid; grid-template-columns: minmax(0, 450px) minmax(0, 1fr); gap: clamp(24px, 3vw, 48px); align-items: start; padding-top: 56px; padding-bottom: 48px; }
+    .d3-txt { padding-top: 22px; }
+    .d3 .t3, .x3 .t3 { font-size: clamp(30px, 2.65vw, 43px); }
+
+    .dc { container-type: inline-size; width: min(100%, 800px); }
+    .dc-in { --u: calc(100cqw / 910); position: relative; }
+    .dc-top { position: relative; height: calc(240 * var(--u)); }
+    .dc-fl { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .dc-msg { position: absolute; left: calc(262 * var(--u)); top: calc(28 * var(--u)); width: calc(358 * var(--u)); min-height: calc(64 * var(--u)); display: flex; align-items: center; gap: calc(14 * var(--u)); padding: calc(10 * var(--u)) calc(16 * var(--u)); background: #fff; border-radius: calc(12 * var(--u)); box-shadow: 0 calc(10 * var(--u)) calc(30 * var(--u)) rgba(0,0,0,.4); }
+    .dc-msg p { font-size: calc(15 * var(--u)); line-height: 1.35; color: #18202C; }
+    .dc-msg em { position: absolute; right: calc(14 * var(--u)); bottom: calc(9 * var(--u)); font-style: normal; font-size: calc(11.5 * var(--u)); color: #9AA7B8; }
+    .dc i { width: calc(38 * var(--u)); height: calc(38 * var(--u)); border-radius: calc(10 * var(--u)); flex: 0 0 auto; display: flex; align-items: center; justify-content: center; color: #fff; }
+    .dc i svg { width: calc(21 * var(--u)); height: calc(21 * var(--u)); }
+    .dc i.ig { background: linear-gradient(45deg, #F9A03C, #E1306C 55%, #8134AF); }
+    .dc i.az { background: #2F6BFF; }
+    .dc i.rj { background: #FF4D5E; }
+    .dc-tit { position: absolute; left: calc(283 * var(--u)); top: calc(148 * var(--u)); width: calc(330 * var(--u)); height: calc(78 * var(--u)); display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(5,8,13,.88); border: 1px solid rgba(255,255,255,.2); border-radius: calc(12 * var(--u)); }
+    .dc-tit span { font-size: calc(17 * var(--u)); color: #E7EBF0; }
+    .dc-tit b { font-size: calc(23 * var(--u)); font-weight: 700; letter-spacing: -.03em; color: #fff; }
+    .dc-tit em, .dc-fin.ok em { font-style: normal; color: #3B9BFF; }
+
+    .dc-cols { display: grid; grid-template-columns: calc(420 * var(--u)) calc(410 * var(--u)); column-gap: calc(80 * var(--u)); }
+    .dc-lis { position: relative; display: flex; flex-direction: column; gap: calc(7 * var(--u)); padding-left: calc(var(--pl) * var(--u)); }
+    .dc-lis.no { --pl: 112; --off: 22; margin-top: calc(25 * var(--u)); }
+    .dc-lis.ok { --pl: 65; --off: 27; }
+    .dc-lis::before { content: ""; position: absolute; left: calc((var(--pl) - var(--off)) * var(--u) - 1px); top: calc(30 * var(--u)); bottom: calc(26 * var(--u)); border-left: 2px dashed #FF3B4E; opacity: .8; }
+    .dc-lis.ok::before { border-left-color: #19D3A2; }
+    .dc-c { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; column-gap: calc(12 * var(--u)); width: calc(270 * var(--u)); min-height: calc(65 * var(--u)); padding: calc(10 * var(--u)) calc(26 * var(--u)) calc(10 * var(--u)) calc(12 * var(--u)); background: rgba(14,16,22,.9); border: 1px solid rgba(255,255,255,.09); border-radius: calc(11 * var(--u)); }
+    .dc-lis.ok .dc-c { width: calc(295 * var(--u)); padding-right: calc(14 * var(--u)); background: rgba(6,14,28,.9); border-color: rgba(47,140,255,.5); box-shadow: 0 0 calc(14 * var(--u)) rgba(30,120,255,.22); }
+    .dc-c b { display: block; font-size: calc(13.2 * var(--u)); font-weight: 600; color: #fff; letter-spacing: -.01em; }
+    .dc-c span { display: block; margin-top: calc(2 * var(--u)); font-size: calc(12 * var(--u)); color: #B4BCC8; }
+    .dc-c > em { align-self: start; margin-top: calc(4 * var(--u)); font-style: normal; font-size: calc(11.5 * var(--u)); color: #B4BCC8; white-space: nowrap; }
+    .dc-lis.no .dc-c > em { align-self: end; margin-bottom: calc(4 * var(--u)); }
+    .dc-c > p { grid-column: 2 / -1; margin-top: calc(8 * var(--u)); }
+    .dc-d, .dc-v { position: absolute; left: calc(var(--off) * var(--u) * -1 - 8 * var(--u)); top: 50%; transform: translateY(-50%); width: calc(16 * var(--u)); height: calc(16 * var(--u)); border-radius: 50%; background: #FF3B4E; box-shadow: 0 0 calc(10 * var(--u)) rgba(255,59,78,.7); }
+    .dc-v { width: calc(20 * var(--u)); height: calc(20 * var(--u)); left: calc(var(--off) * var(--u) * -1 - 10 * var(--u)); background: #12C48B; box-shadow: 0 0 calc(10 * var(--u)) rgba(18,196,139,.6); display: flex; align-items: center; justify-content: center; color: #fff; }
+    .dc-v svg { width: 70%; height: 70%; }
+    .dc-x { position: absolute; right: calc(-11 * var(--u)); top: calc(50% - 11 * var(--u)); width: calc(22 * var(--u)); height: calc(22 * var(--u)); border-radius: 50%; background: #FF3B4E; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+    .dc-x svg { width: 62%; height: 62%; }
+    .dc-bub { justify-self: end; background: #D9FDD3; color: #18202C; border-radius: calc(8 * var(--u)); padding: calc(6 * var(--u)) calc(10 * var(--u)); font-size: calc(11.5 * var(--u)); line-height: 1.3; }
+    .dc-bub small { font-size: calc(10 * var(--u)); color: #2F8CFF; margin-left: calc(6 * var(--u)); }
+    .dc-chips, .dc-horas { display: flex; gap: calc(5 * var(--u)); }
+    .dc-chips span, .dc-horas span { margin: 0; flex: 1 1 0; text-align: center; padding: calc(4 * var(--u)) calc(6 * var(--u)); border-radius: calc(5 * var(--u)); background: rgba(40,70,120,.35); border: 1px solid rgba(120,160,230,.25); font-size: calc(10.5 * var(--u)); color: #D7E2F2; }
+    .dc-chips span { flex: 0 0 auto; }
+    .dc-horas span.on { background: #1E7BFF; border-color: #1E7BFF; color: #fff; }
+    .dc-c span.dc-dia { color: #3B9BFF; font-size: calc(11 * var(--u)); }
+
+    .dc-fin { display: flex; align-items: center; gap: calc(20 * var(--u)); margin: calc(28 * var(--u)) 0 0 calc(52 * var(--u)); width: calc(333 * var(--u)); height: calc(80 * var(--u)); padding: 0 calc(28 * var(--u)); border: 2px solid #FF3B4E; border-radius: calc(12 * var(--u)); background: rgba(20,6,8,.6); box-shadow: 0 0 calc(18 * var(--u)) rgba(255,59,78,.45), inset 0 0 calc(18 * var(--u)) rgba(255,59,78,.15); }
+    .dc-fin > svg { width: calc(46 * var(--u)); height: calc(46 * var(--u)); color: #FF4D5E; flex: 0 0 auto; }
+    .dc-fin b { font-size: calc(21 * var(--u)); line-height: 1.15; font-weight: 700; letter-spacing: -.02em; color: #fff; }
+    .dc-fin.no em { font-style: normal; color: #FF4D5E; }
+    .dc-fin.ok { margin: calc(10 * var(--u)) 0 0 calc(40 * var(--u)); width: calc(355 * var(--u)); height: calc(72 * var(--u)); border-color: #2F8CFF; background: rgba(4,14,30,.6); box-shadow: 0 0 calc(18 * var(--u)) rgba(47,140,255,.45), inset 0 0 calc(18 * var(--u)) rgba(47,140,255,.15); }
+    .dc-fin.ok i { width: calc(48 * var(--u)); height: calc(48 * var(--u)); background: #1E7BFF; }
+    .dc-fin.ok i svg { width: calc(28 * var(--u)); height: calc(28 * var(--u)); }
+    .dc-tags { display: flex; justify-content: center; gap: calc(8 * var(--u)); margin-top: calc(20 * var(--u)); }
+    .dc-tags span { display: flex; align-items: center; height: calc(34 * var(--u)); padding: 0 calc(16 * var(--u)); border-radius: 999px; font-size: calc(12.5 * var(--u)); white-space: nowrap; background: rgba(60,12,16,.75); border: 1px solid rgba(255,80,90,.35); color: #F3DADC; }
+    .dc-tags.ok { justify-content: flex-start; margin-left: calc(38 * var(--u)); }
+    .dc-tags.ok span { background: rgba(8,24,48,.8); border-color: rgba(60,140,255,.42); color: #D3E4FF; }
+    .dc-tags.ok span:first-child { color: #5FB0FF; }
+
+    /* ---------- 05 · DEMO ---------- */
+    .m3 { background: #EEF2F6; }
+    .m3 .foto { background-image: url(/assets/coach3-demo.webp); }
+    .m3 .velo { background: linear-gradient(90deg, rgba(247,249,252,.86) 0%, rgba(247,249,252,.62) 30%, rgba(247,249,252,0) 52%); }
+    .m3 .caja { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(30px, 4vw, 70px); align-items: center; padding-top: 80px; padding-bottom: 80px; }
+    .m3 .k3 { color: #5A6473; }
+    .m3 .t3 { color: #0B1220; font-size: clamp(36px, 3.5vw, 56px); }
+    .m3 .p3 { color: #3A4352; }
+    .m3-info { display: flex; gap: 14px; margin-top: 26px; padding: 18px 22px; border-radius: 14px; background: rgba(226,233,243,.85); border: 1px solid rgba(200,212,228,.8); }
+    .m3-info > svg { width: 28px; height: 28px; color: #1E7BFF; flex: 0 0 auto; }
+    .m3-info b { display: block; font-size: 16px; font-weight: 600; color: #0B1220; }
+    .m3-info span { display: block; margin-top: 3px; font-size: 15px; line-height: 1.45; color: #4A5568; }
+    .m3-btn { display: inline-flex; align-items: center; gap: 14px; margin-top: 26px; height: 62px; padding: 0 30px; border-radius: 999px; background: #1167FF; color: #fff; font-size: 19px; font-weight: 600; box-shadow: 0 14px 34px rgba(17,103,255,.32); transition: background .2s; }
+    .m3-btn:hover { background: #0A57E0; }
+    .m3-btn svg { width: 22px; height: 22px; }
+
+    .m3-lap { position: relative; }
+    .m3-pant { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; padding: 16px; background: #F3F6FA; border: 13px solid #121418; border-radius: 22px; box-shadow: 0 40px 80px rgba(20,30,50,.28), 0 0 0 1px rgba(0,0,0,.15); }
+    .m3-chat { display: flex; flex-direction: column; min-width: 0; }
+    .m3-cab { display: flex; align-items: center; gap: 12px; padding: 6px 4px 12px; }
+    .m3-av { width: 44px; height: 44px; border-radius: 50%; background: #1167FF; color: #fff; font-weight: 600; font-size: 16px; display: flex; align-items: center; justify-content: center; }
+    .m3-cab b { display: block; font-size: 16px; font-weight: 600; color: #0B1220; }
+    .m3-cab i { display: flex; align-items: center; gap: 6px; font-style: normal; font-size: 12.5px; color: #5A6473; }
+    .m3-cab i::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #22C55E; }
+    .m3-msgs { height: 330px; overflow-y: auto; display: flex; flex-direction: column; gap: 9px; padding: 4px 4px 8px; }
+    .m3-in, .m3-out { max-width: 86%; padding: 9px 13px; border-radius: 12px; font-size: 14px; line-height: 1.45; color: #18202C; white-space: pre-wrap; }
+    .m3-out { align-self: flex-start; background: #fff; box-shadow: 0 2px 8px rgba(20,30,50,.07); }
+    .m3-in { align-self: flex-end; background: #DCEBFF; }
+    .m3-chat .cd-botones button { border-color: #1167FF; color: #1167FF; font-weight: 500; }
+    .m3-chat .cd-botones button:hover { background: #1167FF; color: #fff; }
+    .m3-pie { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+    .m3-clip { width: 38px; height: 38px; border-radius: 50%; background: #fff; border: 1px solid #E1E7EF; color: #6B7686; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .m3-clip svg { width: 18px; height: 18px; }
+    .m3-pie .campo { flex: 1 1 auto; min-width: 0; height: 44px; display: flex; align-items: center; padding: 0 16px; border-radius: 999px; background: #fff; border: 1px solid #E1E7EF; font: inherit; font-size: 14.5px; color: #18202C; }
+    .m3-pie .campo::placeholder { color: #8A94A4; }
+    .m3-pie .env { width: 44px; height: 44px; border-radius: 50%; border: 0; background: #1167FF; color: #fff; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; cursor: pointer; }
+    .m3-pie .env svg { width: 20px; height: 20px; }
+    .m3-cal { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+    .m3-cal-in { padding: 18px 16px; border-radius: 14px; background: #fff; box-shadow: 0 2px 10px rgba(20,30,50,.06); }
+    .m3-cal-t { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; color: #0B1220; }
+    .m3-cal-t svg { width: 24px; height: 24px; color: #1167FF; }
+    .m3-cal-in > p { margin-top: 8px; font-size: 12.5px; line-height: 1.45; color: #5A6473; }
+    .m3-mesf { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; padding: 8px 12px; border: 1px solid #E5EAF1; border-radius: 10px; font-size: 14px; color: #0B1220; }
+    .m3-mesf span { color: #5A6473; font-size: 18px; line-height: 1; }
+    .m3-dias { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 10px; }
+    .m3-dias span, .m3-horas span { display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 9px; background: #F1F4F8; font-size: 11.5px; color: #5A6473; }
+    .m3-dias span { padding: 7px 0; }
+    .m3-dias b { font-size: 15px; color: #0B1220; }
+    .m3-dias span.on, .m3-horas span.on { background: #1167FF; color: #fff; }
+    .m3-dias span.on b { color: #fff; }
+    .m3-horas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
+    .m3-horas span { height: 36px; font-size: 13px; color: #0B1220; }
+    .m3-ok { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; background: #E9EDF3; }
+    .m3-ok svg { width: 22px; height: 22px; color: #5A6473; flex: 0 0 auto; }
+    .m3-ok b { display: block; font-size: 14px; color: #3A4352; }
+    .m3-ok span { display: block; font-size: 11.5px; color: #6B7686; }
+    .m3-base { height: 18px; margin: 0 -5%; border-radius: 0 0 20px 20px; background: linear-gradient(180deg, #D5D9DF, #8E949C); box-shadow: 0 18px 30px rgba(20,30,50,.25); position: relative; }
+    .m3-base::before { content: ""; position: absolute; left: 50%; top: 0; width: 16%; height: 7px; transform: translateX(-50%); border-radius: 0 0 8px 8px; background: #A9AEB6; }
+
+    /* ---------- 06 · SISTEMA ---------- */
+    .x3 { background: #050A12; }
+    .x3 .foto { background-image: url(/assets/coach3-sistema.webp); }
+    .x3 .velo { background: linear-gradient(90deg, rgba(3,6,12,.90) 0%, rgba(3,6,12,.72) 24%, rgba(3,6,12,.25) 42%, rgba(3,6,12,0) 58%); }
+    .x3 .caja { display: grid; grid-template-columns: minmax(0, 450px) minmax(0, 1fr); gap: 24px; align-items: center; padding-top: 70px; padding-bottom: 70px; }
+    .x3-btn { display: inline-flex; align-items: center; gap: 14px; margin-top: 28px; height: 58px; padding: 0 32px; border-radius: 999px; background: #fff; color: #0B1220; font-size: 18px; font-weight: 500; transition: background .2s; }
+    .x3-btn:hover { background: #EEF1F5; }
+    .x3-btn svg { width: 18px; height: 18px; }
+    .x3-apps { display: flex; gap: 10px; margin-top: 30px; }
+    .x3-apps i { width: 54px; height: 54px; border-radius: 13px; background: rgba(18,22,30,.88); border: 1px solid rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; }
+    .x3-apps svg { width: 28px; height: 28px; }
+    .x3-nota { margin-top: 16px; font-size: 16px; color: #DCE1E8; }
+
+    .xd { container-type: inline-size; }
+    .xd-in { --u: calc(100cqw / 1190); position: relative; height: calc(565 * var(--u)); }
+    .xd-fl { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .xc { position: absolute; display: grid; grid-template-columns: auto 1fr; gap: calc(16 * var(--u)); align-items: start; padding: calc(20 * var(--u)) calc(22 * var(--u)); background: rgba(8,14,26,.86); border: 1px solid rgba(70,140,255,.5); border-radius: calc(14 * var(--u)); box-shadow: 0 0 calc(22 * var(--u)) rgba(30,110,255,.22); backdrop-filter: blur(4px); }
+    .xc i { width: calc(52 * var(--u)); height: calc(52 * var(--u)); border-radius: calc(12 * var(--u)); background: #1167FF; color: #fff; display: flex; align-items: center; justify-content: center; }
+    .xc i.wa { background: #25D366; }
+    .xc i.cl { background: linear-gradient(180deg, #2BA6FF, #1167FF); }
+    .xc i svg { width: calc(28 * var(--u)); height: calc(28 * var(--u)); }
+    .xc b { display: block; font-size: calc(19 * var(--u)); font-weight: 600; line-height: 1.25; color: #fff; letter-spacing: -.01em; }
+    .xc span { display: block; margin-top: calc(7 * var(--u)); font-size: calc(15.5 * var(--u)); line-height: 1.35; color: #C9D2DE; }
+    .xc.c1 { left: calc(105 * var(--u)); top: calc(30 * var(--u)); width: calc(280 * var(--u)); }
+    .xc.c2 { left: calc(447 * var(--u)); top: calc(4 * var(--u)); width: calc(298 * var(--u)); }
+    .xc.c3 { left: calc(818 * var(--u)); top: calc(18 * var(--u)); width: calc(287 * var(--u)); }
+    .xc.c4 { left: calc(15 * var(--u)); top: calc(198 * var(--u)); width: calc(232 * var(--u)); }
+    .xc.c5 { left: calc(5 * var(--u)); top: calc(365 * var(--u)); width: calc(243 * var(--u)); }
+    .xc.c6 { left: calc(938 * var(--u)); top: calc(215 * var(--u)); width: calc(229 * var(--u)); }
+    .xc.c7 { left: calc(940 * var(--u)); top: calc(365 * var(--u)); width: calc(242 * var(--u)); }
+
+    .xl { position: absolute; left: calc(280 * var(--u)); top: calc(165 * var(--u)); width: calc(590 * var(--u)); }
+    .xl-p { height: calc(372 * var(--u)); display: grid; grid-template-columns: calc(120 * var(--u)) 1fr; overflow: hidden; background: #F6F8FB; border: calc(9 * var(--u)) solid #15181E; border-radius: calc(14 * var(--u)); box-shadow: 0 0 calc(40 * var(--u)) rgba(47,140,255,.35), 0 calc(30 * var(--u)) calc(60 * var(--u)) rgba(0,0,0,.55); color: #16233A; }
+    .xl-lat { padding: calc(12 * var(--u)) calc(8 * var(--u)); background: #F0F3F8; border-right: 1px solid #E3E8EF; display: flex; flex-direction: column; gap: calc(8 * var(--u)); }
+    .xl-lat b { display: flex; align-items: center; gap: calc(6 * var(--u)); font-size: calc(12 * var(--u)); font-weight: 700; margin-bottom: calc(6 * var(--u)); }
+    .xl-lat b u { width: calc(14 * var(--u)); height: calc(14 * var(--u)); border-radius: calc(4 * var(--u)); background: #1167FF; }
+    .xl-lat span { font-size: calc(9.5 * var(--u)); color: #6C7789; padding: calc(4 * var(--u)) calc(6 * var(--u)); border-radius: calc(5 * var(--u)); }
+    .xl-lat span.on { background: #DCE8FF; color: #1167FF; }
+    .xl-cue { padding: calc(12 * var(--u)) calc(14 * var(--u)); display: flex; flex-direction: column; gap: calc(9 * var(--u)); min-width: 0; }
+    .xl-cab { display: flex; align-items: baseline; justify-content: space-between; }
+    .xl-cab b { font-size: calc(16 * var(--u)); }
+    .xl-cab span { font-size: calc(9 * var(--u)); color: #6C7789; }
+    .xl-kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(7 * var(--u)); }
+    .xl-kpi div { position: relative; padding: calc(8 * var(--u)) calc(9 * var(--u)); background: #fff; border: 1px solid #E6ECF4; border-radius: calc(8 * var(--u)); }
+    .xl-kpi b { font-size: calc(20 * var(--u)); letter-spacing: -.03em; }
+    .xl-kpi i { position: absolute; right: calc(8 * var(--u)); top: calc(12 * var(--u)); font-style: normal; font-size: calc(8 * var(--u)); color: #12A454; }
+    .xl-kpi span { display: block; font-size: calc(8.5 * var(--u)); color: #7A8597; }
+    .xl-fila { display: grid; grid-template-columns: 1.5fr 1fr; gap: calc(7 * var(--u)); }
+    .xl-caja { position: relative; padding: calc(8 * var(--u)) calc(10 * var(--u)); background: #fff; border: 1px solid #E6ECF4; border-radius: calc(8 * var(--u)); }
+    .xl-caja > b { display: flex; justify-content: space-between; font-size: calc(10 * var(--u)); }
+    .xl-caja > b span { font-weight: 400; color: #1167FF; }
+    .xl-caja > svg { display: block; width: 100%; height: calc(58 * var(--u)); margin-top: calc(4 * var(--u)); }
+    .xl-caja em { position: absolute; right: calc(16 * var(--u)); top: calc(20 * var(--u)); font-style: normal; font-size: calc(8 * var(--u)); color: #1167FF; background: #EEF4FF; border-radius: calc(4 * var(--u)); padding: calc(3 * var(--u)) calc(6 * var(--u)); }
+    .xl-can > div { display: flex; align-items: center; gap: calc(8 * var(--u)); margin-top: calc(6 * var(--u)); }
+    .xl-can svg { width: calc(54 * var(--u)); height: calc(54 * var(--u)); flex: 0 0 auto; }
+    .xl-can ul { list-style: none; flex: 1 1 auto; }
+    .xl-can li { display: flex; align-items: center; gap: calc(4 * var(--u)); font-size: calc(8 * var(--u)); color: #46536B; line-height: 1.55; }
+    .xl-can li u { width: calc(6 * var(--u)); height: calc(6 * var(--u)); border-radius: 50%; }
+    .xl-can li s { margin-left: auto; text-decoration: none; color: #8A94A6; }
+    .xl-lis p { display: grid; grid-template-columns: calc(14 * var(--u)) calc(52 * var(--u)) 1fr auto calc(46 * var(--u)); align-items: center; gap: calc(6 * var(--u)); margin-top: calc(5 * var(--u)); font-size: calc(8.5 * var(--u)); font-weight: 600; }
+    .xl-lis p u { width: calc(14 * var(--u)); height: calc(14 * var(--u)); border-radius: 50%; background: #CBD5E3; }
+    .xl-lis p span { font-weight: 400; color: #5D6A80; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .xl-lis p i { font-style: normal; font-weight: 500; font-size: calc(7.5 * var(--u)); color: #12864A; background: #E3F7EC; border-radius: calc(4 * var(--u)); padding: calc(2 * var(--u)) calc(6 * var(--u)); }
+    .xl-lis p s { text-decoration: none; font-weight: 400; color: #8A94A6; text-align: right; }
+    .xl-b { height: calc(16 * var(--u)); margin: 0 -5%; border-radius: 0 0 calc(14 * var(--u)) calc(14 * var(--u)); background: linear-gradient(180deg, #3A3F48, #15181E); }
+    .xl-ej { position: absolute; right: 0; top: calc(100% + 6 * var(--u)); font-size: calc(11 * var(--u)); letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+
+    /* ---------- 08 · COMO TRABAJAMOS ---------- */
+    .p3s { background: #05080D; }
+    .p3s .foto { background-image: url(/assets/coach3-proceso.webp); }
+    .p3s .velo { background: linear-gradient(90deg, rgba(3,6,11,.72) 0%, rgba(3,6,11,.36) 30%, rgba(3,6,11,0) 50%), linear-gradient(0deg, rgba(3,6,11,.88) 0%, rgba(3,6,11,.45) 26%, rgba(3,6,11,0) 46%); }
+    .p3s .caja { min-height: clamp(560px, 40vw, 760px); display: flex; flex-direction: column; justify-content: space-between; gap: 60px; padding-top: 80px; padding-bottom: 64px; }
+    .p3s .t3 { font-size: clamp(34px, 3.3vw, 54px); }
+    .ps { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); }
+    .ps li { padding: 0 clamp(16px, 2.2vw, 34px); border-left: 1px solid rgba(255,255,255,.28); }
+    .ps li:first-child { padding-left: 0; border-left: 0; }
+    .ps b { display: block; font-size: clamp(34px, 2.9vw, 46px); line-height: 1; font-weight: 700; color: #1E7BFF; letter-spacing: -.03em; }
+    .ps strong { display: block; margin-top: 12px; font-size: clamp(19px, 1.6vw, 24px); font-weight: 700; color: #fff; letter-spacing: -.02em; }
+    .ps span { display: block; margin-top: 8px; font-size: clamp(14.5px, 1.1vw, 17px); line-height: 1.45; color: #C5CCD6; }
+
+    /* ---------- 07 · EL LIMITE ----------
+       La chica de la foto nueva cae un poco mas a la derecha que en la
+       referencia y los cuadros le tapaban el hombro: se amplia la foto un
+       25 % y se corre para que quede en el hueco entre texto y cuadros. */
+    .l3 { background: #07090D; }
+    .l3 .foto { background-size: 125% auto; background-position: 66% 42%; }
+    .l3 .foto { background-image: url(/assets/coach3-limite.webp); }
+    .l3 .velo { background: linear-gradient(90deg, rgba(4,5,8,.82) 0%, rgba(4,5,8,.55) 26%, rgba(4,5,8,.08) 42%, rgba(4,5,8,0) 54%, rgba(4,5,8,.3) 72%); }
+    .l3 .caja { display: grid; grid-template-columns: minmax(0, 470px) minmax(0, 660px); justify-content: space-between; gap: 32px; align-items: center; padding-top: 72px; padding-bottom: 72px; }
+    .l3-nota { margin-top: 18px; font-size: 14.5px; line-height: 1.45; color: #A9B2BF; }
+    .l3-cs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .l3-c { padding: 26px 24px 10px; border-radius: 14px; background: rgba(9,12,18,.86); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(6px); }
+    .l3-c h3 { font-size: 21px; font-weight: 700; letter-spacing: -.03em; color: #fff; }
+    .l3-c h3 em { font-style: normal; color: #1E7BFF; }
+    .l3-c ul { list-style: none; margin-top: 10px; }
+    .l3-c li { padding: 12px 0; font-size: 15.5px; line-height: 1.4; color: #E3E7ED; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .l3-c li:last-child { border-bottom: 0; }
+
+    /* ---------- 09 + 10 · QUIENES SOMOS Y GARANTIA ---------- */
+    .e3 { background: linear-gradient(180deg, #FBFCFD, #F3F5F8); }
+    .e3 .caja { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(24px, 3vw, 48px); align-items: center; padding-top: 88px; padding-bottom: 88px; }
+    .e3 .k3 { color: #5A6473; }
+    .e3 .t3 { color: #0B1220; font-size: clamp(34px, 3.3vw, 52px); }
+    .e3 .p3 { color: #4A5361; font-size: clamp(16px, 1.25vw, 19px); }
+    .e3-fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .e3-f { position: relative; aspect-ratio: 336 / 410; overflow: hidden; border-radius: 14px; background: #0E1724; box-shadow: 0 22px 44px rgba(15,25,40,.18); }
+    .e3-f img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    .e3-f figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 20px 16px; background: rgba(32,34,40,.84); backdrop-filter: blur(6px); }
+    .e3-f b { display: block; font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -.02em; }
+    .e3-f span { display: block; font-size: 16px; color: #D3D7DD; }
+    .e3-g { padding: 30px 30px 18px; border-radius: 18px; background: #EEF1F6; border: 1px solid #E1E6EE; box-shadow: 0 10px 30px rgba(15,25,40,.06); }
+    .e3-gc { display: flex; align-items: center; gap: 18px; }
+    .e3-gc svg { width: 50px; height: 50px; flex: 0 0 auto; }
+    .e3-gc h3 { font-size: clamp(26px, 2.2vw, 34px); font-weight: 700; letter-spacing: -.035em; color: #0B1220; }
+    .e3-gc h3 em { font-style: normal; color: #1E7BFF; }
+    .e3-g > p { margin-top: 14px; padding-bottom: 18px; border-bottom: 1px solid #D9DFE8; font-size: 16.5px; line-height: 1.45; color: #4A5361; }
+    .e3-g dl { display: grid; grid-template-columns: 1.1fr 1fr; }
+    .e3-g dt, .e3-g dd { padding: 13px 0; border-bottom: 1px solid #DFE4EC; font-size: 15px; line-height: 1.35; }
+    .e3-g dt { padding-right: 16px; font-weight: 600; color: #0B1220; }
+    .e3-g dd { color: #5A6473; }
+    .e3-g dt:nth-last-of-type(1), .e3-g dd:last-child { border-bottom: 0; }
+
+    @media (max-width: 1180px) {
+      .d3 .caja, .x3 .caja, .l3 .caja { grid-template-columns: 1fr; }
+      .dc { margin: 0 auto; }
+      .m3 .caja { grid-template-columns: 1fr; }
+      .e3 .caja { grid-template-columns: 1fr 1fr; }
+      .e3-g { grid-column: 1 / -1; }
+      .l3 .foto { background-size: cover; background-position: center; }
+    }
+
+    @media (max-width: 860px) {
+      .t3 { font-size: 30px !important; }
+      .t3 br { display: none; }
+      .p3 { font-size: 16px; }
+      .p3 br { display: none; }
+      .c3 .caja { display: block !important; padding-top: 52px !important; padding-bottom: 52px !important; }
+      .k3 { font-size: 12px; } .k3::after { width: 48px; }
+
+      .d3 .foto { background-image: url(/assets/coach3-cae-movil.webp); background-position: center top; }
+      .d3 .velo { background: linear-gradient(180deg, rgba(4,6,10,.62) 0%, rgba(4,6,10,.86) 36%, rgba(4,6,10,.93) 100%); }
+      .d3-txt { padding-top: 0; }
+      /* El diagrama pasa a una columna: mismas piezas, en la unidad de una
+         caja de 420 de ancho, asi que el texto se lee a 390 px. */
+      .dc { width: 100%; margin-top: 28px; }
+      .dc-in { --u: calc(100cqw / 420); }
+      .dc-top { height: auto; display: flex; flex-direction: column; align-items: center; gap: calc(16 * var(--u)); }
+      .dc-fl { display: none; }
+      .dc-msg, .dc-tit { position: relative; left: auto; top: auto; width: 100%; }
+      .dc-tit { height: auto; padding: calc(12 * var(--u)) 0; }
+      .dc-cols { grid-template-columns: 1fr; row-gap: calc(34 * var(--u)); margin-top: calc(22 * var(--u)); }
+      .dc-lis.no, .dc-lis.ok { --pl: 34; --off: 22; margin-top: 0; }
+      .dc-c, .dc-lis.ok .dc-c { width: auto; }
+      .dc-fin, .dc-fin.ok { width: auto; margin: calc(18 * var(--u)) 0 0; }
+      .dc-tags, .dc-tags.ok { margin-left: 0; justify-content: center; flex-wrap: wrap; }
+
+      .m3 .foto { background-image: url(/assets/coach3-demo-movil.webp); }
+      .m3 .velo { background: rgba(247,249,252,.8); }
+      .m3-lap { margin-top: 32px; }
+      .m3-pant { grid-template-columns: 1fr; padding: 10px; border-width: 8px; border-radius: 16px; }
+      .m3-cal { display: none; }
+      .m3-msgs { height: 340px; }
+      .m3-btn { height: 54px; font-size: 16.5px; padding: 0 24px; }
+      .m3-info { padding: 14px 16px; }
+      .m3-base { height: 12px; }
+
+      .x3 .foto { background-image: url(/assets/coach3-sistema-movil.webp); }
+      .x3 .velo { background: linear-gradient(180deg, rgba(3,6,12,.66) 0%, rgba(3,6,12,.86) 40%, rgba(3,6,12,.93) 100%); }
+      .x3-apps { flex-wrap: wrap; }
+      .x3-apps i { width: 46px; height: 46px; } .x3-apps svg { width: 24px; height: 24px; }
+      /* Portatil arriba a todo lo ancho y las siete piezas debajo, de dos
+         en dos, sin los cables. */
+      .xd { margin-top: 30px; }
+      .xd-in { --u: calc(100cqw / 600); height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .xd-fl { display: none; }
+      .xl { position: relative; left: auto; top: auto; width: 100%; grid-column: 1 / -1; order: -1; margin-bottom: 26px; }
+      .xc { position: relative; left: auto !important; top: auto !important; width: auto !important; grid-template-columns: 1fr; gap: 8px; padding: 12px; border-radius: 12px; }
+      .xc i { width: 34px; height: 34px; border-radius: 9px; } .xc i svg { width: 19px; height: 19px; }
+      .xc b { font-size: 14px; } .xc span { font-size: 12.5px; margin-top: 4px; }
+      .xc.c7 { grid-column: 1 / -1; }
+      .xl-ej { font-size: 10px; }
+
+      .p3s .foto { background-image: url(/assets/coach3-proceso-movil.webp); }
+      .p3s .velo { background: linear-gradient(180deg, rgba(3,6,11,.6) 0%, rgba(3,6,11,.82) 40%, rgba(3,6,11,.92) 100%); }
+      .p3s .caja { min-height: 0; }
+      .ps { grid-template-columns: 1fr; gap: 0; margin-top: 30px; }
+      .ps li, .ps li:first-child { display: grid; grid-template-columns: 54px 1fr; column-gap: 12px; padding: 16px 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.2); }
+      .ps b { grid-row: span 2; font-size: 32px; }
+      .ps strong { margin-top: 0; font-size: 19px; }
+      .ps span { margin-top: 4px; font-size: 14.5px; }
+
+      .l3 .foto { background-image: url(/assets/coach3-limite-movil.webp); background-size: cover; background-position: center; }
+      .l3 .velo { background: linear-gradient(180deg, rgba(4,5,8,.6) 0%, rgba(4,5,8,.82) 40%, rgba(4,5,8,.92) 100%); }
+      .l3-cs { grid-template-columns: 1fr; gap: 14px; margin-top: 28px; }
+      .l3-c { padding: 20px 18px 6px; }
+      .l3-c li { padding: 10px 0; font-size: 15px; }
+
+      .e3-fotos { margin-top: 28px; gap: 12px; }
+      .e3-f figcaption { padding: 10px 14px 12px; }
+      .e3-f b { font-size: 17px; } .e3-f span { font-size: 14px; }
+      .e3-g { margin-top: 28px; padding: 22px 20px 10px; }
+      .e3-gc svg { width: 40px; height: 40px; }
+      .e3-g dl { grid-template-columns: 1fr; }
+      .e3-g dt { padding: 12px 0 2px; border-bottom: 0; }
+      .e3-g dd { padding: 0 0 12px; }
+    }
   </style>
 </head>
 
@@ -827,86 +1189,108 @@
     </div>
   </header>
 
-  <!-- =================== 02 · DONDE SE CAE =================== -->
-  <section class="sec s02" id="donde">
-    <div class="foto suave" aria-hidden="true"></div>
+  <!-- =================== 02 · DONDE SE CAE (v3, 2026-10-07) ===================
+       Referencia: /assets/boceto/coaching-v3/ref-8.png (2048x768). Junta en
+       una sola seccion las antiguas 02 y 03: el texto a la izquierda y, en
+       medio, el mismo mensaje de Instagram partiendose en dos finales. Las
+       posiciones del diagrama son las de la referencia, en una caja de
+       910x712 con su unidad --u, asi que escala entero. -->
+  <section class="d3 c3" id="donde">
+    <div class="foto" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
-    <div class="caja oscura">
-      <div class="col">
-        <div class="kick cl">D&oacute;nde se cae</div>
-        <h2 class="h2">No se caen los fr&iacute;os. <br>Se cae el que ya hab&iacute;a <br>levantado la mano.</h2>
-        <p class="p">Cuatro ca&iacute;das seguidas, y en las cuatro hay alguien que ya te hab&iacute;a dicho que s&iacute;: empieza la aplicaci&oacute;n y no la termina, la termina y no reserva hora, reserva y no se presenta, o se presenta, no compra ese d&iacute;a y nadie vuelve a escribirle.</p>
-        <p class="p">Y se cae por algo muy poco &eacute;pico: porque el seguimiento depende de que alguien se acuerde, mientras est&aacute;s grabando, en sesi&oacute;n o de lanzamiento.</p>
+    <div class="caja">
+      <div class="d3-txt">
+        <div class="k3">D&oacute;nde se cae</div>
+        <h2 class="t3">No se caen los fr&iacute;os. <br><em>Se cae el que ya hab&iacute;a <br>levantado la mano.</em></h2>
+        <p class="p3">Alguien escribe, muestra inter&eacute;s, rellena una aplicaci&oacute;n o pide informaci&oacute;n. Y despu&eacute;s desaparece entre respuestas tard&iacute;as, aplicaciones abandonadas, no-shows y seguimientos que nunca llegan.</p>
+      </div>
 
-        <div class="caidas">
-          <div class="cai">
-            <i class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
-            <b>Escribe</b>
-            <span>Pregunta precio, temario o facilidades de pago</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
-            <em>Contestas cuando puedes</em>
+      <div class="dc">
+        <div class="dc-in">
+          <div class="dc-top">
+            <svg class="dc-fl" viewBox="0 0 910 240" fill="none" aria-hidden="true">
+              <defs><filter id="dcg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+              <g filter="url(#dcg)" stroke-width="3" stroke-linecap="round">
+                <path d="M425 93V112Q425 128 409 128H186Q170 128 170 144V230" stroke="#FF3B4E"/>
+                <path d="M478 93V112Q478 128 494 128H664Q680 128 680 144V214" stroke="#2F8CFF"/>
+              </g>
+              <path d="M161 228h18l-9 14z" fill="#FF3B4E"/>
+              <path d="M671 212h18l-9 14z" fill="#2F8CFF"/>
+            </svg>
+            <div class="dc-msg">
+              <i class="ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></i>
+              <p>Hola, me interesa tu programa. <br>&iquest;Me puedes dar m&aacute;s informaci&oacute;n?</p>
+              <em>10:24</em>
+            </div>
+            <div class="dc-tit"><span>El mismo inter&eacute;s.</span><b>Dos finales <em>muy distintos.</em></b></div>
           </div>
-          <div class="cai">
-            <i class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 3.5h12v17H6z"/><path d="M9 8h6M9 11.5h6M9 15h3.5"/></svg></i>
-            <b>Aplicaci&oacute;n</b>
-            <span>Empieza el formulario y lo deja a medias</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
-            <em>Nadie lo retoma</em>
-          </div>
-          <div class="cai">
-            <i class="a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></i>
-            <b>Agenda</b>
-            <span>Quiere hablar, pero no llega a reservar hora</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
-            <em>Se queda en el chat</em>
-          </div>
-          <div class="cai">
-            <i class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></i>
-            <b>No-show</b>
-            <span>Reserva y no aparece</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
-            <em>Hueco perdido</em>
+
+          <div class="dc-cols">
+            <div class="dc-col">
+              <div class="dc-lis no">
+                <div class="dc-c"><u class="dc-d"></u>
+                  <i class="ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></i>
+                  <div><b>Mensaje sin responder</b><span>Se queda en la bandeja.</span></div><em>10:24</em>
+                  <s class="dc-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M8 8l8 8M16 8l-8 8"/></svg></s>
+                </div>
+                <div class="dc-c"><u class="dc-d"></u>
+                  <i class="az"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 3.5h12v17H6z"/><path d="M9 8h6M9 11.5h6M9 15h3.5"/></svg></i>
+                  <div><b>Aplicaci&oacute;n abandonada</b><span>Empieza, pero no la termina.</span></div><em>11:37</em>
+                  <s class="dc-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M8 8l8 8M16 8l-8 8"/></svg></s>
+                </div>
+                <div class="dc-c"><u class="dc-d"></u>
+                  <i class="az"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
+                  <div><b>Sin seguimiento</b><span>No hay m&aacute;s contacto.</span></div><em>2 d&iacute;as</em>
+                  <s class="dc-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M8 8l8 8M16 8l-8 8"/></svg></s>
+                </div>
+                <div class="dc-c"><u class="dc-d"></u>
+                  <i class="rj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M10 13l4 4M14 13l-4 4"/></svg></i>
+                  <div><b>No se presenta</b><span>La oportunidad se pierde.</span></div><em>1 semana</em>
+                  <s class="dc-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M8 8l8 8M16 8l-8 8"/></svg></s>
+                </div>
+              </div>
+              <div class="dc-fin no">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="5" width="15" height="14" rx="2.2"/><path d="M3 9.5h15M7 3v4M14 3v4M8 12.5l4 4M12 12.5l-4 4"/><circle cx="18.5" cy="18.5" r="3"/></svg>
+                <b>Una oportunidad <br><em>perdida.</em></b>
+              </div>
+              <div class="dc-tags no"><span>Tiempo perdido</span><span>Ingresos que no llegan</span><span>Esfuerzo en vano</span></div>
+            </div>
+
+            <div class="dc-col">
+              <div class="dc-lis ok">
+                <div class="dc-c"><u class="dc-v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></u>
+                  <i class="ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></i>
+                  <div><b>Respuesta inmediata</b><span>Responde al instante.</span></div><em>10:24</em>
+                  <p class="dc-bub">&iexcl;Perfecto! Te hago unas <br>preguntas r&aacute;pidas&hellip; <small>10:25 &#10003;&#10003;</small></p>
+                </div>
+                <div class="dc-c"><u class="dc-v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></u>
+                  <i class="az"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 5h16l-6.2 7.3V19l-3.6 1.6v-8.3z"/></svg></i>
+                  <div><b>Cualificaci&oacute;n autom&aacute;tica</b><span>Filtra y prioriza al lead.</span></div><em>10:26</em>
+                  <p class="dc-chips"><span>Objetivo</span><span>Experiencia</span><span>Disponibilidad</span></p>
+                </div>
+                <div class="dc-c"><u class="dc-v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></u>
+                  <i class="az"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9.4 14.2l2 2 3.4-3.6"/></svg></i>
+                  <div><b>Llamada agendada</b><span>Reserva en tu calendario.</span><span class="dc-dia">Mar 14 Ene</span></div><em>10:28</em>
+                  <p class="dc-horas"><span>10:00</span><span class="on">11:00</span><span>16:00</span></p>
+                </div>
+                <div class="dc-c"><u class="dc-v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></u>
+                  <i class="az"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 10a6 6 0 1112 0c0 4 1.6 5.6 1.6 5.6H4.4S6 14 6 10z"/><path d="M10 18.5a2.2 2.2 0 004 0"/></svg></i>
+                  <div><b>Recordatorios autom&aacute;ticos</b><span>Evita cancelaciones.</span></div><em>1 d&iacute;a antes</em>
+                </div>
+                <div class="dc-c"><u class="dc-v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></u>
+                  <i class="az"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
+                  <div><b>Seguimiento</b><span>Recupera si no responde.</span></div><em>+3 d&iacute;as</em>
+                </div>
+              </div>
+              <div class="dc-fin ok">
+                <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9.4 14.2l2 2 3.4-3.6"/></svg></i>
+                <b>Una llamada <br><em>confirmada.</em></b>
+              </div>
+              <div class="dc-tags ok"><span>M&aacute;s llamadas</span><span>Menos no-shows</span><span>M&aacute;s clientes</span></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- =================== 03 · EL MISMO INTERES =================== -->
-  <section class="sec s03">
-    <div class="foto suave" aria-hidden="true"></div>
-    <div class="velo" aria-hidden="true"></div>
-    <div class="caja oscura">
-      <div>
-        <h2 class="h2">El mismo inter&eacute;s. <br>Dos finales muy distintos.</h2>
-        <p class="p">La diferencia no es tener m&aacute;s leads. <br>Es lo que pasa despu&eacute;s.</p>
-
-        <div class="dos">
-          <div class="lista neg">
-            <h3><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Sin EasyRobots</h3>
-            <ul>
-              <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Mensajes que se quedan sin responder</li>
-              <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Personas que no completan la aplicaci&oacute;n</li>
-              <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>No-shows en las llamadas</li>
-              <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Seguimiento manual y poco consistente</li>
-              <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Oportunidades que se enfr&iacute;an</li>
-            </ul>
-          </div>
-          <div class="lista pos">
-            <h3><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Con EasyRobots</h3>
-            <ul>
-              <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Responde en todos tus canales</li>
-              <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Acompa&ntilde;a hasta la llamada</li>
-              <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Reduce los no-shows</li>
-              <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Hace el seguimiento por ti</li>
-              <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>M&aacute;s personas en tu programa</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- La nota a mano del boceto ("Tu a lo importante") se quito el
-           2026-10-04 por peticion de Anais. -->
     </div>
   </section>
 
@@ -957,384 +1341,229 @@
     </div>
   </section>
 
-  <!-- =================== 05 · DEMO =================== -->
-
-  <!-- =================== PRUEBALO TU (chat real, 05/10) =================== -->
-  <style>
-  /* "Pruebalo tu" (05/10): el chat real con aspecto de WhatsApp, antes de la
-     llamada grabada. Bloque autonomo (prefijo wz-) para no tocar la rejilla
-     de la seccion de demo, que es una maqueta medida al pixel. */
-  .wz-sec { background: #F4F6F9; padding: 56px 16px; }
-  .wz-caja { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr minmax(0, 400px); gap: 48px; align-items: center; }
-  .wz-kick { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #128C7E; }
-  .wz-txt h2 { margin: 0; font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.12; letter-spacing: -.02em; color: #0F1B2D; }
-  .wz-txt p.wz-sub { margin: 14px 0 0; font-size: 1.05rem; line-height: 1.6; color: #3A4554; max-width: 40ch; }
-  .wz-txt ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; color: #2A3340; font-size: .98rem; }
-  .wz-txt li::before { content: "\2713"; color: #128C7E; font-weight: 700; margin-right: 8px; }
-  .wz-card { background: #ECE5DD; border-radius: 18px; overflow: hidden; box-shadow: 0 20px 50px rgba(15,40,80,.18); display: flex; flex-direction: column; }
-  .wz-cab { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #075E54; color: #fff; }
-  .wz-av { width: 34px; height: 34px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; font-weight: 700; }
-  .wz-cab b { display: block; font-size: 15px; } .wz-cab i { font-style: normal; font-size: 12px; opacity: .8; }
-  .wz-chat { height: 360px; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
-  .wz-in, .wz-out { max-width: 86%; border-radius: 9px; padding: 6px 9px 4px; font-size: 14.5px; line-height: 1.4; color: #111B21; white-space: pre-wrap; box-shadow: 0 1px 1px rgba(0,0,0,.08); }
-  .wz-in { align-self: flex-end; background: #D9FDD3; }
-  .wz-out { align-self: flex-start; background: #fff; }
-  .wz-pie { display: flex; gap: 8px; padding: 8px 10px; background: #F0F2F5; }
-  .wz-pie .campo { flex: 1 1 auto; background: #fff; border-radius: 999px; height: 40px; display: flex; align-items: center; padding: 0 14px; font-size: 14.5px; color: #667781; }
-  .wz-pie .env { width: 40px; height: 40px; border-radius: 50%; background: #00A884; color: #fff; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
-  .wz-pie .env svg { width: 18px; height: 18px; }
-  .wz-card .cd-botones button { border-color: #00A884; color: #008069; }
-  .wz-card .cd-botones button:hover { background: #00A884; color: #fff; }
-  @media (max-width: 860px) {
-    .wz-sec { padding: 40px 16px; }
-    .wz-caja { grid-template-columns: 1fr; gap: 24px; }
-    .wz-chat { height: 340px; }
-  }
-</style>
-  <section class="wz-sec" id="pruebalo">
-    <div class="wz-caja">
-      <div class="wz-txt">
-        <p class="wz-kick">Pru&eacute;balo t&uacute;</p>
-        <h2>Escr&iacute;bele como lo har&iacute;a un interesado.</h2>
-        <p class="wz-sub">Es el mismo asistente que contestar&iacute;a a tus leads. Pregunta por el programa y mira c&oacute;mo te reserva la llamada de valoraci&oacute;n.</p>
-        <ul><li>Explica el programa y el precio sin rodeos</li><li>Cualifica antes de ocupar tu agenda</li><li>Reserva la llamada de valoraci&oacute;n</li></ul>
-      </div>
-      <div class="wz-card" data-chat-demo data-sitio="demo-coaching" data-personalidad="coaching"
-           data-sel-chat=".wz-chat" data-sel-campo=".wz-pie .campo" data-sel-enviar=".wz-pie .env"
-           data-clase-in="wz-in" data-clase-out="wz-out"
-           data-frases="&iquest;De qu&eacute; va el programa?|&iquest;Cu&aacute;nto cuesta?|Quiero hablar con alguien">
-        <div class="wz-cab"><span class="wz-av">C</span><div><b>Coaching EasyRobots</b><i>en l&iacute;nea</i></div></div>
-        <div class="wz-chat"><div class="wz-out">&iexcl;Hola! Soy Dani, de Coaching EasyRobots. &iquest;Qu&eacute; te gustar&iacute;a saber?</div></div>
-        <div class="wz-pie"><span class="campo">Escribe un mensaje&hellip;</span><span class="env"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
-      </div>
-    </div>
-  </section>
-  <section class="sec s05" id="demo">
-    <div class="foto suave" aria-hidden="true"></div>
+  <!-- =================== 05 · DEMO (v3, 2026-10-07) ===================
+       Referencia: ref-6.png. Junta el antiguo "Pruebalo tu" y la demo: el
+       chat del portatil es el CHAT REAL (chat-demo.js), no una maqueta. El
+       calendario de al lado si es decorado; sus fechas las pone un script
+       con los proximos dias laborables para que nunca salga un mes pasado. -->
+  <section class="m3 c3" id="demo">
+    <div class="foto" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
-    <div class="caja oscura">
-      <div>
-        <h2 class="h2">De un mensaje a medianoche <br>a una llamada que ocurre.</h2>
-        <p class="p">Tu agente conversa, responde, resuelve dudas, cualifica y agenda la llamada en tu calendario.</p>
-        <div class="btns">
-          <!-- Aun no hay video de demostracion grabado: el boton lleva a la
-               llamada, que es donde hoy se ensena el sistema. Cuando este
-               el video, se cambia el href por el del reproductor. -->
-          <a class="btn btn-bl" href="#hablemos" data-cal>
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
-            Ver una demostraci&oacute;n real
-          </a>
+    <div class="caja">
+      <div class="m3-txt">
+        <div class="k3">Demo</div>
+        <h2 class="t3">As&iacute; responde <br><em>EasyRobots</em> <br>a un interesado.</h2>
+        <p class="p3">Prueba la conversaci&oacute;n y descubre c&oacute;mo responde a sus dudas, lo cualifica y puede reservar una llamada directamente en el calendario.</p>
+        <div class="m3-info">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9.2"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
+          <div><b>Esta es una demo con funciones b&aacute;sicas.</b><span>El sistema real se adapta a tu negocio, tu oferta, tu lenguaje y tus criterios de cualificaci&oacute;n.</span></div>
         </div>
-      </div>
-
-      <div class="port" aria-label="Ejemplo de conversaci&oacute;n que termina en una llamada reservada">
-        <div class="port-pant">
-          <div class="pt-chat">
-            <div class="pt-cab"><b>WhatsApp &middot; 00:14</b><i class="chip">Ejemplo</i></div>
-            <div class="bu"><u>DR</u><p>Vi tu formaci&oacute;n. &iquest;Sigue abierta la pr&oacute;xima edici&oacute;n?</p></div>
-            <div class="bu yo"><p>S&iacute;, quedan plazas. &iquest;Qu&eacute; es lo que m&aacute;s te interesa resolver ahora mismo?</p></div>
-            <div class="bu"><u>DR</u><p>Conseguir clientes de forma m&aacute;s constante.</p></div>
-            <div class="bu yo"><p>Entonces encaja. Lo vemos en una llamada de 15 minutos:</p></div>
-          </div>
-          <div class="pt-res">
-            <b>Reservar llamada</b>
-            <div class="pt-dia">Mi&eacute;, 15 Ene
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
-            </div>
-            <div class="pt-h"><span>09:30</span><span class="on">11:00</span><span>13:00</span><span>17:30</span></div>
-            <div class="pt-conf">Confirmar cita</div>
-          </div>
-        </div>
-        <div class="port-base" aria-hidden="true"></div>
-      </div>
-
-      <!-- En el boceto este boton va centrado abajo, cruzando la seccion. -->
-      <div class="s05-cta">
-        <a class="btn btn-az" href="#hablemos" data-cal>
+        <a class="m3-btn" href="#hablemos" data-cal>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
           Reservar llamada
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- =================== 06 · SISTEMA COMPLETO =================== -->
-  <section class="sec s06" id="sistema">
-    <div class="foto suave" role="img" aria-label="Un sistema completo, que se adapta a ti. Conversacion multicanal, cualificacion de leads, agendamiento de llamadas, seguimiento automatico, recordatorios y no-shows, integracion con tu stack y reportes y control."></div>
-    <a class="s06-cta" href="#hablemos" data-cal aria-label="Ver c&oacute;mo se integra"></a>
-    <span class="s06-ej">Panel de ejemplo</span>
-    <div class="velo" aria-hidden="true"></div>
-    <div class="caja oscura">
-      <div>
-        <h2 class="h2">Un sistema completo, <br>que se adapta a ti.</h2>
-        <p class="p">Puedes usar todo el sistema o solo las piezas que necesites. <br>Se integra con tus herramientas actuales.</p>
-        <a class="btn btn-bl" href="#hablemos" data-cal style="margin-top:28px">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
-          Ver c&oacute;mo se integra
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
         </a>
       </div>
 
-      <div class="diag">
-        <svg class="cables" viewBox="0 0 1430 600" fill="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="cb" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#1E6ACB"/><stop offset="1" stop-color="#3FB4FF"/>
-            </linearGradient>
-            <filter id="gl" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="4" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <g stroke="url(#cb)" stroke-width="2" stroke-dasharray="7 6" filter="url(#gl)" opacity=".92">
-            <path d="M350 175C292 150 240 132 192 118"/>
-            <path d="M441 136L442 108"/>
-            <path d="M534 172C580 150 620 130 656 114"/>
-            <path d="M329 206L236 212"/>
-            <path d="M554 206L607 212"/>
-            <path d="M380 276C342 290 302 293 268 296"/>
-            <path d="M500 276C530 290 560 296 582 302"/>
-            <path d="M554 232C660 258 760 288 852 316"/>
-          </g>
-          <g fill="#4FC0FF" filter="url(#gl)">
-            <circle cx="192" cy="118" r="4"/><circle cx="442" cy="108" r="4"/><circle cx="656" cy="114" r="4"/>
-            <circle cx="236" cy="212" r="4"/><circle cx="607" cy="212" r="4"/>
-            <circle cx="268" cy="296" r="4"/><circle cx="582" cy="302" r="4"/>
-          </g>
-        </svg>
-
-        <svg class="cables-m" viewBox="0 0 350 300" fill="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="cbm" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#1E6ACB"/><stop offset="1" stop-color="#3FB4FF"/>
-            </linearGradient>
-            <filter id="glm" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="2.4" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <g stroke="url(#cbm)" stroke-width="1.8" stroke-dasharray="5 4" filter="url(#glm)" opacity=".9">
-            <path d="M152 118C128 110 108 104 90 100"/>
-            <path d="M198 118C222 110 242 104 260 100"/>
-            <path d="M124 147L114 147"/>
-            <path d="M226 147L236 147"/>
-            <path d="M152 176C124 190 90 204 58 211"/>
-            <path d="M175 176L175 211"/>
-            <path d="M198 176C226 190 260 204 292 211"/>
-          </g>
-        </svg>
-
-        <div class="pz p1">
-          <div class="cab">
-            <span class="ic" style="background:#2A3342"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 3a4 4 0 014 4v4a4 4 0 01-8 0V7a4 4 0 014-4z"/><path d="M5.5 11.5a6.5 6.5 0 0013 0M12 18v3"/></svg></span>
-            <b>Conversaci&oacute;n <br>multicanal</b>
-          </div>
-          <div class="logos">
-            <i style="background:linear-gradient(45deg,#F9A03C,#E1306C 55%,#8134AF)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/></svg></i>
-            <i style="background:#25D366"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
-            <i style="background:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="#EA4335" stroke-width="2.1" stroke-linecap="round"><path d="M3 7.5l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></i>
-            <i style="background:#1E70F0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M3 7.5l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></i>
-          </div>
-        </div>
-
-        <div class="pz p2">
-          <div class="cab">
-            <span class="ic" style="background:#1E3A8A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 5h16l-6.2 7.3V19l-3.6 1.6v-8.3z"/></svg></span>
-            <b>Cualificaci&oacute;n <br>de leads</b>
-          </div>
-        </div>
-
-        <div class="pz p3">
-          <div class="cab">
-            <span class="ic" style="background:#1D4ED8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9.4 14.2l2 2 3.4-3.6"/></svg></span>
-            <b>Agendamiento <br>de llamadas</b>
-          </div>
-        </div>
-
-        <div class="pz p4">
-          <div class="cab">
-            <span class="ic" style="background:#13713F"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 12a8 8 0 11-2.4-5.7"/><path d="M20 4v4h-4"/></svg></span>
-            <b>Seguimiento <br>autom&aacute;tico</b>
-          </div>
-        </div>
-
-        <div class="nuc">EasyRobots</div>
-
-        <div class="pz p5">
-          <div class="cab">
-            <span class="ic" style="background:#9A1C3A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 10a6 6 0 1112 0c0 4 1.6 5.6 1.6 5.6H4.4S6 14 6 10z"/><path d="M10 18.5a2.2 2.2 0 004 0"/></svg></span>
-            <b>Recordatorios <br>y no-shows</b>
-          </div>
-        </div>
-
-        <div class="pz p6">
-          <div class="cab">
-            <span class="ic" style="background:#2A3342"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10 7H7a5 5 0 000 10h3M14 7h3a5 5 0 010 10h-3M8.5 12h7"/></svg></span>
-            <b>Integraci&oacute;n <br>con tu stack</b>
-          </div>
-          <div class="logos">
-            <i style="background:#FB5328"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 6.5v4.2M15 13.3v4.2"/><circle cx="15" cy="12" r="3.6"/><circle cx="15" cy="5" r="1.6"/><circle cx="15" cy="19" r="1.6"/><path d="M11.4 12H7"/><circle cx="6" cy="12" r="1.6"/></svg></i>
-            <i style="background:#111317"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5.5 5.5h13v13h-13z"/><path d="M8.6 15V9l6.8 6V9"/></svg></i>
-            <i style="background:#2EB67D"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M9 4.5v9M15 10.5v9M4.5 9h9M10.5 15h9"/></svg></i>
-            <i style="background:#2563EB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M12 4.5v15M4.5 12h15"/></svg></i>
-          </div>
-        </div>
-
-        <div class="pz p7">
-          <div class="cab">
-            <span class="ic" style="background:#0E5FAF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 19V11M12 19V5M19 19v-6"/></svg></span>
-            <b>Reportes <br>y control</b>
-          </div>
-        </div>
-
-        <!-- El panel del portatil es una MAQUETA: las cifras son las que
-             pinta el boceto y no salen de ningun cliente, por eso va
-             etiquetado "Ejemplo" y los nombres llevan solo la inicial del
-             apellido. Mismo trato que la lista de dental. -->
-        <div class="lap" aria-label="Ejemplo de panel de control">
-          <div class="lap-p">
-            <div class="lap-lat">
-              <b>EasyRobots</b>
-              <span>Conversaciones</span><span>Contactos</span><span>Automatizaciones</span>
-              <span>Calendario</span><span>Reportes</span><span>Configuraci&oacute;n</span>
+      <div class="m3-lap">
+        <div class="m3-pant">
+          <div class="m3-chat" data-chat-demo data-sitio="demo-coaching" data-personalidad="coaching"
+               data-sel-chat=".m3-msgs" data-sel-campo=".m3-pie .campo" data-sel-enviar=".m3-pie .env"
+               data-clase-in="m3-in" data-clase-out="m3-out"
+               data-frases="Expl&iacute;came c&oacute;mo funciona|&iquest;Cu&aacute;nto cuesta?|Quiero agendar una llamada">
+            <div class="m3-cab"><span class="m3-av">ER</span><div><b>EasyRobots</b><i>en l&iacute;nea</i></div></div>
+            <div class="m3-msgs"><div class="m3-out">&iexcl;Hola! Soy Dani, el asistente de EasyRobots. &iquest;C&oacute;mo puedo ayudarte?</div></div>
+            <div class="m3-pie">
+              <span class="m3-clip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 11.5l-7.8 7.8a5 5 0 01-7-7l8.3-8.3a3.3 3.3 0 014.7 4.7l-8.3 8.3a1.7 1.7 0 01-2.4-2.4l7.6-7.6"/></svg></span>
+              <span class="campo">Escribe un mensaje&hellip;</span>
+              <span class="env"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
             </div>
-            <div class="lap-cue">
-              <div class="lap-cab"><u>Resumen</u><i>Ejemplo</i></div>
-              <div class="lap-kpi">
-                <div><b>124</b><span>Conversaciones</span></div>
-                <div><b>48</b><span>Citas agendadas</span></div>
-                <div><b>32</b><span>Clientes nuevos</span></div>
-                <div><b class="v">+27&nbsp;%</b><span>Conversi&oacute;n</span></div>
+          </div>
+          <div class="m3-cal" aria-hidden="true">
+            <div class="m3-cal-in">
+              <b class="m3-cal-t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>Reservar llamada</b>
+              <p>Selecciona el d&iacute;a y la hora que mejor te venga. La llamada dura 15 minutos.</p>
+              <div class="m3-mesf"><span>&lsaquo;</span><b class="m3-mes">Octubre 2026</b><span>&rsaquo;</span></div>
+              <div class="m3-dias"><span>Lun<b>12</b></span><span class="on">Mar<b>13</b></span><span>Mi&eacute;<b>14</b></span><span>Jue<b>15</b></span><span>Vie<b>16</b></span></div>
+              <div class="m3-horas"><span>10:00</span><span class="on">11:00</span><span>12:00</span><span>15:00</span><span>16:00</span><span>17:00</span></div>
+            </div>
+            <div class="m3-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 12.4l4 4L18 8.6"/></svg><div><b>Llamada agendada</b><span>Te enviaremos la confirmaci&oacute;n por email y WhatsApp.</span></div></div>
+          </div>
+        </div>
+        <div class="m3-base" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 06 · SISTEMA COMPLETO (v3, 2026-10-07) ===================
+       Referencia: ref-5.png (1920x819). Siete piezas alrededor del portatil,
+       en una caja de 1190x565 con su unidad --u; las posiciones son las de
+       la referencia restando su origen (600,100). Las cifras del panel son
+       las del boceto (Anais: "los numeros dejalos"); van con la nota
+       "Panel de ejemplo" porque no salen de ningun cliente. -->
+  <section class="x3 c3" id="sistema">
+    <div class="foto" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja">
+      <div class="x3-txt">
+        <div class="k3">Un sistema completo</div>
+        <h2 class="t3">Un sistema completo, <br>que <em>se adapta a ti.</em></h2>
+        <p class="p3">Puedes usar todo el sistema o solo las piezas que necesites. Se integra con tus herramientas actuales.</p>
+        <a class="x3-btn" href="#hablemos" data-cal><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>Ver c&oacute;mo se integra</a>
+        <div class="x3-apps" aria-label="Algunas herramientas con las que se integra">
+          <i title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="url(#igg)" stroke-width="2.2"><defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F9A03C"/><stop offset=".5" stop-color="#E1306C"/><stop offset="1" stop-color="#8134AF"/></linearGradient></defs><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="#E1306C" stroke="none"/></svg></i>
+          <i title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
+          <i title="Gmail"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linejoin="round"><path d="M3.5 18V7l8.5 6.5L20.5 7v11" stroke="#EA4335"/><path d="M3.5 18h3V10M20.5 18h-3V10" stroke="#4285F4"/></svg></i>
+          <i title="Google Calendar"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5" fill="#fff"/><path d="M3.5 7.5h17" stroke="#4285F4" stroke-width="3"/><text x="12" y="17.6" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1A73E8" font-family="Arial,sans-serif">31</text></svg></i>
+          <i title="HubSpot"><svg viewBox="0 0 24 24" fill="none" stroke="#FB5328" stroke-width="2.1" stroke-linecap="round"><path d="M15 6.5v4.2M15 13.3v4.2"/><circle cx="15" cy="12" r="3.6"/><circle cx="15" cy="5" r="1.6"/><circle cx="15" cy="19" r="1.6"/><path d="M11.4 12H7"/><circle cx="6" cy="12" r="1.6"/></svg></i>
+        </div>
+        <p class="x3-nota">Se integra con tus herramientas actuales.</p>
+      </div>
+
+      <div class="xd">
+        <div class="xd-in">
+          <svg class="xd-fl" viewBox="0 0 1190 565" fill="none" aria-hidden="true">
+            <defs><filter id="xdg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+            <g stroke="#2F8CFF" stroke-width="2.2" filter="url(#xdg)">
+              <path d="M215 136C215 185 240 205 292 210"/>
+              <path d="M596 108V175"/>
+              <path d="M958 122C958 170 930 190 868 196"/>
+              <path d="M247 262H290"/>
+              <path d="M131 325V365"/>
+              <path d="M938 270H868"/>
+              <path d="M1052 325V365"/>
+            </g>
+            <g fill="#5DB4FF" filter="url(#xdg)"><circle cx="292" cy="210" r="4"/><circle cx="596" cy="175" r="4"/><circle cx="868" cy="196" r="4"/><circle cx="290" cy="262" r="4"/><circle cx="868" cy="270" r="4"/></g>
+          </svg>
+
+          <div class="xc c1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg></i><div><b>Cualificaci&oacute;n de leads</b><span>Filtra y prioriza los mejores contactos.</span></div></div>
+          <div class="xc c2"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9.4 14.2l2 2 3.4-3.6"/></svg></i><div><b>Agendamiento de llamadas</b><span>Reserva autom&aacute;ticamente en tu calendario.</span></div></div>
+          <div class="xc c3"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 10a6 6 0 1112 0c0 4 1.6 5.6 1.6 5.6H4.4S6 14 6 10z"/><path d="M10 18.5a2.2 2.2 0 004 0"/></svg></i><div><b>Recordatorios y no-shows</b><span>Evita cancelaciones y recupera oportunidades.</span></div></div>
+          <div class="xc c4"><i class="wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i><div><b>Seguimiento autom&aacute;tico</b><span>No deja escapar ning&uacute;n lead.</span></div></div>
+          <div class="xc c5"><i><svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="12" width="3.6" height="8" rx="1"/><rect x="10.2" y="6" width="3.6" height="14" rx="1"/><rect x="16.4" y="9" width="3.6" height="11" rx="1"/></svg></i><div><b>Reportes y control</b><span>Tienes una visi&oacute;n clara de todo lo que pasa en tiempo real.</span></div></div>
+          <div class="xc c6"><i class="cl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 3.5l8.5 4.5-8.5 4.5L3.5 8z"/><path d="M3.5 12l8.5 4.5 8.5-4.5M3.5 16l8.5 4.5 8.5-4.5"/></svg></i><div><b>Integraciones</b><span>Funciona con tus herramientas actuales.</span></div></div>
+          <div class="xc c7"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 19.5c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6z"/><circle cx="17" cy="9" r="2.6"/><path d="M15.6 13.7c3.4-.5 6 1.6 6 5.8h-4.3"/></svg></i><div><b>Conversaciones en un solo lugar</b><span>Gestiona todos tus canales desde un mismo sistema.</span></div></div>
+
+          <div class="xl" aria-label="Panel de ejemplo">
+            <div class="xl-p">
+              <div class="xl-lat">
+                <b><u></u>EasyRobots</b>
+                <span class="on">Conversaciones</span><span>Contactos</span><span>Agenda</span><span>Automatizaciones</span><span>Calendario</span><span>Integraciones</span><span>Configuraci&oacute;n</span>
               </div>
-              <div class="lap-bajo">
-                <div>
-                  <div class="lap-graf">
-                    <svg viewBox="0 0 220 56" fill="none" preserveAspectRatio="none" aria-hidden="true">
-                      <path d="M0 44L24 38 48 41 72 28 96 31 120 18 144 24 168 12 192 16 220 6" stroke="#2F7FE8" stroke-width="2"/>
-                      <path d="M0 44L24 38 48 41 72 28 96 31 120 18 144 24 168 12 192 16 220 6V56H0z" fill="#2F7FE8" opacity=".10"/>
-                    </svg>
+              <div class="xl-cue">
+                <div class="xl-cab"><b>Resumen</b><span>&Uacute;ltimos 30 d&iacute;as &#8964;</span></div>
+                <div class="xl-kpi">
+                  <div><b>124</b><i>+12%</i><span>Conversaciones</span></div>
+                  <div><b>48</b><i>+8%</i><span>Llamadas agendadas</span></div>
+                  <div><b>32</b><i>+11%</i><span>Nuevos clientes</span></div>
+                  <div><b>27%</b><i>+6%</i><span>Tasa de conversi&oacute;n</span></div>
+                </div>
+                <div class="xl-fila">
+                  <div class="xl-caja"><b>Conversaciones</b>
+                    <svg viewBox="0 0 240 70" fill="none" preserveAspectRatio="none"><path d="M0 62L30 52 60 56 90 44 120 40 150 30 180 22 210 18 240 8" stroke="#2F7FE8" stroke-width="2"/><path d="M0 62L30 52 60 56 90 44 120 40 150 30 180 22 210 18 240 8V70H0z" fill="#2F7FE8" opacity=".1"/></svg>
+                    <em>48 llamadas agendadas</em>
                   </div>
-                  <div class="lap-lis">
-                    <div class="lap-f"><em></em>Laura M.<i>Cita confirmada</i></div>
-                    <div class="lap-f"><em></em>Carlos G.<i>En seguimiento</i></div>
-                    <div class="lap-f"><em></em>Ana L.<i>Nuevo lead</i></div>
-                    <div class="lap-f"><em></em>David R.<i>Cita confirmada</i></div>
+                  <div class="xl-caja xl-can"><b>Canales</b>
+                    <div><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="13" fill="none" stroke="#E6ECF4" stroke-width="6"/><circle cx="18" cy="18" r="13" fill="none" stroke="#1E70F0" stroke-width="6" stroke-dasharray="34.3 81.7" transform="rotate(-90 18 18)"/><circle cx="18" cy="18" r="13" fill="none" stroke="#25D366" stroke-width="6" stroke-dasharray="22.9 81.7" stroke-dashoffset="-34.3" transform="rotate(-90 18 18)"/><circle cx="18" cy="18" r="13" fill="none" stroke="#E1306C" stroke-width="6" stroke-dasharray="12.3 81.7" stroke-dashoffset="-57.2" transform="rotate(-90 18 18)"/><circle cx="18" cy="18" r="13" fill="none" stroke="#F2A63B" stroke-width="6" stroke-dasharray="8.2 81.7" stroke-dashoffset="-69.5" transform="rotate(-90 18 18)"/></svg>
+                      <ul><li><u style="background:#25D366"></u>WhatsApp<s>42%</s></li><li><u style="background:#E1306C"></u>Instagram<s>28%</s></li><li><u style="background:#1E70F0"></u>Formulario<s>15%</s></li><li><u style="background:#F2A63B"></u>Email<s>10%</s></li><li><u style="background:#9AA5B5"></u>Otros<s>5%</s></li></ul>
+                    </div>
                   </div>
                 </div>
-                <div class="lap-can">
-                  <b>Canales</b>
-                  <div class="lap-c"><u style="background:#25D366"></u>WhatsApp<s>42&nbsp;%</s></div>
-                  <div class="lap-c"><u style="background:linear-gradient(45deg,#F9A03C,#E1306C 60%,#8134AF)"></u>Instagram<s>28&nbsp;%</s></div>
-                  <div class="lap-c"><u style="background:#1E70F0"></u>Email<s>15&nbsp;%</s></div>
-                  <div class="lap-c"><u style="background:#F2A63B"></u>Tel&eacute;fono<s>10&nbsp;%</s></div>
-                  <div class="lap-c"><u style="background:#5B6B8A"></u>Web<s>5&nbsp;%</s></div>
+                <div class="xl-caja xl-lis"><b>&Uacute;ltimas conversaciones <span>Ver todas</span></b>
+                  <p><u></u>Laura M.<span>&iexcl;Hola! Me interesa tu programa.</span><i>Cita confirmada</i><s>hace 5 min</s></p>
+                  <p><u></u>Carlos G.<span>&iquest;Podr&iacute;as contarme m&aacute;s?</span><i>En seguimiento</i><s>hace 12 min</s></p>
+                  <p><u></u>Ana R.<span>Perfecto, agendemos la llamada.</span><i>Llamada agendada</i><s>hace 28 min</s></p>
+                  <p><u></u>David R.<span>Me interesa, &iquest;qu&eacute; incluye?</span><i>Nuevo lead</i><s>hace 1 h</s></p>
                 </div>
               </div>
             </div>
+            <div class="xl-b" aria-hidden="true"></div>
+            <span class="xl-ej">Panel de ejemplo</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =================== 08 · COMO TRABAJAMOS =================== -->
-  <section class="sec s08">
-    <div class="foto suave" aria-hidden="true"></div>
+  <!-- =================== 08 · COMO TRABAJAMOS (v3, 2026-10-07) =================== -->
+  <section class="p3s c3">
+    <div class="foto" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
-    <div class="caja clara">
-      <div class="panel">
-        <div class="kick">C&oacute;mo trabajamos</div>
-        <h2 class="h2">Analizamos, dise&ntilde;amos, <br>construimos y mantenemos.</h2>
-        <p class="p">Un proceso claro, sin complicaciones y <br>adaptado a tu negocio.</p>
+    <div class="caja">
+      <div class="p3s-txt">
+        <div class="k3">C&oacute;mo trabajamos</div>
+        <h2 class="t3">Analizamos, dise&ntilde;amos, <br>construimos y <em>mantenemos.</em></h2>
+        <p class="p3">Un proceso claro, sin complicaciones <br>y adaptado a tu negocio.</p>
       </div>
-      <div class="proc">
-        <div class="pr"><b>01</b><strong>Analizamos</strong><span>por d&oacute;nde llegan tus leads.</span></div>
-        <div class="pr"><b>02</b><strong>Dise&ntilde;amos</strong><span>las respuestas y criterios.</span></div>
-        <div class="pr"><b>03</b><strong>Construimos</strong><span>sobre tus herramientas.</span></div>
-        <div class="pr"><b>04</b><strong>Probamos</strong><span>y ajustamos contigo.</span></div>
-        <div class="pr"><b>05</b><strong>Mantenemos</strong><span>y optimizamos cada mes.</span></div>
+      <ol class="ps">
+        <li><b>01</b><strong>Analizamos</strong><span>por d&oacute;nde llegan tus leads y qu&eacute; necesidades tiene tu negocio.</span></li>
+        <li><b>02</b><strong>Dise&ntilde;amos</strong><span>las respuestas, criterios y flujos, adaptados a tu forma de trabajar.</span></li>
+        <li><b>03</b><strong>Construimos</strong><span>sobre tus herramientas actuales, sin complicar tu operativa.</span></li>
+        <li><b>04</b><strong>Probamos</strong><span>y ajustamos contigo hasta que todo funciona como debe.</span></li>
+        <li><b>05</b><strong>Mantenemos</strong><span>y optimizamos cada mes para que siga dando resultados.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- =================== 07 · EL LIMITE (v3, 2026-10-07) ===================
+       Referencia: la mitad de arriba de ref-1.png. La frase de "cuando no
+       sabe algo, no improvisa" no esta en la referencia, pero responde a
+       una de las ocho dudas de la web (que pasa cuando la IA no sabe) y se
+       queda como nota pequena bajo el texto. -->
+  <section class="l3 c3">
+    <div class="foto" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja">
+      <div class="l3-txt">
+        <div class="k3">El l&iacute;mite</div>
+        <h2 class="t3">Tu programa lo vendes t&uacute;. <br><em>Eso no se toca.</em></h2>
+        <p class="p3">EasyRobots se encarga de todo lo previo: responde, cualifica, agenda, recuerda y hace seguimiento. La decisi&oacute;n final y la venta siempre son tuyas.</p>
+        <p class="l3-nota">Cuando el sistema no sabe algo, no improvisa: lo dice y te lo pasa.</p>
+      </div>
+      <div class="l3-cs">
+        <div class="l3-c">
+          <h3>Qu&eacute; hace <em>EasyRobots</em></h3>
+          <ul><li>Responde mensajes y llamadas.</li><li>Cualifica y filtra interesados.</li><li>Agenda la llamada en tu calendario.</li><li>Env&iacute;a recordatorios y hace seguimiento.</li><li>Te da visibilidad de todo en un solo sistema.</li></ul>
+        </div>
+        <div class="l3-c">
+          <h3>Qu&eacute; sigues haciendo t&uacute;</h3>
+          <ul><li>Decides a qui&eacute;n llamas.</li><li>Haces la llamada de venta.</li><li>Presentas tu programa.</li><li>Resuelves objeciones.</li><li>Cierras el cliente.</li></ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="tres">
-  <!-- =================== 07 · EL LIMITE =================== -->
-  <section class="sec s07">
-    <div class="foto suave" aria-hidden="true"></div>
-    <div class="velo" aria-hidden="true"></div>
-    <div class="caja clara">
-      <div class="panel" style="max-width:min(680px,58%)">
-        <div class="kick">El l&iacute;mite</div>
-        <h2 class="h2">Tu programa lo vendes t&uacute;. <br>Eso no se toca.</h2>
-        <p class="p">Un programa de cuatro cifras se vende hablando. Por eso el <br>objetivo de todo esto es la llamada, no la venta.</p>
+  <!-- ============ 09 + 10 · QUIENES SOMOS Y GARANTIA (v3, 2026-10-07) ============
+       Referencia: ref-2.png. Fotos reales en rectangulo, como en estetica
+       (antes iban en circulo). La garantia lleva el copy comun de todas las
+       webs: el de la referencia ("seguimos trabajando contigo hasta
+       conseguirlo", "sin preguntas") prometia otra cosa. -->
+  <section class="e3 c3" id="equipo">
+    <div class="caja">
+      <div class="e3-txt">
+        <div class="k3">Qui&eacute;nes somos</div>
+        <h2 class="t3">No somos una <br><em>centralita.</em></h2>
+        <p class="p3">Somos las personas que dise&ntilde;an, construyen y mantienen tu sistema.</p>
+        <p class="p3">Especializados en automatizaci&oacute;n para negocios de coaching e infoproductos.</p>
       </div>
-
-      <div class="lim">
-        <div class="cuad v">
-          <h3>De esto se ocupa el sistema</h3>
-          <ul>
-            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Contestar a la hora que sea, por el canal que sea.</li>
-            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Resolver las tres preguntas de siempre.</li>
-            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Cualificar con los criterios que t&uacute; pongas.</li>
-            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Agendar, recordar y recuperar al que no aparece.</li>
-            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Retomar la aplicaci&oacute;n que qued&oacute; a medias.</li>
-            <li><span class="pin v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 12.4l3.4 3.4L17 8.8"/></svg></span>Dejar cada lead etiquetado y avisarte.</li>
-          </ul>
+      <div class="e3-fotos">
+        <figure class="e3-f"><img src="/assets/guille.webp" alt="Guillermo, cofundador de EasyRobots" loading="lazy" decoding="async" width="900" height="765"><figcaption><b>Guillermo</b><span>Co-fundador</span></figcaption></figure>
+        <figure class="e3-f"><img src="/assets/anais.webp" alt="Ana&iacute;s, cofundadora de EasyRobots" loading="lazy" decoding="async" width="900" height="765"><figcaption><b>Ana&iacute;s</b><span>Co-fundadora</span></figcaption></figure>
+      </div>
+      <div class="e3-g" id="garantia">
+        <div class="e3-gc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l8 3v6.2c0 4.9-3.4 8.6-8 9.8-4.6-1.2-8-4.9-8-9.8V5.5z" fill="#1E7BFF"/><path d="M8.2 12.2l2.6 2.6 5-5.2" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Nuestra <em>garant&iacute;a.</em></h3>
         </div>
-        <div class="cuad r">
-          <h3>Esto sigue siendo tuyo</h3>
-          <ul>
-            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>La llamada de venta.</li>
-            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>El criterio sobre qui&eacute;n encaja y qui&eacute;n no.</li>
-            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>La relaci&oacute;n con tus alumnos.</li>
-            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Tu forma de contar lo que haces.</li>
-            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Cualquier conversaci&oacute;n delicada.</li>
-            <li><span class="pin r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></span>Y el tono: se configura contigo y se ajusta hasta que suene a ti.</li>
-          </ul>
-        </div>
-        <p class="cierre-nota">Cuando el sistema no sabe algo, no improvisa: lo dice y te lo pasa. En una marca personal, inventarse una respuesta cuesta m&aacute;s caro que no contestar.</p>
+        <p>Tienes 14 d&iacute;as para ver el sistema funcionando. Si no hace lo que hemos definido o no encaja, lo paramos y te devolvemos el dinero.</p>
+        <dl>
+          <dt>14 d&iacute;as para probar.</dt><dd>Comprobamos que encaja con tu forma de trabajar.</dd>
+          <dt>Si no encaja, te devolvemos el dinero.</dt><dd>Lo paramos y te lo devolvemos.</dd>
+          <dt>Primer mes de mantenimiento incluido.</dt><dd>Para que empieces con todo funcionando.</dd>
+        </dl>
       </div>
     </div>
   </section>
-
-  <!-- ============ 09 + 10 · QUIENES SOMOS Y GARANTIA ============ -->
-  <section class="sec s09" id="equipo">
-    <div class="foto suave" aria-hidden="true"></div>
-    <div class="velo" aria-hidden="true"></div>
-    <div class="caja clara">
-      <div class="panel">
-        <div class="kick">Qui&eacute;nes somos</div>
-        <h2 class="h2">No somos una centralita.</h2>
-        <p class="p">Somos las personas que dise&ntilde;an, construyen y mantienen tu sistema.</p>
-        <p class="p">Especializados en automatizaci&oacute;n para negocios de coaching e infoproductos.</p>
-      </div>
-
-      <!-- El boceto pone dos retratos generados con IA. Van las fotos reales
-           de los dos, de la misma sesion (2026-10-02). -->
-      <div class="caras">
-        <div class="cara">
-          <div class="foto-r"><img src="/assets/guille.webp" alt="Guillermo, cofundador de EasyRobots" loading="lazy" decoding="async" width="300" height="300"></div>
-          <u class="rot"><b>Guillermo</b><span>Co-fundador</span></u>
-        </div>
-        <div class="cara">
-          <div class="foto-r"><img src="/assets/anais.webp" alt="Ana&iacute;s, cofundadora de EasyRobots" loading="lazy" decoding="async" width="300" height="300"></div>
-          <u class="rot"><b>Ana&iacute;s</b><span>Co-fundadora</span></u>
-        </div>
-      </div>
-
-      <div class="gar" id="garantia">
-        <h2 class="h2">Nuestra garant&iacute;a.</h2>
-        <p class="p">Si despu&eacute;s de la implementaci&oacute;n no ves una mejora clara en la gesti&oacute;n y seguimiento de tus leads, seguimos trabajando contigo sin coste adicional hasta conseguirlo.</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.4 2"/></svg>14 d&iacute;as para comprobar que encaja con tu forma de trabajar.</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M8.6 12.3l2.3 2.3 4.5-4.8"/></svg>Si no hace lo que hemos definido o no encaja, lo paramos y te devolvemos el dinero.</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M8.6 12.3l2.3 2.3 4.5-4.8"/></svg>Primer mes de mantenimiento incluido.</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 8.2v4.4M12 15.6h.01"/></svg><span>Tu <strong>tranquilidad</strong> tambi&eacute;n es parte del servicio.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  </div>
 
   <!-- =================== 11 · CIERRE =================== -->
   <section class="sec s11" id="hablemos">
@@ -1420,6 +1649,21 @@
       var b = document.querySelector('.bn'); if (!b) return;
       function mira() { b.classList.toggle('bn-baja', window.scrollY > 40); }
       mira(); window.addEventListener('scroll', mira, { passive: true });
+    })();
+  </script>
+  <script>
+    /* Calendario decorativo de la demo: los proximos cinco dias laborables,
+       para que nunca enseñe un mes que ya ha pasado. */
+    (function () {
+      var c = document.querySelector('.m3-cal'); if (!c) return;
+      var M = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      var D = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+      var d = new Date(), dias = [];
+      while (dias.length < 5) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) dias.push(new Date(d)); }
+      c.querySelector('.m3-mes').textContent = M[dias[0].getMonth()] + ' ' + dias[0].getFullYear();
+      c.querySelector('.m3-dias').innerHTML = dias.map(function (x, i) {
+        return '<span' + (i === 1 ? ' class="on"' : '') + '>' + D[x.getDay()] + '<b>' + x.getDate() + '</b></span>';
+      }).join('');
     })();
   </script>
   <script src="/js/chat-demo.js" defer></script>

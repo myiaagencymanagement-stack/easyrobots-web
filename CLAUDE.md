@@ -1343,6 +1343,26 @@ de cifras quemados en la foto. Se usa solo para medir donde va cada pieza.
   conseguirlo", que es copy de la ficha y es un compromiso abierto en el
   tiempo. Conviene mirarlo antes de quitar el `noindex`.
 
+### Coaching v3 (2026-10-07)
+
+Seis secciones rehechas contra referencias nuevas de Anais
+(`src/assets/boceto/coaching-v3/`, `ref-*.png` y sus fondos limpios
+`fondo-*.png`): donde se cae (junta las antiguas 02 y 03), demo (junta
+"Pruebalo tu" y la demo: **el chat del portatil es el chat real**), sistema,
+como trabajamos, el limite y quienes somos + garantia. Clases nuevas con
+prefijo propio (`d3`, `m3`, `x3`, `p3s`, `l3`, `e3`); el CSS viejo se quedo.
+
+- **Letra: Inter en el texto y Plus Jakarta en los titulares, solo en
+  coaching** ("la letra de Apple"; SF Pro no se puede servir en web). Esta en
+  `assets/fonts/inter-*.woff2`. Si gusta, se decide si pasa a las demas.
+- Las cifras del panel del sistema (124 / 48 / 32 / 27 %) se quedan por
+  decision de Anais, con la nota "Panel de ejemplo".
+- La garantia lleva el copy comun, no el de la referencia ("seguimos
+  trabajando hasta conseguirlo", "sin preguntas").
+- Fotos del equipo en rectangulo, ya no en circulo.
+- Falta guardar en `coaching-v3/` el fondo vertical de "donde se cae" que
+  paso Anais para movil; de momento va un recorte del horizontal.
+
 ## La calculadora
 
 Fórmula, visible en la propia página:
