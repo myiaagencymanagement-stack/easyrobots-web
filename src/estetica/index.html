@@ -775,11 +775,11 @@
     /* Ajustes de movil (Anais, 07/10), mirando el hero de coaching: la foto
        se ve arriba y el texto empieza mas abajo. */
     @media (max-width: 860px) {
-      /* Hero: fuera la fila de ventajas y el segundo boton (la reserva ya va
-         fija en la barra), para que el texto baje y se vea la foto. La
+      /* Hero: fuera la fila de ventajas, para que el texto baje y se vea la
+         foto. El boton de reservar se queda (Anais lo quiere). La
          notificacion queda justo encima del movil de la foto, que esta al
          78 % del ancho de pantalla en alto. */
-      .hero .h-meta, .hero .h-btns .b-linea { display: none; }
+      .hero .h-meta { display: none; }
       .hero .velo { background: linear-gradient(180deg, rgba(6,5,4,.40) 0%, rgba(6,5,4,.04) 14%, rgba(6,5,4,.10) 36%, rgba(6,5,4,.86) 47%, rgba(6,5,4,.97) 100%); }
       .h-noti { top: calc(100vw * .47); }
       /* 04: el flujo de mensajes y agenda, mas compacto. */
