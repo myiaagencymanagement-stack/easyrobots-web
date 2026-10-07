@@ -25,7 +25,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Sistemas de IA para coaches e infoproductores","description":"Automatización e IA para coaches e infoproductores: cualificamos, agendamos, recordamos y recuperamos los no-shows para que el que dice que sí llegue.","serviceType":"Automatización e inteligencia artificial","provider":{"@id":"https://easyrobots-ai.cloud/#organizacion"},"url":"https://easyrobots-ai.cloud/coaching/","areaServed":{"@type":"Country","name":"España"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://easyrobots-ai.cloud/"},{"@type":"ListItem","position":2,"name":"Coaching","item":"https://easyrobots-ai.cloud/coaching/"}]}]}</script>
 
 
-  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/inter-opsz-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-700-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/coach3-hero.webp" as="image">
 
@@ -37,8 +37,8 @@
     @font-face { font-family:'Plus Jakarta Sans'; font-weight:600; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-600-latin.woff2) format('woff2'); }
     @font-face { font-family:'Plus Jakarta Sans'; font-weight:700; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-700-latin.woff2) format('woff2'); }
     @font-face { font-family:'Plus Jakarta Sans'; font-weight:800; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-800-latin.woff2) format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap; src:url(/assets/fonts/inter-latin.woff2) format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap; src:url(/assets/fonts/inter-latin-ext.woff2) format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap; src:url(/assets/fonts/inter-opsz-latin.woff2) format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap; src:url(/assets/fonts/inter-opsz-latin-ext.woff2) format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
 
     /* ==========================================================
        LANDING DE COACHING (v2) · 2026-10-02
@@ -792,7 +792,18 @@
        Apple con SF: el titulo se distingue del subtitulo por peso, tamano y
        color, no por cambiar de letra. Titulares en 650 con el tracking
        apretado de SF Pro Display. */
-    .h-t, .h2, .t3 { font-weight: 650 !important; letter-spacing: -.032em !important; }
+    /* Tercera vuelta: "lo de las letras como Apple ni caso". Lo que hace
+       que Apple parezca Apple es la ESCALA: titulares muy grandes en
+       seminegrita con el tracking justo, y texto de 19-21 px. Inter va
+       ahora con su eje de tamano optico (inter-opsz-*), que en los
+       titulares grandes usa el corte Display, como SF Pro Display. */
+    body { font-optical-sizing: auto; }
+    .h-t, .h2, .t3 { font-weight: 600 !important; letter-spacing: -.022em !important; line-height: 1.07 !important; }
+    .h-t { font-size: clamp(42px, 4.6vw, 72px) !important; }
+    .t3, .h2 { font-size: clamp(36px, 3.7vw, 60px) !important; }
+    .d3 .t3, .x3 .t3, .l3 .t3 { font-size: clamp(34px, 3.1vw, 50px) !important; }
+    .p3, .h-sub, .s04 .p, .s11 .p { font-size: clamp(17px, 1.4vw, 21px) !important; line-height: 1.45 !important; letter-spacing: -.012em; }
+    .k3 { font-size: 13.5px; font-weight: 600; letter-spacing: .14em; }
     .h-t, .h2, .h3, .t3, .nucleo, .dc-tit b, .dc-fin b, .ps b, .ps strong, .l3-c h3, .e3-gc h3, .e3-f b { font-family: var(--ft); }
 
     .c3 { position: relative; overflow: hidden; }
@@ -814,7 +825,7 @@
     .d3-txt { padding-top: 22px; }
     .d3 .t3, .x3 .t3 { font-size: clamp(30px, 2.65vw, 43px); }
 
-    .dc { container-type: inline-size; width: min(100%, 700px); justify-self: end; }
+    .dc { container-type: inline-size; width: min(100%, 700px); justify-self: start; }
     /* Anais: no puede verse mas grande que el hero. El esquema manda la
        altura de la seccion, asi que se limita a 700 de ancho (unos 550 de alto). */
     .dc-in { --u: calc(100cqw / 910); position: relative; }
