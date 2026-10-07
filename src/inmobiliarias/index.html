@@ -444,7 +444,7 @@
 
     /* ======================= 08 · CTA ======================= */
     .cierre { position: relative; overflow: hidden; color: #fff; background: var(--oscuro); }
-    .cierre .foto { position: absolute; inset: 0; background: url(/assets/escena-inmobiliaria.webp) center 38% / cover no-repeat; opacity: .82; }
+    .cierre .foto { position: absolute; inset: 0; background: url(/assets/inmo-cierre.webp) center 45% / cover no-repeat; opacity: .9; }
     /* El velo se abre en la CTA, donde la escena tiene que verse, y se
        cierra sobre el pie, que es texto pequeno y necesita contraste. */
     .cierre .velo { position: absolute; inset: 0; background:
@@ -557,9 +557,18 @@
     .h-wfoot .mic { flex: 0 0 auto; }
     .h-wfoot .mic svg { width: calc(12*var(--u)); height: calc(12*var(--u)); color: var(--azul); }
 
+    /* Fondos nuevos (2026-10-07), generados con ChatGPT a partir del hero:
+       mismo piso y misma ciudad en toda la pagina. Originales en
+       assets/boceto/inmobiliarias-fondos/. Hasta aqui El momento, la demo y
+       la CTA repetian escena-inmobiliaria.webp; ahora solo la demo. */
     .m2 { background:
-            linear-gradient(180deg, rgba(254,254,253,.975) 0%, rgba(254,254,253,.91) 46%, rgba(254,254,253,.975) 100%),
-            url(/assets/escena-inmobiliaria.webp) center 38% / cover no-repeat; }
+            linear-gradient(90deg, rgba(254,254,253,.95) 0%, rgba(254,254,253,.86) 34%, rgba(254,254,253,.62) 70%, rgba(254,254,253,.55) 100%),
+            url(/assets/inmo-momento.webp) center 55% / cover no-repeat; }
+    /* Como funciona era azul marino liso: ahora el comercial de noche con el
+       movil, oscuro a la izquierda para el texto. */
+    #como-funciona { background:
+            linear-gradient(90deg, rgba(6,12,22,.94) 0%, rgba(6,12,22,.80) 34%, rgba(6,12,22,.38) 68%, rgba(6,12,22,.45) 100%),
+            url(/assets/inmo-como.webp) center 40% / cover no-repeat var(--oscuro); }
     .m2-grid { display: grid; grid-template-columns: .88fr 1.07fr 1.05fr; gap: 24px; align-items: stretch; }
     .m2-txt { align-self: center; padding-right: 10px; }
     .m2-kick { font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--azul); margin-bottom: 1.5rem; }
@@ -888,12 +897,15 @@
     @media (max-width: 900px) {
       .hero .foto { background-image: url(/assets/hero-inmobiliarias-movil.webp); background-position: center 38%; background-size: cover; }
       #sistema .foto { background-image: url(/assets/escena-piezas-movil.webp); background-position: center 50%; }
-      .cierre .foto { background-image: url(/assets/escena-inmobiliaria-movil.webp); background-position: center 44%; }
+      .cierre .foto { background-image: url(/assets/inmo-cierre-movil.webp); background-position: center top; }
       /* Las claras, con el recorte vertical por el mismo motivo: el
          panoramico en una seccion alta y estrecha se queda en un parche. */
-      .m2 { background-image:
-              linear-gradient(180deg, rgba(254,254,253,.975) 0%, rgba(254,254,253,.91) 46%, rgba(254,254,253,.975) 100%),
-              url(/assets/escena-inmobiliaria-movil.webp); background-position: center, center 38%; }
+      .m2 { background:
+              linear-gradient(180deg, rgba(254,254,253,.80) 0%, rgba(254,254,253,.88) 30%, rgba(254,254,253,.97) 62%, #FEFEFD 100%),
+              url(/assets/inmo-momento-movil.webp) center top / 100% auto no-repeat #FEFEFD; }
+      #como-funciona { background:
+              linear-gradient(180deg, rgba(6,12,22,.55) 0%, rgba(6,12,22,.70) 30%, rgba(6,12,22,.94) 60%, #060C16 100%),
+              url(/assets/inmo-como-movil.webp) center top / 100% auto no-repeat #060C16; }
       #demo { background-image:
               linear-gradient(180deg, rgba(245,249,252,.975) 0%, rgba(245,249,252,.90) 42%, rgba(245,249,252,.97) 100%),
               url(/assets/escena-inmobiliaria-movil.webp); background-position: center, center 46%; }
