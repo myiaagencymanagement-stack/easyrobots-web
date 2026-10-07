@@ -123,10 +123,11 @@
     .cab .p { padding-bottom: 6px; }
 
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 11px; height: 56px; padding: 0 30px; border-radius: 10px; font-size: 16.5px; font-weight: 600; white-space: nowrap; cursor: pointer; border: 0; font-family: inherit; transition: background .2s, border-color .2s, transform .2s; }
-    .btn-n { background: #060C11; color: #fff; }
-    .btn-n:hover { background: #1A232C; }
-    .btn-b { background: rgba(255,255,255,.55); color: var(--tinta); border: 1.5px solid #BFC3C8; }
-    .btn-b:hover { border-color: var(--tinta); background: rgba(255,255,255,.8); }
+    /* En oscuro el boton principal pasa a azul: el negro se perdia sobre el fondo. */
+    .btn-n { background: var(--azul); color: #fff; }
+    .btn-n:hover { background: #3A84FF; }
+    .btn-b { background: transparent; color: var(--tinta); border: 1.5px solid rgba(127,140,160,.45); }
+    .btn-b:hover { border-color: var(--tinta); }
 
     /* ===================== 01 - HERO =====================
        Una pantalla justa al entrar (100svh). La foto es la del boceto con
@@ -276,28 +277,28 @@
     .k-ig svg { width: 26px; height: 26px; }
     .k-ig .fl { width: 16px; height: 16px; }
     .k-ig:hover { color: var(--azul); }
-    .k-panel { background: #121A27; border: 1px solid var(--linea); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .k-panel { background: #FEFCFB; border: 1px solid var(--linea); border-radius: 16px; box-shadow: 0 10px 30px rgba(60,40,20,.06); }
     .k-nums { display: grid; grid-template-columns: 1fr 1fr 1.35fr; border-bottom: 1px solid var(--linea); }
     .k-num { padding: 24px 26px 22px; }
     .k-num + .k-num { border-left: 1px solid var(--linea); }
     .k-num strong { display: block; font-size: clamp(38px, 3.5vw, 56px); line-height: 1; font-weight: 700; letter-spacing: -.04em; white-space: nowrap; }
-    .k-num span { display: block; margin-top: 14px; font-size: 12.5px; font-weight: 600; letter-spacing: .1em; white-space: nowrap; text-transform: uppercase; color: #C9D1DC; }
+    .k-num span { display: block; margin-top: 14px; font-size: 12.5px; font-weight: 600; letter-spacing: .1em; white-space: nowrap; text-transform: uppercase; color: #3C4148; }
     .k-num i { display: block; margin-top: 4px; font-style: normal; font-size: 15px; color: var(--gris2); }
     .k-sin { display: grid; grid-template-columns: 34px 1fr; gap: 0 18px; padding: 20px 28px; }
-    .k-sin svg { width: 32px; height: 32px; color: #B4BDC9; margin-top: 2px; }
+    .k-sin svg { width: 32px; height: 32px; color: #4A4F57; margin-top: 2px; }
     .k-sin b { display: block; font-size: 17px; font-weight: 700; }
-    .k-sin p { font-size: 15.5px; line-height: 1.5; color: #C9D1DC; }
+    .k-sin p { font-size: 15.5px; line-height: 1.5; color: #3C4148; }
     .k-nota { grid-column: 2; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--linea); font-size: 13.5px; line-height: 1.55; color: var(--gris2); }
     .k-dos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .k-card { background: var(--tarjeta); border: 1px solid var(--linea); border-radius: 12px; padding: 22px 24px 24px; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+    .k-card { background: var(--tarjeta); border: 1px solid var(--linea); border-radius: 12px; padding: 22px 24px 24px; box-shadow: 0 8px 24px rgba(60,40,20,.05); }
     .k-card h3 { font-size: 17px; font-weight: 700; letter-spacing: -.02em; line-height: 1.3; }
-    .k-card p { margin-top: 10px; font-size: 15px; line-height: 1.55; color: #C9D1DC; }
-    .k-cita { display: grid; grid-template-columns: 60px 1px 1fr; gap: 0 22px; align-items: center; background: #121A27; border-radius: 12px; padding: 18px 24px; }
-    .k-cita u { width: 60px; height: 60px; border-radius: 50%; background: #121A27; display: flex; align-items: center; justify-content: center; color: var(--marron); }
+    .k-card p { margin-top: 10px; font-size: 15px; line-height: 1.55; color: #3C4148; }
+    .k-cita { display: grid; grid-template-columns: 60px 1px 1fr; gap: 0 22px; align-items: center; background: #F3EEE7; border-radius: 12px; padding: 18px 24px; }
+    .k-cita u { width: 60px; height: 60px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; color: var(--marron); }
     .k-cita u svg { width: 28px; height: 28px; }
     .k-cita hr { border: 0; width: 1px; height: 100%; min-height: 64px; background: #C9A57E; }
     .k-cita b { display: block; font-size: 17px; font-weight: 700; }
-    .k-cita p { margin-top: 4px; font-size: 15px; line-height: 1.55; color: #C9D1DC; }
+    .k-cita p { margin-top: 4px; font-size: 15px; line-height: 1.55; color: #3C4148; }
 
     /* ============ 07-09 - EQUIPO + GARANTIA + DATOS ============
        Los dos retratos del boceto son caras generadas con IA. Va la foto
@@ -641,6 +642,66 @@
     .er-modal-x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 9px; border: 1px solid #e1e8f2; background: #182233; color: #A3ADBB; font-size: 1rem; cursor: pointer; line-height: 1; }
     .er-cal { width: 100%; min-height: 620px; border: 0; border-radius: 12px; margin-top: 1.2rem; background: #182233; }
     @media (max-width: 900px) { .er-modal-box { padding: 1.6rem 1rem 1rem; margin: 0 auto; } .er-cal { min-height: 560px; } }
+    /* ====== HERO v3: sin foto y con conversacion por sector ======
+       La foto del hero se veia borrosa (recorte del boceto ampliado). Hasta
+       que llegue el fondo nuevo, el hero va sobre oscuro liso con dos brillos
+       azules controlados, y el protagonista es el chat: se elige un sector y
+       la conversacion se escribe sola. Ensena el producto en vez de hablar
+       de el, y deja claro en dos segundos que la agencia es horizontal.
+       Las conversaciones son EJEMPLOS y lo dicen. */
+    .hero { background:
+        radial-gradient(60% 70% at 78% 45%, rgba(30,111,242,.20), rgba(30,111,242,0) 70%),
+        radial-gradient(40% 50% at 10% 100%, rgba(30,111,242,.10), rgba(30,111,242,0) 70%),
+        linear-gradient(180deg, #070B12, #0A0F18); }
+    .hero .foto, .hero .velo { display: none; }
+    .h-links a { color: #C9D1DC; }
+    .h-cuerpo { gap: 48px; }
+    .hx { flex: 0 0 auto; width: clamp(360px, 31vw, 450px); margin-left: auto; }
+    .hx-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .hx-tabs button { font: inherit; font-size: 13.5px; font-weight: 600; color: #A3ADBB; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.10); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
+    .hx-tabs button:hover { color: #fff; }
+    .hx-tabs button[aria-selected="true"] { color: #fff; background: var(--azul); border-color: var(--azul); }
+    .hx-card { background: linear-gradient(180deg, #111A28, #0C131F); border: 1px solid rgba(255,255,255,.09); border-radius: 20px; box-shadow: 0 30px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(30,111,242,.06); overflow: hidden; }
+    .hx-cab { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .hx-cab u { width: 34px; height: 34px; border-radius: 50%; background: var(--wa); display: flex; align-items: center; justify-content: center; color: #fff; }
+    .hx-cab u svg { width: 19px; height: 19px; }
+    .hx-cab b { display: block; font-size: 14.5px; color: #fff; }
+    .hx-cab span { display: block; font-size: 12px; color: #7C8796; }
+    .hx-cab em { margin-left: auto; font-style: normal; font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #7C8796; border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 3px 7px; }
+    .hx-chat { height: 318px; padding: 18px; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; overflow: hidden; }
+    .hx-m { max-width: 84%; font-size: 14px; line-height: 1.45; padding: 10px 14px; border-radius: 14px; animation: hxIn .35s ease both; }
+    .hx-m.c { align-self: flex-start; background: #1B2433; color: #E6EBF2; border-bottom-left-radius: 4px; }
+    .hx-m.e { align-self: flex-end; background: #13315F; color: #fff; border-bottom-right-radius: 4px; }
+    .hx-m.ok { align-self: center; max-width: none; font-size: 12.5px; font-weight: 600; color: #8FD9B0; background: rgba(37,211,102,.08); border: 1px solid rgba(37,211,102,.22); border-radius: 999px; padding: 6px 14px; }
+    .hx-dots { align-self: flex-start; display: flex; gap: 4px; padding: 12px 14px; background: #1B2433; border-radius: 14px; }
+    .hx-dots.e { align-self: flex-end; background: #13315F; }
+    .hx-dots i { width: 6px; height: 6px; border-radius: 50%; background: #A3ADBB; animation: hxDot 1s infinite; }
+    .hx-dots i:nth-child(2) { animation-delay: .15s; } .hx-dots i:nth-child(3) { animation-delay: .3s; }
+    .hx-pie { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 18px; border-top: 1px solid rgba(255,255,255,.07); font-size: 13px; }
+    .hx-pie span { color: #7C8796; }
+    .hx-pie a { color: #8DB8FF; font-weight: 600; text-align: right; }
+    .hx-pie a:hover { color: #fff; }
+    @keyframes hxIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @keyframes hxDot { 0%, 60%, 100% { opacity: .3; } 30% { opacity: 1; } }
+    @media (max-width: 1080px) { .hx { width: 380px; } }
+    @media (max-width: 900px) {
+      .hero .foto, .hero .velo { display: none; }
+      .h-cuerpo { flex-direction: column; align-items: stretch; gap: 28px; }
+      .hx { width: 100%; margin: 0 0 36px; }
+      .hx-tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: -22px; padding-right: 22px; }
+      .hx-tabs::-webkit-scrollbar { display: none; }
+      .hx-tabs button { flex: 0 0 auto; }
+      .hx-chat { height: 290px; padding: 14px; }
+      .hx-m { font-size: 13.5px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .hx-m { animation: none; } .hx-dots i { animation: none; } }
+
+    /* Caso real y equipo/garantia vuelven a claro (peticion de Anais, 2026-10-07):
+       la pagina arranca oscura y a partir de Pilar se abre a la luz. Se
+       devuelven los tokens originales solo dentro de estas dos secciones. */
+    .s06, section.eq { --crema: #F9F6F3; --crema2: #F5F1EE; --tarjeta: #FCFAF7; --tinta: #05080C;
+      --gris: #5A5D62; --gris2: #73797E; --kick: #7E8287; --linea: rgba(30,25,20,.08); --marron: #966F45; color: var(--tinta); }
+    .s06 { background: var(--crema); }
   </style>
 </head>
 
@@ -679,17 +740,21 @@
         </div>
       </div>
 
-      <div class="h-avisos h-av1" aria-label="Ejemplos de avisos del sistema">
-        <div class="av"><u class="wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2a9.7 9.7 0 00-8.4 14.6L2.3 21.7l5-1.3A9.7 9.7 0 1012 2.2zm0 17.7a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1a6.5 6.5 0 01-3.2-2.8c-.2-.4.2-.4.7-1.3.1-.1 0-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 00-.6.3 2.7 2.7 0 00-.9 2c0 1.2.9 2.3 1 2.5s1.7 2.6 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg></u>
-          <div><b>Nuevo cliente</b><span>Consulta recibida por WhatsApp</span><i>Hace 2 min</i></div></div>
-        <div class="av"><u class="az"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01" stroke-width="2.6"/></svg></u>
-          <div><b>Cita confirmada</b><span>Visita agendada</span><i>Hace 8 min</i></div></div>
-      </div>
-      <div class="h-avisos h-av2" aria-hidden="true">
-        <div class="av"><u class="az"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 19v-5M10 19V10M14 19v-7M18 19V6"/></svg></u>
-          <div><b>Lead cualificado</b><span>Desde la web</span><i>Hace 12 min</i></div></div>
-        <div class="av"><u class="az"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-2.9 1.2V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-2.9-1.2l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00-1.2-2.9H3a2 2 0 110-4h.1a1.7 1.7 0 001.2-2.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 002.9-1.2V3a2 2 0 114 0v.1a1.7 1.7 0 002.9 1.2l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 001.2 2.9h.1a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg></u>
-          <div><b>Proceso automatizado</b><span>Seguimiento en marcha</span><i>Hace 20 min</i></div></div>
+      <!-- Conversacion por sector: ejemplos, no clientes reales. El JS esta al final del body. -->
+      <div class="hx" id="hx">
+        <div class="hx-tabs" role="tablist" aria-label="Elige tu sector">
+          <button role="tab" aria-selected="true" data-s="0">Estética</button>
+          <button role="tab" aria-selected="false" data-s="1">Dental</button>
+          <button role="tab" aria-selected="false" data-s="2">Inmobiliaria</button>
+          <button role="tab" aria-selected="false" data-s="3">Concesionario</button>
+          <button role="tab" aria-selected="false" data-s="4">Ecommerce</button>
+          <button role="tab" aria-selected="false" data-s="5">Coaching</button>
+        </div>
+        <div class="hx-card">
+          <div class="hx-cab"><u><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2a9.7 9.7 0 00-8.4 14.6L2.3 21.7l5-1.3A9.7 9.7 0 1012 2.2zm0 17.7a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1a6.5 6.5 0 01-3.2-2.8c-.2-.4.2-.4.7-1.3.1-.1 0-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 00-.6.3 2.7 2.7 0 00-.9 2c0 1.2.9 2.3 1 2.5s1.7 2.6 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg></u><div><b id="hx-nom">Clínica de estética</b><span>Responde EasyRobots · 23:14</span></div><em>Ejemplo</em></div>
+          <div class="hx-chat" id="hx-chat" aria-live="polite"></div>
+          <div class="hx-pie"><span>Así contesta el sistema</span><a id="hx-link" href="/estetica/">Ver solución para estética →</a></div>
+        </div>
       </div>
     </div>
   </header>
@@ -865,12 +930,12 @@
        cambia la frase de "Especializados en...". La letra es la de cada
        pagina; la de coaching (SF Pro / Geist) no se ha extendido. -->
   <style>
-    section.eq { position: relative; padding: 0 !important; min-height: 0 !important; background: linear-gradient(180deg, #0D1420, #0A0F18) !important; color: #F2F5F9; }
+    section.eq { position: relative; padding: 0 !important; min-height: 0 !important; background: linear-gradient(180deg, #FBFCFD, #F3F5F8) !important; color: #0B1220; }
     section.eq > .caja, section.eq > .wrap { padding-top: 0 !important; padding-bottom: 0 !important; display: block !important; }
     .eq-grid { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(24px, 3vw, 48px); align-items: center; padding: 88px 0; }
     .eq-k { display: flex; align-items: center; gap: 18px; font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #5A6473; }
     .eq-k::after { content: ""; width: 80px; height: 1px; background: currentColor; opacity: .6; }
-    .eq-t { margin: 18px 0 0; font-size: clamp(34px, 3.3vw, 52px); line-height: 1.05; font-weight: 700; letter-spacing: -.035em; color: #F2F5F9; }
+    .eq-t { margin: 18px 0 0; font-size: clamp(34px, 3.3vw, 52px); line-height: 1.05; font-weight: 700; letter-spacing: -.035em; color: #0B1220; }
     .eq-t em { font-style: normal; color: #6E6E73; }
     .eq-p { margin: 20px 0 0; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.5; color: #4A5361; }
     .eq-p + .eq-p { margin-top: 14px; }
@@ -880,15 +945,15 @@
     .eq-f figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 20px 16px; background: rgba(32,34,40,.84); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
     .eq-f b { display: block; font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -.02em; }
     .eq-f span { display: block; font-size: 16px; color: #D3D7DD; }
-    .eq-g { padding: 30px 30px 18px; border-radius: 18px; background: #121A27; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 10px 30px rgba(15,25,40,.06); }
+    .eq-g { padding: 30px 30px 18px; border-radius: 18px; background: #EEF1F6; border: 1px solid #E1E6EE; box-shadow: 0 10px 30px rgba(15,25,40,.06); }
     .eq-gc { display: flex; align-items: center; gap: 18px; }
     .eq-gc svg { width: 50px; height: 50px; flex: 0 0 auto; }
-    .eq-gc h3 { margin: 0; font-size: clamp(26px, 2.2vw, 34px); font-weight: 700; letter-spacing: -.035em; color: #F2F5F9; }
+    .eq-gc h3 { margin: 0; font-size: clamp(26px, 2.2vw, 34px); font-weight: 700; letter-spacing: -.035em; color: #0B1220; }
     .eq-gc h3 em { font-style: normal; color: #6E6E73; }
     .eq-g > p { margin: 14px 0 0; padding-bottom: 18px; border-bottom: 1px solid #D9DFE8; font-size: 16.5px; line-height: 1.45; color: #4A5361; }
     .eq-g dl { display: grid; grid-template-columns: 1.1fr 1fr; margin: 0; }
     .eq-g dt, .eq-g dd { margin: 0; padding: 13px 0; border-bottom: 1px solid #DFE4EC; font-size: 15px; line-height: 1.35; }
-    .eq-g dt { padding-right: 16px; font-weight: 600; color: #F2F5F9; }
+    .eq-g dt { padding-right: 16px; font-weight: 600; color: #0B1220; }
     .eq-g dd { color: #5A6473; }
     .eq-g dt:nth-last-of-type(1), .eq-g dd:last-child { border-bottom: 0; }
     @media (max-width: 1180px) {
@@ -1041,6 +1106,73 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(); });
     })();
   </script>
+<script>
+/* Hero v3: conversacion de ejemplo por sector. Se escribe sola, pasa al
+   siguiente sector al terminar y se queda quieta en cuanto alguien elige uno. */
+(function () {
+  var raiz = document.getElementById('hx'); if (!raiz) return;
+  var chat = document.getElementById('hx-chat'), nom = document.getElementById('hx-nom'), link = document.getElementById('hx-link');
+  var S = [
+    ['Clínica de estética', '/estetica/', 'estética', [
+      ['c', 'Hola, ¿tenéis hueco esta semana para microblading?'],
+      ['e', '¡Hola! Sí: el jueves a las 17:00 o el viernes a las 11:00. Incluye el diseño y el retoque al mes.'],
+      ['c', 'El jueves me va genial'],
+      ['e', 'Hecho, te he reservado el jueves a las 17:00. Te llegará un recordatorio el día antes.'],
+      ['ok', '✓ Cita en la agenda · Recordatorio programado']]],
+    ['Clínica dental', '/dental/', 'dental', [
+      ['c', 'Se me ha caído un empaste, ¿me podéis ver pronto?'],
+      ['e', 'Vaya, lo siento. Tenemos hueco para urgencias mañana a las 9:30 o a las 13:00.'],
+      ['c', 'A las 9:30, por favor'],
+      ['e', 'Reservado. Te mando la dirección por aquí y aviso al equipo de que vienes por urgencia.'],
+      ['ok', '✓ Urgencia en agenda · Equipo avisado']]],
+    ['Inmobiliaria', '/inmobiliarias/', 'inmobiliarias', [
+      ['c', 'Hola, ¿sigue disponible el piso de tres habitaciones?'],
+      ['e', 'Sí, sigue disponible. ¿Lo buscas para vivir o para invertir, y para cuándo?'],
+      ['c', 'Para vivir, a partir de enero'],
+      ['e', 'Perfecto. Puedo enseñártelo el martes a las 18:30 con nuestro comercial. ¿Te encaja?'],
+      ['ok', '✓ Visita propuesta · Comercial avisado']]],
+    ['Concesionario', '/concesionarios/', 'concesionarios', [
+      ['c', 'Quería pedir cita para la revisión del coche'],
+      ['e', 'Claro. ¿Me dices la matrícula y los kilómetros aproximados?'],
+      ['c', '1234 KLM, unos 30.000'],
+      ['e', 'Gracias. Tengo hueco en taller el lunes a las 8:30. Te lo dejo reservado.'],
+      ['ok', '✓ Cita de taller en agenda']]],
+    ['Tienda online', '/ecommerce/', 'ecommerce', [
+      ['c', 'Hice un pedido el lunes y todavía no me ha llegado'],
+      ['e', 'Lo miro ahora mismo. Salió ayer y está en reparto: te llega mañana por la mañana.'],
+      ['c', 'Genial, gracias'],
+      ['e', 'A ti. Si mañana no ha llegado, respóndeme aquí y lo coge el equipo.'],
+      ['ok', '✓ Consulta resuelta · Sin intervención']]],
+    ['Programa de coaching', '/coaching/', 'coaching', [
+      ['c', 'Me interesa el programa, pero no sé si es para mí'],
+      ['e', 'Te entiendo. ¿Qué te gustaría conseguir en los próximos tres meses?'],
+      ['c', 'Lanzar mi negocio online'],
+      ['e', 'Encaja con el programa. ¿Te va una llamada de 20 minutos con el equipo el miércoles a las 19:00?'],
+      ['ok', '✓ Lead cualificado · Llamada propuesta']]]
+  ];
+  var tabs = raiz.querySelectorAll('[data-s]'), act = 0, turno = 0, auto = true, t;
+  var quieto = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function msg(m) { var d = document.createElement('div'); d.className = 'hx-m ' + m[0]; d.textContent = m[1]; chat.appendChild(d); }
+  function poner(i) {
+    clearTimeout(t); act = i; var x = S[i], paso = 0; turno++; var mio = turno;
+    tabs.forEach(function (b, k) { b.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+    nom.textContent = x[0]; link.href = x[1]; link.textContent = 'Ver solución para ' + x[2] + ' →';
+    chat.innerHTML = '';
+    if (quieto) { x[3].forEach(msg); return; }
+    (function sig() {
+      if (mio !== turno) return;
+      if (paso >= x[3].length) { if (auto) t = setTimeout(function () { poner((act + 1) % S.length); }, 3800); return; }
+      var m = x[3][paso++];
+      if (m[0] === 'ok') { t = setTimeout(function () { msg(m); sig(); }, 500); return; }
+      var dots = document.createElement('div'); dots.className = 'hx-dots ' + m[0]; dots.innerHTML = '<i></i><i></i><i></i>';
+      chat.appendChild(dots);
+      t = setTimeout(function () { if (mio !== turno) return; dots.remove(); msg(m); t = setTimeout(sig, 650); }, m[0] === 'e' ? 1300 : 900);
+    })();
+  }
+  tabs.forEach(function (b) { b.addEventListener('click', function () { auto = false; poner(+b.dataset.s); }); });
+  poner(0);
+})();
+</script>
 </body>
 
 </html>
