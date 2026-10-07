@@ -1181,10 +1181,37 @@
   .wz-nota b { display: block; color: #15120F; }
   .wz-i { flex: 0 0 22px; height: 22px; border-radius: 50%; border: 2px solid #A87A2A; color: #A87A2A; font: 700 12px/18px var(--f); text-align: center; }
   .wz-btn { margin-top: 22px; }
+  /* Segunda vuelta (Anais, 07/10: "muy soso"): la demo pasa a fondo oscuro
+     con brillo dorado, como el hero, y el chat va dentro de un movil. Lo
+     que es de WhatsApp (cabecera, burbujas, boton de enviar) sigue en su
+     verde; los botones de frases pasan a dorado, que son de la marca. */
+  #pruebalo.wz-sec { background: radial-gradient(ellipse 55% 75% at 78% 50%, rgba(228,186,108,.16), rgba(228,186,108,0) 70%), #0A0806; padding: 80px 16px; }
+  #pruebalo .wz-kick { color: var(--oro); }
+  #pruebalo .wz-txt h2 { color: #fff; }
+  #pruebalo .wz-txt h2 em { color: var(--oro); }
+  #pruebalo .wz-txt p.wz-sub { color: rgba(255,255,255,.78); }
+  #pruebalo .wz-nota { background: rgba(255,255,255,.06); border: 1px solid rgba(228,186,108,.22); }
+  #pruebalo .wz-nota p { color: rgba(255,255,255,.72); }
+  #pruebalo .wz-nota b { color: #fff; }
+  #pruebalo .wz-i { border-color: var(--oro); color: var(--oro); }
+  #pruebalo .wz-caja { grid-template-columns: 1fr 360px; }
+  #pruebalo .wz-card { position: relative; width: 100%; max-width: 360px; justify-self: center; border: 11px solid #121212; border-radius: 46px; background: #EFE7DE; box-shadow: 0 0 0 1px rgba(255,255,255,.10), 0 30px 70px rgba(0,0,0,.55), 0 0 90px rgba(228,186,108,.14); }
+  #pruebalo .wz-card::before { content: ""; position: absolute; z-index: 5; top: 8px; left: 50%; width: 92px; height: 24px; margin-left: -46px; border-radius: 999px; background: #121212; }
+  #pruebalo .wz-cab { padding: 40px 16px 12px; }
+  #pruebalo .wz-av { background: linear-gradient(135deg, #F0D08E, #C99A4A); color: #2A1E0C; }
+  #pruebalo .wz-chat { height: 430px; background-color: #EFE7DE; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' fill='none' stroke='%23d9cdbf' stroke-width='1.2'%3E%3Ccircle cx='14' cy='16' r='5'/%3E%3Cpath d='M48 10l6 6-6 6M60 50a6 6 0 11-12 0 6 6 0 0112 0zM18 56l8-4 2 8zM66 26h8M70 22v8'/%3E%3C/svg%3E"); }
+  #pruebalo .wz-chat::before { content: "Hoy"; align-self: center; margin: 2px 0 6px; padding: 4px 12px; border-radius: 8px; background: rgba(255,255,255,.85); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #667781; box-shadow: 0 1px 1px rgba(0,0,0,.06); }
+  #pruebalo .wz-pie { padding: 8px 10px 18px; }
+  #pruebalo .wz-card .cd-botones button { background: #FFFDF8; border-color: #C9A35A; color: #7A5A20; }
+  #pruebalo .wz-card .cd-botones button:hover { background: var(--oro); border-color: var(--oro); color: #15120F; }
+  #pruebalo .cd-puntos { color: #8A6A2E; }
   @media (max-width: 860px) {
     .wz-sec { padding: 40px 16px; }
     .wz-caja { grid-template-columns: 1fr; gap: 24px; }
     .wz-chat { height: 340px; }
+    #pruebalo.wz-sec { padding: 52px 16px; }
+    #pruebalo .wz-caja { grid-template-columns: 1fr; }
+    #pruebalo .wz-chat { height: 380px; }
   }
 </style>
   <section class="wz-sec" id="pruebalo">
