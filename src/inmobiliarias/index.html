@@ -1451,136 +1451,146 @@
       </div>
     </section>
 
-    <!-- ==================== 04 · DEMOSTRACION ==================== -->
-
-  <!-- =================== PRUEBALO TU (chat real, 05/10) =================== -->
+  <!-- =================== 04 · DEMO: PRUEBALO TU + LLAMADA (2026-10-07) ===================
+       Peticion de Anais: "Pruebalo tu" y "Escucha la llamada" iban en dos
+       secciones seguidas y parecian de paginas distintas (la de WhatsApp con
+       su verde propio). Ahora es una sola, con el copy de la demo de
+       coaching v3: a la izquierda el texto, la llamada y la CTA; a la
+       derecha el chat real dentro de un portatil, como en coaching.
+       La transcripcion y el panel "Informacion recogida" de la llamada se
+       quitan: con el chat al lado se ve lo mismo, y en vivo.
+       Prefijo pb- para no chocar con las clases medidas al pixel. -->
   <style>
-  /* "Pruebalo tu" (05/10): el chat real con aspecto de WhatsApp, antes de la
-     llamada grabada. Bloque autonomo (prefijo wz-) para no tocar la rejilla
-     de la seccion de demo, que es una maqueta medida al pixel. */
-  .wz-sec { background: #F4F6F9; padding: 56px 16px; }
-  .wz-caja { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr minmax(0, 400px); gap: 48px; align-items: center; }
-  .wz-kick { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #128C7E; }
-  .wz-txt h2 { margin: 0; font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.12; letter-spacing: -.02em; color: #0F1B2D; }
-  .wz-txt p.wz-sub { margin: 14px 0 0; font-size: 1.05rem; line-height: 1.6; color: #3A4554; max-width: 40ch; }
-  .wz-txt ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; color: #2A3340; font-size: .98rem; }
-  .wz-txt li::before { content: "\2713"; color: #128C7E; font-weight: 700; margin-right: 8px; }
-  .wz-card { background: #ECE5DD; border-radius: 18px; overflow: hidden; box-shadow: 0 20px 50px rgba(15,40,80,.18); display: flex; flex-direction: column; }
-  .wz-cab { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #075E54; color: #fff; }
-  .wz-av { width: 34px; height: 34px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; font-weight: 700; }
-  .wz-cab b { display: block; font-size: 15px; } .wz-cab i { font-style: normal; font-size: 12px; opacity: .8; }
-  .wz-chat { height: 360px; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
-  .wz-in, .wz-out { max-width: 86%; border-radius: 9px; padding: 6px 9px 4px; font-size: 14.5px; line-height: 1.4; color: #111B21; white-space: pre-wrap; box-shadow: 0 1px 1px rgba(0,0,0,.08); }
-  .wz-in { align-self: flex-end; background: #D9FDD3; }
-  .wz-out { align-self: flex-start; background: #fff; }
-  .wz-pie { display: flex; gap: 8px; padding: 8px 10px; background: #F0F2F5; }
-  .wz-pie .campo { flex: 1 1 auto; background: #fff; border-radius: 999px; height: 40px; display: flex; align-items: center; padding: 0 14px; font-size: 14.5px; color: #667781; }
-  .wz-pie .env { width: 40px; height: 40px; border-radius: 50%; background: #00A884; color: #fff; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
-  .wz-pie .env svg { width: 18px; height: 18px; }
-  .wz-card .cd-botones button { border-color: #00A884; color: #008069; }
-  .wz-card .cd-botones button:hover { background: #00A884; color: #fff; }
-  @media (max-width: 860px) {
-    .wz-sec { padding: 40px 16px; }
-    .wz-caja { grid-template-columns: 1fr; gap: 24px; }
-    .wz-chat { height: 340px; }
-  }
-</style>
-  <section class="wz-sec" id="pruebalo">
-    <div class="wz-caja">
-      <div class="wz-txt">
-        <p class="wz-kick">Pru&eacute;balo t&uacute;</p>
-        <h2>Escr&iacute;bele como lo har&iacute;a un comprador.</h2>
-        <p class="wz-sub">Es el mismo asistente que contestar&iacute;a a tus clientes. Pregunta por un piso, pide visita y mira c&oacute;mo le llega a tu comercial.</p>
-        <ul><li>Te ense&ntilde;a los pisos que encajan, con foto</li><li>Agenda la visita en tu horario</li><li>Le pasa el cliente ya cualificado a tu comercial</li></ul>
-      </div>
-      <div class="wz-card" data-chat-demo data-sitio="demo-inmobiliaria" data-personalidad="inmobiliaria"
-           data-sel-chat=".wz-chat" data-sel-campo=".wz-pie .campo" data-sel-enviar=".wz-pie .env"
-           data-clase-in="wz-in" data-clase-out="wz-out"
-           data-frases="Busco piso de 3 hab. para comprar|Busco alquiler|Quiero vender mi piso">
-        <div class="wz-cab"><span class="wz-av">I</span><div><b>Inmobiliaria EasyRobots</b><i>en l&iacute;nea</i></div></div>
-        <div class="wz-chat"><div class="wz-out">&iexcl;Hola! Soy Nacho, de Inmobiliaria EasyRobots. &iquest;Buscas comprar o alquilar?</div></div>
-        <div class="wz-pie"><span class="campo">Escribe un mensaje&hellip;</span><span class="env"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
-      </div>
-    </div>
-  </section>
+    .pb-caja { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: clamp(30px, 4vw, 64px); align-items: center; }
+    .pb-txt h2 { font-size: clamp(2rem, 3.4vw, 2.9rem); line-height: 1.08; letter-spacing: -.02em; color: #0B1220; }
+    .pb-txt h2 em { font-style: normal; color: var(--azul); }
+    .pb-txt .lede { margin-top: 1rem; font-size: 1.05rem; line-height: 1.6; color: #3A4352; max-width: 44ch; }
+    .pb-info { display: flex; gap: 14px; margin-top: 22px; padding: 16px 20px; border-radius: 14px; background: rgba(232,239,248,.9); border: 1px solid rgba(200,212,228,.8); max-width: 46ch; }
+    .pb-info > svg { width: 26px; height: 26px; color: var(--azul); flex: 0 0 auto; }
+    .pb-info b { display: block; font-size: .95rem; font-weight: 600; color: #0B1220; }
+    .pb-info span { display: block; margin-top: 3px; font-size: .9rem; line-height: 1.45; color: #4A5568; }
+    .pb-acc { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 26px; }
+    .pb-acc .escuchar { margin-top: 0; }
+    .pb-acc .btn { padding: .95rem 1.6rem; }
+    .pb-nota { margin-top: 12px; font-size: .82rem; color: #4A5563; }
+
+    .pb-pant { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; padding: 16px; background: #F3F6FA; border: 13px solid #121418; border-radius: 22px; box-shadow: 0 40px 80px rgba(20,30,50,.28), 0 0 0 1px rgba(0,0,0,.15); }
+    .pb-chat { display: flex; flex-direction: column; min-width: 0; }
+    .pb-cab { display: flex; align-items: center; gap: 12px; padding: 6px 4px 12px; }
+    .pb-av { width: 42px; height: 42px; border-radius: 50%; background: var(--azul); color: #fff; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+    .pb-cab b { display: block; font-size: 15px; font-weight: 600; color: #0B1220; }
+    .pb-cab i { display: flex; align-items: center; gap: 6px; font-style: normal; font-size: 12.5px; color: #5A6473; }
+    .pb-cab i::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #22C55E; }
+    .pb-msgs { height: 330px; overflow-y: auto; display: flex; flex-direction: column; gap: 9px; padding: 4px 4px 8px; }
+    .pb-in, .pb-out { max-width: 86%; padding: 9px 13px; border-radius: 12px; font-size: 14px; line-height: 1.45; color: #18202C; white-space: pre-wrap; }
+    .pb-out { align-self: flex-start; background: #fff; box-shadow: 0 2px 8px rgba(20,30,50,.07); }
+    .pb-in { align-self: flex-end; background: #DCEBFF; }
+    .pb-chat .cd-botones button { border-color: var(--azul); color: var(--azul); font-weight: 500; }
+    .pb-chat .cd-botones button:hover { background: var(--azul); color: #fff; }
+    .pb-pie { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+    .pb-pie .campo { flex: 1 1 auto; min-width: 0; height: 44px; display: flex; align-items: center; padding: 0 16px; border-radius: 999px; background: #fff; border: 1px solid #E1E7EF; font: inherit; font-size: 14.5px; color: #18202C; }
+    .pb-pie .campo::placeholder { color: #8A94A4; }
+    .pb-pie .env { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--azul); color: #fff; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; cursor: pointer; }
+    .pb-pie .env svg { width: 20px; height: 20px; }
+    .pb-cal { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+    .pb-cal-in { padding: 18px 16px; border-radius: 14px; background: #fff; box-shadow: 0 2px 10px rgba(20,30,50,.06); }
+    .pb-cal-t { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: #0B1220; }
+    .pb-cal-t svg { width: 22px; height: 22px; color: var(--azul); }
+    .pb-cal-in > p { margin-top: 8px; font-size: 12.5px; line-height: 1.45; color: #5A6473; }
+    .pb-mesf { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; padding: 8px 12px; border: 1px solid #E5EAF1; border-radius: 10px; font-size: 14px; color: #0B1220; }
+    .pb-mesf span { color: #5A6473; font-size: 18px; line-height: 1; }
+    .pb-dias { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 10px; }
+    .pb-dias span, .pb-horas span { display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 9px; background: #F1F4F8; font-size: 11.5px; color: #5A6473; }
+    .pb-dias span { padding: 7px 0; }
+    .pb-dias b { font-size: 15px; color: #0B1220; }
+    .pb-dias span.on, .pb-horas span.on { background: var(--azul); color: #fff; }
+    .pb-dias span.on b { color: #fff; }
+    .pb-horas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
+    .pb-horas span { height: 36px; font-size: 13px; color: #0B1220; }
+    .pb-ok { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; background: #E9EDF3; }
+    .pb-ok svg { width: 22px; height: 22px; color: #12B85A; flex: 0 0 auto; }
+    .pb-ok b { display: block; font-size: 14px; color: #3A4352; }
+    .pb-ok span { display: block; font-size: 11.5px; color: #6B7686; }
+    .pb-base { height: 18px; margin: 0 -5%; border-radius: 0 0 20px 20px; background: linear-gradient(180deg, #D5D9DF, #8E949C); box-shadow: 0 18px 30px rgba(20,30,50,.25); position: relative; }
+    .pb-base::before { content: ""; position: absolute; left: 50%; top: 0; width: 16%; height: 7px; transform: translateX(-50%); border-radius: 0 0 8px 8px; background: #A9AEB6; }
+    @media (max-width: 900px) {
+      .pb-caja { grid-template-columns: 1fr; gap: 30px; }
+      .pb-pant { grid-template-columns: 1fr; padding: 10px; border-width: 8px; border-radius: 16px; }
+      .pb-cal { display: none; }
+      .pb-msgs { height: 340px; }
+      .pb-base { height: 12px; }
+      .pb-txt h2 { font-size: 1.6rem; }
+      .pb-txt .lede { font-size: .93rem; }
+      .pb-info { padding: 13px 15px; }
+      .pb-acc .btn, .pb-acc .escuchar { width: 100%; justify-content: center; }
+    }
+  </style>
     <section class="sec" id="demo">
       <div class="wrap">
-        <div class="demo-grid">
-          <div class="demo-cols">
-            <div class="demo-txt">
-              <p class="kick">Una demostraci&oacute;n real</p>
-              <h2>Escucha a EasyRobots<br>responder a un comprador.</h2>
-              <p class="lede">Una llamada real. Sin guiones. Para que veas c&oacute;mo funciona.</p>
+        <div class="pb-caja">
+          <div class="pb-txt">
+            <p class="kick">Pru&eacute;balo t&uacute;</p>
+            <h2>As&iacute; responde <br><em>EasyRobots</em> <br>a un interesado.</h2>
+            <p class="lede">Prueba la conversaci&oacute;n y descubre c&oacute;mo responde a sus dudas, lo cualifica y puede reservar una llamada directamente en el calendario.</p>
+            <div class="pb-info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9.2"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
+              <div><b>Esta es una demo con funciones b&aacute;sicas.</b><span>El sistema real se adapta a tu negocio, tu oferta, tu lenguaje y tus criterios de cualificaci&oacute;n.</span></div>
+            </div>
+            <div class="pb-acc">
               <button class="escuchar" type="button" data-demo>
                 <span class="rd">&#9654;</span>
                 Escuchar la llamada
                 <span class="dur">02:18</span>
               </button>
-              <p class="pie-audio">La llamada se reproduce directamente aqu&iacute;.</p>
+              <button class="btn btn-azul" type="button" data-reserva>Reservar una llamada &rarr;</button>
             </div>
+            <p class="pb-nota">La llamada es un ejemplo real, sin guiones. La reuni&oacute;n son 15 minutos y sin compromiso.</p>
+          </div>
 
-            <div class="demo-cta">
-                <p>Esta es una llamada de ejemplo. El tuyo se monta con tus inmuebles,
-                  tu agenda y tu forma de trabajar.</p>
-                <button class="btn btn-azul" type="button" data-reserva>Ver c&oacute;mo quedar&iacute;a el tuyo &rarr;</button>
-                <span>15 minutos. Miramos tu caso y te decimos si encaja.</span>
+          <div class="pb-lap">
+            <div class="pb-pant">
+              <div class="pb-chat" data-chat-demo data-sitio="demo-inmobiliaria" data-personalidad="inmobiliaria"
+                   data-sel-chat=".pb-msgs" data-sel-campo=".pb-pie .campo" data-sel-enviar=".pb-pie .env"
+                   data-clase-in="pb-in" data-clase-out="pb-out"
+                   data-frases="Busco piso de 3 hab. para comprar|Busco alquiler|Quiero vender mi piso">
+                <div class="pb-cab"><span class="pb-av">I</span><div><b>Inmobiliaria EasyRobots</b><i>en l&iacute;nea</i></div></div>
+                <div class="pb-msgs"><div class="pb-out">&iexcl;Hola! Soy Nacho, de Inmobiliaria EasyRobots. &iquest;Buscas comprar o alquilar?</div></div>
+                <div class="pb-pie">
+                  <span class="campo">Escribe un mensaje&hellip;</span>
+                  <span class="env"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+                </div>
               </div>
-
-            <div class="repro">
-              <button class="repro-play" type="button" data-demo aria-label="Escuchar la llamada">
-                <svg viewBox="0 0 12 14" fill="currentColor" aria-hidden="true"><path d="M1 1.2c0-.6.7-1 1.2-.7l8.3 5.3c.5.3.5 1 0 1.3L2.2 12.5c-.5.3-1.2 0-1.2-.7z"/></svg>
-              </button>
-              <span class="onda" aria-hidden="true"><i style="height:7%"></i><i style="height:17%"></i><i style="height:27%"></i><i style="height:41%"></i><i style="height:39%"></i><i style="height:69%"></i><i style="height:59%"></i><i style="height:44%"></i><i style="height:36%"></i><i style="height:37%"></i><i style="height:46%"></i><i style="height:37%"></i><i style="height:81%"></i><i style="height:95%"></i><i style="height:61%"></i><i style="height:39%"></i><i style="height:39%"></i><i style="height:71%"></i><i style="height:34%"></i><i style="height:37%"></i><i style="height:39%"></i><i style="height:42%"></i><i style="height:51%"></i><i style="height:32%"></i><i style="height:31%"></i><i style="height:25%"></i><i style="height:6%"></i><i style="height:31%"></i><i style="height:31%"></i><i style="height:25%"></i><i style="height:53%"></i><i style="height:73%"></i><i style="height:100%"></i><i style="height:41%"></i><i style="height:42%"></i><i style="height:25%"></i><i style="height:34%"></i><i style="height:29%"></i><i style="height:37%"></i><i style="height:24%"></i><i style="height:14%"></i><i style="height:5%"></i><i style="height:6%"></i></span>
-              <span class="repro-pie">
-                <span class="mini" aria-hidden="true"><svg viewBox="0 0 10 12" fill="currentColor"><path d="M1 .9c0-.5.5-.8.9-.5l7 5.1c.4.3.4.8 0 1.1l-7 5.1c-.4.3-.9 0-.9-.5z"/></svg></span>
-                <span class="pista"></span>
-                <span class="hora">0:00 / 2:18</span>
-              </span>
-            </div>
-
-            <div class="recogida">
-              <h3>Informaci&oacute;n recogida</h3>
-              <ul>
-                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Cliente</span><span class="v">+34 612 345 6XX</span></li>
-                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Inter&eacute;s</span><span class="v">Piso en Salamanca</span></li>
-                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Presupuesto</span><span class="v">Entre 800.000 &euro; y 1.000.000 &euro;</span></li>
-                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Disponibilidad</span><span class="v">Jueves 11:00</span></li>
-                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Estado</span><span class="v ok">Visita propuesta</span></li>
-                <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.4l3.4 3.4L13 5.2"/></svg><span class="k">Comercial asignado</span><span class="v">Laura M.</span></li>
-              </ul>
-            </div>
-
-            <div class="trans">
-              <div class="l">
-                <span><b class="er">Agente EasyRobots</b><span class="t">00:03</span></span>
-                <p>Hola, gracias por llamar a Inmobiliaria. &iquest;En qu&eacute; puedo ayudarte?</p>
-              </div>
-              <div class="l">
-                <span><b class="cl">Cliente</b><span class="t">00:08</span></span>
-                <p>Hola, me interesa un piso en la zona de Salamanca&hellip;</p>
-              </div>
-              <div class="l">
-                <span><b class="er">Agente EasyRobots</b><span class="t">00:15</span></span>
-                <p>Perfecto. &iquest;Buscas algo para entrar ya o a medio plazo?</p>
-              </div>
-              <div class="l">
-                <span><b class="cl">Cliente</b><span class="t">00:24</span></span>
-                <p>Para entrar ya. Tengo la financiaci&oacute;n preaprobada.</p>
-              </div>
-              <div class="l">
-                <span><b class="er">Agente EasyRobots</b><span class="t">00:36</span></span>
-                <p>Te paso la ficha por WhatsApp. &iquest;Te viene bien el jueves a las 11:00 para verlo?</p>
-              </div>
-              <div class="l">
-                <span><b class="cl">Cliente</b><span class="t">00:44</span></span>
-                <p>El jueves a las once me va bien.</p>
+              <div class="pb-cal" aria-hidden="true">
+                <div class="pb-cal-in">
+                  <b class="pb-cal-t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>Reservar visita</b>
+                  <p>El asistente propone los huecos libres de tu comercial para ver el piso.</p>
+                  <div class="pb-mesf"><span>&lsaquo;</span><b class="pb-mes">Octubre 2026</b><span>&rsaquo;</span></div>
+                  <div class="pb-dias"><span>Lun<b>12</b></span><span class="on">Mar<b>13</b></span><span>Mi&eacute;<b>14</b></span><span>Jue<b>15</b></span><span>Vie<b>16</b></span></div>
+                  <div class="pb-horas"><span>10:00</span><span class="on">11:00</span><span>12:00</span><span>16:00</span><span>17:00</span><span>18:00</span></div>
+                </div>
+                <div class="pb-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 12.4l4 4L18 8.6"/></svg><div><b>Visita agendada</b><span>Confirmaci&oacute;n por WhatsApp al cliente y aviso a tu comercial.</span></div></div>
               </div>
             </div>
+            <div class="pb-base" aria-hidden="true"></div>
           </div>
         </div>
       </div>
     </section>
-
+  <script>
+    /* Calendario decorativo de la demo: los proximos cinco dias laborables,
+       para que nunca enseñe un mes que ya ha pasado (igual que coaching). */
+    (function () {
+      var c = document.querySelector('.pb-cal'); if (!c) return;
+      var M = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      var D = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+      var d = new Date(), dias = [];
+      while (dias.length < 5) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) dias.push(new Date(d)); }
+      c.querySelector('.pb-mes').textContent = M[dias[0].getMonth()] + ' ' + dias[0].getFullYear();
+      c.querySelector('.pb-dias').innerHTML = dias.map(function (x, i) {
+        return '<span' + (i === 1 ? ' class="on"' : '') + '>' + D[x.getDay()] + '<b>' + x.getDate() + '</b></span>';
+      }).join('');
+    })();
+  </script>
     <!-- ===================== 05 · SISTEMA ===================== -->
     <section class="sec osc" id="sistema">
       <div class="foto" aria-hidden="true"></div>
