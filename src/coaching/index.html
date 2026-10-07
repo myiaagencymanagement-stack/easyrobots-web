@@ -1098,6 +1098,13 @@
       .c3 .caja { display: block !important; padding-top: 52px !important; padding-bottom: 52px !important; }
       .k3 { font-size: 12px; } .k3::after { width: 48px; }
 
+      /* Hero del movil (2026-10-07): la foto vertical que paso Anais tiene el
+         portatil en la mitad de abajo. Si el texto va encima, lo tapa; asi
+         que la foto va arriba a todo lo ancho y el texto debajo, sobre oscuro. */
+      .hero { height: auto !important; min-height: 100svh; background: #05090E; }
+      .hero .foto { background-image: url(/assets/coach3-hero-movil.webp) !important; background-size: 100% auto !important; background-position: center top !important; }
+      .hero .velo { background: linear-gradient(180deg, rgba(5,9,14,.45) 0, rgba(5,9,14,0) 90px, rgba(5,9,14,0) calc(100vw * 1.22), rgba(5,9,14,.9) calc(100vw * 1.42), #05090E calc(100vw * 1.55)) !important; }
+      .hero .h-cuerpo { display: block; flex: 0 0 auto; padding-top: calc(100vw * 1.3 - 56px); padding-bottom: 40px; }
       .d3 .foto { background-image: url(/assets/coach3-cae-movil.webp); background-position: center top; }
       .d3 .velo { background: linear-gradient(180deg, rgba(4,6,10,.62) 0%, rgba(4,6,10,.86) 36%, rgba(4,6,10,.93) 100%); }
       .d3-txt { padding-top: 0; }
