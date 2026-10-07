@@ -772,6 +772,31 @@
       .dupla .s08 .velo, .dupla .s09 .velo { background: rgba(250,246,242,.80); }
     }
 
+    /* Ajustes de movil (Anais, 07/10), mirando el hero de coaching: la foto
+       se ve arriba y el texto empieza mas abajo. */
+    @media (max-width: 860px) {
+      /* Hero: fuera la fila de ventajas y el segundo boton (la reserva ya va
+         fija en la barra), para que el texto baje y se vea la foto. La
+         notificacion queda justo encima del movil de la foto, que esta al
+         78 % del ancho de pantalla en alto. */
+      .hero .h-meta, .hero .h-btns .b-linea { display: none; }
+      .hero .velo { background: linear-gradient(180deg, rgba(6,5,4,.40) 0%, rgba(6,5,4,.04) 14%, rgba(6,5,4,.10) 36%, rgba(6,5,4,.86) 47%, rgba(6,5,4,.97) 100%); }
+      .h-noti { top: calc(100vw * .47); }
+      /* 04: el flujo de mensajes y agenda, mas compacto. */
+      .ca-centro { zoom: .84; }
+      .cf-entra { gap: 6px; }
+      .cf-msg { padding: 7px 12px 7px 8px; }
+      .cf-nodo { height: 26px; }
+      .cf-agenda { padding: 10px 14px 12px; }
+      .cf-cita { padding: 4px 0; }
+      .cf-cita div { padding: 4px 9px; }
+      /* CTA: la seccion crece por abajo para dejar ver a la duena, y el velo
+         se abre ahi. */
+      .s12 .caja { padding-bottom: 300px; }
+      .s12 .velo { background: linear-gradient(180deg, rgba(10,8,6,.97) 0%, rgba(10,8,6,.90) 42%, rgba(10,8,6,.35) 62%, rgba(10,8,6,.05) 85%, rgba(10,8,6,.25) 100%); }
+      .s12 .foto { background-position: center 70%; }
+    }
+
     /* Calendario de GHL en modal. Mismo patron que inmobiliarias y coaching. */
     .er-modal { position: fixed; inset: 0; z-index: 9000; display: none; background: rgba(6,10,16,.62); backdrop-filter: blur(6px); padding: 24px 16px; overflow-y: auto; }
     .er-modal.open { display: block; }
