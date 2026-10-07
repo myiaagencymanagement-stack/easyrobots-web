@@ -532,7 +532,7 @@
          anclada arriba, no con cover: con cover el telefono de la foto caia a
          media pantalla, debajo del texto. Asi queda a un tercio; la foto
          acaba en negro y empalma con el fondo del hero. */
-      .hero .foto { background-image: url(/assets/cl-hero-movil.webp?v=3); background-position: center top; background-size: 100% auto; background-repeat: no-repeat; }
+      .hero .foto { background-image: url(/assets/cl-hero-movil.webp?v=4); background-position: center top; background-size: 100% auto; background-repeat: no-repeat; }
       .hero .velo { background: linear-gradient(180deg, rgba(6,5,4,.50) 0%, rgba(6,5,4,.12) 18%, rgba(6,5,4,.30) 40%, rgba(6,5,4,.85) 58%, rgba(6,5,4,.96) 100%); }
       /* En movil el texto del hero empieza hacia los 230 px y tapa el
          telefono de la foto, asi que la notificacion va en el hueco entre la
@@ -780,8 +780,12 @@
          notificacion queda justo encima del movil de la foto, que esta al
          78 % del ancho de pantalla en alto. */
       .hero .h-meta { display: none; }
-      .hero .velo { background: linear-gradient(180deg, rgba(6,5,4,.40) 0%, rgba(6,5,4,.04) 14%, rgba(6,5,4,.10) 36%, rgba(6,5,4,.86) 47%, rgba(6,5,4,.97) 100%); }
-      .h-noti { top: calc(100vw * .47); }
+      .hero .velo { background: linear-gradient(180deg, rgba(6,5,4,.40) 0%, rgba(6,5,4,.04) 12%, rgba(6,5,4,.08) 30%, rgba(6,5,4,.86) 42%, rgba(6,5,4,.97) 100%); }
+      /* Segunda vertical (07/10): el movil de la foto esta a la izquierda y
+         al 54 % del ancho de pantalla en alto. La notificacion va arriba a la
+         derecha, mas estrecha, para no taparlo. */
+      .h-noti { top: 70px; left: auto; right: 14px; transform: none; width: min(255px, 66vw); align-items: flex-end; }
+      .hn-card { font-size: 12.5px; padding: 9px 12px 10px 9px; }
       /* 04: el flujo de mensajes y agenda, mas compacto. */
       .ca-centro { zoom: .84; }
       .cf-entra { gap: 6px; }
@@ -790,11 +794,11 @@
       .cf-agenda { padding: 10px 14px 12px; }
       .cf-cita { padding: 4px 0; }
       .cf-cita div { padding: 4px 9px; }
-      /* CTA: la seccion crece por abajo para dejar ver a la duena, y el velo
-         se abre ahi. */
-      .s12 .caja { padding-bottom: 300px; }
-      .s12 .velo { background: linear-gradient(180deg, rgba(10,8,6,.97) 0%, rgba(10,8,6,.90) 42%, rgba(10,8,6,.35) 62%, rgba(10,8,6,.05) 85%, rgba(10,8,6,.25) 100%); }
-      .s12 .foto { background-position: center 70%; }
+      /* CTA como el hero de coaching: la foto de la duena arriba, a la vista,
+         y el texto debajo sobre negro. La foto ocupa los primeros 360 px. */
+      .s12 .foto { bottom: auto; height: 380px; background-image: url(/assets/cl-cta-movil.webp?v=3); background-size: cover; background-position: center 40%; }
+      .s12 .velo { background: linear-gradient(180deg, rgba(10,8,6,.15) 0px, rgba(10,8,6,0) 120px, rgba(10,8,6,.35) 270px, rgba(10,8,6,1) 380px); }
+      .s12 .caja { padding-top: 330px; }
     }
 
     /* Calendario de GHL en modal. Mismo patron que inmobiliarias y coaching. */
