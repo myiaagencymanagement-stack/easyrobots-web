@@ -1674,6 +1674,12 @@
   :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]):hover { background: #EEF2F7 !important; transform: translateY(-1px); }
   :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]) svg { color: #0B1220; }
 </style>
+<!-- Palabras marcadas de los titulares en gris, como la home (Anais,
+     2026-10-07). Con opacidad sobre el color del propio titular: sale gris
+     claro en las secciones oscuras y gris medio en las claras. -->
+<style>
+  :is(h1, h2, h3) em { color: inherit !important; opacity: .55; }
+</style>
 </body>
 
 </html>
