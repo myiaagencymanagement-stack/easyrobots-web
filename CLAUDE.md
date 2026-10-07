@@ -302,7 +302,8 @@ demás está en `src/borradores/` con el sufijo `-version-antigua`.
 |---|---|---|
 | `/` | `src/index.html` | Home de agencia (nivel 1). Era `prueba-index-v2.html` |
 | `/estetica/` | `src/estetica/index.html` | Era `prueba-clinicas-premium-v2.html` |
-| `/dental/` | `src/dental/index.html` | Era `prueba-dental-v2.html` |
+| `/agente-de-voz/` | `src/agente-de-voz/index.html` | Agente de voz para todas las clinicas. Era la dental v2 (2026-10-07) |
+| `/dental/` | `src/dental/index.html` | **Solo redirige** a `/agente-de-voz/` desde el 2026-10-07 |
 | `/inmobiliarias/` | `src/inmobiliarias/index.html` | Era `prueba-inmobiliarias-v3.html` |
 | `/concesionarios/` | `src/concesionarios/index.html` | Era `prueba-concesionarios-v2.html` |
 | `/ecommerce/` | `src/ecommerce/index.html` | Era `prueba-ecommerce-v2.html` |
@@ -1024,7 +1025,35 @@ en la seccion de concesionarios, que explica las dos.
 - Los botones no estan enganchados al calendario de GHL.
 - Decidir si sustituye a `prueba-ecommerce.html` y si se le quita el `noindex`.
 
+## Agente de voz para clinicas (2026-10-07)
+
+Peticion de Anais: la landing dental pasa a ser **para todas las clinicas y
+centrada en el agente de voz**. Vive en `/agente-de-voz/`; `/dental/` y
+`dental.html` redirigen alli (meta refresh a 0 + canonical: nginx no tiene
+config propia, no hay 301). La dental v2 entera esta en
+`borradores/dental-v2-version-antigua.html`. En la home, la tarjeta de
+sectores "Clinicas dentales" pasa a "Agente de voz para clinicas", en el mismo
+hueco, con foto `home-s-voz.webp`; igual en el pie.
+
+- Copy en `docs/copys/clinicas-voz.md`. Eje: *"Cada llamada sin coger es una
+  cita perdida."* Solo llamadas **entrantes**, sin transferencia en caliente
+  (avisa al equipo) y sin numero de telefono publicado: capacidades-reales.
+- Fondos con ChatGPT (`assets/boceto/clinicas-voz/`, `voz-*.webp`): hero,
+  problema, como funciona y CTA. El resto, liso con brillo azul.
+  **Falta la foto apaisada de la CTA**: va la vertical anclada a la derecha y
+  el boton baja debajo del texto.
+- La demo es el bloque de concesionarios (`pb-`), con "a una paciente" y sin
+  "es una grabacion, pero real" (la grabacion no existe y la pagina esta
+  indexada). El boton de escuchar no suena todavia.
+- El chat usa `data-personalidad="dental"` hasta que exista una personalidad
+  `clinica` general en el agente de n8n (webhook `easyrobots-web`).
+- Mismo esqueleto y CSS que la dental; los cambios van en el bloque "AGENTE DE
+  VOZ" al final del primer `<style>`.
+
 ## Landing dental v2 (2026-10-02)
+
+**Archivada el 2026-10-07** en `borradores/` (ver "Agente de voz para clinicas").
+
 
 Reconstruccion contra un boceto nuevo, con el metodo de `docs/boceto-a-html.md`.
 **La pagina viva es `src/prueba-dental-v2.html` (hoy `src/dental/index.html`).** `prueba-dental.html` se queda
