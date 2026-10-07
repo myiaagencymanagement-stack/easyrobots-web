@@ -895,6 +895,23 @@
     .dc-tags.ok span { background: rgba(8,24,48,.8); border-color: rgba(60,140,255,.42); color: #D3E4FF; }
     .dc-tags.ok span:first-child { color: #5FB0FF; }
 
+    /* Anais (2026-10-07): con el fondo nuevo las tarjetas se veian
+       transparentes y el rojo no resaltaba. Pasan a solidas, con borde y
+       sombra, y los acentos suben de intensidad. */
+    .dc-c { background: #0D1016; border-color: rgba(255,255,255,.16); box-shadow: 0 calc(8 * var(--u)) calc(22 * var(--u)) rgba(0,0,0,.55); }
+    .dc-lis.ok .dc-c { background: #08142A; border-color: rgba(64,150,255,.75); box-shadow: 0 0 calc(16 * var(--u)) rgba(30,120,255,.35), 0 calc(8 * var(--u)) calc(22 * var(--u)) rgba(0,0,0,.55); }
+    .dc-c span { color: #CDD3DC; }
+    .dc-lis::before { opacity: 1; border-left-width: 2.5px; border-left-color: #FF4458; }
+    .dc-d { background: #FF4458; box-shadow: 0 0 calc(12 * var(--u)) rgba(255,68,88,.9); }
+    .dc-x { background: #FF4458; box-shadow: 0 0 calc(8 * var(--u)) rgba(255,68,88,.7); }
+    .dc-msg { box-shadow: 0 calc(12 * var(--u)) calc(34 * var(--u)) rgba(0,0,0,.6); }
+    .dc-tit { background: #0B0E14; border-color: rgba(255,255,255,.28); box-shadow: 0 calc(8 * var(--u)) calc(24 * var(--u)) rgba(0,0,0,.6); }
+    .dc-fin { background: #1E070B; border-color: #FF4458; box-shadow: 0 0 calc(22 * var(--u)) rgba(255,68,88,.6), 0 calc(8 * var(--u)) calc(22 * var(--u)) rgba(0,0,0,.5); }
+    .dc-fin.no em { color: #FF5A6C; }
+    .dc-fin.ok { background: #061329; border-color: #3B9BFF; box-shadow: 0 0 calc(22 * var(--u)) rgba(47,140,255,.6), 0 calc(8 * var(--u)) calc(22 * var(--u)) rgba(0,0,0,.5); }
+    .dc-tags span { background: #2A0A0F; border-color: rgba(255,90,105,.6); color: #FFE3E6; }
+    .dc-tags.ok span { background: #071733; border-color: rgba(70,150,255,.65); color: #E1ECFF; }
+
     /* ---------- 05 · DEMO ---------- */
     .m3 { background: #EEF2F6; }
     .m3 .foto { background-image: url(/assets/coach3-demo.webp); }
