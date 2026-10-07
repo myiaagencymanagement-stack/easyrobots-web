@@ -830,6 +830,13 @@
     h3 { font-family: 'Fraunces', Georgia, serif !important; font-weight: 560 !important; letter-spacing: -.01em !important; }
     h1 em, h2 em { font-style: italic !important; }
   </style>
+  <script>
+    /* Vinetas: anim-on se pone aqui, antes de pintar, para que lo primero que
+       se vea sea la animacion y no el bloque ya montado (en ecommerce el hero
+       salia entero y luego "parpadeaba"). Sin IntersectionObserver o con
+       movimiento reducido no se pone y todo se ve quieto. */
+    if ('IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) document.documentElement.classList.add('anim-on');
+  </script>
 </head>
 
 <body>
@@ -1545,38 +1552,38 @@
     })();
   </script>
   <script>
-    /* Vinetas: .visto mientras el bloque esta en pantalla; al salir se quita
-       para que vuelvan a aparecer. La bandeja, ademas, va pasando sus
-       "por resolver" a "resuelto" una a una, y se reinicia al salir. */
+    /* Vinetas (Anais, 07/10): aparecen la primera vez que el bloque entra en
+       pantalla y ya no se esconden. Al volver a entrar no desaparecen: solo se
+       resaltan otra vez, en el mismo orden en que salieron. */
+    function resuelve(el) {
+      var pend = [].filter.call(el.querySelectorAll('.bd-et'), function (x) { return x.classList.contains('et-r'); });
+      var i = 0;
+      (function sig() {
+        setTimeout(function () {
+          var x = pend[i++]; if (!x) return;
+          x.className = 'bd-et et-v ya'; x.textContent = 'Resuelto';
+          setTimeout(function () { x.classList.remove('ya'); }, 350);
+          sig();
+        }, i ? 900 : 2200);
+      })();
+    }
     (function () {
-      if (!('IntersectionObserver' in window)) return;
-      document.documentElement.classList.add('anim-on');
-      var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          var el = e.target;
-          el.classList.toggle('visto', e.isIntersecting);
-          if (!el.hasAttribute('data-resuelve') || quieto) return;
-          var ets = el.querySelectorAll('.bd-et');
-          clearTimeout(el._t);
-          if (!e.isIntersecting) {
-            ets.forEach(function (x) { if (x._r) { x.className = 'bd-et et-r'; x.textContent = 'Por resolver'; } });
-            return;
-          }
-          var pend = [].filter.call(ets, function (x) { if (x.classList.contains('et-r')) x._r = 1; return x._r; });
-          var i = 0;
-          (function sig() {
-            el._t = setTimeout(function () {
-              var x = pend[i++]; if (!x) return;
-              x.className = 'bd-et et-v ya'; x.textContent = 'Resuelto';
-              setTimeout(function () { x.classList.remove('ya'); }, 350);
-              sig();
-            }, i ? 900 : 2200);
-          })();
+    if (!document.documentElement.classList.contains('anim-on')) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var el = e.target;
+        if (!e.isIntersecting) { el._fuera = 1; return; }
+        if (!el.classList.contains('visto')) { el.classList.add('visto'); if (el.hasAttribute('data-resuelve')) resuelve(el); return; }
+        if (!el._fuera) return;
+        el._fuera = 0;
+        el.querySelectorAll('.vi').forEach(function (v) {
+          var d = parseFloat(getComputedStyle(v).getPropertyValue('--d')) || 0;
+          if (v.animate) v.animate([{ filter: 'brightness(1)', scale: '1' }, { filter: 'brightness(1.35)', scale: '1.03' }, { filter: 'brightness(1)', scale: '1' }], { duration: 700, delay: d * 500, easing: 'ease-in-out' });
         });
-      }, { threshold: .3 });
-      document.querySelectorAll('[data-vi]').forEach(function (el) { io.observe(el); });
-    })();
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -18% 0px' });
+    document.querySelectorAll('[data-vi]').forEach(function (el) { io.observe(el); });
+  })();
   </script>
   <script src="/js/chat-demo.js" defer></script>
   <script>

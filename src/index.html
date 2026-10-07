@@ -740,6 +740,16 @@
     h3 { font-family: 'Fraunces', Georgia, serif !important; font-weight: 560 !important; letter-spacing: -.01em !important; }
     h1 em, h2 em { font-style: italic !important; }
   </style>
+  <style>
+    /* Hero en movil como el de /estetica/ (Anais, 07/10: "se ve detras de la
+       letra"). La foto va arriba a todo el ancho y a la vista, sin texto
+       encima; el texto empieza donde la foto se funde en oscuro. */
+    @media (max-width: 900px) {
+      .hero .foto { background-size: 100% auto; background-position: center top; background-repeat: no-repeat; }
+      .hero .velo { background: linear-gradient(180deg, rgba(7,11,18,.55) 0px, rgba(7,11,18,.05) 90px, rgba(7,11,18,.08) 220px, rgba(10,15,24,.94) 360px, #0A0F18 400px); }
+      .hero .h-col { padding-top: 250px; }
+    }
+  </style>
 </head>
 
 <body>
