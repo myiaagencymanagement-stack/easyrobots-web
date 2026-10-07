@@ -467,6 +467,14 @@ Impressum. Eso es lo unico realmente expuesto de la web.
   tocan la landing premium.
 - Tipografía Plus Jakarta Sans servida desde `src/assets/fonts/`, no desde Google
   Fonts.
+- **Titulares en Fraunces en todas las páginas vivas** (decisión de Anaís,
+  2026-10-07, elegida entre cuatro opciones en
+  `borradores/prueba-tipografias.html`). h1 y h2 a peso 500, h3 a 560, la
+  parte destacada (`<em>`) en cursiva. Va en un `<style>` al final del
+  `<head>` de cada página con `!important`. Archivos
+  `assets/fonts/fraunces-latin-wght-{normal,italic}.woff2`. Sustituye a la
+  SF/Geist de los titulares de coaching y a la Source Serif de estética. El
+  texto corrido no cambia. **Una página nueva lleva ese mismo bloque.**
 
 ### Antes de cada push, validar
 
