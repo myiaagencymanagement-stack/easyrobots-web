@@ -1363,6 +1363,37 @@ prefijo propio (`d3`, `m3`, `x3`, `p3s`, `l3`, `e3`); el CSS viejo se quedo.
 - Falta guardar en `coaching-v3/` el fondo vertical de "donde se cae" que
   paso Anais para movil; de momento va un recorte del horizontal.
 
+## Estetica: fondos nuevos (2026-10-07)
+
+Anais no queria los fondos del boceto (recortes con el texto borrado). Se
+decidieron **uno a uno** y se generaron con ChatGPT; los originales estan en
+`src/assets/boceto/clinicas-v3/`. Regla de todos los prompts: **sin caras
+visibles** (de espaldas o desenfocadas), sin texto, pantallas de movil solo
+con luz, paleta calida con acento dorado #E4BA6C. Se piden en la misma
+conversacion de ChatGPT y de una en una, escritorio y luego movil.
+
+| Seccion | Fondo |
+|---|---|
+| Hero | Cabina: profesional trabajando y el movil encendido en la mesa. Encima, notificacion HTML de WhatsApp ("Lucia, 21:47") y etiqueta "Sin responder · 2 h" |
+| 02 fugas | Escenas sin caras: movil en recepcion de noche, recepcion vacia, presupuesto con cafe frio |
+| 03 recupera clientas | Clienta en casa leyendo el movil, de espaldas |
+| 04 caotica a organizada | Recepcion de dia, desenfocada. El centro ya no es imagen: es HTML (mensajes de 3 canales que caen en una agenda) |
+| 05, 06, 07, 10 | **Lisos** con brillo dorado. El caso de Pilar va liso a proposito: nada generado detras de un caso real |
+| 08 + 09 | **Una sola foto** (despacho de dia) en `.dupla`, con linea crema entre las dos |
+| 11 equipo y garantia | **Blanco** (`caja clara`) |
+| 12 CTA | La duena al atardecer, de espaldas, anclada a la derecha. **Falta la version movil** (hay un recorte provisional) |
+
+Otras decisiones del dia:
+
+- **Vinetas animadas**: `[data-vi]` + `.vi` con retraso en `--d`. Aparecen al
+  entrar en pantalla y se reinician al salir, para que vuelvan a salir. Sin
+  JS o con movimiento reducido se ven quietas.
+- **La demo** ("Pruebalo tu") lleva el copy de la demo de coaching v3
+  ("Asi responde EasyRobots a una clienta") y va en fondo oscuro con el chat
+  dentro de un movil y botones de frases dorados.
+- Las fotos nuevas llevan `?v=2` en la URL: con el mismo nombre de archivo
+  el navegador seguia ensenando las viejas.
+
 ## La calculadora
 
 Fórmula, visible en la propia página:
