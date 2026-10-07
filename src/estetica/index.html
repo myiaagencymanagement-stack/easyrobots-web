@@ -128,7 +128,9 @@
        la pantalla para que asome la seccion de abajo. Tamanos de letra
        copiados de alli. */
     .hero { position: relative; overflow: hidden; background: #070605; height: 86vh; height: 86svh; min-height: 600px; display: flex; flex-direction: column; }
-    .hero .foto { background-image: url(/assets/cl-hero.webp); background-position: 78% center; }
+    /* Foto de la cabina (ChatGPT, 07/10): 3:2, el movil encendido esta abajo
+       a la derecha; se encuadra al 78 % vertical para no cortarlo a 1920. */
+    .hero .foto { background-image: url(/assets/cl-hero.webp); background-position: 78% 78%; }
     .hero .velo { background:
         linear-gradient(90deg, rgba(6,5,4,.95) 0%, rgba(6,5,4,.88) 30%, rgba(6,5,4,.55) 48%, rgba(6,5,4,.12) 66%, rgba(6,5,4,0) 80%),
         linear-gradient(180deg, rgba(6,5,4,.55) 0%, rgba(6,5,4,0) 22%, rgba(6,5,4,0) 76%, rgba(6,5,4,.6) 100%); }
@@ -1042,6 +1044,17 @@
   .wz-pie .env svg { width: 18px; height: 18px; }
   .wz-card .cd-botones button { border-color: #00A884; color: #008069; }
   .wz-card .cd-botones button:hover { background: #00A884; color: #fff; }
+  /* Version de la demo de coaching v3: titular grande con la marca en el
+     acento, nota de "demo basica" y boton. El oro de la pagina (#E4BA6C) no
+     se lee sobre este gris claro, asi que el titular usa un oro mas oscuro. */
+  .wz-sec .wz-kick { color: #8A6A2E; }
+  .wz-txt h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.05; }
+  .wz-txt h2 em { font-style: normal; color: #A87A2A; }
+  .wz-nota { display: flex; gap: 12px; margin: 22px 0 0; padding: 14px 16px; border-radius: 12px; background: #EAE6E0; max-width: 44ch; }
+  .wz-nota p { margin: 0; font-size: .92rem; line-height: 1.5; color: #4E4944; }
+  .wz-nota b { display: block; color: #15120F; }
+  .wz-i { flex: 0 0 22px; height: 22px; border-radius: 50%; border: 2px solid #A87A2A; color: #A87A2A; font: 700 12px/18px var(--f); text-align: center; }
+  .wz-btn { margin-top: 22px; }
   @media (max-width: 860px) {
     .wz-sec { padding: 40px 16px; }
     .wz-caja { grid-template-columns: 1fr; gap: 24px; }
@@ -1051,10 +1064,16 @@
   <section class="wz-sec" id="pruebalo">
     <div class="wz-caja">
       <div class="wz-txt">
-        <p class="wz-kick">Pru&eacute;balo t&uacute;</p>
-        <h2>Escr&iacute;bele como lo har&iacute;a una clienta.</h2>
-        <p class="wz-sub">Es el mismo asistente que contestar&iacute;a tu WhatsApp. Pregunta un precio o pide cita y mira c&oacute;mo te la deja reservada.</p>
-        <ul><li>Contesta precios y dudas al momento</li><li>Reserva la cita en tu agenda real</li><li>Te avisa si hace falta una persona</li></ul>
+        <!-- Copy de la demo de coaching v3 (captura de Anais, 07/10), adaptado:
+             "un interesado" pasa a "una clienta" y la llamada a la cita. -->
+        <p class="wz-kick">Demo</p>
+        <h2>As&iacute; responde <em>EasyRobots</em> a una clienta.</h2>
+        <p class="wz-sub">Prueba la conversaci&oacute;n y descubre c&oacute;mo responde a sus dudas, le da precio y puede reservarle la cita directamente en tu agenda.</p>
+        <div class="wz-nota">
+          <span class="wz-i">i</span>
+          <p><b>Esta es una demo con funciones b&aacute;sicas.</b> El sistema real se adapta a tu cl&iacute;nica, tus tratamientos, tus precios y tu forma de hablar.</p>
+        </div>
+        <a class="btn b-oro wz-btn" href="#hablemos" data-cal>Reservar llamada</a>
       </div>
       <div class="wz-card" data-chat-demo data-sitio="demo-estetica" data-personalidad="estetica"
            data-sel-chat=".wz-chat" data-sel-campo=".wz-pie .campo" data-sel-enviar=".wz-pie .env"
