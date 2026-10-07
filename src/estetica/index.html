@@ -191,7 +191,9 @@
 
     /* ===================== 03 - RECUPERA CLIENTAS ===================== */
     .s03 { background: #120D0A; }
-    .s03 .foto { background-image: url(/assets/cl-reactiva.webp); background-position: 50% center; }
+    /* Foto de la clienta leyendo el movil en casa (ChatGPT, 07/10): el movil
+       cae hacia el 50-60 % del ancho, en la zona abierta del velo. */
+    .s03 .foto { background-image: url(/assets/cl-reactiva.webp?v=2); background-position: 50% 45%; }
     .s03 .velo { background: linear-gradient(90deg, rgba(14,10,8,.92) 0%, rgba(14,10,8,.80) 32%, rgba(14,10,8,.15) 52%, rgba(14,10,8,.10) 70%, rgba(14,10,8,.35) 100%); }
     .s03 .caja { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .s03 .h2 { max-width: 460px; }
@@ -524,7 +526,7 @@
       .h-meta svg { width: 16px; height: 16px; }
 
       /* --- fotos: recortes verticales y velos en vertical --- */
-      .s03 .foto { background-image: url(/assets/cl-reactiva-movil.webp); }
+      .s03 .foto { background-image: url(/assets/cl-reactiva-movil.webp?v=2); background-position: center top; }
       .s04 .foto { background-image: url(/assets/cl-caos-movil.webp); }
       .s05 .foto { background-image: url(/assets/cl-funciona-movil.webp); }
       .s06 .foto { background-image: url(/assets/cl-calc-movil.webp); }
@@ -535,7 +537,9 @@
       .s11 .foto { background-image: url(/assets/cl-garantia-movil.webp); }
       .s12 .foto { background-image: url(/assets/cl-cta-movil.webp); }
       .sec .foto { background-position: center top; }
-      .s03 .velo, .s07 .velo, .s10 .velo { background: linear-gradient(180deg, rgba(12,9,7,.86) 0%, rgba(12,9,7,.62) 45%, rgba(12,9,7,.88) 100%); }
+      .s07 .velo, .s10 .velo { background: linear-gradient(180deg, rgba(12,9,7,.86) 0%, rgba(12,9,7,.62) 45%, rgba(12,9,7,.88) 100%); }
+      /* La 03 abre el velo arriba: ahi estan las manos y el movil de la foto. */
+      .s03 .velo { background: linear-gradient(180deg, rgba(12,9,7,.72) 0%, rgba(12,9,7,.50) 35%, rgba(12,9,7,.82) 65%, rgba(12,9,7,.92) 100%); }
       .s12 .velo { background: linear-gradient(180deg, rgba(12,16,20,.96) 0%, rgba(12,16,20,.86) 60%, rgba(12,16,20,.55) 100%); }
       .s05 .velo, .s06 .velo, .s08 .velo, .s09 .velo { background: linear-gradient(180deg, rgba(250,246,242,.90) 0%, rgba(250,246,242,.72) 45%, rgba(250,246,242,.90) 100%); }
       .s11 .velo { background: linear-gradient(180deg, rgba(40,28,18,.70) 0%, rgba(40,28,18,.45) 40%, rgba(246,240,236,.3) 100%); }
@@ -918,7 +922,7 @@
     <div class="h-noti" aria-hidden="true">
       <div class="hn-card">
         <span class="hn-ic"><svg viewBox="0 0 24 24"><path fill="#fff" d="M12 3.5a8.5 8.5 0 00-7.3 12.8L3.5 20.5l4.3-1.1A8.5 8.5 0 1012 3.5z"/><path fill="#25D366" d="M9.3 7.9c.2 0 .4 0 .5.4l.7 1.6c.1.2 0 .4-.1.6l-.5.6c-.1.1-.1.3 0 .5.6 1 1.4 1.8 2.5 2.4.2.1.4.1.5 0l.6-.7c.2-.2.4-.2.6-.1l1.5.7c.2.1.3.3.3.5 0 .7-.5 1.6-1.4 1.8-.8.2-2.2 0-4.1-1.7-1.6-1.5-2.2-2.9-2.2-3.8 0-.9.6-1.6.8-1.8.1-.1.2-.1.3-.1z"/></svg></span>
-        <div class="hn-txt"><div class="hn-cab"><b>Laura</b><i>21:47</i></div>Hola, &iquest;ten&eacute;is hueco esta semana para microblading?</div>
+        <div class="hn-txt"><div class="hn-cab"><b>Luc&iacute;a</b><i>21:47</i></div>Hola, &iquest;ten&eacute;is hueco esta semana para microblading?</div>
       </div>
       <span class="hn-tag">Sin responder &middot; 2 h</span>
     </div>
