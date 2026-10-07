@@ -748,6 +748,21 @@
     .s11 { background: #120D0A; }
     .s11 .velo { background: radial-gradient(ellipse 60% 70% at 88% 12%, rgba(228,186,108,.11), rgba(228,186,108,0) 70%); }
 
+    /* 08 + 09 con un solo fondo: la foto va en .dupla, desenfocada como la
+       de la 04, y las dos secciones se vuelven transparentes con el mismo
+       velo, para que no se note donde acaba una y empieza la otra. */
+    .dupla { position: relative; overflow: hidden; background: #F4EEE8; }
+    .dupla::before { content: ""; position: absolute; inset: -12px; background: url(/assets/cl-despacho.webp) center 40% / cover no-repeat; filter: blur(5px); }
+    .dupla .s08, .dupla .s09 { background: transparent; }
+    .dupla .s08 .foto, .dupla .s09 .foto { display: none; }
+    /* Linea de separacion entre las dos, en blanco crema (Anais, 07/10). */
+    .dupla .s09::before { content: ""; position: absolute; z-index: 3; top: 0; left: max(22px, 5.6vw); right: max(22px, 5.6vw); height: 1px; background: linear-gradient(90deg, rgba(255,253,249,0), rgba(255,253,249,.95) 15%, rgba(255,253,249,.95) 85%, rgba(255,253,249,0)); box-shadow: 0 1px 0 rgba(120,90,50,.08); }
+    .dupla .s08 .velo, .dupla .s09 .velo { background: linear-gradient(90deg, rgba(250,246,242,.90) 0%, rgba(250,246,242,.76) 40%, rgba(250,246,242,.45) 100%); }
+    @media (max-width: 860px) {
+      .dupla::before { background-image: url(/assets/cl-despacho-movil.webp); background-position: center top; }
+      .dupla .s08 .velo, .dupla .s09 .velo { background: rgba(250,246,242,.80); }
+    }
+
     /* Calendario de GHL en modal. Mismo patron que inmobiliarias y coaching. */
     .er-modal { position: fixed; inset: 0; z-index: 9000; display: none; background: rgba(6,10,16,.62); backdrop-filter: blur(6px); padding: 24px 16px; overflow-y: auto; }
     .er-modal.open { display: block; }
@@ -1361,6 +1376,9 @@
     </div>
   </section>
 
+  <!-- La 08 y la 09 comparten una sola foto (el despacho de dia, ChatGPT
+       07/10), pintada en .dupla para que no haya corte entre las dos. -->
+  <div class="dupla">
   <!-- =================== 08 - PIEZAS =================== -->
   <section class="sec s08" id="piezas">
     <div class="foto suave" aria-hidden="true"></div>
@@ -1428,6 +1446,7 @@
     </div>
   </section>
 
+  </div>
   <!-- =================== 10 - LIMITES CLAROS =================== -->
   <section class="sec s10" id="control">
     <div class="foto suave" aria-hidden="true"></div>
