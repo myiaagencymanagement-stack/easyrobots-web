@@ -810,11 +810,13 @@
     .d3 .foto { background-image: url(/assets/coach3-cae.webp); }
     .d3 .foto { filter: brightness(1.35) saturate(1.1); }
     .d3 .velo { background: linear-gradient(90deg, rgba(4,6,10,.55) 0%, rgba(4,6,10,.25) 26%, rgba(4,6,10,0) 42%); }
-    .d3 .caja { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: clamp(20px, 2vw, 32px); padding-right: max(22px, 3vw) !important; align-items: start; padding-top: 56px; padding-bottom: 48px; }
+    .d3 .caja { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: clamp(20px, 2vw, 32px); padding-right: max(22px, 3vw) !important; align-items: start; padding-top: 44px; padding-bottom: 36px; }
     .d3-txt { padding-top: 22px; }
     .d3 .t3, .x3 .t3 { font-size: clamp(30px, 2.65vw, 43px); }
 
-    .dc { container-type: inline-size; width: min(100%, 860px); }
+    .dc { container-type: inline-size; width: min(100%, 700px); justify-self: end; }
+    /* Anais: no puede verse mas grande que el hero. El esquema manda la
+       altura de la seccion, asi que se limita a 700 de ancho (unos 550 de alto). */
     .dc-in { --u: calc(100cqw / 910); position: relative; }
     .dc-top { position: relative; height: calc(240 * var(--u)); }
     .dc-fl { position: absolute; inset: 0; width: 100%; height: 100%; }
