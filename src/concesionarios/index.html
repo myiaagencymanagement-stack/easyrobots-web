@@ -1731,5 +1731,13 @@
   });
 })();
 </script>
+<!-- CTA de reservar llamada (Anais, 2026-10-07): todos iguales en toda la
+     web, blanco premium; en /estetica/ dorado, que es su acento. Va al final
+     y con !important para ganar a los colores que cada boton traia. -->
+<style>
+  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]) { background: #fff !important; color: #0B1220 !important; border: 1px solid rgba(11,18,32,.10) !important; box-shadow: 0 10px 28px rgba(5,10,20,.22), inset 0 -1px 0 rgba(11,18,32,.06) !important; transition: background .2s, transform .2s, box-shadow .2s; }
+  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]):hover { background: #EEF2F7 !important; transform: translateY(-1px); }
+  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]) svg { color: #0B1220; }
+</style>
 </body>
 </html>
