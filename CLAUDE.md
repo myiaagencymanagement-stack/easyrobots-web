@@ -1365,6 +1365,8 @@ prefijo propio (`d3`, `m3`, `x3`, `p3s`, `l3`, `e3`); el CSS viejo se quedo.
 
 ## Estetica: fondos nuevos (2026-10-07)
 
+El metodo completo, con medidas y prompts, esta en `docs/fondos-con-chatgpt.md`.
+
 Anais no queria los fondos del boceto (recortes con el texto borrado). Se
 decidieron **uno a uno** y se generaron con ChatGPT; los originales estan en
 `src/assets/boceto/clinicas-v3/`. Regla de todos los prompts: **sin caras
@@ -1750,6 +1752,11 @@ Míos, cuando lo pida:
   Cuando se maqueta una página, el texto sale de ahí.
 - `docs/capacidades-reales.md` — qué puede hacer el sistema hoy, por nicho. Se
   lee ANTES de escribir copy.
+
+- `docs/fondos-con-chatgpt.md` — cómo se hacen los fondos con ChatGPT: se
+  decide la idea de cada sección con Anaís, qué medidas pedir según el hueco,
+  la plantilla de prompt, cómo se monta en CSS y los prompts que funcionaron
+  en estética. **Se lee antes de hacer los fondos de otra landing.**
 
 - `docs/boceto-a-html.md` — cómo se convierte un boceto de IA en HTML real:
   por qué no existe código detrás, cómo se mide en vez de mirarlo a ojo, y las
