@@ -444,8 +444,13 @@
 
     /* ===================== 12 - CTA ===================== */
     .s12 { background: var(--cta); min-height: clamp(420px, 52vh, 560px); }
-    .s12 .foto { background-image: url(/assets/cl-cta.webp); background-position: right center; }
-    .s12 .velo { background: linear-gradient(90deg, rgba(12,16,20,1) 0%, rgba(12,16,20,.97) 60%, rgba(12,16,20,.62) 78%, rgba(12,16,20,.08) 94%); }
+    /* Foto de la duena al atardecer (ChatGPT, 07/10). Va a todo el alto y
+       anclada a la derecha, no con cover: asi ella queda en el ultimo cuarto
+       y el resto de la seccion es fondo oscuro calido, que empalma con el
+       borde izquierdo de la foto. */
+    .s12 { background: #0A0806; }
+    .s12 .foto { background-image: url(/assets/cl-cta.webp?v=2); background-position: right center; background-size: auto 100%; }
+    .s12 .velo { background: linear-gradient(90deg, rgba(10,8,6,1) 0%, rgba(10,8,6,.97) 55%, rgba(10,8,6,.92) 67%, rgba(10,8,6,.35) 81%, rgba(10,8,6,0) 95%); }
     .s12 .caja { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; }
     .s12 .kick { color: rgba(255,255,255,.85); letter-spacing: .3em; }
     .s12 .p { max-width: 520px; }
@@ -559,7 +564,7 @@
       .s09 .foto { background-image: url(/assets/cl-potencia-movil.webp); }
       .s10 .foto { background-image: url(/assets/cl-limites-movil.webp); }
       .s11 .foto { background-image: url(/assets/cl-garantia-movil.webp); }
-      .s12 .foto { background-image: url(/assets/cl-cta-movil.webp); }
+      .s12 .foto { background-image: url(/assets/cl-cta-movil.webp?v=2); background-size: cover; background-position: center bottom; }
       .sec .foto { background-position: center top; }
       .s07 .velo, .s10 .velo { background: linear-gradient(180deg, rgba(12,9,7,.86) 0%, rgba(12,9,7,.62) 45%, rgba(12,9,7,.88) 100%); }
       /* La 03 abre el velo arriba: ahi estan las manos y el movil de la foto. */
@@ -745,8 +750,12 @@
     .s07 .velo { background: radial-gradient(ellipse 55% 70% at 90% 10%, rgba(228,186,108,.10), rgba(228,186,108,0) 70%); }
     .s10 { background: #0B0A0A; }
     .s10 .velo { background: radial-gradient(ellipse 55% 70% at 8% 90%, rgba(228,186,108,.09), rgba(228,186,108,0) 70%); }
-    .s11 { background: #120D0A; }
-    .s11 .velo { background: radial-gradient(ellipse 60% 70% at 88% 12%, rgba(228,186,108,.11), rgba(228,186,108,0) 70%); }
+    /* Equipo y garantia en blanco (Anais, 07/10). */
+    .s11 { background: #FFFFFF; }
+    .s11 .velo { background: radial-gradient(ellipse 60% 70% at 88% 12%, rgba(228,186,108,.10), rgba(228,186,108,0) 70%); }
+    .s11 .kick { color: #9A7A3C; }
+    .s11 .eq-pie { color: #fff; }
+    .s11 .ga-panel { background: #FAF7F3; border: 1px solid #EEE7DF; box-shadow: 0 16px 44px rgba(40,28,18,.10); }
 
     /* 08 + 09 con un solo fondo: la foto va en .dupla, desenfocada como la
        de la 04, y las dos secciones se vuelven transparentes con el mismo
@@ -1472,7 +1481,7 @@
   <section class="sec s11" id="equipo">
     <div class="foto suave" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
-    <div class="caja oscura">
+    <div class="caja clara">
       <div>
         <div class="kick">El equipo</div>
         <h2 class="h2">No somos una centralita.</h2>
