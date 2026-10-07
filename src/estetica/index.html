@@ -27,7 +27,7 @@
 
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/source-serif-4-500-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/cl-hero.webp" as="image">
+  <link rel="preload" href="/assets/cl-hero.webp?v=2" as="image">
 
   <style>
     /* Las tipografias se sirven desde este dominio: cargarlas desde Google
@@ -130,7 +130,7 @@
     .hero { position: relative; overflow: hidden; background: #070605; height: 86vh; height: 86svh; min-height: 600px; display: flex; flex-direction: column; }
     /* Foto de la cabina (ChatGPT, 07/10): 3:2, el movil encendido esta abajo
        a la derecha; se encuadra al 78 % vertical para no cortarlo a 1920. */
-    .hero .foto { background-image: url(/assets/cl-hero.webp); background-position: 78% 78%; }
+    .hero .foto { background-image: url(/assets/cl-hero.webp?v=2); background-position: 78% 78%; }
     .hero .velo { background:
         linear-gradient(90deg, rgba(6,5,4,.95) 0%, rgba(6,5,4,.88) 30%, rgba(6,5,4,.55) 48%, rgba(6,5,4,.12) 66%, rgba(6,5,4,0) 80%),
         linear-gradient(180deg, rgba(6,5,4,.55) 0%, rgba(6,5,4,0) 22%, rgba(6,5,4,0) 76%, rgba(6,5,4,.6) 100%); }
@@ -163,9 +163,9 @@
     .fu { position: relative; border-radius: 12px; overflow: hidden; background: #0E1416; border: 1px solid rgba(255,255,255,.06); }
     .fu-img { position: relative; aspect-ratio: 431 / 190; background-size: cover; background-position: center top; }
     .fu-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,20,22,0) 45%, rgba(14,20,22,.96) 100%); }
-    .fu1 .fu-img { background-image: url(/assets/cl-fuga1.webp); }
-    .fu2 .fu-img { background-image: url(/assets/cl-fuga2.webp); }
-    .fu3 .fu-img { background-image: url(/assets/cl-fuga3.webp); }
+    .fu1 .fu-img { background-image: url(/assets/cl-fuga1.webp?v=2); }
+    .fu2 .fu-img { background-image: url(/assets/cl-fuga2.webp?v=2); }
+    .fu3 .fu-img { background-image: url(/assets/cl-fuga3.webp?v=2); }
     .fu-ic { position: absolute; z-index: 2; left: 22px; top: calc(100% - 66px); width: 52px; height: 52px; border-radius: 10px; background: rgba(14,20,22,.78); display: flex; align-items: center; justify-content: center; }
     .fu-ic svg { width: 34px; height: 34px; color: var(--oro); }
     .fu-txt { padding: 22px 24px 28px; }
@@ -485,7 +485,7 @@
       section[id] { scroll-margin-top: 58px; }
 
       /* --- hero, una pantalla justa, con la barra fija como inmobiliarias --- */
-      .hero .foto { background-image: url(/assets/cl-hero-movil.webp); background-position: center top; }
+      .hero .foto { background-image: url(/assets/cl-hero-movil.webp?v=2); background-position: center top; }
       .hero .velo { background: linear-gradient(180deg, rgba(6,5,4,.55) 0%, rgba(6,5,4,.25) 26%, rgba(6,5,4,.80) 52%, rgba(6,5,4,.96) 100%); }
       .h-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 120; background: rgba(8,8,11,.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08); }
       .h-nav-in { padding: 9px 22px; }
