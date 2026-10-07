@@ -274,6 +274,15 @@
        salir para volver a verse (mismo patron que /estetica/: [data-vi] +
        .vi con retraso en --d). Sin JavaScript, o con movimiento reducido,
        se ven quietos. Antes de la respuesta sale un "escribiendo...". */
+    /* Anais (2026-10-07): la tira "conversacion > agenda > registro >
+       criterio" aparece paso a paso al entrar, y despues una luz azul la
+       recorre en bucle, para que se lea como un flujo y no como cuatro
+       iconos sueltos. Al pasar el raton, el circulo se levanta. */
+    .h2-rd { transition: transform .25s ease; }
+    .h2-it:hover .h2-rd { transform: translateY(-4px); }
+    .anim-on .visto .h2-it .h2-rd { animation: h2-luz 2.8s ease-in-out calc(var(--l, 0s) + 3.2s) infinite; }
+    @keyframes h2-luz { 0%, 30%, 100% { box-shadow: 0 0 0 0 rgba(0,112,254,0); } 12% { box-shadow: 0 0 0 6px rgba(0,112,254,.35), 0 0 26px rgba(0,140,255,.75); } }
+    @media (prefers-reduced-motion: reduce) { .anim-on .visto .h2-it .h2-rd { animation: none; } }
     .anim-on [data-vi] .vi { opacity: 0; transform: translateY(12px) scale(.96); transition: opacity .25s ease, transform .25s ease; }
     .anim-on [data-vi].visto .vi { opacity: 1; transform: none; transition: opacity .5s ease var(--d, 0s), transform .55s cubic-bezier(.2,.9,.25,1.15) var(--d, 0s); }
     .w-escr { display: none; }
@@ -1002,23 +1011,23 @@
         <p class="h2-p">Ventas y posventa conectadas. Toda la información <br>del cliente en un solo sistema para que cada interacción <br>sume, en cualquier momento del ciclo.</p>
       </div>
 
-      <div class="h2-card">
-        <div class="h2-it">
+      <div class="h2-card" data-vi>
+        <div class="h2-it vi" style="--d:.2s;--l:0.0s">
           <span class="h2-rd"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><circle cx="8" cy="10.5" r="1.4" fill="#0A1520"/><circle cx="12" cy="10.5" r="1.4" fill="#0A1520"/><circle cx="16" cy="10.5" r="1.4" fill="#0A1520"/></svg></span>
           <b>Conversación<br><span>con el cliente</span></b>
         </div>
-        <svg class="h2-fle" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="h2-it">
+        <svg class="h2-fle vi" style="--d:.55s" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="h2-it vi" style="--d:.9s;--l:0.7s">
           <span class="h2-rd"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="17" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 9.5h19M7.5 2.5v4M16.5 2.5v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="7.5" cy="13" r="1.2" fill="currentColor"/><circle cx="12" cy="13" r="1.2" fill="currentColor"/><circle cx="16.5" cy="13" r="1.2" fill="currentColor"/><circle cx="7.5" cy="17.5" r="1.2" fill="currentColor"/><circle cx="12" cy="17.5" r="1.2" fill="currentColor"/></svg></span>
           <b>Agenda<br><span>de citas</span></b>
         </div>
-        <svg class="h2-fle" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="h2-it">
+        <svg class="h2-fle vi" style="--d:1.25s" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="h2-it vi" style="--d:1.6s;--l:1.4s">
           <span class="h2-rd"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 2.5h8l5 5v14h-13z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.5 2.5v5h5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12.5h7M8.5 16h4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
           <b>Registro<br><span>en tu sistema</span></b>
         </div>
-        <svg class="h2-fle" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="h2-it">
+        <svg class="h2-fle vi" style="--d:1.95s" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="h2-it vi" style="--d:2.3s;--l:2.1s">
           <span class="h2-rd"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="13" width="4.4" height="8" rx="1"/><rect x="9.8" y="8" width="4.4" height="13" rx="1"/><rect x="16.6" y="3" width="4.4" height="18" rx="1"/></svg></span>
           <b>Criterio<br><span>para tu equipo</span></b>
         </div>
