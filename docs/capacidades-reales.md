@@ -32,6 +32,32 @@ arregla en la llamada de venta, porque no se llega a ella.
 
 ---
 
+## Actualizacion del 2026-10-07 (manda sobre todo lo de abajo)
+
+Decidido por Anais revisando los bloques de "limites" de inmobiliarias y
+concesionarios: **los limites no los pone el sistema, los pone cada cliente.**
+El sistema puede hacerlo todo: dar el precio de un piso, tasar un coche con la
+informacion recogida, dar precio final o descuento, consultar stock... Lo que
+haga en cada negocio lo decide ese negocio en el montaje, igual que unos dan a
+una herramienta acceso de solo lectura, otros de edicion y otros total.
+
+Consecuencias:
+
+- Ninguna pagina dice "no tasa", "no da precio", "no negocia" ni "no cierra
+  condiciones" como si fuera una limitacion del sistema. Si aparece, se dice
+  como **decision del cliente**: "si quieres que tase con lo que ha recogido,
+  tasa; si prefieres que lo pase al tasador, lo pasa".
+- Quedan sin efecto, por este motivo: el limite de inmobiliarias *"Precio de un
+  piso concreto, no"* y la consecuencia 3 (*"Nada de consulta la disponibilidad
+  del piso"*), y el matiz de concesionarios *"Tasacion: no da un precio"*.
+- Lo unico que se mantiene es de sentido comun, no un limite: **no se inventa
+  datos**. Lo que dice sale de la fuente que da el cliente (su CRM, su feed, su
+  stock); si no le consta, lo dice y avisa al equipo.
+- Tampoco se escribe "no sustituye a tu equipo": depende de como se mire. Lo que
+  se vende es **optimizar** el trabajo del equipo.
+
+---
+
 ## Actualizacion del 2026-09-27 (manda sobre lo de abajo)
 
 Decidido por Anais. Estas dos filas dejan de bloquear el copy:
@@ -123,7 +149,8 @@ versión del producto y es lo único sobre lo que puede apoyarse el copy.
 
 ### Límites (van en la página, son argumento)
 - Da **precios de su catálogo de servicios** (visita, valoración, asesoría).
-  **Precio de un piso concreto, no.**
+  ~~**Precio de un piso concreto, no.**~~ **Derogado el 2026-10-07**: también da
+  el de un piso concreto si la inmobiliaria quiere, sacado de su listado.
 - Cuando no sabe algo: dice que lo consulta y crea una tarea para el equipo.
   **Tiene prohibido rellenar huecos inventando.**
 - **Solo español.** Otros idiomas no se han probado: no se mencionan.
@@ -222,8 +249,9 @@ integración con su software (DMS y gestor de taller).
 ### Con matiz, que se mantiene
 - **Stock y recambios:** se consultan si el cliente da la fuente. Es
   implantación, se habla en la llamada.
-- **Tasación:** el agente recoge matrícula, kilómetros y estado y lo pasa al
-  tasador. **No da un precio.**
+- ~~**Tasación:** el agente recoge matrícula, kilómetros y estado y lo pasa al
+  tasador. **No da un precio.**~~ **Derogado el 2026-10-07**: puede tasar con la
+  información recogida si el concesionario quiere; si no, la pasa al tasador.
 
 ### Consecuencia para la estrategia
 La tesis de la centralita —"todo pasa por recepción"— **es una tesis de voz** y
