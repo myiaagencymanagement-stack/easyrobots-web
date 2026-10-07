@@ -303,6 +303,7 @@ demás está en `src/borradores/` con el sufijo `-version-antigua`.
 | `/` | `src/index.html` | Home de agencia (nivel 1). Era `prueba-index-v2.html` |
 | `/estetica/` | `src/estetica/index.html` | Era `prueba-clinicas-premium-v2.html` |
 | `/agente-de-voz/` | `src/agente-de-voz/index.html` | Agente de voz para todas las clinicas. Era la dental v2 (2026-10-07) |
+| `/clinicas/` | `src/clinicas/index.html` | Puerta de clinicas: WhatsApp → estetica, telefono → agente de voz. `noindex` |
 | `/dental/` | `src/dental/index.html` | **Solo redirige** a `/agente-de-voz/` desde el 2026-10-07 |
 | `/inmobiliarias/` | `src/inmobiliarias/index.html` | Era `prueba-inmobiliarias-v3.html` |
 | `/concesionarios/` | `src/concesionarios/index.html` | Era `prueba-concesionarios-v2.html` |
@@ -1036,6 +1037,12 @@ NO va en "Sectores"** (alli todo son sectores; Anais: "una es clinicas
 esteticas y otra agente de voz, eso no puede ser"): se enlaza desde la tarjeta
 "Agentes de voz y telefonia inteligente" de "Soluciones". El sexto hueco de
 sectores, que era dental, es "¿No ves el tuyo?" y abre el calendario.
+- **Dos paginas de clinicas, una puerta** (decision de Anais, 2026-10-07): en
+  la home, la tarjeta de sectores es **"Clinicas"** y lleva a `/clinicas/`,
+  una pagina corta (`noindex`, fuera del sitemap) donde se elige por como
+  contactan los pacientes: **"Me escriben por WhatsApp"** → `/estetica/`
+  (estetica, medicina estetica, microblading) o **"Me llaman por telefono"**
+  → `/agente-de-voz/` (dental, fisioterapia, salud).
 
 - Copy en `docs/copys/clinicas-voz.md`. Eje: *"Cada llamada sin coger es una
   cita perdida."* Solo llamadas **entrantes**, sin transferencia en caliente
