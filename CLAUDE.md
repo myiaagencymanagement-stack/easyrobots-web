@@ -1031,9 +1031,11 @@ Peticion de Anais: la landing dental pasa a ser **para todas las clinicas y
 centrada en el agente de voz**. Vive en `/agente-de-voz/`; `/dental/` y
 `dental.html` redirigen alli (meta refresh a 0 + canonical: nginx no tiene
 config propia, no hay 301). La dental v2 entera esta en
-`borradores/dental-v2-version-antigua.html`. En la home, la tarjeta de
-sectores "Clinicas dentales" pasa a "Agente de voz para clinicas", en el mismo
-hueco, con foto `home-s-voz.webp`; igual en el pie.
+`borradores/dental-v2-version-antigua.html`. En la home, **el agente de voz
+NO va en "Sectores"** (alli todo son sectores; Anais: "una es clinicas
+esteticas y otra agente de voz, eso no puede ser"): se enlaza desde la tarjeta
+"Agentes de voz y telefonia inteligente" de "Soluciones". El sexto hueco de
+sectores, que era dental, es "¿No ves el tuyo?" y abre el calendario.
 
 - Copy en `docs/copys/clinicas-voz.md`. Eje: *"Cada llamada sin coger es una
   cita perdida."* Solo llamadas **entrantes**, sin transferencia en caliente

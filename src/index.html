@@ -214,6 +214,13 @@
     .x-ir { position: absolute; z-index: 2; right: 30px; bottom: 28px; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.85); display: flex; align-items: center; justify-content: center; transition: background .2s; }
     .x-ir svg { width: 20px; height: 20px; }
     .x-card:hover .x-ir { background: rgba(255,255,255,.16); }
+    .x-mas { background: radial-gradient(70% 90% at 85% 15%, rgba(0,117,252,.35), rgba(0,117,252,0) 70%), linear-gradient(160deg, #18202C, #0B0F15); }
+    .x-mas::after { display: none; }
+    a.c-link { color: inherit; text-decoration: none; transition: border-color .2s, box-shadow .2s; }
+    a.c-link:hover { border-color: #9DBBE6; box-shadow: 0 12px 30px rgba(20,60,120,.12); }
+    .c-ver { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-size: 14.5px; font-weight: 700; color: #0A63E0; }
+    .c-ver svg { width: 16px; height: 16px; }
+    @media (max-width: 860px) { .c-ver { margin-top: 7px; font-size: .74rem; gap: 4px; } .c-ver svg { width: 12px; height: 12px; } }
 
     /* ============ 04 - COMO TRABAJAMOS ============
        Tres pasos con su foto y flechas entre ellas. La tercera foto traia
@@ -705,7 +712,11 @@
 
       <div class="c-grid">
         <article class="c-card"><img src="/assets/home-c1.webp" alt="" loading="lazy" decoding="async"><div class="c-tx"><h3>Agentes de IA <br>para atención y ventas</h3><p>Responden, cualifican, informan y convierten oportunidades en clientes.</p></div></article>
-        <article class="c-card"><img src="/assets/home-c2.webp" alt="" loading="lazy" decoding="async"><div class="c-tx"><h3>Agentes de voz <br>y telefonía inteligente</h3><p>Llamadas entrantes y salientes, atención telefónica, cualificación y seguimiento automático.</p></div></article>
+        <!-- 2026-10-07: el agente de voz tiene pagina propia (/agente-de-voz/).
+             Se enlaza desde aqui, que es un producto, y no desde "Sectores",
+             que son sectores (Anais: "una es clinicas esteticas y otra agente
+             de voz, eso no puede ser"). -->
+        <a class="c-card c-link" href="/agente-de-voz/"><img src="/assets/home-c2.webp" alt="" loading="lazy" decoding="async"><div class="c-tx"><h3>Agentes de voz <br>y telefonía inteligente</h3><p>Llamadas entrantes y salientes, atención telefónica, cualificación y seguimiento automático.</p><span class="c-ver">Ver agente de voz para clínicas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div></a>
         <article class="c-card"><img src="/assets/home-c3.webp" alt="" loading="lazy" decoding="async"><div class="c-tx"><h3>Agentes de WhatsApp <br>y conversaciones automatizadas</h3><p>Respuestas, gestión de conversaciones, citas, seguimiento y automatización por WhatsApp.</p></div></article>
         <article class="c-card"><img src="/assets/home-c4.webp" alt="" loading="lazy" decoding="async"><div class="c-tx"><h3>Webs, chat web <br>y experiencias digitales</h3><p>Webs que convierten, asistentes inteligentes y experiencias digitales adaptadas a tu negocio.</p></div></article>
         <article class="c-card"><img src="/assets/home-c5.webp" alt="" loading="lazy" decoding="async"><div class="c-tx"><h3>Automatización de procesos <br>y operaciones</h3><p>Flujos de trabajo, tareas, notificaciones y procesos automatizados para que todo funcione sin intervención manual.</p></div></article>
@@ -736,12 +747,6 @@
         <a class="x-card" href="/estetica/"><img src="/assets/home-s-esteticas.webp" alt="" loading="lazy" decoding="async">
           <div class="x-tx"><h3>Clínicas estéticas</h3><p>Automatización e inteligencia artificial para clínicas estéticas.</p></div>
           <span class="x-ir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a>
-        <!-- 2026-10-07: la tarjeta de dental pasa a ser el agente de voz para
-             todas las clinicas (/dental/ redirige alli). Va en el mismo hueco
-             para no descuadrar la rejilla de seis. -->
-        <a class="x-card" href="/agente-de-voz/"><img src="/assets/home-s-voz.webp" alt="" loading="lazy" decoding="async">
-          <div class="x-tx"><h3>Agente de voz para clínicas</h3><p>Coge el teléfono de tu clínica cuando recepción no puede.</p></div>
-          <span class="x-ir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a>
         <a class="x-card" href="/concesionarios/"><img src="/assets/home-s-concesionarios.webp" alt="" loading="lazy" decoding="async">
           <div class="x-tx"><h3>Concesionarios</h3><p>Automatización e inteligencia artificial para concesionarios.</p></div>
           <span class="x-ir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a>
@@ -750,6 +755,12 @@
           <span class="x-ir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a>
         <a class="x-card" href="/coaching/"><img src="/assets/home-s-coaching.webp" alt="" loading="lazy" decoding="async">
           <div class="x-tx"><h3>Coaching</h3><p>Automatización e inteligencia artificial para coaches.</p></div>
+          <span class="x-ir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a>
+        <!-- Sexto hueco (2026-10-07): era dental, que se cerro. La home es de
+             agencia horizontal: mejor invitar a contar su caso que inventar
+             un sector sin pagina. Abre el calendario. -->
+        <a class="x-card x-mas" href="#hablemos" data-cal>
+          <div class="x-tx"><h3>¿No ves el tuyo?</h3><p>Cuéntanos qué quieres automatizar.</p></div>
           <span class="x-ir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a>
       </div>
     </div>
