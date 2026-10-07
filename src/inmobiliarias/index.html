@@ -572,6 +572,33 @@
     #como-funciona { background:
             linear-gradient(90deg, rgba(6,12,22,.94) 0%, rgba(6,12,22,.80) 34%, rgba(6,12,22,.38) 68%, rgba(6,12,22,.45) 100%),
             url(/assets/inmo-como.webp) center 40% / cover no-repeat var(--oscuro); }
+    /* El momento v2 (2026-10-07): foto nueva y sin tarjetas. El velo blanco
+       cubre la izquierda (texto y listas) y deja ver al comprador. */
+    .m2 { background:
+            linear-gradient(90deg, rgba(254,254,253,.94) 0%, rgba(254,254,253,.86) 42%, rgba(254,254,253,.35) 60%, rgba(254,254,253,0) 72%),
+            url(/assets/inmo-momento2.webp?v=1) center 16% / cover no-repeat #FEFEFD !important; }
+    .mm { max-width: 760px; }
+    .mm .m2-t em { font-style: normal; color: #6E6E73; }
+    .mm-cols { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 44px; padding-top: 28px; border-top: 1px solid rgba(11,17,25,.12); }
+    .mm-eb { font-size: 12.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #59616D; }
+    .mm-eb.az { color: var(--azul); }
+    .mm-l { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 11px; }
+    .mm-l li { display: flex; align-items: center; gap: 12px; font-size: 16px; line-height: 1.35; color: #2E3540; }
+    .mm-l .d { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .mm-hoy .d { background: transparent; border: 1.5px solid #B9C0CA; }
+    .mm-hoy .fin .d { background: #E5484D; border-color: #E5484D; color: #fff; }
+    .mm-hoy .fin { font-weight: 700; color: #0B1119; }
+    .mm-er .d { background: var(--azul); color: #fff; }
+    .mm-er .fin { font-weight: 700; color: #0B1119; }
+    .mm-l svg { width: 13px; height: 13px; }
+    @media (max-width: 900px) {
+      .m2 { background:
+              linear-gradient(180deg, rgba(254,254,253,0) 0%, rgba(254,254,253,0) 40vw, rgba(254,254,253,.92) 70vw, #FEFEFD 82vw),
+              url(/assets/inmo-momento2-movil.webp?v=1) center top / 100% auto no-repeat #FEFEFD !important; }
+      #momento > .wrap { padding-top: 68vw; }
+      .mm-cols { grid-template-columns: 1fr; gap: 26px; margin-top: 26px; padding-top: 22px; }
+      .mm-l li { font-size: 14.5px; }
+    }
     .m2-grid { display: grid; grid-template-columns: .88fr 1.07fr 1.05fr; gap: 24px; align-items: stretch; }
     .m2-txt { align-self: center; padding-right: 10px; }
     .m2-kick { font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--azul); margin-bottom: 1.5rem; }
@@ -1419,77 +1446,38 @@
            /assets/momento-piso.webp       ·  casi cuadrada -->
     <section class="sec m2" id="momento">
       <div class="wrap">
-        <div class="m2-grid">
-
+        <!-- 2026-10-07 (Anais): fuera las dos tarjetas. La foto cuenta el
+             momento (el comprador llamando en el piso, de espaldas) y las dos
+             listas van encima, sin recuadro, a la izquierda de el. -->
+        <div class="mm">
           <div class="m2-txt">
             <p class="m2-kick">El momento</p>
-            <h2 class="m2-t">Devolver la llamada no es retomar la conversaci&oacute;n.</h2>
+            <h2 class="m2-t">Devolver la llamada <em>no es retomar la conversaci&oacute;n.</em></h2>
             <p class="m2-lede">Cuando nadie responde, el comprador llama a otra inmobiliaria.
               La oportunidad se pierde.</p>
           </div>
-
-          <div class="m2-card m2-hoy">
-            <div class="m2-hoy-txt">
-              <p class="m2-eyebrow">Hoy</p>
-
-              <div class="m2-perdida">
-                <span class="ic"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M7.4 3.2c.5-.2 1.1 0 1.4.5l1.4 2.4c.3.5.2 1.1-.2 1.5l-1 .9c-.2.2-.3.5-.1.8.9 1.7 2.3 3.1 4 4 .3.2.6.1.8-.1l.9-1c.4-.4 1-.5 1.5-.2l2.4 1.4c.5.3.7.9.5 1.4l-.7 1.7c-.2.5-.7.9-1.3.9C10.3 19.4 2.6 11.7 2.6 4.4c0-.6.4-1.1.9-1.3z"/><path d="M14.6 2.4l5.2 5.2M19.8 2.4l-5.2 5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/></svg></span>
-                <div>
-                  <b>Llamada perdida</b>
-                  <span>12:41</span>
-                </div>
-              </div>
-
-              <ul class="m2-pasos">
-                <li>
-                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6.2" y="2.6" width="7.6" height="14.8" rx="1.8"/><path d="M8.8 15h2.4"/></svg></span>
-                  El comprador llama
-                </li>
-                <li>
-                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2.8l6 2.6v4.2c0 3.1-2.4 5.6-6 6.4-3.6-.8-6-3.3-6-6.4V5.4z"/></svg></span>
-                  Nadie responde
-                </li>
-                <li>
-                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="10" cy="10" rx="4.4" ry="7"/></svg></span>
-                  Llama a otra inmobiliaria
-                </li>
-                <li class="fin">
-                  <span class="p"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6.2 6.2l7.6 7.6M13.8 6.2l-7.6 7.6"/></svg></span>
-                  La oportunidad se pierde.
-                </li>
+          <div class="mm-cols">
+            <div class="mm-col">
+              <p class="mm-eb">Hoy</p>
+              <ul class="mm-l mm-hoy">
+                <li><span class="d"></span>El comprador llama</li>
+                <li><span class="d"></span>Nadie responde</li>
+                <li><span class="d"></span>Llama a otra inmobiliaria</li>
+                <li class="fin"><span class="d"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6.2 6.2l7.6 7.6M13.8 6.2l-7.6 7.6"/></svg></span>La oportunidad se pierde.</li>
               </ul>
             </div>
-
-            <div class="m2-foto">
-              <img src="/assets/momento-comprador.webp" loading="lazy" decoding="async"
-                alt="Un comprador al tel&eacute;fono, con gesto de contrariedad, esperando respuesta">
-            </div>
-          </div>
-
-          <div class="m2-card m2-er">
-            <p class="m2-eyebrow az">Con EasyRobots</p>
-
-            <div class="m2-er-cols">
-              <ul class="m2-checks">
-                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>La llamada es atendida por un agente de voz</li>
-                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se contin&uacute;a en WhatsApp</li>
-                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se recoge la informaci&oacute;n</li>
-                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se propone una visita</li>
-                <li><span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Tu equipo recibe el contexto</li>
+            <div class="mm-col">
+              <p class="mm-eb az">Con EasyRobots</p>
+              <ul class="mm-l mm-er">
+                <li><span class="d"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>La llamada es atendida por un agente de voz</li>
+                <li><span class="d"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se contin&uacute;a en WhatsApp</li>
+                <li><span class="d"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se recoge la informaci&oacute;n</li>
+                <li><span class="d"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Se propone una visita</li>
+                <li><span class="d"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Tu equipo recibe el contexto</li>
+                <li class="fin"><span class="d"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>Visita agendada &middot; jueves 11:00</li>
               </ul>
-
-              <div class="m2-visita">
-                <img src="/assets/momento-piso.webp" loading="lazy" decoding="async"
-                  alt="Sal&oacute;n luminoso del piso de la visita">
-                <div class="txt">
-                  <b>Visita agendada</b>
-                  <span class="h">Jueves 11:00</span>
-                  <span class="tk"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 10.4l3.4 3.4 7.4-7.6"/></svg></span>
-                </div>
-              </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
