@@ -1262,6 +1262,19 @@ se tocan.
   flechas de sectores van **abajo a la derecha junto al titulo**, nunca en la
   esquina de arriba. Lo demas de la quinta se queda.
 
+- **v3 publicada (2026-10-07): la home pasa a OSCURA** (paleta v6: #0A0F18,
+  tarjetas #121A27, acento azul). En crema y marron "parecia de clinicas".
+  Desde el caso de Pilar (caso real y equipo/garantia) sigue en claro, con
+  los tokens originales devueltos solo en `.s06, section.eq`. El hero ya no
+  lleva foto de persona: escritorio de noche (`home3-hero*.webp`) y un chat
+  con **pestañas por sector que se escribe solo** (`#hx`, conversaciones
+  marcadas "Ejemplo"). CTA con la misma escena (`home3-cta*.webp`). Fotos
+  nuevas: `home3-c7.webp` (captacion, sin cifras) y `home3-s-clinicas.webp`
+  (cabina de estetica). Originales en `assets/boceto/home-v3/`. La version
+  clara esta en `borradores/home-v2-version-antigua.html`.
+  Falta: las otras siete fotos de soluciones y cinco de sectores siguen
+  siendo recortes pequeños del boceto (blandas en pantallas buenas).
+
 ## Landing de clinicas premium v2 (2026-10-02)
 
 Reconstruccion contra un boceto nuevo. **La pagina viva es
