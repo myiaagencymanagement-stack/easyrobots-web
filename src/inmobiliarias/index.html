@@ -1261,6 +1261,12 @@
       .hero .foto { background-size: 100% auto; background-position: center top; background-repeat: no-repeat; }
       .hero .velo { background: linear-gradient(180deg, rgba(12,7,6,.60) 0px, rgba(12,7,6,.05) 90px, rgba(12,7,6,.10) 240px, rgba(12,7,6,.92) 390px, #0C0706 430px); }
       .hero .h-col { padding-top: 250px; }
+      /* CTA igual (Anais, 07/10: "el fondo se tiene que ver arriba"): la
+         foto en los primeros 400 px, sin texto encima; el pie sigue sobre
+         oscuro, que es texto pequeno. */
+      .cierre .foto { bottom: auto; height: 400px; background-size: 100% auto; background-position: center top; opacity: 1; }
+      .cierre .velo { background: linear-gradient(180deg, rgba(6,12,20,.30) 0px, rgba(6,12,20,0) 90px, rgba(6,12,20,.30) 260px, var(--oscuro) 400px); }
+      .cta-grid { padding-top: 340px; }
     }
   </style>
   <script>
