@@ -356,7 +356,7 @@
        de secciones; el boceto lo ponia en 48. */
     .s10 { background: #06080A; min-height: 0; display: block; }
     .k-esc { position: relative; max-width: 1440px; margin: 0 auto; aspect-ratio: 761 / 209; container-type: inline-size; overflow: hidden; }
-    .k-foto { position: absolute; inset: 0; background: url(/assets/home-cierre.webp) center / 100% 100% no-repeat;
+    .k-foto { position: absolute; inset: 0; background: url(/assets/home3-cta.webp?v=1) center 55% / cover no-repeat;
               -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); }
     .k-velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4,6,8,.45) 0%, rgba(4,6,8,.18) 40%, rgba(4,6,8,0) 60%); }
     .k-in { position: absolute; inset: 0; --u: calc(100cqw / 761); color: #fff; }
@@ -714,6 +714,11 @@
     }
     @media (prefers-reduced-motion: reduce) { .hx-m { animation: none; } .hx-dots i { animation: none; } }
 
+    /* CTA v3 (2026-10-07): foto nueva del escritorio de noche, la misma
+       familia que el hero. Esta foto no trae el cristal del panel pintado,
+       asi que la lista lleva su propio fondo oscuro y desenfoque. */
+    .k-lista { background: rgba(8,12,20,.62) !important; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+    .k-velo { background: linear-gradient(90deg, rgba(4,6,8,.82) 0%, rgba(4,6,8,.55) 35%, rgba(4,6,8,.15) 60%, rgba(4,6,8,.25) 100%); }
     /* Caso real y equipo/garantia vuelven a claro (peticion de Anais, 2026-10-07):
        la pagina arranca oscura y a partir de Pilar se abre a la luz. Se
        devuelven los tokens originales solo dentro de estas dos secciones. */
