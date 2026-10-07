@@ -230,6 +230,25 @@
     .ca-centro img { width: 100%; -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 58%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 58%, transparent 100%); }
     .ca-badge { position: absolute; right: 6%; top: 2%; display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 10px; padding: 10px 16px 10px 10px; box-shadow: 0 10px 30px rgba(60,40,20,.18); font-size: 13px; line-height: 1.35; color: #2C2824; }
     .ca-badge b { display: block; font-weight: 700; color: var(--tinta); }
+    /* --- flujo HTML del centro: mensajes sueltos -> nucleo -> agenda --- */
+    .ca-flujo { display: grid; grid-template-columns: 1fr 110px 1fr; align-items: center; padding: 10px 0 34px; }
+    .cf-entra { display: flex; flex-direction: column; gap: 10px; }
+    .cf-msg { display: flex; gap: 11px; align-items: center; background: rgba(255,255,255,.92); border-radius: 12px; padding: 10px 14px 10px 10px; box-shadow: 0 8px 22px rgba(60,40,20,.12); font-size: 14px; line-height: 1.35; color: #4E4944; }
+    .cf-msg:nth-child(2) { margin-left: 22px; } .cf-msg:nth-child(3) { margin-left: 8px; }
+    .cf-msg b { display: block; font-size: 12px; font-weight: 700; letter-spacing: .02em; color: #8A817A; }
+    .cf-ic { flex: 0 0 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; }
+    .cf-ic svg { width: 17px; height: 17px; }
+    .cf-ic.wa { background: #25D366; } .cf-ic.ig { background: #3A3531; } .cf-ic.tel { background: var(--rojo); }
+    .cf-nodo { position: relative; height: 2px; margin: 0 8px; background: linear-gradient(90deg, rgba(168,122,42,.15), #A87A2A 30%, #A87A2A 70%, rgba(168,122,42,.15)); }
+    .cf-nodo span { position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: var(--oro); box-shadow: 0 0 0 6px rgba(228,186,108,.25); }
+    .cf-agenda { background: #fff; border-radius: 14px; padding: 14px 16px 16px; box-shadow: 0 14px 36px rgba(60,40,20,.16); }
+    .cf-ag-cab { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; margin-bottom: 8px; border-bottom: 1px solid #EEE7E0; }
+    .cf-ag-cab b { font-size: 15px; color: var(--tinta); } .cf-ag-cab span { font-size: 12px; color: #8A817A; text-transform: uppercase; letter-spacing: .08em; }
+    .cf-cita { display: flex; gap: 12px; align-items: center; padding: 7px 0; font-size: 13px; color: #6B635C; }
+    .cf-cita i { font-style: normal; font-weight: 700; font-size: 13px; color: var(--tinta); width: 42px; }
+    .cf-cita div { flex: 1; border-left: 3px solid var(--oro); background: #FBF6EE; border-radius: 6px; padding: 6px 10px; }
+    .cf-cita b { display: block; font-size: 13.5px; color: var(--tinta); }
+    .ca-centro .ca-badge { top: auto; bottom: 8px; right: -34px; }
     .ca-badge u { width: 32px; height: 32px; border-radius: 50%; background: var(--verde); display: flex; align-items: center; justify-content: center; }
     .ca-badge u svg { width: 17px; height: 17px; color: #fff; }
 
@@ -573,6 +592,10 @@
       .ca-box li { font-size: .88rem; gap: 10px; }
       .ca-box li svg { width: 18px; height: 18px; }
       .ca-badge { top: auto; bottom: 0; right: 4%; font-size: .7rem; padding: 6px 10px 6px 6px; gap: 7px; }
+      .ca-centro .ca-badge { top: auto; bottom: -6px; right: 0; }
+      .ca-flujo { grid-template-columns: 1fr; padding: 4px 0 30px; }
+      .cf-msg { font-size: 13px; } .cf-msg:nth-child(2) { margin-left: 18px; } .cf-msg:nth-child(3) { margin-left: 6px; }
+      .cf-nodo { width: 2px; height: 44px; justify-self: center; background: linear-gradient(180deg, rgba(168,122,42,0), #A87A2A 40%, #A87A2A 60%, rgba(168,122,42,0)); }
       .ca-badge u { width: 24px; height: 24px; }
       .ca-badge u svg { width: 13px; height: 13px; }
 
@@ -1040,9 +1063,26 @@
 
         <!-- Los dispositivos son la propia foto del boceto, recortada. La
              etiqueta "Cita confirmada" se borro de la imagen y va en HTML. -->
-        <div class="ca-centro">
-          <img src="/assets/cl-dispositivos.webp" alt="Mensajes de varios canales que pasan a una agenda organizada en el ordenador y el móvil" width="1528" height="500" loading="lazy" decoding="async">
-          <div class="ca-badge"><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></u><div><b>Cita confirmada</b>para el martes a las 10:00</div></div>
+        <!-- Antes era el recorte del boceto con un ordenador y un movil. Desde
+             el 07/10 es HTML (decision de Anais): los mensajes sueltos de cada
+             canal entran por la izquierda y caen ordenados en la agenda. Los
+             nombres y horas son de ejemplo. -->
+        <div class="ca-centro" data-vi>
+          <div class="ca-flujo" role="img" aria-label="Mensajes de WhatsApp, Instagram y llamadas que pasan a una agenda organizada">
+            <div class="cf-entra">
+              <div class="cf-msg vi" style="--d:.2s"><span class="cf-ic wa"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 3.5a8.5 8.5 0 00-7.3 12.8L3.5 20.5l4.3-1.1A8.5 8.5 0 1012 3.5z"/></svg></span><div><b>WhatsApp &middot; 22:14</b>&iquest;Ten&eacute;is hueco el martes?</div></div>
+              <div class="cf-msg vi" style="--d:.5s"><span class="cf-ic ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r=".6" fill="currentColor"/></svg></span><div><b>Instagram &middot; 23:05</b>Info del precio de labios</div></div>
+              <div class="cf-msg vi" style="--d:.8s"><span class="cf-ic tel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4h3l1.5 4-2 1.3a10 10 0 005 5l1.3-2 4 1.5v3a2 2 0 01-2 2A15.5 15.5 0 014.5 6a2 2 0 012-2z"/><path d="M15 4l5 5M20 4l-5 5"/></svg></span><div><b>Llamada perdida &middot; 13:42</b>Sin mensaje de voz</div></div>
+            </div>
+            <div class="cf-nodo vi" style="--d:1.1s"><span></span></div>
+            <div class="cf-agenda vi" style="--d:1.3s">
+              <div class="cf-ag-cab"><b>Martes 14</b><span>Agenda</span></div>
+              <div class="cf-cita vi" style="--d:1.7s"><i>10:00</i><div><b>Microblading</b>Luc&iacute;a M.</div></div>
+              <div class="cf-cita vi" style="--d:2s"><i>12:30</i><div><b>Labios &middot; valoraci&oacute;n</b>Carmen R.</div></div>
+              <div class="cf-cita vi" style="--d:2.3s"><i>17:00</i><div><b>Retoque anual</b>Laura G.</div></div>
+            </div>
+          </div>
+          <div class="ca-badge vi" style="--d:2.8s"><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></u><div><b>Cita confirmada</b>para el martes a las 10:00</div></div>
         </div>
 
         <div class="ca-box ca-con">
