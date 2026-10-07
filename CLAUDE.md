@@ -1354,7 +1354,7 @@ prefijo propio (`d3`, `m3`, `x3`, `p3s`, `l3`, `e3`); el CSS viejo se quedo.
 
 - **Letra: todo en Inter, titulares incluidos (650, tracking apretado), solo en
   coaching** ("la letra de Apple"; SF Pro no se puede servir en web; con Plus Jakarta en los titulares Anais no lo veia). Esta en
-  `assets/fonts/inter-opsz-*.woff2` (con eje de tamano optico) y escala Apple: titulares 50-72 px en 600, texto 17-21 px. Si gusta, se decide si pasa a las demas.
+  SF Pro del sistema en iPhone/Mac y Geist (`assets/fonts/geist-*.woff2`) en Windows/Android; titulares en blanco + gris Apple, sin azul y escala Apple: titulares 50-72 px en 600, texto 17-21 px. Si gusta, se decide si pasa a las demas.
 - Las cifras del panel del sistema (124 / 48 / 32 / 27 %) se quedan por
   decision de Anais, con la nota "Panel de ejemplo".
 - La garantia lleva el copy comun, no el de la referencia ("seguimos
