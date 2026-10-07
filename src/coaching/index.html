@@ -663,6 +663,8 @@
       .canales { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 9px; }
       .canal { font-size: 11.5px; gap: 6px; padding: 5px 9px; background: #F4F6F9; }
       .canal:nth-child(odd) { background: #F4F6F9; }
+      /* WhatsApp y Gmail salian en blanco sobre claro (2026-10-07). */
+      .s04 .canal, .s04 .canal:nth-child(odd) { background: rgba(255,255,255,.1); color: #fff; }
       .mk { width: 18px; height: 18px; } .mk svg { width: 11px; height: 11px; }
       .enl { display: none; }
       .nucleo { height: 58px; font-size: 17px; }
@@ -1151,8 +1153,9 @@
       .xc.c7 { grid-column: 1 / -1; }
       .xl-ej { font-size: 10px; }
 
-      .p3s .foto { background-image: url(/assets/coach3-proceso-movil.webp); }
-      .p3s .velo { background: linear-gradient(180deg, rgba(3,6,11,.6) 0%, rgba(3,6,11,.82) 40%, rgba(3,6,11,.92) 100%); }
+      .p3s { background: #03060B; }
+      .p3s .foto { background-image: url(/assets/coach3-proceso-movil.webp); background-size: 100% auto; background-position: center top; }
+      .p3s .velo { background: linear-gradient(180deg, rgba(3,6,11,.55) 0, rgba(3,6,11,.45) calc(100vw * .6), rgba(3,6,11,.85) calc(100vw * 1.15), #03060B calc(100vw * 1.5)); }
       .p3s .caja { min-height: 0; }
       .ps { grid-template-columns: 1fr; gap: 0; margin-top: 30px; }
       .ps li, .ps li:first-child { display: grid; grid-template-columns: 54px 1fr; column-gap: 12px; padding: 16px 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.2); }
