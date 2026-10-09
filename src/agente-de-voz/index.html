@@ -1034,6 +1034,7 @@
        movimiento reducido no se pone y todo se ve quieto. */
     if ('IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) document.documentElement.classList.add('anim-on');
   </script>
+  <script src="/js/consent.js"></script>
 </head>
 
 <body>
@@ -1680,22 +1681,15 @@
   </div>
 
   <script>
-    // Calendario de GHL. El iframe se monta al abrir, no en la carga de la pagina.
+    // Calendario de Cal.com (antes GHL). Se monta al abrir, no en la carga: ver /js/consent.js.
     (function () {
-      var CAL = 'https://api.leadconnectorhq.com/widget/booking/XMQy1fOiMEz88wzKLVPe';
       var NICHO = 'voz-clinicas';
       var modal = document.getElementById('er-modal');
       var slot = document.getElementById('er-cal-slot');
       if (!modal || !slot) return;
       function abrir(e) {
         if (e) e.preventDefault();
-        if (!slot.firstChild) {
-          var f = document.createElement('iframe');
-          f.className = 'er-cal';
-          f.src = CAL + '?nicho=' + NICHO;
-          f.title = 'Agenda tu llamada con EasyRobots';
-          slot.appendChild(f);
-        }
+        window.erCalendario(slot);   // Cal.com, en /js/consent.js
         modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
       }

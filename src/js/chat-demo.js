@@ -133,6 +133,8 @@
 
     function empezar() {
       empezado = true;
+      // consent.js lo mide como probar_demo (solo si hay consentimiento)
+      document.dispatchEvent(new CustomEvent('er:demo-usada', { detail: { sitio: sitio } }));
       // Se congela el alto para que la tarjeta no crezca con la conversacion.
       var alto = chat.offsetHeight;
       chat.innerHTML = '';

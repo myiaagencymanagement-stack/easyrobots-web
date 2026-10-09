@@ -10,18 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X0YM75HY0S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-X0YM75HY0S');
-    // Disparar evento de conversión al llegar a esta página
-    gtag('event', 'cita_agendada', {
-      'event_category': 'conversion',
-      'event_label': 'pagina_gracias'
-    });
-  </script>
+  <!-- Antes cargaba GA sin consentimiento y contaba la cita aqui (era la pagina de vuelta de GHL).
+       Ahora la reserva la mide /js/consent.js con el aviso de Cal.com. -->
+  <script src="/js/consent.js"></script>
 
   <style>
     :root {

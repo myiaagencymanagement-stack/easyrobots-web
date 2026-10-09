@@ -1303,6 +1303,7 @@
        movimiento reducido no se pone y todo se ve quieto. */
     if ('IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) document.documentElement.classList.add('anim-on');
   </script>
+  <script src="/js/consent.js"></script>
 </head>
 
 <body>
@@ -2154,8 +2155,7 @@
          PUNTOS DE CONEXION
          Lo unico que hay que tocar para enchufar lo que falta.
          ===================================================== */
-      // 1. CALENDARIO — conectado, el mismo de toda la web.
-      var CALENDARIO = 'https://api.leadconnectorhq.com/widget/booking/XMQy1fOiMEz88wzKLVPe';
+      // 1. CALENDARIO — Cal.com, el mismo de toda la web (/js/consent.js).
       var NICHO = 'inmobiliarias';
       // 2. AUDIO DE LA LLAMADA — pendiente. Dejar el archivo en /assets/ y
       //    escribir aqui su ruta; el boton lo reproduce solo.
@@ -2186,13 +2186,7 @@
 
       document.querySelectorAll('[data-reserva]').forEach(function (b) {
         b.addEventListener('click', function () {
-          if (!huecoCal.firstChild) {   // el iframe se monta al abrir, no en la carga
-            var f = document.createElement('iframe');
-            f.className = 'marco';
-            f.src = CALENDARIO + '?nicho=' + NICHO;
-            f.title = 'Agenda tu llamada con EasyRobots';
-            huecoCal.appendChild(f);
-          }
+          window.erCalendario(huecoCal);   // Cal.com, se monta al abrir: ver /js/consent.js
           abrir(capaReserva);
         });
       });
@@ -2228,16 +2222,7 @@
         });
       });
 
-      window.addEventListener('message', function (e) {
-        var d = e.data;
-        var esCita = d && (d.type === 'booking_confirmed' || d.type === 'appointmentBooked' ||
-          (typeof d === 'string' && d.indexOf('booking') > -1));
-        if (esCita && typeof gtag === 'function') {
-          gtag('event', 'cita_agendada', {
-            event_category: 'conversion', event_label: 'calendario_ghl', nicho: NICHO
-          });
-        }
-      });
+      // La reserva la mide /js/consent.js con el aviso oficial de Cal.com.
     })();
   </script>
   <script>

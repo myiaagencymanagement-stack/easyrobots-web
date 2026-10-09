@@ -356,6 +356,33 @@ Lo que conviene saber al tocarla:
   sale en blanco en Chrome headless aunque en el navegador cargue bien. Ya paso
   en dental con `loading="lazy"`. No es un fallo de la pagina.
 
+## Medicion y calendario: Cal.com, pixel de Meta y GA4 (2026-10-09)
+
+**Todo vive en `src/js/consent.js`**, cargado en el `<head>` de las paginas
+vivas, `clinicas`, `privacy` y `gracias`. Sustituye a lo que se cuenta en la
+seccion siguiente sobre GHL: **el calendario ya es Cal.com**
+(`cal.com/ai-business-tmzcjy/30min`), montado con su `embed.js` oficial dentro
+del mismo modal, al abrirlo (`window.erCalendario(slot)`).
+
+- Banner propio inyectado por el script. Sin "Aceptar" no se carga GA ni el
+  pixel (`1511070997454573`). El `<noscript>` del pixel no se pone: dispara sin
+  consentimiento. **No activar la app de Meta Pixel de Cal.com** (cuenta doble y
+  se salta el banner).
+- Eventos GA4 / Meta: `ver_landing`/ViewContent, `abrir_calendario`/Contact
+  (clic en `[data-cal]` o `[data-reserva]`), `probar_demo`/ProbarDemo (lo
+  avisa `chat-demo.js` con `er:demo-usada`) y `cita_agendada`/Schedule (aviso
+  `bookingSuccessfulV2` de Cal.com, con el `uid` de la reserva como event_id).
+  Todos con `nicho`, que sale de la carpeta de la URL.
+- A la reserva viajan `metadata[nicho]`, las UTM y, solo con consentimiento,
+  `metadata[consent|fbp|fbc|url]`. n8n los lee del webhook de Cal.com para la
+  API de Conversiones y **no envia nada si no hay `consent`**.
+- GA4: propiedad `528295108` ("EasyRobots Web"). `cita_agendada` es evento
+  clave; dimensiones `nicho`, `origen`, `sitio`; retencion 14 meses. Acceso por
+  la cuenta de servicio `claude@graphite-record-480113-t1`, clave en
+  `~/.claude/credenciales/ga-service-account.json` (fuera del repo).
+- Meta Ads: MCP oficial `meta-ads` (`mcp.facebook.com/ads`). Solo lectura salvo
+  que se pida.
+
 ## Los CTA van todos al calendario (2026-10-02)
 
 Decision de Anais: **ningun boton de la web lleva al funnel**, porque los videos
