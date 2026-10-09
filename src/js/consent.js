@@ -172,6 +172,8 @@
       var fbc = cookie('_fbc') || (q.get('fbclid') ? 'fb.1.' + Date.now() + '.' + q.get('fbclid') : '');
       if (fbc) cfg['metadata[fbc]'] = fbc;
       cfg['metadata[url]'] = location.href.split('#')[0].slice(0, 400);
+      // Meta exige el navegador en los eventos "website" de la API de Conversiones
+      cfg['metadata[ua]'] = navigator.userAgent.slice(0, 300);
     }
 
     /* Snippet oficial de Cal.com (embed.js) */

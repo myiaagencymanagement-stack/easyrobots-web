@@ -1,0 +1,96 @@
+{
+  "name": "Web · Reserva Cal.com → Meta API de Conversiones",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "calcom-reserva",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "a1",
+      "name": "Webhook Cal.com",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "calcom-reserva",
+      "notes": "Cal.com > Settings > Developer > Webhooks. Evento: Booking Created."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Solo reservas nuevas y SOLO si la persona acepto las cookies en la web.\n// Sin metadata.consent = 1 no se manda nada a Meta (lo promete privacy.html).\nconst out = [];\nfor (const it of $input.all()) {\n  const b = it.json.body || it.json;\n  if (b.triggerEvent !== 'BOOKING_CREATED') continue;\n  const p = b.payload || {};\n  const m = p.metadata || {};\n  if (String(m.consent) !== '1') continue;\n  const a = (p.attendees || [])[0] || {};\n  const r = p.responses || {};\n  const email = String(a.email || (r.email && r.email.value) || '').trim().toLowerCase();\n  const phone = String((r.attendeePhoneNumber && r.attendeePhoneNumber.value) || a.phoneNumber || '').replace(/\\D/g, '');\n  out.push({ json: {\n    uid: p.uid,\n    creado: b.createdAt || new Date().toISOString(),\n    email, phone,\n    nicho: m.nicho || '', fbp: m.fbp || '', fbc: m.fbc || '', url: m.url || '', ua: m.ua || ''\n  }});\n}\nreturn out;"
+      },
+      "id": "a2",
+      "name": "Filtrar consentimiento",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "action": "hash",
+        "type": "SHA256",
+        "value": "={{ $json.email }}",
+        "dataPropertyName": "em",
+        "encoding": "hex"
+      },
+      "id": "a3",
+      "name": "Hash email",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [480, 0]
+    },
+    {
+      "parameters": {
+        "action": "hash",
+        "type": "SHA256",
+        "value": "={{ $json.phone }}",
+        "dataPropertyName": "ph",
+        "encoding": "hex"
+      },
+      "id": "a4",
+      "name": "Hash telefono",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [720, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// event_id = uid de Cal.com: la web manda el mismo al pixel y Meta deduplica.\n// Para probar: pon el codigo de 'Probar eventos' del Administrador de eventos en TEST.\nconst TEST = '';\nreturn $input.all().map(it => {\n  const j = it.json;\n  const ud = { em: [j.em] };\n  if (j.phone) ud.ph = [j.ph];\n  if (j.fbp) ud.fbp = j.fbp;\n  if (j.fbc) ud.fbc = j.fbc;\n  if (j.ua) ud.client_user_agent = j.ua;\n  const body = { data: [{\n    event_name: 'Schedule',\n    event_time: Math.floor(new Date(j.creado).getTime() / 1000),\n    event_id: j.uid,\n    action_source: 'website',\n    event_source_url: j.url || 'https://easyrobots-ai.cloud/',\n    user_data: ud,\n    custom_data: { nicho: j.nicho, content_category: j.nicho }\n  }]};\n  if (TEST) body.test_event_code = TEST;\n  return { json: { body } };\n});"
+      },
+      "id": "a5",
+      "name": "Montar evento Schedule",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [960, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/1511070997454573/events",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": { "timeout": 15000 }
+      },
+      "id": "a6",
+      "name": "Meta API de Conversiones",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1200, 0],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "notes": "Credencial 'Query Auth': Name = access_token, Value = token de la API de Conversiones del pixel."
+    }
+  ],
+  "connections": {
+    "Webhook Cal.com": { "main": [[{ "node": "Filtrar consentimiento", "type": "main", "index": 0 }]] },
+    "Filtrar consentimiento": { "main": [[{ "node": "Hash email", "type": "main", "index": 0 }]] },
+    "Hash email": { "main": [[{ "node": "Hash telefono", "type": "main", "index": 0 }]] },
+    "Hash telefono": { "main": [[{ "node": "Montar evento Schedule", "type": "main", "index": 0 }]] },
+    "Montar evento Schedule": { "main": [[{ "node": "Meta API de Conversiones", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" }
+}
