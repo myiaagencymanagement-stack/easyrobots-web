@@ -1,0 +1,128 @@
+/* =====================================================================
+   BLOG DE EASYROBOTS · 2026-10-14
+   Una sola hoja para el indice y todos los articulos. Los articulos solo
+   traen su texto: asi la automatizacion de n8n genera HTML corto y el
+   diseno se cambia aqui, una vez, para todos.
+   Mismo sistema que la home v3: oscuro #0A0F18, tarjetas #121A27, acento
+   azul controlado, Plus Jakarta Sans en el texto y Fraunces en titulares.
+   ===================================================================== */
+@font-face { font-family:'Plus Jakarta Sans'; font-weight:400; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-400-latin.woff2) format('woff2'); }
+@font-face { font-family:'Plus Jakarta Sans'; font-weight:500; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-500-latin.woff2) format('woff2'); }
+@font-face { font-family:'Plus Jakarta Sans'; font-weight:600; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-600-latin.woff2) format('woff2'); }
+@font-face { font-family:'Plus Jakarta Sans'; font-weight:700; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-700-latin.woff2) format('woff2'); }
+@font-face { font-family:'Fraunces'; font-style:normal; font-weight:300 700; font-display:swap; src:url(/assets/fonts/fraunces-latin-wght-normal.woff2) format('woff2'); }
+@font-face { font-family:'Fraunces'; font-style:italic; font-weight:300 700; font-display:swap; src:url(/assets/fonts/fraunces-latin-wght-italic.woff2) format('woff2'); }
+
+:root {
+  --fondo: #0A0F18; --tarjeta: #121A27; --tarjeta2: #172131; --linea: rgba(255,255,255,.08);
+  --blanco: #F4F6F9; --texto: #CDD4DE; --gris: #8F9AAB; --azul: #1E6FF2; --azul-c: #6FA6FF; --pie: #05080D;
+  --col: 720px; --ancho: 1180px; --pad: 24px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--fondo); color: var(--texto); font: 400 17px/1.7 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; color: var(--blanco); font-weight: 500; letter-spacing: -.015em; line-height: 1.15; }
+h3 { font-weight: 560; }
+h1 em, h2 em { font-style: italic; opacity: .6; }
+.envol { max-width: var(--ancho); margin: 0 auto; padding: 0 var(--pad); }
+
+/* --- barra: la de la home, en oscuro --- */
+.bl-nav { position: sticky; top: 0; z-index: 50; background: rgba(10,15,24,.86); backdrop-filter: blur(12px); border-bottom: 1px solid var(--linea); }
+.bl-nav .envol { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+.bl-marca { font-weight: 500; font-size: 19px; letter-spacing: .32em; color: #fff; }
+.bl-links { display: flex; gap: 28px; font-size: 15px; color: var(--texto); }
+.bl-links a:hover, .bl-links a.act { color: #fff; }
+.bl-links a.act { box-shadow: inset 0 -2px 0 var(--azul); padding-bottom: 4px; }
+.bl-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 999px; font: 600 14.5px/1 'Plus Jakarta Sans', sans-serif; cursor: pointer; background: #fff; color: #0B1220; border: 1px solid rgba(11,18,32,.10); box-shadow: 0 10px 28px rgba(5,10,20,.22); transition: background .2s, transform .2s; }
+.bl-btn:hover { background: #EEF2F7; transform: translateY(-1px); }
+.bl-btn svg { width: 16px; height: 16px; }
+@media (max-width: 860px) { .bl-links { display: none; } .bl-nav .envol { height: 60px; } .bl-marca { font-size: 16px; } .bl-btn { padding: 9px 14px; font-size: 13.5px; } }
+
+/* --- indice del blog --- */
+.bl-cab { padding: 88px 0 40px; }
+.bl-kick { font-size: 12.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--azul-c); }
+.bl-cab h1 { margin-top: 14px; font-size: clamp(38px, 5vw, 60px); max-width: 16ch; }
+.bl-cab p { margin-top: 18px; max-width: 58ch; font-size: 18px; color: var(--texto); }
+.bl-filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
+.bl-filtros button { padding: 8px 15px; border-radius: 999px; font: 500 14px/1 'Plus Jakarta Sans', sans-serif; color: var(--texto); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); cursor: pointer; }
+.bl-filtros button[aria-pressed="true"] { color: #fff; background: var(--azul); border-color: var(--azul); }
+.bl-rej { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding-bottom: 100px; }
+.bl-tar { display: flex; flex-direction: column; background: var(--tarjeta); border: 1px solid var(--linea); border-radius: 16px; padding: 26px 24px 22px; transition: border-color .2s, transform .2s; min-height: 260px; }
+.bl-tar:hover { border-color: rgba(111,166,255,.45); transform: translateY(-2px); }
+.bl-tar .bl-kick { font-size: 11.5px; }
+.bl-tar h2 { margin-top: 12px; font-size: 24px; line-height: 1.2; }
+.bl-tar p { margin-top: 12px; font-size: 15px; line-height: 1.55; color: var(--gris); }
+.bl-tar .bl-meta { margin-top: auto; padding-top: 18px; font-size: 13px; color: var(--gris); }
+.bl-tar[hidden] { display: none; }
+.bl-vacio { grid-column: 1 / -1; color: var(--gris); }
+@media (max-width: 1000px) { .bl-rej { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .bl-cab { padding: 54px 0 28px; } .bl-cab p { font-size: 16px; } .bl-rej { grid-template-columns: 1fr; gap: 12px; } .bl-tar { min-height: 0; } .bl-tar h2 { font-size: 22px; } }
+
+/* --- articulo --- */
+.ar-cab { padding: 72px 0 34px; }
+.ar-cab .envol, .ar-cuerpo, .ar-fin { max-width: calc(var(--col) + 2 * var(--pad)); }
+.ar-miga { font-size: 13.5px; color: var(--gris); }
+.ar-miga a:hover { color: #fff; }
+.ar-miga span { margin: 0 8px; opacity: .5; }
+.ar-cab .bl-kick { display: block; margin-top: 26px; }
+.ar-cab h1 { margin-top: 14px; font-size: clamp(34px, 4.6vw, 52px); }
+.ar-entr { margin-top: 20px; font-size: 19.5px; line-height: 1.6; color: var(--blanco); opacity: .86; }
+.ar-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--linea); font-size: 14px; color: var(--gris); }
+.ar-cuerpo { margin: 0 auto; padding: 8px var(--pad) 20px; }
+.ar-cuerpo > * + * { margin-top: 20px; }
+.ar-cuerpo h2 { margin-top: 52px; font-size: clamp(27px, 3vw, 34px); }
+.ar-cuerpo h3 { margin-top: 34px; font-size: 22px; }
+.ar-cuerpo h2 + p, .ar-cuerpo h3 + p { margin-top: 14px; }
+.ar-cuerpo p, .ar-cuerpo li { font-size: 17.5px; }
+.ar-cuerpo strong { color: var(--blanco); font-weight: 600; }
+.ar-cuerpo a { color: var(--azul-c); box-shadow: inset 0 -1px 0 rgba(111,166,255,.4); }
+.ar-cuerpo a:hover { color: #fff; }
+.ar-cuerpo ul, .ar-cuerpo ol { padding-left: 22px; }
+.ar-cuerpo li + li { margin-top: 8px; }
+.ar-cuerpo li::marker { color: var(--azul-c); }
+/* La consecuencia va en una caja aparte, en una frase: es lo que se recuerda. */
+.ar-caja { padding: 20px 24px; border-left: 3px solid var(--azul); background: var(--tarjeta); border-radius: 0 12px 12px 0; font-family: 'Fraunces', Georgia, serif; font-size: 22px !important; line-height: 1.4; color: var(--blanco); }
+.ar-ejemplo { padding: 20px 22px; background: var(--tarjeta2); border: 1px solid var(--linea); border-radius: 14px; }
+.ar-ejemplo b { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); margin-bottom: 10px; }
+.ar-ejemplo p { font-size: 16.5px !important; color: var(--blanco); white-space: pre-line; }
+.ar-fin { margin: 40px auto 0; padding: 0 var(--pad) 90px; }
+.ar-cta { padding: 34px 32px; border-radius: 18px; border: 1px solid var(--linea); background: radial-gradient(60% 140% at 90% 0%, rgba(30,111,242,.30), rgba(30,111,242,0) 70%), linear-gradient(160deg, #18202C, #0B0F15); }
+.ar-cta h2 { font-size: clamp(26px, 3vw, 32px); }
+.ar-cta p { margin-top: 12px; font-size: 16.5px; color: var(--texto); max-width: 52ch; }
+.ar-cta-bt { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 24px; }
+.ar-cta-bt a.sec { font-size: 15px; font-weight: 600; color: #fff; }
+.ar-cta-bt a.sec:hover { color: var(--azul-c); }
+.ar-rel { margin-top: 56px; }
+.ar-rel > b { font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--gris); }
+.ar-rel .bl-rej { grid-template-columns: 1fr 1fr; margin-top: 16px; padding-bottom: 0; }
+.ar-rel .bl-tar { min-height: 0; }
+@media (max-width: 640px) {
+  .ar-cab { padding: 44px 0 24px; }
+  .ar-entr { font-size: 17.5px; }
+  .ar-cuerpo p, .ar-cuerpo li { font-size: 16.5px; }
+  .ar-cuerpo h2 { margin-top: 40px; }
+  .ar-caja { font-size: 19px !important; padding: 16px 18px; }
+  .ar-cta { padding: 26px 20px; }
+  .ar-rel .bl-rej { grid-template-columns: 1fr; }
+}
+
+/* --- pie: el de la home --- */
+.bl-pie { background: var(--pie); color: #fff; }
+.bl-pie .envol { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 28px; padding-top: 56px; padding-bottom: 34px; }
+.bl-pie b { display: block; font-size: 15px; margin-bottom: 14px; }
+.bl-pie a, .bl-pie span { display: block; font-size: 14px; color: rgba(255,255,255,.66); line-height: 2; }
+.bl-pie a:hover { color: #fff; }
+.bl-pie .legal { grid-column: 1 / -1; padding-top: 22px; border-top: 1px solid var(--linea); font-size: 12.5px; color: rgba(255,255,255,.45); }
+@media (max-width: 760px) { .bl-pie .envol { grid-template-columns: 1fr 1fr; padding-top: 40px; } .bl-pie .pi-marca { grid-column: 1 / -1; } }
+
+/* --- calendario (Cal.com, se monta al abrir: /js/consent.js) --- */
+.er-modal { position: fixed; inset: 0; z-index: 9000; display: none; background: rgba(6,10,16,.62); backdrop-filter: blur(6px); padding: 24px 16px; overflow-y: auto; }
+.er-modal.open { display: block; }
+.er-modal-box { position: relative; max-width: 680px; margin: 3vh auto; background: #121A27; border-radius: 18px; padding: 2rem 1.6rem 1.4rem; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+.er-modal-box h3 { font-size: 1.2rem; }
+.er-modal-box p { font-size: .9rem; color: #A3ADBB; margin-top: .5rem; }
+.er-modal-x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 9px; border: 1px solid rgba(255,255,255,.14); background: #182233; color: #A3ADBB; font-size: 1rem; cursor: pointer; }
+@media (max-width: 900px) { .er-modal-box { padding: 1.6rem 1rem 1rem; margin: 0 auto; } }

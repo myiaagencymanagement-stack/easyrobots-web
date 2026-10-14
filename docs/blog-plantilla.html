@@ -1,0 +1,95 @@
+<!doctype html>
+<!--
+  PLANTILLA DE ARTICULO DEL BLOG (2026-10-14). La usa el flujo de n8n
+  (docs/blog.md). No se publica: vive en docs/. Huecos:
+  {{SEO_TITULO}} titulo para Google, <= 60 car. sin " · EasyRobots"
+  {{TITULO}} h1 visible · {{DESCRIPCION}} 130-155 car. · {{SLUG}} url
+  {{FECHA_ISO}} 2026-10-14 · {{FECHA_TEXTO}} 14 de octubre de 2026 · {{MINUTOS}}
+  {{SECTOR}} miga (Clinicas, Inmobiliarias...) · {{CINTILLO}} Clinicas · WhatsApp
+  {{OG}} estetica|home|inmobiliarias|concesionarios|ecommerce|coaching|voz
+  {{ENTRADILLA}} escena concreta en 2-3 frases
+  {{CUERPO}} solo <h2> <h3> <p> <ul> <ol> <li> <strong> <a>, <p class="ar-caja">
+             (la consecuencia, una frase) y <div class="ar-ejemplo"><b>..</b><p>..</p></div>
+  {{LANDING_URL}} / {{LANDING_TEXTO}} la landing del nicho
+  {{RELACIONADOS}} dos <a class="bl-tar">...</a> · {{ROBOTS}} "noindex, follow" hasta aprobar
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{SEO_TITULO}} · EasyRobots</title>
+  <meta name="description" content="{{DESCRIPCION}}">
+  <meta name="robots" content="{{ROBOTS}}">
+  <link rel="canonical" href="https://easyrobots-ai.cloud/blog/{{SLUG}}/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="EasyRobots">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="{{SEO_TITULO}}">
+  <meta property="og:description" content="{{DESCRIPCION}}">
+  <meta property="og:url" content="https://easyrobots-ai.cloud/blog/{{SLUG}}/">
+  <meta property="og:image" content="https://easyrobots-ai.cloud/assets/og-{{OG}}.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"{{SEO_TITULO}}","description":"{{DESCRIPCION}}","datePublished":"{{FECHA_ISO}}","dateModified":"{{FECHA_ISO}}","inLanguage":"es","mainEntityOfPage":"https://easyrobots-ai.cloud/blog/{{SLUG}}/","image":"https://easyrobots-ai.cloud/assets/og-{{OG}}.jpg","author":{"@type":"Organization","name":"EasyRobots","url":"https://easyrobots-ai.cloud/"},"publisher":{"@id":"https://easyrobots-ai.cloud/#organizacion"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://easyrobots-ai.cloud/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://easyrobots-ai.cloud/blog/"},{"@type":"ListItem","position":3,"name":"{{TITULO}}"}]}]}</script>
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/blog.css">
+  <script src="/js/consent.js"></script>
+</head>
+<body>
+
+<header class="bl-nav"><div class="envol">
+  <a class="bl-marca" href="/">EASYROBOTS</a>
+  <nav class="bl-links" aria-label="Principal">
+    <a href="/#sectores">Soluciones</a>
+    <a href="/guias/">Guías</a>
+    <a href="/blog/" class="act">Blog</a>
+  </nav>
+  <a class="bl-btn" href="/#hablemos" data-cal>Reservar llamada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+</div></header>
+
+<main>
+  <article>
+    <header class="ar-cab"><div class="envol">
+      <nav class="ar-miga" aria-label="Migas"><a href="/">Inicio</a><span>/</span><a href="/blog/">Blog</a><span>/</span>{{SECTOR}}</nav>
+      <span class="bl-kick">{{CINTILLO}}</span>
+      <h1>{{TITULO}}</h1>
+      <p class="ar-entr">{{ENTRADILLA}}</p>
+      <div class="ar-meta"><span>{{FECHA_TEXTO}}</span><span>{{MINUTOS}} min de lectura</span><span>Por el equipo de EasyRobots</span></div>
+    </div></header>
+
+    <div class="ar-cuerpo">
+      {{CUERPO}}
+    </div>
+
+    <footer class="ar-fin">
+      <div class="ar-cta">
+        <h2>¿Quieres ver cómo quedaría en tu clínica?</h2>
+        <p>Antes de montar nada, estudiamos cómo trabajáis hoy y por dónde se os escapan las consultas. Si tu clínica no encaja, te lo decimos en la llamada.</p>
+        <div class="ar-cta-bt">
+          <a class="bl-btn" href="/#hablemos" data-cal>Reservar una llamada de 15 minutos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="sec" href="{{LANDING_URL}}">{{LANDING_TEXTO}} →</a>
+        </div>
+      </div>
+
+      <div class="ar-rel">
+        <b>Sigue leyendo</b>
+        <div class="bl-rej">
+          {{RELACIONADOS}}
+        </div>
+      </div>
+    </footer>
+  </article>
+</main>
+
+<footer class="bl-pie"><div class="envol">
+  <div class="pi-marca"><b>EasyRobots</b><span>Sistemas que hacen que tu negocio funcione.</span></div>
+  <nav aria-label="Soluciones por sector"><b>Soluciones</b>
+    <a href="/estetica/">Clínicas · WhatsApp</a><a href="/agente-de-voz/">Clínicas · Llamadas</a><a href="/inmobiliarias/">Inmobiliarias</a><a href="/concesionarios/">Concesionarios</a><a href="/ecommerce/">Ecommerce</a><a href="/coaching/">Coaching</a>
+  </nav>
+  <div><b>Recursos</b><a href="/blog/">Blog</a><a href="/guias/">Guías</a><a href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a></div>
+  <div><b>Legal</b><a href="/privacy.html">Aviso legal</a><a href="/privacy.html">Privacidad y cookies</a></div>
+  <p class="legal">EasyRobots AH-NICE · Ana Isabel González Hoog · Tonndorfer Hauptstraße 61, Hamburgo (Alemania) · © 2026 EasyRobots</p>
+</div></footer>
+
+<script src="/js/blog.js"></script>
+</body>
+</html>
