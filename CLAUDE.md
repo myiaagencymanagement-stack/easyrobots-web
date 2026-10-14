@@ -324,9 +324,9 @@ Lo que sigue en la raíz y se queda ahí:
   landing del mismo nicho.
 - `privacy.html`, `gracias.html` (ahora `noindex`), `recurso.html`, `robots.txt`,
   `sitemap.xml`.
-- `src/guias/` — lead magnets. Las guías entregadas pasan a `noindex`: si Google
-  las indexa, se descargan sin dejar el email y el funnel deja de captar. El
-  índice `guias/index.html` sí se deja indexable.
+- `src/guias/` — lead magnets. **Indexables desde el 2026-10-14** (Anais: pesa
+  mas el SEO que el email). Cada guia lleva canonical y description, y estan en
+  el sitemap. Antes iban con `noindex` para que no se leyeran sin dejar el email.
 - `src/lanzamientos/` — landings de coaching y ecommerce.
 
 ### Los borradores
