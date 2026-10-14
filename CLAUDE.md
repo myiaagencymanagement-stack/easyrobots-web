@@ -1649,8 +1649,10 @@ Sin hacer, y es lo único realmente expuesto:
 - Dirección: **Tonndorfer Hauptstraße 61, Hamburgo (Alemania)**. **Solo en
   `privacy.html`** (aviso legal, obligatorio por §5 DDG / LSSI): Anais no quiere
   que salga en los pies ni en el JSON-LD (2026-10-14). No volver a ponerla ahí.
-- Email: **info@easyrobots-ai.cloud** (DNS listo en Hostinger, MX de ImprovMX,
-  SPF y DMARC puestos; **falta crear el alias en el panel de ImprovMX**)
+- Email: **info@easyrobots-ai.cloud**. Recibir: ImprovMX reenvia `info@` (y el
+  comodin `*`) al Gmail. Enviar: Gmail "Enviar como" por el SMTP gratis de Brevo
+  (`smtp-relay.brevo.com:587`, dominio autenticado con DKIM `brevo1/brevo2`).
+  Montado el 2026-10-15. Nada de Google Workspace (de pago).
 - Instagram: `instagram.com/easyrobots.ai`
 - Facebook: `facebook.com/people/EasyRobotsAI/61587151053673/`
 - LinkedIn: **no hay**. No poner el icono: un enlace que no lleva a ningún sitio
