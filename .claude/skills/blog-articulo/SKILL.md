@@ -7,7 +7,9 @@ description: Escribe, revisa y publica articulos del blog de EasyRobots (easyrob
 
 Decision de Anais (2026-10-14): los articulos los escribe Claude en esta
 conversacion, no Gemini en n8n ("Gemini flaquea"). Ella los revisa aqui y se
-publican al aprobarlos. n8n solo manda el recordatorio semanal por Gmail.
+publican al aprobarlos. El aviso de cada lunes le llega por email con el
+resumen de tareas (script de Windows, no n8n). Al publicar, marcar el tema como
+"hecho" en docs/blog.md: el email coge el primero sin marcar.
 
 ## Antes de escribir, leer
 

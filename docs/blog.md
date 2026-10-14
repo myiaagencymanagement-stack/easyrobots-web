@@ -35,9 +35,9 @@ El proceso esta en la skill del proyecto `.claude/skills/blog-articulo/`:
 borrador en `blog-borradores/` (fuera de `src/`, no se publica) → revision
 con Anais en el chat → "publicalo" → a `src/blog/`, indice, sitemap y push.
 
-n8n solo avisa: `docs/n8n-blog-recordatorio.json` manda cada lunes a las 9:00
-un Gmail a Anais con "toca el articulo de la semana". Se importa a mano en n8n
-(no hay N8N_API_KEY en este equipo) y se le elige la credencial de Gmail.
+El aviso semanal NO es de n8n: lo manda cada lunes el script de tareas de
+Anais (`~/.claude/scripts/recordatorio-tareas.ps1`) por email desde info@, con
+el siguiente tema de la lista de abajo (el primero sin "hecho").
 
 ## Temas propuestos (palabra clave → landing)
 
