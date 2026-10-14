@@ -301,8 +301,8 @@ demás está en `src/borradores/` con el sufijo `-version-antigua`.
 | URL | Archivo | Qué es |
 |---|---|---|
 | `/` | `src/index.html` | Home de agencia (nivel 1). Era `prueba-index-v2.html` |
-| `/estetica/` | `src/estetica/index.html` | Era `prueba-clinicas-premium-v2.html` |
-| `/agente-de-voz/` | `src/agente-de-voz/index.html` | Agente de voz para todas las clinicas. Era la dental v2 (2026-10-07) |
+| `/clinicas/whatsapp/` | `src/clinicas/whatsapp/index.html` | Estetica. Era `/estetica/` hasta el 2026-10-14 (ahora redirige, con UTM) |
+| `/clinicas/llamadas/` | `src/clinicas/llamadas/index.html` | Agente de voz para todas las clinicas. Era `/agente-de-voz/` hasta el 2026-10-14 (ahora redirige) |
 | `/clinicas/` | `src/clinicas/index.html` | Puerta de clinicas: WhatsApp → estetica, telefono → agente de voz. `noindex` |
 | `/dental/` | `src/dental/index.html` | **Solo redirige** a `/agente-de-voz/` desde el 2026-10-07 |
 | `/inmobiliarias/` | `src/inmobiliarias/index.html` | Era `prueba-inmobiliarias-v3.html` |
@@ -1853,8 +1853,10 @@ Míos, cuando lo pida:
 - **Las dos paginas de clinicas se nombran por canal** (opcion elegida por
   Anais): "Clinicas · WhatsApp" (`/estetica/`) y "Clinicas · Llamadas"
   (`/agente-de-voz/`). Solo cambio el texto visible (cintillo, menu, pie de la
-  home, puerta de `/clinicas/`). **Las URL y el SEO no se tocaron**; mover
-  `/estetica/` a `/clinicas/whatsapp/` queda por decidir (cuesta posicion).
+  home, puerta de `/clinicas/`). **Y desde el mismo dia tambien las URL**:
+  `/clinicas/whatsapp/` y `/clinicas/llamadas/`. Las viejas redirigen
+  conservando UTM y ancla; las dos paginas llevan `<html data-nicho>` para que
+  GA4, Meta y Cal.com sigan llamando al nicho `estetica` / `agente-de-voz`.
 - Home, sectores: rejilla de 6 columnas (3 + 2 tarjetas) y "¿No ves el tuyo?"
   a lo ancho con chips de sector; cada chip abre el calendario con
   `nicho = home-<sector>`.
@@ -1864,3 +1866,8 @@ Míos, cuando lo pida:
   zoom propio en movil y sus valores van divididos.
 - "Escuchar la llamada" lleva `data-pronto`: avisa de que la grabacion aun no
   esta. Al tener el audio, quitar ese bloque del final de la pagina.
+
+## Blog (2026-10-14)
+
+Todo en `docs/blog.md`: archivos, reglas del contenido, flujo de n8n y temas.
+Articulos con `noindex` hasta que Anais los aprueba.

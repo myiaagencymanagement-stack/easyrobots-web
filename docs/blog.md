@@ -43,7 +43,7 @@ indice `/blog/` se abre a Google cuando haya 3 articulos aprobados.
 
 ## Temas propuestos (palabra clave → landing)
 
-Clinicas (`/estetica/`, `/agente-de-voz/`)
+Clinicas (`/clinicas/whatsapp/`, `/clinicas/llamadas/`)
 1. WhatsApp fuera de horario en una clinica estetica · **hecho (borrador)**
 2. Como reducir los no-shows en una clinica estetica
 3. Cuando escribir a una clienta para el retoque de microblading
