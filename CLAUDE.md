@@ -1646,7 +1646,9 @@ Sin hacer, y es lo único realmente expuesto:
 ## Datos de la empresa
 
 - Razón social: **EasyRobots AH-NICE** · Ana Isabel González Hoog
-- Dirección: **Tonndorfer Hauptstraße 61, Hamburgo (Alemania)**
+- Dirección: **Tonndorfer Hauptstraße 61, Hamburgo (Alemania)**. **Solo en
+  `privacy.html`** (aviso legal, obligatorio por §5 DDG / LSSI): Anais no quiere
+  que salga en los pies ni en el JSON-LD (2026-10-14). No volver a ponerla ahí.
 - Email: **info@easyrobots-ai.cloud** (DNS listo en Hostinger, MX de ImprovMX,
   SPF y DMARC puestos; **falta crear el alias en el panel de ImprovMX**)
 - Instagram: `instagram.com/easyrobots.ai`
