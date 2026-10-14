@@ -1099,7 +1099,7 @@
 
     <div class="h-cuerpo">
       <div class="h-col" id="contenido">
-        <div class="kick">Sistema para clínicas estéticas</div>
+        <div class="kick">Clínicas · WhatsApp</div>
         <h1 class="h-t">Cada WhatsApp sin responder es <em>una cita perdida.</em></h1>
         <p class="h-sub">Convierte cada mensaje en una oportunidad. Atiende, cualifica, reserva y recupera clientas automáticamente, mientras tú te centras en hacer crecer tu clínica.</p>
         <div class="h-btns">
@@ -1663,7 +1663,7 @@
        enlaces legales llevan a privacy.html, que recoge los tres. -->
   <footer class="s13">
     <div class="caja">
-      <div class="pi-c"><b>EasyRobots</b><span style="white-space:normal">Sistemas de IA para clínicas estéticas.</span></div>
+      <div class="pi-c"><b>EasyRobots</b><span style="white-space:normal">Sistemas de IA para clínicas.</span></div>
       <div class="pi-c"><b>Producto</b><a href="#como">Ver demostración</a><a href="#piezas">Integraciones</a></div>
       <div class="pi-c"><b>Empresa</b><a href="#equipo">Sobre nosotros</a><a href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a></div>
       <div class="pi-c"><b>Legal</b><a href="/privacy.html">Política de privacidad</a><a href="/privacy.html">Aviso legal</a><a href="/privacy.html">Política de cookies</a></div>
@@ -1825,6 +1825,34 @@
      claro en las secciones oscuras y gris medio en las claras. -->
 <style>
   :is(h1, h2, h3) em { color: inherit !important; opacity: .55; }
+</style>
+<!-- Tamanos unificados (Anais, 2026-10-14). Auditoria medida a 390 y 1440:
+     movil con la referencia de coaching (titular principal grande), escritorio
+     con la de la home (h2 ~42 px vistos con el zoom .9, texto >= 13,5). Solo
+     se tocan titulares y texto corrido; las burbujas de chat y notificaciones
+     de los dibujos se quedan como estan. -->
+<style>
+  @media (max-width: 760px) {
+    #inicio .h-t { font-size: clamp(32px, 9.8vw, 40px) !important; line-height: 1.06 !important; }
+    section:not(#inicio) h2 { font-size: 27px !important; line-height: 1.14 !important; }
+    .pb-nota { font-size: 13px !important; }
+    .fu-txt span, .fn-cab span { font-size: 14px !important; line-height: 1.45 !important; }
+    .k-label { font-size: 14px !important; }
+    .r-nota, .cs-nota { font-size: 13px !important; }
+    #caso b + span, .vidrio p { font-size: 14px !important; line-height: 1.5 !important; }
+    .dg-pz span { font-size: 13px !important; }
+    #equipo .ga-fila { font-size: 14px !important; }
+    #equipo .ga-dato b { font-size: 14px !important; } #equipo .ga-dato span { font-size: 13px !important; }
+    .ct-meta div { font-size: 13.5px !important; }
+  }
+  @media (min-width: 1081px) {
+    .pb-nota { font-size: 15px !important; }
+    .pzs-nota { font-size: 15.5px !important; }
+    #piezas h2, #caso h2 { font-size: 47.5px !important; }
+    .r-nota, .cs-nota, .ga-dato span { font-size: 15px !important; }
+    .vidrio p { font-size: 16.5px !important; }
+    .wz-nota p { font-size: 16px !important; }
+  }
 </style>
 </body>
 

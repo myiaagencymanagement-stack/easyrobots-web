@@ -1681,6 +1681,26 @@
 <style>
   :is(h1, h2, h3) em { color: inherit !important; opacity: .55; }
 </style>
+<!-- Tamanos unificados (Anais, 2026-10-14). Auditoria medida a 390 y 1440:
+     movil con la referencia de coaching (titular principal grande), escritorio
+     con la de la home (h2 ~42 px vistos con el zoom .9, texto >= 13,5). Solo
+     se tocan titulares y texto corrido; las burbujas de chat y notificaciones
+     de los dibujos se quedan como estan. -->
+<style>
+  @media (max-width: 760px) {
+    #inicio .h-t { font-size: clamp(32px, 9.8vw, 40px) !important; line-height: 1.06 !important; }
+    section:not(#inicio) h2 { font-size: 27px !important; line-height: 1.14 !important; }
+    .pb-nota { font-size: 13px !important; }
+    .r-tx span, .tc-in .fila, #limites span, .lm-pie { font-size: 14px !important; line-height: 1.45 !important; }
+    #limites b { font-size: 14.5px !important; }
+    .d-nota, .dm-reg-pie { font-size: 13px !important; }
+  }
+  @media (min-width: 1081px) {
+    .pb-nota { font-size: 15px !important; }
+    .pzs-nota { font-size: 15.5px !important; }
+    .dm-reg-pie { font-size: 14.5px !important; }
+  }
+</style>
 </body>
 
 </html>

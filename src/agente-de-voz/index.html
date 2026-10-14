@@ -1048,7 +1048,7 @@
     <nav class="bn" aria-label="Principal"><div class="bn-in">
       <a class="bn-marca" href="#inicio">EASYROBOTS</a>
       <div class="bn-links">
-        <a href="#llamadas" class="act">Agente de voz</a>
+        <a href="#llamadas" class="act">Llamadas</a>
         <a href="#demo">Ver demostraci&oacute;n</a>
         <a href="#equipo">Qui&eacute;nes somos</a>
       </div>
@@ -1058,7 +1058,7 @@
 
     <div class="h-cuerpo">
       <div class="h-col" id="contenido">
-        <div class="kick cl">Agente de voz para cl&iacute;nicas</div>
+        <div class="kick cl">Cl&iacute;nicas · Llamadas</div>
         <h1 class="h-t">Cada llamada <br>sin coger es <br>una cita perdida.</h1>
         <p class="h-sub">Cuando recepci&oacute;n est&aacute; con una paciente, el tel&eacute;fono suena y nadie lo coge. EasyRobots contesta, resuelve dudas y da la cita en tu agenda. Tu equipo sigue con lo que estaba haciendo.</p>
         <div class="h-btns">
@@ -1820,6 +1820,30 @@
   });
 })();
 </script>
+<!-- Tamanos unificados (Anais, 2026-10-14). Auditoria medida a 390 y 1440:
+     movil con la referencia de coaching (titular principal grande), escritorio
+     con la de la home (h2 ~42 px vistos con el zoom .9, texto >= 13,5). Solo
+     se tocan titulares y texto corrido; las burbujas de chat y notificaciones
+     de los dibujos se quedan como estan. -->
+<style>
+  @media (max-width: 760px) {
+    #inicio .h-t { font-size: clamp(32px, 9.8vw, 40px) !important; line-height: 1.06 !important; }
+    section:not(#inicio) h2 { font-size: 27px !important; line-height: 1.14 !important; }
+    .pb-nota { font-size: 13px !important; }
+    /* .s03, limites y control llevan zoom propio en movil (.9 / .86 / .94):
+       los valores van divididos para que se vean a 27 / 15 / 14 px. */
+    section.s03:not(#inicio) h2 { font-size: 30px !important; } .m-fi span { font-size: 15.5px !important; }
+    section#limites:not(#inicio) h2 { font-size: 31.4px !important; }
+    #limites .p { font-size: 17.4px !important; line-height: 1.55 !important; }
+    #limites li { font-size: 16.3px !important; }
+    section#control:not(#inicio) h2 { font-size: 28.7px !important; }
+  }
+  @media (min-width: 1081px) {
+    .pb-nota { font-size: 15px !important; }
+    .pzs-nota { font-size: 15.5px !important; }
+    .s03 h2, #piezas h2, #limites h2, #control .c-2 h2 { font-size: 46px !important; }
+  }
+</style>
 </body>
 
 </html>
