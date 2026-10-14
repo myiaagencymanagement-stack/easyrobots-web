@@ -28,18 +28,16 @@ indice `/blog/` se abre a Google cuando haya 3 articulos aprobados.
 - **Siempre revisado por Anais antes de publicar.** Google castiga el
   contenido de IA en masa sin revisar.
 
-## Flujo de n8n previsto
+## Como se escriben (decision de Anais, 2026-10-14)
 
-1. Disparo semanal (lunes). Lee el siguiente tema pendiente de la lista
-   (Google Sheet: tema, nicho, palabra clave, landing, estado).
-2. La IA escribe el borrador en JSON con los huecos de la plantilla, con un
-   prompt que lleva las reglas de arriba.
-3. Rellena `docs/blog-plantilla.html` con `ROBOTS = noindex, follow` y lo sube
-   a GitHub en `src/blog/<slug>/index.html` (API de contenidos). Se publica solo.
-4. Envia a Anais el enlace del borrador por email/Telegram con dos botones:
-   **Aprobar** / **Rehacer con comentarios**.
-5. Al aprobar: cambia `ROBOTS` a index, anade la tarjeta al indice y la URL al
-   sitemap, y marca el tema como publicado.
+**Los escribe Claude en este proyecto, no Gemini en n8n** ("Gemini flaquea").
+El proceso esta en la skill del proyecto `.claude/skills/blog-articulo/`:
+borrador en `blog-borradores/` (fuera de `src/`, no se publica) → revision
+con Anais en el chat → "publicalo" → a `src/blog/`, indice, sitemap y push.
+
+n8n solo avisa: `docs/n8n-blog-recordatorio.json` manda cada lunes a las 9:00
+un Gmail a Anais con "toca el articulo de la semana". Se importa a mano en n8n
+(no hay N8N_API_KEY en este equipo) y se le elige la credencial de Gmail.
 
 ## Temas propuestos (palabra clave → landing)
 

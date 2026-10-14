@@ -1,0 +1,66 @@
+{
+  "name": "Blog · Recordatorio semanal del articulo",
+  "nodes": [
+    {
+      "id": "cd55543b-acaf-4273-bcbf-03a2a0d42e45",
+      "name": "Cada lunes 9:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "weeksInterval": 1,
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "97fdb35e-d953-44d1-8d64-4def198ebc48",
+      "name": "Aviso por Gmail",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        260,
+        0
+      ],
+      "parameters": {
+        "sendTo": "myia.agencymanagement@gmail.com",
+        "subject": "Blog EasyRobots: toca el artículo de la semana",
+        "emailType": "html",
+        "message": "<div style=\"font-family:Arial,sans-serif;font-size:15px;line-height:1.6;color:#111\">\n<p><b>Toca el artículo del blog de esta semana.</b></p>\n<p>Abre VS Code en la carpeta <b>Pagina EasyRobots WEB</b> y escríbele a Claude:</p>\n<p style=\"background:#F1F5FB;padding:12px 16px;border-radius:8px\"><b>escribe el artículo de la semana</b></p>\n<p>Él coge el siguiente tema de la lista, te lo enseña en borrador y solo se publica cuando le digas <b>publícalo</b>.</p>\n<p style=\"color:#667\">Un artículo a la semana, enlazado a su landing, es lo que más ayuda a salir en Google.</p>\n</div>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "notes": "Elegir la credencial de Gmail al importar."
+    }
+  ],
+  "connections": {
+    "Cada lunes 9:00": {
+      "main": [
+        [
+          {
+            "node": "Aviso por Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid"
+  }
+}

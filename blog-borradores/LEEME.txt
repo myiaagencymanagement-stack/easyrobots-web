@@ -1,0 +1,2 @@
+Borradores del blog. Fuera de src/: no se publican.
+Los escribe la skill .claude/skills/blog-articulo/
