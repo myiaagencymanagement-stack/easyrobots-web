@@ -42,7 +42,7 @@ el siguiente tema de la lista de abajo (el primero sin "hecho").
 ## Temas propuestos (palabra clave → landing)
 
 Clinicas (`/clinicas/whatsapp/`, `/clinicas/llamadas/`)
-1. WhatsApp fuera de horario en una clinica estetica · **hecho (borrador)**
+1. WhatsApp fuera de horario en una clinica estetica · **hecho, publicado 2026-10-15**
 2. Como reducir los no-shows en una clinica estetica
 3. Cuando escribir a una clienta para el retoque de microblading
 4. Que contestar cuando preguntan "¿cuanto cuesta?" por WhatsApp
