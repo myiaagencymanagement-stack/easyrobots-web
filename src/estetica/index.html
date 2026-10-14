@@ -1303,7 +1303,7 @@
       <div class="wz-txt">
         <!-- Copy de la demo de coaching v3 (captura de Anais, 07/10), adaptado:
              "un interesado" pasa a "una clienta" y la llamada a la cita. -->
-        <button class="er-prueba" type="button" data-prueba><span class="pt" aria-hidden="true"></span>Pru&eacute;balo t&uacute; mismo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+        <button class="er-prueba" type="button" data-prueba><span class="pt" aria-hidden="true"></span>Pru&eacute;balo t&uacute; mismo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v13M6 12l6 6 6-6"/></svg></button>
         <h2>As&iacute; responde <em>EasyRobots</em> a una clienta.</h2>
         <p class="wz-sub">Prueba la conversaci&oacute;n y descubre c&oacute;mo responde a sus dudas, le da precio y puede reservarle la cita directamente en tu agenda.</p>
         <div class="wz-nota">
@@ -1775,7 +1775,14 @@
   @keyframes erPulso { 0% { transform: scale(.5); opacity: .9; } 100% { transform: scale(1.7); opacity: 0; } }
   .er-flash { animation: erFlash 1.5s ease-out 1; }
   @keyframes erFlash { 0% { box-shadow: 0 0 0 0 rgba(30,111,242,.75); } 100% { box-shadow: 0 0 0 26px rgba(30,111,242,0); } }
-  @media (prefers-reduced-motion: reduce) { .er-prueba .pt::after, .er-flash { animation: none; } }
+  /* Anais (2026-10-14): en varias paginas el boton iba pegado al titular;
+     la flecha baja porque el chat esta debajo, y el boton entero late
+     despacio para que se vea que se puede tocar. */
+  .er-prueba { margin-bottom: 22px; animation: erLate 2.4s ease-in-out infinite; }
+  .er-prueba:hover { animation-play-state: paused; }
+  @keyframes erLate { 0%, 100% { box-shadow: 0 8px 24px rgba(30,111,242,.35), 0 0 0 0 rgba(30,111,242,.45); } 50% { box-shadow: 0 8px 24px rgba(30,111,242,.35), 0 0 0 9px rgba(30,111,242,0); transform: scale(1.03); } }
+  @media (max-width: 760px) { .er-prueba { margin-bottom: 18px; } }
+  @media (prefers-reduced-motion: reduce) { .er-prueba .pt::after, .er-flash, .er-prueba { animation: none; } }
 </style>
 <script>
 (function () {
@@ -1791,13 +1798,27 @@
   });
 })();
 </script>
+<!-- Equipo en movil (Anais, 2026-10-14): era la unica pagina con los
+     retratos en miniatura (121x109, por meter la garantia en una pantalla).
+     Pasan a ancho completo con la proporcion de coaching (336:410). -->
+<style>
+  @media (max-width: 860px) {
+    #equipo .eq-pers { max-width: none; margin-top: 22px; gap: 12px; }
+    #equipo .eq-per { aspect-ratio: 336 / 410; border-radius: 14px; }
+    #equipo .eq-pie { padding: 10px 14px 12px; }
+    #equipo .eq-pie b { font-size: 17px; } #equipo .eq-pie i { font-size: 14px; }
+    #equipo .p { font-size: .93rem; line-height: 1.55; }
+    #equipo .ga-col { margin-top: 22px; }
+  }
+</style>
 <!-- CTA de reservar llamada (Anais, 2026-10-07): todos iguales en toda la
-     web, blanco premium; en /estetica/ dorado, que es su acento. Va al final
+     web, blanco premium. Estetica
+     tambien desde el 2026-10-14: antes iba en dorado y Anais lo quiso blanco. Va al final
      y con !important para ganar a los colores que cada boton traia. -->
 <style>
-  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]) { background: #E4BA6C !important; color: #15120F !important; border: 1px solid rgba(11,18,32,.10) !important; box-shadow: 0 10px 28px rgba(20,14,4,.28) !important; transition: background .2s, transform .2s, box-shadow .2s; }
-  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]):hover { background: #EDC983 !important; transform: translateY(-1px); }
-  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]) svg { color: #15120F; }
+  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]) { background: #fff !important; color: #0B1220 !important; border: 1px solid rgba(11,18,32,.10) !important; box-shadow: 0 10px 28px rgba(5,10,20,.22), inset 0 -1px 0 rgba(11,18,32,.06) !important; transition: background .2s, transform .2s, box-shadow .2s; }
+  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]):hover { background: #EEF2F7 !important; transform: translateY(-1px); }
+  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]) svg { color: #0B1220; }
 </style>
 <!-- Palabras marcadas de los titulares en gris, como la home (Anais,
      2026-10-07). Con opacidad sobre el color del propio titular: sale gris

@@ -1126,7 +1126,7 @@
     <div class="velo" aria-hidden="true"></div>
     <div class="caja">
       <div class="dm-cab0">
-        <button class="er-prueba" type="button" data-prueba><span class="pt" aria-hidden="true"></span>Pru&eacute;balo t&uacute; mismo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+        <button class="er-prueba" type="button" data-prueba><span class="pt" aria-hidden="true"></span>Pru&eacute;balo t&uacute; mismo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v13M6 12l6 6 6-6"/></svg></button>
         <h2 class="h2">Mira c&oacute;mo EasyRobots <em>responde en cada caso.</em></h2>
         <p class="p">Prueba tres situaciones reales de una tienda online y ve c&oacute;mo responde EasyRobots con los datos de tu tienda, sin intervenci&oacute;n humana.</p>
       </div>
@@ -1644,7 +1644,14 @@
   @keyframes erPulso { 0% { transform: scale(.5); opacity: .9; } 100% { transform: scale(1.7); opacity: 0; } }
   .er-flash { animation: erFlash 1.5s ease-out 1; }
   @keyframes erFlash { 0% { box-shadow: 0 0 0 0 rgba(30,111,242,.75); } 100% { box-shadow: 0 0 0 26px rgba(30,111,242,0); } }
-  @media (prefers-reduced-motion: reduce) { .er-prueba .pt::after, .er-flash { animation: none; } }
+  /* Anais (2026-10-14): en varias paginas el boton iba pegado al titular;
+     la flecha baja porque el chat esta debajo, y el boton entero late
+     despacio para que se vea que se puede tocar. */
+  .er-prueba { margin-bottom: 22px; animation: erLate 2.4s ease-in-out infinite; }
+  .er-prueba:hover { animation-play-state: paused; }
+  @keyframes erLate { 0%, 100% { box-shadow: 0 8px 24px rgba(30,111,242,.35), 0 0 0 0 rgba(30,111,242,.45); } 50% { box-shadow: 0 8px 24px rgba(30,111,242,.35), 0 0 0 9px rgba(30,111,242,0); transform: scale(1.03); } }
+  @media (max-width: 760px) { .er-prueba { margin-bottom: 18px; } }
+  @media (prefers-reduced-motion: reduce) { .er-prueba .pt::after, .er-flash, .er-prueba { animation: none; } }
 </style>
 <script>
 (function () {

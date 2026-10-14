@@ -1623,7 +1623,7 @@
       <div class="wrap">
         <div class="pb-caja">
           <div class="pb-txt">
-            <button class="er-prueba" type="button" data-prueba><span class="pt" aria-hidden="true"></span>Pru&eacute;balo t&uacute; mismo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+            <button class="er-prueba" type="button" data-prueba><span class="pt" aria-hidden="true"></span>Pru&eacute;balo t&uacute; mismo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v13M6 12l6 6 6-6"/></svg></button>
             <h2>As&iacute; responde <br><em>EasyRobots</em> <br>a un interesado.</h2>
             <p class="lede">Prueba la conversaci&oacute;n y descubre c&oacute;mo responde a sus dudas, lo cualifica y puede reservar una llamada directamente en el calendario.</p>
             <div class="pb-info">
@@ -1670,12 +1670,12 @@
           </div>
           <div class="pb-bajo">
             <div class="pb-acc">
-              <button class="escuchar" type="button" data-demo>
+              <button class="escuchar" type="button" data-pronto>
                 <span class="rd">&#9654;</span>
                 Escuchar la llamada
                 <span class="dur">02:18</span>
               </button>
-              <p class="pb-nota">Es una grabaci&oacute;n, pero real: as&iacute; es como se escuchar&iacute;a una llamada atendida por EasyRobots.</p>
+              <p class="pb-nota">As&iacute; es como se escuchar&iacute;a una llamada atendida por EasyRobots.</p>
             </div>
             <!-- Anais (2026-10-07): la CTA en blanco y negro y bien separada
                  de la llamada, para que no compitan los dos botones. -->
@@ -2288,7 +2288,14 @@
   @keyframes erPulso { 0% { transform: scale(.5); opacity: .9; } 100% { transform: scale(1.7); opacity: 0; } }
   .er-flash { animation: erFlash 1.5s ease-out 1; }
   @keyframes erFlash { 0% { box-shadow: 0 0 0 0 rgba(30,111,242,.75); } 100% { box-shadow: 0 0 0 26px rgba(30,111,242,0); } }
-  @media (prefers-reduced-motion: reduce) { .er-prueba .pt::after, .er-flash { animation: none; } }
+  /* Anais (2026-10-14): en varias paginas el boton iba pegado al titular;
+     la flecha baja porque el chat esta debajo, y el boton entero late
+     despacio para que se vea que se puede tocar. */
+  .er-prueba { margin-bottom: 22px; animation: erLate 2.4s ease-in-out infinite; }
+  .er-prueba:hover { animation-play-state: paused; }
+  @keyframes erLate { 0%, 100% { box-shadow: 0 8px 24px rgba(30,111,242,.35), 0 0 0 0 rgba(30,111,242,.45); } 50% { box-shadow: 0 8px 24px rgba(30,111,242,.35), 0 0 0 9px rgba(30,111,242,0); transform: scale(1.03); } }
+  @media (max-width: 760px) { .er-prueba { margin-bottom: 18px; } }
+  @media (prefers-reduced-motion: reduce) { .er-prueba .pt::after, .er-flash, .er-prueba { animation: none; } }
 </style>
 <script>
 (function () {
@@ -2312,6 +2319,30 @@
   :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]):hover { background: #EEF2F7 !important; transform: translateY(-1px); }
   :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]) svg { color: #0B1220; }
 </style>
+<!-- "Escuchar la llamada" (Anais, 2026-10-14): la grabacion todavia no
+     existe. Al pulsar, el boton avisa de que aun no esta disponible en vez de
+     no hacer nada. Cuando haya audio, se quita este bloque y se engancha. -->
+<style>
+  [data-pronto].pronto { opacity: .72; cursor: default; }
+  [data-pronto].pronto .dur { display: none; }
+  .pb-nota.pronto-aviso { color: inherit; font-weight: 600; }
+</style>
+<script>
+(function () {
+  document.querySelectorAll('[data-pronto]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopImmediatePropagation();
+      if (b.classList.contains('pronto')) return;
+      b.classList.add('pronto');
+      var rd = b.querySelector('.rd'); if (rd) rd.innerHTML = '&#9203;';
+      var t = Array.prototype.find.call(b.childNodes, function (n) { return n.nodeType === 3 && n.textContent.trim(); });
+      if (t) t.textContent = ' Grabación disponible muy pronto ';
+      var nota = b.parentNode.querySelector('.pb-nota');
+      if (nota) { nota.textContent = 'Todavía no está disponible: estamos preparando la grabación. Mientras tanto, puedes probar el chat.'; nota.classList.add('pronto-aviso'); }
+    }, true);
+  });
+})();
+</script>
 </body>
 
 </html>
