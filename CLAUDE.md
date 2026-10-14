@@ -287,6 +287,16 @@ llamativos.
   20 minutos en el commit anterior). Después de empujar, comprobar con `curl`
   que la página trae algo nuevo, y si no llega en 5-10 minutos, relanzar con
   `git commit --allow-empty` y otro push.
+- **Avisar a Google tras cambios importantes de SEO** (pagina o articulo nuevo,
+  titulo, descripcion, URL, cintillo con palabras clave). Lo hace Claude, no
+  Anais (decision del 2026-10-15): poner la fecha del dia en el `<lastmod>` de
+  esa URL en `sitemap.xml`, empujar y reenviar el sitemap por la API de Search
+  Console con la cuenta de servicio
+  (`claude@graphite-record-480113-t1.iam.gserviceaccount.com`, clave en
+  `~/.claude/credenciales/ga-service-account.json`, scope
+  `https://www.googleapis.com/auth/webmasters`, propiedad `sc-domain:easyrobots-ai.cloud`).
+  "Solicitar indexacion" a mano NO existe en la API: si corre prisa, se le
+  pasa a Anais la URL exacta. Cambios pequenos (colores, fotos) no necesitan nada.
 - Autenticación de git: el Windows Credential Manager ya la tiene guardada. No
   hace falta ningún token. **Nunca meter un token dentro de la URL de `git pull`
   o `git push`**: queda escrito en `.git/logs/HEAD`. Ya pasó una vez.
