@@ -1847,3 +1847,20 @@ Míos, cuando lo pida:
 - `docs/boceto-a-html.md` — cómo se convierte un boceto de IA en HTML real:
   por qué no existe código detrás, cómo se mide en vez de mirarlo a ojo, y las
   trampas en las que ya se cayó. **Se lee antes de reconstruir una sección.**
+
+## Clinicas por canal y tamanos unificados (2026-10-14)
+
+- **Las dos paginas de clinicas se nombran por canal** (opcion elegida por
+  Anais): "Clinicas · WhatsApp" (`/estetica/`) y "Clinicas · Llamadas"
+  (`/agente-de-voz/`). Solo cambio el texto visible (cintillo, menu, pie de la
+  home, puerta de `/clinicas/`). **Las URL y el SEO no se tocaron**; mover
+  `/estetica/` a `/clinicas/whatsapp/` queda por decidir (cuesta posicion).
+- Home, sectores: rejilla de 6 columnas (3 + 2 tarjetas) y "¿No ves el tuyo?"
+  a lo ancho con chips de sector; cada chip abre el calendario con
+  `nicho = home-<sector>`.
+- Al final de cada pagina viva (menos coaching, que es la referencia de movil)
+  hay un bloque "Tamanos unificados": movil h1 ~38, h2 27, texto >= 13-14;
+  escritorio h2 ~42 vistos. En agente de voz, .s03, limites y control llevan
+  zoom propio en movil y sus valores van divididos.
+- "Escuchar la llamada" lleva `data-pronto`: avisa de que la grabacion aun no
+  esta. Al tener el audio, quitar ese bloque del final de la pagina.
