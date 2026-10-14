@@ -294,7 +294,9 @@ llamativos.
   Console con la cuenta de servicio
   (`claude@graphite-record-480113-t1.iam.gserviceaccount.com`, clave en
   `~/.claude/credenciales/ga-service-account.json`, scope
-  `https://www.googleapis.com/auth/webmasters`, propiedad `sc-domain:easyrobots-ai.cloud`).
+  `https://www.googleapis.com/auth/webmasters`, propiedad `sc-domain:easyrobots-ai.cloud`,
+  permiso Completo desde el 2026-10-15). Script:
+  `python ~/.claude/.agents/skills/ga4-analytics/scripts/sc.py sitemap | busquedas | paginas`.
   "Solicitar indexacion" a mano NO existe en la API: si corre prisa, se le
   pasa a Anais la URL exacta. Cambios pequenos (colores, fotos) no necesitan nada.
 - Autenticación de git: el Windows Credential Manager ya la tiene guardada. No
