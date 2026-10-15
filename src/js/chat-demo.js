@@ -65,6 +65,22 @@
   };
 
   var tarjetas = document.querySelectorAll('[data-chat-demo]');
+
+  // De que anuncio viene (16/10): las etiquetas utm_ de la URL. Se guardan en
+  // la sesion del navegador por si la persona navega antes de escribir.
+  var UTM = (function () {
+    var u = {}, hay = false;
+    try {
+      var q = new URLSearchParams(location.search);
+      ['source', 'medium', 'campaign', 'content'].forEach(function (k) {
+        var v = q.get('utm_' + k);
+        if (v) { u[k] = v.slice(0, 120); hay = true; }
+      });
+      if (hay) sessionStorage.setItem('er-utm', JSON.stringify(u));
+      else { var g = sessionStorage.getItem('er-utm'); if (g) { u = JSON.parse(g); hay = true; } }
+    } catch (e) { /* sin almacenamiento o URL rara: sin etiquetas */ }
+    return hay ? u : null;
+  })();
   if (!tarjetas.length) return;
 
   ponerEstilos();
@@ -151,7 +167,7 @@
       fetch(WEBHOOK, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sitio: sitio, sesion: sesion, texto: texto, personalidad: personalidad }),
+        body: JSON.stringify({ sitio: sitio, sesion: sesion, texto: texto, personalidad: personalidad, utm: UTM }),
         signal: ctrl ? ctrl.signal : undefined
       })
         .then(function (r) {
