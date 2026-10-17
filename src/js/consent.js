@@ -22,6 +22,16 @@
   var KEY = 'er_consent';            // 'granted' | 'denied'
   var loaded = false, banner = null;
 
+  // PRUEBA TEMPORAL (decision de Anais, 2026-10-17): unos dias midiendo sin
+  // banner, porque con el banner solo aceptaba ~4 % del trafico de anuncios y
+  // Meta no podia aprender. Asume el riesgo legal (TDDDG §25) a sabiendas.
+  // Caduca sola: a partir de esta fecha vuelve el banner sin tocar nada.
+  // Quien ya hubiera pulsado "Rechazar" sigue sin medirse.
+  var SIN_BANNER_HASTA = '2026-10-24';
+  function pruebaSinBanner() {
+    return new Date().toISOString().slice(0, 10) < SIN_BANNER_HASTA;
+  }
+
   // El nicho sale de <html data-nicho> o, si no lo hay, de la carpeta de la URL.
   function nicho() {
     var d = document.documentElement.getAttribute('data-nicho');
@@ -126,6 +136,7 @@
     var saved = null;
     try { saved = localStorage.getItem(KEY); } catch (e) {}
     if (saved === 'granted') loadTracking();
+    else if (saved !== 'denied' && pruebaSinBanner()) loadTracking();
     else if (saved !== 'denied') pintarBanner();
 
     // Clic en cualquier boton de reservar
