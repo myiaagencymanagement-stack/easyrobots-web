@@ -81,6 +81,23 @@
   .end h2{margin-bottom:14px}
   .end p{max-width:62ch;margin:0 0 14px}
   .end a{color:var(--gold);font-weight:600}
+  .ver{margin-top:14px;background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:14px 18px}
+  .ver summary{cursor:pointer;font-weight:700;color:var(--gold)}
+  .ver .opt-head{margin-top:10px}
+  .ver .hint{margin:0}
+  .ver pre{margin-top:12px}
+
+  /* ---- aviso: navegador interno de Instagram/Facebook ----
+     Ahi no se puede descargar nada. Colores propios para que valga en
+     cualquier guia, sea clara u oscura. */
+  .iab{max-width:780px;margin:14px auto 0;padding:16px 18px;border-radius:12px;background:#1d1a14;color:#fbf6ea;border:1.5px solid #f5c443;font-size:15px;line-height:1.5;box-sizing:border-box}
+  .iab[hidden],.iab [hidden]{display:none !important}
+  .iab p{margin:0 0 10px;max-width:none;color:#fbf6ea}
+  .iab b{color:#fff}
+  .iab-b{display:flex;flex-wrap:wrap;gap:10px}
+  .iab-btn{font:inherit;font-size:14px;font-weight:700;cursor:pointer;border-radius:999px;padding:9px 18px;text-decoration:none;border:1.5px solid #f5c443;background:#f5c443;color:#17150f;display:inline-flex;align-items:center}
+  .iab-btn.sec{background:transparent;color:#f5c443}
+  @media (max-width:820px){.iab{margin:12px 16px 0}}
   @media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
 </style>
 </head>
@@ -91,6 +108,16 @@
   <span class="sep">|</span>
   <a href="/index.html">EasyRobots</a>
 </nav>
+
+<div class="iab" id="iab" role="note" hidden>
+  <p><b>Estás en el navegador de <span id="iab-app">Instagram</span></b> y desde aquí no se pueden descargar archivos.</p>
+  <p id="iab-ios">Toca <b>···</b> arriba a la derecha y elige <b>Abrir en el navegador externo</b>. En Safari o Chrome la descarga funciona.</p>
+  <div class="iab-b">
+    <a class="iab-btn" id="iab-chrome" hidden>Abrir en Chrome</a>
+    <button type="button" class="iab-btn sec" id="iab-copiar">Copiar enlace</button>
+  </div>
+</div>
+
 
 <main class="page">
   <header class="cover">
@@ -173,7 +200,69 @@ Mi negocio es: [a qué te dedicas]. Escribe la skill en español, con lenguaje s
     <a class="dl" href="skills/analista-de-excel.zip" download>
       <span aria-hidden="true">⬇</span> Descargar la skill ya hecha (analista-de-excel.zip)
     </a>
-    <p class="hint small">Para Claude: en Ajustes &rarr; Capacidades &rarr; Skills, súbela tal cual (el .zip, sin descomprimir).</p>
+    <p class="hint small">Para Claude: en Ajustes &rarr; Capacidades &rarr; Skills, súbela tal cual (el .zip, sin descomprimir). En iPhone, Safari te pregunta si quieres descargarla: acepta y la tienes en la app <b>Archivos</b>, carpeta <b>Descargas</b>.</p>
+
+    <details class="ver">
+      <summary>¿No se descarga? Ver la skill y copiarla</summary>
+      <div class="opt-head">
+        <p class="hint">Copia el texto y pégaselo a Claude con «Créame una skill con este SKILL.md».</p>
+        <button class="copy" type="button" data-target="s0">Copiar</button>
+      </div>
+      <pre id="s0"><code>---
+name: analista-de-excel
+description: &gt;
+  Analiza un Excel o CSV con datos de un negocio (ventas, servicios, clientes, gastos)
+  y devuelve qué vende más, qué meses caen, patrones y estrategias concretas.
+  Usar cuando alguien suba una hoja de cálculo de su negocio y pida un análisis,
+  diga &quot;analiza mis ventas&quot;, &quot;qué me dice este Excel&quot;, &quot;qué estoy vendiendo más&quot;,
+  &quot;por qué bajan las ventas&quot; o similar.
+---
+
+# Analista de tu Excel
+
+Actúas como analista de negocio para una pequeña empresa. Tu trabajo es convertir
+una hoja de cálculo en decisiones claras, en lenguaje sencillo y sin tecnicismos.
+
+## Paso 1 — Entender los datos (antes de analizar)
+
+1. Si no lo has hecho, pregunta en una sola tanda:
+   - A qué se dedica el negocio.
+   - Qué quiere saber (o si prefiere un análisis general).
+2. Abre el archivo y di qué columnas has encontrado y qué crees que significa cada una.
+   Si alguna no está clara, **pregunta antes de seguir**.
+3. Avisa de problemas en los datos: celdas vacías, duplicados, fechas mal escritas,
+   importes raros. Di cómo los vas a tratar.
+
+## Paso 2 — Análisis
+
+Calcula con los datos reales (usa código o fórmulas si tienes la herramienta):
+
+- **Lo que más vende y lo que menos:** en unidades y en ingresos. Si hay coste o margen,
+  también en beneficio.
+- **Evolución en el tiempo:** meses o semanas fuertes y flojos, tendencia general,
+  estacionalidad.
+- **Concentración:** qué parte de los ingresos viene de los 3-5 productos, servicios o
+  clientes principales.
+- **Clientes** (si hay datos): recurrentes frente a nuevos, ticket medio.
+- **Lo inesperado:** cualquier patrón que no sea obvio y merezca atención.
+
+Si puedes crear gráficos, haz como máximo 3: los que mejor cuenten la historia.
+
+## Paso 3 — Entrega
+
+1. **Resumen en 5 líneas** con lo más importante.
+2. **Hallazgos**, cada uno con su número concreto.
+3. **3-5 estrategias** ordenadas por impacto y esfuerzo, cada una con el primer paso
+   para aplicarla esta semana.
+4. **Qué datos faltan** para afinar el análisis la próxima vez.
+
+## Reglas
+
+- **No inventes cifras.** Todo número sale del archivo. Si algo es una suposición
+  (por ejemplo, la causa de una caída), dilo claramente.
+- Lenguaje de negocio, no de estadística. Nada de &quot;desviación típica&quot; sin explicarla.
+- Si los datos no permiten responder lo que pide, dilo y propón qué necesitarías.</code></pre>
+    </details>
   </section>
   <section class="skill" id="estudio-de-mercado">
     <div class="skill-head">
@@ -232,7 +321,63 @@ Escribe la skill en español, con lenguaje sencillo, y entrégamela lista para g
     <a class="dl" href="skills/estudio-de-mercado.zip" download>
       <span aria-hidden="true">⬇</span> Descargar la skill ya hecha (estudio-de-mercado.zip)
     </a>
-    <p class="hint small">Para Claude: en Ajustes &rarr; Capacidades &rarr; Skills, súbela tal cual (el .zip, sin descomprimir).</p>
+    <p class="hint small">Para Claude: en Ajustes &rarr; Capacidades &rarr; Skills, súbela tal cual (el .zip, sin descomprimir). En iPhone, Safari te pregunta si quieres descargarla: acepta y la tienes en la app <b>Archivos</b>, carpeta <b>Descargas</b>.</p>
+
+    <details class="ver">
+      <summary>¿No se descarga? Ver la skill y copiarla</summary>
+      <div class="opt-head">
+        <p class="hint">Copia el texto y pégaselo a Claude con «Créame una skill con este SKILL.md».</p>
+        <button class="copy" type="button" data-target="s1">Copiar</button>
+      </div>
+      <pre id="s1"><code>---
+name: estudio-de-mercado
+description: &gt;
+  Hace un estudio de mercado rápido de una idea de negocio, servicio o zona:
+  competidores reales, precios, señales de demanda, huecos y una recomendación de
+  cuánto cobrar. Usar cuando alguien diga &quot;estudio de mercado&quot;, &quot;quiero montar X en Y&quot;,
+  &quot;cuánto debería cobrar&quot;, &quot;quién es mi competencia&quot;, &quot;hay mercado para esto&quot; o similar.
+  Necesita búsqueda web.
+---
+
+# Estudio de mercado en 10 minutos
+
+Actúas como consultor de estudios de mercado para pequeños negocios y emprendedores.
+Trabajas con datos reales de internet y separas siempre los datos de las opiniones.
+
+## Paso 1 — Lo que necesitas saber
+
+Pregunta en una sola tanda lo que falte:
+- Qué idea, servicio o producto quiere analizar.
+- En qué ciudad o zona (o si es online).
+- Su cliente ideal, si lo sabe.
+- Su precio actual o el que tiene pensado, si lo tiene.
+
+## Paso 2 — Investigación (con búsqueda web)
+
+1. **Competencia:** 5-10 competidores reales de la zona o del canal. De cada uno:
+   nombre, web o ubicación, qué ofrece, precios publicados, valoración media y número
+   de reseñas si aparecen, y en qué se diferencia.
+2. **Precios:** rango de mercado (mínimo, medio, máximo) y qué incluye cada nivel.
+3. **Demanda:** señales de que hay gente buscándolo (tendencias de búsqueda, volumen de
+   reseñas, tamaño de la zona, temporadas). Indica de dónde sale cada señal.
+4. **Huecos:** lo que la competencia hace mal según sus reseñas y lo que nadie ofrece.
+
+## Paso 3 — Entrega
+
+1. **Tabla de competidores.**
+2. **Mapa de precios** con las fuentes.
+3. **Recomendación de precio** con 3 opciones (entrada, estándar, premium), qué
+   incluiría cada una y por qué.
+4. **Oportunidades y huecos** para diferenciarse.
+5. **Veredicto:** ¿hay oportunidad? Riesgos principales y los 3 primeros pasos.
+
+## Reglas
+
+- **Cita la fuente o el enlace de cada dato.**
+- **No inventes competidores, precios ni cifras.** Si no encuentras algo, dilo.
+- Separa claramente lo que es dato de lo que es tu opinión o estimación.
+- Si la zona o la idea son demasiado vagas para dar algo útil, pide que concrete.</code></pre>
+    </details>
   </section>
   <section class="skill" id="abogado-del-diablo">
     <div class="skill-head">
@@ -287,7 +432,58 @@ Escribe la skill en español, con lenguaje claro, y entrégamela lista para guar
     <a class="dl" href="skills/abogado-del-diablo.zip" download>
       <span aria-hidden="true">⬇</span> Descargar la skill ya hecha (abogado-del-diablo.zip)
     </a>
-    <p class="hint small">Para Claude: en Ajustes &rarr; Capacidades &rarr; Skills, súbela tal cual (el .zip, sin descomprimir).</p>
+    <p class="hint small">Para Claude: en Ajustes &rarr; Capacidades &rarr; Skills, súbela tal cual (el .zip, sin descomprimir). En iPhone, Safari te pregunta si quieres descargarla: acepta y la tienes en la app <b>Archivos</b>, carpeta <b>Descargas</b>.</p>
+
+    <details class="ver">
+      <summary>¿No se descarga? Ver la skill y copiarla</summary>
+      <div class="opt-head">
+        <p class="hint">Copia el texto y pégaselo a Claude con «Créame una skill con este SKILL.md».</p>
+        <button class="copy" type="button" data-target="s2">Copiar</button>
+      </div>
+      <pre id="s2"><code>---
+name: abogado-del-diablo
+description: &gt;
+  Actúa como socio crítico ante una decisión importante de negocio o personal
+  (contratar, abrir otro local, invertir, dejar el trabajo para emprender, lanzar un
+  producto): hace las preguntas clave, saca riesgos, supuestos sin comprobar y costes
+  ocultos, y da un veredicto honesto. Usar cuando alguien diga &quot;¿lo hago o no?&quot;,
+  &quot;estoy pensando en…&quot;, &quot;hazme de abogado del diablo&quot;, &quot;qué riesgos tiene&quot; o similar.
+---
+
+# Abogado del diablo para decisiones
+
+Actúas como un socio crítico. Tu trabajo **no es animar**: es ayudar a decidir bien.
+La decisión final siempre es de la persona; tú le das claridad, no órdenes.
+
+## Paso 1 — Preguntar antes de opinar
+
+Con lo que te cuente, hazle **las 5-8 preguntas más importantes** para valorar la
+decisión (dinero disponible, plazos, qué pasa si sale mal, qué ha comprobado ya, qué
+alternativas ha descartado…). **Espera sus respuestas antes de seguir.**
+
+## Paso 2 — Análisis crítico
+
+Con sus respuestas, entrega:
+
+1. **Los argumentos más fuertes en contra**, sin suavizarlos.
+2. **Riesgos**, cada uno con probabilidad e impacto, y cómo sería el peor escenario
+   realista.
+3. **Supuestos sin comprobar:** lo que está dando por hecho sin pruebas.
+4. **Costes ocultos:** dinero, tiempo, energía y lo que deja de hacer por hacer esto.
+5. **Qué tendría que ser verdad** para que sea buena idea.
+6. **Cómo probarlo en pequeño** antes de jugársela, o alternativas más baratas o
+   reversibles.
+7. **Veredicto honesto:** sí, no o todavía no, y qué señales te harían cambiar de
+   opinión.
+
+## Reglas
+
+- No des la razón por darla. Si la lógica es débil, dilo con respeto pero claro.
+- Si algo no lo sabes, dilo; no rellenes con suposiciones.
+- No sustituye a un abogado, gestor o asesor financiero en temas legales o fiscales:
+  si la decisión los toca, recomiéndalo.
+- Cierra siempre recordando que el criterio final es suyo.</code></pre>
+    </details>
   </section>
 
   <section class="end">
@@ -303,7 +499,7 @@ Escribe la skill en español, con lenguaje claro, y entrégamela lista para guar
   document.querySelectorAll('.copy').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var pre = document.getElementById(btn.getAttribute('data-target'));
-      var text = pre.innerText;
+      var text = pre.textContent;
       var done = function () {
         btn.textContent = 'Copiado ✓';
         btn.classList.add('ok');
@@ -324,6 +520,45 @@ Escribe la skill en español, con lenguaje claro, y entrégamela lista para guar
       }
     });
   });
+</script>
+
+<script>
+  // Aviso de navegador interno (Instagram, Facebook, TikTok): ahi los botones
+  // de descarga no hacen nada. En Android se puede saltar a Chrome con un
+  // enlace intent://; en iPhone no hay forma de forzarlo y se explica el gesto.
+  (function () {
+    var ua = navigator.userAgent || '';
+    if (!/Instagram|FBAN|FBAV|FB_IAB|FBIOS|TikTok|musical_ly|Bytedance/i.test(ua)) return;
+    var box = document.getElementById('iab');
+    if (!box) return;
+    var app = /Instagram/i.test(ua) ? 'Instagram' : (/FBAN|FBAV|FB_IAB|FBIOS/i.test(ua) ? 'Facebook' : 'esta app');
+    document.getElementById('iab-app').textContent = app;
+    if (/Android/i.test(ua)) {
+      var a = document.getElementById('iab-chrome');
+      a.href = 'intent://' + location.host + location.pathname + location.search +
+               '#Intent;scheme=https;package=com.android.chrome;end';
+      a.hidden = false;
+      document.getElementById('iab-ios').textContent =
+        'Pulsa Abrir en Chrome y descárgalo desde allí.';
+    }
+    var copiar = document.getElementById('iab-copiar');
+    copiar.addEventListener('click', function () {
+      var url = location.href.split('#')[0];
+      var ok = function () { copiar.textContent = 'Enlace copiado ✓'; };
+      var aMano = function () {
+        var t = document.createElement('textarea');
+        t.value = url; t.setAttribute('readonly', '');
+        t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); ok(); } catch (e) { copiar.textContent = url; }
+        document.body.removeChild(t);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(ok, aMano);
+      } else { aMano(); }
+    });
+    box.hidden = false;
+  })();
 </script>
 </body>
 </html>

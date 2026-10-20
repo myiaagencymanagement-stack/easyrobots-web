@@ -195,6 +195,18 @@
   .nav-guias a{color:var(--naranja);text-decoration:none;font-weight:600}
   .nav-guias a:hover,.nav-guias a:focus-visible{text-decoration:underline}
   .nav-guias .sep{color:var(--tinta-2)}
+
+  /* ---- aviso: navegador interno de Instagram/Facebook ----
+     Ahi no se puede descargar nada. Colores propios para que valga en
+     cualquier guia, sea clara u oscura. */
+  .iab{max-width:780px;margin:14px auto 0;padding:16px 18px;border-radius:12px;background:#1d1a14;color:#fbf6ea;border:1.5px solid #f5c443;font-size:15px;line-height:1.5;box-sizing:border-box}
+  .iab[hidden],.iab [hidden]{display:none !important}
+  .iab p{margin:0 0 10px;max-width:none;color:#fbf6ea}
+  .iab b{color:#fff}
+  .iab-b{display:flex;flex-wrap:wrap;gap:10px}
+  .iab-btn{font:inherit;font-size:14px;font-weight:700;cursor:pointer;border-radius:999px;padding:9px 18px;text-decoration:none;border:1.5px solid #f5c443;background:#f5c443;color:#17150f;display:inline-flex;align-items:center}
+  .iab-btn.sec{background:transparent;color:#f5c443}
+  @media (max-width:820px){.iab{margin:12px 16px 0}}
 </style>
 
 <div class="hoja">
@@ -204,6 +216,16 @@
     <span class="sep">|</span>
     <a href="/index.html">EasyRobots</a>
   </nav>
+
+<div class="iab" id="iab" role="note" hidden>
+  <p><b>Estás en el navegador de <span id="iab-app">Instagram</span></b> y desde aquí no se pueden descargar archivos.</p>
+  <p id="iab-ios">Toca <b>···</b> arriba a la derecha y elige <b>Abrir en el navegador externo</b>. En Safari o Chrome la descarga funciona.</p>
+  <div class="iab-b">
+    <a class="iab-btn" id="iab-chrome" hidden>Abrir en Chrome</a>
+    <button type="button" class="iab-btn sec" id="iab-copiar">Copiar enlace</button>
+  </div>
+</div>
+
 
   <header class="portada">
   <!-- Indexable desde el 2026-10-14 (Anais): antes iban con noindex para
@@ -345,7 +367,7 @@
         <span class="etiqueta">El flujo del asistente</span>
         <div class="botones">
           <button type="button" class="boton" id="btn-copiar">Copiar el flujo</button>
-          <button type="button" class="boton secundario" id="btn-descargar">Descargar el .json</button>
+          <a class="boton secundario" id="btn-descargar" href="asistente-whatsapp-clinica.json" download="asistente-whatsapp-clinica.json">Descargar el .json</a>
         </div>
         <p class="estado" id="estado-flujo" role="status" aria-live="polite"></p>
         <p><b>Lo más rápido es copiar.</b> Pulsa <b>Copiar el flujo</b>, entra en n8n, crea un flujo nuevo y pega con <code>Ctrl + V</code> (en Mac <code>Cmd + V</code>) sobre el lienzo en blanco. Aparecerá el asistente completo.</p>
@@ -362,7 +384,7 @@
         <li>En n8n, arriba a la derecha, pulsa los tres puntos <b>···</b> y elige <b>Import from File…</b>.</li>
         <li>Selecciona el archivo. Aparecerá el flujo completo.</li>
       </ol>
-      <p class="nota">Según cómo tengas el navegador, el archivo se guardará solo en tu carpeta de Descargas o te preguntará dónde dejarlo. Si en algún momento se te pierde, vuelve aquí y púlsalo otra vez.</p>
+      <p class="nota">Según cómo tengas el navegador, el archivo se guardará solo en tu carpeta de Descargas o te preguntará dónde dejarlo. En iPhone, Safari te pregunta si quieres descargarlo y lo guarda en la app Archivos, carpeta Descargas. Si en algún momento se te pierde, vuelve aquí y púlsalo otra vez.</p>
       <p>Con el flujo ya en pantalla, pulsa <b>Save</b> y ponle un nombre, por ejemplo «Asistente WhatsApp clínica».</p>
 
       <figure id="fig-flujo">
@@ -911,24 +933,51 @@
     }
   });
 
+  // La descarga la hace el propio enlace al archivo real del servidor.
+  // Antes se fabricaba el .json en el navegador (Blob) y en el Safari del
+  // iPhone fallaba sin avisar; un enlace normal si lo descarga.
   var descargar = document.getElementById('btn-descargar');
   if(descargar) descargar.addEventListener('click', function(){
-    decir('');
-    try{
-      var blob = new Blob([json], {type:'application/json'});
-      var url  = URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.href = url;
-      a.download = 'asistente-whatsapp-clinica.json';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
-      decir('Descargado. Revisa tu carpeta de Descargas.');
-    }catch(e){
-      abrirTexto();
-      decir('Este navegador no permite descargas: usa Copiar el flujo.');
-    }
+    decir('Descargando. En iPhone lo tienes en la app Archivos, carpeta Descargas.');
   });
 })();
+</script>
+
+<script>
+  // Aviso de navegador interno (Instagram, Facebook, TikTok): ahi los botones
+  // de descarga no hacen nada. En Android se puede saltar a Chrome con un
+  // enlace intent://; en iPhone no hay forma de forzarlo y se explica el gesto.
+  (function () {
+    var ua = navigator.userAgent || '';
+    if (!/Instagram|FBAN|FBAV|FB_IAB|FBIOS|TikTok|musical_ly|Bytedance/i.test(ua)) return;
+    var box = document.getElementById('iab');
+    if (!box) return;
+    var app = /Instagram/i.test(ua) ? 'Instagram' : (/FBAN|FBAV|FB_IAB|FBIOS/i.test(ua) ? 'Facebook' : 'esta app');
+    document.getElementById('iab-app').textContent = app;
+    if (/Android/i.test(ua)) {
+      var a = document.getElementById('iab-chrome');
+      a.href = 'intent://' + location.host + location.pathname + location.search +
+               '#Intent;scheme=https;package=com.android.chrome;end';
+      a.hidden = false;
+      document.getElementById('iab-ios').textContent =
+        'Pulsa Abrir en Chrome y descárgalo desde allí.';
+    }
+    var copiar = document.getElementById('iab-copiar');
+    copiar.addEventListener('click', function () {
+      var url = location.href.split('#')[0];
+      var ok = function () { copiar.textContent = 'Enlace copiado ✓'; };
+      var aMano = function () {
+        var t = document.createElement('textarea');
+        t.value = url; t.setAttribute('readonly', '');
+        t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); ok(); } catch (e) { copiar.textContent = url; }
+        document.body.removeChild(t);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(ok, aMano);
+      } else { aMano(); }
+    });
+    box.hidden = false;
+  })();
 </script>

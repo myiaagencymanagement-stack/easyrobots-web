@@ -339,6 +339,12 @@ Lo que sigue en la raíz y se queda ahí:
 - `src/guias/` — lead magnets. **Indexables desde el 2026-10-14** (Anais: pesa
   mas el SEO que el email). Cada guia lleva canonical y description, y estan en
   el sitemap. Antes iban con `noindex` para que no se leyeran sin dejar el email.
+  **Descargas en las guias (2026-10-20):** el enlace llega por DM de Instagram y
+  su navegador interno no descarga nada. Toda guia con archivos lleva: enlace
+  normal al archivo real (nunca Blob, falla en el Safari del iPhone), nota de
+  donde queda en iPhone (Archivos > Descargas), alternativa de copiar el texto,
+  y el aviso `#iab` que solo sale en Instagram/Facebook (en Android abre Chrome
+  con `intent://`). Hoy: `guia-3-skills-negocio.html` y la del agente de WhatsApp.
 - `src/lanzamientos/` — landings de coaching y ecommerce.
 
 ### Los borradores
