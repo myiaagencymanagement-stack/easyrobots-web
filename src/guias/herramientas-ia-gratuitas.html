@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas IA Gratuitas | EasyRobots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1E88E5;
+            --primary-light: #42A5F5;
+            --primary-dark: #0D47A1;
+            --accent: #00E5FF;
+            --accent-alt: #1DE9B6;
+            --bg-dark: #0A0E27;
+            --bg-darker: #050812;
+            --bg-card: #0F1629;
+            --text-white: #FFFFFF;
+            --text-light: #B3BCC4;
+            --text-muted: #7A8490;
+            --border: #1A2332;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 50%, #0D0A1F 100%);
+            min-height: 100vh;
+            color: var(--text-white);
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(30, 136, 229, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 229, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 80px;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.3em;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            color: var(--text-white);
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 12px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.2);
+        }
+
+        .nav-button:hover {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(30, 136, 229, 0.35);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 100px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-subtitle {
+            text-transform: uppercase;
+            font-size: 0.75em;
+            letter-spacing: 0.25em;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .header-subtitle::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent);
+        }
+
+        h1 {
+            font-size: 4em;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--text-white), var(--accent) 50%, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-description {
+            font-size: 1.05em;
+            color: var(--text-light);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 32px;
+            margin-bottom: 120px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tool Card */
+        .tool-card {
+            background: linear-gradient(135deg, rgba(15, 22, 41, 0.8) 0%, rgba(30, 136, 229, 0.05) 100%);
+            border: 1px solid rgba(30, 136, 229, 0.2);
+            border-radius: 16px;
+            padding: 36px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .tool-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(30, 136, 229, 0.1) 0%, transparent 80%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary);
+            box-shadow: 0 30px 60px rgba(30, 136, 229, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(15, 22, 41, 0.9) 0%, rgba(30, 136, 229, 0.1) 100%);
+        }
+
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+
+        .tool-icon {
+            font-size: 2.2em;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+
+        .tool-name {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--text-white);
+            letter-spacing: -0.01em;
+        }
+
+        .tool-category {
+            background: linear-gradient(135deg, rgba(30, 136, 229, 0.15), rgba(0, 229, 255, 0.1));
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.65em;
+            font-weight: 700;
+            white-space: nowrap;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .tool-description {
+            color: var(--text-light);
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            flex-grow: 1;
+            font-weight: 300;
+        }
+
+        .tool-use {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.08), rgba(29, 233, 182, 0.05));
+            padding: 16px 18px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            color: var(--text-light);
+            margin-bottom: 24px;
+            border-left: 3px solid var(--accent);
+            backdrop-filter: blur(5px);
+        }
+
+        .tool-use strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .tool-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 13px 26px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            letter-spacing: 0.04em;
+            box-shadow: 0 8px 20px rgba(30, 136, 229, 0.25);
+        }
+
+        .tool-button:hover {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 14px 35px rgba(30, 136, 229, 0.4);
+        }
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 80px 0 60px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-text {
+            font-size: 0.95em;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-weight: 300;
+        }
+
+        .footer-credit {
+            font-size: 0.85em;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 16px;
+                margin-bottom: 40px;
+            }
+
+            header {
+                margin-bottom: 60px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-bottom: 80px;
+            }
+
+            .tool-card {
+                padding: 28px;
+            }
+
+            .header-subtitle {
+                font-size: 0.7em;
+            }
+
+            .header-description {
+                font-size: 0.95em;
+            }
+        }
+
+        /* Scroll animations */
+        .tool-card {
+            opacity: 0;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .tool-card:nth-child(1) { animation-delay: 0.1s; }
+        .tool-card:nth-child(2) { animation-delay: 0.15s; }
+        .tool-card:nth-child(3) { animation-delay: 0.2s; }
+        .tool-card:nth-child(4) { animation-delay: 0.25s; }
+        .tool-card:nth-child(5) { animation-delay: 0.3s; }
+        .tool-card:nth-child(6) { animation-delay: 0.35s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">EasyRobots</div>
+            <a href="https://easyrobots-ai.cloud" class="nav-button">
+                Descubre nuestros servicios →
+            </a>
+        </nav>
+
+        <header>
+            <p class="header-subtitle">✨ Recursos Recomendados</p>
+            <h1>Herramientas IA Gratuitas</h1>
+            <p class="header-description">Selección exclusiva de herramientas de inteligencia artificial sin costo. Acceso directo, sin trámites complicados, listas para impulsar tu negocio.</p>
+        </header>
+
+        <div class="grid">
+            <!-- Claude -->
+            <div class="tool-card">
+                <div class="tool-icon">🧠</div>
+                <div class="tool-header">
+                    <div class="tool-name">Claude</div>
+                    <div class="tool-category">Conversacional</div>
+                </div>
+                <p class="tool-description">Asistente IA de Anthropic. Versatilidad total: análisis, escritura, programación, estrategia y más con razonamiento profundo.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Brainstorming, redacción estratégica, análisis complejos, desarrollo de código
+                </div>
+                <a href="https://claude.ai" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- ChatGPT -->
+            <div class="tool-card">
+                <div class="tool-icon">💬</div>
+                <div class="tool-header">
+                    <div class="tool-name">ChatGPT</div>
+                    <div class="tool-category">Conversacional</div>
+                </div>
+                <p class="tool-description">El modelo más popular de OpenAI. Excelente para conversaciones naturales, creación de contenidos y tutoriales.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Redacción de contenidos, respuestas técnicas, creative writing, SEO
+                </div>
+                <a href="https://chatgpt.com" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- Gemini -->
+            <div class="tool-card">
+                <div class="tool-icon">🔮</div>
+                <div class="tool-header">
+                    <div class="tool-name">Gemini</div>
+                    <div class="tool-category">Conversacional</div>
+                </div>
+                <p class="tool-description">Asistente de Google integrado con búsqueda en tiempo real. Procesa texto, imágenes y archivos con precisión.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Búsquedas avanzadas, análisis de imágenes y PDFs, resumen de documentos
+                </div>
+                <a href="https://gemini.google.com" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- DeepSeek -->
+            <div class="tool-card">
+                <div class="tool-icon">⚡</div>
+                <div class="tool-header">
+                    <div class="tool-name">DeepSeek</div>
+                    <div class="tool-category">Conversacional</div>
+                </div>
+                <p class="tool-description">IA china de razonamiento profundo. Especialista en problemas complejos, matemáticas y programación avanzada.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Resolución de problemas complejos, debugging, algoritmos, matemáticas
+                </div>
+                <a href="https://chat.deepseek.com" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- Qwen -->
+            <div class="tool-card">
+                <div class="tool-icon">🎬</div>
+                <div class="tool-header">
+                    <div class="tool-name">Qwen</div>
+                    <div class="tool-category">Multimedia</div>
+                </div>
+                <p class="tool-description">IA de Alibaba con capacidades multimedia avanzadas. Genera vídeos, imágenes y textos con razonamiento superior.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Vídeos desde prompts, generación de imágenes, contenido multimedia
+                </div>
+                <a href="https://qwenlm.github.io/" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- Kimi -->
+            <div class="tool-card">
+                <div class="tool-icon">📚</div>
+                <div class="tool-header">
+                    <div class="tool-name">Kimi</div>
+                    <div class="tool-category">Análisis</div>
+                </div>
+                <p class="tool-description">Asistente chino con contexto ilimitado. Procesa documentos completos, libros y archivos sin restricciones.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Análisis de documentos largos, PDFs, libros completos, data mining
+                </div>
+                <a href="https://kimi.moonshot.cn/" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- Imagine -->
+            <div class="tool-card">
+                <div class="tool-icon">🎨</div>
+                <div class="tool-header">
+                    <div class="tool-name">Google Imagine</div>
+                    <div class="tool-category">Imagen</div>
+                </div>
+                <p class="tool-description">Generador de imágenes de Google. Crea ilustraciones, diseños y visuales con tecnología Gemini.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Crear imágenes, ilustraciones, diseños rápidos, portadas
+                </div>
+                <a href="https://imagine.google/" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- Google Speech -->
+            <div class="tool-card">
+                <div class="tool-icon">🔊</div>
+                <div class="tool-header">
+                    <div class="tool-name">Google Speech</div>
+                    <div class="tool-category">Audio</div>
+                </div>
+                <p class="tool-description">Síntesis de voz natural desde Google. Genera locuciones profesionales en múltiples idiomas y tonos.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Audios para vídeos, podcasts, locuciones, voces en off
+                </div>
+                <a href="https://ai.google.dev/app" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- Veo 3 -->
+            <div class="tool-card">
+                <div class="tool-icon">🎥</div>
+                <div class="tool-header">
+                    <div class="tool-name">Veo 3</div>
+                    <div class="tool-category">Vídeo</div>
+                </div>
+                <p class="tool-description">Generador de vídeos de Google. Crea vídeos cinéticos desde prompts de texto o imágenes con calidad profesional.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Vídeos para redes sociales, demostraciones, marketing, storytelling
+                </div>
+                <a href="https://gemini.google.com" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- Suno -->
+            <div class="tool-card">
+                <div class="tool-icon">🎵</div>
+                <div class="tool-header">
+                    <div class="tool-name">Suno</div>
+                    <div class="tool-category">Música</div>
+                </div>
+                <p class="tool-description">Genera música y soundtracks originales con IA. Créditos mensuales gratuitos para crear composiciones únicas.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Música de fondo para vídeos, soundtracks, jingles, efectos de sonido
+                </div>
+                <a href="https://www.suno.ai/" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- NotebookLM -->
+            <div class="tool-card">
+                <div class="tool-icon">📖</div>
+                <div class="tool-header">
+                    <div class="tool-name">NotebookLM</div>
+                    <div class="tool-category">Productividad</div>
+                </div>
+                <p class="tool-description">Convierte documentos en resúmenes, podcasts y guías interactivas. Aprende del contenido de forma inteligente.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Resumir contenidos, crear guías, generar podcasts de documentos
+                </div>
+                <a href="https://notebooklm.google.com/" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- AI Studio -->
+            <div class="tool-card">
+                <div class="tool-icon">⚙️</div>
+                <div class="tool-header">
+                    <div class="tool-name">AI Studio</div>
+                    <div class="tool-category">Desarrollo</div>
+                </div>
+                <p class="tool-description">Plataforma de Google para crear y experimentar con modelos IA. Prototyping rápido sin conocimiento técnico.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Prototipar aplicaciones IA, probar modelos, crear experiencias
+                </div>
+                <a href="https://ai.google.dev/app" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- Kimi Work -->
+            <div class="tool-card">
+                <div class="tool-icon">🤖</div>
+                <div class="tool-header">
+                    <div class="tool-name">Kimi Work</div>
+                    <div class="tool-category">Automatización</div>
+                </div>
+                <p class="tool-description">Agente autónomo que crea documentos, presentaciones y hojas de cálculo automáticamente. Sin intervención manual.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Automatizar creación de documentos, presentaciones, análisis
+                </div>
+                <a href="https://kimi.moonshot.cn/" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- Pinpoint -->
+            <div class="tool-card">
+                <div class="tool-icon">🔎</div>
+                <div class="tool-header">
+                    <div class="tool-name">Pinpoint</div>
+                    <div class="tool-category">Investigación</div>
+                </div>
+                <p class="tool-description">Busca y analiza masivamente documentos, audio y vídeo. Transcribe audios con precisión y extrae insights.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Investigación avanzada, transcripción de audios, análisis de datos
+                </div>
+                <a href="https://pinpoint.google.com/" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- Google Skills -->
+            <div class="tool-card">
+                <div class="tool-icon">🎓</div>
+                <div class="tool-header">
+                    <div class="tool-name">Google Skills</div>
+                    <div class="tool-category">Educación</div>
+                </div>
+                <p class="tool-description">Cursos y certificaciones gratis en tecnología. Aprende marketing, programación, análisis de datos con expertos.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Aprender skills digitales, conseguir certificaciones, capacitación
+                </div>
+                <a href="https://skills.google.com/" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- Base44 -->
+            <div class="tool-card">
+                <div class="tool-icon">🚀</div>
+                <div class="tool-header">
+                    <div class="tool-name">Base44</div>
+                    <div class="tool-category">No-Code</div>
+                </div>
+                <p class="tool-description">Crea aplicaciones web sin código con IA. Plan gratuito con límite diario de prompts. Perfecto para MVPs.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Crear apps web rápidas, prototipos, portales sin programar
+                </div>
+                <a href="https://base44.app/" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+
+            <!-- n8n -->
+            <div class="tool-card">
+                <div class="tool-icon">⚡</div>
+                <div class="tool-header">
+                    <div class="tool-name">n8n</div>
+                    <div class="tool-category">Automatización</div>
+                </div>
+                <p class="tool-description">Automatización de workflows sin límites. Conecta aplicaciones y crea procesos inteligentes sin código.</p>
+                <div class="tool-use">
+                    <strong>Úsalo para:</strong>
+                    Automatizar procesos, integrar aplicaciones, crear workflows
+                </div>
+                <a href="https://n8n.io/" class="tool-button">
+                    Acceder →
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p class="footer-text">Recurso gratuito recomendado por EasyRobots</p>
+            <p class="footer-credit">EASYROBOTS © 2026 | AGENCIA DE IA Y AUTOMATIZACIÓN PARA NEGOCIOS</p>
+        </footer>
+    </div>
+</body>
+</html>
