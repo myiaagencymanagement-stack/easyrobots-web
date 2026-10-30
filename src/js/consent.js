@@ -66,7 +66,8 @@
       personalization_storage: 'granted'
     });
     gtag('js', new Date());
-    gtag('config', GA_ID, { nicho: n });
+    // 30/10: la cookie de Analytics dura 13 meses (395 dias), no los 2 anos que pone Google por defecto
+    gtag('config', GA_ID, { nicho: n, cookie_expires: 34128000 });
 
     /* eslint-disable */
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
