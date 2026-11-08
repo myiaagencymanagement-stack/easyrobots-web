@@ -175,6 +175,10 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
     .calc-res b { font-size: 21px; }
   }
 </style>
+<style>
+  /* Con la calculadora delante en azul claro, esta seccion pasa a blanco para que no se junten dos iguales. */
+  .consigue .item { background: var(--claro); }
+</style>
 </head>
 <body>
 
@@ -205,7 +209,31 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 </div>
 </section>
 
-<section class="sec clara">
+<!-- 2026-11-08 (Anais): misma calculadora que /reactivador-flash/, con la formula de las landings: lo que cuesta no contestar. -->
+<section class="sec clara" id="calculadora">
+<div class="in">
+<div class="calc-rej">
+<div class="calc-txt">
+<h2>Calcula qué resultados puedes tener tú</h2>
+<p class="cuerpo">Mueve las barras con tus números.</p>
+<p class="calc-nota">Es un cálculo con tus números, no una promesa de resultados.</p>
+</div>
+<div class="calc-panel" data-calc>
+<label><span>Consultas por semana <b data-v="con">40</b></span><input type="range" data-k="con" min="5" max="200" step="5" value="40"></label>
+<label><span>Se quedan sin respuesta a tiempo <b data-v="sin">25 %</b></span><input type="range" data-k="sin" min="5" max="80" step="5" value="25"></label>
+<label><span>Acabarían comprando <b data-v="com">25 %</b></span><input type="range" data-k="com" min="5" max="50" step="5" value="25"></label>
+<label><span>Lo que te deja cada cliente <b data-v="tic">60 €</b></span><input type="range" data-k="tic" min="20" max="500" step="10" value="60"></label>
+<div class="calc-res">
+<div><span>Se te escapa al mes</span><b data-out="mes">650 €</b></div>
+<div><span>Al año</span><b data-out="anio">7.800 €</b></div>
+</div>
+<p class="calc-cuenta" data-out="cuenta">40 consultas × 4,33 semanas × 25 % × 25 % × 60 € = 650 € al mes · 650 € × 12 = 7.800 €</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec consigue">
 <div class="in">
 <h2>Lo que consigues por 189 €</h2>
 <div class="rejilla">
@@ -234,30 +262,6 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 </div>
 </div>
 <p class="bonos-total">Bonos por valor de 164 €, incluidos en los 189 €.</p>
-</div>
-</section>
-
-<!-- 2026-11-08 (Anais): misma calculadora que /reactivador-flash/, con la formula de las landings: lo que cuesta no contestar. -->
-<section class="sec clara" id="calculadora">
-<div class="in">
-<div class="calc-rej">
-<div class="calc-txt">
-<h2>Calcula qué resultados puedes tener tú</h2>
-<p class="cuerpo">Mueve las barras con tus números.</p>
-<p class="calc-nota">Es un cálculo con tus números, no una promesa de resultados.</p>
-</div>
-<div class="calc-panel" data-calc>
-<label><span>Consultas por semana <b data-v="con">40</b></span><input type="range" data-k="con" min="5" max="200" step="5" value="40"></label>
-<label><span>Se quedan sin respuesta a tiempo <b data-v="sin">25 %</b></span><input type="range" data-k="sin" min="5" max="80" step="5" value="25"></label>
-<label><span>Acabarían comprando <b data-v="com">25 %</b></span><input type="range" data-k="com" min="5" max="50" step="5" value="25"></label>
-<label><span>Lo que te deja cada cliente <b data-v="tic">60 €</b></span><input type="range" data-k="tic" min="20" max="500" step="10" value="60"></label>
-<div class="calc-res">
-<div><span>Se te escapa al mes</span><b data-out="mes">650 €</b></div>
-<div><span>Al año</span><b data-out="anio">7.800 €</b></div>
-</div>
-<p class="calc-cuenta" data-out="cuenta">40 consultas × 4,33 semanas × 25 % × 25 % × 60 € = 650 € al mes · 650 € × 12 = 7.800 €</p>
-</div>
-</div>
 </div>
 </section>
 
