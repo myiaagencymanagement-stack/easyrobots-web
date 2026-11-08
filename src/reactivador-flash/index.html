@@ -202,6 +202,24 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
   .caso-fotos img { aspect-ratio: 1; }
   @media (max-width: 760px) { .caso-rej { grid-template-columns: 1fr; } .caso-fotos { max-width: 240px; } }
 </style>
+<style>
+  /* 2026-11-08 (Anais): calculadora mas compacta. */
+  #calculadora { padding-top: 52px; padding-bottom: 52px; }
+  .calc-rej { gap: 36px; }
+  .calc-panel { gap: 10px; padding: 18px 20px; }
+  .calc-panel label span { font-size: 14.5px; }
+  .calc-panel input[type=range] { margin-top: 3px; }
+  .calc-res div { padding: 9px 12px; }
+  .calc-res span { font-size: 13px; }
+  .calc-res b { margin-top: 2px; font-size: 24px; }
+  .calc-cuenta { font-size: 12.5px; line-height: 1.4; }
+  @media (max-width: 760px) {
+    #calculadora { padding-top: 36px; padding-bottom: 36px; }
+    .calc-rej { gap: 14px; }
+    .calc-panel { padding: 14px 16px; }
+    .calc-res b { font-size: 21px; }
+  }
+</style>
 </head>
 <body>
 
