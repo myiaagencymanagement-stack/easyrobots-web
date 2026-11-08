@@ -173,6 +173,26 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
     .caso-kpis small { font-size: 12.5px; }
   }
 </style>
+<style>
+  .calc-rej { display: grid; grid-template-columns: .85fr 1fr; gap: 48px; align-items: center; }
+  .calc-txt { display: flex; flex-direction: column; gap: 16px; }
+  .calc-nota { font-size: 15px; line-height: 1.5; color: var(--gris); }
+  .calc-panel { display: flex; flex-direction: column; gap: 18px; padding: 28px; background: var(--claro); border: 1px solid var(--borde-c); border-radius: 16px; }
+  .calc-panel label { display: block; }
+  .calc-panel label span { display: flex; justify-content: space-between; gap: 12px; font-size: 16px; color: var(--tinta); }
+  .calc-panel label b { color: var(--petroleo); font-weight: 800; white-space: nowrap; }
+  .calc-panel input[type=range] { width: 100%; margin: 8px 0 0; accent-color: var(--petroleo); }
+  .calc-res { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .calc-res div { padding: 14px 16px; background: #fff; border: 1px solid var(--borde-c); border-radius: 12px; }
+  .calc-res span { display: block; font-size: 14px; color: var(--gris); }
+  .calc-res b { display: block; margin-top: 4px; font-size: 30px; line-height: 1.1; font-weight: 800; color: var(--noche); }
+  .calc-cuenta { font-size: 14px; line-height: 1.5; color: var(--gris); }
+  @media (max-width: 760px) {
+    .calc-rej { grid-template-columns: 1fr; gap: 22px; }
+    .calc-panel { padding: 20px; }
+    .calc-res b { font-size: 25px; }
+  }
+</style>
 </head>
 <body>
 
@@ -214,6 +234,31 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <div><b>2.000 €</b><small>8 retoques × 250 €</small></div>
 </div>
 <p>Pilar Márquez, microblading y hairstroke. No tenía base de datos: la construimos recuperando cada cita pasada de su calendario. Las otras 45 no dijeron que no: aún no les tocaba el retoque. Varias contestaron dando las gracias. Y sin un euro en publicidad.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 2026-11-08 (Anais): calculadora con sus numeros. El % se queda en un 15 como maximo porque es lo que paso en el caso real
+     (8 de 53): el ejemplo nunca puede ir mejor que lo demostrable. La cuenta se ensena siempre. -->
+<section class="sec" id="calculadora">
+<div class="in">
+<div class="calc-rej">
+<div class="calc-txt">
+<h2>Calcula qué resultados puedes tener tú</h2>
+<p class="cuerpo">Mueve las barras con tus números.</p>
+<p class="calc-nota">Es un cálculo con tus números, no una promesa de resultados. En el caso de Pilar volvieron 8 de 53, un 15 %.</p>
+</div>
+<div class="calc-panel" data-calc>
+<label><span>Contactos dormidos <b data-v="con">400</b></span><input type="range" data-k="con" min="100" max="2000" step="50" value="400"></label>
+<label><span>Cuántos vuelven <b data-v="pct">5 %</b></span><input type="range" data-k="pct" min="1" max="15" step="1" value="5"></label>
+<label><span>Lo que te deja cada cliente <b data-v="tic">60 €</b></span><input type="range" data-k="tic" min="20" max="500" step="10" value="60"></label>
+<label><span>Veces que te compra al año <b data-v="vec">2</b></span><input type="range" data-k="vec" min="1" max="6" step="1" value="2"></label>
+<div class="calc-res">
+<div><span>En esta campaña</span><b data-out="camp">1.200 €</b></div>
+<div><span>Al año</span><b data-out="anio">2.400 €</b></div>
+</div>
+<p class="calc-cuenta" data-out="cuenta">400 contactos × 5 % × 60 € = 1.200 € · 1.200 € × 2 veces al año = 2.400 €</p>
 </div>
 </div>
 </div>
@@ -313,6 +358,8 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <h2>Preguntas frecuentes</h2>
 <div class="faq">
 <details><summary>¿Qué pasa si tengo más de 400 contactos?</summary><p>Cada 200 contactos más suman 10 €. Por ejemplo, para 800 contactos: 157 € + 20 € = 177 €.</p></details>
+<details><summary>¿Y si tengo menos de 400 contactos?</summary><p>Cuesta lo mismo: 157 €.</p></details>
+<details><summary>¿Y si no tengo WhatsApp Business?</summary><p>Tendrás que cambiarte a WhatsApp Business antes de lanzar la campaña.</p></details>
 <details><summary>¿Tengo que pagar alguna cuota?</summary><p>No. Es un pago único por la campaña.</p></details>
 <details><summary>¿Qué tengo que hacer yo?</summary><p>Enviarnos tu lista de contactos y los datos de tu promoción, y conectar tu número de WhatsApp siguiendo nuestra guía. El resto lo hacemos nosotros.</p></details>
 <details><summary>¿Cuánto tardáis en lanzarla?</summary><p>Un máximo de 72 horas laborables desde que tu número queda conectado.</p></details>
@@ -335,5 +382,23 @@ EasyRobots · Reactivador Flash<br>
 <a href="/impressum.html">Aviso legal</a> · <a href="/privacy.html">Privacidad</a> · <a href="/condiciones.html">Condiciones del servicio</a>
 </footer>
 
+<script>
+(function () {
+  var p = document.querySelector('[data-calc]');
+  if (!p) return;
+  function f(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function val(k) { return Number(p.querySelector('[data-k="' + k + '"]').value); }
+  function pon(sel, txt) { p.querySelector(sel).textContent = txt; }
+  function calc() {
+    var con = val('con'), pct = val('pct'), tic = val('tic'), vec = val('vec');
+    var camp = con * pct / 100 * tic, anio = camp * vec;
+    pon('[data-v="con"]', f(con)); pon('[data-v="pct"]', pct + ' %'); pon('[data-v="tic"]', f(tic) + ' €'); pon('[data-v="vec"]', vec);
+    pon('[data-out="camp"]', f(camp) + ' €'); pon('[data-out="anio"]', f(anio) + ' €');
+    pon('[data-out="cuenta"]', f(con) + ' contactos × ' + pct + ' % × ' + f(tic) + ' € = ' + f(camp) + ' € · ' + f(camp) + ' € × ' + vec + (vec === 1 ? ' vez' : ' veces') + ' al año = ' + f(anio) + ' €');
+  }
+  p.addEventListener('input', calc);
+  calc();
+})();
+</script>
 </body>
 </html>
