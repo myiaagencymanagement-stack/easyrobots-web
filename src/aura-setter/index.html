@@ -149,7 +149,7 @@
   .sec:nth-of-type(even), .claro { background: #EAF3FF; }
   .sec:nth-of-type(odd) .fi { background: #F4F8FE; }
   .sec .fi { box-shadow: 0 6px 20px rgba(15,50,110,.05); }
-  .cierre { background: linear-gradient(160deg, #1E6FF2, #1450B8); border-top: 0; --ink: #fff; --body: #E3EDFF; --mute: #CFE0FF; color: var(--body); }
+  .cierre { background: linear-gradient(160deg, #0F1B3D 0%, #15347A 100%); border-top: 0; --ink: #fff; --body: #E3EDFF; --mute: #CFE0FF; color: var(--body); }
   .cierre .kick { color: #CFE0FF; }
   .pie { background: #0F1B3D; border-top: 0; color: #B9C6DE; }
 
@@ -161,9 +161,10 @@
   .of-top .pr:first-child b { color: var(--azul); font-size: 1.3rem; }
   .of-top .pr-ges span:not(.pr-tit) { color: var(--light-body); }
   .of-top .sello.bono { background: #fff; border-color: var(--line); }
-  .of-top .sello.bono:not(:last-child) { background: linear-gradient(160deg, #1E6FF2, #1450B8); border-color: transparent; }
-  .of-top .sello.bono:not(:last-child) .kick { color: #CFE0FF; }
-  .of-top .sello.bono:not(:last-child) h3, .of-top .sello.bono:not(:last-child) p { color: #fff; }
+  .of-top .sello.bono:not(:nth-last-child(2)) { background: linear-gradient(160deg, #E2ECFB, #D3E2F7); border-color: #BCD2F0; }
+  /* Boton en azul marino: el blanco de los demas no se veria sobre esta seccion clara. */
+  .of-cta { width: 100%; margin-top: 14px; background: #0F1B3D; color: #fff; border-color: #0F1B3D; }
+  .of-cta:hover { background: #15347A; color: #fff; }
 </style>
 </head>
 <body>
@@ -204,6 +205,7 @@
         <small>En Instagram contesta cuando te escriben: Meta no permite escribir primero.</small></div>
       <div><div class="precios"><div class="pr"><span>Montaje</span><b>Desde 2.000 €</b></div><div class="pr"><span>Mantenimiento</span><b>Desde 150 €/mes</b></div></div><p class="xs" style="margin-top:.8rem">El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega. El mantenimiento empieza el segundo mes.</p>
         <div class="sello bono"><p class="kick">Garantía</p><h3>14 días para comprobarlo.</h3><p>Desde la instalación: si no hace lo que hemos definido, te devolvemos el dinero.</p></div>
+        <button class="btn of-cta" type="button" data-cal>Reserva tu auditoría gratuita</button>
       </div>
     </div>
   </div></section>

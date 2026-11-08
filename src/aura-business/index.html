@@ -152,7 +152,7 @@
   .sec:nth-of-type(even), .claro { background: #EAF3FF; }
   .sec:nth-of-type(odd) .fi { background: #F4F8FE; }
   .sec .fi { box-shadow: 0 6px 20px rgba(15,50,110,.05); }
-  .cierre { background: linear-gradient(160deg, #1E6FF2, #1450B8); border-top: 0; --ink: #fff; --body: #E3EDFF; --mute: #CFE0FF; color: var(--body); }
+  .cierre { background: linear-gradient(160deg, #0F1B3D 0%, #15347A 100%); border-top: 0; --ink: #fff; --body: #E3EDFF; --mute: #CFE0FF; color: var(--body); }
   .cierre .kick { color: #CFE0FF; }
   .pie { background: #0F1B3D; border-top: 0; color: #B9C6DE; }
 
@@ -164,9 +164,10 @@
   .of-top .pr:first-child b { color: var(--azul); font-size: 1.3rem; }
   .of-top .pr-ges span:not(.pr-tit) { color: var(--light-body); }
   .of-top .sello.bono { background: #fff; border-color: var(--line); }
-  .of-top .sello.bono:not(:last-child) { background: linear-gradient(160deg, #1E6FF2, #1450B8); border-color: transparent; }
-  .of-top .sello.bono:not(:last-child) .kick { color: #CFE0FF; }
-  .of-top .sello.bono:not(:last-child) h3, .of-top .sello.bono:not(:last-child) p { color: #fff; }
+  .of-top .sello.bono:not(:nth-last-child(2)) { background: linear-gradient(160deg, #E2ECFB, #D3E2F7); border-color: #BCD2F0; }
+  /* Boton en azul marino: el blanco de los demas no se veria sobre esta seccion clara. */
+  .of-cta { width: 100%; margin-top: 14px; background: #0F1B3D; color: #fff; border-color: #0F1B3D; }
+  .of-cta:hover { background: #15347A; color: #fff; }
 </style>
 </head>
 <body>
@@ -209,6 +210,7 @@
         <div class="sello bono"><p class="kick">Garantía</p><h3>Primeros leads o nada.</h3>
         <p>Si en 14 días desde que arrancan los anuncios no has conseguido leads, no cobramos la gestión.</p>
         <small>Cuenta como lead cualquier persona que te contacte, aunque no compre. La inversión en anuncios se paga aparte en Meta Ads y no entra en esta garantía. La fecha de arranque queda fijada en el contrato.</small></div>
+        <button class="btn of-cta" type="button" data-cal>Reserva tu auditoría gratuita</button>
       </div>
     </div>
   </div></section>
