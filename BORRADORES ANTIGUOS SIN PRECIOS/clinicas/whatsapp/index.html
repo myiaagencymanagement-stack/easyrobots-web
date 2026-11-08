@@ -1,32 +1,30 @@
 <!doctype html>
 <!-- 2026-10-14: movida a /clinicas/. data-nicho mantiene el nombre de
      siempre en GA4, Meta y Cal.com (consent.js lo sacaba de la carpeta). -->
-<html lang="es" data-nicho="borrador">
+<html lang="es" data-nicho="estetica">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" href="/borradores-aura/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="/borradores-aura/apple-touch-icon.png">
-  <title>IA para clínicas: WhatsApp, llamadas, citas y seguimiento · EasyRobots</title>
-  <meta name="description" content="Automatización e IA para clínicas. Atendemos tu WhatsApp y tus llamadas, cualificamos la consulta, reservamos la cita y recuperamos a quien dejó de venir.">
-  <link rel="canonical" href="https://easyrobots-ai.cloud/clinicas/">
-  <meta name="robots" content="noindex, nofollow">
+  <title>IA para clínicas estéticas: WhatsApp, citas y seguimiento · EasyRobots</title>
+  <meta name="description" content="Automatización e IA para clínicas estéticas. Atendemos el WhatsApp, cualificamos la consulta, reservamos la cita y recuperamos clientas dormidas.">
+  <link rel="canonical" href="https://easyrobots-ai.cloud/clinicas/whatsapp/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="EasyRobots">
   <meta property="og:locale" content="es_ES">
-  <meta property="og:title" content="IA para clínicas: WhatsApp, llamadas, citas y seguimiento · EasyRobots">
-  <meta property="og:description" content="Automatización e IA para clínicas. Atendemos tu WhatsApp y tus llamadas, cualificamos la consulta, reservamos la cita y recuperamos a quien dejó de venir.">
-  <meta property="og:url" content="https://easyrobots-ai.cloud/clinicas/">
+  <meta property="og:title" content="IA para clínicas estéticas: WhatsApp, citas y seguimiento · EasyRobots">
+  <meta property="og:description" content="Automatización e IA para clínicas estéticas. Atendemos el WhatsApp, cualificamos la consulta, reservamos la cita y recuperamos clientas dormidas.">
+  <meta property="og:url" content="https://easyrobots-ai.cloud/clinicas/whatsapp/">
   <meta property="og:image" content="https://easyrobots-ai.cloud/assets/og-estetica.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="IA para clínicas: WhatsApp, llamadas, citas y seguimiento · EasyRobots">
-  <meta name="twitter:description" content="Automatización e IA para clínicas. Atendemos tu WhatsApp y tus llamadas, cualificamos la consulta, reservamos la cita y recuperamos a quien dejó de venir.">
+  <meta name="twitter:title" content="IA para clínicas estéticas: WhatsApp, citas y seguimiento · EasyRobots">
+  <meta name="twitter:description" content="Automatización e IA para clínicas estéticas. Atendemos el WhatsApp, cualificamos la consulta, reservamos la cita y recuperamos clientas dormidas.">
   <meta name="twitter:image" content="https://easyrobots-ai.cloud/assets/og-estetica.jpg">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Sistemas de IA para clínicas estéticas","description":"Automatización e IA para clínicas. Atendemos tu WhatsApp y tus llamadas, cualificamos la consulta, reservamos la cita y recuperamos a quien dejó de venir.","serviceType":"Automatización e inteligencia artificial","provider":{"@id":"https://easyrobots-ai.cloud/#organizacion"},"url":"https://easyrobots-ai.cloud/clinicas/","areaServed":{"@type":"Country","name":"España"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://easyrobots-ai.cloud/"},{"@type":"ListItem","position":2,"name":"Clínicas estéticas","item":"https://easyrobots-ai.cloud/clinicas/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Sistemas de IA para clínicas estéticas","description":"Automatización e IA para clínicas estéticas. Atendemos el WhatsApp, cualificamos la consulta, reservamos la cita y recuperamos clientas dormidas.","serviceType":"Automatización e inteligencia artificial","provider":{"@id":"https://easyrobots-ai.cloud/#organizacion"},"url":"https://easyrobots-ai.cloud/clinicas/whatsapp/","areaServed":{"@type":"Country","name":"España"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://easyrobots-ai.cloud/"},{"@type":"ListItem","position":2,"name":"Clínicas estéticas","item":"https://easyrobots-ai.cloud/clinicas/whatsapp/"}]}]}</script>
 
 
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -1067,72 +1065,6 @@
     if ('IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) document.documentElement.classList.add('anim-on');
   </script>
   <script src="/js/consent.js"></script>
-<style>
-  /* BORRADOR: "Que necesita tu negocio". Bloque autonomo, sin depender de las
-     clases de cada landing, porque cada una tiene las suyas. Las dos puertas
-     pesan igual: una para quien quiere mas clientes y otra para quien quiere
-     quitarse trabajo. */
-  .pc { background: #0C1014; color: #fff; padding: clamp(64px, 8vh, 96px) 0; }
-  .pc-caja { max-width: 1240px; margin: 0 auto; padding: 0 max(22px, 5.3vw); }
-  .pc-kick { font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #E4BA6C; }
-  .pc h2 { margin: 14px 0 0; font-size: clamp(32px, 3.2vw, 46px); line-height: 1.12; color: #fff; }
-  .pc h2 em { font-style: italic; }
-  .pc-puertas { margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .pc-puerta { display: flex; flex-direction: column; padding: 30px; background: #151A20; border: 1px solid rgba(228,186,108,.4); border-radius: 16px; }
-  .pc-q { font-size: 14px; font-weight: 600; color: #E4BA6C; }
-  .pc-puerta h3 { margin: 10px 0 0; font-size: 28px; line-height: 1.2; color: #fff; }
-  .pc-puerta p { margin: 10px 0 0; font-size: 15.5px; line-height: 1.5; color: #B7BDC4; }
-  .pc-puerta p b { color: #fff; }
-  .pc-pre { margin-top: auto; padding-top: 18px; }
-  .pc-pre b { display: block; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.09); font-size: 20px; color: #fff; }
-  .pc-pre span { display: block; margin-top: 3px; font-size: 13.5px; color: #8F969E; }
-  .pc a.pc-btn { margin-top: 16px; display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 18px; border-radius: 11px; background: #fff; color: #0B1220; font-size: 15px; font-weight: 600; text-decoration: none; }
-  .pc a.pc-btn:hover { background: #EEF2F7; }
-  .pc-duda { margin: 22px 0 0; font-size: 15.5px; color: #B7BDC4; }
-  .pc-duda a { color: #fff; text-decoration: underline; text-underline-offset: 3px; background: none !important; border: 0 !important; }
-  .pc-pzcab { margin-top: 40px; display: flex; align-items: baseline; gap: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.09); }
-  .pc-pzcab h3 { margin: 0; font-family: inherit !important; font-size: 13px !important; font-weight: 600 !important; letter-spacing: .24em !important; text-transform: uppercase; color: #B7BDC4; }
-  .pc-pzcab p { margin: 0; font-size: 15px; color: #B7BDC4; }
-  .pc-pzs { margin-top: 16px; display: grid; gap: 12px; }
-  .pc-pzs3 { grid-template-columns: repeat(3, 1fr); } .pc-pzs4 { grid-template-columns: repeat(4, 1fr); }
-  .pc-pz { display: flex; flex-direction: column; padding: 20px; background: #151A20; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; }
-  .pc-pz h3 { margin: 0; font-size: 18px; line-height: 1.25; color: #fff; }
-  .pc-pz p { margin: 8px 0 0; font-size: 14.5px; line-height: 1.45; color: #B7BDC4; }
-  .pc-pz .pc-pre b { font-size: 17px; }
-  .pc-pz > a { margin-top: 12px; padding: 10px 12px; text-align: center; border: 1px solid rgba(255,255,255,.28); border-radius: 10px; color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; }
-  .pc-pz > a:hover { border-color: #fff; }
-  .cp { background: #090D11; }
-  .cp-ent { margin: 14px 0 0; max-width: 680px; font-size: 17px; line-height: 1.55; color: #B7BDC4; }
-  .cp-ds { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .cp-d { padding: 24px; background: #151A20; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; }
-  .cp-d h3 { margin: 0; font-size: 20px; line-height: 1.25; color: #fff; }
-  .cp-d p { margin: 8px 0 0; font-size: 15px; line-height: 1.5; color: #B7BDC4; }
-  .cp-d .cp-c { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.09); color: #fff; font-weight: 500; }
-  .cp-sub { margin: 40px 0 0; font-size: 22px; color: #fff; }
-  .cp-pasos { margin: 16px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-  .cp-pasos li { padding-top: 14px; border-top: 2px solid rgba(228,186,108,.4); }
-  .cp-pasos i { display: block; font-style: normal; font-size: 13px; font-weight: 700; color: #E4BA6C; }
-  .cp-pasos b { display: block; margin-top: 6px; font-size: 15.5px; line-height: 1.3; color: #fff; }
-  .cp-pasos span { display: block; margin-top: 6px; font-size: 14px; line-height: 1.45; color: #B7BDC4; }
-  .cp-fin { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
-  .cp-fin p { margin: 0; font-size: 15px; color: #fff; }
-  .cp .cp-fin a.pc-btn { margin-top: 0; }
-  .pc-letra { margin: 12px 0 0; font-size: 14px; line-height: 1.55; color: #8F969E; }
-  @media (max-width: 1080px) and (min-width: 761px) { .pc-pzs3, .pc-pzs4 { grid-template-columns: 1fr 1fr; } .cp-pasos { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 760px) {
-    .pc-puertas, .pc-pzs3, .pc-pzs4, .cp-ds, .cp-pasos { grid-template-columns: 1fr; }
-    .pc-pzcab { display: block; } .pc-pzcab p { margin-top: 4px; }
-    .cp-d { padding: 18px; }
-    .cp-fin a.pc-btn { width: 100%; }
-    .pc-puerta { padding: 22px; }
-    .pc-puerta h3 { font-size: 24px; }
-    .pc-letra { font-size: 13px; }
-  }
-</style>
-<style>.pc-puerta p.pc-mas { margin-top: 12px; padding: 10px 12px; border-radius: 8px; background: rgba(255,255,255,.06); color: #fff; font-size: 14.5px; }</style>
-<style>.cp-cierre { padding: 0 0 clamp(48px, 6vh, 72px); } .cp-cierre .cp-fin { margin-top: 0; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.09); }</style>
-<style>.cs-resumen { margin: 0; font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,.78); }</style>
-<style>.pc-lista { margin: 12px 0 0; padding: 0; list-style: none; } .pc-lista li { position: relative; padding: 4px 0 4px 24px; font-size: 15.5px; line-height: 1.45; color: #B7BDC4; } .pc-lista li::before { content: ""; position: absolute; left: 3px; top: 11px; width: 10px; height: 6px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); color: #5B9BFF; } .pc-lista.oro li::before { color: #E4BA6C; }</style>
 </head>
 
 <body>
@@ -1158,8 +1090,8 @@
         <div class="h-marca">EASYROBOTS</div>
         <div class="h-links">
           <a href="#como">Cómo funciona</a>
-          <a href="#caso">Caso de éxito</a>
-          <a href="#precios">Productos</a>
+          <a href="#calculadora">Calcula oportunidades</a>
+          <a href="#caso">Caso de Pilar</a>
         </div>
         <a class="btn b-oro h-navbtn" href="#hablemos" data-cal>Reservar llamada
           <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
@@ -1169,9 +1101,15 @@
 
     <div class="h-cuerpo">
       <div class="h-col" id="contenido">
-        <div class="kick">Clínicas</div>
-        <h1 class="h-t">Cada mensaje o llamada sin responder es <em>una cita perdida.</em></h1>
-        <p class="h-sub">Atiende tu WhatsApp y tu teléfono, reserva la cita y recupera a quien dejó de venir. Y si te faltan clientas, te ayudamos a captarlas.</p>
+        <div class="kick">Clínicas · WhatsApp</div>
+        <h1 class="h-t">Cada WhatsApp sin responder es <em>una cita perdida.</em></h1>
+        <p class="h-sub">Convierte cada mensaje en una oportunidad. Atiende, cualifica, reserva y recupera clientas automáticamente, mientras tú te centras en hacer crecer tu clínica.</p>
+        <div class="h-btns">
+          <a class="btn b-oro" href="#calculadora">Calcular oportunidades
+            <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn b-linea" href="#hablemos" data-cal>Reservar llamada</a>
+        </div>
         <div class="h-meta">
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke-linecap="round"/><rect x="7" y="12.5" width="4.5" height="4" rx=".6"/></svg>Más citas</div>
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2" stroke-linecap="round"/></svg>Menos cancelaciones</div>
@@ -1213,59 +1151,24 @@
     </div>
   </section>
 
-  <!-- =================== 06 - CALCULADORA =================== -->
-  <section class="sec s06" id="calculadora">
+  <!-- =================== 03 - RECUPERA CLIENTAS =================== -->
+  <section class="sec s03">
     <div class="foto suave" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
-    <div class="caja clara">
+    <div class="caja oscura">
       <div>
-        <h2 class="h2">Calcula cuántas oportunidades <em>podrías recuperar en tu clínica.</em></h2>
-        <p class="p">Descubre de forma estimada cuántas clientas estás perdiendo y cuánto podrías recuperar con el sistema.</p>
-      </div>
-
-      <!-- LA CUENTA DEL BOCETO ESTABA MAL, otra vez. Con 100 clientas, 40 %
-           sin respuesta y 250 EUR daba "40 clientas, 10.000 EUR": supone que
-           TODAS las que no reciben respuesta habrian reservado. Ninguna
-           clinica convierte al 100 %, y si alguien lo comprueba se cae el
-           resto de la pagina. Se anade la cuarta barra (cuantas acabarian
-           reservando), como en la v6, y se ensena la cuenta. Tambien el
-           resultado anual: 2.500 EUR/mes se tolera, 30.000 EUR/ano no. -->
-      <div class="k-box" id="calc">
-        <div class="k-campo k-fila">
-          <label class="k-label" for="k-cons">Clientas que te escriben al mes</label>
-          <output for="k-cons" id="o-cons">100</output>
-          <input type="range" id="k-cons" min="10" max="600" step="10" value="100">
-        </div>
-        <div class="k-campo k-fila">
-          <label class="k-label" for="k-sin">% que no responde</label>
-          <output for="k-sin" id="o-sin">40%</output>
-          <input type="range" id="k-sin" min="5" max="80" step="5" value="40">
-        </div>
-        <div class="k-campo k-fila">
-          <label class="k-label" for="k-conv">% que acabaría reservando</label>
-          <output for="k-conv" id="o-conv">25%</output>
-          <input type="range" id="k-conv" min="5" max="60" step="5" value="25">
-        </div>
-        <div class="k-campo k-fila">
-          <label class="k-label" for="k-tick">Valor medio por tratamiento (€)</label>
-          <output for="k-tick" id="o-tick">250</output>
-          <input type="range" id="k-tick" min="30" max="2000" step="10" value="250">
-        </div>
-      </div>
-
-      <!-- "En menos de 24 horas" no significaba nada: era relleno del boceto. -->
-      <div class="r-box" aria-live="polite">
-        <h3>Tu estimación</h3>
-        <b class="r-n" id="r-cli">10</b>
-        <span class="r-l">Clientas que podrías recuperar al mes</span>
-        <div class="r-sep"></div>
-        <span class="r-l">Valor estimado al mes</span>
-        <b class="r-eur" id="r-mes">2.500 €</b>
-        <span class="r-anio">Al año: <b id="r-anio">30.000 €</b></span>
-        <a class="btn b-oro" href="#calculadora">Calcular oportunidades
+        <h2 class="h2">Recupera clientas <em>que ya conoces.</em></h2>
+        <!-- El cuerpo del boceto venia ilegible ("Rilantas domicen, cei
+             conocen..."). Va el texto aprobado de reactivacion de la v6. -->
+        <p class="p">Tienes una base de clientas que ya conoce tu clínica. EasyRobots las contacta de forma automática con mensajes personalizados para que vuelvan a reservar.</p>
+        <a class="btn b-oro" href="#caso">Mira el caso de Pilar
           <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
         </a>
-        <p class="r-nota">Clientas al mes × % sin respuesta × % que reservaría × valor medio. Es una estimación con tus supuestos, no un dato medido ni una promesa.</p>
+      </div>
+      <!-- Conversacion de ejemplo, la del boceto. -->
+      <div class="chat" data-vi aria-label="Ejemplo de conversación de reactivación">
+        <div class="wa-m wa-in vi" style="--d:.3s">¡Hola, Laura! ☀️<br>Hace tiempo que no nos vemos. ¿Te gustaría reservar tu próximo tratamiento? Tenemos disponibilidad esta semana 💛<i>10:37</i></div>
+        <div class="wa-m wa-out vi" style="--d:1.5s">¡Sí! Me encantaría.<br>¿Qué disponibilidad tenéis?<i>10:40</i></div>
       </div>
     </div>
   </section>
@@ -1470,53 +1373,60 @@
     </div>
   </section>
 
-  <div class="dupla">
-  <!-- =================== 08 - PIEZAS =================== -->
-  <section class="sec s08" id="piezas">
+  <!-- =================== 06 - CALCULADORA =================== -->
+  <section class="sec s06" id="calculadora">
     <div class="foto suave" aria-hidden="true"></div>
     <div class="velo" aria-hidden="true"></div>
     <div class="caja clara">
       <div>
-        <h2 class="h2">Un sistema <br><em>conectado.</em></h2>
-        <p class="p">Un sistema modular que se adapta a tu clínica y se integra con las herramientas que ya usas.</p>
+        <h2 class="h2">Calcula cuántas oportunidades <em>podrías recuperar en tu clínica.</em></h2>
+        <p class="p">Descubre de forma estimada cuántas clientas estás perdiendo y cuánto podrías recuperar con el sistema.</p>
       </div>
 
-      <!-- Iconos en dorado: el boceto los pintaba en rojo y naranja, que la
-           paleta de marca prohibe. El verde solo en WhatsApp de verdad. -->
-      <div class="dg" id="diagrama" data-vi>
-        <div class="dg-col dg-izq">
-          <div class="vi dg-pz wa" style="--d:0.35s;--n:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2.8a9.2 9.2 0 00-7.9 13.9L3 20.9l4.3-1.1A9.2 9.2 0 1012 2.8z"/><path d="M8.8 7.6c.3-.4.6-.4.9-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c.6 1.2 1.6 2.2 2.8 2.8l.6-.6c.2-.2.4-.2.7-.1l1.7.8c.3.1.4.3.4.6 0 .9-.9 1.7-1.8 1.7-3.1 0-6.5-3.4-6.5-6.4 0-.4.1-.8.4-1.1z" fill="currentColor" stroke="none"/></svg><div><b>WhatsApp</b><span>Atención y conversación automática.</span></div></div>
-          <div class="vi dg-pz" style="--d:0.65s;--n:2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 9A8 8 0 006 6.3L4 8.5M4.5 15A8 8 0 0018 17.7l2-2.2"/><path d="M4 4v4.5h4.5M20 20v-4.5h-4.5"/></svg><div><b>Reactivación</b><span>Recupera clientas que no vuelven.</span></div></div>
-          <div class="vi dg-pz" style="--d:0.95s;--n:4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5"/></svg><div><b>Integraciones</b><span>Se integra con tu CRM, agenda y otras herramientas.</span></div></div>
+      <!-- LA CUENTA DEL BOCETO ESTABA MAL, otra vez. Con 100 clientas, 40 %
+           sin respuesta y 250 EUR daba "40 clientas, 10.000 EUR": supone que
+           TODAS las que no reciben respuesta habrian reservado. Ninguna
+           clinica convierte al 100 %, y si alguien lo comprueba se cae el
+           resto de la pagina. Se anade la cuarta barra (cuantas acabarian
+           reservando), como en la v6, y se ensena la cuenta. Tambien el
+           resultado anual: 2.500 EUR/mes se tolera, 30.000 EUR/ano no. -->
+      <div class="k-box" id="calc">
+        <div class="k-campo k-fila">
+          <label class="k-label" for="k-cons">Clientas que te escriben al mes</label>
+          <output for="k-cons" id="o-cons">100</output>
+          <input type="range" id="k-cons" min="10" max="600" step="10" value="100">
         </div>
-        <div class="dg-nuc vi" style="--d:.1s">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 2.6a1 1 0 011.8-.3L11.4 4h1.2l1.1-1.7a1 1 0 111.7 1.1L14.9 4H16a4 4 0 014 4v7a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h1.1L8.4 3.4a1 1 0 01.1-.8zM9 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM9 15h6v1.4H9V15z"/></svg>
-          <b>EasyRobots</b>
-          <span>Conecta tus canales, automatiza tus procesos y potencia tu clínica.</span>
+        <div class="k-campo k-fila">
+          <label class="k-label" for="k-sin">% que no responde</label>
+          <output for="k-sin" id="o-sin">40%</output>
+          <input type="range" id="k-sin" min="5" max="80" step="5" value="40">
         </div>
-        <div class="dg-col dg-der">
-          <div class="vi dg-pz" style="--d:0.50s;--n:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke-width="2.4"/></svg><div><b>Citas</b><span>Reserva directa en tu agenda.</span></div></div>
-          <div class="vi dg-pz" style="--d:0.80s;--n:3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6.6 3.5l2.6 4.2-1.8 1.9a12 12 0 006.9 6.9l1.9-1.8 4.2 2.6-1 3.2c-.3.8-1 1.2-1.8 1.1C10 20.8 3.2 14 2.4 6.3c-.1-.8.3-1.5 1.1-1.8z"/></svg><div><b>Llamadas de voz</b><span>También atiende llamadas y cualifica.</span></div></div>
-          <div class="vi dg-pz" style="--d:1.10s;--n:5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.7-4 3.6-6.3 7.5-6.3s6.8 2.3 7.5 6.3"/></svg><div><b>Seguimiento</b><span>Recordatorios y post-tratamiento.</span></div></div>
+        <div class="k-campo k-fila">
+          <label class="k-label" for="k-conv">% que acabaría reservando</label>
+          <output for="k-conv" id="o-conv">25%</output>
+          <input type="range" id="k-conv" min="5" max="60" step="5" value="25">
+        </div>
+        <div class="k-campo k-fila">
+          <label class="k-label" for="k-tick">Valor medio por tratamiento (€)</label>
+          <output for="k-tick" id="o-tick">250</output>
+          <input type="range" id="k-tick" min="30" max="2000" step="10" value="250">
         </div>
       </div>
-    </div>
-  </section>
-  </div>
 
-  <!-- =================== CAPTACION (BORRADOR) ===================
-       La pagina contaba solo el problema de contestar a quien ya escribe. Falta
-       quien no tiene suficientes clientes: es a quien se le vende AURA Business.
-       El orden va de mas barato a mas caro: anunciar a un negocio que no contesta
-       es tirar el dinero. Sin cifras: aun no hay un caso de captacion con anuncios. -->
-  <section class="pc cp" id="captacion">
-    <div class="pc-caja">
-      <div class="pc-kick">Captación</div>
-      <h2>¿Y si lo que te falta <em>son clientas?</em></h2>
-      <p class="cp-ent">Contestar bien a quien llega es la mitad. La otra mitad es que lleguen, sin que tu agenda dependa de la suerte.</p>
-      <div class="cp-ds"><article class="cp-d"><h3>Dependes del boca a boca</h3><p>La agenda se llena cuando te recomiendan y se vacía cuando no. No controlas cuántas clientas entran este mes.</p><p class="cp-c">Una agenda que depende de la suerte no se puede planificar.</p></article><article class="cp-d"><h3>Compites por precio</h3><p>Si tu oferta se parece a la de las demás clínicas, la gente solo compara lo que cuesta.</p><p class="cp-c">Eso se arregla con la oferta, no con más anuncios.</p></article><article class="cp-d"><h3>Campañas sin medir</h3><p>Has probado con anuncios y no sabes cuántas citas te trajo cada euro.</p><p class="cp-c">Lo que no se mide no se puede mejorar.</p></article></div>
-      <h3 class="cp-sub">El método, de más barato a más caro</h3>
-      <ol class="cp-pasos"><li><i>01</i><b>Revisamos tu oferta</b><span>Tus tratamientos, tus precios y tus packs, para ver qué se puede vender mejor.</span></li><li><i>02</i><b>Recuperamos a quien ya te conoce</b><span>Escribimos a las clientas que dejaron de venir cuando les toca volver. No cuesta un euro en anuncios.</span></li><li><i>03</i><b>Que nadie se quede sin respuesta</b><span>Cuando empiezan a llegar, el sistema contesta, hace seguimiento y agenda.</span></li><li><i>04</i><b>Reseñas y recomendaciones</b><span>Pedimos la reseña y la recomendación a quien acaba contento.</span></li><li><i>05</i><b>Campañas de anuncios</b><span>Tú creas los anuncios con nuestras recomendaciones y nosotros gestionamos las campañas.</span></li></ol>
+      <!-- "En menos de 24 horas" no significaba nada: era relleno del boceto. -->
+      <div class="r-box" aria-live="polite">
+        <h3>Tu estimación</h3>
+        <b class="r-n" id="r-cli">10</b>
+        <span class="r-l">Clientas que podrías recuperar al mes</span>
+        <div class="r-sep"></div>
+        <span class="r-l">Valor estimado al mes</span>
+        <b class="r-eur" id="r-mes">2.500 €</b>
+        <span class="r-anio">Al año: <b id="r-anio">30.000 €</b></span>
+        <a class="btn b-oro" href="#calculadora">Calcular oportunidades
+          <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+        <p class="r-nota">Clientas al mes × % sin respuesta × % que reservaría × valor medio. Es una estimación con tus supuestos, no un dato medido ni una promesa.</p>
+      </div>
     </div>
   </section>
 
@@ -1527,7 +1437,7 @@
     <div class="caja oscura">
       <div class="cs-izq">
         <div>
-          <div class="cs-kick">Caso real<i>|</i><span>Sistema de seguimientos y reactivación de clientes</span></div>
+          <div class="cs-kick">Caso real<i>|</i><span>Sistema de seguimientos</span></div>
           <h2 class="h2">53 clientas contactadas. <br>8 volvieron. <br><em>Ninguna se molestó.</em></h2>
         </div>
         <!-- Los retratos del boceto son caras generadas con IA, con un letrero
@@ -1543,7 +1453,7 @@
           <div class="cs-tec2">Técnicas de micropigmentación</div>
           <!-- Peticion de Anais (2026-10-03): justo despues de la prueba es
                donde mas apetece preguntar "y en mi clinica?". -->
-          <a class="btn b-oro cs-btn" href="#precios">Ver productos
+          <a class="btn b-oro cs-btn" href="#hablemos" data-cal>Reservar llamada
             <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -1571,12 +1481,58 @@
           </div>
         </div>
 
-        <p class="cs-resumen">Pilar no tenía base de datos de clientas: la construimos recuperando de su calendario cada cita pasada, con su técnica y su fecha. Las otras 45 no dijeron que no: todavía no les tocaba el retoque y siguen en el sistema para cuando les toque. Y aunque Pilar tenía miedo de molestar, ninguna se quejó ni se dio de baja: varias le dieron las gracias por acordarse de ellas.</p>
+        <div class="cs-dos">
+          <div class="vidrio"><b>Pilar no tenía base de datos de clientas.</b>
+            <p>La construimos nosotros: recuperamos de su calendario cada cita que había pasado por la clínica, con su técnica y su fecha. De ahí salieron 53 clientas dormidas, gente que llevaba un año sin aparecer y que ya nadie iba a recordar.</p></div>
+          <div class="vidrio"><b>Las otras 45 no dijeron que no.</b>
+            <p>Todavía no les tocaba el retoque, y así lo contestaron. Siguen dentro del sistema: cuando les toque, recibirán su mensaje sin que nadie tenga que acordarse.</p></div>
+        </div>
+
+        <!-- Es lo que le paso a Pilar, en pasado y con su nombre: ahi esta el valor. -->
+        <div class="vidrio cs-miedo">
+          <u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3.5c5 0 8.5 3.2 8.5 7.4s-3.5 7.4-8.5 7.4c-1 0-2-.1-2.9-.4L5 20l.9-3.6C4.4 15 3.5 13 3.5 10.9 3.5 6.7 7 3.5 12 3.5z"/><path d="M8.5 9.8h.01M15.5 9.8h.01" stroke-width="2.6" stroke-linecap="round"/><path d="M9 13.4h6" stroke-linecap="round"/></svg></u>
+          <div><b>Pilar tenía miedo de molestar a sus clientas.</b>
+            <span>Es lo que nos dice casi todo el mundo antes de empezar. Lo que pasó fue lo contrario: empezaron a contestarle dándole las gracias por acordarse de ellas. Ni una sola se quejó, y ninguna se dio de baja.</span></div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- La 08 y la 09 comparten una sola foto (el despacho de dia, ChatGPT
+       07/10), pintada en .dupla para que no haya corte entre las dos. -->
   <div class="dupla">
+  <!-- =================== 08 - PIEZAS =================== -->
+  <section class="sec s08" id="piezas">
+    <div class="foto suave" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="caja clara">
+      <div>
+        <h2 class="h2">Las piezas del sistema. <br><em>Tú eliges lo que necesitas.</em></h2>
+        <p class="p">Un sistema modular que se adapta a tu clínica y se integra con las herramientas que ya usas.</p>
+      </div>
+
+      <!-- Iconos en dorado: el boceto los pintaba en rojo y naranja, que la
+           paleta de marca prohibe. El verde solo en WhatsApp de verdad. -->
+      <div class="dg" id="diagrama" data-vi>
+        <div class="dg-col dg-izq">
+          <div class="vi dg-pz wa" style="--d:0.35s;--n:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2.8a9.2 9.2 0 00-7.9 13.9L3 20.9l4.3-1.1A9.2 9.2 0 1012 2.8z"/><path d="M8.8 7.6c.3-.4.6-.4.9-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c.6 1.2 1.6 2.2 2.8 2.8l.6-.6c.2-.2.4-.2.7-.1l1.7.8c.3.1.4.3.4.6 0 .9-.9 1.7-1.8 1.7-3.1 0-6.5-3.4-6.5-6.4 0-.4.1-.8.4-1.1z" fill="currentColor" stroke="none"/></svg><div><b>WhatsApp</b><span>Atención y conversación automática.</span></div></div>
+          <div class="vi dg-pz" style="--d:0.65s;--n:2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 9A8 8 0 006 6.3L4 8.5M4.5 15A8 8 0 0018 17.7l2-2.2"/><path d="M4 4v4.5h4.5M20 20v-4.5h-4.5"/></svg><div><b>Reactivación</b><span>Recupera clientas que no vuelven.</span></div></div>
+          <div class="vi dg-pz" style="--d:0.95s;--n:4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5"/></svg><div><b>Integraciones</b><span>Se integra con tu CRM, agenda y otras herramientas.</span></div></div>
+        </div>
+        <div class="dg-nuc vi" style="--d:.1s">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 2.6a1 1 0 011.8-.3L11.4 4h1.2l1.1-1.7a1 1 0 111.7 1.1L14.9 4H16a4 4 0 014 4v7a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h1.1L8.4 3.4a1 1 0 01.1-.8zM9 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM9 15h6v1.4H9V15z"/></svg>
+          <b>EasyRobots</b>
+          <span>Conecta tus canales, automatiza tus procesos y potencia tu clínica.</span>
+        </div>
+        <div class="dg-col dg-der">
+          <div class="vi dg-pz" style="--d:0.50s;--n:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke-width="2.4"/></svg><div><b>Citas</b><span>Reserva directa en tu agenda.</span></div></div>
+          <div class="vi dg-pz" style="--d:0.80s;--n:3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6.6 3.5l2.6 4.2-1.8 1.9a12 12 0 006.9 6.9l1.9-1.8 4.2 2.6-1 3.2c-.3.8-1 1.2-1.8 1.1C10 20.8 3.2 14 2.4 6.3c-.1-.8.3-1.5 1.1-1.8z"/></svg><div><b>Llamadas de voz</b><span>También atiende llamadas y cualifica.</span></div></div>
+          <div class="vi dg-pz" style="--d:1.10s;--n:5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.7-4 3.6-6.3 7.5-6.3s6.8 2.3 7.5 6.3"/></svg><div><b>Seguimiento</b><span>Recordatorios y post-tratamiento.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- =================== 09 - POTENCIAR A TU EQUIPO =================== -->
   <section class="sec s09" id="limites">
     <div class="foto suave" aria-hidden="true"></div>
@@ -1611,8 +1567,8 @@
       </div>
     </div>
   </section>
-  </div>
 
+  </div>
   <!-- =================== 10 - LIMITES CLAROS =================== -->
   <section class="sec s10" id="control">
     <div class="foto suave" aria-hidden="true"></div>
@@ -1631,23 +1587,6 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l4.5 4.5L19.5 6.5"/></svg>Tú decides qué quieres dejar automatizado</li>
         </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- =================== PRECIOS (BORRADOR) ===================
-       Catalogo simple dentro de la landing, para que nadie tenga que irse a
-       buscar precios: mismos productos y precios que la home. -->
-  <section class="pc" id="precios">
-    <div class="pc-caja">
-      <div class="pc-kick">Por dónde empezar</div>
-      <h2>¿Qué necesita <em>tu clínica?</em></h2>
-      <div class="pc-puertas">
-        <article class="pc-puerta"><div class="pc-q">Quiero más clientas</div><h3>AURA Business</h3><p>Captamos clientas nuevas con anuncios, recuperamos a las que ya tienes y nadie se queda sin respuesta.</p><p class="pc-mas">Incluye todo lo de AURA Setter, con WhatsApp, Instagram, email y web conectados.</p><p><b>Bono incluido:</b> auditoría de oferta y captación.</p><div class="pc-pre"><b>Desde 3.000 €</b><span>Mantenimiento desde 150 €/mes + gestión de anuncios</span></div><a class="pc-btn" href="/borradores-aura/aura-business/">Ver detalles</a></article>
-        <article class="pc-puerta"><div class="pc-q">Quiero quitarme trabajo</div><h3>AURA Setter</h3><ul class="pc-lista oro"><li>Responde al momento, sin inventar nada y con el tono que elijas.</li><li>Detecta quién tiene interés de verdad.</li><li>Agenda la cita en tu calendario, o te avisa cuando está lista para que te encargues tú personalmente.</li><li>Recuerda la cita para que no falte.</li><li>Recupera a las clientas que dejaron de venir y a las que preguntaron y no reservaron.</li></ul><div class="pc-pre"><b>Desde 2.000 €</b><span>Mantenimiento desde 150 €/mes</span></div><a class="pc-btn" href="/borradores-aura/aura-setter/">Ver detalles</a></article>
-      </div>
-      <div class="pc-pzcab"><h3>Piezas</h3><p>¿Prefieres empezar por una?</p></div><div class="pc-pzs pc-pzs4"><article class="pc-pz"><h3>Agente de IA para atención y ventas</h3><p>Resuelve dudas, informa y agenda la cita, o te avisa para que cierres tú la venta personalmente. También envía los recordatorios.</p><p>Incluye CRM para datos, informes y notificaciones.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 50 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article><article class="pc-pz"><h3>Agente de voz con IA</h3><p>Coge todas las llamadas, también fuera de horario: atiende, resuelve dudas y agenda la cita, o transfiere la llamada a tu comercial. Entrantes y salientes.</p><p>Incluye CRM para ver cada conversación del agente, con notificaciones e informes.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 50 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article><article class="pc-pz"><h3>Agente de IA para Instagram</h3><p>Contesta tus mensajes directos al momento, resuelve dudas y agenda la cita, o te avisa para que cierres tú la venta.</p><p>Cuando alguien comenta una palabra clave en tus publicaciones, le escribe por privado y le envía lo que pidió: cada comentario se convierte en una conversación.</p><p>Con acceso al CRM incluido.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 97 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article><article class="pc-pz"><h3>Agente web vendedor</h3><p>Diseñamos tu web para que convierta, con un agente de IA dentro. No es un chatbot de respuestas fijas: entiende lo que le preguntan, contesta con la información de tu negocio a cualquier hora y lleva la conversación hasta la cita o la venta.</p><p><b>Bonus:</b> 2 modificaciones incluidas para mejorar la web una vez entregada.</p><div class="pc-pre"><b>Desde 395 €</b><span>Mantenimiento desde 97 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article></div>
-      <p class="pc-duda">¿No tienes claro cuál encaja? <a href="#hablemos" data-cal>Reserva tu auditoría gratuita</a> y te lo decimos.</p>
-      <p class="pc-letra"><b>Todo se hace a medida:</b> a cualquier producto le podemos añadir las funciones que necesites, y lo que va fuera del producto se presupuesta aparte. El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega.</p>
     </div>
   </section>
 
@@ -1683,8 +1622,9 @@
            la UE, como en dental v2. -->
       <div class="ga-col" id="garantia">
         <div class="ga-panel">
-          <div class="ga-fila"><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></u><span>14 días de garantía desde la instalación, en todos los productos: si no hace lo que hemos definido, te devolvemos el dinero.</span></div>
-          <div class="ga-fila"><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.8l1.6 2.3 2.7-.7.7 2.7 2.4 1.5-1.2 2.5 1.2 2.5-2.4 1.5-.7 2.7-2.7-.7L12 21.2l-1.6-2.3-2.7.7-.7-2.7-2.4-1.5 1.2-2.5-1.2-2.5 2.4-1.5.7-2.7 2.7.7z"/></svg></u><span>El mantenimiento empieza el segundo mes, y los dos primeros meses tienes el plan Premium al precio del Básico.</span></div>
+          <div class="ga-fila"><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></u><span>14 días para comprobar que encaja con tu forma de trabajar.</span></div>
+          <div class="ga-fila"><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M17 6.5a7 7 0 100 11"/><path d="M4.5 10.5h9M4.5 13.5h9"/></svg></u><span>Si no hace lo que hemos definido o no encaja, lo paramos y te devolvemos el dinero.</span></div>
+          <div class="ga-fila"><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.8l1.6 2.3 2.7-.7.7 2.7 2.4 1.5-1.2 2.5 1.2 2.5-2.4 1.5-.7 2.7-2.7-.7L12 21.2l-1.6-2.3-2.7.7-.7-2.7-2.4-1.5 1.2-2.5-1.2-2.5 2.4-1.5.7-2.7 2.7.7z"/></svg></u><span>Primer mes de mantenimiento incluido.</span></div>
           <div class="ga-dato"><u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 2.8l7.5 3v5.6c0 4.6-3.2 8.3-7.5 9.8-4.3-1.5-7.5-5.2-7.5-9.8V5.8z"/><path d="M8.8 12l2.2 2.2 4.2-4.4" stroke-linecap="round"/></svg></u>
             <div><b>Tus datos están protegidos.</b><span>Toda la información de tu negocio y de tus clientes se trata de forma confidencial y segura. Cumplimos con la normativa de protección de datos (RGPD).</span></div></div>
         </div>

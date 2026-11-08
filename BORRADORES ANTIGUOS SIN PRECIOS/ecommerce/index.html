@@ -1,16 +1,14 @@
 <!doctype html>
-<html data-nicho="borrador" lang="es">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" href="/borradores-aura/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="/borradores-aura/apple-touch-icon.png">
   <title>IA para ecommerce: atención, pedidos y devoluciones · EasyRobots</title>
   <meta name="description" content="IA para tiendas online: contestamos con el dato real de cada pedido, guiamos cambios y devoluciones y avisamos a una persona cuando hace falta.">
   <link rel="canonical" href="https://easyrobots-ai.cloud/ecommerce/">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="EasyRobots">
   <meta property="og:locale" content="es_ES">
@@ -881,96 +879,6 @@
     if ('IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) document.documentElement.classList.add('anim-on');
   </script>
   <script src="/js/consent.js"></script>
-<style>
-  /* BORRADOR: "Que necesita tu negocio". Bloque autonomo, sin depender de las
-     clases de cada landing, porque cada una tiene las suyas. Las dos puertas
-     pesan igual: una para quien quiere mas clientes y otra para quien quiere
-     quitarse trabajo. */
-  .pc { background: #0C1014; color: #fff; padding: clamp(64px, 8vh, 96px) 0; }
-  .pc-caja { max-width: 1240px; margin: 0 auto; padding: 0 max(22px, 5.3vw); }
-  .pc-kick { font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #5B9BFF; }
-  .pc h2 { margin: 14px 0 0; font-size: clamp(32px, 3.2vw, 46px); line-height: 1.12; color: #fff; }
-  .pc h2 em { font-style: italic; }
-  .pc-puertas { margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .pc-puerta { display: flex; flex-direction: column; padding: 30px; background: #151A20; border: 1px solid rgba(91,155,255,.32); border-radius: 16px; }
-  .pc-q { font-size: 14px; font-weight: 600; color: #5B9BFF; }
-  .pc-puerta h3 { margin: 10px 0 0; font-size: 28px; line-height: 1.2; color: #fff; }
-  .pc-puerta p { margin: 10px 0 0; font-size: 15.5px; line-height: 1.5; color: #B7BDC4; }
-  .pc-puerta p b { color: #fff; }
-  .pc-pre { margin-top: auto; padding-top: 18px; }
-  .pc-pre b { display: block; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.09); font-size: 20px; color: #fff; }
-  .pc-pre span { display: block; margin-top: 3px; font-size: 13.5px; color: #8F969E; }
-  .pc a.pc-btn { margin-top: 16px; display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 18px; border-radius: 11px; background: #fff; color: #0B1220; font-size: 15px; font-weight: 600; text-decoration: none; }
-  .pc a.pc-btn:hover { background: #EEF2F7; }
-  .pc-duda { margin: 22px 0 0; font-size: 15.5px; color: #B7BDC4; }
-  .pc-duda a { color: #fff; text-decoration: underline; text-underline-offset: 3px; background: none !important; border: 0 !important; }
-  .pc-pzcab { margin-top: 40px; display: flex; align-items: baseline; gap: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.09); }
-  .pc-pzcab h3 { margin: 0; font-family: inherit !important; font-size: 13px !important; font-weight: 600 !important; letter-spacing: .24em !important; text-transform: uppercase; color: #B7BDC4; }
-  .pc-pzcab p { margin: 0; font-size: 15px; color: #B7BDC4; }
-  .pc-pzs { margin-top: 16px; display: grid; gap: 12px; }
-  .pc-pzs3 { grid-template-columns: repeat(3, 1fr); } .pc-pzs4 { grid-template-columns: repeat(4, 1fr); }
-  .pc-pz { display: flex; flex-direction: column; padding: 20px; background: #151A20; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; }
-  .pc-pz h3 { margin: 0; font-size: 18px; line-height: 1.25; color: #fff; }
-  .pc-pz p { margin: 8px 0 0; font-size: 14.5px; line-height: 1.45; color: #B7BDC4; }
-  .pc-pz .pc-pre b { font-size: 17px; }
-  .pc-pz > a { margin-top: 12px; padding: 10px 12px; text-align: center; border: 1px solid rgba(255,255,255,.28); border-radius: 10px; color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; }
-  .pc-pz > a:hover { border-color: #fff; }
-  .cp { background: #090D11; }
-  .cp-ent { margin: 14px 0 0; max-width: 680px; font-size: 17px; line-height: 1.55; color: #B7BDC4; }
-  .cp-ds { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .cp-d { padding: 24px; background: #151A20; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; }
-  .cp-d h3 { margin: 0; font-size: 20px; line-height: 1.25; color: #fff; }
-  .cp-d p { margin: 8px 0 0; font-size: 15px; line-height: 1.5; color: #B7BDC4; }
-  .cp-d .cp-c { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.09); color: #fff; font-weight: 500; }
-  .cp-sub { margin: 40px 0 0; font-size: 22px; color: #fff; }
-  .cp-pasos { margin: 16px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-  .cp-pasos li { padding-top: 14px; border-top: 2px solid rgba(91,155,255,.32); }
-  .cp-pasos i { display: block; font-style: normal; font-size: 13px; font-weight: 700; color: #5B9BFF; }
-  .cp-pasos b { display: block; margin-top: 6px; font-size: 15.5px; line-height: 1.3; color: #fff; }
-  .cp-pasos span { display: block; margin-top: 6px; font-size: 14px; line-height: 1.45; color: #B7BDC4; }
-  .cp-fin { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
-  .cp-fin p { margin: 0; font-size: 15px; color: #fff; }
-  .cp .cp-fin a.pc-btn { margin-top: 0; }
-  .pc-letra { margin: 12px 0 0; font-size: 14px; line-height: 1.55; color: #8F969E; }
-  @media (max-width: 1080px) and (min-width: 761px) { .pc-pzs3, .pc-pzs4 { grid-template-columns: 1fr 1fr; } .cp-pasos { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 760px) {
-    .pc-puertas, .pc-pzs3, .pc-pzs4, .cp-ds, .cp-pasos { grid-template-columns: 1fr; }
-    .pc-pzcab { display: block; } .pc-pzcab p { margin-top: 4px; }
-    .cp-d { padding: 18px; }
-    .cp-fin a.pc-btn { width: 100%; }
-    .pc-puerta { padding: 22px; }
-    .pc-puerta h3 { font-size: 24px; }
-    .pc-letra { font-size: 13px; }
-  }
-</style>
-<style>.pc-puerta p.pc-mas { margin-top: 12px; padding: 10px 12px; border-radius: 8px; background: rgba(255,255,255,.06); color: #fff; font-size: 14.5px; }</style>
-<style>.eq-g > p.eq-man { border-bottom: 0; padding-bottom: 0; }</style>
-<style>.pc-puertas { grid-template-columns: 1fr; } .pc-pzs2 { grid-template-columns: 1fr 1fr; }</style>
-<style>
-  /* BORRADOR calculadora comun de las landings. */
-  /* position + z-index: si la calculadora cae dentro de un contenedor con foto
-     y velo en absoluto (el .duo de ecommerce), se pinta encima y no debajo. */
-  .ic-calc { position: relative; z-index: 2; background: #0A1220; color: #fff; padding: clamp(64px, 8vh, 96px) 0; }
-  .ic-caja { max-width: 1240px; margin: 0 auto; padding: 0 max(22px, 5.3vw); display: grid; grid-template-columns: 1fr minmax(0, 500px); gap: 40px 64px; align-items: center; }
-  .ic-kick { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #5B9BFF; }
-  .ic-calc h2 { margin: 14px 0 0; font-size: clamp(30px, 3vw, 44px); line-height: 1.12; color: #fff; }
-  .ic-calc h2 em { font-style: italic; color: #A3ADBB; }
-  .ic-ent { margin: 16px 0 0; font-size: 17px; line-height: 1.55; color: #B7BDC4; }
-  .ic-panel { padding: 26px; border-radius: 16px; background: #121A27; border: 1px solid rgba(91,155,255,.3); }
-  .ic-f { display: block; margin-bottom: 16px; }
-  .ic-f span { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; color: #C6CED9; }
-  .ic-f b { color: #fff; white-space: nowrap; }
-  .ic-f input { width: 100%; margin-top: 8px; accent-color: #1E6FF2; }
-  .ic-res { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.09); }
-  .ic-res span { display: block; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #8B95A3; }
-  .ic-res b { display: block; margin-top: 4px; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; color: #fff; }
-  .ic-res div + div b { color: #5B9BFF; }
-  .ic-nota { margin: 14px 0 0; font-size: 13px; color: #8B95A3; }
-  .ic-cuenta { margin-top: 8px; font-size: 13px; color: #8B95A3; }
-  .ic-cuenta summary { cursor: pointer; color: #C6CED9; }
-  .ic-cuenta p { margin: 6px 0 0; line-height: 1.5; }
-  @media (max-width: 900px) { .ic-caja { grid-template-columns: 1fr; } .ic-panel { padding: 20px; } }
-</style>
 </head>
 
 <body>
@@ -984,9 +892,9 @@
     <nav class="bn" aria-label="Principal"><div class="bn-in">
       <a class="bn-marca" href="#inicio">EASYROBOTS</a>
       <div class="bn-links">
-        <a href="#sistema">C&oacute;mo funciona</a>
-        <a href="#demo">Demostraci&oacute;n</a>
-        <a href="#precios">Productos</a>
+        <a href="#como" class="act">E-commerce</a>
+        <a href="#demo">Ver demostraci&oacute;n</a>
+        <a href="#equipo">Qui&eacute;nes somos</a>
       </div>
       <a class="bn-btn" href="#hablemos" data-cal>Reservar una llamada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
     </div></nav>
@@ -997,6 +905,19 @@
         <h1 class="h-t">Una venta ya cobrada todav&iacute;a puede convertirse <em>en un problema.</em></h1>
         <p class="h-sub">En horas de tu equipo, en una incidencia que escala y en una rese&ntilde;a de dos estrellas.</p>
         <p class="h-p">EasyRobots contesta con el dato real de cada pedido, gu&iacute;a cambios y devoluciones con vuestras reglas y avisa a una persona cuando hace falta. No inventa fechas y no mueve dinero sin vuestro permiso.</p>
+        <div class="h-btns">
+          <a class="btn b-azul" href="#demo">Ver la conversaci&oacute;n
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+          <button class="btn b-linea" type="button" data-cal>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            Reservar llamada
+          </button>
+        </div>
+        <div class="meta">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>15 minutos de consultor&iacute;a</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9"/></svg>Sin compromiso</div>
+        </div>
       </div>
 
       <!-- Segunda pasada de Anais (2026-10-04): la pregunta de la clienta
@@ -1101,30 +1022,8 @@
     </div>
   </section>
 
-    <!-- =================== CALCULADORA (BORRADOR) ===================
-       Los numeros los pone el negocio: es un calculo con sus datos, no una
-       promesa. Barras y no casillas, y resultado al mes y al año. -->
-  <section class="ic-calc" id="calculadora" data-calc>
-    <div class="ic-caja">
-      <div class="ic-tx">
-        <p class="ic-kick">Lo que cuesta no contestar</p>
-        <h2>Calcula cuántas ventas <em>se te pueden estar escapando.</em></h2>
-        <p class="ic-ent">Mueve las barras con tus números.</p>
-      </div>
-      <div class="ic-panel">
-        <label class="ic-f"><span>Consultas antes de comprar por semana <b data-v="con"></b></span><input type="range" data-k="con" data-fmt="num" min="5" max="200" step="1" value="40"></label><label class="ic-f"><span>Se quedan sin respuesta a tiempo <b data-v="sin"></b></span><input type="range" data-k="sin" data-fmt="pct" min="5" max="60" step="1" value="30"></label><label class="ic-f"><span>Acabarían comprando <b data-v="op"></b></span><input type="range" data-k="op" data-fmt="pct" min="1" max="30" step="0.5" value="10"></label><label class="ic-f"><span>Ticket medio <b data-v="val"></b></span><input type="range" data-k="val" data-fmt="eur" min="10" max="500" step="5" value="60"></label>
-        <div class="ic-res">
-          <div><span>Al mes</span><b data-out="mes"></b></div>
-          <div><span>Al año</span><b data-out="anio"></b></div>
-        </div>
-        <p class="ic-nota">Es un cálculo con tus números, no una promesa de resultados.</p>
-        <details class="ic-cuenta"><summary>Ver la cuenta</summary><p>Consultas por semana × 4,33 semanas × % sin respuesta × % que acabaría comprando × ticket medio.</p></details>
-      </div>
-    </div>
-  </section>
-
   <!-- =================== 03 - RESPONDE CON LOS DATOS DE TU TIENDA =================== -->
-    <section class="sec s03 oscura" id="sistema">
+  <section class="sec s03 oscura" id="sistema">
     <div class="caja dos">
       <div>
         <div class="kick">La diferencia</div>
@@ -1359,7 +1258,7 @@
     <div class="caja dos">
       <div>
         <div class="kick">Integraciones</div>
-        <h2 class="h2">Un sistema conectado.</h2>
+        <h2 class="h2">Piezas, no un paquete cerrado.</h2>
         <p class="p">Nos adaptamos a las herramientas que ya utilizas. Y si hace falta una pieza que no existe en tu software, la construimos.</p>
       </div>
 
@@ -1530,23 +1429,6 @@
       .eq-g dd { padding: 0 0 12px; }
     }
   </style>
-    <!-- =================== PRECIOS (BORRADOR) ===================
-       Catalogo simple dentro de la landing, para que nadie tenga que irse a
-       buscar precios: mismos productos y precios que la home. -->
-  <section class="pc" id="precios">
-    <div class="pc-caja">
-      <div class="pc-kick">Por dónde empezar</div>
-      <h2>¿Qué necesita <em>tu tienda?</em></h2>
-      <div class="pc-puertas">
-        
-        <article class="pc-puerta"><div class="pc-q">Para tiendas online</div><h3>AURA Commerce</h3><p>Atiende a tus clientes en la web, para que nadie se vaya con una duda sin resolver. Resuelve los pedidos, envíos y devoluciones que te llegan al email. Actualiza tu stock, recuerda la recompra y hace la postventa.</p><p>Si no tienes montado el carrito abandonado o la recompra, lo conectamos con lo que ya usas.</p><p>Y le añadimos las funciones extra que necesites, a medida.</p><div class="pc-pre"><b>Desde 899 €</b><span>Mantenimiento desde 97 €/mes</span></div><a class="pc-btn" href="#hablemos" data-cal>Reserva tu auditoría gratuita</a></article>
-      </div>
-      <div class="pc-pzcab"><h3>Piezas</h3><p>¿Prefieres empezar por una?</p></div><div class="pc-pzs pc-pzs2"><article class="pc-pz"><h3>Agente de IA para Instagram</h3><p>Contesta tus mensajes directos al momento, resuelve dudas y agenda la cita, o te avisa para que cierres tú la venta.</p><p>Cuando alguien comenta una palabra clave en tus publicaciones, le escribe por privado y le envía lo que pidió: cada comentario se convierte en una conversación.</p><p>Con acceso al CRM incluido.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 97 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article><article class="pc-pz"><h3>Agente web vendedor</h3><p>Diseñamos tu web para que convierta, con un agente de IA dentro. No es un chatbot de respuestas fijas: entiende lo que le preguntan, contesta con la información de tu negocio a cualquier hora y lleva la conversación hasta la cita o la venta.</p><p><b>Bonus:</b> 2 modificaciones incluidas para mejorar la web una vez entregada.</p><div class="pc-pre"><b>Desde 395 €</b><span>Mantenimiento desde 97 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article></div>
-      <p class="pc-duda">¿No tienes claro cuál encaja? <a href="#hablemos" data-cal>Reserva tu auditoría gratuita</a> y te lo decimos.</p>
-      <p class="pc-letra"><b>Todo se hace a medida:</b> a cualquier producto le podemos añadir las funciones que necesites, y lo que va fuera del producto se presupuesta aparte. El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega.</p>
-    </div>
-  </section>
-
   <section class="sec eq" id="equipo">
     <div class="caja">
       <div class="eq-grid">
@@ -1565,8 +1447,12 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l8 3v6.2c0 4.9-3.4 8.6-8 9.8-4.6-1.2-8-4.9-8-9.8V5.5z" fill="#1E7BFF"/><path d="M8.2 12.2l2.6 2.6 5-5.2" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <h3>Nuestra <em>garant&iacute;a.</em></h3>
           </div>
-          <p>14 días de garantía desde la instalación, en todos los productos: si no hace lo que hemos definido, te devolvemos el dinero.</p>
-          <p class="eq-man">El mantenimiento empieza el segundo mes, y los dos primeros meses tienes el plan Premium al precio del Básico.</p>
+          <p>Tienes 14 d&iacute;as para ver el sistema funcionando. Si no hace lo que hemos definido o no encaja, lo paramos y te devolvemos el dinero.</p>
+          <dl>
+            <dt>14 d&iacute;as para probar.</dt><dd>Comprobamos que encaja con tu forma de trabajar.</dd>
+            <dt>Si no encaja, te devolvemos el dinero.</dt><dd>Lo paramos y te lo devolvemos.</dd>
+            <dt>Primer mes de mantenimiento incluido.</dt><dd>Para que empieces con todo funcionando.</dd>
+          </dl>
         </div>
       </div>
     </div>
@@ -1815,30 +1701,6 @@
     .dm-reg-pie { font-size: 14.5px !important; }
   }
 </style>
-<script>
-  /* Calculadora comun (borrador): multiplica las barras y por 4,33 semanas.
-     Si la pagina no la tiene, no hace nada. */
-  (function () {
-    document.querySelectorAll('[data-calc]').forEach(function (caja) {
-      var barras = caja.querySelectorAll('[data-k]');
-      if (!barras.length) return;
-      var miles = function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); };
-      var fmt = { num: function (v) { return miles(v); }, pct: function (v) { return String(v).replace('.', ',') + ' %'; }, eur: function (v) { return miles(v) + ' €'; } };
-      function calc() {
-        var mes = 4.33;
-        barras.forEach(function (b) {
-          var v = +b.value, out = caja.querySelector('[data-v="' + b.dataset.k + '"]');
-          if (out) out.textContent = fmt[b.dataset.fmt](v);
-          mes *= b.dataset.fmt === 'pct' ? v / 100 : v;
-        });
-        caja.querySelector('[data-out="mes"]').textContent = miles(mes) + ' €';
-        caja.querySelector('[data-out="anio"]').textContent = miles(mes * 12) + ' €';
-      }
-      barras.forEach(function (b) { b.addEventListener('input', calc); });
-      calc();
-    });
-  })();
-</script>
 </body>
 
 </html>

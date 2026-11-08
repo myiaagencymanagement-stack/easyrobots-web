@@ -5,9 +5,6 @@ Allow: /
 # contra la pagina buena de su nicho.
 Disallow: /borradores/
 
-# Borradores de la nueva oferta (Gama AURA), para revisarlos con un enlace.
-Disallow: /borradores-aura/
-
 # Bocetos de trabajo, no son pagina.
 Disallow: /carpetas%20de%20bocetos%20para%20webs/
 
