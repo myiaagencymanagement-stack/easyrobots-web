@@ -773,8 +773,9 @@
   .c-precio b { display: block; padding-top: 14px; border-top: 1px solid var(--linea); font-size: 18px; font-weight: 700; color: var(--tinta); }
   .c-precio span { display: block; margin-top: 4px; font-size: 13.5px; color: var(--gris2); min-height: 38px; }
   .c-ver, .c-cta { margin-top: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 10px 14px; border-radius: 10px; font-size: 14px; font-weight: 600; text-decoration: none; }
-  .c-ver { border: 1px solid rgba(91,155,255,.45); color: var(--tinta); transition: border-color .2s, background .2s; }
-  .c-ver:hover { border-color: #5B9BFF; background: rgba(30,111,242,.12); }
+  /* 2026-11-08 (Anais): en blanco, como el "Ver detalles" de las paginas de nicho. */
+  .c-ver { background: #fff; border: 1px solid #fff; color: #0B1220; transition: background .2s; }
+  .c-ver:hover { background: #EEF2F7; border-color: #EEF2F7; color: #0B1220; }
   .c-ver svg { width: 15px; height: 15px; }
   .pz-cab { margin-top: 52px; display: flex; align-items: baseline; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--linea); }
   .pz-cab h3 { font-family: var(--f) !important; font-size: 13px !important; font-weight: 600 !important; letter-spacing: .3em !important; text-transform: uppercase; color: var(--gris); }

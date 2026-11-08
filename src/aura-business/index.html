@@ -141,18 +141,32 @@
   .incl b { display: block; color: var(--ink); font-weight: 700; }
 </style>
 <style>
-  /* 2026-11-08 (Anais): el precio iba en caja casi negra sobre fondo negro y se leia como algo que se esconde.
-     Es lo mas claro de la pagina para que el ojo vaya ahi; el bono en azul, como lo que se gana. */
-  .of-top .precios { background: var(--light); border-color: transparent; box-shadow: 0 18px 50px rgba(30,111,242,.2); }
+  /* 2026-11-08 (Anais): en una pagina donde te van a comprar, tan negro no. Se toma el aire de las paginas de oferta
+     de 157/189/199 EUR: cabecera oscura, secciones alternas en blanco y azul claro, tarjetas blancas y cierre azul.
+     Los colores se redefinen por seccion: el HTML y las clases no cambian. */
+  body { background: #fff; }
+  .nav { background: rgba(15,27,61,.94); }
+  .hero { background: linear-gradient(160deg, #0F1B3D 0%, #15347A 100%); --body: #D5DEF0; --mute: #B9C6DE; }
+  .sec { background: #fff; color: var(--body); border-top: 0;
+         --ink: #0F1A33; --body: #3B4556; --mute: #5E6878; --surface: #fff; --line: #D5E2F2; --azul2: #1557C9; }
+  .sec:nth-of-type(even), .claro { background: #EAF3FF; }
+  .sec:nth-of-type(odd) .fi { background: #F4F8FE; }
+  .sec .fi { box-shadow: 0 6px 20px rgba(15,50,110,.05); }
+  .cierre { background: linear-gradient(160deg, #1E6FF2, #1450B8); border-top: 0; --ink: #fff; --body: #E3EDFF; --mute: #CFE0FF; color: var(--body); }
+  .cierre .kick { color: #CFE0FF; }
+  .pie { background: #0F1B3D; border-top: 0; color: #B9C6DE; }
+
+  /* Oferta: tarjetas blancas sobre azul claro; el precio destaca por el azul y la sombra, el bono es lo unico relleno. */
+  .of-top > .sello { background: #fff; border-color: var(--line); box-shadow: 0 10px 30px rgba(15,50,110,.07); }
+  .of-top .precios { background: #fff; border: 2px solid #1E6FF2; box-shadow: 0 18px 44px rgba(30,111,242,.22); }
   .of-top .pr { color: var(--light-body); border-bottom-color: var(--light-line); }
   .of-top .pr b { color: var(--light-ink); font-weight: 800; }
   .of-top .pr:first-child b { color: var(--azul); font-size: 1.3rem; }
   .of-top .pr-ges span:not(.pr-tit) { color: var(--light-body); }
-  .of-top .sello.bono { background: #1A2536; border-color: rgba(91,155,255,.3); }
-  .of-top .sello.bono small { color: #B5BFCC; }
+  .of-top .sello.bono { background: #fff; border-color: var(--line); }
   .of-top .sello.bono:not(:last-child) { background: linear-gradient(160deg, #1E6FF2, #1450B8); border-color: transparent; }
   .of-top .sello.bono:not(:last-child) .kick { color: #CFE0FF; }
-  .of-top .sello.bono:not(:last-child) p { color: #fff; }
+  .of-top .sello.bono:not(:last-child) h3, .of-top .sello.bono:not(:last-child) p { color: #fff; }
 </style>
 </head>
 <body>
