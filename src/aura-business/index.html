@@ -158,11 +158,11 @@
 
   /* Oferta: tarjetas blancas sobre azul claro; el precio destaca por el azul y la sombra, el bono es lo unico relleno. */
   .of-top > .sello { background: #fff; border-color: var(--line); box-shadow: 0 10px 30px rgba(15,50,110,.07); }
-  .of-top .precios { background: #fff; border: 2px solid #1E6FF2; box-shadow: 0 18px 44px rgba(30,111,242,.22); }
-  .of-top .pr { color: var(--light-body); border-bottom-color: var(--light-line); }
-  .of-top .pr b { color: var(--light-ink); font-weight: 800; }
-  .of-top .pr:first-child b { color: var(--azul); font-size: 1.3rem; }
-  .of-top .pr-ges span:not(.pr-tit) { color: var(--light-body); }
+  .of-precio .precios { background: #fff; border: 2px solid #1E6FF2; box-shadow: 0 18px 44px rgba(30,111,242,.22); }
+  .of-precio .pr { color: var(--light-body); border-bottom-color: var(--light-line); }
+  .of-precio .pr b { color: var(--light-ink); font-weight: 800; }
+  .of-precio .pr:first-child b { color: var(--azul); font-size: 1.3rem; }
+  .of-precio .pr-ges span:not(.pr-tit) { color: var(--light-body); }
   .of-top .sello.bono { background: #fff; border-color: var(--line); }
   .of-top .sello.bono:not(:nth-last-child(2)) { background: linear-gradient(160deg, #E2ECFB, #D3E2F7); border-color: #BCD2F0; }
   /* Boton en azul marino: el blanco de los demas no se veria sobre esta seccion clara. */
@@ -177,6 +177,20 @@
   .hero .k, .hero h1 em, .cierre .k, .cierre h2 em { color: #7DB8FF; }
   .btn, .of-cta { background: #0E7490; color: #fff; border-color: #0E7490; }
   .btn:hover, .of-cta:hover { background: #0B5A70; color: #fff; border-color: #0B5A70; }
+</style>
+<style>
+  /* 2026-11-08 (Anais): el precio arriba y centrado, como lo primero que se ve de la oferta. Debajo, a la izquierda
+     lo que incluye, compacto, y a la derecha bono, garantia y boton. */
+  .of-kick { text-align: center; }
+  .of-precio { max-width: 620px; margin: 1rem auto 1.6rem; }
+  .of-precio .xs { text-align: center; }
+  .of-top { margin-top: 0; gap: 20px; grid-template-columns: 1fr 1fr; }
+  .of-top > .sello { padding: 1.5rem 1.6rem; }
+  .of-top > .sello h3 { font-size: 1.4rem; }
+  .incl { margin-top: 1rem; gap: .55rem; }
+  .incl li { font-size: .93rem; line-height: 1.42; }
+  .of-top > div > .sello.bono { padding: 1.4rem 1.6rem; }
+  .of-top > div > .sello.bono:first-child { margin-top: 0; }
 </style>
 </head>
 <body>
@@ -210,10 +224,11 @@
   <!-- 2026-11-08 (Anais): la promesa ya esta en el hero, asi que la oferta abre con precio, lo que incluye y el bono.
        La garantia baja al final pero no se quita: ahi se dice que cuenta como lead y que los anuncios van aparte. -->
   <section class="sec"><div class="wrap">
-    <p class="kick">La oferta</p>
+    <p class="kick of-kick">La oferta</p>
+    <div class="of-precio"><div class="precios"><div class="pr"><span>Montaje</span><b>Desde 3.000 €</b></div><div class="pr pr-ges"><span class="pr-tit">Gestión de anuncios, sobre tu inversión publicitaria</span><span>15 % de gestión</span><b>Mínimo 200 €/mes</b><span>10 % de gestión</span><b>A partir de 2.000 € de presupuesto</b></div><div class="pr"><span>Mantenimiento</span><b>Desde 150 €/mes</b></div></div><p class="xs" style="margin-top:.8rem">El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega. El mantenimiento empieza el segundo mes.</p></div>
     <div class="oferta of-top">
       <div class="sello"><h3>Qué incluye</h3><ul class="incl"><li><b>Todos tus canales, atendidos por el mismo sistema.</b> WhatsApp, Instagram, email, formularios y el chat de tu web. Si alguien te escribe por dos sitios con el mismo teléfono o email, el sistema sabe quién es y sigue donde lo dejó.</li><li><b>Tu CRM, incluido.</b> Las conversaciones de todos tus canales, tus clientes, tu agenda y tus ventas en un solo panel. Ves qué hace cada agente y qué te está dando, y entras a contestar tú cuando quieras.</li><li><b>Campañas gestionadas.</b> Tú creas los anuncios con nuestras recomendaciones y nosotros gestionamos las campañas.</li><li><b>Todo lo de AURA Setter.</b> Responde, cualifica, hace seguimiento, agenda y recuerda la cita.</li><li><b>Clientes que vuelven.</b> Reactivamos a los que se quedaron por el camino.</li></ul></div>
-      <div><div class="precios"><div class="pr"><span>Montaje</span><b>Desde 3.000 €</b></div><div class="pr pr-ges"><span class="pr-tit">Gestión de anuncios, sobre tu inversión publicitaria</span><span>15 % de gestión</span><b>Mínimo 200 €/mes</b><span>10 % de gestión</span><b>A partir de 2.000 € de presupuesto</b></div><div class="pr"><span>Mantenimiento</span><b>Desde 150 €/mes</b></div></div><p class="xs" style="margin-top:.8rem">El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega. El mantenimiento empieza el segundo mes.</p>
+      <div>
         <div class="sello bono"><p class="kick">Bono incluido</p><h3>Plan de oferta y captación.</h3>
         <p>Revisamos qué vendes, a qué precio, qué se puede empaquetar mejor y dónde se te escapan los clientes, y te damos un plan de campañas.</p></div>
         <div class="sello bono"><p class="kick">Garantía</p><h3>Primeros leads o nada.</h3>
