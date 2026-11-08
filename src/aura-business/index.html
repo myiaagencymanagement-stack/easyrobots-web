@@ -133,6 +133,15 @@
     }
   }
 </style>
+<style>
+  .of-top { margin-top: 1rem; }
+  .incl { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: .85rem; }
+  .incl li { color: var(--ink); line-height: 1.5; font-size: .98rem; }
+  .incl b { display: block; color: var(--ink); font-weight: 700; }
+  .of-bajo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; align-items: stretch; }
+  .of-bajo .sello.bono { margin-top: 0; }
+  @media (max-width: 900px) { .of-bajo { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
   <nav class="nav"><div class="wrap"><a class="marca" href="/">EASYROBOTS</a><button class="btn" type="button" data-cal>Reserva tu auditoría gratuita</button></div></nav>
@@ -162,14 +171,21 @@
     <div class="g4"><div class="fi"><h3>Captar</h3><p>Campañas y captación de leads. Los anuncios los creas tú con nuestras recomendaciones, y nosotros gestionamos las campañas.</p></div><div class="fi"><h3>Atender</h3><p>Todo lo de AURA Setter: responde, cualifica, hace seguimiento y agenda. Con WhatsApp, Instagram, email y web conectados.</p></div><div class="fi"><h3>Cerrar</h3><p>Recordatorios para que no falten y procesos comerciales conectados, para que nadie se quede a medias.</p></div><div class="fi"><h3>Volver</h3><p>Reactivación de clientes dormidos y estadísticas en el CRM para ver qué te está dando cada parte.</p></div></div>
   </div></section>
 
-  <section class="sec"><div class="wrap oferta">
-    <div><p class="kick">La oferta</p>
-      <div class="sello"><h3>Primeros leads o nada.</h3>
+  <!-- 2026-11-08 (Anais): la promesa ya esta en el hero, asi que la oferta abre con precio, lo que incluye y el bono.
+       La garantia baja al final pero no se quita: ahi se dice que cuenta como lead y que los anuncios van aparte. -->
+  <section class="sec"><div class="wrap">
+    <p class="kick">La oferta</p>
+    <div class="oferta of-top">
+      <div><div class="precios"><div class="pr"><span>Montaje</span><b>Desde 3.000 €</b></div><div class="pr pr-ges"><span class="pr-tit">Gestión de anuncios, sobre tu inversión publicitaria</span><span>15 % de gestión</span><b>Mínimo 200 €/mes</b><span>10 % de gestión</span><b>A partir de 2.000 € de presupuesto</b></div><div class="pr"><span>Mantenimiento</span><b>Desde 150 €/mes</b></div></div><p class="xs" style="margin-top:.8rem">El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega. El mantenimiento empieza el segundo mes.</p></div>
+      <div class="sello"><h3>Qué incluye</h3><ul class="incl"><li><b>Todos tus canales, atendidos por el mismo sistema.</b> WhatsApp, Instagram, email, formularios y el chat de tu web. Si alguien te escribe por dos sitios con el mismo teléfono o email, el sistema sabe quién es y sigue donde lo dejó.</li><li><b>Tu CRM, incluido.</b> Las conversaciones de todos tus canales, tus clientes, tu agenda y tus ventas en un solo panel. Ves qué hace cada agente y qué te está dando, y entras a contestar tú cuando quieras.</li><li><b>Campañas gestionadas.</b> Tú creas los anuncios con nuestras recomendaciones y nosotros gestionamos las campañas.</li><li><b>Todo lo de AURA Setter.</b> Responde, cualifica, hace seguimiento, agenda y recuerda la cita.</li><li><b>Clientes que vuelven.</b> Reactivamos a los que se quedaron por el camino.</li></ul></div>
+    </div>
+    <div class="of-bajo">
+      <div class="sello bono"><p class="kick">Bono incluido</p><h3>Plan de oferta y captación.</h3>
+        <p>Revisamos qué vendes, a qué precio, qué se puede empaquetar mejor y dónde se te escapan los clientes, y te damos un plan de campañas.</p></div>
+      <div class="sello bono"><p class="kick">Garantía</p><h3>Primeros leads o nada.</h3>
         <p>Si en 14 días desde que arrancan los anuncios no has conseguido leads, no cobramos la gestión.</p>
         <small>Cuenta como lead cualquier persona que te contacte, aunque no compre. La inversión en anuncios se paga aparte en Meta Ads y no entra en esta garantía. La fecha de arranque queda fijada en el contrato.</small></div>
-      <div class="sello bono"><p class="kick">Bono incluido</p><h3>Plan de oferta y captación.</h3>
-        <p>Revisamos qué vendes, a qué precio, qué se puede empaquetar mejor y dónde se te escapan los clientes, y te damos un plan de campañas.</p></div></div>
-    <div><div class="precios"><div class="pr"><span>Montaje</span><b>Desde 3.000 €</b></div><div class="pr pr-ges"><span class="pr-tit">Gestión de anuncios, sobre tu inversión publicitaria</span><span>15 % de gestión</span><b>Mínimo 200 €/mes</b><span>10 % de gestión</span><b>A partir de 2.000 € de presupuesto</b></div><div class="pr"><span>Mantenimiento</span><b>Desde 150 €/mes</b></div></div><p class="xs" style="margin-top:.8rem">El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega. El mantenimiento empieza el segundo mes.</p></div>
+    </div>
   </div></section>
 
   <section class="sec"><div class="wrap caso">
