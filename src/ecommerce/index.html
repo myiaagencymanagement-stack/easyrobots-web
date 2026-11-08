@@ -1352,13 +1352,9 @@
             <p class="dm-reg-pie">Cada conversaci&oacute;n queda registrada. Tu equipo la ve sin tener que leerse el chat.</p>
           </div>
           <div>
-            <button class="btn b-azul" type="button" data-cal>Reserva tu auditoría gratuita
+            <a class="btn b-azul" href="#precios">Ver paquetes
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-            </button>
-            <div class="meta" style="margin-top:16px">
-              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Entre 15 y 30 minutos de consultor&iacute;a</div>
-              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6l7-3z"/></svg>Sin compromiso</div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -1852,6 +1848,26 @@
     });
   })();
 </script>
+<style>
+  /* 2026-11-08 (Anais): la demo ocupaba una pantalla entera (894 px a 1440, 1.135 en movil) y coaching,
+     que es la referencia, 661 / 798. Titular en una linea, tarjetas y ficha mas bajas. */
+  .dm-lado a.btn { text-decoration: none; justify-content: center; }
+  .dm-cab0 { max-width: none; }
+  .dm-cab0 .h2 br { display: none; }
+  .dm-cuerpo { margin-top: 20px; }
+  .dm-reg { padding: 14px 18px 12px; }
+  .dm-reg .fila { padding: 8px 0; }
+  .dm-lado { gap: 12px; }
+  .dm-lado .btn { height: 50px; }
+  @media (min-width: 901px) { .s05 .caja { padding-top: 54px; padding-bottom: 54px; } }
+  @media (min-width: 621px) { .dm-chat { min-height: 240px; } }
+  @media (max-width: 620px) {
+    .dm-chat { min-height: 170px; }
+    .dm-reg { padding: 11px 13px 10px; }
+    .dm-reg .fila { padding: 5px 0; }
+    .dm-lado .btn { height: 48px; }
+  }
+</style>
 </body>
 
 </html>

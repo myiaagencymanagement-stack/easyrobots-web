@@ -1293,8 +1293,7 @@
             <!-- Anais (2026-10-07): la CTA en blanco y negro y bien separada
                  de la llamada, para que no compitan los dos botones. -->
             <div class="pb-cta">
-              <button class="btn pb-negro" type="button" data-cal>Reserva tu auditoría gratuita &rarr;</button>
-              <span>Entre 15 y 30 minutos. Sin compromiso.</span>
+              <a class="btn pb-negro" href="#precios">Ver paquetes &rarr;</a>
             </div>
           </div>
           </div>
@@ -1454,7 +1453,6 @@
             <p class="c-kick">El sistema</p>
             <h2>Un sistema <br>conectado.</h2>
             <p class="lede">Nos adaptamos a las herramientas que ya utilizas. Y si hace falta una pieza que no existe en tu software, la construimos.</p>
-            <button class="pzs-btn" type="button" data-cal><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>Reserva tu auditoría gratuita</button>
             <div class="pzs-apps" aria-label="Algunas herramientas con las que se integra">
               <i title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
               <i title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="url(#pzig2)" stroke-width="2.2"><defs><linearGradient id="pzig2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F9A03C"/><stop offset=".5" stop-color="#E1306C"/><stop offset="1" stop-color="#8134AF"/></linearGradient></defs><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="#E1306C" stroke="none"/></svg></i>
@@ -1945,5 +1943,25 @@
     });
   })();
 </script>
+<style>
+  /* 2026-11-08 (Anais): la demo ocupaba una pantalla entera (~900 px a 1440, 1.320 en movil) y coaching,
+     que es la referencia, 661 / 798. Se recorta el chat y la barra de abajo, que ya es una sola fila.
+     El boton lleva a los paquetes: el calendario queda para la barra y el cierre. */
+  a.btn.pb-negro { text-decoration: none; justify-content: center; }
+  .pb-bajo { display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; margin-top: 14px; padding: 12px 18px; }
+  .pb-bajo .pb-acc { flex: 1 1 auto; min-width: 0; }
+  .pb-bajo .pb-nota { margin: 0; max-width: none; }
+  .pb-bajo .pb-cta { margin: 0; padding: 0; border: 0; flex: none; }
+  .pb-msgs { height: 280px; }
+  @media (min-width: 901px) { .s06 .caja { padding-top: 54px; padding-bottom: 54px; } }
+  @media (max-width: 900px) {
+    .pb-caja { gap: 16px; }
+    .pb-msgs { height: 200px; }
+    .pb-txt h2 br { display: none; }
+    .pb-info { margin-top: 14px; padding: 10px 13px; }
+    .pb-bajo { flex-direction: column; align-items: stretch; margin-top: 10px; padding: 12px; }
+    .pb-bajo .pb-cta .btn { width: 100%; }
+  }
+</style>
 </body>
 </html>
