@@ -141,6 +141,14 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
   .in.pago { max-width: 1120px; }
   .valores { margin-left: auto; margin-right: auto; }
 </style>
+<style>
+  /* 2026-11-08 (Anais): el desglose de valor de /presupuestos-y-papeles/ le encanto; se aplica aqui en vez de tachar precios. */
+  .valores { width: 100%; max-width: 560px; margin: 0 auto; padding: 0; list-style: none; text-align: left; font-size: 16px; line-height: 1.4; }
+  .valores li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--borde-c); }
+  .valores li span:last-child { flex: none; font-weight: 600; }
+  .valores .total { border-bottom: 0; font-size: 18px; font-weight: 700; color: var(--noche); }
+  .ficha .hoy { font-size: 17px; font-weight: 600; color: var(--gris); }
+</style>
 </head>
 <body>
 
@@ -163,8 +171,8 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <section class="sec">
 <div class="in estrecho">
 <h2>Tienes clientes que ya te compraron y no han vuelto</h2>
-<p class="cuerpo">Cada mes que pasa se enfrían un poco más. Escribirles uno a uno te lleva horas que no tienes. Mandar una difusión a mano desde tu móvil pone en riesgo tu número de WhatsApp.</p>
-<p class="cuerpo">Reactivador Flash lo hace por ti. Preparamos el mensaje con tu promoción, lo enviamos por la API oficial de WhatsApp solo a los contactos que dieron su consentimiento para recibir promociones, y tú te dedicas a cerrar a los que responden.</p>
+<p class="cuerpo">Cada mes que pasa se enfrían un poco más. Y no es lo mismo un cliente que viene dos veces al año que uno que viene cuatro: a la larga, esa diferencia es mucho dinero. Escribirles uno a uno te lleva horas que no tienes.</p>
+<p class="cuerpo">Reactivador Flash lo hace por ti. Preparamos el mensaje con tu promoción y lo enviamos a tu lista.</p>
 </div>
 </section>
 
@@ -226,6 +234,8 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <div class="in pago">
 <div class="ficha">
 <div class="cint">REACTIVADOR FLASH</div>
+<ul class="valores"><li><span>Campaña de WhatsApp a 400 contactos</span><span>157 €</span></li><li><span>Bono 1</span><span>47 €</span></li><li><span>Bono 2</span><span>37 €</span></li><li class="total"><span>Valor total</span><span>241 €</span></li></ul>
+<div class="hoy">Hoy</div>
 <div class="grande">157 €</div>
 <div class="det">Pago único · 400 contactos incluidos · cada 200 contactos más, 10 €</div>
 <p class="razon">157 € repartidos entre 400 contactos son menos de 40 céntimos por cliente al que le llega tu promoción. Con los bonos, el paquete suma 241 € de valor y pagas 157 €. Si un solo cliente te deja más de 157 € al volver, con uno has cubierto la inversión.</p>
@@ -245,6 +255,7 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <ul>
 <li>Servicio para empresas y profesionales. Lo presta Ana Isabel González Hoog (EasyRobots AH-NICE), Hamburgo. Datos completos en el <a href="/impressum.html">aviso legal</a>.</li>
 <li>Precio: 157 € en un único pago, sin cuotas. Es el precio final: no se añade IVA. Cada bloque de 200 contactos adicionales, 10 €.</li>
+<li>Envío: la campaña se envía por la API oficial de WhatsApp.</li>
 <li>Plazo: lanzamos la campaña en un máximo de 72 horas laborables desde que tu número de WhatsApp queda conectado. Los informes y la lista de recuperados llegan a los 7 días del lanzamiento.</li>
 <li>Garantía: si por cualquier motivo no podemos lanzar tu campaña, te devolvemos los 157 € íntegros. Escríbenos a <a href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a>.</li>
 <li>Tu lista de contactos: tú eres el responsable de esos datos y de contar con su consentimiento para recibir promociones por WhatsApp. Nosotros los tratamos como encargados del tratamiento, solo para lanzar tu campaña y preparar tus informes, y los borramos al terminar el servicio. Cada mensaje lleva su opción de baja.</li>
