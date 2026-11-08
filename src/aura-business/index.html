@@ -140,6 +140,20 @@
   .incl li { color: var(--ink); line-height: 1.5; font-size: .98rem; }
   .incl b { display: block; color: var(--ink); font-weight: 700; }
 </style>
+<style>
+  /* 2026-11-08 (Anais): el precio iba en caja casi negra sobre fondo negro y se leia como algo que se esconde.
+     Es lo mas claro de la pagina para que el ojo vaya ahi; el bono en azul, como lo que se gana. */
+  .of-top .precios { background: var(--light); border-color: transparent; box-shadow: 0 18px 50px rgba(30,111,242,.2); }
+  .of-top .pr { color: var(--light-body); border-bottom-color: var(--light-line); }
+  .of-top .pr b { color: var(--light-ink); font-weight: 800; }
+  .of-top .pr:first-child b { color: var(--azul); font-size: 1.3rem; }
+  .of-top .pr-ges span:not(.pr-tit) { color: var(--light-body); }
+  .of-top .sello.bono { background: #1A2536; border-color: rgba(91,155,255,.3); }
+  .of-top .sello.bono small { color: #B5BFCC; }
+  .of-top .sello.bono:not(:last-child) { background: linear-gradient(160deg, #1E6FF2, #1450B8); border-color: transparent; }
+  .of-top .sello.bono:not(:last-child) .kick { color: #CFE0FF; }
+  .of-top .sello.bono:not(:last-child) p { color: #fff; }
+</style>
 </head>
 <body>
   <nav class="nav"><div class="wrap"><a class="marca" href="/">EASYROBOTS</a><button class="btn" type="button" data-cal>Reserva tu auditoría gratuita</button></div></nav>
