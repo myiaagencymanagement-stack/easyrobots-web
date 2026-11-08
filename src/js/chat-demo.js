@@ -136,7 +136,7 @@
       quitarBotones();
       if (!texto) return;
       if (enviados >= TOPE_MENSAJES) {
-        burbuja(claseOut, 'Hasta aqui la demostracion. Si quieres verlo con los datos de tu negocio, reserva una llamada y lo montamos.');
+        burbuja(claseOut, 'Hasta aqui la demostracion. Si quieres verlo con los datos de tu negocio, reserva tu auditoría gratuita y lo montamos.');
         input.value = '';
         return;
       }

@@ -1396,6 +1396,18 @@
   .ic-cuenta p { margin: 6px 0 0; line-height: 1.5; }
   @media (max-width: 900px) { .ic-caja { grid-template-columns: 1fr; } .ic-panel { padding: 20px; } }
 </style>
+<style>
+  /* 2026-11-08 (Anais): "Reserva tu auditoria gratuita" es el unico CTA y es mucho mas largo que
+     "Reservar llamada": en la barra del movil se pegaba a la marca y en los funnels partia en dos lineas. */
+  @media (max-width: 620px) {
+    nav [data-cal], nav [data-reserva], header [data-cal], header [data-reserva],
+    [class*="nav"] [data-cal], [class*="nav"] [data-reserva], .h-navbtn,
+    [class*="bn-"][data-cal], [class*="bn-"][data-reserva] {
+      font-size: 11.5px !important; padding-left: 9px !important; padding-right: 9px !important;
+      white-space: nowrap !important; min-width: 0 !important; width: auto !important; flex: none !important;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -1415,7 +1427,7 @@
         <a href="#demo">Demostraci&oacute;n</a>
         <a href="#precios">Productos</a>
       </div>
-      <button class="bn-btn" type="button" data-reserva>Reservar una llamada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+      <button class="bn-btn" type="button" data-reserva>Reserva tu auditoría gratuita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
     </div></nav>
 
     <div class="h-col">
@@ -1774,18 +1786,14 @@
           </div>
           <div class="pb-bajo">
             <div class="pb-acc">
-              <button class="escuchar" type="button" data-pronto>
-                <span class="rd">&#9654;</span>
-                Escuchar la llamada
-                <span class="dur">02:18</span>
-              </button>
-              <p class="pb-nota">As&iacute; es como se escuchar&iacute;a una llamada atendida por EasyRobots.</p>
+              <!-- 2026-11-08 (Anais): sin grabacion todavia, un boton que no suena resta. Cuando este, vuelve el boton de escuchar y se engancha el audio. -->
+              <p class="pb-nota"><b>Próximamente</b> podrás escuchar la grabación de una llamada atendida por EasyRobots.</p>
             </div>
             <!-- Anais (2026-10-07): la CTA en blanco y negro y bien separada
                  de la llamada, para que no compitan los dos botones. -->
             <div class="pb-cta">
-              <button class="btn pb-negro" type="button" data-reserva>Reservar una llamada &rarr;</button>
-              <span>15 minutos. Sin compromiso.</span>
+              <button class="btn pb-negro" type="button" data-reserva>Reserva tu auditoría gratuita &rarr;</button>
+              <span>Entre 15 y 30 minutos. Sin compromiso.</span>
             </div>
           </div>
           </div>
@@ -1947,7 +1955,7 @@
             <p class="kick">El sistema</p>
             <h2>Un sistema <br>conectado.</h2>
             <p class="lede">Nos adaptamos a las herramientas que ya utilizas. Y si hace falta una pieza que no existe en tu software, la construimos.</p>
-            <button class="pzs-btn" type="button" data-reserva><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>Ver c&oacute;mo se integra</button>
+            <button class="pzs-btn" type="button" data-reserva><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>Reserva tu auditoría gratuita</button>
             <div class="pzs-apps" aria-label="Algunas herramientas con las que se integra">
               <i title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
               <i title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="url(#pzig)" stroke-width="2.2"><defs><linearGradient id="pzig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F9A03C"/><stop offset=".5" stop-color="#E1306C"/><stop offset="1" stop-color="#8134AF"/></linearGradient></defs><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="#E1306C" stroke="none"/></svg></i>
@@ -2150,7 +2158,7 @@
         <article class="pc-puerta"><div class="pc-q">Quiero más clientes</div><h3>AURA Business</h3><p>Captamos compradores y propietarios con anuncios, recuperamos a los que ya tienes en tu base y nadie se queda sin respuesta.</p><p class="pc-mas">Incluye todo lo de AURA Setter, con WhatsApp, Instagram, email y web conectados.</p><p><b>Bono incluido:</b> auditoría de oferta y captación.</p><div class="pc-pre"><b>Desde 3.000 €</b><span>Mantenimiento desde 150 €/mes + gestión de anuncios</span></div><a class="pc-btn" href="/aura-business/">Ver detalles</a></article>
         <article class="pc-puerta"><div class="pc-q">Quiero quitarme trabajo</div><h3>AURA Setter</h3><ul class="pc-lista"><li>Responde al momento, sin inventar nada y con el tono que elijas.</li><li>Detecta quién tiene interés de verdad.</li><li>Agenda la visita en tu calendario, o te avisa cuando está listo para que te encargues tú personalmente.</li><li>Recuerda la visita para que no falte.</li><li>Recupera a los contactos que se quedaron a medias y a los que preguntaron y no avanzaron.</li></ul><div class="pc-pre"><b>Desde 2.000 €</b><span>Mantenimiento desde 150 €/mes</span></div><a class="pc-btn" href="/aura-setter/">Ver detalles</a></article>
       </div>
-      <div class="pc-pzcab"><h3>Piezas</h3><p>¿Prefieres empezar por una?</p></div><div class="pc-pzs pc-pzs3"><article class="pc-pz"><h3>Agente de IA para atención y ventas</h3><p>Resuelve dudas, informa y agenda la cita, o te avisa para que cierres tú la venta personalmente. También envía los recordatorios.</p><p>Incluye CRM para datos, informes y notificaciones.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 50 €/mes</span></div><a href="#hablemos" data-reserva>Reservar auditoría</a></article><article class="pc-pz"><h3>Agente de voz con IA</h3><p>Coge todas las llamadas, también fuera de horario: atiende, resuelve dudas y agenda la cita, o transfiere la llamada a tu comercial. Entrantes y salientes.</p><p>Incluye CRM para ver cada conversación del agente, con notificaciones e informes.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 50 €/mes</span></div><a href="#hablemos" data-reserva>Reservar auditoría</a></article><article class="pc-pz"><h3>Agente web vendedor</h3><p>Diseñamos tu web para que convierta, con un agente de IA dentro. No es un chatbot de respuestas fijas: entiende lo que le preguntan, contesta con la información de tu negocio a cualquier hora y lleva la conversación hasta la cita o la venta.</p><p><b>Bonus:</b> 2 modificaciones incluidas para mejorar la web una vez entregada.</p><div class="pc-pre"><b>Desde 395 €</b><span>Mantenimiento desde 97 €/mes</span></div><a href="#hablemos" data-reserva>Reservar auditoría</a></article></div>
+      <div class="pc-pzcab"><h3>Piezas</h3><p>¿Prefieres empezar por una?</p></div><div class="pc-pzs pc-pzs3"><article class="pc-pz"><h3>Agente de IA para atención y ventas</h3><p>Resuelve dudas, informa y agenda la cita, o te avisa para que cierres tú la venta personalmente. También envía los recordatorios.</p><p>Incluye CRM para datos, informes y notificaciones.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 50 €/mes</span></div><a href="#hablemos" data-reserva>Reserva tu auditoría gratuita</a></article><article class="pc-pz"><h3>Agente de voz con IA</h3><p>Coge todas las llamadas, también fuera de horario: atiende, resuelve dudas y agenda la cita, o transfiere la llamada a tu comercial. Entrantes y salientes.</p><p>Incluye CRM para ver cada conversación del agente, con notificaciones e informes.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 50 €/mes</span></div><a href="#hablemos" data-reserva>Reserva tu auditoría gratuita</a></article><article class="pc-pz"><h3>Agente web vendedor</h3><p>Diseñamos tu web para que convierta, con un agente de IA dentro. No es un chatbot de respuestas fijas: entiende lo que le preguntan, contesta con la información de tu negocio a cualquier hora y lleva la conversación hasta la cita o la venta.</p><p><b>Bonus:</b> 2 modificaciones incluidas para mejorar la web una vez entregada.</p><div class="pc-pre"><b>Desde 395 €</b><span>Mantenimiento desde 97 €/mes</span></div><a href="#hablemos" data-reserva>Reserva tu auditoría gratuita</a></article></div>
       <p class="pc-duda">¿No tienes claro cuál encaja? <a href="#hablemos" data-reserva>Reserva tu auditoría gratuita</a> y te lo decimos.</p>
       <p class="pc-letra"><b>Todo se hace a medida:</b> a cualquier producto le podemos añadir las funciones que necesites, y lo que va fuera del producto se presupuesta aparte. El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega.</p>
     </div>
@@ -2197,14 +2205,14 @@
           <div>
             <p class="kick">Hablemos</p>
             <h2>Vemos d&oacute;nde se te escapan los clientes,<br>y c&oacute;mo conseguir m&aacute;s.</h2>
-            <p class="sub">Sin compromiso. 15 minutos.</p>
+            <p class="sub">Sin compromiso. Entre 15 y 30 minutos.</p>
           </div>
           <div>
-            <button class="btn btn-azul" type="button" data-reserva>Reservar una llamada
+            <button class="btn btn-azul" type="button" data-reserva>Reserva tu auditoría gratuita
               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h11M11 6l4 4-4 4"/></svg>
             </button>
             <div class="cta-meta">
-              <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M10 5.8v4.4l3 1.8"/></svg>15 minutos</div>
+              <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M10 5.8v4.4l3 1.8"/></svg>Entre 15 y 30 minutos</div>
               <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7.4"/><path d="M6.4 6.4l7.2 7.2M13.6 6.4l-7.2 7.2"/></svg>Sin compromiso</div>
             </div>
           </div>
@@ -2230,7 +2238,7 @@
         <div>
           <h4>Empresa</h4>
           <a class="enl" href="#equipo">Sobre nosotros</a>
-          <a class="enl" href="#cta">Reservar llamada</a>
+          <a class="enl" href="#cta">Reserva tu auditoría gratuita</a>
           <a class="enl" href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a>
         </div>
         <div>
@@ -2265,7 +2273,7 @@
     <div class="caja-m" role="dialog" aria-modal="true" aria-labelledby="t-reserva">
       <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">&#10005;</button>
       <h2 id="t-reserva">Elige un hueco y lo vemos contigo</h2>
-      <p>15 minutos. Sin presentaci&oacute;n comercial.</p>
+      <p>Entre 15 y 30 minutos. Sin presentaci&oacute;n comercial.</p>
       <div id="hueco-cal"></div>
     </div>
   </div>

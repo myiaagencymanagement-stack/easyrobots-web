@@ -1419,6 +1419,18 @@
 </style>
 <style>@media (min-width: 761px) { .h-sub { max-width: 30em; } }</style>
 <style>.pc-puertas { grid-template-columns: 1fr; }</style>
+<style>
+  /* 2026-11-08 (Anais): "Reserva tu auditoria gratuita" es el unico CTA y es mucho mas largo que
+     "Reservar llamada": en la barra del movil se pegaba a la marca y en los funnels partia en dos lineas. */
+  @media (max-width: 620px) {
+    nav [data-cal], nav [data-reserva], header [data-cal], header [data-reserva],
+    [class*="nav"] [data-cal], [class*="nav"] [data-reserva], .h-navbtn,
+    [class*="bn-"][data-cal], [class*="bn-"][data-reserva] {
+      font-size: 11.5px !important; padding-left: 9px !important; padding-right: 9px !important;
+      white-space: nowrap !important; min-width: 0 !important; width: auto !important; flex: none !important;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -1458,7 +1470,7 @@
         <a href="#demo">Demostraci&oacute;n</a>
         <a href="#precios">Productos</a>
       </div>
-      <a class="bn-btn" href="#hablemos" data-cal>Reservar una llamada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+      <a class="bn-btn" href="#hablemos" data-cal>Reserva tu auditoría gratuita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
     </div></nav>
     <div class="bn-hueco" aria-hidden="true"></div>
 
@@ -1706,7 +1718,7 @@
         </div>
         <a class="m3-btn" href="#hablemos" data-cal>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
-          Reservar llamada
+          Reserva tu auditoría gratuita
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -1728,7 +1740,7 @@
           <div class="m3-cal" aria-hidden="true">
             <div class="m3-cal-in">
               <b class="m3-cal-t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>Reservar llamada</b>
-              <p>Selecciona el d&iacute;a y la hora que mejor te venga. La llamada dura 15 minutos.</p>
+              <p>Selecciona el d&iacute;a y la hora que mejor te venga. La llamada dura entre 15 y 30 minutos.</p>
               <div class="m3-mesf"><span>&lsaquo;</span><b class="m3-mes">Octubre 2026</b><span>&rsaquo;</span></div>
               <div class="m3-dias"><span>Lun<b>12</b></span><span class="on">Mar<b>13</b></span><span>Mi&eacute;<b>14</b></span><span>Jue<b>15</b></span><span>Vie<b>16</b></span></div>
               <div class="m3-horas"><span>10:00</span><span class="on">11:00</span><span>12:00</span><span>15:00</span><span>16:00</span><span>17:00</span></div>
@@ -1755,7 +1767,7 @@
         <div class="k3">Un sistema completo</div>
         <h2 class="t3">Un sistema completo, <br>que <em>se adapta a ti.</em></h2>
         <p class="p3">Puedes usar todo el sistema o solo las piezas que necesites. Se integra con tus herramientas actuales.</p>
-        <a class="x3-btn" href="#hablemos" data-cal><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>Ver c&oacute;mo se integra</a>
+        <a class="x3-btn" href="#hablemos" data-cal><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>Reserva tu auditoría gratuita</a>
         <div class="x3-apps" aria-label="Algunas herramientas con las que se integra">
           <i title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="url(#igg)" stroke-width="2.2"><defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F9A03C"/><stop offset=".5" stop-color="#E1306C"/><stop offset="1" stop-color="#8134AF"/></linearGradient></defs><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="#E1306C" stroke="none"/></svg></i>
           <i title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
@@ -1879,7 +1891,7 @@
         <article class="pc-puerta"><div class="pc-q">Para coaches e infoproductores</div><h3>AURA Business</h3><p>Captamos leads con anuncios, recuperamos a los que ya te escribieron y nadie se queda sin respuesta.</p><p class="pc-mas">Incluye todo lo de AURA Setter, con WhatsApp, Instagram, email y web conectados.</p><p><b>Bono incluido:</b> auditoría de oferta y captación.</p><div class="pc-pre"><b>Desde 3.000 €</b><span>Mantenimiento desde 150 €/mes + gestión de anuncios</span></div><a class="pc-btn" href="/aura-business/">Ver detalles</a></article>
         
       </div>
-      <div class="pc-pzcab"><h3>Piezas</h3><p>¿Prefieres empezar por una?</p></div><div class="pc-pzs pc-pzs3"><article class="pc-pz"><h3>Agente de IA para Instagram</h3><p>Contesta tus mensajes directos al momento, resuelve dudas y agenda la cita, o te avisa para que cierres tú la venta.</p><p>Cuando alguien comenta una palabra clave en tus publicaciones, le escribe por privado y le envía lo que pidió: cada comentario se convierte en una conversación.</p><p>Con acceso al CRM incluido.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 97 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article><article class="pc-pz"><h3>Agente de IA para atención y ventas</h3><p>Resuelve dudas, informa y agenda la cita, o te avisa para que cierres tú la venta personalmente. También envía los recordatorios.</p><p>Incluye CRM para datos, informes y notificaciones.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 50 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article><article class="pc-pz"><h3>Agente web vendedor</h3><p>Diseñamos tu web para que convierta, con un agente de IA dentro. No es un chatbot de respuestas fijas: entiende lo que le preguntan, contesta con la información de tu negocio a cualquier hora y lleva la conversación hasta la cita o la venta.</p><p><b>Bonus:</b> 2 modificaciones incluidas para mejorar la web una vez entregada.</p><div class="pc-pre"><b>Desde 395 €</b><span>Mantenimiento desde 97 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article></div>
+      <div class="pc-pzcab"><h3>Piezas</h3><p>¿Prefieres empezar por una?</p></div><div class="pc-pzs pc-pzs3"><article class="pc-pz"><h3>Agente de IA para Instagram</h3><p>Contesta tus mensajes directos al momento, resuelve dudas y agenda la cita, o te avisa para que cierres tú la venta.</p><p>Cuando alguien comenta una palabra clave en tus publicaciones, le escribe por privado y le envía lo que pidió: cada comentario se convierte en una conversación.</p><p>Con acceso al CRM incluido.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 97 €/mes</span></div><a href="#hablemos" data-cal>Reserva tu auditoría gratuita</a></article><article class="pc-pz"><h3>Agente de IA para atención y ventas</h3><p>Resuelve dudas, informa y agenda la cita, o te avisa para que cierres tú la venta personalmente. También envía los recordatorios.</p><p>Incluye CRM para datos, informes y notificaciones.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 50 €/mes</span></div><a href="#hablemos" data-cal>Reserva tu auditoría gratuita</a></article><article class="pc-pz"><h3>Agente web vendedor</h3><p>Diseñamos tu web para que convierta, con un agente de IA dentro. No es un chatbot de respuestas fijas: entiende lo que le preguntan, contesta con la información de tu negocio a cualquier hora y lleva la conversación hasta la cita o la venta.</p><p><b>Bonus:</b> 2 modificaciones incluidas para mejorar la web una vez entregada.</p><div class="pc-pre"><b>Desde 395 €</b><span>Mantenimiento desde 97 €/mes</span></div><a href="#hablemos" data-cal>Reserva tu auditoría gratuita</a></article></div>
       <p class="pc-duda">¿No tienes claro cuál encaja? <a href="#hablemos" data-cal>Reserva tu auditoría gratuita</a> y te lo decimos.</p>
       <p class="pc-letra"><b>Todo se hace a medida:</b> a cualquier producto le podemos añadir las funciones que necesites, y lo que va fuera del producto se presupuesta aparte. El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega.</p>
     </div>
@@ -1915,11 +1927,11 @@
     <div class="caja oscura">
       <div class="panel-osc">
       <h2 class="h2">Menos oportunidades perdidas. M&aacute;s personas en tu programa.</h2>
-      <p class="p">Hablemos 15 minutos y vemos c&oacute;mo puede funcionar en tu caso.</p>
+      <p class="p">Hablemos entre 15 y 30 minutos y vemos c&oacute;mo puede funcionar en tu caso.</p>
       <!-- Pendiente: enganchar el calendario de GHL a este boton. -->
       <a class="btn btn-bl" href="#hablemos" data-cal>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
-        Reservar llamada
+        Reserva tu auditoría gratuita
       </a>
       </div>
     </div>
@@ -1933,7 +1945,7 @@
       <div class="p-cols">
         <div class="p-c"><b>EasyRobots</b><span>Sistemas de IA para <br>coaches e infoproductores.</span></div>
         <div class="p-c"><b>Producto</b><div class="p-lista"><a href="#demo">Ver demostraci&oacute;n</a><a href="#sistema">Integraciones</a></div></div>
-        <div class="p-c"><b>Empresa</b><div class="p-lista"><a href="#equipo">Sobre nosotros</a><a href="#hablemos" data-cal>Reservar llamada</a><a href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a></div></div>
+        <div class="p-c"><b>Empresa</b><div class="p-lista"><a href="#equipo">Sobre nosotros</a><a href="#hablemos" data-cal>Reserva tu auditoría gratuita</a><a href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a></div></div>
         <div class="p-c"><b>Legal</b><div class="p-lista"><a href="/privacy.html">Pol&iacute;tica de privacidad <br>y cookies</a></div></div>
         <div class="p-c"><b>S&iacute;guenos</b>
           <div class="p-rs">
@@ -1951,7 +1963,7 @@
     <div class="er-modal-box" role="dialog" aria-modal="true" aria-label="Agendar una llamada">
       <button class="er-modal-x" id="er-modal-x" type="button" aria-label="Cerrar">&#10005;</button>
       <h3>Elige un hueco y lo vemos contigo</h3>
-      <p>15 minutos. Sin presentaci&oacute;n comercial.</p>
+      <p>Entre 15 y 30 minutos. Sin presentaci&oacute;n comercial.</p>
       <div id="er-cal-slot"></div>
     </div>
   </div>
