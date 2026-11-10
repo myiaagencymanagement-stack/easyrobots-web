@@ -234,6 +234,15 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <style>
   .caso-cint { margin-bottom: 12px; }
 </style>
+<style>
+  /* 2026-11-10 (Anais): los cuadros se estiraban al alto del primero y los dos de abajo ocupaban media fila cada uno.
+     Rejilla de tres columnas iguales y la nota del asterisco debajo. */
+  .rejilla { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .rejilla .item { padding: 18px 20px; }
+  .rejilla .item p { font-size: 16px; }
+  .rejilla-nota { margin-top: -18px; }
+  @media (max-width: 860px) { .rejilla { grid-template-columns: 1fr; gap: 12px; } .rejilla-nota { margin-top: -10px; } }
+</style>
 </head>
 <body>
 
@@ -313,12 +322,13 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <div class="in">
 <h2>Qué te llevas por 157 €</h2>
 <div class="rejilla">
-<div class="item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><p>Campaña de WhatsApp a 400 contactos, con tu promoción redactada y adaptada a tu negocio.<small class="item-nota">*Si tienes más contactos, podemos ampliar la oferta: por cada 200 contactos, solo pagas 10 € más.</small></p></div>
+<div class="item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><p>Campaña de WhatsApp a 400 contactos*, con tu promoción redactada y adaptada a tu negocio.</p></div>
 <div class="item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><p>Envío por la API oficial de Meta, sin arriesgar tu número.</p></div>
 <div class="item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><p>Las respuestas llegan a tu WhatsApp Business, como cualquier otra conversación.</p></div>
 <div class="item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><p>Lista limpia de contactos recuperados, ordenada por estado.</p></div>
 <div class="item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><p>Informe de resultados y gestión, e informe de qué grupos reaccionaron mejor.</p></div>
 </div>
+<p class="item-nota rejilla-nota">*Si tienes más contactos, podemos ampliar la oferta: por cada 200 contactos, solo pagas 10 € más.</p>
 </div>
 </section>
 
