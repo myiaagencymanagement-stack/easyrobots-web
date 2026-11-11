@@ -1940,3 +1940,5 @@ del h2 de cada seccion, a 1440 y 1920), no a ojo.
   "Todo en un solo panel. Te ensenamos su funcionamiento en la llamada." y el de canales (Business)
   ya no enumera canales ni cuenta como reconoce al contacto. **No volver a detallar funciones del
   CRM en ninguna pagina.**
+- **Agente web vendedor: desde 495 EUR y mantenimiento desde 97 EUR/mes** (Anais, 2026-11-11; antes 395).
+  Va en la home (tambien en su JSON-LD) y en las cinco paginas de nicho.
