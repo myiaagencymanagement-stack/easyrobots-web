@@ -1928,6 +1928,25 @@
     .wz-nota p { font-size: 16px !important; }
   }
 </style>
+<!-- Cuadre de margenes (Anais, 2026-11-11): la calculadora, "Un sistema conectado", captacion y
+     precios son bloques comunes pegados en cada pagina y traian su propio contenedor (1240 px) y su
+     propio tamano de titular: arrancaban mas a la derecha (o pegados al borde, en el sistema) que
+     el resto de secciones. Ahora usan el contenedor de la pagina (1440 px y su mismo margen) y el
+     mismo tamano de titular. Solo escritorio; el movil no se toca. -->
+<style id="er-cuadre">
+  @media (min-width: 1081px) {
+    :root { --er-lado: max(22px, 5.6vw); }
+    .pc-caja, .ic-caja { max-width: 1440px !important; padding-left: var(--er-lado) !important; padding-right: var(--er-lado) !important; }
+    .pc h2, .ic-calc h2 { font-size: 47px !important; }
+    /* En pantallas anchas unos titulares subian a 52 px y otros se quedaban en 47: todos a 47. */
+    section:not(#inicio) h2, .cierre h2 { font-size: 47px !important; }
+    /* La demo del chat tenia contenedor de 1080: arrancaba 90 px mas adentro que las demas. */
+    .wz-sec { padding-left: 0 !important; padding-right: 0 !important; }
+    .wz-caja { max-width: 1440px !important; padding: 0 var(--er-lado); grid-template-columns: minmax(0, 560px) 360px !important; justify-content: space-between; }
+    .wz-sec h2 { font-size: 47px !important; }
+  }
+  @media (min-width: 1440px) { :root { --er-lado: 80px; } }
+</style>
 </body>
 
 </html>

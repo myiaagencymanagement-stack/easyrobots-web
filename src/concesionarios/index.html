@@ -1963,5 +1963,32 @@
     .pb-bajo .pb-cta .btn { width: 100%; }
   }
 </style>
+<!-- Cuadre de margenes (Anais, 2026-11-11): la calculadora, "Un sistema conectado", captacion y
+     precios son bloques comunes pegados en cada pagina y traian su propio contenedor (1240 px) y su
+     propio tamano de titular: arrancaban mas a la derecha (o pegados al borde, en el sistema) que
+     el resto de secciones. Ahora usan el contenedor de la pagina (1440 px y su mismo margen) y el
+     mismo tamano de titular. Solo escritorio; el movil no se toca. -->
+<style id="er-cuadre">
+  @media (min-width: 1081px) {
+    :root { --er-lado: max(22px, 5.6vw); }
+    .pc-caja, .ic-caja { max-width: 1440px !important; padding-left: var(--er-lado) !important; padding-right: var(--er-lado) !important; }
+    .pc h2, .ic-calc h2 { font-size: 47px !important; }
+    /* En pantallas anchas unos titulares subian a 52 px y otros se quedaban en 47: todos a 47. */
+    section:not(#inicio) h2, .cierre h2 { font-size: 47px !important; }
+  }
+  @media (min-width: 1440px) { :root { --er-lado: 80px; } }
+  /* "Un sistema conectado": la escena iba a todo el ancho y el texto a 110/2000 de ella, o sea pegado
+     al borde y cada vez mas grande en pantallas anchas (63 px de titular a 1920). La escena se
+     limita al ancho que tiene a 1440 y el texto arranca en el margen de la pagina. */
+  @media (min-width: 1181px) {
+    .pzs-esc { max-width: 1580px; margin: 0 auto; }
+    .pzs-in { --pzl: calc(max(0px, (100cqw - 1440px) / 2) + var(--er-lado)); }
+    .pzs-txt { left: var(--pzl) !important; width: calc(610 * var(--u) - var(--pzl)) !important; }
+    .pzs-txt h2 { font-size: clamp(36px, calc(66 * var(--u)), 47px) !important; }
+  }
+  @media (min-width: 1440px) {
+    .pzs-esc { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%); }
+  }
+</style>
 </body>
 </html>

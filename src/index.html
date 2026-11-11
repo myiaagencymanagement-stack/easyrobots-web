@@ -261,6 +261,7 @@
     .i-card div { padding: 18px 16px 22px; }
     .i-card b { display: block; font-size: 17px; font-weight: 700; letter-spacing: -.02em; }
     .i-card span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.45; color: var(--gris2); }
+    .i-nota { margin-top: 26px; font-size: 16px; line-height: 1.5; color: var(--gris2); }
 
     /* ============ 06 - CASO REAL ============
        El unico caso publicable, con permiso de Pilar (2026-09-23). Se cuenta
@@ -368,9 +369,11 @@
     .k-t { margin-top: calc(12 * var(--u)); font-size: calc(24 * var(--u)); line-height: 1.1; font-weight: 700; letter-spacing: -.035em; }
     .k-sub { margin-top: calc(9 * var(--u)); width: calc(300 * var(--u)); font-size: calc(10.6 * var(--u)); line-height: calc(16 * var(--u)); color: rgba(255,255,255,.88); }
     .k-acc { margin-top: calc(17 * var(--u)); display: flex; align-items: center; gap: calc(18 * var(--u)); }
-    .k-btn { display: inline-flex; align-items: center; justify-content: center; gap: calc(7 * var(--u)); width: calc(126 * var(--u)); height: calc(30 * var(--u)); border: 0; border-radius: calc(5 * var(--u)); background: #fff; color: #05080C; font-family: inherit; font-size: calc(9.4 * var(--u)); font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .k-btn { display: inline-flex; align-items: center; justify-content: center; gap: calc(7 * var(--u)); width: auto; padding: 0 calc(13 * var(--u)); height: calc(30 * var(--u)); border: 0; border-radius: calc(5 * var(--u)); background: #fff; color: #05080C; font-family: inherit; font-size: calc(9.4 * var(--u)); font-weight: 600; cursor: pointer; white-space: nowrap; }
     .k-btn:hover { background: #ECEEF1; }
-    .k-btn svg { width: calc(10 * var(--u)); height: calc(10 * var(--u)); }
+    .k-btn svg { width: calc(10 * var(--u)); height: calc(10 * var(--u)); flex: none; }
+    /* 2026-11-11: el boton tenia el ancho fijo de "Reservar llamada" (126 u) y "Reserva tu auditoria
+       gratuita" se salia por los dos lados. Ahora mide lo que su texto. */
     .k-meta { display: flex; align-items: center; gap: calc(6 * var(--u)); font-size: calc(8.6 * var(--u)); color: rgba(255,255,255,.86); white-space: nowrap; }
     .k-meta svg { width: calc(12 * var(--u)); height: calc(12 * var(--u)); }
     /* El cristal oscuro del panel viene en la foto (borde medido en x524-733,
@@ -1031,8 +1034,11 @@
         <li class="i-card"><img src="/assets/home-i5.webp" alt="" loading="lazy" decoding="async"><div><b>CRM</b><span>Clientes, oportunidades <br>y ventas.</span></div></li>
         <li class="i-card"><img src="/assets/home-i6.webp" alt="" loading="lazy" decoding="async"><div><b>Ecommerce</b><span>Pedidos, postventa <br>y clientes.</span></div></li>
         <li class="i-card"><img src="/assets/home-i7.webp" alt="" loading="lazy" decoding="async"><div><b>Productividad</b><span>Documentación, <br>tareas y equipo.</span></div></li>
-        <li class="i-card"><img src="/assets/home-i8.webp" alt="" loading="lazy" decoding="async"><div><b>Y muchas más</b><span>Conectamos la pila de herramientas que utilizas en tu negocio. Y si te falta alguna, te damos las nuestras o la creamos desde cero.</span></div></li>
+        <li class="i-card"><img src="/assets/home-i8.webp" alt="" loading="lazy" decoding="async"><div><b>Y muchas más</b><span>Las que ya utilizas <br>en tu negocio.</span></div></li>
       </ul>
+      <!-- 2026-11-11 (Anais): esta frase iba dentro de la octava tarjeta y, al ser tan larga, estiraba
+           las ocho al doble de alto ("los cuadrados muy alargados"). Sale debajo, a lo ancho. -->
+      <p class="i-nota">Conectamos la pila de herramientas que utilizas en tu negocio. Y si te falta alguna, te damos las nuestras o la creamos desde cero.</p>
     </div>
   </section>
 

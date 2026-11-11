@@ -308,7 +308,7 @@ llamativos.
 Hasta esta fecha convivían la página buena de cada nicho y tres o cuatro
 versiones anteriores suyas, todas en la raíz y todas con nombre `prueba-*`.
 Ahora **cada nicho tiene una sola página viva, en su propia carpeta**, y todo lo
-demás está en `src/borradores/` con el sufijo `-version-antigua`.
+demás está en `borradores/` con el sufijo `-version-antigua`.
 
 | URL | Archivo | Qué es |
 |---|---|---|
@@ -349,7 +349,11 @@ Lo que sigue en la raíz y se queda ahí:
 
 ### Los borradores
 
-`src/borradores/` guarda **todas** las versiones anteriores, ninguna se borró.
+**Desde el 2026-10-21 viven en `borradores/` (raiz del repo), fuera de `src/`:** se guardan en
+GitHub pero ya no se publican (el Dockerfile solo copia `src/`). Antes se podian abrir desde
+internet, incluidos los retratos IA retirados.
+
+`borradores/` guarda **todas** las versiones anteriores, ninguna se borró.
 Todas llevan `noindex` y la carpeta está en `Disallow` del `robots.txt`, para que
 no compitan contra la página buena de su nicho. Sus rutas también se pasaron a
 absolutas, así que siguen abriéndose con sus imágenes y sus tipografías.
@@ -475,7 +479,7 @@ Dos cosas que no cambian:
 
 - **Los retratos de IA siguen prohibidos.** Los antiguos (`nosotros.png`,
   `nosotros.webp` y el `anais.webp` viejo) estan respaldados en
-  `src/borradores/retratos-ia/`. No volver a ponerlos con nombre y cargo.
+  `borradores/retratos-ia/`. No volver a ponerlos con nombre y cargo.
 - Se subieron a 900 px de ancho porque los huecos de equipo son **verticales**
   (288x392, 4:4,8) y con los 560 px de antes la foto se ampliaba y se veia blanda.
 
@@ -656,7 +660,7 @@ Cada iteracion sale con su sufijo y **no se reescribe la anterior**.
 Ojo, que hay dos juegos de landings y es facil trabajar sobre la equivocada:
 
 **Desde el 2026-10-02 esto ya no es un problema**: hay una sola página viva por
-nicho, en su carpeta, y todo lo anterior esta en `src/borradores/`. La tabla de
+nicho, en su carpeta, y todo lo anterior esta en `borradores/`. La tabla de
 equivalencias esta en "Paginas y URLs". Lo que sigue abajo describe como se
 construyo cada una y se conserva por las medidas y las decisiones.
 
@@ -1698,7 +1702,7 @@ ponerlos en el bloque de Equipo ni en ningún sitio donde se etiqueten con nombr
 y cargo. Decisión de Anaís el 2026-09-24: antes un hueco vacío que una cara
 inventada al lado de la foto real de Guillermo. **Desde el 2026-10-02 el hueco
 está cubierto con su foto real**, así que estos archivos ya no hacen falta para
-nada; están respaldados en `src/borradores/retratos-ia/`. En cuanto alguien les ve en
+nada; están respaldados en `borradores/retratos-ia/`. En cuanto alguien les ve en
 Instagram o en la llamada, no cuadra, y ahí se va la credibilidad del equipo,
 que es medio argumento de venta.
 
@@ -1893,3 +1897,44 @@ Míos, cuando lo pida:
 
 Todo en `docs/blog.md`: archivos, reglas del contenido, flujo de n8n y temas.
 Articulos con `noindex` hasta que Anais los aprueba.
+
+## Gama AURA publicada (2026-11-08)
+
+Peticion de Anais: lo que estaba en `/borradores-aura/` (con precios) pasa a ser la web viva: home, `/clinicas/`,
+inmobiliarias, concesionarios, ecommerce y coaching, indexables, mas `/aura-business/` y `/aura-setter/` con `noindex`.
+Las versiones anteriores, sin precios, estan en `BORRADORES ANTIGUOS SIN PRECIOS/` (raiz del repo, no se publica).
+`/clinicas/` es ahora la pagina unica de clinicas: `/clinicas/whatsapp/` y `/clinicas/llamadas/` redirigen ahi con UTM.
+Ofertas de pago, todas con `noindex`: `/reactivador-flash/`, `/agente-10-preguntas/`, `/agente-secretaria/`,
+cada una con su `/gracias/`. Sus botones `data-pago` esperan los enlaces de Stripe.
+
+## Cuadre de margenes y titulares (2026-11-11)
+
+Peticion de Anais: en las paginas de nicho ningun apartado puede arrancar en otro margen que el
+resto, y los titulares tienen que medir lo mismo. Medido con un script (posicion del primer texto y
+del h2 de cada seccion, a 1440 y 1920), no a ojo.
+
+- **La causa:** la calculadora (`.ic-calc`), "Un sistema conectado" (`.pzs`), captacion y precios
+  (`.pc`) son **bloques comunes pegados en cada pagina** con contenedor propio (1240 px) y titular
+  propio. Arrancaban 86 px mas adentro que el resto, y `.pzs` pegado al borde (78 px) y con el
+  titular creciendo hasta 63 px a 1920 porque iba en unidades de la foto.
+- **El arreglo** esta en un `<style id="er-cuadre">` al final de inmobiliarias, concesionarios,
+  ecommerce, coaching y clinicas. Solo escritorio (desde 1081 px); **el movil no se toco**. La
+  variable `--er-lado` lleva el margen de cada pagina (5,6vw y 80 px desde 1440; coaching 6,7vw y
+  96 px; inmobiliarias 6,54vw). **Un bloque comun nuevo tiene que usar ese contenedor** (1440 px +
+  `--er-lado`), no uno suyo.
+- `.pzs`: la escena se limita a 1580 px (lo que mide a 1440) con los bordes fundidos, y el texto
+  arranca en el margen de la pagina.
+- Titulares de seccion en escritorio: **47 px en todas** (46 en coaching), tambien a 1920, donde
+  unos subian a 52 y otros no.
+- Clinicas: la demo del chat (`.wz-caja`) tenia contenedor de 1080; ahora el de la pagina.
+- Coaching, "Donde se cae": columna de texto de 420 a 520 px (el titular partia dejando "habia"
+  suelto), velo mas cerrado a la izquierda y cursiva y parrafo mas claros, que no se leian.
+- Home: el boton final (`.k-btn`) tenia el ancho fijo de "Reservar llamada" y el texto nuevo se
+  salia; ahora mide lo que su texto. En integraciones, la frase larga de "Y muchas mas" estiraba
+  las ocho tarjetas: sale debajo de la rejilla (`.i-nota`) y la tarjeta lleva "Las que ya utilizas
+  en tu negocio."
+- Sin tocar: en clinicas "Asi funciona el sistema" va centrado a proposito, y el hero de
+  inmobiliarias arranca 8 px antes que sus secciones.
+- **Pendiente de respuesta de Anais:** recortar el detalle del CRM y de los canales en
+  `/aura-business/` y `/aura-setter/` (no quiere que se pueda copiar el proyecto; se explica en
+  llamada). Propuesta hecha, texto sin tocar.

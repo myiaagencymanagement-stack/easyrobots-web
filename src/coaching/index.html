@@ -2147,6 +2147,28 @@
     });
   })();
 </script>
+<!-- Cuadre de margenes (Anais, 2026-11-11): la calculadora, "Un sistema conectado", captacion y
+     precios son bloques comunes pegados en cada pagina y traian su propio contenedor (1240 px) y su
+     propio tamano de titular: arrancaban mas a la derecha (o pegados al borde, en el sistema) que
+     el resto de secciones. Ahora usan el contenedor de la pagina (1440 px y su mismo margen) y el
+     mismo tamano de titular. Solo escritorio; el movil no se toca. -->
+<style id="er-cuadre">
+  @media (min-width: 1081px) {
+    :root { --er-lado: max(22px, 6.7vw); }
+    .pc-caja, .ic-caja { max-width: 1440px !important; padding-left: var(--er-lado) !important; padding-right: var(--er-lado) !important; }
+    .pc h2, .ic-calc h2 { font-size: 46px !important; }
+    /* Coaching: los titulares iban a 44, 46 y 53 px segun la seccion. Todos a 46. */
+    section:not(#inicio) h2 { font-size: 46px !important; }
+    /* "Donde se cae": el titular partia en "habia" suelto porque la columna (420) era mas estrecha
+       que su linea, y el gris en cursiva y el parrafo no se leian sobre la foto. Columna mas ancha,
+       velo mas cerrado a la izquierda y texto mas claro. */
+    .d3 .caja { grid-template-columns: minmax(0, 520px) minmax(0, 1fr) !important; }
+    .d3 .velo { background: linear-gradient(90deg, rgba(4,6,10,.90) 0%, rgba(4,6,10,.82) 30%, rgba(4,6,10,.45) 46%, rgba(4,6,10,.12) 62%, rgba(4,6,10,0) 75%) !important; }
+    .d3 .t3 em { color: #C5CCD6 !important; }
+    .d3 .p3 { color: rgba(255,255,255,.92) !important; }
+  }
+  @media (min-width: 1440px) { :root { --er-lado: 96px; } }
+</style>
 </body>
 
 </html>
