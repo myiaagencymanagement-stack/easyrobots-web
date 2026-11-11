@@ -1935,6 +1935,8 @@ del h2 de cada seccion, a 1440 y 1920), no a ojo.
   en tu negocio."
 - Sin tocar: en clinicas "Asi funciona el sistema" va centrado a proposito, y el hero de
   inmobiliarias arranca 8 px antes que sus secciones.
-- **Pendiente de respuesta de Anais:** recortar el detalle del CRM y de los canales en
-  `/aura-business/` y `/aura-setter/` (no quiere que se pueda copiar el proyecto; se explica en
-  llamada). Propuesta hecha, texto sin tocar.
+- **CRM y canales en `/aura-business/` y `/aura-setter/`, sin detalle** (Anais, 2026-11-11): no quiere
+  que se pueda copiar el proyecto; las funciones se explican en llamada. El punto del CRM dice solo
+  "Todo en un solo panel. Te ensenamos su funcionamiento en la llamada." y el de canales (Business)
+  ya no enumera canales ni cuenta como reconoce al contacto. **No volver a detallar funciones del
+  CRM en ninguna pagina.**
