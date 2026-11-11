@@ -179,6 +179,11 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
   /* Con la calculadora delante en azul claro, esta seccion pasa a blanco para que no se junten dos iguales. */
   .consigue .item { background: var(--claro); }
 </style>
+<style>
+  /* 2026-11-11 (Anais): tres bonos en una fila y cada tarjeta a su alto, sin estirarse. */
+  .bonos { align-items: flex-start; }
+  .bono { flex: 1 1 300px; }
+</style>
 </head>
 <body>
 
@@ -242,13 +247,14 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <div class="item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><p>Una respuesta automática a quien muestra intención de compra: le avisa de que tú te pones en contacto con él.</p></div>
 <div class="item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><p>Respuestas eficaces y profesionales, con el tono que prefieras. Si no sabe algo, no se lo inventa: ofrece hablar con un profesional.</p></div>
 <div class="item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><p>Una plantilla de base de conocimiento para rellenar con tus datos.</p></div>
+<div class="item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><p>Guía de instalación y funcionamiento en tu dossier de bienvenida, nada más pagar, para ponerlo en marcha cuanto antes.</p></div>
 </div>
 </div>
 </section>
 
 <section class="sec oscura">
 <div class="in">
-<h2>Dos bonos incluidos</h2>
+<h2>Tres bonos incluidos</h2>
 <div class="bonos">
 <div class="bono">
 <div class="bono-cab"><span>BONO 1</span><span class="valor">Valor 97 €</span></div>
@@ -260,8 +266,12 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <h3>Auditoría de funcionamiento a los 30 días</h3>
 <p>Revisamos las conversaciones del mes y te entregamos un informe con las preguntas que el agente no supo contestar, cuántas personas querían comprar o reservar y las mejoras recomendadas.</p>
 </div>
+<div class="bono">
+<div class="bono-cab"><span>BONO 3</span><span class="valor">Valor 50 €</span></div>
+<h3>Segundo mes de mantenimiento gratis</h3>
 </div>
-<p class="bonos-total">Bonos por valor de 164 €, incluidos en los 189 €.</p>
+</div>
+<p class="bonos-total">Bonos por valor de 214 €, incluidos en los 189 €.</p>
 </div>
 </section>
 
@@ -288,12 +298,12 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <div class="in pago">
 <div class="ficha">
 <div class="cint">AGENTE 10 PREGUNTAS</div>
-<ul class="valores"><li><span>Agente funcional</span><span>297 €</span></li><li><span>Bono 1</span><span>97 €</span></li><li><span>Bono 2</span><span>67 €</span></li><li class="total"><span>Valor total</span><span>461 €</span></li></ul>
+<ul class="valores"><li><span>Agente funcional</span><span>297 €</span></li><li><span>Bono 1</span><span>97 €</span></li><li><span>Bono 2</span><span>67 €</span></li><li><span>Bono 3</span><span>50 €</span></li><li class="total"><span>Valor total</span><span>511 €</span></li></ul>
 <div class="hoy">Hoy</div>
 <div class="grande">189 €</div>
 <div class="det">Puesta en marcha, primer mes y bonos incluidos · Sin permanencia</div>
 <!-- La cuota se dice aqui, junto al precio, y no solo en las condiciones: si no, 189 € se lee como "para siempre". -->
-<p class="ancla">Desde el segundo mes, el agente sigue funcionando por 50 €/mes, con 1.000 mensajes al mes incluidos. Sin permanencia.</p>
+<p class="ancla">El segundo mes también es gratis. Desde el tercero, el agente sigue funcionando por 50 €/mes, con 1.000 mensajes al mes incluidos. Sin permanencia.</p>
 <!-- PAGO: sustituir el href por el enlace de pago real. data-pago marca los botones de compra. -->
 <a class="btn btn-pet btn-g" data-pago href="https://buy.stripe.com/00wdR86ke43cekx2TZ4Ja01">Quiero mi Agente 10 Preguntas · 189 €</a>
 <p class="seguro">Precio final, sin IVA · Pago seguro con tarjeta</p>
@@ -319,8 +329,8 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <ul>
 <li>Servicio para empresas y profesionales. Lo presta Ana Isabel González Hoog (EasyRobots AH-NICE), Hamburgo. Datos completos en el <a href="/impressum.html">aviso legal</a>.</li>
 <li>Precio: 189 € en un pago, que incluye la puesta en marcha, el primer mes de funcionamiento y los dos bonos. Es el precio final: no se añade IVA.</li>
-<li>Desde el segundo mes: 50 €/mes, con 1.000 mensajes del agente al mes incluidos (respuestas a tus clientes; no incluye campañas). Si se superan, el exceso se presupuesta aparte.</li>
-<li>Sin permanencia: Puedes darte de baja cuando quieras, avisándonos con 10 días de antelación. Al darte de baja, el agente deja de funcionar y guardamos tus datos 30 días por si quieres volver.</li>
+<li>Desde el tercer mes (el segundo es gratis por el bono 3): 50 €/mes, con 1.000 mensajes del agente al mes incluidos (respuestas a tus clientes; no incluye campañas). Si se superan, el exceso se presupuesta aparte.</li>
+<li>Sin permanencia: Puedes darte de baja cuando quieras: no se te cobra el mes siguiente y el servicio funciona hasta el final del mes ya pagado. Después guardamos tus datos 30 días por si quieres volver.</li>
 <li>Bonos: las 2 optimizaciones se usan dentro de los primeros 30 días desde que el agente empieza a contestar; la auditoría se entrega a los 30 días.</li>
 <li>Garantías: si no podemos dejar tu agente funcionando por motivos ajenos a ti, te devolvemos el 100 % de tu dinero. Si el agente contradice la información que nos diste, lo corregimos gratis. Escríbenos a <a href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a>.</li>
 <li>Las conversaciones de tus clientes: tú eres el responsable de esos datos. Nosotros los tratamos como encargados del tratamiento, solo para que el agente funcione, enviarte los avisos y preparar la auditoría.</li>

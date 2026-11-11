@@ -28,14 +28,21 @@ section.bloque{padding:52px 0}
 .hielo{background:var(--hielo)}
 .cintillo{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--teal);background:#fff;border:1px solid var(--borde);padding:6px 12px;border-radius:999px;margin-bottom:14px}
 h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.18;font-weight:800;color:var(--noche);margin-bottom:14px}
-h3{font-size:17.5px;font-weight:700;color:var(--noche);margin:22px 0 6px}
+h3{font-size:17.5px;font-weight:700;color:var(--noche);margin:24px 0 6px}
 p+p{margin-top:10px}
 ul,ol{padding-left:22px;margin:8px 0 0}
 li{margin-bottom:6px}
-.caja{background:#fff;border:1px solid var(--borde);border-radius:12px;padding:16px 18px;margin-top:16px}
 .datos{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:6px 16px;margin-top:6px}
 .datos b{color:var(--noche)}
-.pendiente{background:var(--ambar);color:var(--ambar2);font-weight:700;padding:1px 7px;border-radius:6px}
+.producto{background:#fff;border:1px solid var(--borde);border-radius:12px;padding:18px 20px;margin-top:16px}
+.producto h3{margin-top:0}
+.tabla{width:100%;overflow-x:auto;margin-top:12px;background:#fff;border:1px solid var(--borde);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--borde);vertical-align:top}
+th{background:var(--noche);color:#fff;font-weight:600}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;color:var(--noche)}
+.nota{font-size:15px;color:var(--suave);margin-top:10px}
 footer{background:var(--noche);color:var(--claro);padding:24px 0;text-align:center;font-size:14.5px}
 footer a{color:var(--cian)}
 @media (max-width:640px){body{font-size:16px}section.bloque{padding:40px 0}.marca{display:none}.indice{margin-left:-6px}.datos{grid-template-columns:1fr;gap:2px}.datos b{margin-top:8px}}
@@ -47,14 +54,14 @@ footer a{color:var(--cian)}
 <nav class="barra" aria-label="Secciones"><div class="envoltura">
 <div class="marca">EasyRobots</div>
 <div class="indice">
-<a href="#quien">Quién vende</a><a href="#comunes">Condiciones comunes</a><a href="#reactivador">Reactivador Flash</a><a href="#agente">Agente 10 Preguntas</a><a href="#secretaria">Agente Secretaria</a><a href="#encargo">Contrato de encargo</a>
+<a href="#quien">Quién vende</a><a href="#comunes">Condiciones comunes</a><a href="#entrada">Productos de entrada</a><a href="#implantaciones">Implantaciones</a><a href="#mantenimiento">Mantenimiento</a><a href="#encargo">Contrato de encargo</a>
 </div></div></nav>
 
 <header class="portada"><div class="envoltura">
 <div class="pre">CONDICIONES DE CONTRATACIÓN</div>
-<h1>Condiciones de nuestros productos y contrato de encargo del tratamiento</h1>
-<p>Se aplican a Reactivador Flash, Agente 10 Preguntas y Agente Secretaria. Al pagar, marcas la casilla y aceptas estas condiciones y el contrato de encargo de la sección 6.</p>
-<p class="version">Versión 1 · 10 de noviembre de 2026</p>
+<h1>Condiciones de nuestros productos y servicios, y contrato de encargo del tratamiento</h1>
+<p>Se aplican a todo lo que vende EasyRobots: los productos de entrada, las implantaciones a medida y los planes de mantenimiento. Al pagar o al aceptar tu propuesta, aceptas estas condiciones y el contrato de encargo de la sección 6.</p>
+<p class="version">Versión 2 · noviembre de 2026</p>
 </div></header>
 
 <section class="bloque" id="quien"><div class="envoltura">
@@ -70,44 +77,64 @@ footer a{color:var(--cian)}
 
 <section class="bloque hielo" id="comunes"><div class="envoltura">
 <div class="cintillo">2 · CONDICIONES COMUNES</div>
-<h2>Lo que vale para los tres productos</h2>
+<h2>Lo que vale para todo</h2>
 
 <h3>Para quién</h3>
-<p>Estos productos se venden solo a empresas y profesionales que los compran para su negocio, no a consumidores.</p>
+<p>Vendemos solo a empresas y profesionales que contratan para su negocio, no a consumidores.</p>
+
+<h3>Qué se contrata</h3>
+<p>Lo que describe la página del producto o, en los servicios a medida, la propuesta que aceptas. Si la propuesta y estas condiciones no coinciden, manda la propuesta.</p>
 
 <h3>Precio y pago</h3>
-<p>El precio es el indicado en la página de cada producto y se paga por adelantado. No se aplica IVA por el régimen de pequeña empresa (§ 19 UStG).</p>
+<ul>
+<li><b>Productos de entrada:</b> pago único por adelantado.</li>
+<li><b>Implantaciones a medida:</b> el montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega.</li>
+<li><b>Mantenimiento:</b> cuota mensual desde el segundo mes, que se cobra automáticamente cada mes en la misma fecha.</li>
+<li>Son precios finales: no se aplica IVA por el régimen de pequeña empresa (§ 19 UStG).</li>
+<li>Las promociones vigentes se indican en la página de cada producto o en tu propuesta.</li>
+</ul>
 
 <h3>Plazos</h3>
-<p>Los plazos de entrega empiezan cuando tenemos lo que cada producto necesita de ti. Si algo se retrasa por tu parte, el plazo se pausa hasta que lo completes.</p>
+<p>Los plazos empiezan cuando tenemos lo que cada servicio necesita de ti. Si algo se retrasa por tu parte, el plazo se pausa hasta que lo completes.</p>
 
 <h3>Contrato de encargo</h3>
 <p>Para trabajar con los datos de tus clientes necesitamos que aceptes el contrato de encargo de la sección 6. Sin esa aceptación no tratamos ningún dato ni corren los plazos, y no se devuelve el importe por ese motivo.</p>
 
-<h3>Cuotas mensuales</h3>
-<p>El Agente 10 Preguntas y Agente Secretaria llevan una cuota mensual desde el segundo mes. No hay permanencia: puedes cancelarla cuando quieras avisándonos con 10 días de antelación. Al cancelar, el servicio deja de funcionar y conservamos tus datos 30 días por si quieres reactivarlo; después los borramos. Si cambiamos la cuota o lo que incluye, te avisamos con 30 días y puedes cancelar.</p>
+<h3>Cuotas mensuales: sin permanencia</h3>
+<p>Puedes darte de baja cuando quieras desde tu portal de cliente o escribiéndonos. No se te cobra el mes siguiente y el servicio funciona hasta el final del mes ya pagado. Después guardamos tus datos 30 días por si quieres volver, y luego los borramos. Si cambiamos la cuota o lo que incluye, te avisamos con 30 días y puedes darte de baja.</p>
+
+<h3>Garantías</h3>
+<ul>
+<li><b>Implantaciones a medida:</b> 14 días desde la instalación. Si no hace lo que hemos definido, te devolvemos el dinero.</li>
+<li><b>Productos de entrada y AURA Business:</b> tienen su propia garantía, en la sección 3 y la 4.</li>
+<li>Para reclamar una garantía, escríbenos a info@easyrobots-ai.cloud.</li>
+</ul>
 
 <h3>Lo que no garantizamos</h3>
-<p>Nos comprometemos a que el sistema funcione como se configuró y a lo que dice cada producto. No garantizamos un número de ventas, reservas o respuestas, ni respondemos de caídas o bloqueos de WhatsApp, Meta u otros proveedores ajenos a nosotros.</p>
+<p>Nos comprometemos a que el sistema funcione como se definió. No garantizamos un número de ventas, reservas o respuestas, ni respondemos de caídas o bloqueos de WhatsApp, Meta u otros proveedores ajenos a nosotros.</p>
 
 <h3>Uso correcto</h3>
-<p>No se puede usar ningún producto para enviar spam ni para escribir a quien no ha dado permiso, y hay que respetar las normas de WhatsApp. Tú eres responsable de tener el consentimiento de tus contactos.</p>
+<p>No se puede usar ningún servicio para enviar spam ni para escribir a quien no ha dado permiso, y hay que respetar las normas de WhatsApp y de Meta. Tú eres responsable de tener el consentimiento de tus contactos.</p>
 
 <h3>Responsabilidad</h3>
 <p>Nuestra responsabilidad se limita a lo que nos hayas pagado en los últimos 12 meses, salvo dolo o culpa grave.</p>
 
 <h3>Propiedad</h3>
-<p>Los datos de tus clientes son tuyos. El software, los flujos y los textos de EasyRobots son nuestros.</p>
+<p>Los datos de tus clientes son tuyos. El software, los flujos y los textos de EasyRobots son nuestros y no se entregan al darte de baja.</p>
 
 <h3>Ley y tribunales</h3>
 <p>Se aplica la ley alemana. Para cualquier conflicto son competentes los tribunales de Hamburgo.</p>
 </div></section>
 
-<section class="bloque" id="reactivador"><div class="envoltura">
-<div class="cintillo">3 · REACTIVADOR FLASH</div>
-<h2>Reactivador Flash · 157 €</h2>
+<section class="bloque" id="entrada"><div class="envoltura">
+<div class="cintillo">3 · PRODUCTOS DE ENTRADA</div>
+<h2>Productos de entrada</h2>
+<p>Se compran directamente en su página, sin propuesta.</p>
+
+<div class="producto" id="reactivador">
+<h3>Reactivador Flash · 157 €</h3>
 <ul>
-<li><b>Qué incluye:</b> una campaña de WhatsApp a 400 contactos, el saldo de envío para esos contactos, los informes de resultados y de grupos, la lista de recuperados y dos bonos. Cada 200 contactos más suman 10 €.</li>
+<li><b>Qué incluye:</b> una campaña de WhatsApp a 400 contactos, el saldo de envío para esos contactos, los informes de resultados y de grupos, la lista de recuperados y los bonos. Cada 200 contactos más suman 10 €.</li>
 <li><b>Plazo:</b> lanzamos en un máximo de 72 horas laborables desde que tu número queda conectado.</li>
 <li><b>Tu parte:</b> enviarnos tus fuentes de contactos y el formulario de tu promoción, revisar y aprobar la lista unificada y conectar tu número.</li>
 <li><b>Consentimiento:</b> al aprobar la lista confirmas por escrito que tus contactos aceptaron recibir promociones de tu negocio. Sin esa confirmación no se lanza la campaña. Cada mensaje permite darse de baja respondiendo BAJA.</li>
@@ -115,53 +142,121 @@ footer a{color:var(--cian)}
 <li><b>Garantía:</b> si por cualquier motivo ajeno a ti no podemos lanzar tu campaña, te devolvemos los 157 € íntegros.</li>
 <li>Pago único, sin cuota mensual.</li>
 </ul>
-</div></section>
+</div>
 
-<section class="bloque hielo" id="agente"><div class="envoltura">
-<div class="cintillo">4 · AGENTE 10 PREGUNTAS</div>
-<h2>Agente 10 Preguntas · 189 € + 50 €/mes</h2>
+<div class="producto" id="agente">
+<h3>Agente 10 Preguntas · 189 € + 50 €/mes</h3>
 <ul>
-<li><b>Qué incluye:</b> un agente que responde en tu WhatsApp con la información de tu negocio, avisos por Telegram, dos optimizaciones gratis en los primeros 30 días (entregadas en 48 horas) y una auditoría a los 30 días.</li>
+<li><b>Qué incluye:</b> un agente que responde en tu WhatsApp con la información de tu negocio, avisos por Telegram, dos optimizaciones gratis en los primeros 30 días (entregadas en 48 horas) y una auditoría a los 30 días. El primer mes está incluido.</li>
 <li><b>Tu parte:</b> enviarnos la información de tu negocio, probar el agente y conectar tu número.</li>
 <li><b>Garantía de puesta en marcha:</b> si no podemos dejar tu agente funcionando por motivos ajenos a ti, te devolvemos el 100 % de los 189 €.</li>
 <li><b>Garantía anti-errores:</b> si el agente contradice la información que nos diste, lo corregimos gratis y no cuenta como optimización. Si el error viene de un dato que faltaba o estaba mal, sí cuenta.</li>
 <li><b>Cuota:</b> 50 € al mes desde el segundo mes, que se cobra aparte del pago inicial. Incluye el funcionamiento del agente, 1.000 mensajes enviados por el agente al mes (respuestas a tus clientes; no incluye campañas), revisiones, un informe mensual por correo y hasta dos ajustes puntuales al mes. Si se superan los 1.000 mensajes, el exceso se presupuesta aparte. Las funciones nuevas se presupuestan aparte.</li>
 <li><b>Transparencia:</b> el agente se presenta como asistente automático. Debes informar a tus clientes de que les atiende un asistente de inteligencia artificial.</li>
 </ul>
-</div></section>
+</div>
 
-<section class="bloque" id="secretaria"><div class="envoltura">
-<div class="cintillo">5 · PRESUPUESTOS Y PAPELES</div>
-<h2>Agente Secretaria · 199 € + 47 €/mes</h2>
+<div class="producto" id="secretaria">
+<h3>Agente Secretaria · 199 € + 47 €/mes</h3>
 <ul>
-<li><b>Qué incluye:</b> un bot de Telegram para crear presupuestos con tu catálogo, una dirección de correo propia para tus tickets y facturas, un CRM reducido con tu usuario, un paquete mensual o trimestral para tu gestoría y una lista semanal de pendientes. Catálogo de hasta 50 productos e importación única de hasta 300 clientes.</li>
+<li><b>Qué incluye:</b> un bot de Telegram para crear presupuestos con tu catálogo, una dirección de correo propia para tus tickets y facturas, un CRM reducido con tu usuario, un paquete mensual o trimestral para tu gestoría y una lista semanal de pendientes. Catálogo de hasta 50 productos e importación única de hasta 300 clientes. El primer mes está incluido.</li>
 <li><b>No incluye:</b> emitir facturas, llevar tu contabilidad, presentar impuestos ni enviar nada a tus clientes o a tu gestoría por ti. Tu gestoría recibe de ti el paquete preparado para emitir la factura.</li>
 <li><b>Plazo:</b> 72 horas desde que recibimos tu catálogo y tu lista de clientes.</li>
 <li><b>Tu parte:</b> asistir a la sesión de diagnóstico, enviarnos tus datos en las 24 horas siguientes, responder a nuestras dudas en 24 horas laborables, probar el bot en 48 horas y enviar documentos legibles.</li>
 <li><b>Garantía:</b> si en 72 horas no hemos dejado tu bot y tu CRM funcionando por cualquier motivo ajeno a ti, te devolvemos los 199 €. No cubre los retrasos por no cumplir tu parte.</li>
-<li><b>Cuota:</b> el primer mes es gratis. Desde el segundo, 47 € al mes. Cubre la aplicación, las revisiones, las actualizaciones, el consumo de IA y hasta dos ajustes puntuales al mes, con hasta 300 presupuestos y documentos al mes. Si se superan dos meses seguidos, te escribimos para ajustar la cuota al uso real.</li>
+<li><b>Cuota:</b> desde el segundo mes, 47 € al mes. Cubre la aplicación, las revisiones, las actualizaciones, el consumo de IA y hasta dos ajustes puntuales al mes, con hasta 300 presupuestos y documentos al mes. Si se superan dos meses seguidos, te escribimos para ajustar la cuota al uso real.</li>
 </ul>
+</div>
+</div></section>
+
+<section class="bloque hielo" id="implantaciones"><div class="envoltura">
+<div class="cintillo">4 · IMPLANTACIONES A MEDIDA</div>
+<h2>Agentes y sistemas a medida</h2>
+<p>Agente web con web profesional, e-commerce, agentes simples de WhatsApp y de voz, AURA Setter, AURA Business y los extras que se añaden a ellos. El precio, lo que se monta, el plazo de entrega y el plan de mantenimiento son los de la página del producto o los de tu propuesta.</p>
+
+<h3>Cómo funciona</h3>
+<ul>
+<li>Antes de montar nada estudiamos tu negocio y te mandamos la propuesta.</li>
+<li>El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega.</li>
+<li>El mantenimiento empieza el segundo mes, con el plan que elijas de la sección 5.</li>
+<li>Garantía de 14 días desde la instalación: si no hace lo que hemos definido, te devolvemos el dinero.</li>
+<li>Los costes de terceros que dependen de tu uso (por ejemplo, las llamadas del agente de voz o los mensajes por encima de tu plan) se cobran aparte según el uso real, como indica cada plan.</li>
+</ul>
+
+<div class="producto" id="aura-business">
+<h3>AURA Business · gestión de anuncios</h3>
+<ul>
+<li><b>Gestión de campañas:</b> 15 % de tu inversión publicitaria, con un mínimo de 200 € al mes; 10 % a partir de 2.000 € de presupuesto. Tú creas los anuncios con nuestras recomendaciones y nosotros gestionamos las campañas.</li>
+<li><b>Inversión en anuncios:</b> la pagas tú directamente a Meta. No la cobramos nosotros.</li>
+<li><b>Mantenimiento:</b> los mismos planes que AURA Setter.</li>
+<li><b>Garantía:</b> si en 14 días desde que arrancan los anuncios no has conseguido leads, no cobramos la gestión. Cuenta como lead cualquier persona que te contacte, aunque no compre. La inversión en anuncios no entra en esta garantía. La fecha de arranque queda fijada en tu propuesta.</li>
+</ul>
+</div>
+</div></section>
+
+<section class="bloque" id="mantenimiento"><div class="envoltura">
+<div class="cintillo">5 · PLANES DE MANTENIMIENTO</div>
+<h2>Planes de mantenimiento</h2>
+<p>Empiezan el segundo mes y no tienen permanencia. El precio de cada plan es el de la página del producto o el de tu propuesta. En todos, las funciones nuevas o los cambios de flujo se presupuestan aparte.</p>
+
+<h3>Agente web y e-commerce</h3>
+<div class="tabla"><table>
+<tr><th>Incluye</th><th>Básico</th><th>Pro</th><th>Premium</th></tr>
+<tr><td>Ajustes al mes</td><td>Hasta 1 h</td><td>Hasta 3 h</td><td>Hasta 5 h</td></tr>
+<tr><td>Revisión de conversaciones</td><td>Mensual</td><td>Quincenal y optimización de flujos</td><td>Quincenal y reunión mensual</td></tr>
+<tr><td>Informe</td><td>Mensual básico</td><td>Mensual detallado</td><td>Mensual detallado</td></tr>
+<tr><td>Soporte (laborables)</td><td>48-72 h</td><td>24-48 h</td><td>24 h</td></tr>
+<tr><td>Herramientas y IA</td><td>Incluidas</td><td>Incluidas</td><td>Incluidas</td></tr>
+<tr><td>Mensajes al mes</td><td>Hasta 1.000</td><td>Hasta 1.500</td><td>Hasta 2.500</td></tr>
+</table></div>
+<p class="nota">El exceso de mensajes se cobra aparte según el uso real. Si al e-commerce se le añade el agente de WhatsApp, el mantenimiento pasa a un único plan de AURA Setter que cubre todo el sistema.</p>
+
+<h3>AURA Setter y AURA Business</h3>
+<div class="tabla"><table>
+<tr><th>Incluye</th><th>Básico</th><th>Pro</th><th>Premium</th></tr>
+<tr><td>Ajustes al mes</td><td>Hasta 1 h</td><td>Hasta 3 h</td><td>Hasta 5 h</td></tr>
+<tr><td>Revisión de conversaciones</td><td>Mensual</td><td>Quincenal y optimización de flujos</td><td>Quincenal y reunión mensual</td></tr>
+<tr><td>Informe</td><td>Mensual básico</td><td>Mensual detallado</td><td>Mensual detallado</td></tr>
+<tr><td>Soporte (laborables)</td><td>48-72 h</td><td>24-48 h</td><td>24 h</td></tr>
+<tr><td>Herramientas y IA</td><td>Incluidas</td><td>Incluidas</td><td>Incluidas</td></tr>
+<tr><td>Mensajes al mes (promociones, recordatorios…)</td><td>Hasta 1.000</td><td>Hasta 1.500</td><td>Hasta 2.500</td></tr>
+<tr><td>Minutos de agente de voz al mes</td><td>Aparte, según uso</td><td>100 incluidos</td><td>300 incluidos</td></tr>
+</table></div>
+<p class="nota">El exceso de mensajes y de minutos se cobra aparte según el uso real.</p>
+
+<h3>Agentes simples de WhatsApp y de voz</h3>
+<div class="tabla"><table>
+<tr><th>Incluye</th><th>Simple</th><th>Premium</th></tr>
+<tr><td>Supervisión y corrección de errores</td><td>Incluida</td><td>Incluida</td></tr>
+<tr><td>Ajustes al mes</td><td>Correcciones puntuales</td><td>Hasta 3 h</td></tr>
+<tr><td>Informe</td><td>Mensual básico</td><td>Mensual detallado</td></tr>
+<tr><td>Soporte (laborables)</td><td>72 h</td><td>24-48 h</td></tr>
+<tr><td>Herramientas y IA</td><td>Incluidas</td><td>Incluidas</td></tr>
+<tr><td>CRM</td><td>Opcional, aparte</td><td>Incluido</td></tr>
+<tr><td>Mensajes y llamadas al mes</td><td>Aparte, según uso</td><td>Hasta 1.000 mensajes o 300 minutos, según el agente</td></tr>
+</table></div>
 </div></section>
 
 <section class="bloque hielo" id="encargo"><div class="envoltura">
 <div class="cintillo">6 · CONTRATO DE ENCARGO</div>
 <h2>Contrato de encargo del tratamiento (art. 28 RGPD)</h2>
-<p><b>Partes.</b> Tú, como cliente identificado con los datos de tu compra, eres el responsable del tratamiento. Ana Isabel González Hoog (EasyRobots AH-NICE), con los datos de la sección 1, es el encargado del tratamiento.</p>
+<p><b>Partes.</b> Tú, como cliente identificado con los datos de tu compra o de tu propuesta, eres el responsable del tratamiento. Ana Isabel González Hoog (EasyRobots AH-NICE), con los datos de la sección 1, es el encargado del tratamiento.</p>
 
 <h3>1. Objeto y duración</h3>
-<p>El encargado trata datos personales por cuenta del responsable solo para prestar el producto contratado. El contrato dura lo mismo que el servicio y, después, el tiempo necesario para devolver o borrar los datos.</p>
+<p>El encargado trata datos personales por cuenta del responsable solo para prestar el servicio contratado. El contrato dura lo mismo que el servicio y, después, el tiempo necesario para devolver o borrar los datos.</p>
 
 <h3>2. Qué datos y de quién</h3>
 <ul>
-<li><b>Reactivador Flash:</b> clientes y contactos del responsable. Nombre, teléfono, historial de compras o visitas, importes aproximados y respuestas a la campaña.</li>
-<li><b>Agente 10 Preguntas:</b> personas que escriben al responsable por WhatsApp. Nombre de perfil, teléfono y contenido de las conversaciones.</li>
-<li><b>Agente Secretaria:</b> clientes del responsable (datos de contacto y de los presupuestos) y proveedores (datos de tickets y facturas, como nombre, NIF e importes).</li>
+<li><b>Agentes y conversaciones</b> (agentes de WhatsApp, web y voz, AURA Setter, AURA Business, Agente 10 Preguntas): personas que escriben o llaman al responsable. Nombre, teléfono, correo, contenido de las conversaciones y de las llamadas, citas y datos de seguimiento.</li>
+<li><b>CRM y campañas</b> (incluido Reactivador Flash): clientes y contactos del responsable. Datos de contacto, historial de compras o visitas, importes, etiquetas y respuestas a las campañas.</li>
+<li><b>Presupuestos y documentos</b> (Agente Secretaria): clientes del responsable (datos de contacto y de los presupuestos) y proveedores (datos de tickets y facturas, como nombre, NIF e importes).</li>
+<li><b>Captación</b> (AURA Business): datos de las personas que dejan sus datos a través de los anuncios y formularios del responsable.</li>
 </ul>
-<p>Los productos no están pensados para datos de salud ni otras categorías especiales. Si tu negocio los trata, avísanos antes de empezar.</p>
+<p><b>Datos de salud.</b> En negocios de salud o estética, las conversaciones y las citas pueden incluir datos de salud (art. 9 RGPD). En ese caso, el responsable debe contar con la base legal que exige el art. 9 y aplicamos las medidas del punto 6 con acceso restringido a lo imprescindible. Si tu negocio trata datos de salud, avísanos antes de empezar.</p>
 
 <h3>3. Obligaciones del encargado</h3>
 <ol>
-<li>Tratar los datos solo siguiendo las instrucciones documentadas del responsable. Estas condiciones y la configuración del producto son esas instrucciones.</li>
+<li>Tratar los datos solo siguiendo las instrucciones documentadas del responsable. Estas condiciones, la propuesta y la configuración del servicio son esas instrucciones.</li>
 <li>Garantizar la confidencialidad de todas las personas que accedan a los datos.</li>
 <li>Aplicar las medidas de seguridad del punto 6.</li>
 <li>Recurrir a otros encargados solo en las condiciones del punto 5.</li>
@@ -172,16 +267,16 @@ footer a{color:var(--cian)}
 </ol>
 
 <h3>4. Obligaciones del responsable</h3>
-<p>Tener base legal para los datos que nos entrega, informar a las personas afectadas y no pedirnos tratamientos ilícitos.</p>
+<p>Tener base legal para los datos que nos entrega, informar a las personas afectadas (también de que les atiende un asistente de inteligencia artificial) y no pedirnos tratamientos ilícitos.</p>
 
 <h3>5. Subencargados</h3>
-<p>Autorizas al encargado a usar proveedores de estas categorías: alojamiento y bases de datos en la Unión Europea, servidores de automatización en la Unión Europea, mensajería de WhatsApp (Meta y su proveedor oficial), Telegram para avisos y bots, servicios de inteligencia artificial para redactar respuestas y leer documentos, y envío de correo. Cuando un proveedor trata datos fuera del Espacio Económico Europeo, lo hace con una decisión de adecuación o con cláusulas contractuales tipo. La lista detallada está disponible si la pides en info@easyrobots-ai.cloud. Cualquier cambio de proveedor se avisa con 30 días para que puedas oponerte.</p>
+<p>Autorizas al encargado a usar proveedores de estas categorías: alojamiento y bases de datos en la Unión Europea, servidores de automatización en la Unión Europea, mensajería de WhatsApp (Meta y su proveedor oficial), telefonía y agentes de voz, Telegram para avisos y bots, servicios de inteligencia artificial para redactar respuestas, transcribir y leer documentos, calendarios y reservas, formularios, y envío de correo. Cuando un proveedor trata datos fuera del Espacio Económico Europeo, lo hace con una decisión de adecuación o con cláusulas contractuales tipo. La lista detallada está disponible si la pides en info@easyrobots-ai.cloud. Cualquier cambio de proveedor se avisa con 30 días para que puedas oponerte.</p>
 
 <h3>6. Medidas de seguridad</h3>
 <ul>
 <li>Datos principales alojados en la Unión Europea.</li>
 <li>Cada cliente solo accede a sus propios datos.</li>
-<li>Acceso con usuario y contraseña, y registro de cambios.</li>
+<li>Acceso con usuario y contraseña, verificación en dos pasos para las cuentas de administración y registro de cambios.</li>
 <li>Comunicaciones cifradas y claves de acceso cifradas.</li>
 <li>Copia de seguridad diaria.</li>
 </ul>
