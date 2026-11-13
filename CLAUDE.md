@@ -1831,8 +1831,8 @@ sin explicar levanta sospecha; con la multiplicación delante, levanta confianza
 
 ## Asistente de dudas en todas las paginas (2026-11-13)
 
-Icono flotante abajo a la derecha, en todas las paginas vivas (26 archivos: home, verticales, AURA, productos de
-entrada, condiciones, blog y guias). Es `src/js/dudas.js`, cargado con `<script src="/js/dudas.js" defer>`
+Icono flotante abajo a la derecha, (13/11, Anais: solo en 11 paginas: home, los 5 nichos, AURA Business y Setter y los 3 productos de
+entrada; NO en guias, blog ni condiciones). Es `src/js/dudas.js`, cargado con `<script src="/js/dudas.js" defer>`
 antes de `</body>`. Pagina nueva = anadir esa linea.
 
 - **Que es:** un chat que contesta SOLO dudas sobre lo que hay en la web (que incluye cada producto, precios,

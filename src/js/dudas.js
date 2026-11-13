@@ -180,7 +180,7 @@
     var reloj = setTimeout(function () { if (ctrl) ctrl.abort(); }, ESPERA_MAX_MS);
     fetch(WEBHOOK, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sitio: SITIO, sesion: sesion, texto: textoAgente, personalidad: PERSONALIDAD }),
+      body: JSON.stringify({ sitio: SITIO, sesion: sesion, texto: textoAgente, personalidad: PERSONALIDAD, nombre: 'Visitante web · ' + NOMBRE }),
       signal: ctrl ? ctrl.signal : undefined
     })
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
