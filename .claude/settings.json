@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(:)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "mcp__meta-ads__ads_get_ad_accounts",
+      "mcp__meta-ads__ads_get_field_context",
+      "mcp__meta-ads__ads_get_ad_entities",
+      "mcp__meta-ads__ads_get_datasets",
+      "mcp__meta-ads__ads_get_creatives",
+      "mcp__meta-ads__ads_get_dataset_stats",
+      "Bash(echo \"- [Legal fuera del copy de venta]\\(legal-fuera-del-copy-de-venta.md\\) — consentimiento y API oficial van en Condiciones de compra, no en la seccion de venta; no reabrirlo\" >> \"/c/Users/HP/.claude/projects/c--Users-HP-Desktop-AAA-MKT-HACKERS-PROYECTOS-2026-Pagina-EasyRobots-WEB/memory/MEMORY.md\"; tail -2 \"/c/Users/HP/.claude/projects/c--Users-HP-Desktop-AAA-MKT-HACKERS-PROYECTOS-2026-Pagina-EasyRobots-WEB/memory/MEMORY.md\" | cut -c1-90)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\HP\\.claude",
+      "C:\\Users\\HP\\.claude\\projects\\c--Users-HP-Desktop-AAA-MKT-HACKERS-PROYECTOS-2026-Pagina-EasyRobots-WEB\\memory"
+    ]
+  }
+}

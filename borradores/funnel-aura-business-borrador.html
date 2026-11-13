@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es" data-nicho="aura-business">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <title>AURA Business: tu embudo de ventas automatizado · EasyRobots</title>
+  <meta name="description" content="Captación, seguimiento y ventas conectados en un solo sistema. Primeros leads en 14 días o no cobramos la gestión.">
+  <!-- Funnel VSL (nivel 3). Borrador: al publicarlo sigue con noindex, va con
+       trafico de pago y no debe competir en Google contra home y landings. -->
+  <meta name="robots" content="noindex, nofollow">
+  <script src="/js/consent.js"></script>
+  <style>
+    @font-face{font-family:'Plus Jakarta Sans';font-weight:400;font-display:swap;src:url(/assets/fonts/plus-jakarta-sans-400-latin.woff2) format('woff2')}
+    @font-face{font-family:'Plus Jakarta Sans';font-weight:500;font-display:swap;src:url(/assets/fonts/plus-jakarta-sans-500-latin.woff2) format('woff2')}
+    @font-face{font-family:'Plus Jakarta Sans';font-weight:600;font-display:swap;src:url(/assets/fonts/plus-jakarta-sans-600-latin.woff2) format('woff2')}
+    @font-face{font-family:'Plus Jakarta Sans';font-weight:700;font-display:swap;src:url(/assets/fonts/plus-jakarta-sans-700-latin.woff2) format('woff2')}
+    @font-face{font-family:'Plus Jakarta Sans';font-weight:800;font-display:swap;src:url(/assets/fonts/plus-jakarta-sans-800-latin.woff2) format('woff2')}
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:300 700;font-display:swap;src:url(/assets/fonts/fraunces-latin-wght-normal.woff2) format('woff2')}
+    @font-face{font-family:'Fraunces';font-style:italic;font-weight:300 700;font-display:swap;src:url(/assets/fonts/fraunces-latin-wght-italic.woff2) format('woff2')}
+    :root { --bg:#0A0F18; --surface:#121A27; --line:rgba(255,255,255,.09); --ink:#F2F5F9; --body:#A3ADBB; --mute:#8B95A3; --azul:#1E6FF2; --azul2:#5B9BFF; --light:#F5F7FA; --light-ink:#0D1422; --light-body:#4A5361; --light-line:#DCE2EA; --maxw:1120px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--body); font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif; font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+    img { max-width:100%; display:block; }
+    a { color:inherit; }
+    .wrap { max-width:var(--maxw); margin:0 auto; padding:0 22px; }
+    h1,h2 { font-family:'Fraunces',Georgia,serif; font-weight:500; letter-spacing:-.015em; color:var(--ink); margin:0; line-height:1.1; }
+    h3 { font-family:'Fraunces',Georgia,serif; font-weight:560; letter-spacing:-.01em; color:var(--ink); margin:0; line-height:1.25; font-size:1.2rem; }
+    h1 { font-size:clamp(2.3rem,5vw,3.9rem); }
+    h2 { font-size:clamp(1.75rem,3.4vw,2.7rem); }
+    h1 em,h2 em { font-style:italic; }
+    p { margin:0; }
+    .kick { font-size:.75rem; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:var(--azul2); margin:0 0 1rem; }
+    .sec { padding:5.2rem 0; border-top:1px solid var(--line); }
+    .ent { margin-top:1.1rem; max-width:62ch; font-size:1.06rem; }
+    .xs { font-size:.82rem; color:var(--mute); }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; background:#fff; color:#0B1220; text-decoration:none; font:600 1rem 'Plus Jakarta Sans',system-ui,sans-serif; padding:1rem 1.8rem; border-radius:12px; border:1px solid rgba(11,18,32,.1); cursor:pointer; transition:transform .18s,background .18s; }
+    .btn:hover { background:#EEF2F7; transform:translateY(-1px); }
+    .nav { position:sticky; top:0; z-index:40; background:rgba(10,15,24,.88); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+    .nav .wrap { display:flex; align-items:center; justify-content:space-between; height:66px; }
+    .marca { font-size:19px; font-weight:500; letter-spacing:.32em; color:#fff; text-decoration:none; }
+    .nav .btn { padding:.62rem 1.1rem; font-size:.88rem; }
+    .hero { padding:4.2rem 0 4.6rem; text-align:center; }
+    .hero h1 { max-width:19ch; margin:0 auto; }
+    .hero .ent { margin:1.3rem auto 0; }
+    .player { position:relative; margin:2.5rem auto 0; max-width:820px; aspect-ratio:16/9; border-radius:16px; overflow:hidden; border:1px solid rgba(91,155,255,.3); background:#05080F; box-shadow:0 0 70px rgba(30,111,242,.12); }
+    .player img { width:100%; height:100%; object-fit:cover; object-position:50% 22%; opacity:.42; }
+    .play { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:76px; height:76px; border-radius:50%; background:#fff; display:grid; place-items:center; }
+    .play svg { width:26px; height:26px; fill:#0B1220; margin-left:3px; }
+    .vid-nota { position:absolute; left:0; right:0; bottom:16px; text-align:center; font-size:.85rem; color:#fff; }
+    .chips { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin:1.8rem auto 0; max-width:880px; }
+    .chip { font-size:.84rem; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:.45rem .95rem; }
+    .chip b { color:var(--azul2); font-weight:700; margin-right:.35rem; }
+    .cta { margin-top:2.2rem; display:flex; flex-direction:column; align-items:center; gap:.8rem; }
+    .g3,.g4 { display:grid; gap:14px; margin-top:2.6rem; }
+    .g3 { grid-template-columns:repeat(3,1fr); } .g4 { grid-template-columns:repeat(4,1fr); }
+    .fi { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.5rem 1.4rem; }
+    .fi p { margin-top:.6rem; font-size:.96rem; }
+    .fi .n { display:block; font-size:.78rem; font-weight:700; letter-spacing:.14em; color:var(--azul2); margin-bottom:.8rem; }
+    .fi .cons { margin-top:.9rem; padding-top:.8rem; border-top:1px solid var(--line); color:var(--ink); font-size:.92rem; font-weight:500; }
+    .oferta { display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start; }
+    @media (min-width:901px) { .oferta > div:last-child { margin-top:2.05rem; } }
+    .g5 { display:grid; gap:14px; margin-top:2.6rem; grid-template-columns:repeat(5,1fr); }
+    /* El caso real, un tono mas claro: si no, parecia seguir en la seccion de la oferta. */
+    .sec-caso { background:#131B2A; }
+    .sello { border:1px solid rgba(91,155,255,.4); border-radius:18px; padding:2rem; background:linear-gradient(180deg,rgba(30,111,242,.11),rgba(30,111,242,.02)); }
+    .sello h3 { font-size:1.75rem; }
+    .sello p { margin-top:.8rem; color:var(--ink); }
+    .sello.bono { margin-top:14px; background:none; border-color:var(--line); }
+    .sello.bono h3 { font-size:1.3rem; }
+    .sello .kick { margin-bottom:.6rem; }
+    .sello small { display:block; margin-top:.9rem; font-size:.84rem; color:var(--mute); line-height:1.5; }
+    .precios { border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--surface); }
+    .pr { display:flex; justify-content:space-between; gap:18px; padding:1rem 1.3rem; border-bottom:1px solid var(--line); font-size:.96rem; }
+    .pr:last-child { border-bottom:0; }
+    .pr b { color:var(--ink); text-align:right; white-space:nowrap; }
+    .pr-ges { display:grid; grid-template-columns:1fr auto; gap:.35rem 18px; align-items:baseline; }
+    .pr-ges .pr-tit { grid-column:1 / -1; }
+    .pr-ges span:not(.pr-tit) { font-size:.86rem; color:var(--mute); }
+    .pr-ges b { white-space:normal; }
+    .confirmar { color:#0B1220; background:#FFE27A; padding:.05em .4em; border-radius:4px; font-size:.78rem; font-weight:700; white-space:nowrap; }
+    .caso { display:grid; grid-template-columns:.8fr 1fr; gap:48px; align-items:center; }
+    .fotos { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .fotos img { width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:10px; border:1px solid var(--line); }
+    .kpis { display:grid; grid-template-columns:repeat(3,1fr); margin-top:1.7rem; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .kp { padding:1.2rem 1rem 1.2rem 0; }
+    .kp b { display:block; font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:2.5rem; line-height:1; color:var(--ink); }
+    .kp span { display:block; margin-top:.5rem; font-size:.82rem; color:var(--mute); }
+    .nota { margin-top:1.1rem; font-size:.93rem; }
+    .claro { background:var(--light); color:var(--light-body); padding:5rem 0; }
+    .claro h2,.claro h3 { color:var(--light-ink); }
+    .claro .kick { color:#2A62C9; }
+    .claro .fi { background:#fff; border-color:var(--light-line); color:var(--light-body); }
+    .gr { display:grid; grid-template-columns:1fr .85fr; gap:56px; align-items:start; }
+    .gr .ent { color:var(--light-body); }
+    .caras { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:1.3rem; }
+    .caras img { width:100%; aspect-ratio:4/3.4; object-fit:cover; border-radius:12px; }
+    .caras b { display:block; margin-top:.6rem; font-size:.95rem; color:var(--light-ink); }
+    .caras span { font-size:.84rem; }
+    .cierre { text-align:center; padding:6rem 0; border-top:1px solid var(--line); }
+    .cierre h2 { max-width:22ch; margin:0 auto; }
+    .cierre .ent { margin:1.1rem auto 0; }
+    .pie { border-top:1px solid var(--line); padding:2.2rem 0; font-size:.86rem; color:var(--mute); }
+    .pie .wrap { display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; }
+    .pie a { text-decoration:none; margin-left:16px; }
+    .pie a:first-child { margin-left:0; }
+    .aviso { background:#FFE27A; color:#0B1220; text-align:center; font-size:.82rem; font-weight:600; padding:.4rem 1rem; }
+    .er-modal { position:fixed; inset:0; z-index:9000; display:none; background:rgba(6,10,16,.62); backdrop-filter:blur(6px); padding:24px 16px; overflow-y:auto; }
+    .er-modal.open { display:block; }
+    .er-modal-box { position:relative; max-width:680px; margin:3vh auto; background:#121A27; border-radius:18px; padding:2rem 1.6rem 1.4rem; }
+    .er-modal-box p { font-size:.9rem; margin-top:.5rem; }
+    .er-modal-x { position:absolute; top:12px; right:12px; width:34px; height:34px; border-radius:9px; border:1px solid var(--line); background:#182233; color:var(--body); cursor:pointer; }
+    @media (max-width:900px) {
+      body { font-size:16px; }
+      .sec { padding:3.4rem 0; } .claro { padding:3.4rem 0; } .hero { padding:2.6rem 0 3rem; } .cierre { padding:3.8rem 0; }
+      .g3,.g4,.g5,.oferta,.caso,.gr { grid-template-columns:1fr; gap:12px; }
+      .oferta,.caso,.gr { gap:30px; }
+      .marca { font-size:15px; letter-spacing:.24em; }
+      .play { width:60px; height:60px; }
+      .hero .btn,.cierre .btn { width:100%; }
+      .kp b { font-size:2rem; }
+      .pr { font-size:.9rem; padding:.9rem 1rem; }
+      .pr b { white-space:normal; }
+    }
+  </style>
+</head>
+<body>
+  <div class="aviso">BORRADOR · sin publicar</div>
+  <nav class="nav"><div class="wrap"><a class="marca" href="/">EASYROBOTS</a><button class="btn" type="button" data-cal>Reserva tu auditoría</button></div></nav>
+
+  <!-- HERO. Es un funnel VSL sin video: el reproductor y sus capitulos vuelven aqui,
+       entre la entradilla y el boton, cuando este grabado. -->
+  <header class="hero"><div class="wrap">
+    <p class="kick">AURA Business · Automatización del embudo de ventas</p>
+    <h1>Primeros leads en 14 días, <em>o no cobramos la gestión.</em></h1>
+    <p class="ent">Montamos tu embudo de punta a punta: desde que alguien ve tu anuncio hasta que reserva, compra y vuelve.</p>
+    <div class="cta"><button class="btn" type="button" data-cal>Reserva tu auditoría gratuita</button><span class="xs">Sin compromiso · Revisamos tu caso antes de proponerte nada</span></div>
+  </div></header>
+
+  <section class="sec"><div class="wrap">
+    <p class="kick">El problema</p><h2>Pagar anuncios es fácil. <em>Lo caro es lo que pasa después.</em></h2>
+    <div class="g3"><div class="fi"><h3>El lead entra y nadie contesta</h3><p>Escribe a las diez de la noche. Mañana, cuando alguien le responda, ya ha hablado con otros tres.</p><p class="cons">Ese lead ya lo habías pagado.</p></div><div class="fi"><h3>El "me lo pienso" se queda ahí</h3><p>Pidió precio, no reservó y nadie volvió a escribirle porque nadie tiene tiempo de hacerlo.</p><p class="cons">No dijo que no. Se quedó sin seguimiento.</p></div><div class="fi"><h3>Quien compró no vuelve</h3><p>Tu mejor cliente es el que ya te conoce, y nadie le escribe cuando le toca volver.</p><p class="cons">Vuelves a pagar por captar lo que ya tenías.</p></div></div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <p class="kick">La oportunidad</p><h2>No te falta otra campaña. <em>Te falta que el embudo esté conectado.</em></h2>
+    <p class="ent">Cuando anuncio, conversación, cita y seguimiento van cada uno por su lado, cada salto pierde gente. Conectados, cada lead sabe qué le toca después y tú ves dónde se queda cada uno.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <p class="kick">El sistema</p><h2>No es un agente. <em>Es un método.</em></h2>
+    
+    <div class="g5"><div class="fi"><h3>Captar</h3><p>Campañas y captación de leads. Los anuncios los creas tú con nuestras recomendaciones, y nosotros gestionamos las campañas.</p></div><div class="fi"><h3>Atender</h3><p>Todo lo de AURA Setter: responde, cualifica, hace seguimiento y agenda. Con WhatsApp, Instagram, email y web conectados.</p></div><div class="fi"><h3>Cerrar</h3><p>Recordatorios para que no falten y procesos comerciales conectados, para que nadie se quede a medias.</p></div><div class="fi"><h3>Volver</h3><p>Reactivación de clientes dormidos y estadísticas en el CRM para ver qué te está dando cada parte.</p></div><div class="fi"><h3>Reseñas</h3><p>Pide la reseña a quien acaba contento y detecta antes al que no lo está, para que lo atiendas tú antes de que la escriba.</p></div></div>
+    <p class="ent" style="margin-top:1.4rem">Y además, los métodos que mejor encajen con tu negocio: recomendaciones de clientes, campañas a tu base y lo que salga de la auditoría.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap oferta">
+    <div><p class="kick">La oferta</p>
+      <div class="sello"><h3>Primeros leads o nada.</h3>
+        <p>Si en 14 días desde que arrancan los anuncios no has conseguido leads, no cobramos la gestión.</p>
+        <small>Cuenta como lead cualquier persona que te contacte, aunque no compre. La inversión en anuncios se paga aparte en Meta Ads y no entra en esta garantía. La fecha de arranque queda fijada en el contrato.</small></div>
+      <div class="sello bono"><p class="kick">Bono incluido</p><h3>Auditoría de oferta y captación.</h3>
+        <p>Revisamos qué vendes, a qué precio, qué se puede empaquetar mejor y dónde se te escapan los clientes, y te damos un plan de campañas.</p></div></div>
+    <div><div class="precios"><div class="pr"><span>Montaje</span><b>Desde 3.000 €</b></div><div class="pr pr-ges"><span class="pr-tit">Gestión de anuncios, sobre tu inversión publicitaria</span><span>15 % de gestión</span><b>Mínimo 200 €/mes</b><span>10 % de gestión</span><b>A partir de 2.000 € de presupuesto</b></div><div class="pr"><span>Mantenimiento</span><b>Desde 150 €/mes</b></div></div><p class="xs" style="margin-top:.8rem">El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega. El mantenimiento empieza el segundo mes.</p></div>
+  </div></section>
+
+  <section class="sec sec-caso"><div class="wrap caso">
+      <div class="fotos"><img src="/assets/pilar.webp" alt="Pilar Márquez" loading="lazy" decoding="async"><img src="/assets/cejas.webp" alt="Cejas de una clienta de Pilar" loading="lazy" decoding="async"></div>
+      <div>
+        <p class="kick">Caso real · La parte de "que vuelvan"</p>
+        <h2>53 clientas contactadas. 8 volvieron. <em>Ninguna se molestó.</em></h2>
+        <div class="kpis"><div class="kp"><b>53</b><span>clientas dormidas contactadas</span></div><div class="kp"><b>8</b><span>volvieron a reservar</span></div><div class="kp"><b>2.000 €</b><span>8 retoques × 250 €</span></div></div>
+        <p class="nota">Pilar Márquez, microblading y hairstroke. No tenía base de datos: la construimos recuperando cada cita pasada de su calendario. Las otras 45 no dijeron que no: aún no les tocaba el retoque. Es reactivación, sin un euro en publicidad: todavía no publicamos cifras de captación con anuncios.</p>
+      </div>
+    </div></section>
+
+  <section class="sec"><div class="wrap">
+    <p class="kick">Sin letra pequeña</p><h2>Lo que te estarás preguntando.</h2>
+    <div class="g4"><div class="fi"><h3>¿Voy a perder el control?</h3><p>No. Ves cada conversación y las estadísticas del agente en el CRM, y entras a contestar cuando quieras. Y tú decides si el agente agenda la cita o te avisa cuando el interesado está cualificado, para que te encargues tú personalmente.</p></div><div class="fi"><h3>¿Y si no sabe qué responder?</h3><p>No se lo inventa: avisa a tu equipo y la conversación pasa a una persona.</p></div><div class="fi"><h3>¿Tengo que cambiar de herramientas?</h3><p>No. Lo conectamos a tu agenda, tu CRM, tu email y lo que ya utilices. Y si te falta alguna, trabajas con nuestro propio sistema y nuestro CRM.</p></div><div class="fi"><h3>¿Qué pasa con mis datos?</h3><p>Firmamos contrato de encargado del tratamiento, los servidores están en la UE y tú sigues siendo responsable de tus datos.</p></div></div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <p class="kick">Cómo trabajamos</p><h2>Antes de montar nada, estudiamos tu negocio.</h2>
+    <div class="g4"><div class="fi"><span class="n">01</span><h3>Entendemos tu negocio</h3><p>Analizamos tus procesos, herramientas, equipo y objetivos.</p></div><div class="fi"><span class="n">02</span><h3>Diseñamos el sistema</h3><p>Definimos qué piezas necesitas y cómo se conectan a lo que ya usas.</p></div><div class="fi"><span class="n">03</span><h3>Lo construimos</h3><p>Lo montamos y lo probamos antes de que hable con ningún cliente.</p></div><div class="fi"><span class="n">04</span><h3>Lo mantenemos</h3><p>Revisamos conversaciones, corregimos y lo vamos afinando contigo.</p></div></div>
+  </div></section>
+
+  <section class="claro"><div class="wrap gr">
+      <div><p class="kick">Garantía</p><h2>Nuestra garantía.</h2>
+        <p class="ent">14 días de garantía desde la instalación, en todos los productos: si no hace lo que hemos definido, te devolvemos el dinero.</p>
+        <p class="ent">El mantenimiento empieza el segundo mes, y los dos primeros meses tienes el plan Premium al precio del Básico.</p></div>
+      <div><p class="kick">Quiénes somos</p><h3>No somos una centralita. Somos las personas que diseñan, construyen y mantienen tu sistema.</h3>
+        <div class="caras"><div><img src="/assets/guille.webp" alt="Guillermo, cofundador de EasyRobots" loading="lazy" decoding="async"><b>Guillermo</b><span>Cofundador</span></div><div><img src="/assets/anais.webp" alt="Anaís, cofundadora de EasyRobots" loading="lazy" decoding="async"><b>Anaís</b><span>Cofundadora</span></div></div></div>
+    </div></section>
+
+  <section class="cierre"><div class="wrap">
+    <p class="kick">Auditoría gratuita</p><h2>Vemos dónde se te escapa el dinero de tu embudo.</h2>
+    <p class="ent">Nos cuentas cómo te entran hoy los clientes y qué pasa después, y te decimos qué montaríamos primero. Si no tiene sentido, también.</p>
+    <div class="cta"><button class="btn" type="button" data-cal>Reserva tu auditoría gratuita</button><span class="xs">Si tu negocio no encaja, te lo decimos en la llamada.</span></div>
+  </div></section>
+
+  <div class="er-modal" id="er-modal" aria-hidden="true"><div class="er-modal-box" role="dialog" aria-modal="true" aria-label="Reservar auditoría">
+    <button class="er-modal-x" id="er-modal-x" type="button" aria-label="Cerrar">&#10005;</button>
+    <h3>Elige un hueco y lo vemos contigo</h3><p>Sin presentación comercial.</p><div id="er-cal-slot"></div>
+  </div></div>
+
+  <footer class="pie"><div class="wrap"><span>EasyRobots AH-NICE · Ana Isabel González Hoog</span><span><a href="/impressum.html">Impressum / Aviso legal</a><a href="/privacy.html">Privacidad y cookies</a><a href="https://instagram.com/easyrobots.ai" target="_blank" rel="noopener">Instagram</a></span></div></footer>
+
+  <script>
+    // Calendario: mismo montaje que el resto de la web (Cal.com, /js/consent.js).
+    (function () {
+      var modal = document.getElementById('er-modal'), slot = document.getElementById('er-cal-slot');
+      if (!modal || !slot) return;
+      function abrir(e) { if (e) e.preventDefault(); window.erCalendario(slot); modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+      function cerrar() { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+      document.querySelectorAll('[data-cal]').forEach(function (b) { b.addEventListener('click', abrir); });
+      document.getElementById('er-modal-x').addEventListener('click', cerrar);
+      modal.addEventListener('click', function (e) { if (e.target === modal) cerrar(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(); });
+    })();
+  </script>
+</body>
+</html>

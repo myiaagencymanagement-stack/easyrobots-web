@@ -1,0 +1,1941 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <title>IA para concesionarios: ventas, taller y seguimiento · EasyRobots</title>
+  <meta name="description" content="IA para concesionarios: el cliente que pregunta hoy por un coche y el que lleva meses sin pasar por el taller, atendidos los dos.">
+  <link rel="canonical" href="https://easyrobots-ai.cloud/concesionarios/">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EasyRobots">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="IA para concesionarios: ventas, taller y seguimiento · EasyRobots">
+  <meta property="og:description" content="IA para concesionarios: el cliente que pregunta hoy por un coche y el que lleva meses sin pasar por el taller, atendidos los dos.">
+  <meta property="og:url" content="https://easyrobots-ai.cloud/concesionarios/">
+  <meta property="og:image" content="https://easyrobots-ai.cloud/assets/og-concesionarios.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IA para concesionarios: ventas, taller y seguimiento · EasyRobots">
+  <meta name="twitter:description" content="IA para concesionarios: el cliente que pregunta hoy por un coche y el que lleva meses sin pasar por el taller, atendidos los dos.">
+  <meta name="twitter:image" content="https://easyrobots-ai.cloud/assets/og-concesionarios.jpg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Sistemas de IA para concesionarios","description":"IA para concesionarios: el cliente que pregunta hoy por un coche y el que lleva meses sin pasar por el taller, atendidos los dos.","serviceType":"Automatización e inteligencia artificial","provider":{"@id":"https://easyrobots-ai.cloud/#organizacion"},"url":"https://easyrobots-ai.cloud/concesionarios/","areaServed":{"@type":"Country","name":"España"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://easyrobots-ai.cloud/"},{"@type":"ListItem","position":2,"name":"Concesionarios","item":"https://easyrobots-ai.cloud/concesionarios/"}]}]}</script>
+
+
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    /* Las tipografias se sirven desde este dominio: cargarlas desde Google
+       enviaba la IP de cada visitante a sus servidores sin permiso. */
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:400; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-400-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:500; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-500-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:600; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-600-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:700; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-700-latin.woff2) format('woff2'); }
+    @font-face { font-family:'Plus Jakarta Sans'; font-weight:800; font-display:swap; src:url(/assets/fonts/plus-jakarta-sans-800-latin.woff2) format('woff2'); }
+
+    /* ==========================================================
+       LANDING DE CONCESIONARIOS · SEGUNDA MAQUETA (2026-10-03)
+
+       La primera reconstruccion copiaba el boceto (845 px) en posiciones
+       absolutas con --u = 1 px del boceto: cada seccion tenia la proporcion
+       fija de su tira y a 1440 px salia "en modo folleto", con secciones de
+       200-350 px de alto y letra de 13-15 px en las tarjetas. Anais pidio
+       los tamanos de /estetica/ en escritorio y los de /inmobiliarias/ en el
+       movil. Ahora es rejilla normal: mismo copy, mismas piezas, mismos
+       colores y fotos, con alto y letra reales.
+
+       Tamanos copiados de estetica: H1 40-56, H2 34-52 (en las secciones
+       de dos columnas, 32-46, como su seccion de piezas), texto 16-18,5,
+       relleno 72-112, secciones de 560-760 de alto minimo, hero al 86 % de
+       la pantalla y escritorio al 90 % (zoom) desde 1081 px.
+
+       Colores muestreados del pixel del boceto, no elegidos a ojo:
+         azul boton   #0070FE     azul titular  #008CFF
+         cian cintillo#00C8FF     verde icono   #00975E
+         fondo oscuro #000C15     fondo claro   #F1F7FD
+       ========================================================== */
+    :root {
+      --azul: #0070FE;
+      --azul-h: #0A63E0;
+      --azul-t: #008CFF;
+      --cian: #00C8FF;
+      --verde: #00975E;
+      --oscuro: #000C15;
+      --claro: #F1F7FD;
+      --tinta: #0B121B;
+      --gris: #3B4654;
+      --f: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+
+      --h1: clamp(40px, 3.9vw, 56px);
+      --h2: clamp(32px, 2.9vw, 46px);
+      --txt: clamp(16px, 1.2vw, 18.5px);
+      --pad: clamp(72px, 9vh, 112px);
+      --alto: clamp(560px, 70vh, 760px);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { font-family: var(--f); background: var(--oscuro); color: #fff; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+    figure { margin: 0; }
+    svg { flex: 0 0 auto; }
+
+    .sec { position: relative; overflow: hidden; display: flex; align-items: center; min-height: var(--alto); }
+    .foto { position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; }
+    .velo { position: absolute; inset: 0; }
+    .caja { position: relative; z-index: 5; width: 100%; max-width: 1440px; margin: 0 auto; padding: var(--pad) max(22px, 5.6vw); }
+    @media (min-width: 1440px) { .caja { padding-left: 80px; padding-right: 80px; } }
+    /* sin alto minimo: cada seccion mide lo que su contenido (2026-10-04) */
+    .sec { min-height: 0; }
+    .sec > .caja { padding-top: 84px; padding-bottom: 84px; }
+    .s02 > .caja { padding-bottom: 42px; }
+    .s03 > .caja { padding-top: 42px; }
+    .dos { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 4vw, 64px); align-items: center; }
+
+    .saltar { position: absolute; left: 14px; top: -60px; z-index: 300; background: #fff; color: var(--tinta); padding: .7rem 1.1rem; border-radius: 8px; font-size: .84rem; font-weight: 600; transition: top .2s; }
+    .saltar:focus { top: 14px; }
+
+    /* titulares, cuerpos y cintillos de todas las secciones */
+    .h-kick, .d-kick, .c-kick { font-size: 13px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--cian); }
+    .clara .d-kick { color: #0A72D8; }
+    .m-t, .b-t, .w-t, .h2-t, .d-t, .n-t, .e-t, .c-t { font-size: var(--h2); line-height: 1.08; font-weight: 800; letter-spacing: -.035em; text-wrap: balance; }
+    .d-t, .c-t { margin-top: 16px; }
+    .w-t em, .h2-t em, .lm-t em { font-style: normal; color: var(--azul-t); }
+    /* Los saltos del boceto estaban pensados para sus 845 px: en una columna
+       real partian mal los titulares. Se quitan y el navegador reparte. */
+    .m-t br, .b-t br, .w-t br, .h2-t br, .d-t br, .n-t br, .e-t br, .c-t br { display: none; }
+    .m-p, .b-p, .w-p, .h2-p, .d-sub, .n-p, .e-p, .c-sub { margin-top: 22px; font-size: var(--txt); line-height: 1.6; max-width: 500px; }
+    .m-p br, .b-p br, .w-p br, .h2-p br, .n-p br, .e-p br, .h-sub br { display: none; }
+    .oscura { color: #fff; } .oscura .m-p, .oscura .b-p, .oscura .w-p, .oscura .h2-p, .oscura .c-sub { color: rgba(255,255,255,.82); }
+    .clara { color: var(--tinta); }
+    .clara .d-sub, .clara .n-p, .clara .e-p { color: #111A26; font-weight: 500; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 11px; height: 54px; padding: 0 28px; border-radius: 999px; font-size: 16px; font-weight: 700; white-space: nowrap; cursor: pointer; border: 0; transition: background .2s, border-color .2s; }
+    .btn svg { width: 17px; height: 17px; }
+    .b-azul { background: var(--azul); color: #fff; }
+    .b-azul:hover { background: var(--azul-h); }
+
+    /* ===================== 01 · HERO ===================== */
+    .hero { position: relative; overflow: hidden; background: #01080F; height: 86vh; height: 86svh; min-height: 600px; display: flex; flex-direction: column; }
+    .hero .foto { background-image: url(/assets/conce-hero.webp); background-position: 70% center; }
+    .hero .velo { background:
+        linear-gradient(90deg, rgba(1,8,15,.86) 0%, rgba(1,8,15,.66) 30%, rgba(1,8,15,.26) 50%, rgba(1,8,15,0) 66%),
+        linear-gradient(180deg, rgba(1,8,15,.40) 0%, rgba(1,8,15,0) 20%, rgba(1,8,15,0) 82%, rgba(1,8,15,.50) 100%); }
+    /* el velo del hero se abrio (2026-10-04): el texto lleva una sombra
+       suave para no perder lectura sobre la foto */
+    .h-col { text-shadow: 0 2px 18px rgba(0,0,0,.55); }
+    /* La barra se queda fija al deslizar, como en estetica e inmobiliarias. */
+    .h-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 120; border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(1,9,16,.84); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+    section[id] { scroll-margin-top: 80px; }
+    .h-nav-in { width: 100%; max-width: 1440px; margin: 0 auto; padding: 14px max(22px, 5.6vw); display: flex; align-items: center; }
+    @media (min-width: 1440px) { .h-nav-in { padding-left: 80px; padding-right: 80px; } }
+    .h-marca { display: flex; align-items: center; gap: 10px; }
+    .h-logo { width: 36px; height: 36px; border-radius: 11px; background: var(--azul); display: flex; align-items: center; justify-content: center; }
+    .h-logo svg { width: 22px; height: 22px; color: #fff; }
+    .h-marca b { font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+    .h-links { display: flex; gap: 40px; margin: 0 auto; }
+    .h-links a { position: relative; font-size: 15.5px; font-weight: 500; color: rgba(255,255,255,.86); white-space: nowrap; padding: 4px 0; }
+    .h-links a:hover { color: #fff; }
+    /* el enlace del nicho va marcado, como en la landing de inmobiliarias */
+    .h-links a.act { color: #fff; font-weight: 700; }
+    .h-links a.act::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--azul); border-radius: 2px; }
+    .h-navbtn { height: 46px; padding: 0 22px; font-size: 15.5px; }
+
+    .h-cuerpo { position: relative; z-index: 50; flex: 1 1 auto; width: 100%; max-width: 1440px; margin: 0 auto; padding: 74px max(22px, 5.6vw) 5vh;
+                display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: 48px; align-items: center; }
+    @media (min-width: 1440px) { .h-cuerpo { padding-left: 80px; padding-right: 80px; } }
+    .h-col { max-width: 640px; }
+    .h-t { margin-top: 20px; font-size: var(--h1); line-height: 1.04; font-weight: 800; letter-spacing: -.035em; }
+    /* en la referencia las dos lineas azules son un 13 % mayores que las blancas */
+    .h-t em { font-style: normal; color: var(--azul-t); font-size: 1.13em; line-height: .98; }
+    .h-sub { margin-top: 24px; max-width: 540px; font-size: clamp(17px, 1.35vw, 20.5px); line-height: 1.55; color: rgba(255,255,255,.86); }
+    .h-btns { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .h-b { height: 64px; border-radius: 999px; display: inline-flex; align-items: center; cursor: pointer; white-space: nowrap; transition: background .2s, border-color .2s; }
+    .h-b .tx { display: flex; flex-direction: column; gap: 5px; text-align: left; }
+    .h-b .t1 { font-size: 16px; font-weight: 700; line-height: 1; }
+    .h-b .t2 { font-size: 13px; font-weight: 400; line-height: 1; color: rgba(255,255,255,.72); }
+    .h-b1 { background: var(--azul); color: #fff; border: 0; padding: 0 30px 0 22px; gap: 16px; }
+    .h-b1:hover { background: var(--azul-h); }
+    .h-b1 .ico { width: 28px; height: 28px; }
+    .h-b2 { border: 1.5px solid rgba(255,255,255,.34); color: #fff; background: rgba(8,14,22,.30); padding: 0 30px 0 12px; gap: 14px; backdrop-filter: blur(4px); }
+    .h-b2:hover { border-color: rgba(255,255,255,.7); }
+    .h-play { width: 40px; height: 40px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
+    .h-play svg { width: 16px; height: 16px; color: var(--azul); }
+    .h-meta { margin-top: 28px; display: flex; gap: 28px; flex-wrap: wrap; }
+    .h-meta div { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: rgba(255,255,255,.85); white-space: nowrap; }
+    .h-meta svg { width: 20px; height: 20px; color: rgba(255,255,255,.72); }
+
+    /* las tres tarjetas de la derecha, escalonadas como en el boceto */
+    .h-tarjs { justify-self: end; width: min(100%, 380px); display: flex; flex-direction: column; gap: 14px; }
+    .hv-cli { margin-right: 46px; background: #fff; color: #0B121B; border-radius: 16px 16px 16px 4px; padding: 12px 16px; box-shadow: 0 14px 40px rgba(0,0,0,.4); }
+    .hv-cli b, .hv-er b { display: block; font-size: 13.5px; font-weight: 700; }
+    .hv-cli b { color: #4A5664; }
+    .hv-cli span, .hv-er > span:last-child { display: block; margin-top: 2px; font-size: 15px; line-height: 1.42; }
+    .hv-er { position: relative; margin-left: 46px; background: var(--azul); color: #fff; border-radius: 16px 16px 4px 16px; padding: 12px 16px 13px; box-shadow: 0 14px 40px rgba(0,50,140,.5); }
+    .hv-er b { color: rgba(255,255,255,.78); }
+    .hv-wa { position: absolute; left: -15px; top: -15px; width: 34px; height: 34px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.4); }
+    .hv-wa svg { width: 20px; height: 20px; color: #fff; }
+    .hv-agenda { background: rgba(4,14,26,.90); border: 1px solid rgba(90,150,255,.30); border-radius: 16px; padding: 14px 18px 8px; backdrop-filter: blur(10px); box-shadow: 0 14px 40px rgba(0,0,0,.45); }
+    .hv-cab { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.10); }
+    .hv-cab .ic { width: 30px; height: 30px; border-radius: 8px; background: rgba(0,112,254,.22); color: #6FB4FF; display: flex; align-items: center; justify-content: center; }
+    .hv-cab .ic svg { width: 17px; height: 17px; }
+    .hv-cab b { font-size: 14.5px; font-weight: 700; }
+    .hv-fila { display: grid; grid-template-columns: 12px 1fr; gap: 2px 10px; padding: 10px 0; align-items: center; }
+    .hv-fila + .hv-fila { border-top: 1px solid rgba(255,255,255,.08); }
+    .hv-fila .pt { width: 9px; height: 9px; border-radius: 50%; }
+    .hv-fila .pt.v { background: #16C873; box-shadow: 0 0 0 3px rgba(22,200,115,.22); }
+    .hv-fila .pt.a { background: #3B9BFF; box-shadow: 0 0 0 3px rgba(59,155,255,.22); }
+    .hv-fila span { font-size: 14.5px; color: rgba(255,255,255,.92); }
+    .hv-fila span b { color: #fff; }
+    .hv-fila em { grid-column: 2; font-style: normal; font-size: 13px; color: rgba(255,255,255,.62); }
+    .rd-verde { background: var(--verde); }
+    .rd-azul { background: var(--azul); }
+
+    /* ============ 02 - DOS MOMENTOS - EL MISMO CLIENTE ============ */
+    /* Anais (2026-10-04): la raya entre hero y 02, "mas gordita" para que se
+       vea la separacion */
+    .s02 { background: #000C15; border-top: 4px solid #0070FE; border-image: linear-gradient(90deg, rgba(0,112,254,.25) 0%, #0070FE 30%, #00C8FF 50%, #0070FE 70%, rgba(0,112,254,.25) 100%) 1; }
+    .s02 .foto { background-image: url(/assets/conce-momentos.webp); opacity: .85; }
+    .s02 .velo { background: linear-gradient(90deg, rgba(0,8,14,.92) 0%, rgba(0,8,14,.80) 32%, rgba(0,8,14,.50) 55%, rgba(0,8,14,.35) 100%); }
+    .s02 .dos { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
+    .m-fila { display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto minmax(0, 1fr); gap: 14px; align-items: center; }
+    .m-card { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); }
+    .m-a { background: rgba(4,12,20,.78); backdrop-filter: blur(4px); padding-bottom: 10px; }
+    .m-b { align-self: stretch; min-height: 300px; background: url(/assets/conce-posventa.webp) 60% 46% / cover no-repeat; display: flex; flex-direction: column; justify-content: space-between; }
+    .m-b::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,8,14,.35), rgba(0,8,14,.10) 45%, rgba(0,8,14,.60)); }
+    .m-cab { position: relative; z-index: 2; display: flex; align-items: center; gap: 14px; background: rgba(3,11,19,.88); backdrop-filter: blur(6px); }
+    .m-a .m-cab { padding: 14px 18px; }
+    .m-b .m-cab { margin: 10px; padding: 12px 16px; border-radius: 12px; align-self: flex-start; }
+    .m-cab svg { width: 36px; height: 36px; color: #fff; }
+    .m-cab .et { display: block; font-size: 14px; font-weight: 500; color: rgba(255,255,255,.72); line-height: 1.2; }
+    .m-cab .gr { display: block; margin-top: 4px; font-size: 26px; font-weight: 800; letter-spacing: -.03em; color: #fff; line-height: 1; }
+    .m-a .m-foto { height: 160px; margin: 0 6px; background: url(/assets/conce-ventas.webp) center / cover no-repeat; border-radius: 12px; }
+    .m-pil { position: relative; z-index: 2; margin: 10px 10px 0; display: flex; align-items: center; justify-content: center; gap: 9px; background: rgba(3,11,19,.88); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.06);
+             border-radius: 12px; min-height: 44px; padding: 8px 12px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,.9); white-space: nowrap; }
+    .m-b .m-pil { margin: 0 10px 10px; }
+    .m-pil i { font-style: normal; color: rgba(255,255,255,.55); }
+    .m-centro { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .m-rd { width: 72px; height: 72px; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #0B4E9E 0%, #05264C 62%, #031C38 100%); border: 1.5px solid #1E7BE8; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 22px rgba(10,110,230,.45); }
+    .m-rd svg { width: 36px; height: 36px; color: #fff; }
+    .m-centro b { display: block; margin-top: 10px; font-size: 17px; line-height: 1.2; font-weight: 800; letter-spacing: -.02em; white-space: nowrap; }
+    .m-fle { width: 26px; height: 20px; color: #0A84FF; }
+
+    /* ============ 03 - LOS QUE NO HAN VUELTO ============
+       Fondo plano, sin foto (muestreado #00080F). */
+    .s03 { background: #00080F; }
+    .s03 .foto { background-image: url(/assets/conce-pie.webp); background-position: center 60%; opacity: .75; }
+    .s03 .velo { background: linear-gradient(90deg, rgba(0,8,15,.92) 0%, rgba(0,8,15,.78) 36%, rgba(0,8,15,.50) 70%, rgba(0,8,15,.40) 100%); }
+    .b-card { background: linear-gradient(180deg, rgba(10,22,34,.92), rgba(5,14,24,.92)); border: 1px solid rgba(255,255,255,.08); border-radius: 16px;
+              display: flex; align-items: center; flex-wrap: wrap; gap: 22px; padding: 24px 26px; }
+    .b-g1 b { display: block; font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
+    .b-avs { display: flex; margin-top: 12px; }
+    .b-avs img { width: 44px; height: 44px; border-radius: 50%; margin-right: -8px; border: 2px solid #0A1622; object-fit: cover; }
+    .b-g2 b { display: block; font-size: 36px; font-weight: 800; letter-spacing: -.045em; line-height: 1; }
+    .b-g2 i { display: block; font-style: normal; font-size: 16px; color: rgba(255,255,255,.80); margin-top: 6px; }
+    .b-box { border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.06); display: flex; flex-direction: column; justify-content: center; padding: 10px 14px; }
+    .b-box span { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.4; }
+    .b-box b { font-size: 15px; font-weight: 700; line-height: 1.35; white-space: nowrap; }
+    .b-pasos { grid-column: 1 / -1; margin-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-top: 1px solid rgba(255,255,255,.08); padding-top: 40px; }
+    .b-paso { display: flex; align-items: center; gap: 6px; }
+    .b-num { width: 56px; height: 56px; border-radius: 50%; background: #0B2947; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+    .b-ico { width: 56px; height: 56px; border-radius: 50%; border: 1px solid rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; }
+    .b-ico svg { width: 26px; height: 26px; color: #fff; }
+    .b-paso .tx { margin-left: 12px; }
+    .b-paso .tx b { display: block; font-size: 17px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
+    .b-paso .tx i { display: block; font-style: normal; font-size: 15.5px; color: rgba(255,255,255,.74); line-height: 1.4; }
+    .b-fle { width: 22px; height: 18px; color: #1183FF; }
+
+    /* ============ 04 - EL QUE PREGUNTA UN SABADO ============ */
+    .s04 { background: #0A1D3A; border-top: 1px solid rgba(90,150,255,.35); }
+    .s04 > .caja { padding-bottom: 42px; }
+    .s05 > .caja { padding-top: 42px; }
+    .s04 .foto { background-image: url(/assets/conce-sabado.webp); background-position: right center; }
+    .s04 .velo { background: linear-gradient(90deg, rgba(10,29,58,.94) 0%, rgba(10,29,58,.80) 34%, rgba(10,29,58,.42) 54%, rgba(10,29,58,.10) 78%, rgba(10,29,58,0) 100%); }
+    .w-card { width: min(100%, 480px); background: rgba(6,16,26,.84); border: 1px solid rgba(255,255,255,.09); border-radius: 18px; backdrop-filter: blur(8px); padding: 16px 18px 18px; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+    .w-cab { display: flex; align-items: center; }
+    .w-wa { width: 38px; height: 38px; border-radius: 10px; background: #1FA855; display: flex; align-items: center; justify-content: center; }
+    .w-wa svg { width: 24px; height: 24px; color: #fff; }
+    .w-cab .tx { margin-left: 12px; }
+    .w-cab .tx b { display: block; font-size: 16px; font-weight: 700; line-height: 1.3; }
+    .w-cab .tx i { display: block; font-style: normal; font-size: 14.5px; color: rgba(255,255,255,.72); line-height: 1.3; }
+    .w-acc { margin-left: auto; display: flex; align-items: center; gap: 16px; color: rgba(255,255,255,.72); }
+    .w-acc svg { width: 19px; height: 19px; }
+    .w-acc .pts { display: flex; flex-direction: column; gap: 3px; }
+    .w-acc .pts span { width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+
+    /* Anais (2026-10-07): los mensajes del hero y de "El que pregunta un
+       sabado" aparecen en orden al entrar en pantalla, y se reinician al
+       salir para volver a verse (mismo patron que /estetica/: [data-vi] +
+       .vi con retraso en --d). Sin JavaScript, o con movimiento reducido,
+       se ven quietos. Antes de la respuesta sale un "escribiendo...". */
+    /* Anais (2026-10-07): la tira "conversacion > agenda > registro >
+       criterio" aparece paso a paso al entrar, y despues una luz azul la
+       recorre en bucle, para que se lea como un flujo y no como cuatro
+       iconos sueltos. Al pasar el raton, el circulo se levanta. */
+    .h2-rd { transition: transform .25s ease; }
+    .h2-it:hover .h2-rd { transform: translateY(-4px); }
+    .anim-on .visto .h2-it .h2-rd { animation: h2-luz 2.8s ease-in-out calc(var(--l, 0s) + 3.2s) infinite; }
+    @keyframes h2-luz { 0%, 30%, 100% { box-shadow: 0 0 0 0 rgba(0,112,254,0); } 12% { box-shadow: 0 0 0 6px rgba(0,112,254,.35), 0 0 26px rgba(0,140,255,.75); } }
+    @media (prefers-reduced-motion: reduce) { .anim-on .visto .h2-it .h2-rd { animation: none; } }
+    .anim-on [data-vi] .vi { opacity: 0; transform: translateY(12px) scale(.96); transition: opacity .25s ease, transform .25s ease; }
+    .anim-on [data-vi].visto .vi { opacity: 1; transform: none; transition: opacity .5s ease var(--d, 0s), transform .55s cubic-bezier(.2,.9,.25,1.15) var(--d, 0s); }
+    .w-escr { display: none; }
+    .anim-on .w-escr { display: flex; gap: 5px; width: fit-content; margin-left: 50px; padding: 0 16px; border-radius: 14px; background: #17805A; overflow: hidden; opacity: 0; max-height: 0; }
+    .w-escr span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.85); animation: w-pt 1s ease-in-out infinite; }
+    .w-escr span:nth-child(2) { animation-delay: .15s; } .w-escr span:nth-child(3) { animation-delay: .3s; }
+    .anim-on .visto .w-escr { animation: w-escr 1.25s ease .85s both; }
+    @keyframes w-escr { 0% { opacity: 0; max-height: 0; margin-top: 0; padding-top: 0; padding-bottom: 0; }
+      18%, 82% { opacity: 1; max-height: 40px; margin-top: 10px; padding-top: 13px; padding-bottom: 13px; }
+      100% { opacity: 0; max-height: 0; margin-top: 0; padding-top: 0; padding-bottom: 0; } }
+    @keyframes w-pt { 0%, 100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(-3px); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .anim-on [data-vi] .vi { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .anim-on .w-escr { display: none; }
+    }
+    .w-bub { position: relative; padding: 10px 46px 12px 14px; font-size: 15.5px; line-height: 1.45; border-radius: 14px; }
+    .w-in { margin: 18px 50px 0 0; background: #F3F5F6; color: #101418; border-top-left-radius: 4px; }
+    .w-out { margin: 10px 0 0 50px; background: #17805A; color: #EAF6F0; }
+    .w-bub .hh { position: absolute; right: 12px; bottom: 9px; font-size: 12px; font-style: normal; color: rgba(16,20,24,.45); }
+    .w-out .hh { color: rgba(255,255,255,.62); }
+    .w-boxes { display: flex; gap: 12px; margin-top: 16px; }
+    .w-box { flex: 1 1 0; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.07); border-radius: 13px; display: flex; align-items: center; padding: 12px 14px; }
+    .w-box .ic { width: 38px; height: 38px; border-radius: 10px; background: var(--azul); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .w-box .ic svg { width: 21px; height: 21px; color: #fff; }
+    .w-box .tx { margin-left: 12px; }
+    .w-box b { display: block; font-size: 15.5px; font-weight: 700; line-height: 1.3; }
+    .w-box i { display: block; font-style: normal; font-size: 14.5px; color: rgba(255,255,255,.78); line-height: 1.3; }
+
+    /* ============ 05 - NO SON DOS HERRAMIENTAS ============ */
+    .s05 { background: #0A1D3A; }
+    .s05 .foto { background-image: url(/assets/conce-hero.webp); background-position: center 70%; background-size: cover; opacity: .7; }
+    .s05 .velo { background: linear-gradient(90deg, rgba(10,29,58,.94) 0%, rgba(10,29,58,.82) 40%, rgba(10,29,58,.64) 100%); }
+    .h2-card { background: rgba(7,18,29,.62); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; display: flex; align-items: center; justify-content: space-around; gap: 10px; padding: 34px 18px; }
+    .h2-it { text-align: center; }
+    .h2-rd { width: 64px; height: 64px; margin: 0 auto; border-radius: 50%; border: 1px solid rgba(255,255,255,.18); display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.03); }
+    .h2-rd svg { width: 30px; height: 30px; color: #fff; }
+    .h2-it b { display: block; margin-top: 14px; font-size: 16px; font-weight: 700; line-height: 1.4; letter-spacing: -.01em; white-space: nowrap; }
+    .h2-it b span { font-weight: 500; color: rgba(255,255,255,.86); }
+    .h2-fle { width: 24px; height: 18px; color: #4E7FB5; margin-bottom: 42px; }
+
+    /* ============ 06 - UNA DEMOSTRACION REAL ============
+       Seccion clara a peticion de Anais: la pagina venia muy seguida de
+       negro. El reproductor se queda oscuro, que es una tarjeta dentro.
+       Las 44 alturas de la onda estan leidas barra a barra del boceto. */
+    .s06 { background: var(--claro); }
+    /* OJO: conce-equipo.webp es una tira del boceto con DOS CARAS PINTADAS
+       por IA. Tapada al 90 % no se notaba; al abrir el velo (2026-10-04)
+       salian enormes detras del texto. Fuera de las dos secciones claras:
+       van la sala de exposicion y el taller, que son fotos de escena. */
+    .s06 .foto { background-image: url(/assets/conce-hero.webp); background-position: center 40%; opacity: 1; }
+    .s06 .velo { background: linear-gradient(90deg, rgba(241,247,253,.93) 0%, rgba(241,247,253,.88) 30%, rgba(241,247,253,.40) 46%, rgba(241,247,253,.16) 70%, rgba(241,247,253,.10) 100%); }
+    .d-btn { margin-top: 32px; width: min(100%, 360px); height: 64px; background: var(--azul); border: 0; border-radius: 999px; display: flex; align-items: center; padding: 0 10px; cursor: pointer; transition: background .2s; }
+    .d-btn:hover { background: var(--azul-h); }
+    .d-play { width: 44px; height: 44px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
+    .d-play svg { width: 17px; height: 17px; color: var(--azul); }
+    .d-btn b { flex: 1; text-align: center; font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -.01em; }
+    .d-chip { height: 36px; padding: 0 14px; border-radius: 999px; background: rgba(0,0,0,.24); display: flex; align-items: center; font-size: 15px; font-weight: 700; color: #fff; }
+    .d-pie { margin-top: 14px; font-size: 14.5px; color: #1F2A37; }
+    /* rejilla de inmobiliarias: texto 36 % · reproductor 25 % · panel 36 %,
+       y en la segunda fila la llamada a la accion bajo el texto y la
+       transcripcion bajo el reproductor y el panel */
+    /* Anais (2026-10-04): el reproductor "muy grande": pasa a un cuadrado
+       pequeno en la segunda fila, a la altura del CTA, junto a los datos
+       recogidos. La transcripcion sube a la primera fila, junto al titular. */
+    .dm { display: grid; grid-template-columns: minmax(0, 36fr) minmax(0, 25fr) minmax(0, 37fr); gap: 18px 16px; align-items: start; }
+    .dm-txt { grid-column: 1; grid-row: 1; }
+    .dm .d-card { grid-column: 2; grid-row: 1; align-self: end; }
+    .dm .d-panel { grid-column: 3; grid-row: 1; }
+    .dm-cta { grid-column: 1; grid-row: 2; }
+    .dm-cta p { font-size: 16px; line-height: 1.55; color: #111A26; font-weight: 500; max-width: 34ch; }
+    .dm-cta .btn { margin-top: 16px; }
+    .dm-cta span { display: block; margin-top: 12px; font-size: 14px; color: #1F2A37; }
+    .dm-trans { grid-column: 2 / 4; grid-row: 2; background: #fff; border: 1px solid #DCE7F4; border-radius: 16px; padding: 6px 22px; box-shadow: 0 14px 36px rgba(15,40,80,.12);
+                display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; column-gap: 32px; }
+    .dm-trans .l { padding: 10px 0; border-bottom: 1px solid #E6EDF6; }
+    .dm-trans .l:nth-child(3n) { border-bottom: 0; }
+    .dm-trans .l b { font-size: 13.5px; font-weight: 700; }
+    .dm-trans .l b.er { color: var(--azul); }
+    .dm-trans .l b.cl { color: #0F9E52; }
+    .dm-trans .l i { font-style: normal; margin-left: 8px; font-size: 12.5px; color: #6B7480; }
+    .dm-trans .l p { margin-top: 3px; font-size: 14.5px; line-height: 1.45; color: #1E242D; }
+    .d-card { position: relative; height: 150px; width: 100%; justify-self: stretch; background: #0A1622; border: 1px solid rgba(255,255,255,.07); border-radius: 16px; box-shadow: 0 16px 40px rgba(10,30,60,.18); }
+    .d-rd { position: absolute; left: 14px; top: 58px; width: 36px; height: 36px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 0; cursor: pointer; }
+    .d-rd svg { width: 17px; height: 17px; color: var(--azul); }
+    .d-onda { position: absolute; left: 60px; right: 16px; top: 52px; height: 48px; color: #22C8F5; }
+    .d-prog { position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; align-items: center; gap: 12px; }
+    .d-prog .tri { width: 11px; height: 13px; color: #fff; }
+    .d-prog .pista { flex: 1; height: 3px; border-radius: 999px; background: rgba(255,255,255,.16); position: relative; }
+    .d-prog .pista::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 12px; border-radius: 999px; background: rgba(255,255,255,.85); }
+    .d-prog i { font-style: normal; font-size: 13.5px; color: rgba(255,255,255,.80); white-space: nowrap; }
+    .d-panel { background: #fff; border: 1px solid #DCE7F4; border-radius: 16px; padding: 18px 20px 6px; box-shadow: 0 14px 36px rgba(15,40,80,.12); }
+    .d-panel > b { display: block; font-size: 16px; font-weight: 700; color: var(--tinta); }
+    .d-fila { display: flex; align-items: center; min-height: 40px; padding: 6px 0; border-bottom: 1px solid #E1EBF6; }
+    .d-fila:last-child { border-bottom: 0; }
+    .d-fila:first-of-type { margin-top: 6px; }
+    .d-fila svg { width: 14px; height: 14px; color: #12B85A; }
+    .d-fila .et { width: 46%; margin-left: 12px; font-size: 14px; color: #3A4654; }
+    .d-fila .va { flex: 1; font-size: 14px; color: #2E323C; }
+    .d-fila .va.verde { color: #12B85A; font-weight: 600; }
+    .d-fila .va.neg { font-weight: 700; }
+
+    /* ============ 07 - LO QUE HACE Y LO QUE NO ============ */
+    .s07 { background: var(--claro); border-top: 3px solid rgba(0,112,254,.55); }
+    .s07 .foto { background-image: url(/assets/conce-posventa.webp); background-position: center 45%; opacity: 1; }
+    /* menos tapada que la demo, para que no parezcan la misma seccion */
+    .s07 .velo { background: linear-gradient(90deg, rgba(241,247,253,.93) 0%, rgba(241,247,253,.86) 30%, rgba(241,247,253,.30) 46%, rgba(241,247,253,.06) 70%, rgba(241,247,253,0) 100%); }
+    .n-dos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .n-box { border-radius: 16px; border: 1px solid #E1EBF6; padding: 22px 24px 24px; box-shadow: 0 14px 40px rgba(15,40,80,.07); }
+    .n-si { background: linear-gradient(135deg, #E6F7EE, #F6FBFE); }
+    .n-no { background: linear-gradient(135deg, #FDECEE, #F8FAFE); }
+    .n-cab { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .n-cab .rd { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .n-cab .rd svg { width: 18px; height: 18px; color: #fff; }
+    .n-si .rd { background: #16B45E; }
+    .n-no .rd { background: #EA2A3C; }
+    .n-cab b { font-size: 18px; font-weight: 700; color: var(--tinta); letter-spacing: -.01em; }
+    .n-fila { display: flex; align-items: flex-start; gap: 11px; padding: 6px 0; font-size: 15.5px; line-height: 1.4; color: #2E323C; }
+    .n-fila svg { width: 16px; height: 16px; margin-top: 3px; }
+    .n-si .n-fila svg { color: #16B45E; }
+    .n-no .n-fila svg { color: #EA2A3C; }
+
+    /* ============ 07B - LIMITES Y CONTROL ============
+       Oscura y sin foto, como la de ecommerce: azul marino con un brillo
+       azul arriba a la derecha. Las fichas blancas hacen el trabajo. */
+    .slm { background: radial-gradient(ellipse 60% 70% at 85% 0%, rgba(0,112,254,.22) 0%, rgba(0,112,254,0) 70%), linear-gradient(180deg, #071630 0%, #040D1C 100%); }
+    .lm-t { margin-top: 16px; max-width: 860px; font-size: var(--h2); line-height: 1.08; font-weight: 800; letter-spacing: -.035em; text-wrap: balance; }
+    .lm-fila { margin-top: 32px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }  /* 6 fichas cortas desde 2026-10-07 */
+    .lm-ficha { color: var(--tinta); background: #fff; border-radius: 14px; padding: 22px 20px 24px; box-shadow: 0 14px 34px rgba(0,0,0,.30); }
+    .lm-ficha .rd { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lm-ficha .rd svg { width: 23px; height: 23px; }
+    .lm-rojo .rd { background: #FDE8E8; color: #E5484D; }
+    .lm-ambar .rd { background: #FDF0D9; color: #D97706; }
+    .lm-az .rd { background: #E6F0FE; color: var(--azul); }
+    .lm-gris .rd { background: #EDF1F6; color: #0B1220; }
+    .lm-verde .rd { background: #E3F7EC; color: #0F9E52; }
+    .lm-ficha b { display: block; margin-top: 16px; font-size: 17px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
+    .lm-ficha .tx { display: block; margin-top: 8px; font-size: 15px; line-height: 1.55; color: #3A4654; }
+    .lm-pie { margin-top: 26px; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.84); }
+    .lm-pie strong { color: #fff; }
+
+    /* ============ 08 - NO SOMOS UNA CENTRALITA ============
+       La garantia va SIN foto, a peticion de Anais: "eso es muy serio".
+       Medidas compactas de estetica: sin alto minimo y con su relleno. */
+    .s08 { background: var(--claro); min-height: 0; }
+    .s08 .caja { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 4.6fr) minmax(0, 5.6fr); gap: clamp(22px, 2.4vw, 40px); align-items: center; padding-top: 76px; padding-bottom: 76px; }
+    .e-pers { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .e-per img { width: 100%; aspect-ratio: 4 / 4.7; object-fit: cover; object-position: center 20%; border-radius: 12px; }
+    .e-per b { display: block; margin-top: 10px; font-size: 16px; font-weight: 700; color: var(--tinta); }
+    .e-per i { display: block; font-style: normal; font-size: 14px; color: #566274; }
+    .e-panel { background: #E7F3FD; border-radius: 14px; padding: 8px 22px; }
+    .e-fila { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; }
+    .e-fila + .e-fila { border-top: 1px solid #D4E6F7; }
+    .e-fila .ic { width: 28px; height: 28px; flex: 0 0 auto; color: var(--azul); }
+    .e-fila b { font-size: 15.5px; font-weight: 700; color: var(--tinta); line-height: 1.5; }
+    .e-fila span span { font-size: 15.5px; color: var(--gris); line-height: 1.5; }
+    .e-fila > span { display: block; }
+    .e-fila b + span { margin-left: .28em; }
+
+    /* ============ 09 - HABLEMOS (CTA) ============ */
+    .s09 { background: #00070E; }
+    .s09 .foto { background-image: url(/assets/conce-hablemos.webp); background-position: right center; }
+    .s09 .velo { background: linear-gradient(90deg, rgba(0,7,13,.92) 0%, rgba(0,7,13,.74) 40%, rgba(0,7,13,.36) 64%, rgba(0,7,13,.06) 86%, rgba(0,7,13,0) 100%); }
+    .s09 .caja { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+    .ct-der { display: flex; flex-direction: column; align-items: flex-start; gap: 26px; }
+    .c-btn { height: 64px; padding: 0 44px; font-size: 20px; gap: 16px; }
+    .c-btn svg { width: 22px; height: 22px; }
+    .c-meta { display: flex; gap: 30px; flex-wrap: wrap; }
+    .c-meta div { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: rgba(255,255,255,.85); white-space: nowrap; }
+    .c-meta svg { width: 20px; height: 20px; color: rgba(255,255,255,.72); }
+
+    /* ============ 10 - PIE ============ */
+    .s10 { position: relative; background: #000B14; overflow: hidden; }
+    .s10 .foto { background-image: url(/assets/conce-pie.webp); opacity: .45; }
+    .s10 .velo { background: linear-gradient(90deg, rgba(0,11,20,.93), rgba(0,11,20,.78) 55%, rgba(0,11,20,.90)); }
+    .s10 .caja { padding-top: 56px; padding-bottom: 36px; }
+    .p-cols { display: grid; grid-template-columns: 1.5fr 1fr 1.3fr 1fr auto; }
+    .p-c { display: flex; flex-direction: column; padding: 0 clamp(16px, 2.4vw, 36px); }
+    .p-c + .p-c { border-left: 1px solid rgba(255,255,255,.14); }
+    .p-c:first-child { padding-left: 0; }
+    .p-c b { font-size: 16.5px; font-weight: 700; margin-bottom: 10px; }
+    .p-c a, .p-c span { display: block; font-size: 15px; line-height: 1.55; color: rgba(255,255,255,.72); }
+    .p-c a:hover { color: #fff; }
+    .p-c .lista { display: flex; flex-direction: column; gap: 3px; }
+    .p-rs { display: flex; gap: 12px; }
+    .p-rs a { width: 40px; height: 40px; border-radius: 11px; border: 1.5px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; color: #fff; }
+    .p-rs a:hover { border-color: #fff; }
+    .p-rs svg { width: 19px; height: 19px; }
+    .p-legal { margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.08); font-size: 13px; color: rgba(255,255,255,.5); text-align: center; }
+
+    /* Escritorio al 90 %, como estetica, inmobiliarias y la home. Solo de
+       1081 px para arriba: por debajo manda el movil. Con zoom, 100svh se
+       pinta al 90 % del alto de la ventana: el hero divide entre .9. */
+    @media (min-width: 1081px) {
+      body { zoom: .9; }
+      .hero { height: calc(86vh / .9); height: calc(86svh / .9); min-height: 667px; }
+      .sec, .s08, .s09 { min-height: 0; }
+    }
+
+    /* ===================== TABLET ===================== */
+    @media (max-width: 1180px) {
+      .h-links { gap: 26px; }
+      .s02 .dos { grid-template-columns: 1fr; }
+      .dm { grid-template-columns: 1fr 1fr; }
+      .dm-txt { grid-column: 1 / -1; }
+      .dm .d-card { grid-column: 1; grid-row: 2; }
+      .dm .d-panel { grid-column: 2; grid-row: 2; }
+      .dm-trans { grid-column: 1 / -1; grid-row: 3; }
+      .dm-cta { grid-column: 1 / -1; grid-row: 4; }
+      .m-fila { margin-top: 8px; }
+      /* a este ancho los tres pasos no caben con sus flechas: rejilla de tres */
+      .b-pasos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .b-fle { display: none; }
+      .s08 .caja { grid-template-columns: 1fr 1.4fr; }
+      .e-panel { grid-column: 1 / -1; }
+      .lm-fila { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .p-cols { grid-template-columns: 1fr 1fr 1fr; row-gap: 32px; }
+      .p-c:first-child { grid-column: 1 / -1; }
+      .p-c:nth-child(2) { border-left: 0; padding-left: 0; }
+    }
+
+    /* ===================== MOVIL =====================
+       Medidas de inmobiliarias, que es la que Anais da por buena en el
+       movil: titulares a 1,6 rem, texto a .93 rem, cintillos a .68 rem,
+       botones a .92 rem. Por debajo de 620 px se aprieta como alli: 30 px
+       de relleno, h2 de 1,45 a 1,9 rem y texto a .88 rem. */
+    @media (max-width: 860px) {
+      :root { --pad: 58px; --alto: 0px; }
+      .sec { display: block; }
+      .caja, .s08 .caja, .s09 .caja { display: block; padding-left: 22px; padding-right: 22px; }
+      .sec > .caja { padding-top: var(--pad); padding-bottom: var(--pad); }
+      .s02 > .caja { padding-bottom: 16px; }
+      .s03 > .caja { padding-top: 16px; }
+      .dos { display: block; }
+      .m-t, .b-t, .w-t, .h2-t, .d-t, .n-t, .e-t, .c-t { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.14; }
+      .d-t, .c-t { margin-top: 12px; }
+      .h-kick, .d-kick, .c-kick { font-size: .68rem; letter-spacing: .2em; }
+      .m-p, .b-p, .w-p, .h2-p, .d-sub, .n-p, .e-p, .c-sub { margin-top: .8rem; font-size: .93rem; line-height: 1.62; }
+      .btn { height: auto; padding: .9rem 1.5rem; font-size: .92rem; gap: .5rem; }
+      .btn svg { width: 15px; height: 15px; }
+      section[id] { scroll-margin-top: 58px; }
+
+      /* --- fotos: recortes del movil y velos en vertical. Los velos del
+         escritorio son horizontales: en 390 px tapaban la foto entera. --- */
+      .hero .foto { background-image: url(/assets/conce-hero-movil.webp); background-position: center top; }
+      .s02 .foto { background-image: url(/assets/conce-momentos-movil.webp); opacity: .6; }
+      .s04 .foto { background-image: url(/assets/conce-sabado-movil.webp); background-position: center top; }
+      .s09 .foto { background-image: url(/assets/conce-hablemos-movil.webp); background-position: center top; }
+      .s05 .foto { background-image: url(/assets/conce-hero-movil.webp); background-size: cover; }
+      .hero .velo { background: linear-gradient(180deg, rgba(1,8,15,.66) 0%, rgba(1,8,15,.40) 30%, rgba(1,8,15,.66) 58%, rgba(1,8,15,.92) 100%); }
+      .s03 .velo { background: rgba(0,8,15,.86); }
+      .s02 .velo { background: linear-gradient(180deg, rgba(0,8,14,.86) 0%, rgba(0,8,14,.78) 40%, rgba(0,8,14,.94) 100%); }
+      .s04 .velo { background: linear-gradient(180deg, rgba(10,29,58,.86) 0%, rgba(10,29,58,.70) 35%, rgba(10,29,58,.88) 60%, rgba(10,29,58,.97) 100%); }
+      .s05 .velo { background: rgba(10,29,58,.90); }
+      .s09 .velo { background: linear-gradient(180deg, rgba(0,7,13,.78) 0%, rgba(0,7,13,.70) 35%, rgba(0,7,13,.92) 70%, #00070E 100%); }
+      .s06 .velo { background: rgba(241,247,253,.92); }
+      .s07 .velo { background: linear-gradient(180deg, rgba(241,247,253,.86) 0%, rgba(241,247,253,.55) 40%, rgba(241,247,253,.35) 100%); }
+
+      /* --- barra y hero --- */
+      .h-nav-in { padding: 9px 22px; }
+      .h-links { display: none; }
+      .h-logo { width: 30px; height: 30px; border-radius: 9px; }
+      .h-logo svg { width: 18px; height: 18px; }
+      .h-marca b { font-size: 1.02rem; }
+      .h-navbtn { margin-left: auto; height: auto; padding: .6rem 1.05rem; font-size: .8rem; gap: .4rem; }
+      .hero { height: auto; min-height: 0; }
+      .h-cuerpo { display: block; padding: 76px 22px 30px; }
+      .h-kick { margin-top: 0; }
+      .h-t { font-size: clamp(2.1rem, 8.5vw, 3rem); line-height: 1.05; margin-top: .9rem; }
+      .h-sub { font-size: 1rem; line-height: 1.55; margin-top: 1rem; }
+      .h-btns { margin-top: 1.4rem; gap: 10px; flex-direction: column; }
+      .h-b { height: 56px; width: 100%; }
+      .h-b1 { padding: 0 18px; gap: 12px; } .h-b2 { padding: 0 18px 0 8px; gap: 12px; }
+      .h-b .t1 { font-size: .92rem; } .h-b .t2 { font-size: .74rem; }
+      .h-b1 .ico { width: 24px; height: 24px; }
+      .h-play { width: 38px; height: 38px; } .h-play svg { width: 14px; height: 14px; }
+      .h-meta { margin-top: 1.1rem; gap: 8px 16px; }
+      .h-meta div { font-size: .8rem; gap: 7px; } .h-meta svg { width: 16px; height: 16px; }
+      .h-tarjs { width: 100%; margin-top: 1.2rem; gap: 7px; }
+      .hv-cli { margin-right: 34px; padding: 8px 12px; border-radius: 14px 14px 14px 4px; }
+      .hv-er { margin-left: 34px; padding: 8px 12px 9px; border-radius: 14px 14px 4px 14px; }
+      .hv-cli b, .hv-er b { font-size: .7rem; }
+      .hv-cli span, .hv-er > span:last-child { font-size: .8rem; line-height: 1.35; }
+      .hv-wa { width: 24px; height: 24px; left: -10px; top: -10px; } .hv-wa svg { width: 14px; height: 14px; }
+      .hv-agenda { padding: 9px 12px 4px; border-radius: 12px; }
+      .hv-cab { padding-bottom: 7px; } .hv-cab .ic { width: 24px; height: 24px; } .hv-cab .ic svg { width: 14px; height: 14px; }
+      .hv-cab b { font-size: .8rem; }
+      .hv-fila { padding: 6px 0; gap: 1px 8px; }
+      .hv-fila span { font-size: .78rem; } .hv-fila em { font-size: .7rem; }
+
+      /* --- 02 --- */
+      .m-fila { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
+      .m-a .m-cab { padding: 10px 14px; }
+      .m-cab svg { width: 28px; height: 28px; }
+      .m-cab .et { font-size: .76rem; } .m-cab .gr { font-size: 1.15rem; }
+      .m-a .m-foto { height: 110px; }
+      .m-pil { min-height: 36px; font-size: .78rem; }
+      .m-b { min-height: 180px; }
+      .m-centro { flex-direction: row; justify-content: center; gap: 12px; }
+      .m-rd { width: 46px; height: 46px; } .m-rd svg { width: 24px; height: 24px; }
+      .m-centro b { margin-top: 0; font-size: .92rem; }
+      .m-centro b br { display: none; }
+      /* en escritorio hay flechitas y en movil faltaban: van giradas */
+      .m-fle { display: block; margin: 0 auto; transform: rotate(90deg); width: 18px; height: 14px; }
+
+      /* --- 03 --- */
+      .b-card { margin-top: 22px; padding: 16px; gap: 12px; }
+      .b-g1 { width: 100%; }
+      .b-g1 b { font-size: .95rem; }
+      .b-avs img { width: 34px; height: 34px; }
+      .b-g2 b { font-size: 1.7rem; } .b-g2 i { font-size: .86rem; }
+      .b-box { flex: 1 1 30%; padding: 8px 11px; }
+      .b-box span { font-size: .74rem; } .b-box b { font-size: .84rem; white-space: normal; }
+      .b-pasos { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 22px; padding-top: 22px; }
+      .b-num, .b-ico { width: 40px; height: 40px; font-size: .95rem; }
+      .b-ico svg { width: 20px; height: 20px; }
+      .b-paso .tx b { font-size: .92rem; } .b-paso .tx i { font-size: .84rem; }
+      .b-fle { display: block; transform: rotate(90deg); margin-left: 12px; width: 14px; }
+
+      /* --- 04 --- */
+      .w-card { margin-top: 22px; width: 100%; padding: 12px; border-radius: 16px; }
+      .w-wa { width: 30px; height: 30px; border-radius: 9px; } .w-wa svg { width: 20px; height: 20px; }
+      .w-cab .tx b { font-size: .9rem; } .w-cab .tx i { font-size: .82rem; }
+      .w-acc { gap: 12px; } .w-acc svg { width: 16px; height: 16px; }
+      .w-bub { font-size: .84rem; padding: 8px 40px 9px 11px; }
+      .w-bub br { display: none; }
+      .w-in { margin: 12px 20px 0 0; } .w-out { margin: 8px 0 0 20px; }
+      .w-bub .hh { font-size: .68rem; right: 9px; bottom: 7px; }
+      .w-boxes { gap: 8px; margin-top: 12px; }
+      .w-box { padding: 9px 10px; }
+      .w-box .ic { width: 28px; height: 28px; } .w-box .ic svg { width: 16px; height: 16px; }
+      .w-box .tx { margin-left: 9px; }
+      .w-box b { font-size: .84rem; } .w-box i { font-size: .78rem; }
+
+      /* --- 05: en una sola linea con flechas, como en escritorio. Anais lo
+         prefiere asi a la cuadricula de dos por dos. --- */
+      .h2-card { margin-top: 22px; padding: 16px 4px; gap: 2px; }
+      .h2-it { flex: 1 1 0; min-width: 0; }
+      .h2-rd { width: 38px; height: 38px; } .h2-rd svg { width: 20px; height: 20px; }
+      .h2-it b { font-size: .64rem; line-height: 1.3; margin-top: 8px; white-space: normal; }
+      .h2-fle { width: 11px; height: 9px; margin-bottom: 26px; }
+
+      /* --- las tarjetas, mas destacadas: sobre oscuro un azul marino con
+         filo azul; sobre claro, blancas con franja de color arriba --- */
+      .m-a, .b-card, .w-card, .h2-card { background: rgba(14,36,66,.94); border: 1px solid rgba(90,150,255,.45); box-shadow: 0 14px 32px rgba(0,0,0,.45); }
+      .b-box, .w-box { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.16); }
+      .m-pil, .m-cab { background: rgba(10,28,54,.92); }
+      .d-panel { border-top: 3px solid var(--azul); box-shadow: 0 12px 28px rgba(15,40,80,.16); }
+      .n-si { background: #fff; border-top: 3px solid #16B45E; box-shadow: 0 12px 28px rgba(15,40,80,.14); }
+      .n-no { background: #fff; border-top: 3px solid #EA2A3C; box-shadow: 0 12px 28px rgba(15,40,80,.14); }
+
+      /* --- limites: de dos en dos, cada ficha con el color de su icono --- */
+      .lm-t { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.14; margin-top: 12px; }
+      .lm-fila { margin-top: 18px; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .lm-ficha { padding: 12px 12px 13px; border-top: 3px solid #E6ECF4; }
+      .lm-ficha:last-child { grid-column: auto; }
+      .lm-rojo { border-top-color: #E5484D; } .lm-ambar { border-top-color: #D97706; } .lm-az { border-top-color: var(--azul); }
+      .lm-gris { border-top-color: #0B1220; } .lm-verde { border-top-color: #0F9E52; }
+      .lm-ficha .rd { width: 30px; height: 30px; } .lm-ficha .rd svg { width: 16px; height: 16px; }
+      .lm-ficha b { margin-top: 8px; font-size: .84rem; } .lm-ficha .tx { margin-top: 4px; font-size: .75rem; line-height: 1.42; }
+      .lm-pie { margin-top: 14px; font-size: .84rem; line-height: 1.5; }
+
+      /* --- 06 --- */
+      .d-btn { width: 100%; height: 54px; margin-top: 1.2rem; padding: 0 8px; }
+      .d-play { width: 38px; height: 38px; }
+      .d-btn b { font-size: .95rem; } .d-chip { height: 30px; font-size: .84rem; }
+      .d-pie { font-size: .8rem; margin-top: .6rem; }
+      .dm { display: block; }
+      .dm .d-card { margin-top: 20px; height: 116px; }
+      .dm .d-panel { margin-top: 12px; }
+      /* en el movil la demo se queda como estaba (Anais la prefiere asi),
+         sin la transcripcion, pero ahora con su boton al final */
+      .dm-trans { display: none; }
+      .dm-cta { margin-top: 18px; }
+      .dm-cta p { font-size: .86rem; }
+      .dm-cta .btn { margin-top: 12px; width: 100%; }
+      .dm-cta span { font-size: .76rem; margin-top: 8px; }
+      .d-rd { left: 14px; top: 30px; width: 36px; height: 36px; }
+      .d-onda { left: 60px; right: 14px; top: 24px; height: 46px; }
+      .d-prog { left: 14px; right: 14px; bottom: 14px; }
+      .d-prog i { font-size: .74rem; }
+      .d-panel { padding: 14px 14px 4px; }
+      .d-panel > b { font-size: .92rem; }
+      .d-fila { min-height: 34px; }
+      .d-fila .et, .d-fila .va { font-size: .82rem; }
+      .d-fila .et { width: 38%; margin-left: 10px; }
+
+      /* --- 07 --- */
+      .n-dos { margin-top: 22px; grid-template-columns: 1fr; gap: 12px; }
+      .n-box { padding: 14px 16px 16px; }
+      .n-cab .rd { width: 30px; height: 30px; } .n-cab .rd svg { width: 15px; height: 15px; }
+      .n-cab b { font-size: .95rem; }
+      .n-fila { font-size: .86rem; padding: 4px 0; }
+      .n-fila svg { width: 14px; height: 14px; }
+
+      /* --- 08 --- */
+      .e-pers { margin-top: 20px; gap: 10px; max-width: 320px; }
+      .e-per b { font-size: .86rem; margin-top: 6px; } .e-per i { font-size: .74rem; }
+      .e-panel { margin-top: 20px; padding: 4px 14px; }
+      .e-fila { gap: 10px; padding: 10px 0; }
+      .e-fila .ic { width: 22px; height: 22px; }
+      .e-fila b, .e-fila span span { font-size: .86rem; }
+
+      /* --- 09 --- */
+      .s09 { min-height: 0; }
+      .ct-der { margin-top: 22px; align-items: stretch; gap: 16px; }
+      .c-btn { height: auto; padding: .95rem 1.5rem; font-size: 1rem; }
+      .c-meta { gap: 8px 18px; }
+      .c-meta div { font-size: .8rem; gap: 7px; } .c-meta svg { width: 16px; height: 16px; }
+
+      /* --- pie --- */
+      .s10 .caja { padding-top: 38px; padding-bottom: 28px; }
+      .p-cols { grid-template-columns: 1fr 1fr; gap: 22px 0; }
+      .p-c, .p-c + .p-c { padding: 0 12px 0 0; border-left: 0; }
+      .p-c:first-child { grid-column: auto; }
+      .p-c b { font-size: .86rem; margin-bottom: 4px; }
+      .p-c a, .p-c span { font-size: .8rem; overflow-wrap: anywhere; }
+      .p-rs a { width: 34px; height: 34px; } .p-rs svg { width: 16px; height: 16px; }
+      .p-legal { margin-top: 22px; padding-top: 14px; font-size: .72rem; }
+    }
+    /* Como inmobiliarias: por debajo de 620 px se recortan rellenos y se
+       aprieta un poco la letra, para ver una seccion y algo de la
+       siguiente por pantalla. */
+    @media (max-width: 620px) {
+      :root { --pad: 30px; }
+      .s08 .caja { padding-top: 30px; padding-bottom: 30px; }
+      .m-t, .b-t, .w-t, .h2-t, .d-t, .n-t, .e-t, .c-t, .lm-t { font-size: clamp(1.45rem, 6.4vw, 1.9rem); line-height: 1.12; }
+      .m-p, .b-p, .w-p, .h2-p, .d-sub, .n-p, .e-p, .c-sub { font-size: .88rem; line-height: 1.5; }
+      .h-t { font-size: clamp(1.75rem, 7vw, 2.3rem); }
+      /* "alejala un poquito, que se vea entera" (2026-10-04) */
+      .h-sub { font-size: .86rem; line-height: 1.45; margin-top: .7rem; }
+      .h-btns { margin-top: 1rem; gap: 8px; }
+      .h-b { height: 48px; }
+      .h-b .t1 { font-size: .86rem; } .h-b .t2 { font-size: .7rem; }
+      .h-b1 .ico { width: 21px; height: 21px; }
+      .h-play { width: 32px; height: 32px; }
+      .h-meta { margin-top: .8rem; gap: 6px 14px; }
+      .h-meta div { font-size: .72rem; } .h-meta svg { width: 14px; height: 14px; }
+      .h-tarjs { margin-top: 1rem; gap: 6px; }
+      .h-cuerpo { padding-top: 68px; padding-bottom: 24px; }
+      /* la 02, un pelin mas pequena */
+      .m-fila { margin-top: 16px; gap: 8px; }
+      .m-a .m-cab { padding: 8px 12px; }
+      .m-cab svg { width: 24px; height: 24px; }
+      .m-cab .gr { font-size: 1rem; }
+      .m-a .m-foto { height: 84px; }
+      .m-b { min-height: 136px; }
+      .m-pil { min-height: 30px; font-size: .72rem; }
+      .m-rd { width: 38px; height: 38px; } .m-rd svg { width: 20px; height: 20px; }
+      .m-centro b { font-size: .84rem; }
+      .h-sub { font-size: .92rem; line-height: 1.45; margin-top: .8rem; }
+      .h-btns { margin-top: 1.1rem; }
+      .h-b { height: 50px; }
+      .h-meta div { font-size: .76rem; }
+    }
+
+    /* Calendario de GHL en modal. Mismo patron que inmobiliarias y coaching. */
+    .er-modal { position: fixed; inset: 0; z-index: 9000; display: none; background: rgba(6,10,16,.62); backdrop-filter: blur(6px); padding: 24px 16px; overflow-y: auto; }
+    .er-modal.open { display: block; }
+    .er-modal-box { position: relative; max-width: 680px; margin: 3vh auto; background: #fff; color: #11161f; border-radius: 18px; padding: 2rem 1.6rem 1.4rem; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+    .er-modal-box h3 { font-size: 1.2rem; margin: 0; line-height: 1.3; }
+    .er-modal-box p { font-size: .9rem; color: #5c6980; margin: .5rem 0 0; }
+    .er-modal-x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 9px; border: 1px solid #e1e8f2; background: #f5f8fc; color: #5c6980; font-size: 1rem; cursor: pointer; line-height: 1; }
+    .er-cal { width: 100%; min-height: 620px; border: 0; border-radius: 12px; margin-top: 1.2rem; background: #f5f8fc; }
+    @media (max-width: 900px) { .er-modal-box { padding: 1.6rem 1rem 1rem; margin: 0 auto; } .er-cal { min-height: 560px; } }
+  
+    /* ---- Barra comun de las landings de nicho (2026-10-04, peticion de Anais) ----
+       La marca es solo la palabra EASYROBOTS, sin icono ni color: la misma de
+       /estetica/. Arriba del todo la barra va transparente sobre la foto del
+       hero con el menu entero (el nicho, la demo y quienes somos); al
+       deslizar se queda fija y oscura con solo la marca y el boton de
+       reservar, que es lo unico que hace falta a mitad de pagina. Es igual en
+       las cinco landings de nicho; estetica y la home llevan su propia barra. */
+    .bn { position: fixed; top: 0; left: 0; right: 0; z-index: 130; border-bottom: 1px solid transparent; transition: background-color .3s, border-color .3s; }
+    .bn.bn-baja { background: rgba(6,9,14,.86); border-bottom-color: rgba(255,255,255,.08); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+    .bn-in { width: 100%; max-width: 1440px; margin: 0 auto; padding: 14px max(22px, 5.6vw); display: flex; align-items: center; }
+    @media (min-width: 1440px) { .bn-in { padding-left: 80px; padding-right: 80px; } }
+    .bn-marca { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 19px; font-weight: 500; letter-spacing: .32em; color: #fff; text-decoration: none; white-space: nowrap; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+    .bn-links { display: flex; gap: 40px; margin: 0 auto; transition: opacity .25s, visibility .25s; }
+    .bn-links a { position: relative; padding: 4px 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 15.5px; font-weight: 500; color: rgba(255,255,255,.86); text-decoration: none; white-space: nowrap; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+    .bn-links a:hover { color: #fff; }
+    .bn-links a.act { color: #fff; font-weight: 700; }
+    .bn-links a.act::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; border-radius: 2px; background: var(--azul, #0070FE); }
+    .bn-baja .bn-links { opacity: 0; visibility: hidden; pointer-events: none; }
+    .bn-btn { display: inline-flex; align-items: center; gap: 9px; height: 46px; padding: 0 22px; border: 0; border-radius: 999px; background: var(--azul, #0070FE); color: #fff; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 15.5px; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; transition: filter .2s; }
+    .bn-btn:hover { filter: brightness(1.1); }
+    .bn-btn svg { width: 17px; height: 17px; flex: 0 0 auto; }
+    .bn-hueco { flex: 0 0 auto; height: 74px; }
+    section[id], header[id], #equipo { scroll-margin-top: 80px; }
+    @media (max-width: 1200px) { .bn-links { gap: 28px; } }
+    /* Por debajo de 1000 px el menu no cabe junto a la marca y el boton:
+       se queda la marca y el boton, como al deslizar. */
+    @media (max-width: 1000px) { .bn-links { display: none; } .bn-btn { margin-left: auto; } }
+    @media (max-width: 900px) {
+      .bn-in { padding: 9px 22px; }
+      .bn-marca { font-size: .82rem; letter-spacing: .26em; }
+      .bn-btn { height: auto; padding: .6rem 1.05rem; font-size: .8rem; gap: .4rem; }
+      .bn-btn svg { width: 14px; height: 14px; }
+      .bn-hueco { height: 56px; }
+      section[id], header[id], #equipo { scroll-margin-top: 58px; }
+    }
+  </style>
+  <style>
+    /* Titulares en Fraunces en las siete paginas (decision de Anais,
+       2026-10-07, elegida en borradores/prueba-tipografias.html). Solo
+       titulares: el texto corrido sigue con la letra de cada pagina. La
+       parte destacada (<em>) va en cursiva. Va al final del <head> y con
+       !important porque cada pagina fija la letra de sus titulares con
+       clases distintas. Servida desde el dominio, sin Google. */
+    @font-face { font-family:'Fraunces'; font-style:normal; font-weight:300 700; font-display:swap; src:url(/assets/fonts/fraunces-latin-wght-normal.woff2) format('woff2'); }
+    @font-face { font-family:'Fraunces'; font-style:italic; font-weight:300 700; font-display:swap; src:url(/assets/fonts/fraunces-latin-wght-italic.woff2) format('woff2'); }
+    h1, h2 { font-family: 'Fraunces', Georgia, serif !important; font-weight: 500 !important; letter-spacing: -.015em !important; }
+    h3 { font-family: 'Fraunces', Georgia, serif !important; font-weight: 560 !important; letter-spacing: -.01em !important; }
+    h1 em, h2 em { font-style: italic !important; }
+  </style>
+  <style>
+    /* Hero en movil como el de /estetica/ (Anais, 07/10: "se ve detras de la
+       letra"). La foto va arriba a todo el ancho y a la vista, sin texto
+       encima; el texto empieza donde la foto se funde en oscuro. */
+    @media (max-width: 860px) {
+      .hero .foto { background-size: 100% auto; background-position: center top; background-repeat: no-repeat; }
+      .hero .velo { background: linear-gradient(180deg, rgba(1,8,15,.60) 0px, rgba(1,8,15,.05) 90px, rgba(1,8,15,.10) 250px, rgba(1,8,15,.92) 400px, #01080F 450px); }
+      .hero .h-col { padding-top: 260px; text-shadow: none; }
+      /* CTA igual que la de /estetica/: la foto arriba, a la vista, y el
+         texto debajo sobre oscuro. La foto movil es apaisada (740x292), asi
+         que va en una franja de 250 px con cover. */
+      .s09 .foto { bottom: auto; height: 250px; background-size: cover; background-position: center; }
+      .s09 .velo { background: linear-gradient(180deg, rgba(0,7,13,.25) 0px, rgba(0,7,13,0) 80px, rgba(0,7,13,.35) 180px, #00070E 250px); }
+      .s09 > .caja { padding-top: 230px; }
+    }
+  </style>
+  <script>
+    /* Vinetas: anim-on se pone aqui, antes de pintar, para que lo primero que
+       se vea sea la animacion y no el bloque ya montado (en ecommerce el hero
+       salia entero y luego "parpadeaba"). Sin IntersectionObserver o con
+       movimiento reducido no se pone y todo se ve quieto. */
+    if ('IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) document.documentElement.classList.add('anim-on');
+  </script>
+  <script src="/js/consent.js"></script>
+<style>
+  /* BORRADOR: "Que necesita tu negocio". Bloque autonomo, sin depender de las
+     clases de cada landing, porque cada una tiene las suyas. Las dos puertas
+     pesan igual: una para quien quiere mas clientes y otra para quien quiere
+     quitarse trabajo. */
+  .pc { background: #0C1014; color: #fff; padding: clamp(64px, 8vh, 96px) 0; }
+  .pc-caja { max-width: 1240px; margin: 0 auto; padding: 0 max(22px, 5.3vw); }
+  .pc-kick { font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #5B9BFF; }
+  .pc h2 { margin: 14px 0 0; font-size: clamp(32px, 3.2vw, 46px); line-height: 1.12; color: #fff; }
+  .pc h2 em { font-style: italic; }
+  .pc-puertas { margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pc-puerta { display: flex; flex-direction: column; padding: 30px; background: #151A20; border: 1px solid rgba(91,155,255,.32); border-radius: 16px; }
+  .pc-q { font-size: 14px; font-weight: 600; color: #5B9BFF; }
+  .pc-puerta h3 { margin: 10px 0 0; font-size: 28px; line-height: 1.2; color: #fff; }
+  .pc-puerta p { margin: 10px 0 0; font-size: 15.5px; line-height: 1.5; color: #B7BDC4; }
+  .pc-puerta p b { color: #fff; }
+  .pc-pre { margin-top: auto; padding-top: 18px; }
+  .pc-pre b { display: block; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.09); font-size: 20px; color: #fff; }
+  .pc-pre span { display: block; margin-top: 3px; font-size: 13.5px; color: #8F969E; }
+  .pc a.pc-btn { margin-top: 16px; display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 18px; border-radius: 11px; background: #fff; color: #0B1220; font-size: 15px; font-weight: 600; text-decoration: none; }
+  .pc a.pc-btn:hover { background: #EEF2F7; }
+  .pc-duda { margin: 22px 0 0; font-size: 15.5px; color: #B7BDC4; }
+  .pc-duda a { color: #fff; text-decoration: underline; text-underline-offset: 3px; background: none !important; border: 0 !important; }
+  .pc-pzcab { margin-top: 40px; display: flex; align-items: baseline; gap: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.09); }
+  .pc-pzcab h3 { margin: 0; font-family: inherit !important; font-size: 13px !important; font-weight: 600 !important; letter-spacing: .24em !important; text-transform: uppercase; color: #B7BDC4; }
+  .pc-pzcab p { margin: 0; font-size: 15px; color: #B7BDC4; }
+  .pc-pzs { margin-top: 16px; display: grid; gap: 12px; }
+  .pc-pzs3 { grid-template-columns: repeat(3, 1fr); } .pc-pzs4 { grid-template-columns: repeat(4, 1fr); }
+  .pc-pz { display: flex; flex-direction: column; padding: 20px; background: #151A20; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; }
+  .pc-pz h3 { margin: 0; font-size: 18px; line-height: 1.25; color: #fff; }
+  .pc-pz p { margin: 8px 0 0; font-size: 14.5px; line-height: 1.45; color: #B7BDC4; }
+  .pc-pz .pc-pre b { font-size: 17px; }
+  .pc-pz > a { margin-top: 12px; padding: 10px 12px; text-align: center; border: 1px solid rgba(255,255,255,.28); border-radius: 10px; color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .pc-pz > a:hover { border-color: #fff; }
+  .cp { background: #090D11; }
+  .cp-ent { margin: 14px 0 0; max-width: 680px; font-size: 17px; line-height: 1.55; color: #B7BDC4; }
+  .cp-ds { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .cp-d { padding: 24px; background: #151A20; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; }
+  .cp-d h3 { margin: 0; font-size: 20px; line-height: 1.25; color: #fff; }
+  .cp-d p { margin: 8px 0 0; font-size: 15px; line-height: 1.5; color: #B7BDC4; }
+  .cp-d .cp-c { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.09); color: #fff; font-weight: 500; }
+  .cp-sub { margin: 40px 0 0; font-size: 22px; color: #fff; }
+  .cp-pasos { margin: 16px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .cp-pasos li { padding-top: 14px; border-top: 2px solid rgba(91,155,255,.32); }
+  .cp-pasos i { display: block; font-style: normal; font-size: 13px; font-weight: 700; color: #5B9BFF; }
+  .cp-pasos b { display: block; margin-top: 6px; font-size: 15.5px; line-height: 1.3; color: #fff; }
+  .cp-pasos span { display: block; margin-top: 6px; font-size: 14px; line-height: 1.45; color: #B7BDC4; }
+  .cp-fin { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .cp-fin p { margin: 0; font-size: 15px; color: #fff; }
+  .cp .cp-fin a.pc-btn { margin-top: 0; }
+  .pc-letra { margin: 12px 0 0; font-size: 14px; line-height: 1.55; color: #8F969E; }
+  @media (max-width: 1080px) and (min-width: 761px) { .pc-pzs3, .pc-pzs4 { grid-template-columns: 1fr 1fr; } .cp-pasos { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 760px) {
+    .pc-puertas, .pc-pzs3, .pc-pzs4, .cp-ds, .cp-pasos { grid-template-columns: 1fr; }
+    .pc-pzcab { display: block; } .pc-pzcab p { margin-top: 4px; }
+    .cp-d { padding: 18px; }
+    .cp-fin a.pc-btn { width: 100%; }
+    .pc-puerta { padding: 22px; }
+    .pc-puerta h3 { font-size: 24px; }
+    .pc-letra { font-size: 13px; }
+  }
+</style>
+<style>.pc-puerta p.pc-mas { margin-top: 12px; padding: 10px 12px; border-radius: 8px; background: rgba(255,255,255,.06); color: #fff; font-size: 14.5px; }</style>
+<style>.eq-g > p.eq-man { border-bottom: 0; padding-bottom: 0; }</style>
+<style>.pc-lista { margin: 12px 0 0; padding: 0; list-style: none; } .pc-lista li { position: relative; padding: 4px 0 4px 24px; font-size: 15.5px; line-height: 1.45; color: #B7BDC4; } .pc-lista li::before { content: ""; position: absolute; left: 3px; top: 11px; width: 10px; height: 6px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); color: #5B9BFF; } .pc-lista.oro li::before { color: #E4BA6C; }</style>
+<style>
+  /* BORRADOR calculadora comun de las landings. */
+  /* position + z-index: si la calculadora cae dentro de un contenedor con foto
+     y velo en absoluto (el .duo de ecommerce), se pinta encima y no debajo. */
+  .ic-calc { position: relative; z-index: 2; background: #0A1220; color: #fff; padding: clamp(64px, 8vh, 96px) 0; }
+  .ic-caja { max-width: 1240px; margin: 0 auto; padding: 0 max(22px, 5.3vw); display: grid; grid-template-columns: 1fr minmax(0, 500px); gap: 40px 64px; align-items: center; }
+  .ic-kick { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #5B9BFF; }
+  .ic-calc h2 { margin: 14px 0 0; font-size: clamp(30px, 3vw, 44px); line-height: 1.12; color: #fff; }
+  .ic-calc h2 em { font-style: italic; color: #A3ADBB; }
+  .ic-ent { margin: 16px 0 0; font-size: 17px; line-height: 1.55; color: #B7BDC4; }
+  .ic-panel { padding: 26px; border-radius: 16px; background: #121A27; border: 1px solid rgba(91,155,255,.3); }
+  .ic-f { display: block; margin-bottom: 16px; }
+  .ic-f span { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; color: #C6CED9; }
+  .ic-f b { color: #fff; white-space: nowrap; }
+  .ic-f input { width: 100%; margin-top: 8px; accent-color: #1E6FF2; }
+  .ic-res { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.09); }
+  .ic-res span { display: block; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #8B95A3; }
+  .ic-res b { display: block; margin-top: 4px; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; color: #fff; }
+  .ic-res div + div b { color: #5B9BFF; }
+  .ic-nota { margin: 14px 0 0; font-size: 13px; color: #8B95A3; }
+  .ic-cuenta { margin-top: 8px; font-size: 13px; color: #8B95A3; }
+  .ic-cuenta summary { cursor: pointer; color: #C6CED9; }
+  .ic-cuenta p { margin: 6px 0 0; line-height: 1.5; }
+  @media (max-width: 900px) { .ic-caja { grid-template-columns: 1fr; } .ic-panel { padding: 20px; } }
+</style>
+<style>.b-ej { margin-left: 8px; padding: 2px 7px; border-radius: 5px; border: 1px solid rgba(255,255,255,.28); font-style: normal; font-size: 10.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.75); vertical-align: middle; }</style>
+</head>
+
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- =================== 01 · HERO =================== -->
+  <header class="hero" id="inicio">
+      <div class="foto"></div>
+      <div class="velo"></div>
+
+      <nav class="bn" aria-label="Principal"><div class="bn-in">
+      <a class="bn-marca" href="#inicio">EASYROBOTS</a>
+      <div class="bn-links">
+        <a href="#sistema">C&oacute;mo funciona</a>
+        <a href="#demo">Demostraci&oacute;n</a>
+        <a href="#precios">Productos</a>
+      </div>
+      <a class="bn-btn" href="#hablemos" data-cal>Reservar una llamada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+    </div></nav>
+
+    <div class="h-cuerpo">
+      <div class="h-col">
+        <p class="h-kick">Llamadas · Ventas · Taller · Posventa</p>
+        <h1 class="h-t">Vender es la mitad <br>del negocio. <br><em>La otra vuelve <br>al taller.</em></h1>
+        <p class="h-sub">Más ventas. Más posventa. Un mismo cliente. <br>Automatiza la comunicación y convierte cada <br>contacto en una oportunidad real, dentro <br>y fuera del concesionario.</p>
+      </div>
+
+      <!-- Anais (2026-10-04): las tres vinetas sueltas ("Nueva consulta",
+           "Cita de taller", "Cliente recurrente") "no sugieren nada". Ahora
+           cuentan la tesis del titular: una pregunta de venta un sabado, la
+           respuesta, y la agenda donde caen juntas la prueba del coche y la
+           revision del taller. Mismo ejemplo que la 04 y la demo (el Leon,
+           jueves 17:00, Laura M.). -->
+      <!-- Anais (07/10): el hero repetia el ejemplo del SEAT Leon de la
+           demo. Ahora cuenta la otra mitad del negocio: el sistema escribe
+           solo cuando al coche le toca la revision y la cita cae en la
+           agenda del taller. -->
+      <div class="h-tarjs" data-vi>
+        <div class="hv-er vi" style="--d:.4s">
+          <span class="hv-wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2m0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.3-.4A8 8 0 0 1 12 4m-3.3 4.2c-.2 0-.5.1-.7.4s-.9.9-.9 2.2.9 2.5 1 2.7c.2.2 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.7s1.5-.6 1.7-1.2.2-1.1.2-1.2-.2-.2-.4-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4z"/></svg></span>
+          <b>EasyRobots &middot; lunes 10:02</b>
+          <span>Hola, Carlos. Tu coche est&aacute; a punto de cumplir los 30.000 km y le toca la revisi&oacute;n. &iquest;Te reservo hueco en el taller esta semana?</span>
+        </div>
+        <div class="hv-cli vi" style="--d:1.6s">
+          <b>Cliente &middot; 10:15</b>
+          <span>S&iacute;, el viernes por la ma&ntilde;ana si puede ser.</span>
+        </div>
+        <div class="hv-er vi" style="--d:2.6s">
+          <span class="hv-wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2m0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.3-.4A8 8 0 0 1 12 4m-3.3 4.2c-.2 0-.5.1-.7.4s-.9.9-.9 2.2.9 2.5 1 2.7c.2.2 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.7s1.5-.6 1.7-1.2.2-1.1.2-1.2-.2-.2-.4-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4z"/></svg></span>
+          <b>EasyRobots &middot; 10:15</b>
+          <span>Hecho: viernes a las 9:00. Te escribo el d&iacute;a antes para record&aacute;rtelo.</span>
+        </div>
+        <div class="hv-agenda vi" style="--d:3.5s">
+          <div class="hv-cab"><span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="17" rx="2.5" stroke="currentColor" stroke-width="1.9"/><path d="M2.5 9.5h19M7.5 2.5v4M16.5 2.5v4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><b>Agenda del concesionario</b></div>
+          <div class="hv-fila vi" style="--d:3.9s"><i class="pt a"></i><span><b>Viernes 9:00</b> &middot; Revisi&oacute;n 30.000 km</span><em>Taller &middot; confirmada por WhatsApp</em></div>
+          <div class="hv-fila vi" style="--d:4.3s"><i class="pt v"></i><span><b>Jueves 18:00</b> &middot; Recordatorio a Carlos</span><em>Se env&iacute;a solo</em></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+  <!-- =================== 02 - DOS MOMENTOS =================== -->
+  <section class="sec s02 oscura" id="momentos">
+      <div class="foto"></div>
+      <div class="velo"></div>
+    <div class="caja dos">
+
+      <div class="m-col">
+        <h2 class="m-t">Dos momentos. <br>El mismo cliente.</h2>
+        <p class="m-p">Un cliente entra, pregunta, <br>compra y decide rápido. <br>El mismo cliente vuelve meses <br>después para revisar, cambiar, <br>reparar… y puede volver a comprar.</p>
+      </div>
+
+      <div class="m-fila">
+      <!-- Ventas -->
+      <div class="m-card m-a">
+        <div class="m-cab">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="13.5" r="8" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M12 9.5v4l2.6 2.2M9.5 2.5h5M12 2.5v3M18.6 6.2l1.6-1.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <span><span class="et">Ventas</span><span class="gr">Minutos</span></span>
+        </div>
+        <div class="m-foto"></div>
+        <div class="m-pil">Consulta <i>→</i> Prueba <i>→</i> Cita</div>
+      </div>
+
+      <!-- el mismo cliente -->
+      <svg class="m-fle m-f1" viewBox="0 0 22 17" fill="none" aria-hidden="true"><path d="M1 8.5h17m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="m-centro">
+        <span class="m-rd"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></span>
+        <b>El mismo <br>cliente.</b>
+      </div>
+      <svg class="m-fle m-f2" viewBox="0 0 22 17" fill="none" aria-hidden="true"><path d="M1 8.5h17m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+      <!-- Posventa -->
+      <div class="m-card m-b">
+        <div class="m-cab">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2.5" y="4.5" width="19" height="17" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M2.5 9.5h19M7.5 2.5v4M16.5 2.5v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="7.5" cy="13" r="1.2" fill="currentColor"/><circle cx="12" cy="13" r="1.2" fill="currentColor"/><circle cx="16.5" cy="13" r="1.2" fill="currentColor"/>
+            <circle cx="7.5" cy="17.5" r="1.2" fill="currentColor"/><circle cx="12" cy="17.5" r="1.2" fill="currentColor"/>
+          </svg>
+          <span><span class="et">Posventa</span><span class="gr">Meses</span></span>
+        </div>
+        <div class="m-pil">Revisión <i>→</i> Taller <i>→</i> Nueva oportunidad</div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 03 - LOS QUE NO HAN VUELTO =================== -->
+  <section class="sec s04 oscura" id="sabado">
+      <div class="foto"></div>
+      <div class="velo"></div>
+    <div class="caja dos">
+
+      <div class="w-col">
+        <h2 class="w-t">El que pregunta <br>un sábado <em>no espera <br>al lunes.</em></h2>
+        <p class="w-p">Cuando entra una consulta, el tiempo importa. <br>Nuestro sistema responde, cualifica y agenda, <br>aunque tu equipo no esté.</p>
+      </div>
+
+      <div class="w-card" data-vi>
+        <div class="w-cab">
+          <span class="w-wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2m0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.3-.4A8 8 0 0 1 12 4m-3.3 4.2c-.2 0-.5.1-.7.4s-.9.9-.9 2.2.9 2.5 1 2.7c.2.2 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.7s1.5-.6 1.7-1.2.2-1.1.2-1.2-.2-.2-.4-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4z"/></svg></span>
+          <span class="tx"><b>Interesado</b><i>en stock</i></span>
+          <span class="w-acc">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.4-5.7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M20 3v4h-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M4 3v4h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="pts"><span></span><span></span><span></span></span>
+          </span>
+        </div>
+
+        <div class="w-bub w-in vi" style="--d:.3s">Hola, he visto el León que tenéis <br>en la web. ¿Sigue disponible?<i class="hh">10.42</i></div>
+        <div class="w-escr" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="w-bub w-out vi" style="--d:2.1s">¡Hola! Sí, lo tenemos disponible. <br>¿Te gustaría que te enviemos más <br>información o prefieres venir a verlo?<i class="hh">10.43</i></div>
+
+        <div class="w-boxes">
+        <div class="w-box w-b1 vi" style="--d:2.9s">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="8.5" cy="14.5" r="1.1" fill="currentColor"/><circle cx="12" cy="14.5" r="1.1" fill="currentColor"/><circle cx="15.5" cy="14.5" r="1.1" fill="currentColor"/></svg></span>
+          <span class="tx"><b>Cita agendada</b><i>Jueves 17:00</i></span>
+        </div>
+        <div class="w-box w-b2 vi" style="--d:3.3s">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2" stroke="currentColor" stroke-width="1.9"/><circle cx="9" cy="9.5" r="1.4" fill="currentColor"/><circle cx="14.5" cy="13.5" r="1.4" fill="currentColor"/><path d="M6 16.5l3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="tx"><b>Vehículo</b><i>SEAT León</i></span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 05 - NO SON DOS HERRAMIENTAS =================== -->
+      <!-- =================== CALCULADORA (BORRADOR) ===================
+       Los numeros los pone el negocio: es un calculo con sus datos, no una
+       promesa. Barras y no casillas, y resultado al mes y al año. -->
+  <section class="ic-calc" id="calculadora" data-calc>
+    <div class="ic-caja">
+      <div class="ic-tx">
+        <p class="ic-kick">Lo que cuesta no contestar</p>
+        <h2>Calcula cuántas ventas y citas <em>se te pueden estar escapando.</em></h2>
+        <p class="ic-ent">Mueve las barras con tus números.</p>
+      </div>
+      <div class="ic-panel">
+        <label class="ic-f"><span>Consultas por semana <b data-v="con"></b></span><input type="range" data-k="con" data-fmt="num" min="5" max="150" step="1" value="30"></label><label class="ic-f"><span>Se quedan sin respuesta a tiempo <b data-v="sin"></b></span><input type="range" data-k="sin" data-fmt="pct" min="5" max="60" step="1" value="20"></label><label class="ic-f"><span>Acabarían en venta o cita de taller <b data-v="op"></b></span><input type="range" data-k="op" data-fmt="pct" min="1" max="20" step="0.5" value="5"></label><label class="ic-f"><span>Valor medio de cada una <b data-v="val"></b></span><input type="range" data-k="val" data-fmt="eur" min="100" max="3000" step="50" value="600"></label>
+        <div class="ic-res">
+          <div><span>Al mes</span><b data-out="mes"></b></div>
+          <div><span>Al año</span><b data-out="anio"></b></div>
+        </div>
+        <p class="ic-nota">Es un cálculo con tus números, no una promesa de resultados.</p>
+        <details class="ic-cuenta"><summary>Ver la cuenta</summary><p>Consultas por semana × 4,33 semanas × % sin respuesta × % que acabaría en venta o cita × valor medio.</p></details>
+      </div>
+    </div>
+  </section>
+
+<section class="sec s05 oscura" id="sistema">
+      <div class="foto"></div>
+      <div class="velo"></div>
+    <div class="caja dos">
+
+      <div class="h2-col">
+        <h2 class="h2-t">No son dos herramientas. <br>Es la <em>misma conversación.</em></h2>
+        <p class="h2-p">Ventas y posventa conectadas. Toda la información <br>del cliente en un solo sistema para que cada interacción <br>sume, en cualquier momento del ciclo.</p>
+      </div>
+
+      <div class="h2-card" data-vi>
+        <div class="h2-it vi" style="--d:.2s;--l:0.0s">
+          <span class="h2-rd"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><circle cx="8" cy="10.5" r="1.4" fill="#0A1520"/><circle cx="12" cy="10.5" r="1.4" fill="#0A1520"/><circle cx="16" cy="10.5" r="1.4" fill="#0A1520"/></svg></span>
+          <b>Conversación<br><span>con el cliente</span></b>
+        </div>
+        <svg class="h2-fle vi" style="--d:.55s" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="h2-it vi" style="--d:.9s;--l:0.7s">
+          <span class="h2-rd"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="17" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 9.5h19M7.5 2.5v4M16.5 2.5v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="7.5" cy="13" r="1.2" fill="currentColor"/><circle cx="12" cy="13" r="1.2" fill="currentColor"/><circle cx="16.5" cy="13" r="1.2" fill="currentColor"/><circle cx="7.5" cy="17.5" r="1.2" fill="currentColor"/><circle cx="12" cy="17.5" r="1.2" fill="currentColor"/></svg></span>
+          <b>Agenda<br><span>de citas</span></b>
+        </div>
+        <svg class="h2-fle vi" style="--d:1.25s" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="h2-it vi" style="--d:1.6s;--l:1.4s">
+          <span class="h2-rd"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 2.5h8l5 5v14h-13z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.5 2.5v5h5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12.5h7M8.5 16h4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <b>Registro<br><span>en tu sistema</span></b>
+        </div>
+        <svg class="h2-fle vi" style="--d:1.95s" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14m0 0-4.5-4.5M15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="h2-it vi" style="--d:2.3s;--l:2.1s">
+          <span class="h2-rd"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="13" width="4.4" height="8" rx="1"/><rect x="9.8" y="8" width="4.4" height="13" rx="1"/><rect x="16.6" y="3" width="4.4" height="18" rx="1"/></svg></span>
+          <b>Criterio<br><span>para tu equipo</span></b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 06 - DEMO: PRUEBALO TU + LLAMADA (2026-10-07) ===================
+       Anais: "lo de la demo exactamente igual que en inmobiliarias". Es el
+       mismo bloque (prefijo pb-), con el chat de Ruben, el calendario de
+       pruebas y citas, y la CTA al calendario de GHL (data-cal). Sustituye
+       a "Pruebalo tu" (wz-) y a la demo con reproductor, panel y
+       transcripcion, que eran dos secciones seguidas.
+       El boton de escuchar no lleva audio: no hay grabacion todavia. -->
+  <style>
+    .pb-caja { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: clamp(30px, 4vw, 64px); align-items: center; }
+    .pb-txt h2 { margin-top: 14px; font-size: clamp(2rem, 3.4vw, 2.9rem); line-height: 1.08; letter-spacing: -.02em; color: #0B1220; }
+    .pb-txt h2 em { font-style: normal; color: var(--azul); }
+    .pb-txt .pb-lede { margin-top: 1rem; font-size: 1.05rem; line-height: 1.6; color: #3A4352; max-width: 44ch; }
+    .pb-info { display: flex; gap: 14px; margin-top: 22px; padding: 16px 20px; border-radius: 14px; background: rgba(232,239,248,.9); border: 1px solid rgba(200,212,228,.8); max-width: 46ch; }
+    .pb-info > svg { width: 26px; height: 26px; color: var(--azul); flex: 0 0 auto; }
+    .pb-info b { display: block; font-size: .95rem; font-weight: 600; color: #0B1220; }
+    .pb-info span { display: block; margin-top: 3px; font-size: .9rem; line-height: 1.45; color: #4A5568; }
+    .pb-acc { margin-top: 26px; }
+    .pb-esc { display: inline-flex; align-items: center; gap: .8rem; background: var(--azul); color: #fff; border: 0; font-family: inherit; border-radius: 999px; padding: .5rem; cursor: pointer; font-size: .92rem; font-weight: 600; }
+    .pb-esc:hover { background: var(--azul-h); }
+    .pb-esc .rd { width: 38px; height: 38px; border-radius: 50%; background: #fff; color: var(--azul); display: flex; align-items: center; justify-content: center; font-size: .8rem; }
+    .pb-esc .dur { background: rgba(0,0,0,.22); border-radius: 999px; padding: .35rem .8rem; font-size: .8rem; font-variant-numeric: tabular-nums; margin-right: .3rem; }
+    @media (min-width: 1081px) { .pb-esc { font-size: 1rem; } }
+    .pb-nota { margin-top: 10px; font-size: .8rem; line-height: 1.5; color: #4A5563; max-width: 44ch; }
+    /* Anais (2026-10-07): primero se prueba el chat; debajo, escuchar la
+       llamada; y al final, reservar. Por eso escuchar y la CTA salen de la
+       columna de texto y van bajo el portatil. */
+    .pb-der { min-width: 0; }
+    .pb-bajo { margin-top: 30px; padding: 20px 22px; border-radius: 16px; background: rgba(255,255,255,.9); border: 1px solid rgba(200,212,228,.8); box-shadow: 0 10px 30px rgba(10,20,40,.08); }
+    .pb-bajo .pb-cta { margin-top: 20px; padding-top: 18px; }
+    .pb-bajo .pb-acc { margin-top: 0; }
+    .pb-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(11,18,32,.1); }
+    .pb-cta span { font-size: .82rem; color: #4A5563; }
+    .pb-negro { background: #0B0D12; color: #fff; border: 1px solid transparent; }
+    .pb-negro:hover { background: #fff; color: #0B0D12; border-color: #0B0D12; transform: translateY(-1px); }
+
+    .pb-pant { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; padding: 16px; background: #F3F6FA; border: 13px solid #121418; border-radius: 22px; box-shadow: 0 40px 80px rgba(20,30,50,.28), 0 0 0 1px rgba(0,0,0,.15); }
+    .pb-chat { display: flex; flex-direction: column; min-width: 0; }
+    .pb-cab { display: flex; align-items: center; gap: 12px; padding: 6px 4px 12px; }
+    .pb-av { width: 42px; height: 42px; border-radius: 50%; background: var(--azul); color: #fff; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+    .pb-cab b { display: block; font-size: 15px; font-weight: 600; color: #0B1220; }
+    .pb-cab i { display: flex; align-items: center; gap: 6px; font-style: normal; font-size: 12.5px; color: #5A6473; }
+    .pb-cab i::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #22C55E; }
+    .pb-msgs { height: 330px; overflow-y: auto; display: flex; flex-direction: column; gap: 9px; padding: 4px 4px 8px; }
+    .pb-in, .pb-out { max-width: 86%; padding: 9px 13px; border-radius: 12px; font-size: 14px; line-height: 1.45; color: #18202C; white-space: pre-wrap; }
+    .pb-out { align-self: flex-start; background: #fff; box-shadow: 0 2px 8px rgba(20,30,50,.07); }
+    .pb-in { align-self: flex-end; background: #DCEBFF; }
+    .pb-chat .cd-botones button { border-color: var(--azul); color: var(--azul); font-weight: 500; }
+    .pb-chat .cd-botones button:hover { background: var(--azul); color: #fff; }
+    .pb-pie { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+    .pb-pie .campo { flex: 1 1 auto; min-width: 0; height: 44px; display: flex; align-items: center; padding: 0 16px; border-radius: 999px; background: #fff; border: 1px solid #E1E7EF; font: inherit; font-size: 14.5px; color: #18202C; }
+    .pb-pie .campo::placeholder { color: #8A94A4; }
+    .pb-pie .env { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--azul); color: #fff; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; cursor: pointer; }
+    .pb-pie .env svg { width: 20px; height: 20px; }
+    .pb-pista { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 10px; padding: 10px 14px; border-radius: 12px; background: var(--azul); color: #fff; font-size: 13.5px; font-weight: 600; line-height: 1.3; box-shadow: 0 8px 22px rgba(0,127,254,.35); animation: pb-flota 2.4s ease-in-out infinite; }
+    .pb-pista-n { width: 20px; height: 20px; border-radius: 50%; background: #fff; color: var(--azul); font-size: 12px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
+    .pb-pista-y { opacity: .75; font-weight: 500; margin: 0 2px; }
+    .pb-pista svg { width: 16px; height: 16px; margin-left: auto; animation: pb-baja 1.2s ease-in-out infinite; }
+    .pb-chat:not(.usado) .cd-botones button { animation: pb-pulso 1.8s ease-out infinite; }
+    .pb-chat:not(.usado) .pb-pie .env { animation: pb-pulso 1.8s ease-out .9s infinite; }
+    .pb-chat.usado .pb-pista { display: none; }
+    @keyframes pb-pulso { 0% { box-shadow: 0 0 0 0 rgba(0,127,254,.55); } 70% { box-shadow: 0 0 0 9px rgba(0,127,254,0); } 100% { box-shadow: 0 0 0 0 rgba(0,127,254,0); } }
+    @keyframes pb-flota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    @keyframes pb-baja { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+    @media (prefers-reduced-motion: reduce) { .pb-pista, .pb-pista svg, .pb-chat .cd-botones button, .pb-pie .env { animation: none !important; } }
+    .pb-cal { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+    .pb-cal-in { padding: 18px 16px; border-radius: 14px; background: #fff; box-shadow: 0 2px 10px rgba(20,30,50,.06); }
+    .pb-cal-t { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: #0B1220; }
+    .pb-cal-t svg { width: 22px; height: 22px; color: var(--azul); }
+    .pb-cal-in > p { margin-top: 8px; font-size: 12.5px; line-height: 1.45; color: #5A6473; }
+    .pb-mesf { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; padding: 8px 12px; border: 1px solid #E5EAF1; border-radius: 10px; font-size: 14px; color: #0B1220; }
+    .pb-mesf span { color: #5A6473; font-size: 18px; line-height: 1; }
+    .pb-dias { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 10px; }
+    .pb-dias span, .pb-horas span { display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 9px; background: #F1F4F8; font-size: 11.5px; color: #5A6473; }
+    .pb-dias span { padding: 7px 0; }
+    .pb-dias b { font-size: 15px; color: #0B1220; }
+    .pb-dias span.on, .pb-horas span.on { background: var(--azul); color: #fff; }
+    .pb-dias span.on b { color: #fff; }
+    .pb-horas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
+    .pb-horas span { height: 36px; font-size: 13px; color: #0B1220; }
+    .pb-ok { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; background: #E9EDF3; }
+    .pb-ok svg { width: 22px; height: 22px; color: #12B85A; flex: 0 0 auto; }
+    .pb-ok b { display: block; font-size: 14px; color: #3A4352; }
+    .pb-ok span { display: block; font-size: 11.5px; color: #6B7686; }
+    .pb-base { height: 18px; margin: 0 -5%; border-radius: 0 0 20px 20px; background: linear-gradient(180deg, #D5D9DF, #8E949C); box-shadow: 0 18px 30px rgba(20,30,50,.25); position: relative; }
+    .pb-base::before { content: ""; position: absolute; left: 50%; top: 0; width: 16%; height: 7px; transform: translateX(-50%); border-radius: 0 0 8px 8px; background: #A9AEB6; }
+    @media (max-width: 900px) {
+      .pb-caja { grid-template-columns: 1fr; gap: 30px; }
+      .pb-pant { grid-template-columns: 1fr; padding: 10px; border-width: 8px; border-radius: 16px; }
+      .pb-cal { display: none; }
+      .pb-msgs { height: 340px; }
+      .pb-base { height: 12px; }
+      .pb-txt h2 { font-size: 1.6rem; }
+      .pb-txt .pb-lede { font-size: .93rem; }
+      .pb-info { padding: 13px 15px; }
+      .pb-esc, .pb-negro { width: 100%; justify-content: center; }
+      .pb-cta { margin-top: 26px; padding-top: 20px; }
+    }
+  </style>
+  <section class="sec s06 clara" id="demo">
+    <div class="foto"></div>
+    <div class="velo"></div>
+    <div class="caja">
+        <div class="pb-caja">
+          <div class="pb-txt">
+            <button class="er-prueba" type="button" data-prueba><span class="pt" aria-hidden="true"></span>Pru&eacute;balo t&uacute; mismo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v13M6 12l6 6 6-6"/></svg></button>
+            <h2>As&iacute; responde <br><em>EasyRobots</em> <br>a un interesado.</h2>
+            <p class="pb-lede">Prueba la conversaci&oacute;n y descubre c&oacute;mo responde a sus dudas, lo cualifica y puede reservar una llamada directamente en el calendario.</p>
+            <div class="pb-info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9.2"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
+              <div><b>Esta es una demo con funciones b&aacute;sicas.</b><span>El sistema real se adapta a tu negocio, tu oferta, tu lenguaje y tus criterios de cualificaci&oacute;n.</span></div>
+            </div>
+          </div>
+
+          <div class="pb-der">
+          <div class="pb-lap">
+            <div class="pb-pant">
+              <div class="pb-chat" data-chat-demo data-sitio="demo-concesionario" data-personalidad="concesionario"
+                   data-sel-chat=".pb-msgs" data-sel-campo=".pb-pie .campo" data-sel-enviar=".pb-pie .env"
+                   data-clase-in="pb-in" data-clase-out="pb-out"
+                   data-frases="Busco un autom&aacute;tico|&iquest;Ten&eacute;is el T-Roc?|Quiero tasar mi coche">
+                <div class="pb-cab"><span class="pb-av">C</span><div><b>Concesionario EasyRobots</b><i>en l&iacute;nea</i></div></div>
+                <!-- Anais (2026-10-07): que se vea que hay que tocar algo. El
+                     aviso y el pulso de botones y enviar se van en cuanto la
+                     persona manda su primer mensaje. -->
+                <div class="pb-pista" aria-hidden="true">
+                  <span class="pb-pista-n">1</span>Toca una de las tres opciones
+                  <span class="pb-pista-y">o</span>
+                  <span class="pb-pista-n">2</span>escribe y pulsa enviar
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v13M6 12l6 6 6-6"/></svg>
+                </div>
+                <div class="pb-msgs"><div class="pb-out">&iexcl;Hola! Soy Rub&eacute;n, de Concesionario EasyRobots. &iquest;Buscas coche, taller o tasar el tuyo?</div></div>
+                <div class="pb-pie">
+                  <span class="campo">Escribe un mensaje&hellip;</span>
+                  <span class="env"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+                </div>
+              </div>
+              <div class="pb-cal" aria-hidden="true">
+                <div class="pb-cal-in">
+                  <b class="pb-cal-t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>Reservar cita</b>
+                  <p>El asistente propone los huecos libres de tu comercial o del taller.</p>
+                  <div class="pb-mesf"><span>&lsaquo;</span><b class="pb-mes">Octubre 2026</b><span>&rsaquo;</span></div>
+                  <div class="pb-dias"><span>Lun<b>12</b></span><span class="on">Mar<b>13</b></span><span>Mi&eacute;<b>14</b></span><span>Jue<b>15</b></span><span>Vie<b>16</b></span></div>
+                  <div class="pb-horas"><span>10:00</span><span class="on">11:00</span><span>12:00</span><span>16:00</span><span>17:00</span><span>18:00</span></div>
+                </div>
+                <div class="pb-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 12.4l4 4L18 8.6"/></svg><div><b>Prueba agendada</b><span>Confirmaci&oacute;n por WhatsApp al cliente y aviso a tu comercial.</span></div></div>
+              </div>
+            </div>
+            <div class="pb-base" aria-hidden="true"></div>
+          </div>
+          <div class="pb-bajo">
+            <div class="pb-acc">
+              <button class="pb-esc" type="button" data-pronto>
+                <span class="rd">&#9654;</span>
+                Escuchar la llamada
+                <span class="dur">02:18</span>
+              </button>
+              <p class="pb-nota">As&iacute; es como se escuchar&iacute;a una llamada atendida por EasyRobots.</p>
+            </div>
+            <!-- Anais (2026-10-07): la CTA en blanco y negro y bien separada
+                 de la llamada, para que no compitan los dos botones. -->
+            <div class="pb-cta">
+              <button class="btn pb-negro" type="button" data-cal>Reservar una llamada &rarr;</button>
+              <span>15 minutos. Sin compromiso.</span>
+            </div>
+          </div>
+          </div>
+        </div>
+    </div>
+  </section>
+  <script>
+    /* Calendario decorativo de la demo: los proximos cinco dias laborables,
+       para que nunca enseñe un mes que ya ha pasado (igual que coaching). */
+    (function () {
+      var c = document.querySelector('.pb-cal'); if (!c) return;
+      var M = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      var D = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+      var d = new Date(), dias = [];
+      while (dias.length < 5) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) dias.push(new Date(d)); }
+      /* El aviso de "toca una opcion" se quita con el primer mensaje. */
+      var ch = document.querySelector('.pb-chat'), ms = ch && ch.querySelector('.pb-msgs');
+      if (ms && window.MutationObserver) new MutationObserver(function (r, o) {
+        if (ms.querySelector('.pb-in')) { ch.classList.add('usado'); o.disconnect(); }
+      }).observe(ms, { childList: true });
+      c.querySelector('.pb-mes').textContent = M[dias[0].getMonth()] + ' ' + dias[0].getFullYear();
+      c.querySelector('.pb-dias').innerHTML = dias.map(function (x, i) {
+        return '<span' + (i === 1 ? ' class="on"' : '') + '>' + D[x.getDay()] + '<b>' + x.getDate() + '</b></span>';
+      }).join('');
+    })();
+  </script>
+
+  <!-- =================== 06B - PIEZAS (2026-10-07) ===================
+       Anais: "en concesionarios no hay esa seccion, pon el mismo copy que
+       inmobiliarias". Es el mismo bloque (prefijo pzs-): texto a la
+       izquierda, boton blanco e iconos, y las seis piezas alrededor del
+       ordenador de la foto (assets/conce-piezas.webp, 1852x849), mas clara
+       que la de inmobiliarias a peticion suya porque la pagina es muy
+       oscura. Monitor en unidades de 2000: x 952-1522, y 232-588. -->
+    <style>
+      section#piezas.pzs { padding: 0 !important; background: #050A12; color: #fff; }
+      .pzs-esc { position: relative; container-type: inline-size; aspect-ratio: 1852 / 849; background: url(/assets/conce-piezas.webp) center / 100% 100% no-repeat; }
+      .pzs-in { --u: calc(100cqw / 2000); position: absolute; inset: 0; }
+      .pzs-velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3,8,16,.86) 0%, rgba(3,8,16,.66) 22%, rgba(3,8,16,.18) 31%, rgba(3,8,16,0) 40%); }
+      .pzs-txt { position: absolute; left: calc(110 * var(--u)); top: 0; bottom: 0; width: calc(500 * var(--u)); display: flex; flex-direction: column; justify-content: center; }
+      .pzs-txt .c-kick { margin-bottom: calc(14 * var(--u)); }
+      .pzs-txt h2 { font-size: calc(60 * var(--u)); line-height: 1.04; letter-spacing: -.035em; font-weight: 800; color: #fff; }
+      .pzs-txt .lede { margin-top: calc(20 * var(--u)); font-size: calc(23 * var(--u)); line-height: 1.5; color: rgba(255,255,255,.78); }
+      .pzs-btn { align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; margin-top: calc(30 * var(--u)); height: calc(68 * var(--u)); padding: 0 calc(36 * var(--u)); border: 0; border-radius: 999px; background: #fff; color: #0B1220; font: inherit; font-size: calc(21 * var(--u)); font-weight: 600; cursor: pointer; transition: background .2s; }
+      .pzs-btn:hover { background: #EEF1F5; }
+      .pzs-btn svg { width: calc(19 * var(--u)); height: calc(19 * var(--u)); }
+      .pzs-apps { display: flex; gap: calc(12 * var(--u)); margin-top: calc(28 * var(--u)); }
+      .pzs-apps i { width: calc(62 * var(--u)); height: calc(62 * var(--u)); border-radius: calc(15 * var(--u)); background: rgba(18,22,30,.88); border: 1px solid rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; }
+      .pzs-apps svg { width: calc(32 * var(--u)); height: calc(32 * var(--u)); }
+      .pzs-nota { margin-top: calc(14 * var(--u)); font-size: calc(18 * var(--u)); color: rgba(255,255,255,.72); }
+      .pzs-fl { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .pzs-fl path { stroke-dasharray: 60; stroke-dashoffset: 60; }
+      .anim-on .visto .pzs-fl path { animation: pzs-cable 1.2s ease 1.6s forwards, pzs-brillo 2.6s ease-in-out 2.8s infinite; }
+      @keyframes pzs-cable { to { stroke-dashoffset: 0; } }
+      @keyframes pzs-brillo { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+      .pzs-c { position: absolute; display: grid; grid-template-columns: auto 1fr; gap: calc(12 * var(--u)); align-items: center; padding: calc(12 * var(--u)) calc(14 * var(--u)); background: rgba(8,14,26,.86); border: 1px solid rgba(70,140,255,.5); border-radius: calc(16 * var(--u)); box-shadow: 0 0 calc(24 * var(--u)) rgba(30,110,255,.18); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+      .pzs-c i { width: calc(38 * var(--u)); height: calc(38 * var(--u)); border-radius: calc(10 * var(--u)); background: #1167FF; color: #fff; display: flex; align-items: center; justify-content: center; }
+      .pzs-c i.wa { background: #25D366; }
+      .pzs-c i.cl { background: linear-gradient(180deg, #2BA6FF, #1167FF); }
+      .pzs-c i svg { width: calc(21 * var(--u)); height: calc(21 * var(--u)); }
+      .pzs-c b { display: block; font-size: calc(18 * var(--u)); font-weight: 700; line-height: 1.2; letter-spacing: -.01em; color: #fff; }
+      .pzs-c span { display: block; margin-top: calc(3 * var(--u)); font-size: calc(14 * var(--u)); line-height: 1.35; color: #C9D2DE; }
+      /* Monitor en la foto (unidades de 2000 de ancho): x 952-1522, y 232-588. */
+      .pzs-c.c1, .pzs-c.c2, .pzs-c.c3 { left: calc(630 * var(--u)); width: calc(290 * var(--u)); }
+      .pzs-c.c4, .pzs-c.c5, .pzs-c.c6 { left: calc(1565 * var(--u)); width: calc(330 * var(--u)); }
+      .pzs-c.c1, .pzs-c.c4 { top: calc(215 * var(--u)); }
+      .pzs-c.c2, .pzs-c.c5 { top: calc(385 * var(--u)); }
+      .pzs-c.c3, .pzs-c.c6 { top: calc(555 * var(--u)); }
+      @media (max-width: 1180px) {
+        .pzs-esc { aspect-ratio: auto; background-size: cover; background-position: 62% center; padding: 56px 22px; }
+        .pzs-in { position: static; --u: 1px; }
+        .pzs-velo { background: rgba(3,8,16,.72); }
+        .pzs-txt { position: relative; left: auto; width: auto; max-width: 560px; }
+        .pzs-txt h2 { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+        .pzs-txt .lede { font-size: .95rem; }
+        .pzs-btn { height: 50px; font-size: 15.5px; padding: 0 24px; }
+        .pzs-apps i { width: 44px; height: 44px; } .pzs-apps svg { width: 23px; height: 23px; }
+        .pzs-nota { font-size: 13.5px; }
+        .pzs-fl { display: none; }
+        .pzs-cs { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
+        .pzs-c { position: relative; left: auto !important; top: auto !important; width: auto !important; grid-template-columns: 1fr; gap: 8px; padding: 12px; border-radius: 12px; }
+        .pzs-c i { width: 34px; height: 34px; border-radius: 9px; } .pzs-c i svg { width: 19px; height: 19px; }
+        .pzs-c b { font-size: 14px; } .pzs-c span { font-size: 12.5px; }
+      }
+      /* Panel animado dentro del monitor de la foto (Anais, 2026-10-07:
+         "los paneles son muy sosos, pon algo interactivo dentro de la
+         pantalla"). Tapa el dashboard pintado. Las cifras son de ejemplo y
+         lo dice la propia cabecera, como en el panel de coaching. Al entrar
+         en pantalla: cuentan los numeros, se dibuja la curva, suben las
+         barras, se llena el anillo y entran los avisos. */
+      .pzp { position: absolute; z-index: 1; display: flex; flex-direction: column; gap: calc(8 * var(--u)); padding: calc(12 * var(--u)) calc(14 * var(--u)); border-radius: calc(4 * var(--u)); background: linear-gradient(160deg, #0C1B30 0%, #091426 60%, #07101E 100%); color: #DCE6F5; overflow: hidden; box-shadow: inset 0 0 calc(30 * var(--u)) rgba(30,110,255,.18); }
+      .pzp::after { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,0) 35%); pointer-events: none; }
+      .pzp-cab { display: flex; align-items: center; gap: calc(6 * var(--u)); font-size: calc(11 * var(--u)); font-weight: 700; color: #fff; }
+      .pzp-cab u { width: calc(9 * var(--u)); height: calc(9 * var(--u)); border-radius: 50%; background: #22C55E; text-decoration: none; box-shadow: 0 0 calc(6 * var(--u)) #22C55E; animation: pzp-vivo 1.6s ease-in-out infinite; }
+      .pzp-cab em { margin-left: auto; font-style: normal; font-weight: 500; font-size: calc(9.5 * var(--u)); color: #8FA3BF; padding: calc(2 * var(--u)) calc(7 * var(--u)); border: 1px solid rgba(143,163,191,.35); border-radius: 999px; }
+      @keyframes pzp-vivo { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+      .pzp-kpi { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(7 * var(--u)); }
+      .pzp-kpi > div { padding: calc(7 * var(--u)) calc(9 * var(--u)); border-radius: calc(7 * var(--u)); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.07); }
+      .pzp-kpi b { display: block; font-size: calc(22 * var(--u)); line-height: 1.1; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; }
+      .pzp-kpi span { display: block; font-size: calc(9.5 * var(--u)); color: #8FA3BF; }
+      .pzp-kpi i { font-style: normal; font-size: calc(9 * var(--u)); color: #34D399; margin-left: calc(4 * var(--u)); }
+      .pzp-med { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 1.55fr 1fr .9fr; gap: calc(7 * var(--u)); }
+      .pzp-med > div { position: relative; padding: calc(7 * var(--u)) calc(8 * var(--u)); border-radius: calc(7 * var(--u)); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); display: flex; flex-direction: column; }
+      .pzp-t { font-size: calc(9.5 * var(--u)); color: #8FA3BF; }
+      .pzp-curva { flex: 1 1 auto; width: 100%; margin-top: calc(4 * var(--u)); }
+      .pzp-curva .ln { stroke-dasharray: 400; stroke-dashoffset: 400; }
+      .pzp-curva .ar { opacity: 0; }
+      .pzp-barras { flex: 1 1 auto; display: flex; align-items: flex-end; gap: calc(4 * var(--u)); margin-top: calc(6 * var(--u)); }
+      .pzp-barras i { flex: 1; height: var(--h); border-radius: calc(2 * var(--u)) calc(2 * var(--u)) 0 0; background: linear-gradient(180deg, #3D9BFF, #1167FF); transform: scaleY(0); transform-origin: bottom; }
+      .pzp-anillo { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; }
+      .pzp-anillo svg { width: 78%; max-height: 100%; transform: rotate(-90deg); }
+      .pzp-anillo circle.s { stroke-dashoffset: var(--o0); }
+      .pzp-fila { display: flex; align-items: center; gap: calc(7 * var(--u)); padding: calc(5 * var(--u)) calc(8 * var(--u)); border-radius: calc(6 * var(--u)); background: rgba(255,255,255,.05); font-size: calc(10 * var(--u)); color: #DCE6F5; }
+      .pzp-fila b { color: #fff; font-weight: 700; }
+      .pzp-fila span { margin-left: auto; color: #8FA3BF; font-size: calc(9 * var(--u)); }
+      .pzp-fila .pt { width: calc(7 * var(--u)); height: calc(7 * var(--u)); border-radius: 50%; flex: 0 0 auto; }
+      .anim-on .visto .pzp-curva .ln { animation: pzp-dibuja 1.6s ease .5s forwards; }
+      .anim-on .visto .pzp-curva .ar { animation: pzp-sale .8s ease 1.6s forwards; }
+      .anim-on .visto .pzp-barras i { animation: pzp-sube .7s cubic-bezier(.2,.9,.25,1.1) calc(.6s + var(--n) * .09s) forwards, pzp-respira 3s ease-in-out calc(2.2s + var(--n) * .2s) infinite; }
+      .anim-on .visto .pzp-anillo circle.s { transition: stroke-dashoffset 1.4s ease .8s; stroke-dashoffset: var(--o1); }
+      @keyframes pzp-dibuja { to { stroke-dashoffset: 0; } }
+      @keyframes pzp-sale { to { opacity: 1; } }
+      @keyframes pzp-sube { to { transform: scaleY(1); } }
+      @keyframes pzp-respira { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.86); } }
+      html:not(.anim-on) .pzp-curva .ln { stroke-dashoffset: 0; } html:not(.anim-on) .pzp-curva .ar { opacity: 1; } html:not(.anim-on) .pzp-barras i { transform: none; }
+      html:not(.anim-on) .pzp-anillo circle.s { stroke-dashoffset: var(--o1); }
+      @media (max-width: 1180px) { .pzp { display: none; } }
+      @media (prefers-reduced-motion: reduce) { .pzp-curva .ln { stroke-dashoffset: 0 !important; animation: none !important; } .pzp-curva .ar { opacity: 1 !important; } .pzp-barras i { transform: none !important; animation: none !important; } .pzp-cab u { animation: none; } }
+      @media (prefers-reduced-motion: reduce) { .pzs-fl path { stroke-dashoffset: 0; } .anim-on .visto .pzs-fl path { animation: none; } }
+    </style>
+    <section class="pzs" id="piezas">
+      <div class="pzs-esc">
+        <div class="pzs-velo" aria-hidden="true"></div>
+        <div class="pzs-in" data-vi>
+          <svg class="pzs-fl" viewBox="0 0 2000 917" preserveAspectRatio="none" fill="none" aria-hidden="true">
+            <g stroke="#3D9BFF" stroke-width="2.4" stroke-linecap="round" style="filter: drop-shadow(0 0 4px rgba(61,155,255,.9))">
+              <path vector-effect="non-scaling-stroke" d="M920 270C938 270 938 295 955 295"/>
+              <path vector-effect="non-scaling-stroke" d="M920 440H955"/>
+              <path vector-effect="non-scaling-stroke" d="M920 610C938 610 938 575 955 575"/>
+              <path vector-effect="non-scaling-stroke" d="M1565 270C1545 270 1545 295 1521 295"/>
+              <path vector-effect="non-scaling-stroke" d="M1565 440H1521"/>
+              <path vector-effect="non-scaling-stroke" d="M1565 610C1545 610 1545 575 1521 575"/>
+            </g>
+          </svg>
+          <div class="pzp" aria-label="Panel de ejemplo" style="left:calc(958 * var(--u));top:calc(257 * var(--u));width:calc(558 * var(--u));height:calc(327 * var(--u))">
+            <div class="pzp-cab"><u></u>EasyRobots &middot; Hoy<em>Panel de ejemplo</em></div>
+            <div class="pzp-kpi"><div><b data-num="214">214</b><span>Llamadas atendidas</span></div><div><b data-num="63">63</b><span>Pruebas y citas</span></div><div><b data-num="97">97</b><span>Avisos a ventas y taller</span></div></div>
+            <div class="pzp-med">
+              <div><span class="pzp-t">Conversaciones &middot; 7 d&iacute;as</span>
+                <svg class="pzp-curva" viewBox="0 0 200 70" preserveAspectRatio="none"><defs><linearGradient id="pzpgc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3D9BFF" stop-opacity=".45"/><stop offset="1" stop-color="#3D9BFF" stop-opacity="0"/></linearGradient></defs><path class="ar" d="M0 58C20 54 30 40 50 44S80 30 100 34 130 18 150 22 180 8 200 6V70H0z" fill="url(#pzpgc)"/><path class="ln" d="M0 58C20 54 30 40 50 44S80 30 100 34 130 18 150 22 180 8 200 6" fill="none" stroke="#5AB0FF" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg></div>
+              <div><span class="pzp-t">Citas por d&iacute;a</span><div class="pzp-barras"><i style="--h:38%;--n:0"></i><i style="--h:52%;--n:1"></i><i style="--h:46%;--n:2"></i><i style="--h:70%;--n:3"></i><i style="--h:62%;--n:4"></i><i style="--h:88%;--n:5"></i><i style="--h:76%;--n:6"></i></div></div>
+              <div><span class="pzp-t">Canales</span><div class="pzp-anillo"><svg viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5.5"/><circle class="s" cx="21" cy="21" r="15.9" fill="none" stroke="#3D9BFF" stroke-width="5.5" stroke-dasharray="46 100" style="--o0:46;--o1:0"/><circle class="s" cx="21" cy="21" r="15.9" fill="none" stroke="#25D366" stroke-width="5.5" stroke-dasharray="34 100" style="--o0:34;--o1:-46"/><circle class="s" cx="21" cy="21" r="15.9" fill="none" stroke="#A5B4FC" stroke-width="5.5" stroke-dasharray="20 100" style="--o0:20;--o1:-80"/></svg></div></div>
+            </div>
+            <div class="pzp-fila vi" style="--d:2.2s"><i class="pt" style="background:#3D9BFF"></i><b>Prueba agendada</b>&nbsp;&middot; SEAT Le&oacute;n, jueves 17:00<span>20:14</span></div><div class="pzp-fila vi" style="--d:2.7s"><i class="pt" style="background:#25D366"></i><b>Revisi&oacute;n 30.000 km</b>&nbsp;&middot; recordatorio enviado<span>09:00</span></div>
+          </div>
+          <div class="pzs-txt">
+            <p class="c-kick">El sistema</p>
+            <h2>Un sistema <br>conectado.</h2>
+            <p class="lede">Nos adaptamos a las herramientas que ya utilizas. Y si hace falta una pieza que no existe en tu software, la construimos.</p>
+            <button class="pzs-btn" type="button" data-cal><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>Ver c&oacute;mo se integra</button>
+            <div class="pzs-apps" aria-label="Algunas herramientas con las que se integra">
+              <i title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i>
+              <i title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="url(#pzig2)" stroke-width="2.2"><defs><linearGradient id="pzig2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F9A03C"/><stop offset=".5" stop-color="#E1306C"/><stop offset="1" stop-color="#8134AF"/></linearGradient></defs><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="#E1306C" stroke="none"/></svg></i>
+              <i title="Gmail"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linejoin="round"><path d="M3.5 18V7l8.5 6.5L20.5 7v11" stroke="#EA4335"/><path d="M3.5 18h3V10M20.5 18h-3V10" stroke="#4285F4"/></svg></i>
+              <i title="Google Calendar"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5" fill="#fff"/><path d="M3.5 7.5h17" stroke="#4285F4" stroke-width="3"/><text x="12" y="17.6" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1A73E8" font-family="Arial,sans-serif">31</text></svg></i>
+              <i title="HubSpot"><svg viewBox="0 0 24 24" fill="none" stroke="#FB5328" stroke-width="2.1" stroke-linecap="round"><path d="M15 6.5v4.2M15 13.3v4.2"/><circle cx="15" cy="12" r="3.6"/><circle cx="15" cy="5" r="1.6"/><circle cx="15" cy="19" r="1.6"/><path d="M11.4 12H7"/><circle cx="6" cy="12" r="1.6"/></svg></i>
+            </div>
+            <p class="pzs-nota">Se integra con tus herramientas actuales.</p>
+          </div>
+          <div class="pzs-cs">
+          <div class="pzs-c c1 vi" style="--d:.4s"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.4 3.2c.5-.2 1.1 0 1.4.5l1.4 2.4c.3.5.2 1.1-.2 1.5l-1 .9c-.2.2-.3.5-.1.8.9 1.7 2.3 3.1 4 4 .3.2.6.1.8-.1l.9-1c.4-.4 1-.5 1.5-.2l2.4 1.4c.5.3.7.9.5 1.4l-.6 1.6c-.3.8-1.1 1.3-2 1.2C9.9 18.9 5.1 14.1 4.4 7.6c-.1-.9.4-1.7 1.2-2z"/></svg></i><div><b>Llamadas</b><span>Un agente de voz atiende al instante.</span></div></div>
+          <div class="pzs-c c2 vi" style="--d:.8s"><i class="wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 01-10.9 6.7L4 19.5l1.4-4.8A7.5 7.5 0 1120 11.5z"/></svg></i><div><b>WhatsApp</b><span>Sigue la conversaci&oacute;n y env&iacute;a la ficha del coche.</span></div></div>
+          <div class="pzs-c c3 vi" style="--d:1.2s"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></i><div><b>Agenda</b><span>Pruebas, tasaciones y citas de taller.</span></div></div>
+          <div class="pzs-c c4 vi" style="--d:.6s"><i class="cl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 3.5l8.5 4.5-8.5 4.5L3.5 8z"/><path d="M3.5 12l8.5 4.5 8.5-4.5M3.5 16l8.5 4.5 8.5-4.5"/></svg></i><div><b>CRM &middot; tu software</b><span>Contacto y cita, registrados solos.</span></div></div>
+          <div class="pzs-c c5 vi" style="--d:1.0s"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 10a6 6 0 1112 0c0 4 1.6 5.6 1.6 5.6H4.4S6 14 6 10z"/><path d="M10 18.5a2.2 2.2 0 004 0"/></svg></i><div><b>Seguimiento</b><span>Recordatorios de cita y de revisi&oacute;n.</span></div></div>
+          <div class="pzs-c c6 vi" style="--d:1.4s"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 19.5c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6z"/><circle cx="17" cy="9" r="2.6"/><path d="M16.5 13.6c3 .2 5 2.3 5 5.9h-4.4c0-2.3-.2-4.4-.6-5.9z"/></svg></i><div><b>Tu equipo</b><span>Ventas y taller reciben el aviso con todo.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- =================== CAPTACION (BORRADOR) ===================
+       La pagina contaba solo el problema de contestar a quien ya escribe. Falta
+       quien no tiene suficientes clientes: es a quien se le vende AURA Business.
+       El orden va de mas barato a mas caro: anunciar a un negocio que no contesta
+       es tirar el dinero. Sin cifras: aun no hay un caso de captacion con anuncios. -->
+  <section class="pc cp" id="captacion">
+    <div class="pc-caja">
+      <div class="pc-kick">Captación</div>
+      <h2>¿Y si lo que te falta <em>son clientes?</em></h2>
+      <p class="cp-ent">Atender bien a quien ya pregunta es la mitad. La otra mitad es que entren más clientes, a la exposición y al taller.</p>
+      <div class="cp-ds"><article class="cp-d"><h3>Dependes de los portales</h3><p>Tus coches salen junto a los de la competencia, y se compara solo el precio.</p><p class="cp-c">Ahí ganas por precio o no ganas.</p></article><article class="cp-d"><h3>El taller no se llena solo</h3><p>Quien te compró el coche se va a otro taller porque nadie le recuerda la revisión.</p><p class="cp-c">Ese cliente ya era tuyo.</p></article><article class="cp-d"><h3>Campañas sin medir</h3><p>Has probado con anuncios y no sabes cuántas pruebas o citas te trajo cada euro.</p><p class="cp-c">Lo que no se mide no se puede mejorar.</p></article></div>
+      <h3 class="cp-sub">El método, de más barato a más caro</h3>
+      <ol class="cp-pasos"><li><i>01</i><b>Revisamos tu oferta</b><span>Qué ofreces en venta y en taller, y qué se puede presentar mejor.</span></li><li><i>02</i><b>Recuperamos a quien ya te conoce</b><span>Escribimos a los clientes que ya tienes cuando les toca revisión o cambiar de coche. No cuesta un euro en anuncios.</span></li><li><i>03</i><b>Que nadie se quede sin respuesta</b><span>Cuando empiezan a llegar, el sistema contesta, hace seguimiento y agenda.</span></li><li><i>04</i><b>Reseñas y recomendaciones</b><span>Pedimos la reseña y la recomendación a quien acaba contento.</span></li><li><i>05</i><b>Campañas de anuncios</b><span>Tú creas los anuncios con nuestras recomendaciones y nosotros gestionamos las campañas.</span></li></ol>
+    </div>
+  </section>
+
+  <section class="sec s03 oscura" id="base">
+      <div class="foto"></div>
+      <div class="velo"></div>
+    <div class="caja dos">
+      <div class="b-col">
+        <h2 class="b-t">Los que no han vuelto <br>no te lo van a decir.</h2>
+        <p class="b-p">Tienes cientos de clientes que ya compraron, <br>pasaron por el taller o pidieron información… <br>y que no han vuelto. No es que no quieran, <br>es que nadie se lo recuerda.</p>
+      </div>
+
+      <div class="b-card">
+        <div class="b-g1">
+          <b>Clientes en tu base <em class="b-ej">Ejemplo</em></b>
+          <div class="b-avs">
+            <img src="/assets/conce-av1.webp" alt="" loading="lazy" decoding="async">
+            <img src="/assets/conce-av2.webp" alt="" loading="lazy" decoding="async">
+            <img src="/assets/conce-av3.webp" alt="" loading="lazy" decoding="async">
+            <img src="/assets/conce-av4.webp" alt="" loading="lazy" decoding="async">
+            <img src="/assets/conce-av5.webp" alt="" loading="lazy" decoding="async">
+            <img src="/assets/conce-av6.webp" alt="" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="b-g2"><b>1.284</b><i>clientes</i></div>
+        <div class="b-box b-b1"><span>Última visita</span><b>8 meses</b></div>
+        <div class="b-box b-b2"><span>Oportunidad</span><b>Revisión pendiente</b></div>
+      </div>
+
+      <div class="b-pasos">
+        <div class="b-paso">
+          <span class="b-num">01</span>
+          <span class="b-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span class="tx"><b>Mira tu base</b><i>en el momento adecuado</i></span>
+        </div>
+        <svg class="b-fle" viewBox="0 0 20 14" fill="none" aria-hidden="true"><path d="M1 7h16m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="b-paso">
+          <span class="b-num">02</span>
+          <span class="b-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 2.5 2.8 9.9c-.8.3-.8 1.4 0 1.7l7.3 2.6 2.6 7.3c.3.8 1.4.8 1.7 0z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.5 2.5 10.1 14.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="tx"><b>Le escribe</b><i>de forma automatizada</i></span>
+        </div>
+        <svg class="b-fle" viewBox="0 0 20 14" fill="none" aria-hidden="true"><path d="M1 7h16m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="b-paso">
+          <span class="b-num">03</span>
+          <span class="b-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="13" width="4.4" height="8" rx="1"/><rect x="9.8" y="8" width="4.4" height="13" rx="1"/><rect x="16.6" y="3" width="4.4" height="18" rx="1"/></svg></span>
+          <span class="tx"><b>Cierra el círculo</b><i>y genera la oportunidad</i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 04 - EL QUE PREGUNTA UN SABADO =================== -->
+    <!-- =================== 07 - LO QUE HACE Y LO QUE NO =================== -->
+  <section class="sec s07 clara" id="alcance">
+      <div class="foto"></div>
+      <div class="velo"></div>
+    <div class="caja dos">
+
+      <div class="n-col">
+        <h2 class="n-t">Lo que hace. <br>Y lo que no hace.</h2>
+        <p class="n-p">Esto es lo que hacemos. Y esto es lo que no. <br>Sin promesas irreales. Sin complicaciones.</p>
+      </div>
+
+      <div class="n-dos">
+      <div class="n-box n-si">
+        <div class="n-cab"><span class="rd"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Lo que sí hacemos</b></div>
+        <div class="n-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Atender llamadas y WhatsApps cuando no lleg&aacute;is</div>
+        <div class="n-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Agendar pruebas, tasaciones y citas de taller</div>
+        <div class="n-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Registrar cada contacto en vuestro sistema</div>
+        <div class="n-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Avisar a ventas y taller con todo el contexto</div>
+        <div class="n-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Optimizar el tiempo de tu equipo</div>
+      </div>
+      <div class="n-box n-no">
+        <div class="n-cab"><span class="rd"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 5.5l13 13m0-13-13 13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span><b>Lo que no hacemos</b></div>
+        <div class="n-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 5.5l13 13m0-13-13 13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>No hacemos llamadas en fr&iacute;o masivas</div>
+        <div class="n-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 5.5l13 13m0-13-13 13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>No prometemos cifras que no podamos demostrar</div>
+        <div class="n-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 5.5l13 13m0-13-13 13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>No os cambiamos las herramientas que ya us&aacute;is</div>
+        <div class="n-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 5.5l13 13m0-13-13 13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>No montamos paquetes cerrados: cada sistema es a medida</div>
+        <div class="n-fila"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 5.5l13 13m0-13-13 13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>No decidimos por vosotros: el control es vuestro</div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 07B - LIMITES Y CONTROL ===================
+       Copy aprobado (docs/copys/concesionarios.md, seccion 7). No estaba
+       montada en la v2; Anais la echo en falta el 2026-10-04. Va en oscuro
+       entre "Lo que hace" y la garantia, que eran tres claras seguidas. -->
+  <!-- Anais (2026-10-07): los limites los pone cada cliente; el sistema
+         puede hacerlo todo (ver docs/capacidades-reales.md). Copy aprobado. -->
+    <section class="sec slm oscura" id="limites">
+    <div class="caja">
+      <p class="c-kick">L&iacute;mites y control</p>
+      <h2 class="lm-t">T&uacute; decides <em>hasta d&oacute;nde llega.</em></h2>
+      <div class="lm-fila">
+        <div class="lm-ficha lm-rojo"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 6.5A7 7 0 1 0 17 17.5"/><path d="M4 10h9M4 14h9"/></svg></span><b>El precio, si quieres.</b><span class="tx">Lo da &eacute;l o lo deja para el asesor.</span></div>
+        <div class="lm-ficha lm-ambar"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4.5 16a8 8 0 1 1 15 0"/><path d="M12 15l3.5-5"/><circle cx="12" cy="15.5" r="1.4" fill="currentColor" stroke="none"/></svg></span><b>La tasaci&oacute;n, si quieres.</b><span class="tx">La hace &eacute;l o la pasa al tasador.</span></div>
+        <div class="lm-ficha lm-az"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 8l8-4 8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg></span><b>La agenda, a tu manera.</b><span class="tx">Propone huecos o agenda pruebas y taller solo.</span></div>
+        <div class="lm-ficha lm-gris"><span class="rd"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 11.4a3.3 3.3 0 100-6.6 3.3 3.3 0 000 6.6zm7 .1a2.8 2.8 0 100-5.6 2.8 2.8 0 000 5.6zM9 13.2c-3.1 0-6 1.7-6 3.9V20h12v-2.9c0-2.2-2.9-3.9-6-3.9zm7 .3c-.6 0-1.2.1-1.7.2 1.2.9 1.9 2.1 1.9 3.4V20h5v-2.6c0-2-2.5-3.9-5.2-3.9z"/></svg></span><b>Os avisa de todo.</b><span class="tx">Ventas y taller lo saben al momento.</span></div>
+        <div class="lm-ficha lm-verde"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span><b>Nunca se inventa nada.</b><span class="tx">Responde con tu stock y tu DMS.</span></div>
+        <div class="lm-ficha lm-gris"><span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.2"/><path d="M8.2 10.5V7.8a3.8 3.8 0 017.6 0v2.7"/></svg></span><b>Los datos son vuestros.</b><span class="tx">Conversaciones y contactos, de vuestro concesionario.</span></div>
+      </div>
+      <p class="lm-pie">Empieza por lo que te d&eacute; tranquilidad y dale m&aacute;s cuando lo veas funcionar. <strong>Puedes entrar en cualquier conversaci&oacute;n cuando quieras.</strong></p>
+    </div>
+  </section>
+
+  <!-- =================== 08 - NO SOMOS UNA CENTRALITA =================== -->
+    <!-- =================== QUIENES SOMOS + GARANTIA (2026-10-07) ===================
+       Anais: "este copy, tamano de seccion y diseno igual en todas las
+       paginas menos en estetica". Es el bloque de coaching v3 (.e3) copiado
+       con prefijo eq- para no chocar con las clases de cada pagina. Solo
+       cambia la frase de "Especializados en...". La letra es la de cada
+       pagina; la de coaching (SF Pro / Geist) no se ha extendido. -->
+  <style>
+    section.eq { position: relative; padding: 0 !important; min-height: 0 !important; background: linear-gradient(180deg, #FBFCFD, #F3F5F8) !important; color: #0B1220; }
+    section.eq > .caja, section.eq > .wrap { padding-top: 0 !important; padding-bottom: 0 !important; display: block !important; }
+    .eq-grid { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(24px, 3vw, 48px); align-items: center; padding: 88px 0; }
+    .eq-k { display: flex; align-items: center; gap: 18px; font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #5A6473; }
+    .eq-k::after { content: ""; width: 80px; height: 1px; background: currentColor; opacity: .6; }
+    .eq-t { margin: 18px 0 0; font-size: clamp(34px, 3.3vw, 52px); line-height: 1.05; font-weight: 700; letter-spacing: -.035em; color: #0B1220; }
+    .eq-t em { font-style: normal; color: #6E6E73; }
+    .eq-p { margin: 20px 0 0; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.5; color: #4A5361; }
+    .eq-p + .eq-p { margin-top: 14px; }
+    .eq-fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .eq-f { position: relative; margin: 0; aspect-ratio: 336 / 410; overflow: hidden; border-radius: 14px; background: #0E1724; box-shadow: 0 22px 44px rgba(15,25,40,.18); }
+    .eq-f img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+    .eq-f figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 20px 16px; background: rgba(32,34,40,.84); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .eq-f b { display: block; font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -.02em; }
+    .eq-f span { display: block; font-size: 16px; color: #D3D7DD; }
+    .eq-g { padding: 30px 30px 18px; border-radius: 18px; background: #EEF1F6; border: 1px solid #E1E6EE; box-shadow: 0 10px 30px rgba(15,25,40,.06); }
+    .eq-gc { display: flex; align-items: center; gap: 18px; }
+    .eq-gc svg { width: 50px; height: 50px; flex: 0 0 auto; }
+    .eq-gc h3 { margin: 0; font-size: clamp(26px, 2.2vw, 34px); font-weight: 700; letter-spacing: -.035em; color: #0B1220; }
+    .eq-gc h3 em { font-style: normal; color: #6E6E73; }
+    .eq-g > p { margin: 14px 0 0; padding-bottom: 18px; border-bottom: 1px solid #D9DFE8; font-size: 16.5px; line-height: 1.45; color: #4A5361; }
+    .eq-g dl { display: grid; grid-template-columns: 1.1fr 1fr; margin: 0; }
+    .eq-g dt, .eq-g dd { margin: 0; padding: 13px 0; border-bottom: 1px solid #DFE4EC; font-size: 15px; line-height: 1.35; }
+    .eq-g dt { padding-right: 16px; font-weight: 600; color: #0B1220; }
+    .eq-g dd { color: #5A6473; }
+    .eq-g dt:nth-last-of-type(1), .eq-g dd:last-child { border-bottom: 0; }
+    @media (max-width: 1180px) {
+      .eq-grid { grid-template-columns: 1fr 1fr; }
+      .eq-g { grid-column: 1 / -1; }
+    }
+    @media (max-width: 860px) {
+      .eq-grid { grid-template-columns: 1fr; gap: 0; padding: 40px 0; }
+      .eq-t { font-size: 30px; }
+      .eq-p { font-size: 15.5px; }
+      .eq-fotos { margin-top: 24px; gap: 12px; }
+      .eq-f figcaption { padding: 10px 14px 12px; }
+      .eq-f b { font-size: 17px; } .eq-f span { font-size: 14px; }
+      .eq-g { margin-top: 24px; padding: 22px 20px 10px; }
+      .eq-gc svg { width: 40px; height: 40px; }
+      .eq-gc h3 { font-size: 24px; }
+      .eq-g > p { font-size: 15px; }
+      .eq-g dl { grid-template-columns: 1fr; }
+      .eq-g dt { padding: 12px 0 2px; border-bottom: 0; }
+      .eq-g dd { padding: 0 0 12px; }
+    }
+  </style>
+    <!-- =================== PRECIOS (BORRADOR) ===================
+       Catalogo simple dentro de la landing, para que nadie tenga que irse a
+       buscar precios: mismos productos y precios que la home. -->
+  <section class="pc" id="precios">
+    <div class="pc-caja">
+      <div class="pc-kick">Por dónde empezar</div>
+      <h2>¿Qué necesita <em>tu concesionario?</em></h2>
+      <div class="pc-puertas">
+        <article class="pc-puerta"><div class="pc-q">Quiero más clientes</div><h3>AURA Business</h3><p>Captamos clientes nuevos con anuncios, recuperamos a los que ya pasaron por tu exposición o tu taller y nadie se queda sin respuesta.</p><p class="pc-mas">Incluye todo lo de AURA Setter, con WhatsApp, Instagram, email y web conectados.</p><p><b>Bono incluido:</b> auditoría de oferta y captación.</p><div class="pc-pre"><b>Desde 3.000 €</b><span>Mantenimiento desde 150 €/mes + gestión de anuncios</span></div><a class="pc-btn" href="/aura-business/">Ver detalles</a></article>
+        <article class="pc-puerta"><div class="pc-q">Quiero quitarme trabajo</div><h3>AURA Setter</h3><ul class="pc-lista"><li>Responde al momento, sin inventar nada y con el tono que elijas.</li><li>Detecta quién tiene interés de verdad.</li><li>Agenda la prueba o la cita de taller, o te avisa cuando está listo para que te encargues tú personalmente.</li><li>Recuerda la cita para que no falte.</li><li>Recupera a los clientes que dejaron de venir y a los que preguntaron y no compraron.</li></ul><div class="pc-pre"><b>Desde 2.000 €</b><span>Mantenimiento desde 150 €/mes</span></div><a class="pc-btn" href="/aura-setter/">Ver detalles</a></article>
+      </div>
+      <div class="pc-pzcab"><h3>Piezas</h3><p>¿Prefieres empezar por una?</p></div><div class="pc-pzs pc-pzs3"><article class="pc-pz"><h3>Agente de voz con IA</h3><p>Coge todas las llamadas, también fuera de horario: atiende, resuelve dudas y agenda la cita, o transfiere la llamada a tu comercial. Entrantes y salientes.</p><p>Incluye CRM para ver cada conversación del agente, con notificaciones e informes.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 50 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article><article class="pc-pz"><h3>Agente de IA para atención y ventas</h3><p>Resuelve dudas, informa y agenda la cita, o te avisa para que cierres tú la venta personalmente. También envía los recordatorios.</p><p>Incluye CRM para datos, informes y notificaciones.</p><div class="pc-pre"><b>Desde 500 €</b><span>Mantenimiento desde 50 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article><article class="pc-pz"><h3>Agente web vendedor</h3><p>Diseñamos tu web para que convierta, con un agente de IA dentro. No es un chatbot de respuestas fijas: entiende lo que le preguntan, contesta con la información de tu negocio a cualquier hora y lleva la conversación hasta la cita o la venta.</p><p><b>Bonus:</b> 2 modificaciones incluidas para mejorar la web una vez entregada.</p><div class="pc-pre"><b>Desde 395 €</b><span>Mantenimiento desde 97 €/mes</span></div><a href="#hablemos" data-cal>Reservar auditoría</a></article></div>
+      <p class="pc-duda">¿No tienes claro cuál encaja? <a href="#hablemos" data-cal>Reserva tu auditoría gratuita</a> y te lo decimos.</p>
+      <p class="pc-letra"><b>Todo se hace a medida:</b> a cualquier producto le podemos añadir las funciones que necesites, y lo que va fuera del producto se presupuesta aparte. El montaje se paga 50 % antes de empezar y 50 % cuando está montado, antes de la entrega.</p>
+    </div>
+  </section>
+
+  <section class="sec eq" id="equipo">
+    <div class="caja">
+      <div class="eq-grid">
+        <div class="eq-txt">
+          <div class="eq-k">Qui&eacute;nes somos</div>
+          <h2 class="eq-t">No somos una <br><em>centralita.</em></h2>
+          <p class="eq-p">Somos las personas que dise&ntilde;an, construyen y mantienen tu sistema.</p>
+          <p class="eq-p">Especializados en automatizaci&oacute;n para concesionarios y talleres.</p>
+        </div>
+        <div class="eq-fotos">
+          <figure class="eq-f"><img src="/assets/guille.webp" alt="Guillermo, cofundador de EasyRobots" loading="lazy" decoding="async" width="900" height="765"><figcaption><b>Guillermo</b><span>Co-fundador</span></figcaption></figure>
+          <figure class="eq-f"><img src="/assets/anais.webp" alt="Ana&iacute;s, cofundadora de EasyRobots" loading="lazy" decoding="async" width="900" height="765"><figcaption><b>Ana&iacute;s</b><span>Co-fundadora</span></figcaption></figure>
+        </div>
+        <div class="eq-g" id="garantia">
+          <div class="eq-gc">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l8 3v6.2c0 4.9-3.4 8.6-8 9.8-4.6-1.2-8-4.9-8-9.8V5.5z" fill="#1E7BFF"/><path d="M8.2 12.2l2.6 2.6 5-5.2" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Nuestra <em>garant&iacute;a.</em></h3>
+          </div>
+          <p>14 días de garantía desde la instalación, en todos los productos: si no hace lo que hemos definido, te devolvemos el dinero.</p>
+          <p class="eq-man">El mantenimiento empieza el segundo mes, y los dos primeros meses tienes el plan Premium al precio del Básico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- =================== 09 - HABLEMOS =================== -->
+  <section class="sec s09 oscura" id="hablemos">
+      <div class="foto"></div>
+      <div class="velo"></div>
+    <div class="caja">
+
+      <div class="c-col">
+        <p class="c-kick">Hablemos</p>
+        <h2 class="c-t">Vemos dónde se te escapan los clientes, <br>y cómo conseguir más.</h2>
+        <p class="c-sub">Sin compromiso. 15 minutos.</p>
+      </div>
+
+      <div class="ct-der">
+      <button class="btn b-azul c-btn" type="button" data-cal>Reservar llamada
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="c-meta">
+        <div><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.9"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>15 minutos de consultoría</div>
+        <div><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.9"/><path d="M8 13.5 12 12V7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Sin compromiso</div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 10 - PIE =================== -->
+  <footer class="s10">
+      <div class="foto"></div>
+      <div class="velo"></div>
+    <div class="caja">
+
+      <div class="p-cols">
+        <div class="p-c p-c1"><b>EasyRobots</b><span>Sistemas de IA para<br>concesionarios.</span></div>
+        <div class="p-c p-c2"><b>Producto</b><div class="lista"><a href="#demo">Ver demostración</a><a href="#sistema">Integraciones</a></div></div>
+        <div class="p-c p-c3"><b>Empresa</b><div class="lista"><a href="#equipo">Sobre nosotros</a><a href="#hablemos">Reservar llamada</a><a href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a></div></div>
+        <div class="p-c p-c4"><b>Legal</b><div class="lista"><a href="/privacy.html">Política de privacidad<br>y cookies</a></div></div>
+        <div class="p-c p-c5"><b>Síguenos</b>
+          <div class="p-rs">
+            <a href="https://instagram.com/easyrobots.ai" aria-label="Instagram" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.9"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg></a>
+            <a href="https://www.facebook.com/people/EasyRobotsAI/61587151053673/" aria-label="Facebook" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <p class="p-legal">EasyRobots AI &middot; Hamburg (Alemania) &nbsp;&middot;&nbsp; info@easyrobots-ai.cloud &nbsp;&middot;&nbsp; &copy; 2026 EasyRobots. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+
+
+    <!-- ============ CALENDARIO ============ -->
+  <div class="er-modal" id="er-modal" aria-hidden="true">
+    <div class="er-modal-box" role="dialog" aria-modal="true" aria-label="Agendar una llamada">
+      <button class="er-modal-x" id="er-modal-x" type="button" aria-label="Cerrar">&#10005;</button>
+      <h3>Elige un hueco y lo vemos contigo</h3>
+      <p>15 minutos. Sin presentaci&oacute;n comercial.</p>
+      <div id="er-cal-slot"></div>
+    </div>
+  </div>
+
+  <script>
+    // Calendario de Cal.com (antes GHL). Se monta al abrir, no en la carga: ver /js/consent.js.
+    (function () {
+      var NICHO = 'concesionarios';
+      var modal = document.getElementById('er-modal');
+      var slot = document.getElementById('er-cal-slot');
+      if (!modal || !slot) return;
+      function abrir(e) {
+        if (e) e.preventDefault();
+        window.erCalendario(slot);   // Cal.com, en /js/consent.js
+        modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function cerrar() {
+        modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+      document.querySelectorAll('[data-cal]').forEach(function (b) { b.addEventListener('click', abrir); });
+      document.getElementById('er-modal-x').addEventListener('click', cerrar);
+      modal.addEventListener('click', function (e) { if (e.target === modal) cerrar(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(); });
+    })();
+  </script>
+  <script>
+    /* Al bajar, la barra se queda con la marca y el boton de reservar. */
+    (function () {
+      var b = document.querySelector('.bn'); if (!b) return;
+      function mira() { b.classList.toggle('bn-baja', window.scrollY > 40); }
+      mira(); window.addEventListener('scroll', mira, { passive: true });
+    })();
+  </script>
+  <script>
+    /* Vinetas (Anais, 07/10): aparecen la primera vez que el bloque entra en
+     pantalla y ya no se esconden. Al volver a entrar no desaparecen: solo se
+     resaltan otra vez, en el mismo orden en que salieron. */
+  (function () {
+    if (!document.documentElement.classList.contains('anim-on')) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var el = e.target;
+        if (!e.isIntersecting) { el._fuera = 1; return; }
+        if (!el.classList.contains('visto')) { el.classList.add('visto'); return; }
+        if (!el._fuera) return;
+        el._fuera = 0;
+        el.querySelectorAll('.vi').forEach(function (v) {
+          var d = parseFloat(getComputedStyle(v).getPropertyValue('--d')) || 0;
+          if (v.animate) v.animate([{ filter: 'brightness(1)', scale: '1' }, { filter: 'brightness(1.35)', scale: '1.03' }, { filter: 'brightness(1)', scale: '1' }], { duration: 700, delay: d * 500, easing: 'ease-in-out' });
+        });
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -18% 0px' });
+    document.querySelectorAll('[data-vi]').forEach(function (el) { io.observe(el); });
+  })();
+  </script>
+  <script>
+    /* Panel de ejemplo del monitor: los numeros cuentan desde cero cada vez
+       que la seccion entra en pantalla. */
+    (function () {
+      var ps = document.querySelectorAll('.pzp'); if (!ps.length || !('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          io.unobserve(e.target);
+          e.target.querySelectorAll('[data-num]').forEach(function (b) {
+            var fin = +b.getAttribute('data-num'), t0 = null;
+            b.textContent = '0';
+            function paso(t) { if (!t0) t0 = t; var k = Math.min(1, (t - t0 - 500) / 1400); if (k > 0) b.textContent = Math.round(fin * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(paso); }
+            requestAnimationFrame(paso);
+          });
+        });
+      }, { threshold: .35 });
+      ps.forEach(function (p) { io.observe(p); });
+    })();
+  </script>
+  <script src="/js/chat-demo.js" defer></script>
+<!-- "Pruebalo tu mismo" (2026-10-07, Anais): resaltado en azul y con pulso
+     para que se vea que la demo se puede tocar. Al pulsarlo lleva al chat,
+     lo ilumina y pone el foco en el primer boton de frase. -->
+<style>
+  .er-prueba { display: inline-flex; align-items: center; gap: 10px; padding: 9px 16px 9px 13px; border: 0; border-radius: 999px; background: #1E6FF2; color: #fff; font-family: inherit; font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; line-height: 1; cursor: pointer; box-shadow: 0 8px 24px rgba(30,111,242,.35); transition: background .2s, transform .2s; }
+  .er-prueba:hover { background: #3A84FF; transform: translateY(-1px); }
+  .er-prueba svg { width: 15px; height: 15px; }
+  .er-prueba .pt { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+  .er-prueba .pt::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid #fff; opacity: 0; animation: erPulso 1.6s ease-out infinite; }
+  @keyframes erPulso { 0% { transform: scale(.5); opacity: .9; } 100% { transform: scale(1.7); opacity: 0; } }
+  .er-flash { animation: erFlash 1.5s ease-out 1; }
+  @keyframes erFlash { 0% { box-shadow: 0 0 0 0 rgba(30,111,242,.75); } 100% { box-shadow: 0 0 0 26px rgba(30,111,242,0); } }
+  /* Anais (2026-10-14): en varias paginas el boton iba pegado al titular;
+     la flecha baja porque el chat esta debajo, y el boton entero late
+     despacio para que se vea que se puede tocar. */
+  .er-prueba { margin-bottom: 22px; animation: erLate 2.4s ease-in-out infinite; }
+  .er-prueba:hover { animation-play-state: paused; }
+  @keyframes erLate { 0%, 100% { box-shadow: 0 8px 24px rgba(30,111,242,.35), 0 0 0 0 rgba(30,111,242,.45); } 50% { box-shadow: 0 8px 24px rgba(30,111,242,.35), 0 0 0 9px rgba(30,111,242,0); transform: scale(1.03); } }
+  @media (max-width: 760px) { .er-prueba { margin-bottom: 18px; } }
+  @media (prefers-reduced-motion: reduce) { .er-prueba .pt::after, .er-flash, .er-prueba { animation: none; } }
+</style>
+<script>
+(function () {
+  document.querySelectorAll('[data-prueba]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var sec = b.closest('section') || document;
+      var chats = sec.querySelectorAll('[data-chat-demo]'), c = sec.querySelector('[data-chat-demo].on') || chats[0];
+      if (!c) return;
+      c.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      c.classList.remove('er-flash'); void c.offsetWidth; c.classList.add('er-flash');
+      setTimeout(function () { var f = c.querySelector('.cd-botones button, input, textarea'); if (f) f.focus({ preventScroll: true }); }, 600);
+    });
+  });
+})();
+</script>
+<!-- CTA de reservar llamada (Anais, 2026-10-07): todos iguales en toda la
+     web, blanco premium; en /estetica/ dorado, que es su acento. Va al final
+     y con !important para ganar a los colores que cada boton traia. -->
+<style>
+  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]) { background: #fff !important; color: #0B1220 !important; border: 1px solid rgba(11,18,32,.10) !important; box-shadow: 0 10px 28px rgba(5,10,20,.22), inset 0 -1px 0 rgba(11,18,32,.06) !important; transition: background .2s, transform .2s, box-shadow .2s; }
+  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]):hover { background: #EEF2F7 !important; transform: translateY(-1px); }
+  :is(a[data-cal][class]:not(.x-card), button[data-cal], button[data-reserva]) svg { color: #0B1220; }
+</style>
+<!-- Palabras marcadas de los titulares en gris, como la home (Anais,
+     2026-10-07). Con opacidad sobre el color del propio titular: sale gris
+     claro en las secciones oscuras y gris medio en las claras. -->
+<style>
+  :is(h1, h2, h3) em { color: inherit !important; opacity: .55; }
+</style>
+<!-- "Escuchar la llamada" (Anais, 2026-10-14): la grabacion todavia no
+     existe. Al pulsar, el boton avisa de que aun no esta disponible en vez de
+     no hacer nada. Cuando haya audio, se quita este bloque y se engancha. -->
+<style>
+  [data-pronto].pronto { opacity: .72; cursor: default; }
+  [data-pronto].pronto .dur { display: none; }
+  .pb-nota.pronto-aviso { color: inherit; font-weight: 600; }
+</style>
+<script>
+(function () {
+  document.querySelectorAll('[data-pronto]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopImmediatePropagation();
+      if (b.classList.contains('pronto')) return;
+      b.classList.add('pronto');
+      var rd = b.querySelector('.rd'); if (rd) rd.innerHTML = '&#9203;';
+      var t = Array.prototype.find.call(b.childNodes, function (n) { return n.nodeType === 3 && n.textContent.trim(); });
+      if (t) t.textContent = ' Grabación disponible muy pronto ';
+      var nota = b.parentNode.querySelector('.pb-nota');
+      if (nota) { nota.textContent = 'Todavía no está disponible: estamos preparando la grabación. Mientras tanto, puedes probar el chat.'; nota.classList.add('pronto-aviso'); }
+    }, true);
+  });
+})();
+</script>
+<!-- Tamanos unificados (Anais, 2026-10-14). Auditoria medida a 390 y 1440:
+     movil con la referencia de coaching (titular principal grande), escritorio
+     con la de la home (h2 ~42 px vistos con el zoom .9, texto >= 13,5). Solo
+     se tocan titulares y texto corrido; las burbujas de chat y notificaciones
+     de los dibujos se quedan como estan. -->
+<style>
+  @media (max-width: 760px) {
+    #inicio .h-t { font-size: clamp(32px, 9.8vw, 40px) !important; line-height: 1.06 !important; }
+    section:not(#inicio) h2 { font-size: 27px !important; line-height: 1.14 !important; }
+    .pb-nota { font-size: 13px !important; }
+    .pzs-c span, .lm-ficha .tx, .lm-pie { font-size: 14px !important; line-height: 1.45 !important; }
+  }
+  @media (min-width: 1081px) {
+    .pb-nota { font-size: 15px !important; }
+    .pzs-nota { font-size: 15.5px !important; }
+    .m-t, .b-t, .w-t, .h2-t, .n-t, .lm-t, .c-t { font-size: 47px !important; }
+    .pzs-c span { font-size: 15px !important; }
+  }
+</style>
+
+<!-- 2026-10-21: Impressum obligatorio (§ 5 DDG) accesible desde todas las paginas -->
+<div class="er-legal" style="text-align:center;font:13px/1.6 system-ui,sans-serif;padding:14px 16px;opacity:.75"><a href="/impressum.html" style="color:inherit">Impressum / Aviso legal</a> &middot; <a href="/privacy.html" style="color:inherit">Privacidad y cookies</a></div>
+<script>
+  /* Calculadora comun (borrador): multiplica las barras y por 4,33 semanas.
+     Si la pagina no la tiene, no hace nada. */
+  (function () {
+    document.querySelectorAll('[data-calc]').forEach(function (caja) {
+      var barras = caja.querySelectorAll('[data-k]');
+      if (!barras.length) return;
+      var miles = function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); };
+      var fmt = { num: function (v) { return miles(v); }, pct: function (v) { return String(v).replace('.', ',') + ' %'; }, eur: function (v) { return miles(v) + ' €'; } };
+      function calc() {
+        var mes = 4.33;
+        barras.forEach(function (b) {
+          var v = +b.value, out = caja.querySelector('[data-v="' + b.dataset.k + '"]');
+          if (out) out.textContent = fmt[b.dataset.fmt](v);
+          mes *= b.dataset.fmt === 'pct' ? v / 100 : v;
+        });
+        caja.querySelector('[data-out="mes"]').textContent = miles(mes) + ' €';
+        caja.querySelector('[data-out="anio"]').textContent = miles(mes * 12) + ' €';
+      }
+      barras.forEach(function (b) { b.addEventListener('input', calc); });
+      calc();
+    });
+  })();
+</script>
+</body>
+</html>

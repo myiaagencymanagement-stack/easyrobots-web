@@ -1829,6 +1829,29 @@ sin explicar levanta sospecha; con la multiplicación delante, levanta confianza
 
 "sólamente" (va sin tilde) en la home vieja. Repasar tildes antes de publicar.
 
+## Asistente de dudas en todas las paginas (2026-11-13)
+
+Icono flotante abajo a la derecha, en todas las paginas vivas (26 archivos: home, verticales, AURA, productos de
+entrada, condiciones, blog y guias). Es `src/js/dudas.js`, cargado con `<script src="/js/dudas.js" defer>`
+antes de `</body>`. Pagina nueva = anadir esa linea.
+
+- **Que es:** un chat que contesta SOLO dudas sobre lo que hay en la web (que incluye cada producto, precios,
+  plazos, garantias, como se contrata). Lo decidio Anais el 13/11: nada de como esta hecho el sistema por
+  dentro, ni herramientas, ni proveedores; para lo que no sabe, manda a la auditoria gratuita o a
+  info@easyrobots-ai.cloud. No pide datos, no agenda, no cobra.
+- **Como funciona:** mismo camino que los chats de las landings (`chat-demo.js`): webhook
+  `easyrobots-web` del AGENTE MULTICANAL, cuenta `easyrobots`, personalidad `dudas`. El agente vive en el
+  CRM (SQL 295 del proyecto EasyRobots Crm; su prompt en `EasyRobots Crm/tools/prompt_dudas_web_v1.txt`): sin
+  acciones, sin acceso a documentos internos, solo sabe lo que dice su prompt (la informacion publica de la web).
+  **Si cambia un precio, un bono o una condicion en la web, hay que cambiarlo tambien en ese prompt**
+  (se vuelve a aplicar con `tools/gen295.js` + run.js, o editando el agente en el CRM).
+- La web le dice al agente en que pagina esta la persona (prefijo oculto en el primer mensaje de cada pagina).
+- Sin cookies: sesion e hilo en sessionStorage. Tope: 20 mensajes por sesion y 400 letras; la base ademas
+  limita por visitante y por hora. En la cabecera dice que es una IA y enlaza a /privacy.html.
+- Las marcas `[[botones: a | b]]` del agente se pintan como botones de respuesta rapida.
+- Pendiente al publicar: probarlo en una pagina real (que conteste, que no cuente nada de dentro, que el
+  icono no tape nada en el movil).
+
 ## Pendientes
 
 Suyos:
