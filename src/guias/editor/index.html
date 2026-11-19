@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+  <!-- Lead magnet del reel "Tutorial Claude editor" (palabra EDITOR, 2026-11-19).
+       Mismo formato que el resto de guias (Anais: "parece una landing, no una guia").
+       Sin detalles tecnicos: Claude Code instala lo que falte. Indexable como las demas. -->
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://easyrobots-ai.cloud/guias/editor/">
+  <meta name="description" content="Guía y kit gratis para que Claude Code edite tus reels: subtítulos palabra a palabra, zooms en los cortes, gancho y música que baja sola. Aprende tu estilo vídeo a vídeo.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Editor de Reels con Claude | EasyRobots</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        .header h1 { font-size: 2.5em; margin-bottom: 15px; position: relative; z-index: 1; font-weight: 700; }
+        .header p { font-size: 1.1em; opacity: 0.95; position: relative; z-index: 1; margin-bottom: 20px; }
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Intro */
+        .intro { padding: 40px; background: #f8f9fa; border-bottom: 2px solid #e9ecef; }
+        .intro h2 { color: #667eea; margin-bottom: 20px; font-size: 1.5em; }
+        .intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .intro-card { background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #667eea; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+        .intro-card strong { display: block; color: #667eea; margin-bottom: 8px; font-size: 0.95em; }
+
+        .content { padding: 40px; }
+
+        .what-you-get { background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 30px; border-radius: 12px; margin-bottom: 40px; }
+        .what-you-get h3 { color: #667eea; margin-bottom: 20px; font-size: 1.3em; }
+        .benefit-list { display: grid; gap: 15px; }
+        .benefit-item { display: flex; gap: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03); }
+        .benefit-icon {
+            flex-shrink: 0; width: 40px; height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: bold; font-size: 1.2em;
+        }
+        .benefit-text { flex: 1; }
+        .benefit-text strong { display: block; color: #1a1a1a; margin-bottom: 5px; }
+
+        /* Pasos */
+        .step { margin-bottom: 40px; padding: 30px; background: white; border: 2px solid #e9ecef; border-radius: 12px; transition: all 0.3s ease; }
+        .step:hover { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1); border-color: #667eea; }
+        .step-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5em; font-weight: bold; flex-shrink: 0;
+        }
+        .step h3 { color: #1a1a1a; font-size: 1.4em; }
+        .step-subtitle { color: #667eea; font-weight: 600; font-size: 0.95em; margin-top: 5px; }
+        .step-content { margin-top: 20px; }
+        .step-content p + p { margin-top: 10px; }
+        .nota { font-size: 0.9em; color: #666; }
+
+        /* Prompt con boton de copiar (mismo aspecto que los atajos de las otras guias) */
+        .shortcut { background: #f8f9fa; border-left: 4px solid #667eea; padding: 15px; margin: 15px 0; border-radius: 8px; }
+        .shortcut-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+        .shortcut-title { font-weight: 700; color: #667eea; }
+        .shortcut-content {
+            background: white; padding: 12px; border-radius: 6px; line-height: 1.7; color: #333; font-size: 0.9em;
+            font-family: 'Monaco', 'Courier New', monospace; white-space: pre-wrap; word-break: break-word;
+        }
+        .copy {
+            font: inherit; font-size: 0.9em; font-weight: 700; cursor: pointer;
+            border: 2px solid #667eea; background: white; color: #667eea;
+            padding: 6px 18px; border-radius: 20px; min-height: 36px; transition: all 0.2s ease;
+        }
+        .copy:hover, .copy:focus-visible, .copy.ok { background: #667eea; color: white; outline: none; }
+
+        .example-box { background: #f0f4ff; border: 2px solid #667eea; padding: 20px; border-radius: 8px; margin: 15px 0; }
+        .example-title { color: #667eea; font-weight: 700; margin-bottom: 10px; font-size: 0.95em; }
+        .example-content { color: #333; line-height: 1.8; }
+        .example-content a { color: #667eea; font-weight: 600; }
+
+        /* Descarga */
+        .descarga { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 12px; }
+        .btn-dl {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;
+            font-weight: 700; text-decoration: none; padding: 14px 26px; border-radius: 30px;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3); transition: transform 0.2s ease;
+        }
+        .btn-dl:hover, .btn-dl:focus-visible { transform: translateY(-2px); }
+        .btn-sec {
+            font: inherit; font-weight: 600; cursor: pointer; background: #f8f9fa; color: #667eea;
+            border: 2px solid #e9ecef; padding: 12px 22px; border-radius: 30px;
+        }
+        .btn-sec:hover, .btn-sec:focus-visible { border-color: #667eea; }
+
+        /* Checklist */
+        .checklist { background: linear-gradient(135deg, #f0f4ff 0%, #f8f9fa 100%); padding: 30px; border-radius: 12px; margin: 40px 0; }
+        .checklist h3 { color: #667eea; margin-bottom: 20px; font-size: 1.3em; }
+        .checkbox-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(102, 126, 234, 0.2); }
+        .checkbox-item:last-child { border-bottom: none; }
+        .checkbox-item input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; accent-color: #667eea; cursor: pointer; flex-shrink: 0; }
+        .checkbox-item label { cursor: pointer; flex: 1; color: #333; }
+
+        .limitations { background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%); border-left: 4px solid #f06292; padding: 25px; border-radius: 8px; margin: 40px 0; }
+        .limitations h3 { color: #d32f2f; margin-bottom: 15px; font-size: 1.1em; }
+        .limitations p { color: #555; margin-bottom: 10px; }
+
+        .cta-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; border-radius: 12px; text-align: center; margin: 40px 0 0; }
+        .cta-section h3 { margin-bottom: 15px; font-size: 1.3em; }
+        .cta-section p { opacity: 0.95; margin-bottom: 20px; }
+        .cta-section a.btn-ig { display: inline-block; background: white; color: #667eea; font-weight: 700; text-decoration: none; padding: 12px 26px; border-radius: 30px; }
+
+        .footer { background: #f8f9fa; padding: 30px; text-align: center; border-top: 1px solid #e9ecef; color: #666; font-size: 0.95em; }
+        .footer-logo { font-weight: 700; color: #667eea; margin-bottom: 10px; }
+        .footer a { color: #667eea; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+
+        .navigation { padding: 20px 40px; background: white; border-bottom: 1px solid #e9ecef; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .nav-link { color: #667eea; text-decoration: none; font-weight: 600; font-size: 0.9em; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; background: #f8f9fa; }
+        .nav-link:hover { background: #667eea; color: white; }
+
+        .nav-guias { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; padding: 14px 40px; background: #f8f9fa; border-bottom: 1px solid #e9ecef; font-size: .92em; }
+        .nav-guias a { color: #667eea; text-decoration: none; font-weight: 600; }
+        .nav-guias a:hover, .nav-guias a:focus-visible { text-decoration: underline; }
+        .nav-guias .sep { color: #adb5bd; }
+
+        /* Aviso: navegador interno de Instagram/Facebook, donde no se descarga nada */
+        .iab { padding: 16px 40px; background: #fff8e1; border-bottom: 2px solid #f5c443; color: #3d3200; font-size: 0.95em; }
+        .iab[hidden], .iab [hidden] { display: none !important; }
+        .iab p { margin: 0 0 10px; }
+        .iab-b { display: flex; flex-wrap: wrap; gap: 10px; }
+        .iab-btn { font: inherit; font-size: 0.9em; font-weight: 700; cursor: pointer; border-radius: 20px; padding: 8px 18px; text-decoration: none; border: 2px solid #667eea; background: #667eea; color: white; display: inline-flex; align-items: center; }
+        .iab-btn.sec { background: white; color: #667eea; }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 1.8em; }
+            .content, .intro { padding: 20px; }
+            .step { padding: 20px; }
+            .intro-grid { grid-template-columns: 1fr; }
+            .navigation { padding: 16px 20px; gap: 10px; }
+            .cta-section { padding: 30px 20px; }
+            .iab { padding: 14px 20px; }
+        }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .nav-guias { padding: 12px 24px; }
+            .btn-dl, .btn-sec { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-guias">
+            <a href="/guias/">← Todas las guías</a>
+            <span class="sep">|</span>
+            <a href="/index.html">EasyRobots</a>
+        </nav>
+
+        <div class="iab" id="iab" role="note" hidden>
+            <p><strong>Estás en el navegador de <span id="iab-app">Instagram</span></strong> y desde aquí no se pueden descargar archivos.</p>
+            <p id="iab-ios">Toca <strong>···</strong> arriba a la derecha y elige <strong>Abrir en el navegador externo</strong>. O copia el enlace y ábrelo en tu ordenador, que es donde vas a usar el kit.</p>
+            <div class="iab-b">
+                <a class="iab-btn" id="iab-chrome" hidden>Abrir en Chrome</a>
+                <button type="button" class="iab-btn sec" data-copiar-url>Copiar enlace</button>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Editor de Reels con Claude</h1>
+            <p>Claude edita tus reels y aprende tu estilo vídeo a vídeo</p>
+            <span class="badge">⏱️ Tiempo de implementación: 5 minutos (el resto lo instala Claude solo)</span>
+        </div>
+
+        <!-- Navegacion -->
+        <div class="navigation">
+            <a href="#intro" class="nav-link">Introducción</a>
+            <a href="#paso1" class="nav-link">Paso 1: Claude Code</a>
+            <a href="#paso2" class="nav-link">Paso 2: El kit</a>
+            <a href="#paso3" class="nav-link">Paso 3: Primer prompt</a>
+            <a href="#paso4" class="nav-link">Paso 4: Tu vídeo</a>
+            <a href="#paso5" class="nav-link">Paso 5: Que mejore</a>
+            <a href="#musica" class="nav-link">Música</a>
+        </div>
+
+        <!-- Intro -->
+        <div class="intro" id="intro">
+            <h2>📋 Información General</h2>
+            <p>Grabas tu vídeo, se lo pasas a Claude y te lo devuelve editado y listo para Instagram. Y cada vez que le dices qué te ha gustado y qué no, el siguiente sale más a tu manera.</p>
+            <div class="intro-grid">
+                <div class="intro-card">
+                    <strong>👥 Para quién es</strong>
+                    Cualquiera que grabe reels y quiera dejar de editarlos a mano
+                </div>
+                <div class="intro-card">
+                    <strong>💰 Requisito</strong>
+                    Claude Code con un plan de pago de Claude (Pro o superior)
+                </div>
+                <div class="intro-card">
+                    <strong>💻 Ordenador</strong>
+                    Windows o Mac. Desde el móvil no se puede
+                </div>
+                <div class="intro-card">
+                    <strong>⏱️ Tiempo necesario</strong>
+                    5 minutos tuyos. Lo que falte en tu ordenador lo instala Claude solo: tú solo esperas
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Lo que vas a conseguir -->
+            <div class="what-you-get">
+                <h3>✨ Lo que vas a conseguir</h3>
+                <div class="benefit-list">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">1</div>
+                        <div class="benefit-text">
+                            <strong>Subtítulos palabra a palabra</strong>
+                            Cada palabra aparece justo cuando la dices, y las importantes se resaltan.
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">2</div>
+                        <div class="benefit-text">
+                            <strong>Zooms en los cortes</strong>
+                            Cambia el encuadre en cada corte y mete un golpe de zoom en las frases fuertes, para que el vídeo no se haga plano.
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">3</div>
+                        <div class="benefit-text">
+                            <strong>Gancho arriba</strong>
+                            Te propone frases sacadas de tu propio vídeo para los primeros segundos, que son los que deciden si se quedan.
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">4</div>
+                        <div class="benefit-text">
+                            <strong>Música que baja sola cuando hablas</strong>
+                            Sube en las pausas y baja con tu voz. Siempre se te entiende.
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">5</div>
+                        <div class="benefit-text">
+                            <strong>Aprende tu estilo</strong>
+                            Apunta lo que te gusta y lo que no, y lo aplica en el siguiente vídeo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 1 -->
+            <div class="step" id="paso1">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>Instala Claude Code</h3>
+                        <div class="step-subtitle">Una sola vez • 2 minutos</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>Descárgalo desde <a href="https://claude.com/claude-code" target="_blank" rel="noopener" style="color:#667eea;font-weight:600">claude.com/claude-code</a> e inicia sesión con tu cuenta de Claude.</p>
+                    <p class="nota">Recuerda: necesitas un plan de pago (Pro o superior). Con el plan gratis no funciona.</p>
+                </div>
+            </div>
+
+            <!-- PASO 2 -->
+            <div class="step" id="paso2">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>Descarga y descomprime el kit</h3>
+                        <div class="step-subtitle">La carpeta donde trabaja tu editor</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>Descárgalo, guárdalo donde quieras (por ejemplo, en el Escritorio) y descomprímelo. Te queda una carpeta llamada <strong>kit-editor-claude</strong>.</p>
+                    <div class="descarga">
+                        <a class="btn-dl" href="/guias/editor/kit-editor-claude.zip" download>⬇ Descargar el kit (.zip)</a>
+                        <button type="button" class="btn-sec" data-copiar-url>Copiar enlace para el ordenador</button>
+                    </div>
+                    <p class="nota">¿Lo estás viendo en el móvil? Copia el enlace y ábrelo en tu ordenador, que es donde lo vas a usar. Si lo descargas en el iPhone, queda en la app <strong>Archivos</strong>, carpeta <strong>Descargas</strong>.</p>
+                </div>
+            </div>
+
+            <!-- PASO 3 -->
+            <div class="step" id="paso3">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>Abre Claude Code en la carpeta y pega el primer prompt</h3>
+                        <div class="step-subtitle">Solo la primera vez • Claude lo instala todo, tú solo esperas</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>Abre Claude Code dentro de la carpeta <strong>kit-editor-claude</strong> y pega este prompt. Claude deja tu ordenador listo y te hace cinco preguntas sobre tu cuenta y tu estilo.</p>
+                    <div class="shortcut">
+                        <div class="shortcut-top">
+                            <div class="shortcut-title">Prompt 1 · La primera vez</div>
+                            <button class="copy" type="button" data-target="p1">Copiar</button>
+                        </div>
+                        <div class="shortcut-content" id="p1">Eres mi editor de reels. Lee CLAUDE.md y ESTILO.md de esta carpeta.
+
+1. Prepara mi ordenador como dice la sección "Primera vez" de CLAUDE.md: comprueba qué tengo
+   instalado, instala lo que falte (pídeme permiso antes) y haz la prueba final.
+2. Después hazme 5 preguntas cortas sobre mi cuenta y mi estilo (de qué va mi contenido, a quién
+   le hablo, qué subtítulos y efectos me gustan, colores de marca) y apúntalo en ESTILO.md.
+3. Cuando esté todo, dime que te pase mi primer vídeo.</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-title">💡 Si te pide permiso para instalar algo</div>
+                        <div class="example-content">Dile que sí. Son las piezas que necesita para editar, y solo las instala una vez.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 4 -->
+            <div class="step" id="paso4">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h3>Pásale tu vídeo</h3>
+                        <div class="step-subtitle">Cada vez que tengas un vídeo nuevo</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>Cambia lo que va entre comillas por tu vídeo y por un reel que te guste como referencia. Si no tienes referencia, borra esa parte.</p>
+                    <div class="shortcut">
+                        <div class="shortcut-top">
+                            <div class="shortcut-title">Prompt 2 · Para cada vídeo nuevo</div>
+                            <button class="copy" type="button" data-target="p2">Copiar</button>
+                        </div>
+                        <div class="shortcut-content" id="p2">Edita este vídeo: "RUTA\DE\TU\VIDEO.mp4"
+Te paso de referencia el reel "RUTA\DE\LA\REFERENCIA.mp4": fíjate en cómo pone los subtítulos,
+los zooms y los textos, y hazlo parecido con mi estilo de ESTILO.md.
+Antes de montar, pregúntame el gancho, la música y lo que no tengas claro. Enséñame capturas antes del render.</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-title">💡 Truco</div>
+                        <div class="example-content">En vez de escribir dónde está el vídeo, arrastra el archivo a la ventana de Claude Code.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 5 -->
+            <div class="step" id="paso5">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <div>
+                        <h3>Dile qué te gusta y qué no</h3>
+                        <div class="step-subtitle">El paso que hace que cada vídeo salga mejor</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>Cuando te entregue el vídeo, cuéntale qué te ha gustado y qué cambiarías. Lo apunta en tu archivo de estilo y lo tiene en cuenta en el siguiente.</p>
+                    <div class="shortcut">
+                        <div class="shortcut-top">
+                            <div class="shortcut-title">Prompt 3 · Para que mejore</div>
+                            <button class="copy" type="button" data-target="p3">Copiar</button>
+                        </div>
+                        <div class="shortcut-content" id="p3">Esto me ha gustado: ...
+Esto no: ...
+Apúntalo en ESTILO.md para los próximos vídeos.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Musica -->
+            <div class="step" id="musica">
+                <div class="step-header">
+                    <div class="step-number">🎵</div>
+                    <div>
+                        <h3>Música y efectos de sonido gratis</h3>
+                        <div class="step-subtitle">El kit no los trae: cada pista tiene su licencia</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>Descárgalos gratis de Pixabay y guárdalos dentro de la carpeta del kit: la música en <strong>public/musica</strong> y los efectos en <strong>public/sfx</strong>. Claude los encuentra solo.</p>
+                    <div class="example-box">
+                        <div class="example-title">🔗 Dónde descargarlos</div>
+                        <div class="example-content">
+                            Música de fondo: <a href="https://pixabay.com/es/music/" target="_blank" rel="noopener">pixabay.com/es/music</a><br>
+                            Efectos de sonido: <a href="https://pixabay.com/es/sound-effects/" target="_blank" rel="noopener">pixabay.com/es/sound-effects</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Errores -->
+            <div class="limitations">
+                <h3>⚠️ Errores que hacen que salga peor</h3>
+                <p><strong>❌ Saltarte el paso 5</strong><br>
+                Si no le dices qué te gusta, cada vídeo sale con el estilo por defecto. Lo que lo hace tuyo es ir corrigiéndole.</p>
+                <p style="margin-top: 15px;"><strong>❌ Aprobar sin mirar las capturas</strong><br>
+                Antes del vídeo final te enseña capturas. Míralas: es el momento de decirle si un texto te tapa la cara.</p>
+                <p style="margin-top: 15px;"><strong>❌ Música demasiado alta</strong><br>
+                Si la música compite con tu voz, se pierde el mensaje. Ante la duda, pídele que la baje.</p>
+            </div>
+
+            <!-- Checklist -->
+            <div class="checklist" id="checklist">
+                <h3>✅ Checklist Final</h3>
+                <p style="color: #666; margin-bottom: 20px;">Marca cada elemento conforme lo completes:</p>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1">Tengo Claude Code instalado y con sesión iniciada (plan Pro o superior)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2">He descargado y descomprimido la carpeta kit-editor-claude</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3">He pegado el primer prompt y he contestado a sus 5 preguntas</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4">He guardado música y efectos de Pixabay en la carpeta del kit</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="check5">
+                    <label for="check5">He editado mi primer vídeo con el segundo prompt</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="check6">
+                    <label for="check6">Le he dicho qué me ha gustado y qué no con el tercer prompt</label>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h3>🚀 Cuéntanos qué tal tu primer reel</h3>
+                <p>Escríbenos en Instagram con lo que te ha salido o lo que se te ha atascado. Y si quieres que la IA trabaje también en tu negocio, te contamos cómo.</p>
+                <a class="btn-ig" href="https://instagram.com/easyrobots.ai" target="_blank" rel="noopener">@easyrobots.ai</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">EasyRobots 🤖</div>
+            <p><a href="/index.html">EasyRobots</a> · <a href="/guias/">Todas las guías</a> · <a href="https://instagram.com/easyrobots.ai" target="_blank" rel="noopener">@easyrobots.ai</a> · <a href="/privacy.html">Política de privacidad</a> · <a href="/impressum.html">Aviso legal</a></p>
+        </div>
+    </div>
+
+<script>
+  // Boton "Copiar": copia el prompt entero. Si no hay portapapeles, selecciona
+  // el texto para copiarlo a mano.
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if (!el) return;
+      var done = function () {
+        btn.textContent = 'Copiado ✓'; btn.classList.add('ok');
+        setTimeout(function () { btn.textContent = 'Copiar'; btn.classList.remove('ok'); }, 1800);
+      };
+      var fallback = function () {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Pulsa Ctrl+C';
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(el.textContent).then(done, fallback);
+      } else { fallback(); }
+    });
+  });
+
+  // "Copiar enlace": el enlace llega por DM al movil y el kit se usa en el
+  // ordenador, asi que se facilita llevarselo.
+  document.querySelectorAll('[data-copiar-url]').forEach(function (b) {
+    var txt = b.textContent;
+    b.addEventListener('click', function () {
+      var url = location.href.split('#')[0];
+      var ok = function () { b.textContent = 'Enlace copiado ✓'; setTimeout(function () { b.textContent = txt; }, 2200); };
+      var aMano = function () {
+        var t = document.createElement('textarea');
+        t.value = url; t.setAttribute('readonly', '');
+        t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); ok(); } catch (e) { b.textContent = url; }
+        document.body.removeChild(t);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(ok, aMano);
+      } else { aMano(); }
+    });
+  });
+
+  // Aviso de navegador interno (Instagram, Facebook, TikTok): ahi la descarga
+  // no hace nada. En Android se salta a Chrome con intent://.
+  (function () {
+    var ua = navigator.userAgent || '';
+    if (!/Instagram|FBAN|FBAV|FB_IAB|FBIOS|TikTok|musical_ly|Bytedance/i.test(ua)) return;
+    var box = document.getElementById('iab');
+    if (!box) return;
+    var app = /Instagram/i.test(ua) ? 'Instagram' : (/FBAN|FBAV|FB_IAB|FBIOS/i.test(ua) ? 'Facebook' : 'esta app');
+    document.getElementById('iab-app').textContent = app;
+    if (/Android/i.test(ua)) {
+      var a = document.getElementById('iab-chrome');
+      a.href = 'intent://' + location.host + location.pathname + location.search +
+               '#Intent;scheme=https;package=com.android.chrome;end';
+      a.hidden = false;
+      document.getElementById('iab-ios').textContent =
+        'Pulsa Abrir en Chrome y descárgalo desde allí, o copia el enlace y ábrelo en tu ordenador.';
+    }
+    box.hidden = false;
+  })();
+</script>
+</body>
+</html>
