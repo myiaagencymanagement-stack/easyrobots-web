@@ -31,7 +31,7 @@
   var ESPERA_MAX_MS = 60000;
 
   // Nombre de cada web/pagina (13/11, Anais): el chat se presenta con el de la pagina en la que esta.
-  var NOMBRES = [[/reactivador/, 'Reactivador Flash'], [/agente-10/, 'Agente 10 Preguntas'], [/agente-secretaria|presupuestos/, 'Agente Secretaria'],
+  var NOMBRES = [[/black-friday/, 'Black Friday EasyRobots'], [/reactivador/, 'Reactivador Flash'], [/agente-10/, 'Agente 10 Preguntas'], [/agente-secretaria|presupuestos/, 'Agente Secretaria'],
     [/aura-business/, 'AURA Business'], [/aura-setter/, 'AURA Setter'], [/clinicas|estetica|dental/, 'EasyRobots Clínicas'],
     [/inmobiliaria/, 'EasyRobots Inmobiliarias'], [/concesionario/, 'EasyRobots Concesionarios'], [/ecommerce/, 'EasyRobots Ecommerce'],
     [/coaching/, 'EasyRobots Coaching'], [/guias/, 'Guías EasyRobots'], [/blog/, 'Blog EasyRobots'], [/condiciones/, 'Condiciones EasyRobots']];

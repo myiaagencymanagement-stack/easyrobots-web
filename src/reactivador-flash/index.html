@@ -258,6 +258,13 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <div class="cint">REACTIVADOR FLASH</div>
 <h1>Tus clientes de hace meses vuelven a escribirte <span>en menos de 10 días</span></h1>
 <p class="sub">Lanzamos una campaña de WhatsApp a 400 de tus contactos dormidos. Tú recibes las respuestas, la lista de recuperados y un informe de qué grupos reaccionaron mejor.</p>
+<!-- BLACK FRIDAY (2026-11-20, Anais): oferta por tiempo limitado, fuera del catalogo. Contador hasta el 1/12 a las 23:59.
+     El bonus sorpresa se anuncia sin desvelar: se cuenta en el contacto de la primera semana. Al terminar la promo, quitar este bloque y su estilo y script del final. -->
+<div class="bf" id="bf" data-fin="2026-12-01T23:59:59+01:00">
+<div class="bf-cab"><span class="bf-tag">OFERTA BLACK FRIDAY</span><span class="bf-txt">Solo 10 plazas, por tiempo limitado. No está en el catálogo. <b data-bf-plazas style="color:var(--cian)">Quedan 10 plazas</b>.</span></div>
+<div class="bf-cuenta" aria-live="polite"><div><b data-u="d">--</b><span>días</span></div><div><b data-u="h">--</b><span>horas</span></div><div><b data-u="m">--</b><span>min</span></div><div><b data-u="s">--</b><span>seg</span></div></div>
+<p class="bf-bonus"><b>+ BONUS SORPRESA EXTRA.</b> Te lo contamos a la semana de empezar. Una pista: lo que inviertes ahora no se pierde si después quieres más.</p>
+</div>
 <div class="hero-compra">
 <div class="precio"><b>157 €</b><span>pago único · 400 contactos incluidos</span></div>
 <a class="btn btn-cian" href="#pago">Quiero reactivar mi lista</a>
@@ -461,6 +468,36 @@ EasyRobots · Reactivador Flash<br>
   calc();
 })();
 </script>
+<script src="/js/black-friday.js" defer></script>
 <script src="/js/dudas.js" defer></script>
+<style>
+.bf{display:flex;flex-direction:column;gap:14px;max-width:720px;padding:20px 22px;background:rgba(34,211,238,.06);border:1px dashed var(--cian);border-radius:14px}
+.bf-cab{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.bf-tag{padding:5px 12px;border-radius:999px;background:var(--cian);color:var(--noche);font-size:12px;font-weight:800;letter-spacing:.12em}
+.bf-txt{font-size:15px;font-weight:600;color:#fff}
+.bf-cuenta{display:flex;gap:10px}
+.bf-cuenta div{min-width:72px;padding:10px 6px 8px;background:var(--tarjeta-n);border:1px solid var(--borde-n);border-radius:12px;text-align:center}
+.bf-cuenta b{display:block;font-size:30px;line-height:1;font-weight:800;color:#fff;font-variant-numeric:tabular-nums}
+.bf-cuenta span{display:block;margin-top:5px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-n2)}
+.bf-bonus{font-size:15px;line-height:1.5;color:var(--gris-n)}
+.bf-bonus b{color:var(--cian)}
+@media (max-width:620px){.bf{padding:16px}.bf-cuenta div{min-width:0;flex:1}.bf-cuenta b{font-size:24px}}
+</style>
+<script>
+(function () {
+  var caja = document.getElementById('bf');
+  if (!caja) return;
+  var fin = new Date(caja.getAttribute('data-fin')).getTime(), cuenta = caja.querySelector('.bf-cuenta'), el = {};
+  ['d', 'h', 'm', 's'].forEach(function (u) { el[u] = caja.querySelector('[data-u="' + u + '"]'); });
+  function dos(n) { return (n < 10 ? '0' : '') + n; }
+  function pintar() {
+    var r = Math.max(0, Math.floor((fin - Date.now()) / 1000));
+    if (r === 0) { caja.style.display = 'none'; clearInterval(t); return; }
+    el.d.textContent = Math.floor(r / 86400); el.h.textContent = dos(Math.floor(r % 86400 / 3600));
+    el.m.textContent = dos(Math.floor(r % 3600 / 60)); el.s.textContent = dos(r % 60);
+  }
+  var t = setInterval(pintar, 1000); pintar();
+})();
+</script>
 </body>
 </html>
