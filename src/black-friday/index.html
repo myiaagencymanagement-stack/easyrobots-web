@@ -128,8 +128,8 @@ h1,h2{font-family:Fraunces,Georgia,serif!important;font-weight:500!important}
 h1 em,h2 em{font-style:italic}
 </style>
 <style>
-/* Equipo + garantia (2026-11-24, Anais): quien esta detras, con las fotos reales, y la garantia de cada producto. */
-.eqg{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+/* Equipo + garantia (2026-11-24, Anais; fotos reducidas a 400 px, "super grandes" a media pantalla): quien esta detras, con las fotos reales, y la garantia de cada producto. */
+.eqg{display:grid;grid-template-columns:400px 1fr;gap:56px;align-items:center}
 .eqg-fotos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .eqg-fotos figure{margin:0;display:flex;flex-direction:column;gap:10px}
 .eqg-fotos img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 22%;border-radius:14px;display:block}
@@ -144,7 +144,7 @@ h1 em,h2 em{font-style:italic}
 .eqg-g svg{flex:none}
 .eqg-g h3{font-size:17px;font-weight:700;color:#fff;margin:0 0 4px}
 .eqg-g p{font-size:15.5px;line-height:1.5;color:var(--gris-n);margin:0}
-@media (max-width:900px){.eqg{grid-template-columns:1fr;gap:32px}}
+@media (max-width:900px){.eqg{grid-template-columns:1fr;gap:32px}.eqg-fotos{max-width:360px}}
 </style>
 </head>
 <body>
