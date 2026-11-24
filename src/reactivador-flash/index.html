@@ -248,6 +248,25 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
   .bonos { align-items: flex-start; }
   .bono { flex: 1 1 300px; }
 </style>
+<style>
+/* Equipo + garantia (2026-11-24, Anais): quien esta detras, con las fotos reales, y la garantia de cada producto. */
+.eqg{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.eqg-fotos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.eqg-fotos figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.eqg-fotos img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 22%;border-radius:14px;display:block}
+.eqg-fotos figcaption{font-size:15px;line-height:1.35;color:var(--gris-n2)}
+.eqg-fotos figcaption b{display:block;color:#fff;font-size:16px}
+.eqg-tx{display:flex;flex-direction:column;gap:18px}
+.eqg-tx .eqg-cint{font-size:14px;font-weight:700;letter-spacing:.14em;color:var(--cian)}
+.eqg-tx h2{color:#fff}
+.eqg-tx > p{font-size:18px;line-height:1.6;color:var(--gris-n)}
+.eqg-gar{display:flex;flex-direction:column;gap:12px}
+.eqg-g{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;background:var(--tarjeta-n);border:1px solid var(--borde-n);border-radius:14px}
+.eqg-g svg{flex:none}
+.eqg-g h3{font-size:17px;font-weight:700;color:#fff;margin:0 0 4px}
+.eqg-g p{font-size:15.5px;line-height:1.5;color:var(--gris-n);margin:0}
+@media (max-width:900px){.eqg{grid-template-columns:1fr;gap:32px}}
+</style>
 </head>
 <body>
 
@@ -386,6 +405,22 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 </div>
 </section>
 
+<section class="sec oscura" id="equipo">
+<div class="in">
+<div class="eqg">
+<div class="eqg-fotos">
+<figure><img src="/assets/anais.webp" alt="Anaís, cofundadora de EasyRobots" loading="lazy" decoding="async" width="900" height="765"><figcaption><b>Anaís</b>Cofundadora</figcaption></figure>
+<figure><img src="/assets/guille.webp" alt="Guillermo, cofundador de EasyRobots" loading="lazy" decoding="async" width="900" height="765"><figcaption><b>Guillermo</b>Cofundador</figcaption></figure>
+</div>
+<div class="eqg-tx">
+<div class="eqg-cint">QUIÉNES SOMOS Y NUESTRA GARANTÍA</div>
+<h2>No somos una centralita.</h2>
+<p>Somos dos hermanos, Anaís y Guillermo, y somos las personas que diseñan, construyen y mantienen tu sistema. Si algo no va, nos escribes a nosotros.</p>
+<div class="eqg-gar"><div class="eqg-g"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><div><h3>Garantía de lanzamiento total</h3><p>Si por cualquier motivo ajeno a ti no podemos lanzar tu campaña, te devolvemos los 157 € íntegros.</p></div></div></div>
+</div>
+</div>
+</div>
+</section>
 <section id="pago" class="sec clara">
 <div class="in pago">
 <div class="ficha">
