@@ -22,6 +22,17 @@ li b{flex:none;width:32px;height:32px;border-radius:16px;background:#22D3EE;colo
 a{color:#22D3EE}
 footer{border-top:1px solid #2B2E4D;padding:24px;text-align:center;font-size:14px;color:#B7BDD6}
 footer a{color:#B7BDD6}
+.mas{margin-top:12px;padding-top:36px;border-top:1px solid #2B2E4D;display:flex;flex-direction:column;gap:18px}
+.mas h2{margin:0;font-size:clamp(1.5rem,3.6vw,2rem);line-height:1.2;font-weight:800;letter-spacing:-.01em}
+.mas-g{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mas-c{display:flex;flex-direction:column;gap:10px;padding:20px;background:#181A30;border:1px solid #2B2E4D;border-radius:14px;color:#fff;text-decoration:none}
+.mas-c:hover{border-color:#22D3EE}
+.mas-c small{font-size:13px;font-weight:700;letter-spacing:.12em;color:#22D3EE}
+.mas-c span{font-size:16px;line-height:1.5;color:#D5D9EC;flex:1}
+.mas-c strong{font-size:22px}
+.mas-c em{font-style:normal;font-weight:600;color:#22D3EE}
+.mas-cat{font-weight:600}
+@media (max-width:620px){.mas-g{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -37,6 +48,17 @@ footer a{color:#B7BDD6}
 <li><b>4</b>Lanzamos la campaña en un máximo de 72 horas laborables desde que tu número queda conectado.</li>
 </ol>
 <p>¿Alguna duda? Escríbenos a <a href="mailto:info@easyrobots-ai.cloud">info@easyrobots-ai.cloud</a>.</p>
+<!-- Venta cruzada (25/11): los otros dos productos y el catalogo. Sin "otros clientes compraron hoy":
+     no ha comprado nadie y seria prueba social inventada. Quitar la mencion al 1 de diciembre cuando acabe Black Friday. -->
+<section class="mas">
+<h2>Ya tienes el Reactivador. Así puedes completarlo.</h2>
+<p>Cuando tus clientes empiecen a contestar, te van a escribir más. Estos dos te ayudan con eso, también a precio de Black Friday hasta el 1 de diciembre:</p>
+<div class="mas-g">
+<a class="mas-c" href="/agente-10-preguntas/"><small>AGENTE 10 PREGUNTAS</small><span>Contesta precios, horarios y condiciones por ti.</span><strong>189 €</strong><em>Ver cómo funciona →</em></a>
+<a class="mas-c" href="/agente-secretaria/"><small>AGENTE SECRETARIA</small><span>Presupuestos con un audio y tus papeles para la gestoría.</span><strong>199 €</strong><em>Ver cómo funciona →</em></a>
+</div>
+<p><a class="mas-cat" href="/black-friday/">Ver todo el catálogo de Black Friday →</a></p>
+</section>
 </main>
 <footer><a href="/impressum.html">Aviso legal</a> · <a href="/privacy.html">Privacidad</a> · <a href="/reactivador-flash/">Volver a la oferta</a></footer>
 </body>

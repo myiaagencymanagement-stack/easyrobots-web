@@ -10,8 +10,13 @@
      abrir_calendario     / Contact       clic en cualquier [data-cal] o [data-reserva]
      probar_demo          / ProbarDemo    primer mensaje en un chat de demo
      cita_agendada        / Schedule      reserva confirmada en Cal.com (evento clave)
+     begin_checkout       / InitiateCheckout  clic en cualquier [data-pago] (boton que lleva a Stripe)
+     purchase             / Purchase      pagina /gracias/ con ?sid= (Stripe redirige ahi tras pagar)
    Todos llevan el parametro "nicho". La reserva lleva como event_id el uid de
-   Cal.com, y n8n manda el mismo uid a la API de Conversiones: Meta deduplica. */
+   Cal.com, y n8n manda el mismo uid a la API de Conversiones: Meta deduplica.
+   Todos los eventos de Meta llevan eventID (si no viene, se genera), para que
+   si el servidor manda el mismo evento con el mismo ID no se cuente dos veces.
+   En Purchase el eventID es el id de la sesion de pago de Stripe (sid). */
 
 (function () {
   'use strict';
@@ -27,7 +32,10 @@
   // Meta no podia aprender. Asume el riesgo legal (TDDDG §25) a sabiendas.
   // Caduca sola: a partir de esta fecha vuelve el banner sin tocar nada.
   // Quien ya hubiera pulsado "Rechazar" sigue sin medirse.
-  var SIN_BANNER_HASTA = '2026-10-24';
+  // Segunda vez (decision de Anais 25/11, campana Reactivador Black Friday;
+  // asume el riesgo TDDDG §25): sin banner hasta el 02/12 para que Meta vea
+  // las compras de la campana.
+  var SIN_BANNER_HASTA = '2026-12-02';
   function pruebaSinBanner() {
     return new Date().toISOString().slice(0, 10) < SIN_BANNER_HASTA;
   }
@@ -38,6 +46,17 @@
     if (d) return d;
     var p = location.pathname.split('/').filter(Boolean)[0] || 'home';
     return p.replace(/\.html$/, '');
+  }
+
+  // Precio de cada producto de pago (InitiateCheckout y Purchase). Si cambia un
+  // precio en la pagina, cambiarlo tambien aqui.
+  var PRECIOS = { 'reactivador-flash': 157, 'agente-10-preguntas': 189, 'agente-secretaria': 199 };
+  // Las paginas de gracias llevan el data-nicho de su producto, asi que se
+  // reconocen por la ruta, no por el nicho.
+  function esGracias() { return location.pathname.indexOf('/gracias/') !== -1; }
+
+  function idEvento(metaName) {
+    return metaName.toLowerCase() + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
   }
 
   // --- 1. Consent Mode v2: por defecto TODO denegado, antes de cargar nada ---
@@ -77,9 +96,11 @@
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
     /* eslint-enable */
     fbq('init', PIXEL_ID);
-    fbq('track', 'PageView');
+    fbq('track', 'PageView', {}, { eventID: idEvento('PageView') });
 
-    if (n !== 'home' && n !== 'privacy' && n !== 'gracias') {
+    if (esGracias()) {
+      compra(n);
+    } else if (n !== 'home' && n !== 'privacy' && n !== 'gracias') {
       track('ver_landing', 'ViewContent', { content_name: n, content_category: n });
     }
     document.dispatchEvent(new CustomEvent('er:consent-granted'));
@@ -87,18 +108,32 @@
 
   // Un evento, a GA y a Meta a la vez. Sin consentimiento no sale nada.
   // metaName en minuscula y sin estandar de Meta = evento personalizado.
-  var STANDARD = { PageView: 1, ViewContent: 1, Contact: 1, Schedule: 1, Lead: 1 };
+  var STANDARD = { PageView: 1, ViewContent: 1, Contact: 1, Schedule: 1, Lead: 1,
+                   InitiateCheckout: 1, Purchase: 1 };
   function track(gaName, metaName, params, eventId) {
     if (!loaded) return;
     var p = params || {};
     p.nicho = p.nicho || nicho();
     gtag('event', gaName, p);
     if (window.fbq && metaName) {
-      var opt = eventId ? { eventID: eventId } : undefined;
-      fbq(STANDARD[metaName] ? 'track' : 'trackCustom', metaName, p, opt);
+      fbq(STANDARD[metaName] ? 'track' : 'trackCustom', metaName, p,
+          { eventID: eventId || idEvento(metaName) });
     }
   }
   window.erTrack = track;
+
+  // Compra: solo en /gracias/ con ?sid= (lo pone Stripe al redirigir). Se apunta
+  // en el navegador para que recargar la pagina no cuente otra compra.
+  function compra(n) {
+    var sid = new URLSearchParams(location.search).get('sid');
+    if (!sid) return;
+    var k = 'er_compra_' + sid;
+    try { if (localStorage.getItem(k)) return; } catch (e) {}
+    var p = { content_name: n, currency: 'EUR', transaction_id: sid };
+    if (PRECIOS[n]) p.value = PRECIOS[n];
+    track('purchase', 'Purchase', p, sid);
+    try { localStorage.setItem(k, '1'); } catch (e) {}
+  }
 
   // --- 3. Banner (se inyecta solo; la pagina no tiene que traer HTML) ---
   function pintarBanner() {
@@ -144,6 +179,21 @@
     document.addEventListener('click', function (e) {
       var b = e.target.closest && e.target.closest('[data-cal],[data-reserva]');
       if (b) track('abrir_calendario', 'Contact', { origen: (b.textContent || '').trim().slice(0, 40) });
+
+      // Clic en comprar: el enlace de Stripe abre en la misma pestana, asi que se
+      // retrasa 300 ms la salida para que el evento llegue. Sin medicion cargada
+      // (o con Ctrl/clic central para abrir en otra pestana) navega al momento.
+      var pg = e.target.closest && e.target.closest('[data-pago]');
+      if (!pg) return;
+      var n = nicho();
+      var p = { content_name: n, currency: 'EUR' };
+      if (PRECIOS[n]) p.value = PRECIOS[n];
+      var nuevaPestana = e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1 || pg.target === '_blank';
+      if (!loaded || nuevaPestana || !pg.href) { track('begin_checkout', 'InitiateCheckout', p); return; }
+      e.preventDefault();
+      track('begin_checkout', 'InitiateCheckout', p);
+      var destino = pg.href;
+      setTimeout(function () { location.href = destino; }, 300);
     }, true);
     // Primer mensaje en un chat de demo (lo avisa chat-demo.js)
     document.addEventListener('er:demo-usada', function (e) {
