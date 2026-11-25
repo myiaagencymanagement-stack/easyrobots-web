@@ -62,12 +62,16 @@ p{margin:0}
 .item p{font-size:17px;line-height:1.5}
 .item b{color:var(--noche)}
 
-/* Formato y acceso */
-.cf{display:flex;flex-wrap:wrap;gap:40px}
-.cf-txt{flex:2 1 480px;min-width:0;display:flex;flex-direction:column;gap:20px}
-.caja{flex:1 1 300px;align-self:flex-start;display:flex;flex-direction:column;gap:14px;padding:28px;background:var(--claro);border:1px solid var(--borde-c);border-radius:14px}
-.caja h3{font-size:18px;font-weight:700;color:var(--noche)}
-.caja p{font-size:16px;line-height:1.5}
+/* Como empiezas (2026-11-25): tres pasos numerados en fila y, debajo, cuatro tarjetas pequenas con lo que recibes. Mismo contenedor .in que el resto. */
+.arr{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.arr li{display:flex;flex-direction:column;gap:10px;padding:28px;background:var(--claro);border:1px solid var(--borde-c);border-radius:14px}
+.arr .num{margin-bottom:6px}
+.arr h3{font-size:19px;line-height:1.3;font-weight:700;color:var(--noche)}
+.arr p{font-size:16px;line-height:1.5;color:var(--gris)}
+.recibes{display:flex;flex-direction:column;gap:16px}
+.recibes h3{font-size:18px;font-weight:700;color:var(--noche)}
+.recibes ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.recibes li{padding:18px 20px;background:#fff;border:1px solid var(--borde-c);border-radius:12px;font-size:16px;line-height:1.4;font-weight:600;color:var(--noche)}
 
 /* Bonos */
 .bonos{display:flex;flex-wrap:wrap;gap:20px}
@@ -79,9 +83,16 @@ p{margin:0}
 .bono p{font-size:16px;line-height:1.55;color:var(--gris-n)}
 
 /* Que incluye y que no: dos listas para que el "no incluye" se lea de un vistazo. */
-.dos{display:flex;flex-wrap:wrap;gap:20px}
-.col{flex:1 1 420px;padding:28px;border:1px solid var(--borde-c);border-radius:14px}
+/* 2026-11-25: 1.6fr / 1fr y align-items:start para que cada caja mida lo que su texto (antes la de "Incluye" quedaba alargada y vacia). */
+.dos{display:grid;grid-template-columns:1.6fr 1fr;gap:20px;align-items:start}
+.col{padding:28px;border:1px solid var(--borde-c);border-radius:14px}
 .col.si{background:var(--claro)}
+.col.si ul{list-style:none;padding-left:0}
+.col.si li{position:relative;padding-left:30px}
+.col.si li::before{content:"";position:absolute;left:0;top:2px;width:20px;height:20px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230E7490' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") no-repeat center/contain}
+.col.no{background:#fff}
+.col.no h3{font-size:17px;color:var(--gris)}
+.col.no ul{font-size:15px;color:var(--gris)}
 .col h3{font-size:19px;font-weight:700;color:var(--noche);margin-bottom:16px}
 .col ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5}
 .peq-c{font-size:16px;line-height:1.55;color:var(--gris)}
@@ -138,7 +149,11 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
   .cuerpo{font-size:17px}
   .destaca{font-size:19px}
   .in{gap:28px}
-  .item,.bono,.caja,.col,.tarjeta,.cf-txt{flex-basis:100%}
+  .item,.bono,.tarjeta{flex-basis:100%}
+  .arr,.dos{grid-template-columns:1fr}
+  .arr li{padding:20px}
+  .recibes ul{grid-template-columns:1fr 1fr;gap:12px}
+  .recibes li{padding:14px 16px;font-size:15px}
   .item,.col{padding:20px}
   .bono,.tarjeta{padding:24px}
   .bono h3{font-size:19px}
@@ -242,18 +257,20 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <section class="sec">
 <div class="in">
 <h2>Empiezas con una videollamada de 30 minutos</h2>
-<div class="cf">
-<div class="cf-txt">
-<p class="cuerpo">Después trabajamos nosotros.</p>
-<p class="cuerpo">Abres Telegram, pulsas Iniciar y mandas tu primer audio.</p>
-</div>
-<div class="caja">
+<!-- 2026-11-25 (Anais): antes eran dos frases sueltas y una caja a la derecha con mucho hueco. Ahora tres pasos en fila y lo que recibes debajo. -->
+<ol class="arr">
+<li><span class="num">1</span><h3>Videollamada de 30 minutos</h3><p>Vemos tus papeles y cómo trabajas hoy.</p></li>
+<li><span class="num">2</span><h3>Lo montamos en 72 horas</h3><p>Tu bot, tu correo, tu catálogo y tu CRM.</p></li>
+<li><span class="num">3</span><h3>Mandas tu primer audio</h3><p>Abres Telegram, pulsas Iniciar y pides tu primer presupuesto.</p></li>
+</ol>
+<div class="recibes">
 <h3>Cuando todo funciona, recibes</h3>
-<p>El enlace a tu bot.</p>
-<p>Tu dirección de correo para reenviar facturas.</p>
-<p>Tu catálogo ya cargado.</p>
-<p>Tu usuario y contraseña del CRM.</p>
-</div>
+<ul>
+<li>El enlace a tu bot</li>
+<li>Tu correo para reenviar tickets y facturas</li>
+<li>Tu catálogo ya cargado</li>
+<li>Tu acceso al CRM</li>
+</ul>
 </div>
 </div>
 </section>
@@ -287,32 +304,26 @@ footer a{color:var(--gris-n2)}footer a:hover{color:#fff}
 <div class="col si">
 <h3>Incluye</h3>
 <ul>
-<li>Dos vías de entrada: tu bot de Telegram y una dirección de correo para reenviar.</li>
-<li>Tu catálogo de productos y precios, hasta 50 productos.</li>
-<li>La importación de tus clientes una sola vez, hasta 300.</li>
+<li>Tu bot de Telegram y tu dirección de correo para reenviar tickets y facturas.</li>
+<li>Presupuestos por audio: te los dejamos hechos en PDF y tú se los mandas a tu cliente.</li>
+<li>Tu catálogo cargado (hasta 50 productos) y tus clientes importados (hasta 300).</li>
 <li>Hasta 300 presupuestos y documentos al mes.</li>
-<li>Un paquete para tu gestoría por periodo (mensual o trimestral), que te enviamos a ti para que lo reenvíes.</li>
-<li>La lista semanal de pendientes.</li>
+<li>Tu paquete para la gestoría, cada mes o cada trimestre: te llega a ti, lo revisas y se lo reenvías.</li>
+<li>La lista semanal de lo que tienes pendiente de cobrar y de facturar.</li>
+<li>Tu CRM con tus clientes, presupuestos y documentos.</li>
 </ul>
 </div>
 <!-- El "no incluye" es parte de la oferta: las frases evitadas a proposito son "emitimos tus facturas", "facturas automaticas", "cumple Verifactu", "sustituye a tu gestoria" y "programa de facturacion". No introducirlas al retocar el copy. -->
-<div class="col">
+<div class="col no">
 <h3>No incluye</h3>
 <ul>
-<li>Llevar tu contabilidad ni presentar tus impuestos, que sigue haciendo tu gestoría.</li>
-<li>Emitir facturas.</li>
-<li>Hablar con tus clientes.</li>
-<li>Enviarles el presupuesto o que lo acepten desde un enlace.</li>
-<li>Enviar el paquete a tu gestoría por ti.</li>
-<li>El resumen de ingresos y gastos.</li>
+<li>Emitir facturas, llevar tu contabilidad ni presentar impuestos: eso lo siguen haciendo tu programa o tu gestoría.</li>
 <li>Conectar tu agenda o tu banco.</li>
-<li>Atender a más de una gestoría o de un negocio.</li>
-<li>Limpiar listas o catálogos desordenados.</li>
-<li>Leer documentos ilegibles o manuscritos (si el bot no los entiende, te pide que los repitas).</li>
+<li>Leer documentos ilegibles o manuscritos (el bot te pide que los repitas).</li>
 </ul>
 </div>
 </div>
-<p class="peq-c">Todo eso se presupuesta aparte o se activa en AURA FLUX, y te lo decimos antes de empezar.</p>
+<p class="peq-c">Si necesitas algo más, te lo presupuestamos antes de empezar.</p>
 </div>
 </section>
 
